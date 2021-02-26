@@ -1,0 +1,277 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WHite Hat - The value of life lies not length of days, but in the use of we make of them.</title><meta name="author" content="宛若梦醒月明时"><meta name="copyright" content="宛若梦醒月明时"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="Don‘t cry because it is over, smile because it happened.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WHite Hat">
+<meta property="og:url" content="http://daweitech.github.io/page/2/index.html">
+<meta property="og:site_name" content="WHite Hat">
+<meta property="og:description" content="Don‘t cry because it is over, smile because it happened.">
+<meta property="og:locale">
+<meta property="og:image" content="http://daweitech.github.io/img/%E5%85%94%E5%AD%90.png">
+<meta property="article:author" content="宛若梦醒月明时">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://daweitech.github.io/img/%E5%85%94%E5%AD%90.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://daweitech.github.io/page/2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}
+
+// https://stackoverflow.com/questions/16839698/jquery-getscript-alternative-in-native-javascript
+const getScript = url => new Promise((resolve, reject) => {
+  const script = document.createElement('script')
+  script.src = url
+  script.async = true
+  script.onerror = reject
+  script.onload = script.onreadystatechange = function() {
+    const loadState = this.readyState
+    if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+    script.onload = script.onreadystatechange = null
+    resolve()
+  }
+  document.head.appendChild(script)
+})</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-02-26 16:22:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"> <script src="/live2d-widget/autoload.js"></script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="WHite Hat" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/%E5%85%94%E5%AD%90.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">34</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">14</div></a></div></div></div><hr/></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://gitee.com/dulily/cdn/raw/master/img/214707-1543326427a764.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">WHite Hat</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">WHite Hat</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/daweitech" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:daweitech@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/02/05/x/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" title="网络配置">     <img class="post_bg" src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2353792386,397486592&amp;fm=26&amp;gp=0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网络配置"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/05/x/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" title="网络配置">网络配置</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-02-05T02:36:06.000Z" title="Created 2021-02-05 10:36:06">2021-02-05</time></span></div><div class="content">VMware虚拟机nat模式连不上网的解决方法
+在VMware的编辑-&gt;虚拟网络编辑器重新建立NAT网络（之前的要删掉，新建的同样选择VMnet8就可以）
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/02/01/web/script/" title="script">     <img class="post_bg" src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2353792386,397486592&amp;fm=26&amp;gp=0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="script"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/02/01/web/script/" title="script">script</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-02-01T03:57:27.000Z" title="Created 2021-02-01 11:57:27">2021-02-01</time></span></div><div class="content"></div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/01/31/x/goktech/" title="goktech">     <img class="post_bg" src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2353792386,397486592&amp;fm=26&amp;gp=0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="goktech"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/01/31/x/goktech/" title="goktech">goktech</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-01-31T13:56:38.000Z" title="Created 2021-01-31 21:56:38">2021-01-31</time></span></div><div class="content">渗透测试思路1． 信息收集
+2． 漏洞挖掘
+3． 漏洞利用
+4． 输出渗透测试报告
+信息收集：
+1.
+基本信息：
+域名信息 : goktech.cn
+子域名: 子域名挖掘机.exe  :bbs.goktech.cn   phpinfo,me
+ip地址：站长之家
+同ip地址的其他网站信息
+端口 80(http）443(https)
+服务，服务版本（web服务） 同网段的其他服务器信息（c段）
+信息泄露，GitHub.com 如qq.com user pass
+网站目录：御剑
+2.
+Os操作系统
+Linux windows mac等
+3.
+  Web中间件（web程序，用来提供网页服务）
+类型、版本：iis，apache，nginx，weblogic
+4.
+  数据库
+类型、版本：MySQL、mssql、Oracle、access
+5.
+ 后编的脚本类型
+Linux的指令ifconfig—查看ip地址
+dhclient—重新获取地址
+namp,诸神之眼#  namp -sS -p 80,443 10.10.10.1 -O
+-p 迅速扫描指定的端口
+-F  快速扫描100个常用的端口
+-r  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021/01/24/web/%E7%AB%AF%E5%8F%A3/" title="端口">端口</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-01-24T09:42:22.000Z" title="Created 2021-01-24 17:42:22">2021-01-24</time></span></div><div class="content">80端口，443端口
+80端口是为HTTP[超文本传输协议]开放的，此为上网冲浪使用次数最多的协议，主要用于WWW（World Wide Web）即万维网传输信息的协议。（来自百度）
+可以通过HTTP地址（即常说的“网址”）加“: 80”来访问网站，因为浏览网页服务默认的端口号都是80，因此只需输入网址即可，不用输入“: 80”了。(来自百度)
+443端口：https默认调用443端口，向443发请求，80端口拿数据；传输时注意加密算法，加密算法需要分享，
+1.浏览器提交支持的加密算法列表
+2.服务器收到请求，下发一个加密算法
+3.摘要算法，将一段数据加密得到密文（摘要）
+签名：对于一个内容，认可数据，认证机制，认可摘要（防篡改）
+原本的数据+摘要+算法——&gt;数据防篡改——&gt;真正包含了签名的
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021/01/22/x/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="汇编基础知识">汇编基础知识</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-01-22T02:59:56.000Z" title="Created 2021-01-22 10:59:56">2021-01-22</time></span></div><div class="content">汇编了解硬件系统的结构，重点：利用硬件系统的编程结构和指令
+1.机器语言含义：机器指令的集合   汇编语言机器指令的助记符，如机器指令：1000100111011000操作——&gt;寄存器BX的内容送到AX中，汇编指令为：MOV AX,BX;
+2.寄存器cpu中可以存储数据的器件组成：a.汇编指令（机器码的助记符）         b.伪指令（由编译器执行）         c.（由编译器识别）程序——&gt;汇编指令——&gt;编译器——&gt;机器语言——&gt;计算机二进制信息：1000 1001 1101 1000——&gt;89D8H(数据)1000 1001 1101 1000——&gt;MOV AX,BX(程序)cpu处理二进制；B——Byte1kb=1024b1Mb=1024kb1Gb=1024Mb1Tb=1024Gb(2的10次方)3.cpu进行数据读写必须和外部器件（标准的说法是芯片）进行三类信息的交互a.存储单元的地址（地址信息）b.器件的选择，读或写命令（控制信息）c.读或写的数据（数据信息）存储单元从0开始顺序编号；一个存储单元可以存储8个bit，即8位二进 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/12/14/sql/MySQL%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" title="MySQL注入天书笔记">MySQL注入天书笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-12-14T14:26:58.000Z" title="Created 2020-12-14 22:26:58">2020-12-14</time></span></div><div class="content">基于从服务器接收到的响应 ▲基于错误的 SQL 注入 
+ ▲联合查询的类型
+ ▲堆查询注射 
+ ▲SQL 盲注 
+​       •基于布尔 SQL 盲注
+​       •基于时间的 SQL 盲注 
+​       •基于报错的 SQL 盲注
+基于如何处理输入的 SQL 查询（数据类型）
+•基于字符串 
+•数字或整数为基础的 
+基于程度和顺序的注入(哪里发生了影响) 
+★一阶注射 
+★二阶注射 一阶注射是指输入的注射语句对 WEB 直接产生了影响，出现了结果；二阶注入类似存 储型 XSS，是指输入提交的语句，无法直接对 WEB 应用程序产生影响，通过其它的辅助间 接的对 WEB 产生危害，这样的就被称为是二阶注入. 
+基于注入点的位置上的 
+▲通过用户输入的表单域的注射。 
+▲通过 cookie 注射。 
+▲通过服务器变量注射。 （基于头部信息的注射）
+SQL UNION 语法
+eg：
+万能密码：
+Select * from admin where username=’admin’ and password=’admin
+盲注的讲解bool
+时间（考虑是否延迟）
+报错（是否有关于sq ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/12/09/sql/1-10/" title="SQL labs1-10">SQL labs1-10</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-12-09T13:47:59.000Z" title="Created 2020-12-09 21:47:59">2020-12-09</time></span></div><div class="content">Less1：（基于错误的GET单引号字符型注入)解题思路：
+方法一，union 联合查询注入
+1，首先判断是否存在注入 / ？id=1’   回显错误，去掉 ‘ 发现回显正常，发现是单引号字符型注入
+注意此时因为前面报错可以看到有limit 0,1我们可以知道此处如果需要输出我们union查询出的信息要将前面的位占了，即使前面的输出为不存在。可以看到我是将id的值写为负值，然后将输出的位置就让给了后面我们需要输出的信息，这个技巧在有输出限制的时候十分重要。
+2，然后用 order by 判断有几列数据
+1&#x2F; ?id &#x3D; 1&#39; order by 3 %23  
+
+回显正常，order by 4 的时候发现回显错误，说明有3 列
+我们上面猜测出了字段数为3，但这里输出的只有2个，所以我们union查询要保证字段数一样，不足的补数字（只有mysql可以），或者null。然后第一个是没有输出的，所以我将需要输出的写在了后面两个。
+3，将id=1改为一个数据库不存在的id值，如-1，使用union select 1,2,3联合查询语句查看页面是否有显示位。
+发现页面先 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/12/07/c/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%9E%E6%8E%A5/" title="字符串连接">字符串连接</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-12-07T09:00:43.000Z" title="Created 2020-12-07 17:00:43">2020-12-07</time></span></div><div class="content">今日：与字符串链接有关的函数strcpy，strcat；strcat函数：将两个char类型连接。strcpy函数：头文件：#include &lt; string.h&gt; 和 #include &lt;stdio.h&gt;功能：把从src地址开始且含有NULL结束符的字符串复制到以dest开始的 地址空间
+​                              可变参数  链接：https://blog.csdn.net/longintchar/article/details/85490103
+[^摘取自链接：https://blog.csdn.net/slk11580/article/details/79571478]: 
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/12/01/sql/Mysql/" title="Mysql">Mysql</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-12-01T11:46:17.000Z" title="Created 2020-12-01 19:46:17">2020-12-01</time></span></div><div class="content">  关于MySQL的安装
+再次尝试运行Mysql，却发现没有指令运行，翻阅文章才恍然大悟：没有先配置环境变量!
+配置环境变量的话，先找到MySQL的bin文件，复制黏贴文件路径
+然后寻找计算机高级管理系统（从设置里的关于找），打开后找到环境变量，双击path，添加新路径；
+这样就能在cmd上运行；
+新建 my.ini文件，添加配置编码
+接着以管理员打开cmd窗口，然后输入 mysqld –install 这样就将mysqld添加到系统服务了。
+win+r 打开运行窗口，输入services.msc，这样可以看MySQL是否已经添加加到windosws服务
+用命令 mysql -uroot -p执行
+net stop mysql 关闭服务    net start mysql 开启服务。
+附加：暂时造成无法通过小皮面板打开MySQL
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2020/11/14/c/%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92/" title="函数递归">函数递归</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-11-14T12:59:26.000Z" title="Created 2020-11-14 20:59:26">2020-11-14</time></span></div><div class="content"> 递归思想
+格式：void recursion() 
+{   statements;   … … …   recursion(); /* 函数调用自身 */  
+ … … … 
+}
+  int main() 
+{   recursion();
+ }
+应用到求阶乘上，还有斐波那契数列
+ 递归函数可以使它调用其本身
+但是存在不利情况：
+电脑空间大致分Heap（堆）和Stack（栈）两种。
+栈是用于函数的空间。
+电脑调用一个函数，就会使用一层栈；
+相反，电脑中一个函数结束（return），就会释放这一层栈，连同在这层栈（这个函数）中定义的所有东西。
+不在栈中的，应该就在堆中。（这就是定义全区变量与局部变量的用处）
+如果调用太多层栈（太多个函数），**电脑就会暴空间！**
+所以说，调用递归函数，就会一层一层地压栈，电脑就会暴空间！（并不代表不建议用递归，只是作提示而已）
+递归，就是递（一层一层地调用），归（一层一层地返回），这样会费很多时间！容易超时！
+但是，我并不是说不用递归，而是说能用递推算法的，最好不用递归算法，（原因你知道）。
+</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/%E5%85%94%E5%AD%90.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">宛若梦醒月明时</div><div class="author-info__description">Don‘t cry because it is over, smile because it happened.</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">34</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">14</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/daweitech"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/daweitech" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:daweitech@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/02/22/dvwa/csrf/" title="csrf"><img src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2353792386,397486592&amp;fm=26&amp;gp=0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="csrf"/></a><div class="content"><a class="title" href="/2021/02/22/dvwa/csrf/" title="csrf">csrf</a><time datetime="2021-02-22T12:09:09.000Z" title="Created 2021-02-22 20:09:09">2021-02-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/" title="图片马"><img src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2353792386,397486592&amp;fm=26&amp;gp=0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="图片马"/></a><div class="content"><a class="title" href="/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/" title="图片马">图片马</a><time datetime="2021-02-22T03:59:25.000Z" title="Created 2021-02-22 11:59:25">2021-02-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/21/upload-labs/upload-labs/" title="upload-labs"><img src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2353792386,397486592&amp;fm=26&amp;gp=0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="upload-labs"/></a><div class="content"><a class="title" href="/2021/02/21/upload-labs/upload-labs/" title="upload-labs">upload-labs</a><time datetime="2021-02-21T10:13:31.000Z" title="Created 2021-02-21 18:13:31">2021-02-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/19/php/php%E6%9C%A8%E9%A9%AC/" title="php木马"><img src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2353792386,397486592&amp;fm=26&amp;gp=0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="php木马"/></a><div class="content"><a class="title" href="/2021/02/19/php/php%E6%9C%A8%E9%A9%AC/" title="php木马">php木马</a><time datetime="2021-02-19T02:27:52.000Z" title="Created 2021-02-19 10:27:52">2021-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/18/dvwa/1-5/" title="1-5"><img src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2353792386,397486592&amp;fm=26&amp;gp=0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="1-5"/></a><div class="content"><a class="title" href="/2021/02/18/dvwa/1-5/" title="1-5">1-5</a><time datetime="2021-02-18T10:16:13.000Z" title="Created 2021-02-18 18:16:13">2021-02-18</time></div></div></div></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/c/" style="font-size: 1.5em; color: #99a9bf">c</a> <a href="/tags/dvwa/" style="font-size: 1.37em; color: #99a4b2">dvwa</a> <a href="/tags/https%E5%8D%8F%E8%AE%AE/" style="font-size: 1.1em; color: #999">https协议</a> <a href="/tags/php/" style="font-size: 1.37em; color: #99a4b2">php</a> <a href="/tags/sql/" style="font-size: 1.37em; color: #99a4b2">sql</a> <a href="/tags/sql%E9%9D%B6%E5%9C%BA/" style="font-size: 1.23em; color: #999ea6">sql靶场</a> <a href="/tags/upload-labs/" style="font-size: 1.23em; color: #999ea6">upload-labs</a> <a href="/tags/vmware/" style="font-size: 1.1em; color: #999">vmware</a> <a href="/tags/%E5%88%86%E4%BA%AB%E4%BC%9A/" style="font-size: 1.37em; color: #99a4b2">分享会</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 1.1em; color: #999">博客</a> <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 1.1em; color: #999">密码学</a> <a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 1.1em; color: #999">指针</a> <a href="/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-web/" style="font-size: 1.37em; color: #99a4b2">攻防世界_web</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 1.1em; color: #999">汇编</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/02/"><span class="card-archive-list-date">February 2021</span><span class="card-archive-list-count">12</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">January 2021</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">December 2020</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">November 2020</span><span class="card-archive-list-count">8</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">October 2020</span><span class="card-archive-list-count">7</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">34</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-02-26T08:22:54.209Z"></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By 宛若梦醒月明时</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
