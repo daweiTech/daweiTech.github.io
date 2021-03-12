@@ -849,17 +849,6 @@ echo "Hello World!";
       </tags>
   </entry>
   <entry>
-    <title>进阶区</title>
-    <url>/2021/02/05/web/9-12/</url>
-    <content><![CDATA[<h4 id="Training-WWW-Robots"><a href="#Training-WWW-Robots" class="headerlink" title="Training-WWW-Robots"></a>Training-WWW-Robots</h4><p>老套路</p>
-<h4 id="baby-web"><a href="#baby-web" class="headerlink" title="baby_web"></a>baby_web</h4><p>访问index.php,跳转后回到页面，考虑使用抓包，进行repeater，go后在头部看到 flag。</p>
-<h4 id="php-rce"><a href="#php-rce" class="headerlink" title="php_rce"></a>php_rce</h4><p>神奇的PHPv5框架存在漏洞利用，采用路径更改（像Linux指令）进行访问</p>
-]]></content>
-      <tags>
-        <tag>攻防世界_web</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>script</title>
     <url>/2021/02/01/web/script/</url>
     <content><![CDATA[<h4 id><a href="#" class="headerlink" title></a></h4><!--maybe you need a dictionary--
@@ -1259,6 +1248,31 @@ cookie信息盗取可以直接登录-->]]></content>
 ]]></content>
       <tags>
         <tag>upload-labs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>进阶区</title>
+    <url>/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/</url>
+    <content><![CDATA[<h4 id="Baby-web"><a href="#Baby-web" class="headerlink" title="Baby_web"></a>Baby_web</h4><p>访问index.php,跳转后回到页面，考虑使用抓包，进行repeater，go后在头部看到 flag。</p>
+<p>或者直接查看</p>
+<p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(93).png"></p>
+<h4 id="Training-WWW-Robots"><a href="#Training-WWW-Robots" class="headerlink" title="Training-WWW-Robots"></a>Training-WWW-Robots</h4><p>老套路</p>
+<p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(94).png"></p>
+<p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(95).png"></p>
+<h4 id="Php-rce"><a href="#Php-rce" class="headerlink" title="Php_rce"></a>Php_rce</h4><p>神奇的PHPv5框架存在漏洞利用，采用路径更改（像Linux指令）进行访问</p>
+<p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(96).png"></p>
+<p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(97).png"></p>
+<p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(98).png"></p>
+<p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(99).png"></p>
+<p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(100).png"></p>
+<p><a href="https://www.wrpzkb.cn/rce/#post-comment">https://www.wrpzkb.cn/rce/#post-comment</a></p>
+<p><a href="https://www.cnblogs.com/sallyzhang/p/12408774.html">https://www.cnblogs.com/sallyzhang/p/12408774.html</a></p>
+<h4 id="Web-php-include"><a href="#Web-php-include" class="headerlink" title="Web_php_include"></a>Web_php_include</h4><p>文件包含漏洞</p>
+<p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(101).png"></p>
+<p><a href="https://www.cnblogs.com/xhds/p/12218471.html">https://www.cnblogs.com/xhds/p/12218471.html</a></p>
+]]></content>
+      <tags>
+        <tag>攻防世界_web</tag>
       </tags>
   </entry>
 </search>
