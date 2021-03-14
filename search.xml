@@ -849,70 +849,6 @@ echo "Hello World!";
       </tags>
   </entry>
   <entry>
-    <title>script</title>
-    <url>/2021/02/01/web/script/</url>
-    <content><![CDATA[<h4 id><a href="#" class="headerlink" title></a></h4><!--maybe you need a dictionary--
-
-抓包走起！
-
-![](%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(70).png)
-
-#### simple php
-
-![](%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(71).png)
-
-![](%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(72).png)
-
-
-
-Xff_referer
-
-抓取请求包，篡改：加上X-Forwarded-For:
-
-​                                                              Rerfer:
-
-
-
-#### Webshell
-
-​     由题意知已经植入木马文件
-
-使用蚁剑连上网站，从而查看flag文件
-
-#### Command_execution
-
-ping上localhost127.0.0.1
-
-然后接着就是不断地往上一级发送请求和Linux 的ls一样最后在根目录找到flag.txt，然后用cat查看即可知道flag       来自 <https://blog.csdn.net/weixin_45895555/article/details/105039279> 
-
-#### Simple_js
-
-  1.页面源代码
-
-  2 :在线python脚本（菜鸟教程）55,56,54,79,115,69,114,116,107,49,50
-
-3. 对应ascii码：786OsErtk12
-
-
-
-#### xss：
-
-人们经常将跨站脚本攻击（Cross Site Scripting）缩写为CSS，但这会与层叠样式表（Cascading Style Sheets，CSS）的缩写混淆。因此，有人将跨站脚本攻击缩写为XSS。
-
-Sqlmap -r后面跟着文件
-
-Sqlmap -u后面跟着路径（url）
-
-
-
-Script 脚本
-
-cookie信息盗取可以直接登录-->]]></content>
-      <tags>
-        <tag>攻防世界_web</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>新手区</title>
     <url>/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/</url>
     <content><![CDATA[<h4 id="View-source"><a href="#View-source" class="headerlink" title="View_source"></a>View_source</h4><p>直接进入查看器查看；</p>
@@ -1270,6 +1206,24 @@ cookie信息盗取可以直接登录-->]]></content>
 <h4 id="Web-php-include"><a href="#Web-php-include" class="headerlink" title="Web_php_include"></a>Web_php_include</h4><p>文件包含漏洞</p>
 <p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(101).png"></p>
 <p><a href="https://www.cnblogs.com/xhds/p/12218471.html">https://www.cnblogs.com/xhds/p/12218471.html</a></p>
+<h4 id="supersqli"><a href="#supersqli" class="headerlink" title="supersqli"></a>supersqli</h4><h4 id="ics-06"><a href="#ics-06" class="headerlink" title="ics-06"></a>ics-06</h4><h4 id="warmup"><a href="#warmup" class="headerlink" title="warmup"></a>warmup</h4><h4 id="NeswCenter"><a href="#NeswCenter" class="headerlink" title="NeswCenter"></a>NeswCenter</h4><h4 id="NaNNaNNaNNaN-Batman"><a href="#NaNNaNNaNNaN-Batman" class="headerlink" title="NaNNaNNaNNaN-Batman"></a>NaNNaNNaNNaN-Batman</h4><h4 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h4><h4 id="PHP2"><a href="#PHP2" class="headerlink" title="PHP2"></a>PHP2</h4><h4 id="unserialize3"><a href="#unserialize3" class="headerlink" title="unserialize3"></a>unserialize3</h4><h4 id="upload1"><a href="#upload1" class="headerlink" title="upload1"></a>upload1</h4><p>不是用图片马绕过，而是删除限制代码</p>
+<h4 id="nizhuansiwei"><a href="#nizhuansiwei" class="headerlink" title="nizhuansiwei"></a>nizhuansiwei</h4><p><a href="https://blog.csdn.net/RABCDXB/article/details/113733607">https://blog.csdn.net/RABCDXB/article/details/113733607</a> 解题</p>
+<p><a href="https://blog.csdn.net/nzjdsds/article/details/82461043">https://blog.csdn.net/nzjdsds/article/details/82461043</a>  php伪协议</p>
+<p>正则：preg_match  序列化操作</p>
+<h4 id="Web-python-template"><a href="#Web-python-template" class="headerlink" title="Web python template"></a>Web python template</h4><p><a href="https://www.cnblogs.com/darklee/p/12625742.html%E8%A7%A3%E9%A2%98">https://www.cnblogs.com/darklee/p/12625742.html解题</a></p>
+<p>相关网址<a href="https://www.freebuf.com/column/187845.html">https://www.freebuf.com/column/187845.html</a></p>
+<h4 id="Web-php-unserialize"><a href="#Web-php-unserialize" class="headerlink" title="Web php unserialize"></a>Web php unserialize</h4><h4 id="easytornado"><a href="#easytornado" class="headerlink" title="easytornado"></a>easytornado</h4><h4 id="shrine"><a href="#shrine" class="headerlink" title="shrine"></a>shrine</h4>]]></content>
+      <tags>
+        <tag>攻防世界_web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mixed</title>
+    <url>/2021/02/01/web/mixed/</url>
+    <content><![CDATA[<h4 id="xss："><a href="#xss：" class="headerlink" title="xss："></a>xss：</h4><p>人们经常将跨站脚本攻击（Cross Site Scripting）缩写为CSS，但这会与层叠样式表（Cascading Style Sheets，CSS）的缩写混淆。因此，有人将跨站脚本攻击缩写为XSS。</p>
+<h4 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h4><p>Sqlmap -r后面跟着文件</p>
+<p>Sqlmap -u后面跟着路径（url）</p>
+<p>sqlmap常用参数：<br>-u : 指定目标URL，sql注入点<br>–cookie : 当前会话的cookie值<br>-b : 获取数据库类型 检索数据库管理系统的标识<br>（DBMS：Database Management System 数据库管理系统）<br>–current-db : 获取当前数据库<br>–current-user :获取当前登录数据库使用的用户</p>
 ]]></content>
       <tags>
         <tag>攻防世界_web</tag>
