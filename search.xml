@@ -1229,4 +1229,37 @@ echo "Hello World!";
         <tag>攻防世界_web</tag>
       </tags>
   </entry>
+  <entry>
+    <title>nep题</title>
+    <url>/2021/03/15/nepnep/nep%E9%A2%98/</url>
+    <content><![CDATA[<p> 解题过程思路来自于<a href="https://blog.csdn.net/Nebula1805/article/details/113833930">https://blog.csdn.net/Nebula1805/article/details/113833930</a></p>
+<h5 id="属性-jpg"><a href="#属性-jpg" class="headerlink" title="属性.jpg"></a>属性.jpg</h5><p>签到题，依题意将图片保存后查看属性，得到flag.</p>
+<p><img src="/2021/03/15/nepnep/nep%E9%A2%98/%E5%B1%9E%E6%80%A7.jpg"></p>
+<h5 id="sring-jpg"><a href="#sring-jpg" class="headerlink" title="sring.jpg"></a>sring.jpg</h5><p>本来想按照上题解，结果发现属性里空空如也</p>
+<p>原来这是要用到kali里的string指令</p>
+<p>命令格式：<code>strings file</code><br>输入命令<code>strings strings.jpg</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20210217143330255.png" alt="在这里插入图片描述"></p>
+<h5 id="grep-jpg"><a href="#grep-jpg" class="headerlink" title="grep.jpg"></a>grep.jpg</h5><p>一打开附件，竟然是好康的图（滑稽）</p>
+<p>解题重要</p>
+<p>用法: <code>grep [选项]... 模式 [文件]...</code><br>输入命令 <code>grep -a &#39;BJD&#39; grep.jpeg</code></p>
+<p>同样在kali里实现</p>
+<h5 id="aaa-gif"><a href="#aaa-gif" class="headerlink" title="aaa.gif"></a>aaa.gif</h5><p>o,是这么经典的鼓掌</p>
+<p>看到闪过的flag图片</p>
+<p>Stegsolve工具查看，点击Analyse-&gt;Frame Browser(帧浏览器),查看每一帧</p>
+<p>就得到三张关于flag图片</p>
+<h5 id="lsb-png"><a href="#lsb-png" class="headerlink" title="lsb.png"></a>lsb.png</h5><p>同样用Stegsolve工具查看，切换通道<br><a href="https://www.cnblogs.com/cat47/p/11483478.html">stegsolve使用方法</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20210217151442405.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05lYnVsYTE4MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20210217151458817.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05lYnVsYTE4MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20210217151516928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05lYnVsYTE4MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>观察到red，green，blue 0位可能隐藏着信息<br>Analyse-&gt;Data Extract,勾选red，green，blue 0位<br><img src="https://img-blog.csdnimg.cn/20210217153101363.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05lYnVsYTE4MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>点击Preview<br><img src="https://img-blog.csdnimg.cn/20210217153156855.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05lYnVsYTE4MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>观察到是png格式，save bin以 png为后缀名<img src="https://img-blog.csdnimg.cn/20210217153310561.png" alt="在这里插入图片描述"><br>得到一张二维码<br><img src="https://img-blog.csdnimg.cn/20210217153439273.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05lYnVsYTE4MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>扫码，得到flag<img src="https://img-blog.csdnimg.cn/20210217154107314.png" alt="在这里插入图片描述"></p>
+<h5 id="上课认真听了吗"><a href="#上课认真听了吗" class="headerlink" title="上课认真听了吗"></a>上课认真听了吗</h5><p>根据提示，flag在udp,http,tcp三种流量中，用wireshark打开文件，分别用过滤器锁定三种流量，并以<code>flag&#123;</code> 格式查找<br><img src="https://img-blog.csdnimg.cn/20210218162223708.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05lYnVsYTE4MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210218161704740.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05lYnVsYTE4MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210218161834397.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L05lYnVsYTE4MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>所以flag为flag{25434026}</p>
+<h5 id="图片Base64编码"><a href="#图片Base64编码" class="headerlink" title="图片Base64编码"></a>图片Base64编码</h5><p>直接在线Base64转码图片，扫描二维码得到flag</p>
+<h5 id="Base编码"><a href="#Base编码" class="headerlink" title="Base编码"></a>Base编码</h5><p>采用了先base32再到base64的过程</p>
+<h5 id="16进制查看"><a href="#16进制查看" class="headerlink" title="16进制查看"></a>16进制查看</h5><p>使用了ctf工具包里的工具直接进行查看，flag位于最后几行</p>
+<h5 id="zip伪加密"><a href="#zip伪加密" class="headerlink" title="zip伪加密"></a>zip伪加密</h5><p>这题很奇怪，我直接绕过了密码，打开flag.txt文件</p>
+<p>后来重新几次下载再用工具都提示未有加密文件</p>
+]]></content>
+      <tags>
+        <tag>nep</tag>
+      </tags>
+  </entry>
 </search>
