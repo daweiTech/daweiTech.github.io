@@ -1030,6 +1030,8 @@ echo "Hello World!";
 <p>4、对上传的文件进行重命名，防止被读取</p>
 <p>5、对于动态包含的文件可以设置一个白名单，不读取非白名单的文件</p>
 <p>6、做好管理员权限划分，做好文件的权限管理<br>————————————————<br>版权声明：本文为CSDN博主「Monsterlz123」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/Monsterlz123/article/details/93964916">https://blog.csdn.net/Monsterlz123/article/details/93964916</a></p>
+<h4 id="关于msf"><a href="#关于msf" class="headerlink" title="关于msf"></a>关于msf</h4><p>最近了解到有msf，kali已经有了，win下也装好了，就差成功攻击一下windowsever2018 r2</p>
+<p>再尝试尝试</p>
 ]]></content>
       <tags>
         <tag>攻防世界_web</tag>
@@ -1437,6 +1439,32 @@ echo "Hello World!";
 ]]></content>
       <tags>
         <tag>攻防世界_misc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python</title>
+    <url>/2021/04/08/python/python/</url>
+    <content><![CDATA[<h4 id="“Python之禅”"><a href="#“Python之禅”" class="headerlink" title="“Python之禅”"></a>“<strong>Python之禅”</strong></h4><p>The Zen of Python, by Tim Peters</p>
+<p>Beautiful is better than ugly.<br>Explicit is better than implicit.<br>Simple is better than complex.<br>Complex is better than complicated.<br>Flat is better than nested.<br>Sparse is better than dense.<br>Readability counts.<br>Special cases aren’t special enough to break the rules.<br>Although practicality beats purity.<br>Errors should never pass silently.<br>Unless explicitly silenced.<br>In the face of ambiguity, refuse the temptation to guess.<br>There should be one– and preferably only one –obvious way to do it.<br>Although that way may not be obvious at first unless you’re Dutch.<br>Now is better than never.<br>Although never is often better than <em>right</em> now.<br>If the implementation is hard to explain, it’s a bad idea.<br>If the implementation is easy to explain, it may be a good idea.<br>Namespaces are one honking great idea – let’s do more of those!   </p>
+<h3 id="python学习"><a href="#python学习" class="headerlink" title="python学习"></a>python学习</h3><p><img src="/2021/04/08/python/python/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(126).png"></p>
+<p>在字符串中使用变量</p>
+<p><code>first_name = &quot;ada&quot;</code><br><code>last_name = &quot;lovelace&quot;</code><br><code>full_name = f&quot;&#123;first_name&#125; &#123;last_name&#125;&quot;</code></p>
+<p>要在字符串中插入变量的值，可在引号面前加上字母f，再将要插入的变量放在花括号内。这样，当python显示字符串时，将把每个变量都替换为其值。</p>
+<p>这种字符串名为f字符串。f是format格式（设置格式）的简写，因为python通过把花括号内的变量替换为其值来设置字符串的格式。上述输出的代码如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ada lovace</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/04/08/python/python/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(127).png"></p>
+<p>last_owned = motorcycles.pop[0],默认是将最后一个元素“弹出栈元素”</p>
+<p>remove删除特定元素</p>
+<p>sort自动排序</p>
+<h4 id="关于循环"><a href="#关于循环" class="headerlink" title="关于循环"></a>关于循环</h4><p>如定义变量dimension = （200，50）</p>
+<p>使用循环时却是：for dimension in dimensions:</p>
+<p>​                               print(dimensions)</p>
+<p><img src="/2021/04/08/python/python/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(132).png"></p>
+<h4 id="闲暇的佩奇"><a href="#闲暇的佩奇" class="headerlink" title="闲暇的佩奇"></a>闲暇的佩奇</h4><p><img src="/2021/04/08/python/python/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(131).png"></p>
+]]></content>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
 </search>
