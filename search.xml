@@ -1032,6 +1032,12 @@ echo "Hello World!";
 <p>6、做好管理员权限划分，做好文件的权限管理<br>————————————————<br>版权声明：本文为CSDN博主「Monsterlz123」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/Monsterlz123/article/details/93964916">https://blog.csdn.net/Monsterlz123/article/details/93964916</a></p>
 <h4 id="关于msf"><a href="#关于msf" class="headerlink" title="关于msf"></a>关于msf</h4><p>最近了解到有msf，kali已经有了，win下也装好了，就差成功攻击一下windowsever2018 r2</p>
 <p>再尝试尝试</p>
+<h4 id="无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够"><a href="#无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够" class="headerlink" title="无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)"></a>无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)</h4><p><img src="https://csdnimg.cn/release/blogv2/dist/pc/img/reprint.png" alt="img"></p>
+<p><a href="https://blog.csdn.net/rezrezre">rezrezre</a> 2017-06-26 16:27:17 <img src="https://csdnimg.cn/release/blogv2/dist/pc/img/articleReadEyes.png" alt="img"> 32366 <img src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarCollect.png" alt="img"> 收藏 16</p>
+<p>分类专栏： <a href="https://blog.csdn.net/rezrezre/category_7020301.html">ubuntu</a></p>
+<p>输入apt-get install xxxxx，会提示</p>
+<h3 id="无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够-无法对状态列表目录加锁-var-lib-dpkg-，请查看您是否正以-root-用户运行？"><a href="#无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够-无法对状态列表目录加锁-var-lib-dpkg-，请查看您是否正以-root-用户运行？" class="headerlink" title="无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)  无法对状态列表目录加锁(/var/lib/dpkg/)，请查看您是否正以 root 用户运行？"></a><a href="http://blog.csdn.net/zlchina1989/article/details/6033198">无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)  无法对状态列表目录加锁(/var/lib/dpkg/)，请查看您是否正以 root 用户运行？</a></h3><p>解决：在前面加sudo</p>
+<p> 就是sudo apt-get install xxxxx</p>
 ]]></content>
       <tags>
         <tag>攻防世界_web</tag>
@@ -1462,9 +1468,42 @@ echo "Hello World!";
 <p>​                               print(dimensions)</p>
 <p><img src="/2021/04/08/python/python-picture/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(132).png"></p>
 <h4 id="闲暇的佩奇"><a href="#闲暇的佩奇" class="headerlink" title="闲暇的佩奇"></a>闲暇的佩奇</h4><p><img src="/2021/04/08/python/python-picture/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(131).png"></p>
+<h4 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h4><p>一度中断，貌似是为了之前的python2.7.11来执行sqlmap，这次好像不能同时添加路径，不然就报错</p>
+<h4 id="windows终端运行python程序"><a href="#windows终端运行python程序" class="headerlink" title="windows终端运行python程序"></a>windows终端运行python程序</h4><p>如下图所示嗷</p>
+<p><img src="/2021/04/08/python/python-picture/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(133).png"></p>
+<h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><p>python的循环虽然没有像c语言一样样式看起来比较繁杂，</p>
+<p>但是还是有一定要求的</p>
+<p>比如尝试while循环时，出现了以下情况：</p>
+<p>我想实现的功能是将1赋值给current_number后，进入循环，直到current_number大于5</p>
+<p>这里没有空格（也就是和print对齐）造成了无限加1的画面。</p>
+<p>修改之后：</p>
+<p>发现python真的好坑（有点无语），对于对齐和空格有着严格的要求</p>
+<p>比如没有遵守就会出现以下画面和英文提示:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Inconsistent use of tabs and spaces in indentation</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">IndentationError: unindent does not match any outer indentation level</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/2019031210572084.png" alt="问题"></p>
+<p>成功找到解决方法，一个是pycharm软件格式化，不过我已经删掉</p>
+<p>另外就是用notepad++的视图里显示空格，见文章：<a href="https://blog.csdn.net/hhy_csdn/article/details/82263757">https://blog.csdn.net/hhy_csdn/article/details/82263757</a></p>
+<h4 id="传递任意数量的实参"><a href="#传递任意数量的实参" class="headerlink" title="传递任意数量的实参"></a>传递任意数量的实参</h4><p>例如，来看一个制作披萨的函数，它需要接受很多配料，但无法预先确定顾客要多少种配料。</p>
+<p>下面的函数只有一个形参*toppings,但不管调用语句提供了多少实参，这个形参会将它们统统收入囊中。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def make_pizza(*toppings):</span><br><span class="line">	&quot;&quot;&quot;打印顾客点的所有配料。&quot;&quot;&quot;</span><br><span class="line">	print(toppings)</span><br><span class="line">make_pizza(&#39;pepproni&#39;)</span><br><span class="line">make_pizza(&#39;mushrooms&#39;,&#39;green peppers&#39;,&#39;extra cheese&#39;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/04/08/python/python-picture/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(142).png"></p>
 ]]></content>
       <tags>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker</title>
+    <url>/2021/04/25/docker/docker/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/q610376681/article/details/90483576?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161934162316780271527251%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161934162316780271527251&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-3-90483576.first_rank_v2_pc_rank_v29&amp;utm_term=docker&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/q610376681/article/details/90483576?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161934162316780271527251%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161934162316780271527251&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-3-90483576.first_rank_v2_pc_rank_v29&amp;utm_term=docker&amp;spm=1018.2226.3001.4187</a></p>
+<p>这篇文章不错喔</p>
+]]></content>
+      <tags>
+        <tag>web</tag>
       </tags>
   </entry>
 </search>
