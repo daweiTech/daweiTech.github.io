@@ -1531,4 +1531,18 @@ echo $c;
         <tag>分享会</tag>
       </tags>
   </entry>
+  <entry>
+    <title>web</title>
+    <url>/2021/05/12/buu/buuctf/</url>
+    <content><![CDATA[<p>1.</p>
+<p><img src="/2021/05/12/buu/buuctf/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(144).png"></p>
+<p>打开靶机后提示连接</p>
+<p>指令格式 ssh -p port</p>
+<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#x72;&#111;&#x6f;&#x74;&#64;&#110;&#111;&#100;&#x65;&#x33;&#x2e;&#x62;&#117;&#117;&#111;&#106;&#46;&#x63;&#x6e;">&#x72;&#111;&#x6f;&#x74;&#64;&#110;&#111;&#100;&#x65;&#x33;&#x2e;&#x62;&#117;&#117;&#111;&#106;&#46;&#x63;&#x6e;</a></p>
+<p>密码：123456</p>
+]]></content>
+      <tags>
+        <tag>BUU-CTF</tag>
+      </tags>
+  </entry>
 </search>

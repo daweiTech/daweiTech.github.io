@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2021-04-25T13:32:10.794Z</updated>
+  <updated>2021-05-12T13:16:46.911Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>web</title>
+    <link href="http://daweitech.github.io/2021/05/12/buu/buuctf/"/>
+    <id>http://daweitech.github.io/2021/05/12/buu/buuctf/</id>
+    <published>2021-05-12T13:12:52.000Z</published>
+    <updated>2021-05-12T13:16:46.911Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.</p><p><img src="/2021/05/12/buu/buuctf/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(144).png"></p><p>打开靶机后提示连接</p><p>指令格式 ssh -p port</p><p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#x72;&#111;&#x6f;&#x74;&#64;&#110;&#111;&#100;&#x65;&#x33;&#x2e;&#x62;&#117;&#117;&#111;&#106;&#46;&#x63;&#x6e;">&#x72;&#111;&#x6f;&#x74;&#64;&#110;&#111;&#100;&#x65;&#x33;&#x2e;&#x62;&#117;&#117;&#111;&#106;&#46;&#x63;&#x6e;</a></p><p>密码：123456</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;1.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2021/05/12/buu/buuctf/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(144).png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;打开靶机后提示连接&lt;/p&gt;
+&lt;p&gt;指令格式 ssh -p port&lt;/p&gt;
+&lt;</summary>
+      
+    
+    
+    
+    
+    <category term="BUU-CTF" scheme="http://daweitech.github.io/tags/BUU-CTF/"/>
+    
+  </entry>
   
   <entry>
     <title>docker</title>
@@ -465,29 +491,6 @@
     
     
     <category term="https协议" scheme="http://daweitech.github.io/tags/https%E5%8D%8F%E8%AE%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>汇编基础知识</title>
-    <link href="http://daweitech.github.io/2021/01/22/x/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    <id>http://daweitech.github.io/2021/01/22/x/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</id>
-    <published>2021-01-22T02:59:56.000Z</published>
-    <updated>2021-01-22T03:02:02.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="汇编"><a href="#汇编" class="headerlink" title="汇编"></a>汇编</h4><p>了解硬件系统的结构，重点：利用硬件系统的编程结构和指令</p><h5 id="1-机器语言"><a href="#1-机器语言" class="headerlink" title="1.机器语言"></a>1.机器语言</h5><p>含义：机器指令的集合<br>   汇编语言<br>机器指令的助记符，如机器指令：1000100111011000操作——&gt;寄存器BX的内容送到AX中，汇编指令为：MOV AX,BX;</p><h5 id="2-寄存器"><a href="#2-寄存器" class="headerlink" title="2.寄存器"></a>2.寄存器</h5><p>cpu中可以存储数据的器件<br>组成：a.汇编指令（机器码的助记符）<br>         b.伪指令（由编译器执行）<br>         c.（由编译器识别）<br>程序——&gt;汇编指令——&gt;编译器——&gt;机器语言——&gt;计算机<br>二进制信息：<br>1000 1001 1101 1000<br>——&gt;89D8H(数据)<br>1000 1001 1101 1000<br>——&gt;MOV AX,BX(程序)<br>cpu处理二进制；<br>B——Byte<br>1kb=1024b<br>1Mb=1024kb<br>1Gb=1024Mb<br>1Tb=1024Gb(2的10次方)<br>3.cpu进行数据读写必须和外部器件<br>（标准的说法是芯片）进行三类信息的交互<br>a.存储单元的地址（地址信息）<br>b.器件的选择，读或写命令（控制信息）<br>c.读或写的数据（数据信息）<br>存储单元从0开始顺序编号；一个存储单元可以存储8个bit，即8位二进制数；<br>1Byte=8bit,一个cpu有N根地址总线，也就是数据总线宽度为N，cpu最多可以寻找2的N次方个存储单元。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h4 id=&quot;汇编&quot;&gt;&lt;a href=&quot;#汇编&quot; class=&quot;headerlink&quot; title=&quot;汇编&quot;&gt;&lt;/a&gt;汇编&lt;/h4&gt;&lt;p&gt;了解硬件系统的结构，重点：利用硬件系统的编程结构和指令&lt;/p&gt;
-&lt;h5 id=&quot;1-机器语言&quot;&gt;&lt;a href=&quot;#1-机器语言&quot; clas</summary>
-      
-    
-    
-    
-    
-    <category term="汇编" scheme="http://daweitech.github.io/tags/%E6%B1%87%E7%BC%96/"/>
     
   </entry>
   
