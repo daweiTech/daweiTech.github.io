@@ -746,41 +746,6 @@
       </tags>
   </entry>
   <entry>
-    <title>MySQL注入天书笔记</title>
-    <url>/2020/12/14/sql/MySQL%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<h4 id="基于从服务器接收到的响应"><a href="#基于从服务器接收到的响应" class="headerlink" title="基于从服务器接收到的响应"></a>基于从服务器接收到的响应</h4><p> ▲基于错误的 SQL 注入 </p>
-<p> ▲联合查询的类型</p>
-<p> ▲堆查询注射 </p>
-<p> ▲SQL 盲注 </p>
-<p>​       •基于布尔 SQL 盲注</p>
-<p>​       •基于时间的 SQL 盲注 </p>
-<p>​       •基于报错的 SQL 盲注</p>
-<p>基于如何处理输入的 SQL 查询（数据类型）</p>
-<p>•基于字符串 </p>
-<p>•数字或整数为基础的 </p>
-<p>基于程度和顺序的注入(哪里发生了影响) </p>
-<p>★一阶注射 </p>
-<p>★二阶注射 一阶注射是指输入的注射语句对 WEB 直接产生了影响，出现了结果；二阶注入类似存 储型 XSS，是指输入提交的语句，无法直接对 WEB 应用程序产生影响，通过其它的辅助间 接的对 WEB 产生危害，这样的就被称为是二阶注入. </p>
-<p>基于注入点的位置上的 </p>
-<p>▲通过用户输入的表单域的注射。 </p>
-<p>▲通过 cookie 注射。 </p>
-<p>▲通过服务器变量注射。 （基于头部信息的注射）</p>
-<p>SQL UNION 语法</p>
-<p>eg：</p>
-<p>万能密码：</p>
-<p>Select * from admin where username=’admin’ and password=’admin</p>
-<h4 id="盲注的讲解"><a href="#盲注的讲解" class="headerlink" title="盲注的讲解"></a>盲注的讲解</h4><p>bool</p>
-<p>时间（考虑是否延迟）</p>
-<p>报错（是否有关于sql注入语法报错）</p>
-<p>这边放点小笔记：之前的phpstudy以及命令提示符（普）不能直接打开mysql，但在安装SQL labs靶场第二十九关环境时却使得可以了，想了一下估计是当初没有同意mysql.exe可以在专用网络上运行。</p>
-<h4 id="导入导出文件"><a href="#导入导出文件" class="headerlink" title="导入导出文件"></a>导入导出文件</h4><p>Select <?php @eval($_POST["mima"])?>  into outfile “c:\phpnow\htdocs\test.php</p>
-<p>t</p>
-]]></content>
-      <tags>
-        <tag>sql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>图片马</title>
     <url>/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/</url>
     <content><![CDATA[<p>  1.打开windows命令控制台，cd到图片与文件同在路径下</p>
@@ -822,25 +787,6 @@
 ]]></content>
       <tags>
         <tag>sql靶场</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mysql</title>
-    <url>/2020/12/01/sql/Mysql/</url>
-    <content><![CDATA[<p>  关于MySQL的安装</p>
-<p>再次尝试运行Mysql，却发现没有指令运行，翻阅文章才恍然大悟：没有先配置环境变量!</p>
-<p>配置环境变量的话，先找到MySQL的bin文件，复制黏贴文件路径</p>
-<p>然后寻找计算机高级管理系统（从设置里的关于找），打开后找到环境变量，双击path，添加新路径；</p>
-<p>这样就能在cmd上运行；</p>
-<p>新建 my.ini文件，添加配置编码</p>
-<p>接着以管理员打开cmd窗口，然后输入 mysqld –install 这样就将mysqld添加到系统服务了。</p>
-<p>win+r 打开运行窗口，输入services.msc，这样可以看MySQL是否已经添加加到windosws服务</p>
-<p>用命令 mysql -uroot -p执行</p>
-<p>net stop mysql 关闭服务    net start mysql 开启服务。</p>
-<p>附加：暂时造成无法通过小皮面板打开MySQL</p>
-]]></content>
-      <tags>
-        <tag>sql</tag>
       </tags>
   </entry>
   <entry>
@@ -892,67 +838,6 @@
        ?></p>
 <p>转载：<a href="https://bbs.ichunqiu.com/thread-26365-1-1.html">https://bbs.ichunqiu.com/thread-26365-1-1.html</a></p>
 ]]></content>
-      <tags>
-        <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>增删改查</title>
-    <url>/2021/02/14/sql/%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9/</url>
-    <content><![CDATA[<p>/<em>注1：原则上SQL关键字应该大写，但小写也没问题</em>/</p>
-<p>/<em>注2：表名、字段名上的（`）是反引号（在键盘数字1的左侧）这个符号多数情况下可省略</em>/</p>
-<p>/<em>插入数据</em>/<br> INSERT into <code>表名</code> (<code>字段1</code>,<code>2</code>,<code>3</code>) values (‘值1’,’2’, ‘3’);</p>
-<p>/<em>修改数据</em>/<br> UPDATE SET <code>表名</code> <code>字段1</code>=’新值’,<code>字段2</code>=’新值’ where 过滤条件;</p>
-<p>/<em>删除语句</em>/<br> DELETE FROM <code>表名</code> where 过滤条件;</p>
-<p>/<em>查询语句</em>/<br> SELECT * FROM <code>表名</code> where 过滤条件 ORDER BY 排序字段 DESC;</p>
-<p>来自 <a href="https://github.com/983430207/1024wiki/blob/master/php/database.md">https://github.com/983430207/1024wiki/blob/master/php/database.md</a> </p>
-<p>增：INSERT INTO test(username,content) VALUES(‘123’,’内容’)</p>
-<p>删：DELETE FROM test WHERE id=1</p>
-<p>改：UPDATE test SET username=’张三’(属于username的全改成张三)</p>
-<p>​                    username=’李四’ WHERE id=2 (将id=2这一行数据                  </p>
-<p>的username改成李四)</p>
-<p>查：SELECT * FROM test WHERE id=1;</p>
-<p>​                    WHERE ORDER BY id desc</p>
-<p>​                    WHERE ORDER BY id desc LIMIT 3</p>
-]]></content>
-      <tags>
-        <tag>sql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>php语法</title>
-    <url>/2020/11/02/php/php%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<ol>
-<li>基本格式</li>
-</ol>
-<?php
-echo "Hello World!";
-?>
-
-
-
-
-<p> 2.在 PHP 中，这些字母被称为<strong>变量</strong>。</p>
-<h4 id="PHP-变量"><a href="#PHP-变量" class="headerlink" title="PHP 变量"></a>PHP 变量</h4><p>与代数类似，可以给 PHP 变量赋予某个值（x=5）或者表达式（z=x+y）。</p>
-<p>变量可以是很短的名称（如 x 和 y）或者更具描述性的名称（如 age、carname、totalvolume）。</p>
-<p>PHP 变量规则：</p>
-<ul>
-<li>变量以 $ 符号开始，后面跟着变量的名称</li>
-<li>变量名必须以字母或者下划线字符开始</li>
-<li>变量名只能包含字母数字字符以及下划线（A-z、0-9 和 _ ）</li>
-<li>变量名不能包含空格</li>
-<li>变量名是区分大小写的（$y 和 $Y 是两个不同的变量）</li>
-</ul>
-<h4 id="PHP-echo-和-print-语句"><a href="#PHP-echo-和-print-语句" class="headerlink" title="PHP echo 和 print 语句"></a>PHP echo 和 print 语句</h4><p>echo 和 print 区别:</p>
-<ul>
-<li>echo - 可以输出一个或多个字符串</li>
-<li>print - 只允许输出一个字符串，返回值总为 1</li>
-</ul>
-<p><strong>提示：</strong>echo 输出的速度比 print 快， echo 没有返回值，print有返回值1。</p>
-<h4 id="PHP-5-数据类型"><a href="#PHP-5-数据类型" class="headerlink" title="PHP 5 数据类型"></a>PHP 5 数据类型</h4><hr>
-<p>String（字符串）, Integer（整型）, Float（浮点型）, Boolean（布尔型）, Array（数组）, Object（对象）, NULL（空值）。</p>
-<hr>
-<h2 id><a href="#" class="headerlink" title></a></h2>]]></content>
       <tags>
         <tag>php</tag>
       </tags>
@@ -1085,6 +970,8 @@ echo "Hello World!";
 <p>输入apt-get install xxxxx，会提示</p>
 <h3 id="无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够-无法对状态列表目录加锁-var-lib-dpkg-，请查看您是否正以-root-用户运行？"><a href="#无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够-无法对状态列表目录加锁-var-lib-dpkg-，请查看您是否正以-root-用户运行？" class="headerlink" title="无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)  无法对状态列表目录加锁(/var/lib/dpkg/)，请查看您是否正以 root 用户运行？"></a><a href="http://blog.csdn.net/zlchina1989/article/details/6033198">无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)  无法对状态列表目录加锁(/var/lib/dpkg/)，请查看您是否正以 root 用户运行？</a></h3><p>解决：在前面加sudo</p>
 <p> 就是sudo apt-get install xxxxx</p>
+<h4 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h4><p><img src="/2021/02/01/web/mixed/1.jpg"></p>
+<p><img src="/2021/02/01/web/mixed/2.jpg"></p>
 ]]></content>
       <tags>
         <tag>攻防世界_web</tag>
@@ -1277,17 +1164,6 @@ echo $c;
 ]]></content>
   </entry>
   <entry>
-    <title>汇编基础知识</title>
-    <url>/2021/01/22/x/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<h4 id="汇编"><a href="#汇编" class="headerlink" title="汇编"></a>汇编</h4><p>了解硬件系统的结构，重点：利用硬件系统的编程结构和指令</p>
-<h5 id="1-机器语言"><a href="#1-机器语言" class="headerlink" title="1.机器语言"></a>1.机器语言</h5><p>含义：机器指令的集合<br>   汇编语言<br>机器指令的助记符，如机器指令：1000100111011000操作——&gt;寄存器BX的内容送到AX中，汇编指令为：MOV AX,BX;</p>
-<h5 id="2-寄存器"><a href="#2-寄存器" class="headerlink" title="2.寄存器"></a>2.寄存器</h5><p>cpu中可以存储数据的器件<br>组成：a.汇编指令（机器码的助记符）<br>         b.伪指令（由编译器执行）<br>         c.（由编译器识别）<br>程序——&gt;汇编指令——&gt;编译器——&gt;机器语言——&gt;计算机<br>二进制信息：<br>1000 1001 1101 1000<br>——&gt;89D8H(数据)<br>1000 1001 1101 1000<br>——&gt;MOV AX,BX(程序)<br>cpu处理二进制；<br>B——Byte<br>1kb=1024b<br>1Mb=1024kb<br>1Gb=1024Mb<br>1Tb=1024Gb(2的10次方)<br>3.cpu进行数据读写必须和外部器件<br>（标准的说法是芯片）进行三类信息的交互<br>a.存储单元的地址（地址信息）<br>b.器件的选择，读或写命令（控制信息）<br>c.读或写的数据（数据信息）<br>存储单元从0开始顺序编号；一个存储单元可以存储8个bit，即8位二进制数；<br>1Byte=8bit,一个cpu有N根地址总线，也就是数据总线宽度为N，cpu最多可以寻找2的N次方个存储单元。</p>
-]]></content>
-      <tags>
-        <tag>汇编</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>goktech</title>
     <url>/2021/01/31/x/goktech/</url>
     <content><![CDATA[<h2 id="渗透测试思路"><a href="#渗透测试思路" class="headerlink" title="渗透测试思路"></a>渗透测试思路</h2><p>1． 信息收集</p>
@@ -1375,22 +1251,25 @@ echo $c;
 <p>2、<strong>非对称密码算法</strong></p>
 <p>加密密钥和解密密钥不同，其中的加密密钥可以公开， 称为公开密钥，简称公钥；解密密钥必须保密，称为私人密钥，</p>
 <p>• RSA、ECC、ElGamal</p>
-<p>3、<strong>编码方式</strong></p>
-<p>ASCII编码：ASCII在线转换地址：<a href="http://www.mokuge.com/tool/asciito16/">http://www.mokuge.com/tool/asciito16/</a></p>
-<p>base64编码：</p>
+<h3 id="3、编码方式"><a href="#3、编码方式" class="headerlink" title="3、编码方式"></a>3、<strong>编码方式</strong></h3><p>ASCII编码：ASCII在线转换地址：<a href="http://www.mokuge.com/tool/asciito16/">http://www.mokuge.com/tool/asciito16/</a></p>
+<h4 id="base家族编码"><a href="#base家族编码" class="headerlink" title="base家族编码"></a>base家族编码</h4><ul>
+<li>base2: 2进制</li>
+<li>base10: 10进制</li>
+<li>base16（HEX): 计算机字节表示，0<del>9，A</del>F，16位组成</li>
+<li>base32: 字母加数字，大写字母，234567,32位组成</li>
+<li>base64: 更大的表示范围,大小写字母，0~9，+，-,64位组成的。(做题时经常明显的等号==)</li>
+<li>base58: bitcoin为了比base64更易读采用的表示</li>
+</ul>
+<p>具体实现可以分为2种，能利用bit位直接转换的base(例如base2, base16,base32, base64),和不能利用bit位直接转换的base(例如base10, base58)。</p>
+<p><img src="/2020/10/18/x/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(182).png"></p>
+<p>关于base16，32，64的文章：<a href="https://blog.csdn.net/lili13897741554/article/details/82177472">https://blog.csdn.net/lili13897741554/article/details/82177472</a></p>
+<h4 id="变异凯撒："><a href="#变异凯撒：" class="headerlink" title="变异凯撒："></a>变异凯撒：</h4><p>afZ_r9VYfScOeO_UL^RWUc</p>
+<p>思路：查表得到上面前几个字母ASCII码：afZ_ ASCII码分别是97,102,90,95;而flag的ASCII码则是102 108 97 103，脑洞打开：97+5=102；102+6=108；90+7=97；95+8=103，</p>
+<h2 id="Quoted-printable"><a href="#Quoted-printable" class="headerlink" title="Quoted-printable"></a>Quoted-printable</h2><p>=E9=82=A3=E4=BD=A0=E4=B9=9F=E5=BE=88=E6=A3=92=E5=93=A6</p>
+<p>RSA</p>
 ]]></content>
       <tags>
-        <tag>密码学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>网络配置</title>
-    <url>/2021/02/05/x/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p>VMware虚拟机nat模式连不上网的解决方法</p>
-<p>在VMware的编辑-&gt;虚拟网络编辑器重新建立NAT网络（之前的要删掉，新建的同样选择VMnet8就可以）</p>
-]]></content>
-      <tags>
-        <tag>vmware</tag>
+        <tag>cryptography</tag>
       </tags>
   </entry>
   <entry>
@@ -1534,12 +1413,69 @@ echo $c;
   <entry>
     <title>web</title>
     <url>/2021/05/12/buu/buuctf/</url>
-    <content><![CDATA[<p>1.</p>
-<p><img src="/2021/05/12/buu/buuctf/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(144).png"></p>
+    <content><![CDATA[<h2 id="Linux-Labs"><a href="#Linux-Labs" class="headerlink" title="Linux Labs"></a>Linux Labs</h2><p><img src="/2021/05/12/buu/buuctf/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(144).png"></p>
 <p>打开靶机后提示连接</p>
 <p>指令格式 ssh -p port</p>
-<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#x72;&#111;&#x6f;&#x74;&#64;&#110;&#111;&#100;&#x65;&#x33;&#x2e;&#x62;&#117;&#117;&#111;&#106;&#46;&#x63;&#x6e;">&#x72;&#111;&#x6f;&#x74;&#64;&#110;&#111;&#100;&#x65;&#x33;&#x2e;&#x62;&#117;&#117;&#111;&#106;&#46;&#x63;&#x6e;</a></p>
+<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#114;&#111;&#x6f;&#116;&#64;&#x6e;&#111;&#100;&#101;&#x33;&#x2e;&#x62;&#117;&#x75;&#x6f;&#x6a;&#x2e;&#99;&#110;">&#114;&#111;&#x6f;&#116;&#64;&#x6e;&#111;&#100;&#101;&#x33;&#x2e;&#x62;&#117;&#x75;&#x6f;&#x6a;&#x2e;&#99;&#110;</a></p>
 <p>密码：123456</p>
+<h2 id="护网杯-2018-easy-tornado"><a href="#护网杯-2018-easy-tornado" class="headerlink" title="[护网杯 2018]easy_tornado"></a>[护网杯 2018]easy_tornado</h2><p>打开容器页面后</p>
+<p>出现三份.txt</p>
+<p><a href="http://bd69b4c9-dcb8-4ff9-b3cc-25daaf4346d5.node3.buuoj.cn/file?filename=/flag.txt&filehash=a9c5250a1a124c1b907c4d6a178a6341">/flag.txt</a><br><a href="http://bd69b4c9-dcb8-4ff9-b3cc-25daaf4346d5.node3.buuoj.cn/file?filename=/welcome.txt&filehash=62d96003865b8d60293618c385b943cb">/welcome.txt</a><br><a href="http://bd69b4c9-dcb8-4ff9-b3cc-25daaf4346d5.node3.buuoj.cn/file?filename=/hints.txt&filehash=f8da6a5eb4dc6a43b5f16b2170c5d2b5">/hints.txt</a></p>
+<p>其中，flag.txt信息为：</p>
+<p>flag in /fllllllllllllag，告诉了我们flag在文件fllllllllllllag里；</p>
+<p>welcome.txt信息为：</p>
+<p>render，看了writeup，知道了这里是提示我们render函数的模板注入</p>
+<p>找到原理：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tornado render是python中的一个渲染函数，也就是一种模板，通过调用的参数不同，生成不同的网页，如果用户对render内容可控，不仅可以注入XSS代码，而且还可以通过&#123;&#123;&#125;&#125;进行传递变量和执行简单的表达式。</span><br></pre></td></tr></table></figure>
+
+<p>文章：<a href="https://blog.csdn.net/weixin_34942265/article/details/113671944">(3条消息) python模板注入_python SSTI tornado render模板注入_neo anderson的博客-CSDN博客</a></p>
+<p>hint.txt信息为：</p>
+<p>/hints.txt<br>md5(cookie_secret+md5(filename))，，给我们了一个计算公式</p>
+<p>注意此时url路径<img src="/2021/05/12/buu/buuctf/image-20210513194955869.png" alt="image-20210513194955869"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;hints.txt&amp;filehash&#x3D;f8da6a5eb4dc6a43b5f16b2170c5d2b5](http:&#x2F;&#x2F;bd69b4c9-dcb8-4ff9-b3cc-25daaf4346d5.node3.buuoj.cn&#x2F;file?filename&#x3D;&#x2F;hints.txt&amp;filehash&#x3D;f8da6a5eb4dc6a43b5f16b2170c5d2b5)</span><br></pre></td></tr></table></figure>
+
+<p>可以看到后面有明显的hash值提示，猜测文件访问路径格式就是这样。</p>
+<p>怀疑这个filehash就是通过这个公式算出来的，结合flag.txt中的提示，再次合理怀疑我们通过文件名（/fllllllllllllag）并按照这个公式计算出对应正确的filehash，并且按照这种格式访问url，就可以得到flag。</p>
+<p>现在，我们文件名知道，md5函数可以调用，但是缺少了cookie_secret</p>
+<p>这时候回到之前的render模板注入</p>
+<p>来到flag.txt页面，修改路径</p>
+<p><img src="/2021/05/12/buu/buuctf/image-20210513195413293.png" alt="image-20210513195413293"></p>
+<p>出现了error</p>
+<p>上方?msg=error,这里我们可以修改参数值看看有什么变化</p>
+<p><img src="/2021/05/12/buu/buuctf/image-20210513195530008.png" alt="image-20210513195530008"></p>
+<p>至此，我们可以从这里切入，将此作为注入点。</p>
+<p><img src="/2021/05/12/buu/buuctf/image-20210513195745573.png" alt="image-20210513195745573"></p>
+<p>通过模板注入，得到了环境变量，内含有cookie_secret：750fc3c7-cfc4-4f0b-9000-76f4ed4c08eb（动态）</p>
+<p>查到了一个大佬的博客写的python脚本：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import hashlib</span><br><span class="line"></span><br><span class="line">def md5value(s):</span><br><span class="line">    md5 &#x3D; hashlib.md5() </span><br><span class="line">    md5.update(s) </span><br><span class="line">    return md5.hexdigest()</span><br><span class="line"></span><br><span class="line">def jiami(): </span><br><span class="line">    filename &#x3D; &#39;&#x2F;fllllllllllllag&#39;</span><br><span class="line">    cookie_s &#x3D;&quot;750fc3c7-cfc4-4f0b-9000-76f4ed4c08eb&quot;</span><br><span class="line">    print(md5value(filename.encode(&#39;utf-8&#39;)))</span><br><span class="line">    x&#x3D;md5value(filename.encode(&#39;utf-8&#39;))</span><br><span class="line">    y&#x3D;cookie_s+x</span><br><span class="line">    print(md5value(y.encode(&#39;utf-8&#39;)))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">jiami()</span><br></pre></td></tr></table></figure>
+
+<p>得到</p>
+<p>哈希值：550e8b57a2f7c087a5792aa9be8a7461</p>
+<p>接着构造payload：</p>
+<p><a href="http://bd69b4c9-dcb8-4ff9-b3cc-25daaf4346d5.node3.buuoj.cn/file?filename=/fllllllllllllag&filehash=550e8b57a2f7c087a5792aa9be8a7461">bd69b4c9-dcb8-4ff9-b3cc-25daaf4346d5.node3.buuoj.cn/file?filename=/fllllllllllllag&amp;filehash=550e8b57a2f7c087a5792aa9be8a7461</a></p>
+<p><img src="/2021/05/12/buu/buuctf/image-20210513200252696.png" alt="image-20210513200252696"></p>
+<h2 id="GXYCTF2019-Ping-Ping-Ping"><a href="#GXYCTF2019-Ping-Ping-Ping" class="headerlink" title="[GXYCTF2019]Ping Ping Ping"></a>[GXYCTF2019]Ping Ping Ping</h2><p><img src="/2021/05/12/buu/buuctf/image-20210513230333771.png" alt="image-20210513230333771"></p>
+<p>打开靶机后如图</p>
+<p>传参?ip=127.0.0.1</p>
+<p><img src="/2021/05/12/buu/buuctf/image-20210513230557224.png" alt="image-20210513230557224"></p>
+<p>结果不是与之前做的一样简单，有了对指令的过滤（被嘲讽了）</p>
+<p><img src="/2021/05/12/buu/buuctf/image-20210513230623071.png" alt="image-20210513230623071"></p>
+<p>猜测应该是被过滤了，因为尝试了之前的| 、||等都不行</p>
+<p>查了博客，相关资料</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">判断目标网站是对空格进行了过滤，我们可以使用一些方法代替空格来起到分割作用</span><br><span class="line"></span><br><span class="line">注：%20(space)、%09(tab)、$IFS$9、$&#123;IFS&#125;$9、 &#123;IFS&#125;、IFS 都可以</span><br><span class="line"></span><br><span class="line">但这里存在一些过滤&#123;IPS&#125;失效，多次尝试$IFS$9可以 （具体可以查看index.php文件中的过滤规则）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>构造了?ip=127.0.0.1;cat$IFS$1flag.php</p>
+<p>还是。。。</p>
+<p><img src="/2021/05/12/buu/buuctf/image-20210513231027253.png" alt="image-20210513231027253"></p>
+<p>好吧，貌似flag也被过滤了</p>
+<p>那么我们先看下还有index.php</p>
+<p><img src="/2021/05/12/buu/buuctf/image-20210513231122334.png" alt="image-20210513231122334"></p>
+<p>得到了源代码，果然一大堆正则匹配，过滤了许多查询指令和flag字样。</p>
+<p>所以我们得想办法绕过</p>
+<p>这里我用了大佬博客的一种方法，拼接法</p>
+<p><img src="/2021/05/12/buu/buuctf/image-20210513231549694.png" alt="image-20210513231549694"></p>
+<p><img src="/2021/05/12/buu/buuctf/image-20210513231603829.png" alt="image-20210513231603829"></p>
+<p>参照博客：<a href="https://blog.csdn.net/xiayu729100940/article/details/105048826">https://blog.csdn.net/xiayu729100940/article/details/105048826</a></p>
 ]]></content>
       <tags>
         <tag>BUU-CTF</tag>
