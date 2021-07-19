@@ -253,7 +253,7 @@
     <content><![CDATA[<h2 id="Linux-Labs"><a href="#Linux-Labs" class="headerlink" title="Linux Labs"></a>Linux Labs</h2><p><img src="/2021/05/12/buu/buuctf/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(144).png"></p>
 <p>打开靶机后提示连接</p>
 <p>指令格式 ssh -p port</p>
-<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#x72;&#x6f;&#x6f;&#116;&#x40;&#x6e;&#x6f;&#x64;&#x65;&#x33;&#46;&#x62;&#117;&#117;&#111;&#106;&#46;&#99;&#110;">&#x72;&#x6f;&#x6f;&#116;&#x40;&#x6e;&#x6f;&#x64;&#x65;&#x33;&#46;&#x62;&#117;&#117;&#111;&#106;&#46;&#99;&#110;</a></p>
+<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#114;&#111;&#x6f;&#116;&#64;&#110;&#111;&#x64;&#101;&#51;&#x2e;&#x62;&#x75;&#117;&#111;&#106;&#46;&#99;&#x6e;">&#114;&#111;&#x6f;&#116;&#64;&#110;&#111;&#x64;&#101;&#51;&#x2e;&#x62;&#x75;&#117;&#111;&#106;&#46;&#99;&#x6e;</a></p>
 <p>密码：123456</p>
 <h2 id="护网杯-2018-easy-tornado"><a href="#护网杯-2018-easy-tornado" class="headerlink" title="[护网杯 2018]easy_tornado"></a>[护网杯 2018]easy_tornado</h2><p>打开容器页面后</p>
 <p>出现三份.txt</p>
@@ -343,11 +343,17 @@
 <p>这个还不太理解，不过应该是调用函数再ASCII码</p>
 <p>得到flag</p>
 <p><img src="/2021/05/12/buu/buuctf/image-20210517164258180.png" alt="image-20210517164258180"></p>
-<h4 id="Upload"><a href="#Upload" class="headerlink" title="Upload"></a>Upload</h4><p>两题payload差不多，都是用phtml文件饶过，成功上传一句话木马后</p>
+<h2 id="Upload"><a href="#Upload" class="headerlink" title="Upload"></a>Upload</h2><p>两题payload差不多，都是用phtml文件饶过，成功上传一句话木马后</p>
 <p>蚁剑连接</p>
 <p>最后 虚拟终端：cat \flag</p>
 <p><img src="/2021/05/12/buu/buuctf/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(275).png"></p>
 <p><img src="/2021/05/12/buu/buuctf/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(274).png"></p>
+<h2 id="HardSQL"><a href="#HardSQL" class="headerlink" title="HardSQL"></a>HardSQL</h2><p>这题sql与之前不同</p>
+<p>万能密码、联合查询注入、双写等都被过滤，留下作者的恶趣味：你可别被我逮住了，臭弟弟</p>
+<p><img src="/2021/05/12/buu/buuctf/image-20210719112655637.png" alt="image-20210719112655637"></p>
+<p>查了一下wp，了解到需要用报错注入。</p>
+<h6 id="报错注入相关知识："><a href="#报错注入相关知识：" class="headerlink" title="报错注入相关知识："></a>报错注入相关知识：</h6><p>报错注入就是利用了数据库的某些机制，人为地制造错误条件，使得查询结果能够出现在错误信息中。</p>
+<p>这里主要记录一下**<code>xpath语法错误</code>和<code>concat+rand()+group_by()导致主键重复</code>**</p>
 ]]></content>
       <tags>
         <tag>BUU-CTF</tag>
@@ -1585,6 +1591,18 @@
 ]]></content>
       <tags>
         <tag>漏洞复现</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python_visual</title>
+    <url>/2021/07/19/python/python-visual/</url>
+    <content><![CDATA[<p>​    创建了可视化python图表，以html形式呈现</p>
+<p><img src="/2021/07/19/python/python-visual/image-20210719204819823.png" alt="image-20210719204819823"></p>
+<p>上图为Github上python库受欢迎程度</p>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">from plotly.graph_objs import Bar</span><br><span class="line">from plotly import offline</span><br><span class="line"></span><br><span class="line">#执行API调用并存储响应</span><br><span class="line">url &#x3D; &#39;https:&#x2F;&#x2F;api.github.com&#x2F;search&#x2F;repositories?q&#x3D;language:python&amp;sort&#x3D;stars&#39;</span><br><span class="line">headers &#x3D; &#123;&#39;Accept&#39;:&#39;application&#x2F;vnd.github.v3+json&#39;&#125;</span><br><span class="line">r &#x3D; requests.get(url,headers&#x3D;headers)</span><br><span class="line">print(f&quot;Status code: &#123;r.status_code&#125;&quot;)</span><br><span class="line">response_dict &#x3D; r.json()</span><br><span class="line">repo_dicts &#x3D; response_dict[&#39;items&#39;]</span><br><span class="line">repo_names,stars &#x3D; [], []</span><br><span class="line">for repo_dict in repo_dicts:</span><br><span class="line">    repo_names.append(repo_dict[&#39;name&#39;])</span><br><span class="line">    stars.append(repo_dict[&#39;stargazers_count&#39;])</span><br><span class="line"></span><br><span class="line">#可视化</span><br><span class="line">data &#x3D; [&#123;</span><br><span class="line">    &#39;type&#39;: &#39;bar&#39;,</span><br><span class="line">    &#39;x&#39;: repo_names,</span><br><span class="line">    &#39;y&#39;:stars,</span><br><span class="line">&#125;]</span><br><span class="line">my_layout &#x3D; &#123;</span><br><span class="line">    &#39;title&#39;:&#39;Github上最受欢迎的Python项目&#39;,</span><br><span class="line">    &#39;xaxis&#39;:&#123;&#39;title&#39;: &#39;Repository&#39;&#125;,</span><br><span class="line">    &#39;yaxis&#39;:&#123;&#39;title&#39;:&#39;Stars&#39;&#125;,</span><br><span class="line">&#125;</span><br><span class="line">fig &#x3D; &#123;&#39;data&#39;: data, &#39;layout&#39;:my_layout&#125;</span><br><span class="line">offline.plot(fig, filename&#x3D;&#39;python_repos.html&#39;)</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
 </search>
