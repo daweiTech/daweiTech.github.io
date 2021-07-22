@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2021-07-20T02:39:57.707Z</updated>
+  <updated>2021-07-22T01:05:33.167Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python_tip</title>
+    <link href="http://daweitech.github.io/2021/07/22/python/python_tip/"/>
+    <id>http://daweitech.github.io/2021/07/22/python/python_tip/</id>
+    <published>2021-07-22T00:12:49.000Z</published>
+    <updated>2021-07-22T01:05:33.167Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h3><p>搭建python的编程环境：subline text、pycharm……</p><h3 id="Part2"><a href="#Part2" class="headerlink" title="Part2"></a>Part2</h3><p>变量，eg：message  =  ‘’Hello World”</p><p>​                    print(message)</p><p>输出：Hello World，这里我们添加了一个名为message的变量，它指向的值为文本“Hello World”。</p><p>在程序中可随时改变变量的值，而python将始终记录变量的最新值。</p><p>变量命名条件：</p><p>​                        1.只能包含数字、字母和下划线。且开头只能以字母或下划线开头，不能以数字开头。</p><p>​                        2.不能包含空格，但可以使用下划线来分隔其中的单词。</p><p>​                        3.勿将python关键字和函数名作为变量名。</p><p>​                        4.应该简短又具有描述性。</p><p>​                        5.数字1和字母l，数字0和字母o要注意区分。</p><p>若出现错误时，往往可以见到    Traceback（most recent call most）的解释器告知错误。</p><p>字符串，就是一系列字符，用引号括起的都是字符串，单双引号皆可。</p><p>“This is a string.”</p><p>‘This is a string.’</p><p>方法修改字符大小写：变量名.title()，首字母大写</p><p>​                                       变量名.upper()，全部大写</p><p>​                                        变量名.lower()，全部小写</p><p>字符串的组合，引号里加上中括号，eg：</p><p>​    <code>first_name = &quot;ada&quot;</code></p><p>​    <code>last_name = &quot;lovelace&quot;</code></p><p>​    <code>full_name = f&quot;&#123;first_name&#125; &#123;last_name&#125;&quot;</code></p><p>​    <code>print(full_name)</code></p><p>这里的字符串命名为f字符串，f是format（设置格式）的简写。</p><p>添加空白：空格、制表符、换行符， /t, /n</p><p>删除空白：方法rstrip</p><p>同时给多个变量赋值：x，y，z = 0，0，0</p><p>常量：在代码中，要指出应将特定的变量视为常量，可将其字母全部大写。</p><p>注释：句子前加#号。</p><h3 id="Part3"><a href="#Part3" class="headerlink" title="Part3"></a>Part3</h3>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;Part1&quot;&gt;&lt;a href=&quot;#Part1&quot; class=&quot;headerlink&quot; title=&quot;Part1&quot;&gt;&lt;/a&gt;Part1&lt;/h3&gt;&lt;p&gt;搭建python的编程环境：subline text、pycharm……&lt;/p&gt;
+&lt;h3 id=&quot;Part2&quot;&gt;&lt;a</summary>
+      
+    
+    
+    
+    
+    <category term="python" scheme="http://daweitech.github.io/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>python_visual</title>
@@ -477,28 +500,6 @@
     
     
     <category term="php" scheme="http://daweitech.github.io/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>进阶区</title>
-    <link href="http://daweitech.github.io/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/"/>
-    <id>http://daweitech.github.io/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/</id>
-    <published>2021-02-05T02:39:47.000Z</published>
-    <updated>2021-04-04T12:54:13.577Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="Baby-web"><a href="#Baby-web" class="headerlink" title="Baby_web"></a>Baby_web</h4><p>访问index.php,跳转后回到页面，考虑使用抓包，进行repeater，go后在头部看到 flag。</p><p>或者直接查看</p><p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(93).png"></p><h4 id="Training-WWW-Robots"><a href="#Training-WWW-Robots" class="headerlink" title="Training-WWW-Robots"></a>Training-WWW-Robots</h4><p>老套路</p><p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(94).png"></p><p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(95).png"></p><h4 id="Php-rce"><a href="#Php-rce" class="headerlink" title="Php_rce"></a>Php_rce</h4><p>神奇的PHPv5框架存在漏洞利用，采用路径更改（像Linux指令）进行访问</p><p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(96).png"></p><p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(97).png"></p><p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(98).png"></p><p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(99).png"></p><p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(100).png"></p><p><a href="https://www.wrpzkb.cn/rce/#post-comment">https://www.wrpzkb.cn/rce/#post-comment</a></p><p><a href="https://www.cnblogs.com/sallyzhang/p/12408774.html">https://www.cnblogs.com/sallyzhang/p/12408774.html</a></p><h4 id="Web-php-include"><a href="#Web-php-include" class="headerlink" title="Web_php_include"></a>Web_php_include</h4><p>文件包含漏洞</p><p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(101).png"></p><p><a href="https://blog.csdn.net/nicesa/article/details/106325437">https://blog.csdn.net/nicesa/article/details/106325437</a></p><h4 id="supersqli"><a href="#supersqli" class="headerlink" title="supersqli"></a>supersqli</h4><h4 id="ics-06"><a href="#ics-06" class="headerlink" title="ics-06"></a>ics-06</h4><h4 id="warmup"><a href="#warmup" class="headerlink" title="warmup"></a>warmup</h4><p>这是2018强网杯的题目</p><p>打开是大大的滑稽</p><p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/5bdb0d93dc794.jpg"></p><p>查看下页面源码，发现很多函数</p><p><img src="/2021/02/05/web/%E8%BF%9B%E9%98%B6%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(119).png"></p><p>观察源码发现hint.php，打开发现flag not here, and flag in ffffllllaaaagggg，观察到如果满足相应的条件，最后是include引入文件，所以这个信息很有用。我们只需使emmm::checkFile($_REQUEST[‘file’]返回值为true，利用…/跳转目录读取flag即可</p><p>观察checkFile函数，几个if语句并列，只要我们满足其中一个true,即有返回值，便不需要往下继续执行了</p><p>第一个截取的代码就是关键点，代码要求输入的必须拥有白名单中的内容，我们直接可以在第一次截取时匹配到白名单的内容，接下来一匹配即可返回true</p><p>第一个截取的代码就是关键点，代码要求输入的必须拥有白名单中的内容，我们直接可以在第一次截取时匹配到白名单的内容，接下来一匹配即可返回true</p><h4 id="NeswCent这块相当于C语言里面的main函数，上面部分的内容相当于定义了一个函数，那个函数在main函数里面被调用，先看看main函数长啥样。首先上传一个file，file必须满足三个条件才能继续执行下去："><a href="#NeswCent这块相当于C语言里面的main函数，上面部分的内容相当于定义了一个函数，那个函数在main函数里面被调用，先看看main函数长啥样。首先上传一个file，file必须满足三个条件才能继续执行下去：" class="headerlink" title="NeswCent这块相当于C语言里面的main函数，上面部分的内容相当于定义了一个函数，那个函数在main函数里面被调用，先看看main函数长啥样。首先上传一个file，file必须满足三个条件才能继续执行下去："></a>NeswCent这块相当于C语言里面的main函数，上面部分的内容相当于定义了一个函数，那个函数在main函数里面被调用，先看看main函数长啥样。首先上传一个file，file必须满足三个条件才能继续执行下去：</h4><p>1.file必须不为空<br>2.file必须是字符串<br>3.file在执行emmm::checkFile函数后返回值必须为True。</p><p>接下来利用/使source.php?成为一个不存在的目录，最后include利用…/跳转目录读取flag即可<br>?file=source.php?/…/…/…/…/…/ffffllllaaaagggg</p><h4 id="NaNNaNNaNNaN-Batman"><a href="#NaNNaNNaNNaN-Batman" class="headerlink" title="NaNNaNNaNNaN-Batman"></a>NaNNaNNaNNaN-Batman</h4><h4 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h4><h4 id="PHP2"><a href="#PHP2" class="headerlink" title="PHP2"></a>PHP2</h4><h4 id="unserialize3"><a href="#unserialize3" class="headerlink" title="unserialize3"></a>unserialize3</h4><h4 id="upload1"><a href="#upload1" class="headerlink" title="upload1"></a>upload1</h4><p>不是用图片马绕过，而是删除限制代码</p><h4 id="nizhuansiwei"><a href="#nizhuansiwei" class="headerlink" title="nizhuansiwei"></a>nizhuansiwei</h4><p><a href="https://blog.csdn.net/RABCDXB/article/details/113733607">https://blog.csdn.net/RABCDXB/article/details/113733607</a> 解题</p><p><a href="https://blog.csdn.net/nzjdsds/article/details/82461043">https://blog.csdn.net/nzjdsds/article/details/82461043</a>  php伪协议</p><p>正则：preg_match  序列化操作</p><h4 id="Web-python-template"><a href="#Web-python-template" class="headerlink" title="Web python template"></a>Web python template</h4><p><a href="https://www.cnblogs.com/darklee/p/12625742.html%E8%A7%A3%E9%A2%98">https://www.cnblogs.com/darklee/p/12625742.html解题</a></p><p>相关网址<a href="https://www.freebuf.com/column/187845.html">https://www.freebuf.com/column/187845.html</a></p><h4 id="Web-php-unserialize"><a href="#Web-php-unserialize" class="headerlink" title="Web php unserialize"></a>Web php unserialize</h4><h4 id="easytornado"><a href="#easytornado" class="headerlink" title="easytornado"></a>easytornado</h4><h4 id="shrine"><a href="#shrine" class="headerlink" title="shrine"></a>shrine</h4>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h4 id=&quot;Baby-web&quot;&gt;&lt;a href=&quot;#Baby-web&quot; class=&quot;headerlink&quot; title=&quot;Baby_web&quot;&gt;&lt;/a&gt;Baby_web&lt;/h4&gt;&lt;p&gt;访问index.php,跳转后回到页面，考虑使用抓包，进行repeater，go后在头部看到</summary>
-      
-    
-    
-    
-    
-    <category term="攻防世界_web" scheme="http://daweitech.github.io/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-web/"/>
     
   </entry>
   

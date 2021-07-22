@@ -1627,4 +1627,41 @@
         <tag>python</tag>
       </tags>
   </entry>
+  <entry>
+    <title>python_tip</title>
+    <url>/2021/07/22/python/python_tip/</url>
+    <content><![CDATA[<h3 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h3><p>搭建python的编程环境：subline text、pycharm……</p>
+<h3 id="Part2"><a href="#Part2" class="headerlink" title="Part2"></a>Part2</h3><p>变量，eg：message  =  ‘’Hello World”</p>
+<p>​                    print(message)</p>
+<p>输出：Hello World，这里我们添加了一个名为message的变量，它指向的值为文本“Hello World”。</p>
+<p>在程序中可随时改变变量的值，而python将始终记录变量的最新值。</p>
+<p>变量命名条件：</p>
+<p>​                        1.只能包含数字、字母和下划线。且开头只能以字母或下划线开头，不能以数字开头。</p>
+<p>​                        2.不能包含空格，但可以使用下划线来分隔其中的单词。</p>
+<p>​                        3.勿将python关键字和函数名作为变量名。</p>
+<p>​                        4.应该简短又具有描述性。</p>
+<p>​                        5.数字1和字母l，数字0和字母o要注意区分。</p>
+<p>若出现错误时，往往可以见到    Traceback（most recent call most）的解释器告知错误。</p>
+<p>字符串，就是一系列字符，用引号括起的都是字符串，单双引号皆可。</p>
+<p>“This is a string.”</p>
+<p>‘This is a string.’</p>
+<p>方法修改字符大小写：变量名.title()，首字母大写</p>
+<p>​                                       变量名.upper()，全部大写</p>
+<p>​                                        变量名.lower()，全部小写</p>
+<p>字符串的组合，引号里加上中括号，eg：</p>
+<p>​    <code>first_name = &quot;ada&quot;</code></p>
+<p>​    <code>last_name = &quot;lovelace&quot;</code></p>
+<p>​    <code>full_name = f&quot;&#123;first_name&#125; &#123;last_name&#125;&quot;</code></p>
+<p>​    <code>print(full_name)</code></p>
+<p>这里的字符串命名为f字符串，f是format（设置格式）的简写。</p>
+<p>添加空白：空格、制表符、换行符， /t, /n</p>
+<p>删除空白：方法rstrip</p>
+<p>同时给多个变量赋值：x，y，z = 0，0，0</p>
+<p>常量：在代码中，要指出应将特定的变量视为常量，可将其字母全部大写。</p>
+<p>注释：句子前加#号。</p>
+<h3 id="Part3"><a href="#Part3" class="headerlink" title="Part3"></a>Part3</h3>]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
 </search>
