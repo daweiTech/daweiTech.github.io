@@ -169,7 +169,7 @@
 <p><img src="/2021/08/02/buu/6/20200420141747970.png" alt="在这里插入图片描述"></p>
 <p><strong>这里说明了传的参数是blog</strong></p>
 <p>通过分析，我们知道了这题涉及反序列化和ssrf</p>
-<p>我先继续爆破</p>
+<h5 id="实操："><a href="#实操：" class="headerlink" title="实操："></a>实操：</h5><p>我先继续爆破</p>
 <p><img src="/2021/08/02/buu/6/image-20210803145941495.png" alt="image-20210803145941495"></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?no&#x3D;-1 union&#x2F;**&#x2F; select 1,database(),3,4#</span><br></pre></td></tr></table></figure>
 
