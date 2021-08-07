@@ -272,14 +272,17 @@ if(isset($_GET['exp'])){
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;D:\dirsearch\dirsearch.py&quot;, line 28, in &lt;module&gt;</span><br><span class="line">    from lib.controller.controller import Controller</span><br><span class="line">  File &quot;D:\dirsearch\lib\controller\__init__.py&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    from .controller import Controller  # noqa: F401</span><br><span class="line">  File &quot;D:\dirsearch\lib\controller\controller.py&quot;, line 29, in &lt;module&gt;</span><br><span class="line">    from lib.connection.requester import Requester</span><br><span class="line">  File &quot;D:\dirsearch\lib\connection\requester.py&quot;, line 30, in &lt;module&gt;</span><br><span class="line">    from thirdparty.requests_ntlm import HttpNtlmAuth</span><br><span class="line">  File &quot;D:\dirsearch\thirdparty\requests_ntlm\__init__.py&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    from .requests_ntlm import HttpNtlmAuth</span><br><span class="line">  File &quot;D:\dirsearch\thirdparty\requests_ntlm\requests_ntlm.py&quot;, line 5, in &lt;module&gt;</span><br><span class="line">    from cryptography import x509</span><br><span class="line">ModuleNotFoundError: No module named &#39;cryptography&#39;</span><br></pre></td></tr></table></figure>
 
 <p>说明库没装上，可以去pycharm里自行安装完整。</p>
-<p>附上图：<img src="/2021/08/02/buu/6/D:%5Cblog%5Csource%5C_posts%5Cbuu%5C6%5Cimage-20210802195925831.png" alt="image-20210802195925831"></p>
-<p><img src="/2021/08/02/buu/6/D:%5Cblog%5Csource%5C_posts%5Cbuu%5C6%5Cimage-20210802200037618.png" alt="image-20210802200037618"></p>
+<p>附上图:</p>
+<p><img src="/2021/08/02/buu/6/image-20210802195925831.png"></p>
+<p><img src="/2021/08/02/buu/6/image-20210802200037618.png"></p>
+<p><img src="/2021/08/02/buu/6/image-20210802200638164.png"></p>
 <p>dirseach自带的字典在db目录下，使用格式以及常用参数如下：<br>py dirsearch.py<code>-</code>u [target url]<code>-</code>e<code>*</code></p>
 <p><strong>-<code>u后面跟要扫的url</code></strong></p>
 <p><strong>-<code>e是指定的url</code></strong></p>
 <p><strong>-<code>w是指定字典</code></strong></p>
 <p><strong>-<code>r递归目录</code></strong></p>
 <p><strong>-<code>random</code>-agents使用随机UA</strong></p>
+<p>还可以调低线程：dirsearch.py -u url -e * –timeout=2 -t 1 -x 400,403,404,500,503,429</p>
 <hr>
 <h4 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h4><p>打开后注册（join）进入·页面</p>
 <p><img src="/2021/08/02/buu/6/image-20210803144611777.png" alt="image-20210803144611777"></p>
@@ -2208,6 +2211,15 @@ if(isset($_GET['exp'])){
 <p>或者</p>
 <p><img src="/2021/08/06/buu/8/image-20210806092640868.png" alt="image-20210806092640868"></p>
 <p>借鉴博客：[<a href="https://blog.csdn.net/qq_48008847/article/details/118804275">BJDCTF2020]ZJCTF，不过如此1_十九不瞌睡的博客-CSDN博客</a></p>
+]]></content>
+      <tags>
+        <tag>buu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>BJDCTF2020 Mark loves cat</title>
+    <url>/2021/08/07/buu/9/</url>
+    <content><![CDATA[<p>​    <img src="/2021/08/07/buu/9/image-20210807102252828.png" alt="image-20210807102252828"></p>
 ]]></content>
       <tags>
         <tag>buu</tag>
