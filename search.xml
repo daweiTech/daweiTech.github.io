@@ -6,7 +6,7 @@
     <content><![CDATA[<h2 id="Linux-Labs"><a href="#Linux-Labs" class="headerlink" title="Linux Labs"></a>Linux Labs</h2><p><img src="/2021/05/12/buu/0/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(144).png"></p>
 <p>打开靶机后提示连接</p>
 <p>指令格式 ssh -p port</p>
-<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#114;&#111;&#x6f;&#116;&#x40;&#110;&#x6f;&#x64;&#101;&#51;&#x2e;&#98;&#x75;&#x75;&#x6f;&#106;&#46;&#x63;&#x6e;">&#114;&#111;&#x6f;&#116;&#x40;&#110;&#x6f;&#x64;&#101;&#51;&#x2e;&#98;&#x75;&#x75;&#x6f;&#106;&#46;&#x63;&#x6e;</a></p>
+<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#114;&#x6f;&#x6f;&#x74;&#64;&#x6e;&#x6f;&#100;&#x65;&#51;&#46;&#98;&#117;&#x75;&#111;&#106;&#46;&#x63;&#x6e;">&#114;&#x6f;&#x6f;&#x74;&#64;&#x6e;&#x6f;&#100;&#x65;&#51;&#46;&#98;&#117;&#x75;&#111;&#106;&#46;&#x63;&#x6e;</a></p>
 <p>密码：123456</p>
 <h2 id="护网杯-2018-easy-tornado"><a href="#护网杯-2018-easy-tornado" class="headerlink" title="[护网杯 2018]easy_tornado"></a>[护网杯 2018]easy_tornado</h2><p>打开容器页面后</p>
 <p>出现三份.txt</p>
