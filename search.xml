@@ -640,7 +640,7 @@ if(isset($_GET['exp'])){
 <p>从上图的官方解释中可以知道</p>
 <p>我们无法用单独的函数读取源码</p>
 <p><strong>1.array_reverse()</strong><br>以相反的元素顺序返回数组</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?exp&#x3D;print_r(array_reverse(scandir(current(localeconv()))));</span><br><span class="line">2.array_rand(array_flip())</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?exp&#x3D;print_r(array_reverse(scandir(current(localeconv()))));</span><br></pre></td></tr></table></figure>
 
 <p><strong>2.array_flip()</strong></p>
 <p>交换数组的键和值</p>
@@ -655,11 +655,11 @@ if(isset($_GET['exp'])){
 
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">exp&#x3D;highlight_file(next(array_reverse(scandir(pos(localeconv())))));</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">exp&#x3D;show_source(session_id(session_start()));</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">exp&#x3D;show_source(session_id(session_start()));    </span><br></pre></td></tr></table></figure>
 
 <p><img src="/2021/08/01/buu/5/image-20210801202551668.png" alt="image-20210801202551668"></p>
 <p>参考博客：</p>
-<p><a href="https://www.cnblogs.com/wangtanzhi/p/12260986.html">GXYCTF2019]禁止套娃 - 王叹之 - 博客园 (cnblogs.com)</a></p>
+<p> <a href="https://www.cnblogs.com/wangtanzhi/p/12260986.html">GXYCTF2019]禁止套娃 - 王叹之 - 博客园 (cnblogs.com)</a></p>
 <p> <a href="https://blog.csdn.net/weixin_44037296/article/details/111404335">GXYCTF2019] 禁止套娃_Senimo-CSDN博客_buuctf 禁止套娃</a></p>
 <p> <a href="https://blog.csdn.net/rfrder/article/details/109627827">GXYCTF2019]禁止套娃 1_feng的博客-CSDN博客</a></p>
 ]]></content>
@@ -1165,7 +1165,7 @@ if(isset($_GET['exp'])){
 <p>避免访问未初始化的指针</p>
 ]]></content>
       <tags>
-        <tag>指针</tag>
+        <tag>c</tag>
       </tags>
   </entry>
   <entry>
@@ -1888,7 +1888,7 @@ if(isset($_GET['exp'])){
 <h5 id="此文大部分方法和内容转载于"><a href="#此文大部分方法和内容转载于" class="headerlink" title="此文大部分方法和内容转载于"></a>此文大部分方法和内容转载于</h5><p><a href="https://blog.csdn.net/vhkjhwbs/article/details/89740401">https://blog.csdn.net/vhkjhwbs/article/details/89740401</a></p>
 ]]></content>
       <tags>
-        <tag>sql靶场</tag>
+        <tag>sql</tag>
       </tags>
   </entry>
   <entry>
@@ -1915,7 +1915,7 @@ if(isset($_GET['exp'])){
 <p>来自 <a href="http://127.0.0.1/sqllib/Less-20/index.php">http://127.0.0.1/sqllib/Less-20/index.php</a> </p>
 ]]></content>
       <tags>
-        <tag>sql靶场</tag>
+        <tag>sql</tag>
       </tags>
   </entry>
   <entry>
@@ -2086,18 +2086,17 @@ if(isset($_GET['exp'])){
       </tags>
   </entry>
   <entry>
-    <title>mixed</title>
+    <title>知识点</title>
     <url>/2021/02/01/web/mixed/</url>
-    <content><![CDATA[<h4 id="xss："><a href="#xss：" class="headerlink" title="xss："></a>xss：</h4><p>人们经常将跨站脚本攻击（Cross Site Scripting）缩写为CSS，但这会与层叠样式表（Cascading Style Sheets，CSS）的缩写混淆。因此，有人将跨站脚本攻击缩写为XSS。</p>
-<h4 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h4><p>Sqlmap -r后面跟着文件</p>
-<p>Sqlmap -u后面跟着路径（url）</p>
-<p>sqlmap常用参数：<br>-u : 指定目标URL，sql注入点<br>–cookie : 当前会话的cookie值<br>-b : 获取数据库类型 检索数据库管理系统的标识<br>（DBMS：Database Management System 数据库管理系统）<br>–current-db : 获取当前数据库<br>–current-user :获取当前登录数据库使用的用户</p>
+    <content><![CDATA[<h5 id="Referer"><a href="#Referer" class="headerlink" title="Referer"></a>Referer</h5><p><a href="https://www.cnblogs.com/bonelee/p/7875163.html">https://www.cnblogs.com/bonelee/p/7875163.html</a></p>
+<h4 id="xss："><a href="#xss：" class="headerlink" title="xss："></a>xss：</h4><p>人们经常将跨站脚本攻击（Cross Site Scripting）缩写为CSS，但这会与层叠样式表（Cascading Style Sheets，CSS）的缩写混淆。因此，有人将跨站脚本攻击缩写为XSS。</p>
 <h4 id="什么是序列化，为什么要序列化"><a href="#什么是序列化，为什么要序列化" class="headerlink" title="什么是序列化，为什么要序列化"></a>什么是序列化，为什么要序列化</h4><p><a href="https://blog.csdn.net/u011215133/article/details/51177843?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&amp;dist_request_id=&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control">https://blog.csdn.net/u011215133/article/details/51177843?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&amp;dist_request_id=&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control</a></p>
 <h4 id="弱口令"><a href="#弱口令" class="headerlink" title="弱口令"></a>弱口令</h4><p>一些简单的组合密码</p>
 <p><a href="https://blog.csdn.net/qq_37931597/article/details/87267829?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161700465316780255266108%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161700465316780255266108&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-87267829.first_rank_v2_pc_rank_v29&amp;utm_term=%E5%BC%B1%E5%8F%A3%E4%BB%A4&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/qq_37931597/article/details/87267829?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161700465316780255266108%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161700465316780255266108&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-87267829.first_rank_v2_pc_rank_v29&amp;utm_term=%E5%BC%B1%E5%8F%A3%E4%BB%A4&amp;spm=1018.2226.3001.4187</a></p>
 <h4 id="IP欺骗（XFF头等）"><a href="#IP欺骗（XFF头等）" class="headerlink" title="IP欺骗（XFF头等）"></a>IP欺骗（XFF头等）</h4><p><a href="https://blog.csdn.net/zz_Caleb/article/details/84147066">https://blog.csdn.net/zz_Caleb/article/details/84147066</a></p>
-<h4 id="文件包含漏洞"><a href="#文件包含漏洞" class="headerlink" title="文件包含漏洞"></a>文件包含漏洞</h4><p>一、什么是文件包含漏洞？</p>
-<p>1、文件包含概述</p>
+<p>X-Forwarded-For:</p>
+<h4 id="文件包含漏洞"><a href="#文件包含漏洞" class="headerlink" title="文件包含漏洞"></a>文件包含漏洞</h4><p>什么是文件包含漏洞？</p>
+<p>文件包含概述</p>
 <p>和SQL注入等攻击方式一样，文件包含漏洞也是一种“注入型漏洞”，其本质就是输入一段用户能够控制的脚本或者代码，并让服务器端执行。</p>
 <p>什么叫包含呢？以PHP为例，我们常常把可重复使用的函数写入到单个文件中，在使用该函数时，直接调用此文件，而无需再次编写函数，这一过程就叫做包含。</p>
 <p>有时候由于网站功能需求，会让前端用户选择要包含的文件，而开发人员又没有对要包含的文件进行安全考虑，就导致攻击者可以通过修改文件的位置来让后台执行任意文件，从而导致文件包含漏洞。</p>
@@ -2105,20 +2104,84 @@ if(isset($_GET['exp'])){
 <p>include()，require()，include_once()，require_once()</p>
 <p>区别如下：</p>
 <p>require()，找不到被包含的文件时会产生致命错误，并停止脚本运行。<br>include()，找不到被包含的文件时只会产生警告，脚本将继续运行。<br>include_once()与include()类似，唯一区别是如果该文件中的代码已经被包含，则不会再次包含。<br>require_once()与require()类似，唯一区别是如果该文件中的代码已经被包含，则不会再次包含。<br>版权声明：本文为CSDN博主「Monsterlz123」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/Monsterlz123/article/details/93964916">https://blog.csdn.net/Monsterlz123/article/details/93964916</a></p>
-<h4 id="关于msf"><a href="#关于msf" class="headerlink" title="关于msf"></a>关于msf</h4><p>最近了解到有msf，kali已经有了，win下也装好了，就差成功攻击一下windowsever2018 r2</p>
+<h4 id="关于msf"><a href="#关于msf" class="headerlink" title="关于msf"></a>关于msf</h4><p>最近了解到有msf，kali已经安装了，win10下也装好了，</p>
+<p>就差成功攻击一下windowsever2018 r2</p>
 <p>再尝试尝试</p>
-<h4 id="无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够"><a href="#无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够" class="headerlink" title="无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)"></a>无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)</h4><p><img src="https://csdnimg.cn/release/blogv2/dist/pc/img/reprint.png" alt="img"></p>
-<p><a href="https://blog.csdn.net/rezrezre">rezrezre</a> 2017-06-26 16:27:17 <img src="https://csdnimg.cn/release/blogv2/dist/pc/img/articleReadEyes.png" alt="img"> 32366 <img src="https://csdnimg.cn/release/blogv2/dist/pc/img/tobarCollect.png" alt="img"> 收藏 16</p>
-<p>分类专栏： <a href="https://blog.csdn.net/rezrezre/category_7020301.html">ubuntu</a></p>
-<p>输入apt-get install xxxxx，会提示</p>
-<h3 id="无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够-无法对状态列表目录加锁-var-lib-dpkg-，请查看您是否正以-root-用户运行？"><a href="#无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够-无法对状态列表目录加锁-var-lib-dpkg-，请查看您是否正以-root-用户运行？" class="headerlink" title="无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)  无法对状态列表目录加锁(/var/lib/dpkg/)，请查看您是否正以 root 用户运行？"></a><a href="http://blog.csdn.net/zlchina1989/article/details/6033198">无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)  无法对状态列表目录加锁(/var/lib/dpkg/)，请查看您是否正以 root 用户运行？</a></h3><p>解决：在前面加sudo</p>
-<p> 就是sudo apt-get install xxxxx</p>
+<p>8.24报告：再次使用msf框架，试图利用<strong>永恒之蓝</strong>漏洞，但始终卡在了建立session上</p>
+<p>不知道是不是之前在靶机上装了360导致打了补丁。。。。</p>
+<p><img src="/2021/02/01/web/mixed/image-20210825085712815.png" alt="image-20210825085712815"></p>
+<p><img src="/2021/02/01/web/mixed/QQ%E5%9B%BE%E7%89%8720210825085949.png"></p>
 <h4 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h4><p><img src="/2021/02/01/web/mixed/1.jpg"></p>
 <p><img src="/2021/02/01/web/mixed/2.jpg"></p>
-<h4 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h4><h5 id="TOKEN"><a href="#TOKEN" class="headerlink" title="TOKEN"></a>TOKEN</h5><p>Token的定义：Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码。</p>
+<h4 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h4><p>转载链接：<a href="https://www.jianshu.com/p/7f33f9c7997b">https://www.jianshu.com/p/7f33f9c7997b</a>    作者：天青色等烟雨</p>
+<p>个人进行了一些修改。</p>
+<h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>全名为Cross Site Request Forgery—-跨站请求伪造</p>
+<p>一种网络攻击方式</p>
+<p>通常还可缩写为CSRF或者XSRF</p>
+<p>通过<strong>伪装来自受信任的用户</strong>的请求来利用受信任的网站。</p>
+<p>简单理解它可以做的事：</p>
+<p>在盗用你的身份后，以你的名义发送恶意请求</p>
+<p>1.发送邮件</p>
+<p>2.发消息</p>
+<p>3.盗取账号</p>
+<p>4.购买商品</p>
+<p>………</p>
+<h5 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h5><p><img src="/2021/02/01/web/mixed/webp" alt="img"></p>
+<p>​        从上图可以看出，要完成一次CSRF攻击，受害者必须依次完成两个步骤：</p>
+<ul>
+<li><p>登录受信任网站A，并在本地生成Cookie。</p>
+</li>
+<li><p>在不登出A的情况下，访问危险网站B。</p>
+<p>​        看到这里，你也许会说：“如果我不满足以上两个条件中的一个，我就不会受到CSRF的攻击”。</p>
+<p>​        是的，确实如此，但你不能保证以下情况不会发生：</p>
+<p>1.你不能保证你登录了一个网站后，不再打开一个tab页面并访问另外的网站。</p>
+<p>2.你不能保证你关闭浏览器了后，你本地的Cookie立刻过期，你上次的会话已经结束。</p>
+<p>(事实上，关闭浏览器不能结束一个会话，但大多数人都会错误的认为关闭浏览器就等于退出登录/结束会话了……)</p>
+<p>3.上图中所谓的攻击网站，可能是一个存在其他漏洞的可信任的经常被人访问的网站.</p>
+<p><a href="https://link.jianshu.com/?t=http://www.80sec.com/csrf-securit.html(%E8%AF%A6%E7%BB%86%E7%9A%84%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D)">https://link.jianshu.com/?t=http://www.80sec.com/csrf-securit.html(详细的原理介绍)</a></p>
+<h5 id="几种常见的攻击类型"><a href="#几种常见的攻击类型" class="headerlink" title="几种常见的攻击类型"></a><strong>几种常见的攻击类型</strong></h5><h6 id="GET类型的CSRF"><a href="#GET类型的CSRF" class="headerlink" title="GET类型的CSRF"></a>GET类型的CSRF</h6><p>这种类型的CSRF一般是由于程序员安全意识不强造成的。</p>
+<p>GET类型的CSRF利用非常简单，只需要一个HTTP请求，所以，一般会这样利用：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">http://wooyun.org/csrf?xx</span>=<span class="string">11</span> /&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>在访问含有这个img的页面后，成功向<code>http://wooyun.org/csrf?xx=11</code> 发出了一次HTTP请求。所以，如果将该网址替换为存在GET型CSRF的地址，就能完成攻击了。</p>
+<p><a href="https://link.jianshu.com/?t=http://wooyun.org/bugs/wooyun-2010-023783">乌云案例</a></p>
+<h6 id="POST类型的CSRF"><a href="#POST类型的CSRF" class="headerlink" title="POST类型的CSRF"></a>POST类型的CSRF</h6><p>这种类型的CSRF危害没有GET型的大，利用起来通常使用的是一个自动提交的表单，如：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">http://wooyun.org/csrf.php</span> <span class="attr">method</span>=<span class="string">POST</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;xx&quot;</span> <span class="attr">value</span>=<span class="string">&quot;11&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"> <span class="built_in">document</span>.forms[<span class="number">0</span>].submit(); </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>访问该页面后，表单会自动提交，相当于模拟用户完成了一次POST操作。</p>
+<p><a href="https://link.jianshu.com/?t=http://wooyun.org/bugs/wooyun-2010-026622">乌云案例</a></p>
+<h6 id="其他猥琐流CSRF"><a href="#其他猥琐流CSRF" class="headerlink" title="其他猥琐流CSRF"></a>其他猥琐流CSRF</h6><p>过基础认证的CSRF(常用于路由器):</p>
+<p>POC:</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">http://admin:admin@192.168.1.1</span> /&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>加载该图片后，路由器会给用户一个合法的SESSION，就可以进行下一步操作了。<br> <a href="https://link.jianshu.com/?t=http://www.wooyun.org/bugs/wooyun-2013-026825">乌云案例</a></p>
+<h5 id="防御CSRF的策略"><a href="#防御CSRF的策略" class="headerlink" title="防御CSRF的策略"></a>防御CSRF的策略</h5><p>在业界目前防御 CSRF 攻击主要有三种策略：</p>
+<p>验证 HTTP Referer 字段；</p>
+<p>在请求地址中添加 token 并验证；</p>
+<p>在 HTTP 头中自定义属性并验证</p>
+<p>以下直接摘抄：</p>
+<h6 id="验证-HTTP-Referer-字段"><a href="#验证-HTTP-Referer-字段" class="headerlink" title="验证 HTTP Referer 字段"></a>验证 HTTP Referer 字段</h6><p>根据 HTTP 协议，在 HTTP 头中有一个字段叫 Referer，它记录了该 HTTP 请求的来源地址。在通常情况下，访问一个安全受限页面的请求来自于同一个网站，比如需要访问 <code>http://bank.example/withdraw?account=bob&amp;amount=1000000&amp;for=Mallory</code>，用户必须先登陆 bank.example，然后通过点击页面上的按钮来触发转账事件。因此，要防御 CSRF 攻击，网站只需要对于每一个转账请求验证其 Referer 值，如果是以 bank.example 开头的域名，则说明该请求是来自银行网站自己的请求，是合法的。如果 Referer 是其他网站的话，则有可能是黑客的 CSRF 攻击，拒绝该请求。<br> 这种方法的显而易见的好处就是简单易行，网站的普通开发人员不需要操心 CSRF 的漏洞，只需要在最后给所有安全敏感的请求统一增加一个拦截器来检查 Referer 的值就可以。<br> 然而，这种方法并非万无一失。Referer 的值是由浏览器提供的，虽然 HTTP 协议上有明确的要求，但是每个浏览器对于 Referer 的具体实现可能有差别，并不能保证浏览器自身没有安全漏洞。使用验证 Referer 值的方法，就是把安全性都依赖于第三方（即浏览器）来保障，从理论上来讲，这样并不安全。事实上，对于某些浏览器，比如<code>IE6 或 FF2</code>，目前已经有一些方法可以篡改 Referer 值。如果 网站支持<code>IE6 浏览器</code>，黑客完全可以把用户浏览器的 Referer 值设为以 bank.example 域名开头的地址，这样就可以通过验证，从而进行 CSRF 攻击。<br> 即便是使用最新的浏览器，黑客无法篡改 Referer 值，这种方法仍然有问题。因为 Referer 值会记录下用户的访问来源，有些用户认为这样会侵犯到他们自己的隐私权，特别是有些组织担心 Referer 值会把组织内网中的某些信息泄露到外网中。因此，用户自己可以设置浏览器使其在发送请求时不再提供 Referer。当他们正常访问银行网站时，网站会因为请求没有 Referer 值而认为是 CSRF 攻击，拒绝合法用户的访问。</p>
+<h6 id="在请求地址中添加-token-并验证"><a href="#在请求地址中添加-token-并验证" class="headerlink" title="在请求地址中添加 token 并验证"></a>在请求地址中添加 token 并验证</h6><p>CSRF 攻击之所以能够成功，是因为黑客可以完全伪造用户的请求，该请求中所有的用户验证信息都是存在于 cookie 中，因此黑客可以在不知道这些验证信息的情况下直接利用用户自己的 cookie 来通过安全验证。要抵御 CSRF，关键在于在请求中放入黑客所不能伪造的信息，并且该信息不存在于 cookie 之中。可以在 HTTP 请求中以参数的形式加入一个随机产生的 token，并在服务器端建立一个拦截器来验证这个 token，如果请求中没有 token 或者 token 内容不正确，则认为可能是 CSRF 攻击而拒绝该请求。<br> 这种方法要比检查 Referer 要安全一些，token 可以在用户登陆后产生并放于 session 之中，然后在每次请求时把 token 从 session 中拿出，与请求中的 token 进行比对，但这种方法的难点在于如何把 token 以参数的形式加入请求。对于 GET 请求，token 将附在请求地址之后，这样 URL 就变成 <a href="https://link.jianshu.com/?t=http://url?csrftoken=tokenvalue">http://url?csrftoken=tokenvalue</a>。 而对于 POST 请求来说，要在 form 的最后加上 <input type="”hidden”" name="”csrftoken”" value="”tokenvalue”/">，这样就把 token 以参数的形式加入请求了。但是，在一个网站中，可以接受请求的地方非常多，要对于每一个请求都加上 token 是很麻烦的，并且很容易漏掉，通常使用的方法就是在每次页面加载时，使用 javascript 遍历整个 dom 树，对于 dom 中所有的 a 和 form 标签后加入 token。这样可以解决大部分的请求，但是对于在页面加载之后动态生成的 html 代码，这种方法就没有作用，还需要程序员在编码时手动添加 token。<br> 该方法还有一个缺点是难以保证 token 本身的安全。特别是在一些论坛之类支持用户自己发表内容的网站，黑客可以在上面发布自己个人网站的地址。由于系统也会在这个地址后面加上 token，黑客可以在自己的网站上得到这个 token，并马上就可以发动 CSRF 攻击。为了避免这一点，系统可以在添加 token 的时候增加一个判断，如果这个链接是链到自己本站的，就在后面添加 token，如果是通向外网则不加。不过，即使这个 csrftoken 不以参数的形式附加在请求之中，黑客的网站也同样可以通过 Referer 来得到这个 token 值以发动 CSRF 攻击。这也是一些用户喜欢手动关闭浏览器 Referer 功能的原因。</p>
+<h6 id="在-HTTP-头中自定义属性并验证"><a href="#在-HTTP-头中自定义属性并验证" class="headerlink" title="在 HTTP 头中自定义属性并验证"></a>在 HTTP 头中自定义属性并验证</h6><p>这种方法也是使用 token 并进行验证，和上一种方法不同的是，这里并不是把 token 以参数的形式置于 HTTP 请求之中，而是把它放到 HTTP 头中自定义的属性里。通过 XMLHttpRequest 这个类，可以一次性给所有该类请求加上 csrftoken 这个 HTTP 头属性，并把 token 值放入其中。这样解决了上种方法在请求中加入 token 的不便，同时，通过 XMLHttpRequest 请求的地址不会被记录到浏览器的地址栏，也不用担心 token 会透过 Referer 泄露到其他网站中去。<br> 然而这种方法的局限性非常大。XMLHttpRequest 请求通常用于 Ajax 方法中对于页面局部的异步刷新，并非所有的请求都适合用这个类来发起，而且通过该类请求得到的页面不能被浏览器所记录下，从而进行前进，后退，刷新，收藏等操作，给用户带来不便。另外，对于没有进行 CSRF 防护的遗留系统来说，要采用这种方法来进行防护，要把所有请求都改为 XMLHttpRequest 请求，这样几乎是要重写整个网站，这代价无疑是不能接受的。</p>
+<h5 id="防御实例"><a href="#防御实例" class="headerlink" title="防御实例"></a>防御实例</h5><h6 id="Sailajs框架中的JavaScript-代码示例"><a href="#Sailajs框架中的JavaScript-代码示例" class="headerlink" title="Sailajs框架中的JavaScript 代码示例"></a>Sailajs框架中的JavaScript 代码示例</h6><p>下面将以 JavaScript 为例，对上述三种方法分别用代码进行示例。</p>
+<p>1.验证 Referer</p>
+</li>
+</ul>
+  <figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 从 HTTP 头中取得 Referer 值</span></span><br><span class="line"> <span class="keyword">var</span> referer=req.headers.Referer; </span><br><span class="line"> <span class="comment">// 判断 Referer 是否以 test.example 开头</span></span><br><span class="line"> <span class="keyword">if</span>((referer!=<span class="literal">null</span>) &amp;&amp; (_.startsWith(referer, “test.example ”))&#123; </span><br><span class="line">    <span class="comment">// 验证通过</span></span><br><span class="line"> &#125;<span class="keyword">else</span>&#123; </span><br><span class="line">    <span class="comment">// 验证失败，返回错误</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>  2.验证请求中的 token</p>
+  <figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> session = req.session;</span><br><span class="line">  </span><br><span class="line"><span class="comment">// 从 session 中得到 csrftoken 属性</span></span><br><span class="line"><span class="keyword">var</span>  token = session.csrftoken; </span><br><span class="line"><span class="keyword">if</span>(token == <span class="literal">null</span>)&#123; </span><br><span class="line">  </span><br><span class="line">   <span class="comment">// 产生新的 token 放入 session 中</span></span><br><span class="line">   token = generateToken(); </span><br><span class="line">   token.csrftoken = token ; </span><br><span class="line">  <span class="keyword">return</span> ....</span><br><span class="line">&#125; <span class="keyword">else</span>&#123; </span><br><span class="line">  </span><br><span class="line">   <span class="comment">// 从 HTTP 头中取得 csrftoken </span></span><br><span class="line">   <span class="keyword">var</span>  token = req.headers.csrftoken; </span><br><span class="line">  </span><br><span class="line">   <span class="comment">// 从请求参数中取得 csrftoken </span></span><br><span class="line">   <span class="keyword">var</span>  xhrToken = req.param(<span class="string">&#x27;csrftoken&#x27;</span>); </span><br><span class="line">   <span class="keyword">if</span>(token != <span class="literal">null</span> &amp;&amp; xhrToken != <span class="literal">null</span> &amp;&amp; token.equals(xhrToken))&#123; </span><br><span class="line">      <span class="keyword">return</span> ...</span><br><span class="line">   &#125;<span class="keyword">else</span>&#123; </span><br><span class="line">       <span class="keyword">return</span> ...  <span class="comment">// ERROR</span></span><br><span class="line">   &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>HTTP 头中自定义属性(网上例子)</li>
+</ol>
+  <figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> plainXhr = dojo.xhr; </span><br><span class="line"></span><br><span class="line"> <span class="comment">// 重写 dojo.xhr 方法</span></span><br><span class="line"> dojo.xhr = <span class="function"><span class="keyword">function</span>(<span class="params">method,args,hasBody</span>) </span>&#123; </span><br><span class="line">    <span class="comment">// 确保 header 对象存在</span></span><br><span class="line">    args.headers = args.header || &#123;&#125;; </span><br><span class="line">        </span><br><span class="line">    tokenValue = <span class="string">&#x27;&lt;%=request.getSession(false).getAttribute(&quot;csrftoken&quot;)%&gt;&#x27;</span>; </span><br><span class="line">    <span class="keyword">var</span> token = dojo.getObject(<span class="string">&quot;tokenValue&quot;</span>); </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 把 csrftoken 属性放到头中</span></span><br><span class="line">    args.headers[<span class="string">&quot;csrftoken&quot;</span>] = (token) ? token : <span class="string">&quot;  &quot;</span>; </span><br><span class="line">    <span class="keyword">return</span> plainXhr(method,args,hasBody); </span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>  CSRF 是一种危害非常大的攻击，又很难以防范。目前几种防御策略虽然可以很大程度上抵御 CSRF 的攻击，但并没有一种完美的解决方案。一些新的方案正在研究之中，比如对于每次请求都使用不同的动态口令，把 Referer 和 token 方案结合起来，甚至尝试修改 HTTP 规范，但是这些新的方案尚不成熟，要正式投入使用并被业界广为接受还需时日。在这之前，我们只有充分重视 CSRF，根据系统的实际情况选择最合适的策略，这样才能把 CSRF 的危害降到最低.</p>
+<h4 id="Token"><a href="#Token" class="headerlink" title="Token"></a>Token</h4><p>Token的定义：Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码。</p>
 ]]></content>
       <tags>
-        <tag>攻防世界_web</tag>
+        <tag>web</tag>
       </tags>
   </entry>
   <entry>
@@ -2186,21 +2249,9 @@ if(isset($_GET['exp'])){
 <p>3.摘要算法，将一段数据加密得到密文（摘要）</p>
 <p>签名：对于一个内容，认可数据，认证机制，认可摘要（防篡改）</p>
 <p>原本的数据+摘要+算法——&gt;数据防篡改——&gt;真正包含了签名的</p>
-<h4 id="BUU"><a href="#BUU" class="headerlink" title="BUU"></a>BUU</h4><h5 id="1"><a href="#1" class="headerlink" title="1."></a>1.<img src="/2021/01/24/web/%E7%AB%AF%E5%8F%A3/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(145).png"></h5><p>打开靶机后提示连接</p>
-<p>指令格式 ssh -p port</p>
-<p>根据题目提示，输入 ssh -p  27891 <a href="mailto:&#114;&#x6f;&#x6f;&#x74;&#64;&#x6e;&#x6f;&#x64;&#101;&#51;&#46;&#98;&#x75;&#x75;&#x6f;&#106;&#46;&#99;&#x6e;">&#114;&#x6f;&#x6f;&#x74;&#64;&#x6e;&#x6f;&#x64;&#101;&#51;&#46;&#98;&#x75;&#x75;&#x6f;&#106;&#46;&#99;&#x6e;</a></p>
-<p>密码：123456</p>
-<p><img src="/2021/01/24/web/%E7%AB%AF%E5%8F%A3/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(144).png"></p>
-<p>连接上后，使用Linux指令执行</p>
-<p>ls  ../</p>
-<p>cat ../flag.txt</p>
-<h5 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h5><p>很简单的sql注入</p>
-<p><img src="/2021/01/24/web/%E7%AB%AF%E5%8F%A3/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(150).png"></p>
-<p><img src="/2021/01/24/web/%E7%AB%AF%E5%8F%A3/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(151).png"></p>
-<p><img src="/2021/01/24/web/%E7%AB%AF%E5%8F%A3/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(152).png"></p>
 ]]></content>
       <tags>
-        <tag>https协议</tag>
+        <tag>web</tag>
       </tags>
   </entry>
   <entry>
@@ -2424,7 +2475,14 @@ if(isset($_GET['exp'])){
 <p><strong>-<code>w是指定字典</code></strong></p>
 <p><strong>-<code>r递归目录</code></strong></p>
 <p><strong>-<code>random</code>-agents使用随机UA</strong></p>
-<p>还可以调低线程：dirsearch.py -u url -e * –timeout=2 -t 1 -x 400,403,404,500,503,429</p>
+<p>还可以调低线程：*<em>dirsearch.py -u url -e * –timeout=2 -t 1 -x 400,403,404,500,503,429*</em></p>
+<h3 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h3><p>sqlmap -r后面跟着文件</p>
+<p>sqlmap -u后面跟着路径（url）</p>
+<p>sqlmap常用参数：<br>-u : 指定目标URL，sql注入点<br>–cookie : 当前会话的cookie值<br>-b : 获取数据库类型 检索数据库管理系统的标识<br>（DBMS：Database Management System 数据库管理系统）<br>–current-db : 获取当前数据库<br>–current-user :获取当前登录数据库使用的用户</p>
+<h3 id="无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够"><a href="#无法打开锁文件-var-lib-dpkg-lock-open-13-权限不够" class="headerlink" title="无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)"></a>无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)</h3><p><a href="http://blog.csdn.net/zlchina1989/article/details/6033198">无法打开锁文件 /var/lib/dpkg/lock - open (13: 权限不够)  无法对状态列表目录加锁(/var/lib/dpkg/)，请查看您是否正以 root 用户运行？</a></p>
+<p>解决的办法：在前面加sudo，也就是sudo apt-get install xxxxx</p>
+<p>使得自己的指令拥有管理员权限。</p>
+<h3 id="Hexo修改字体"><a href="#Hexo修改字体" class="headerlink" title="Hexo修改字体"></a>Hexo修改字体</h3><p><a href="https://blog.csdn.net/m0_46296826/article/details/115350456">https://blog.csdn.net/m0_46296826/article/details/115350456</a></p>
 ]]></content>
       <tags>
         <tag>博客</tag>
