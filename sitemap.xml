@@ -424,21 +424,7 @@
 
   
   <url>
-    <loc>http://daweitech.github.io/tags/buu/</loc>
-    <lastmod>2021-08-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://daweitech.github.io/tags/c/</loc>
-    <lastmod>2021-08-25</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://daweitech.github.io/tags/web/</loc>
     <lastmod>2021-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -452,6 +438,20 @@
   </url>
   
   <url>
+    <loc>http://daweitech.github.io/tags/buu/</loc>
+    <lastmod>2021-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://daweitech.github.io/tags/web/</loc>
+    <lastmod>2021-08-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://daweitech.github.io/tags/java/</loc>
     <lastmod>2021-08-25</lastmod>
     <changefreq>daily</changefreq>
@@ -459,14 +459,14 @@
   </url>
   
   <url>
-    <loc>http://daweitech.github.io/tags/nep/</loc>
+    <loc>http://daweitech.github.io/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-misc/</loc>
     <lastmod>2021-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://daweitech.github.io/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-misc/</loc>
+    <loc>http://daweitech.github.io/tags/nep/</loc>
     <lastmod>2021-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
