@@ -1175,7 +1175,10 @@ if(isset($_GET['exp'])){
 <p>如下图</p>
 <p><img src="/2021/08/03/buu/7/image-20210803202146319.png" alt="image-20210803202146319"></p>
 <p><img src="/2021/08/03/buu/7/image-20210803202211040.png" alt="image-20210803202211040"></p>
-<h5 id="参考博客："><a href="#参考博客：" class="headerlink" title="参考博客："></a>参考博客：</h5><p><a href="https://blog.csdn.net/SopRomeo/article/details/105536972">GWCTF 2019]我有一个数据库_SopRomeo的博客-CSDN博客</a></p>
+<h5 id="Tips："><a href="#Tips：" class="headerlink" title="Tips："></a>Tips：</h5><p>另外还有一种解法，来自于上面的 ’首发‘ 链接</p>
+<p>将一句话木马写入数据库，然后在文件包含漏洞使之成功访问，蚁剑连接。</p>
+<p>参考博客：</p>
+<p><a href="https://blog.csdn.net/SopRomeo/article/details/105536972">GWCTF 2019]我有一个数据库_SopRomeo的博客-CSDN博客</a></p>
 <h2 id="BJDCTF2020-The-mystery-of-ip"><a href="#BJDCTF2020-The-mystery-of-ip" class="headerlink" title="[BJDCTF2020]The mystery of ip"></a>[BJDCTF2020]The mystery of ip</h2><p><img src="/2021/08/03/buu/7/image-20210804210338451.png" alt="image-20210804210338451"></p>
 <p>分别查看Flag、Hint</p>
 <p><img src="/2021/08/03/buu/7/image-20210804211511008.png" alt="image-20210804211511008"></p>
@@ -1194,7 +1197,8 @@ if(isset($_GET['exp'])){
 <h5 id="知识点：SSTI模板注入"><a href="#知识点：SSTI模板注入" class="headerlink" title="知识点：SSTI模板注入"></a>知识点：SSTI模板注入</h5><p><a href="https://www.cnblogs.com/bmjoker/p/13508538.html">1. SSTI（模板注入）漏洞（入门篇） - bmjoker - 博客园 (cnblogs.com)</a></p>
 <p><img src="/2021/08/03/buu/7/1625650-20200216204049347-1844990197.png" alt="img"></p>
 <p>模板注入涉及的是服务端Web应用使用模板引擎渲染用户请求的过程<br>服务端把用户输入的内容渲染成模板就可能造成SSTI(Server-Side Template Injection)</p>
-<h3 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h3><h5 id="参考博客：-1"><a href="#参考博客：-1" class="headerlink" title="参考博客："></a>参考博客：</h5><h5 id="BJDCTF2020-The-mystery-of-ip-fightte的博客-CSDN博客"><a href="#BJDCTF2020-The-mystery-of-ip-fightte的博客-CSDN博客" class="headerlink" title="BJDCTF2020]The mystery of ip_fightte的博客-CSDN博客"></a><a href="https://blog.csdn.net/fightte/article/details/117003439">BJDCTF2020]The mystery of ip_fightte的博客-CSDN博客</a></h5><p>[<a href="https://www.cnblogs.com/wangtanzhi/p/12318630.html">BJDCTF2020]The mystery of ip - 王叹之 - 博客园 (cnblogs.com)</a></p>
+<h3 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h3><h5 id="参考博客："><a href="#参考博客：" class="headerlink" title="参考博客："></a>参考博客：</h5><p><a href="https://blog.csdn.net/fightte/article/details/117003439">BJDCTF2020]The mystery of ip_fightte的博客-CSDN博客</a></p>
+<p><a href="https://www.cnblogs.com/wangtanzhi/p/12318630.html">BJDCTF2020]The mystery of ip - 王叹之 - 博客园 (cnblogs.com)</a></p>
 ]]></content>
       <tags>
         <tag>buu</tag>
@@ -1679,12 +1683,24 @@ if(isset($_GET['exp'])){
   <entry>
     <title>php拓展</title>
     <url>/2021/02/19/php/php%E6%8B%93%E5%B1%95/</url>
-    <content><![CDATA[<h4 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h4><h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>最简单的一句话：<?php @eval($_POST['attack']);?></p>
-<p>​                                <?php @eval($_POST['mima']);?></p>
-<p>​                                <?php @eval($_POST['muma']);?></p>
-<h5 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h5><p>​        利用文件上传漏洞，往目标网站中上传一句话木马，然后就可以在本地通过蚁剑即可获取和控制整个网站目录。</p>
+    <content><![CDATA[<h4 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h4><h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>最简单的一句话：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;? php @eval($_POST[&#39;attack&#39;]); ?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​        利用文件上传漏洞，往目标网站中上传一句话木马，然后就可以在本地通过蚁剑即可获取和控制整个网站目录。</p>
 <p>​        @表示后面即使执行错误，也不报错。<strong>eval（）函数</strong>表示括号内的语句字符串什么/.的全都当做代码执行。$_POST[‘attack’]表示从页面中获得attack这个参数值。（也就是[‘     ‘]里的数值可以改变，作为密码）</p>
 <h5 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h5><p>​                    （1）木马上传成功，未被杀；<br>​                    （2）知道木马的路径在哪；<br>​                    （3）上传的木马能正常运行。</p>
+<h4 id="php-require-once的使用方法总结"><a href="#php-require-once的使用方法总结" class="headerlink" title="php require_once的使用方法总结"></a>php require_once的使用方法总结</h4><p><a href="https://www.php.cn/php-weizijiaocheng-370472.html">https://www.php.cn/php-weizijiaocheng-370472.html</a></p>
+<p>​        require_once 语句和 require 语句完全相同，唯一区别是</p>
+<p> require_once() 语句在脚本执行期间包括并运行指定文件。此行为和 require() 语句类似，唯一区别是如果该文件中的代码已经被包括了，则不会再次包括。</p>
+<p>例子：</p>
+<p>比如你写了一个类文件a.php，这个文件主要是定义类，代码可能如下</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">p</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> $a;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">make</span>(<span class="params">&#125;</span></span></span><br><span class="line"><span class="function"><span class="params"> &#123;</span></span></span><br><span class="line"><span class="function"><span class="params"> </span></span></span><br><span class="line"><span class="function"><span class="params"> <span class="keyword">echo</span> $a;</span></span></span><br><span class="line"><span class="function"><span class="params"> </span></span></span><br><span class="line"><span class="function"><span class="params"> &#125;</span></span></span><br><span class="line"><span class="function"><span class="params"> </span></span></span><br><span class="line"><span class="function"><span class="params">&#125;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>这个时候你在文件b.php中要使用到该类，就可以再b.php开头加上</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">require_once(a.php);</span><br></pre></td></tr></table></figure>
+
+<p>来加载这个a.php，就相当于把a.php的文件的代码复制到了b.php中。</p>
+<p>类似的方法还有requeire(),include(),include_once()其中带_once字样的方法都是声明只加载一次，因为你require_once()的别文件中可能已经require_once(a.php)了，如果再加载就造成重复加载，代码量会增加造成解析减慢。</p>
 ]]></content>
       <tags>
         <tag>php</tag>
@@ -2399,26 +2415,60 @@ if(isset($_GET['exp'])){
   <entry>
     <title>leak</title>
     <url>/2021/08/25/src/leak/</url>
-    <content><![CDATA[<h3 id="PHP漏洞介绍"><a href="#PHP漏洞介绍" class="headerlink" title="PHP漏洞介绍"></a>PHP漏洞介绍</h3><p>针对php网站的主要几种攻击方式</p>
+    <content><![CDATA[<h3 id="PHP漏洞介绍"><a href="#PHP漏洞介绍" class="headerlink" title="PHP漏洞介绍"></a>PHP漏洞介绍</h3><p><a href="https://www.jb51.net/article/31898.htm">https://www.jb51.net/article/31898.htm</a></p>
+<p>针对php网站的主要几种攻击方式</p>
 <p>1.命令注入</p>
 <p><a href="https://blog.csdn.net/qq2539879928/article/details/106635907">https://blog.csdn.net/qq2539879928/article/details/106635907</a></p>
 <p>2.eval注入</p>
+<p>eval函数，常用：@eval($_POST[‘cmd’])</p>
 <p>3.客户端脚本攻击</p>
 <p>4.跨网站脚本攻击</p>
 <p>5.sql注入攻击</p>
 <p>6.跨网站请求伪造攻击</p>
+<p>CSRF</p>
 <p>7.Session会话劫持</p>
 <p>8.Session固定攻击</p>
 <p>9.HTTP响应拆分攻击</p>
 <p>10.文件上传漏洞</p>
 <p><a href="https://blog.csdn.net/weixin_44519789/article/details/116570426">https://blog.csdn.net/weixin_44519789/article/details/116570426</a></p>
 <p>11.目录穿越漏洞</p>
+<p><a href="https://blog.csdn.net/angry_program/article/details/107855078">https://blog.csdn.net/angry_program/article/details/107855078</a></p>
 <p>12.远程文件包含攻击</p>
+<p><a href="https://blog.csdn.net/qq_45300786/article/details/108724251">https://blog.csdn.net/qq_45300786/article/details/108724251</a></p>
 <p>13.动态注入函数攻击</p>
 <p>14.URL攻击</p>
 <p>15.表单提交欺骗攻击</p>
 <p>16.HTTP请求欺骗攻击</p>
-<p><a href="https://www.jb51.net/article/31898.htm">https://www.jb51.net/article/31898.htm</a></p>
+<p>17.模板注入:(从这里找到了大佬博客：<a href="https://www.cnblogs.com/bmjoker/">https://www.cnblogs.com/bmjoker/</a>)</p>
+<p><a href="https://www.cnblogs.com/bmjoker/p/13508538.html">https://www.cnblogs.com/bmjoker/p/13508538.html</a></p>
+<p>模板引擎：这里特指用于Web开发的模板引擎</p>
+<p>​        它可以生成特定格式的文档，利用模板引擎来生成前端的html代码，模板引擎会提供一套生成html代码的程序，然后只需要获取用户的数据，然后放到渲染函数里，然后生成模板+用户数据的前端html页面，然后反馈给浏览器，呈现在用户面前</p>
+<p>ssti模板注入</p>
+<p>​                            —–也称服务器端模板注入</p>
+<p>当前流行框架，比如python的flask</p>
+<p>php的tp，java的spring</p>
+<p>漏洞成因：</p>
+<p>​        服务端接收了用户的恶意输入以后，未经任何处理就将其作为 Web 应用模板内容的一部分，模板引擎在进行目标编译渲染的过程中，执行了用户插入的可以破坏模板的语句，因而可能导致了敏感信息泄露、代码执行、GetShell 等问题。其影响范围主要取决于模版引擎的复杂性。</p>
+<p>利用图表</p>
+<p><img src="/2021/08/25/src/leak/1344396-20200911174631687-758048107.png" alt="img"></p>
+<p>​    Twig模板</p>
+<p>由图可以看出，在经过模板解析后的内容</p>
+<p><img src="/2021/08/25/src/leak/1344396-20200818195801226-981945295.png" alt="img"></p>
+<p>payload（2.0）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;&#123;_self.env.registerUndefinedFilterCallback(&quot;exec&quot;)&#125;&#125;&#123;&#123;_self.env.getFilter(&quot;id&quot;)&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>文章还详细介绍了使用msf通过Twig模板注入获取shell</p>
+<p>  Smarty模板</p>
+<p>payload</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;self::getStreamVariable(&quot;file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwd&quot;)&#125;</span><br></pre></td></tr></table></figure>
+
+<p>CTF地址：<a href="https://buuoj.cn/challenges%EF%BC%88CISCN2019%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BAWeb11%EF%BC%89">https://buuoj.cn/challenges（CISCN2019华东南赛区Web11）</a></p>
+<p>xff头做文章，进行注入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">X-Forwarded-For：&#123;sysytem(&#39;cat &#x2F;flag&#39;)&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这题我没有单独写文章，因为解题过程很快，知识点对应上了。</p>
+<p>smarty-ssti常规利用方式</p>
+<p>………</p>
 ]]></content>
       <tags>
         <tag>src</tag>
@@ -2901,7 +2951,7 @@ if(isset($_GET['exp'])){
   <entry>
     <title>一次简单的kali渗透测试</title>
     <url>/2021/08/30/src/0830/</url>
-    <content><![CDATA[<p> 参考链接：</p>
+    <content><![CDATA[<h4 id="8-30"><a href="#8-30" class="headerlink" title="8.30"></a>8.30</h4><p> 参考链接：</p>
 <p><a href="https://blog.csdn.net/k_love1219/article/details/104591110">记一次Kali系统渗透靶机(物理机)的详细过程（渗透必备）_k_love1219的博客-CSDN博客</a></p>
 <p>首先开启kali-2018</p>
 <p><img src="/2021/08/30/src/0830/image-20210830165837896.png" alt="image-20210830165837896"></p>
@@ -2941,9 +2991,30 @@ if(isset($_GET['exp'])){
 <p>此外还有的命令</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">getuid    获取系统ID以及计算机名称</span><br><span class="line">kill    中止进程</span><br><span class="line">ps    列举正在运行中的进程</span><br><span class="line">getpid    获取当前进程标识符</span><br><span class="line">keyscan_start     开启按键记录会话</span><br><span class="line">keyscan_stop     终止按键记录会话</span><br><span class="line">keyscan_dump   转储从被攻击主机捕获到的按键</span><br><span class="line">enumdesktops    列举所有可访问到的桌面和工作站</span><br><span class="line">getdesktop    获取当前meterpreter桌面</span><br><span class="line">setdesktop    变更meterpreter当前桌面</span><br><span class="line">webcam_list   列举系统中所有的摄像头</span><br><span class="line">webcam_snap   捕获被攻击主机的快照</span><br><span class="line">record_mic    从主机的默认麦克风中记录环境声音</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<p>找到更为高级的免杀木马文章：</p>
+<p><a href="https://www.cnblogs.com/leeqizhi/p/13029755.html">MSF制作免杀木马 - 迷途小書童~ - 博客园 (cnblogs.com)</a></p>
+<h4 id="8-31"><a href="#8-31" class="headerlink" title="8.31"></a>8.31</h4><p>今天找到另外一篇文章来获取shell</p>
+<p>操作方法差不多</p>
+<p><a href="https://blog.csdn.net/cxcsdn666/article/details/100813443">Kali利用MSF渗透Win 7获取shell_舞指如歌~的博客-CSDN博客</a></p>
+<p>这次不懂为什么文件复制不到win7上，索性就用了物理机来试验</p>
+<p><a href="https://blog.csdn.net/u012206617/article/details/97389338">获取Shell（提权）后的操作（windows、Linux）_墨痕诉清风的博客-CSDN博客_shell提权</a></p>
+<p>这时候之前的一篇安全客文章就讲的十分详细了</p>
+<p><a href="https://www.anquanke.com/post/id/235631">MSF使用详解 - 安全客，安全资讯平台 (anquanke.com)</a></p>
 ]]></content>
       <tags>
         <tag>src</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php弱类型</title>
+    <url>/2021/08/31/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<p><img src="/2021/08/31/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/capture_20210831213941122.bmp" alt="capture_20210831213941122"></p>
+<p>?password=1337a</p>
+<p><img src="/2021/08/31/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/capture_20210831214131149.bmp" alt="capture_20210831214131149"></p>
+<p>?name[]=1&amp;passsword[]=2</p>
+]]></content>
+      <tags>
+        <tag>php</tag>
       </tags>
   </entry>
 </search>

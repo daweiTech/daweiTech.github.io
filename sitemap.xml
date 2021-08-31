@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://daweitech.github.io/2021/08/31/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daweitech.github.io/2021/08/25/src/leak/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daweitech.github.io/2021/02/19/php/php%E6%8B%93%E5%B1%95/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daweitech.github.io/2021/07/18/src/ThinkPHP5/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daweitech.github.io/2021/08/03/buu/7/</loc>
+    
+    <lastmod>2021-08-31</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://daweitech.github.io/2021/08/30/src/0830/</loc>
     
     <lastmod>2021-08-31</lastmod>
@@ -40,20 +75,6 @@
     <loc>http://daweitech.github.io/2021/08/27/src/1/</loc>
     
     <lastmod>2021-08-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daweitech.github.io/2021/08/25/src/leak/</loc>
-    
-    <lastmod>2021-08-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daweitech.github.io/2021/07/18/src/ThinkPHP5/</loc>
-    
-    <lastmod>2021-08-25</lastmod>
     
   </url>
   
@@ -103,13 +124,6 @@
     <loc>http://daweitech.github.io/2021/01/24/web/%E7%AB%AF%E5%8F%A3/</loc>
     
     <lastmod>2021-08-25</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daweitech.github.io/2021/08/03/buu/7/</loc>
-    
-    <lastmod>2021-08-24</lastmod>
     
   </url>
   
@@ -229,13 +243,6 @@
     <loc>http://daweitech.github.io/2021/07/19/python/python-visual/</loc>
     
     <lastmod>2021-07-20</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daweitech.github.io/2021/02/19/php/php%E6%8B%93%E5%B1%95/</loc>
-    
-    <lastmod>2021-07-17</lastmod>
     
   </url>
   
