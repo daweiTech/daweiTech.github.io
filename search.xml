@@ -2407,6 +2407,19 @@ if(isset($_GET['exp'])){
 <p>在博客文章的cover（可以手动添加)后面加上</p>
 <p>就可以有漂亮的文章封面啦！</p>
 <p><img src="/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/image-20210830165519649.png" alt="image-20210830165519649"></p>
+<p>不过这个是暂时的，doge</p>
+<p>取消封面的话，只需要在cover后面加上false就好</p>
+<h3 id="AttributeError-module-‘datetime’-has-no-attribute-‘now’"><a href="#AttributeError-module-‘datetime’-has-no-attribute-‘now’" class="headerlink" title="AttributeError: module ‘datetime’ has no attribute ‘now’"></a>AttributeError: module ‘datetime’ has no attribute ‘now’</h3><p>今天python代码出现这样的报错，</p>
+<p>经过上网查询得知，原来是我文件命名和所调用库一样，导致</p>
+<p>导入时回覆盖datetime库</p>
+<p>这是别人文章的原话：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">datetime是python中的内置模块，正常应该不会报错，检查后发现是一个很低级错误， 我给我的文件名起的就是datetime.py 所以导入时会覆盖datetime这个包。将文件名字改了就好了。</span><br></pre></td></tr></table></figure>
+
+<h3 id="Turtle库如何绘制用户想要图案"><a href="#Turtle库如何绘制用户想要图案" class="headerlink" title="Turtle库如何绘制用户想要图案"></a>Turtle库如何绘制用户想要图案</h3><p>上网查了一下，在一篇turtle文章下面找到了一句话</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用鼠标点击事先确定位置，返回值为一个坐标</span><br></pre></td></tr></table></figure>
+
+<p>这句话令我想法多了起来，现有的想法是有什么代码可以把坐标值打印</p>
+<p>然后根据坐标值编写相应的调用turtle库的代码</p>
 ]]></content>
       <tags>
         <tag>博客</tag>
@@ -3604,6 +3617,7 @@ if(isset($_GET['exp'])){
 <p>[祥云杯2021 web wp | Z3ratu1’s blog](<a href="https://blog.z3ratu1.cn/%E7%A5%A5%E4%BA%91%E6%9D%AF2021">https://blog.z3ratu1.cn/祥云杯2021</a> wp.html#more)</p>
 <p><a href="https://cbatl.gitee.io/">ly0n - A hard-working boy (gitee.io)</a></p>
 <p><a href="https://www.freebuf.com/articles/system/178150.html">Linux下几种反弹Shell方法的总结与理解 - FreeBuf网络安全行业门户</a></p>
+<p><a href="https://www.wlhhlc.top/posts/20107/#cralwer-z">2021祥云杯WEB-WP | dota_st (wlhhlc.top)</a></p>
 <h4 id="secrets-of-admin"><a href="#secrets-of-admin" class="headerlink" title="secrets_of_admin"></a>secrets_of_admin</h4><p>打开后页面如下：</p>
 <p><img src="/2021/09/07/buu/21/image-20210908114725080.png" alt="image-20210908114725080"></p>
 <p>database.js里直接给出用户名和密码：</p>
@@ -3643,6 +3657,109 @@ if(isset($_GET['exp'])){
 ]]></content>
       <tags>
         <tag>buu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>runoob.com-html(1)</title>
+    <url>/2021/09/13/web/0/</url>
+    <content><![CDATA[<p>1.HTML文档的后缀名</p>
+<p>.html                .htm</p>
+<p>2.实例解析</p>
+<p><img src="/2021/09/13/web/0/02A7DD95-22B4-4FB9-B994-DDB5393F7F03.jpg"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt; 声明为 HTML5 文档</span><br><span class="line">&lt;html&gt; 元素是 HTML 页面的根元素</span><br><span class="line">&lt;head&gt; 元素包含了文档的元（meta）数据，如 &lt;meta charset&#x3D;&quot;utf-8&quot;&gt; 定义网页编码格式为 utf-8。</span><br><span class="line">&lt;title&gt; 元素描述了文档的标题</span><br><span class="line">&lt;body&gt; 元素包含了可见的页面内容</span><br><span class="line">&lt;h1&gt; 元素定义一个大标题</span><br><span class="line">&lt;p&gt; 元素定义一个段落</span><br></pre></td></tr></table></figure>
+
+<p>HTML 是用来描述网页的一种语言。</p>
+<p>HTML 指的是超文本标记语言: <strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage</p>
+<p>HTML标签</p>
+<p>HTML元素</p>
+<p>HTML网页结构</p>
+<p><img src="/2021/09/13/web/0/image-20210913221500807.png" alt="image-20210913221500807"></p>
+<p>文档格式例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;div&gt;分类目录...&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;div&gt;当前分类内容列表...&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt; </span><br></pre></td></tr></table></figure>
+
+<p>常用标签介绍：</p>
+<p>文本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">最常用：&lt;font&gt;,用于改变字体，字号文字颜色</span><br></pre></td></tr></table></figure>
+
+<p>图片</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;hr&gt;标签用于在页面上添加图片，src属性指定图片的地址，如果无法打开src指定的图片，浏览器通常会在页面上需要显示图片的地方显示alt属性定义的文本。</span><br><span class="line">&lt;img src&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;Icons&#x2F;valid-xhtml10&quot; alt&#x3D;&quot;图片简介&quot; &#x2F;&gt; </span><br></pre></td></tr></table></figure>
+
+<p>链接</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">超级链接用&lt;a&gt;标签表示，href属性指定了链接到的地址。&lt;a&gt;标签可以包含文本，也可以包含图片。</span><br><span class="line">&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;www.runoob.com&#x2F;&quot;&gt;菜鸟教程&lt;&#x2F;a&gt;</span><br><span class="line">&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;validator.w3.org&quot;&gt;&lt;img src&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;Icons&#x2F;valid-xhtml10&quot; alt&#x3D;&quot;验证HTML&quot; &#x2F;&gt;&lt;&#x2F;a&gt; </span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP and MySQL Web Development(二)</title>
+    <url>/2021/09/15/php/3/</url>
+    <content><![CDATA[]]></content>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>漏洞挖掘演练(一)</title>
+    <url>/2021/09/17/src/2/</url>
+    <content><![CDATA[<p>以下内容全部来自于：安恒信息</p>
+<p>关于cms的源码</p>
+<p><img src="/2021/09/17/src/2/image-20210917152538626.png" alt="image-20210917152538626"></p>
+<p>gitee.com上可以找到很多资源</p>
+<p>同样github也是。</p>
+<p>例子一：</p>
+<p><img src="/2021/09/17/src/2/image-20210917153534213.png" alt="image-20210917153534213"></p>
+<p>观察以上代码，发现该php文件明显是该CMS的模板渲染核心代码</p>
+<p>其中，对外调用paser_string函数，核心函数运行——parse,对各种标签进行解析。</p>
+<p>所以联想到模板渲染常存在的SSTI漏洞</p>
+<p><img src="/2021/09/17/src/2/image-20210917153916987.png" alt="image-20210917153916987"></p>
+<p>看到在处理标签时运用诸多eval()函数</p>
+<p>所以接下来思路为：</p>
+<p>根据eval()函数，追踪溯源，看是否存在可控变量。</p>
+<p>ps：没有审计经验的人，建议把关键函数提取出来到本地的PHP环境进行debug调试</p>
+<p>主要想法就是传递什么样的参数可以在eval中执行，并且确定eval中执行的代码是哪一块，是否可控。</p>
+<p>假设传递{if:123}456{endif}</p>
+<p>根据逻辑推敲，最后代码回进入到该分支中</p>
+<p>并且$strlf的值是123</p>
+<p><img src="/2021/09/17/src/2/image-20210917154659350.png" alt="image-20210917154659350"></p>
+<p>所以最后能够构成</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(123)&#123;isFlag&#x3D;true;&#125;else&#123;isFalse&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>接着，就是注入代码来getshell了</p>
+<p>payload：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;if:1&#125;assert($_POST[x];&#x2F;&#x2F;)123&#123;endif&#125;</span><br></pre></td></tr></table></figure>
+
+<p>拼接后：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;if:1&#125;assert($_POST[x];&#x2F;&#x2F;)&#123;isFlag&#x3D;true;&#125;else&#123;isFalse&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>分析：1为永真条件，//将后面的注释了</p>
+<p>最后就执行了assert($_POST[x]);</p>
+<p>我们继续找传递参数的地方</p>
+<p>反向追踪，调用labelif()函数的是_parse(),而 _parse只被parse_string调用</p>
+<p><img src="/2021/09/17/src/2/image-20210917155446820.png" alt="image-20210917155446820"></p>
+]]></content>
+      <tags>
+        <tag>src</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php代码审计(三)</title>
+    <url>/2021/09/17/src/3/</url>
+    <content><![CDATA[<p> 这次试着尝试审计bluecms漏洞</p>
+<p>安装bluecms的教程文章：</p>
+<p><a href="https://blog.csdn.net/qq_41209264/article/details/106773255">渗透测试——bluecms安装及seay代码审计_fallingskies-CSDN博客</a></p>
+<p><a href="https://www.cnblogs.com/wkzb/p/12732078.html">php代码审计]bluecms v1.6 sp1 - beiwo - 博客园 (cnblogs.com)</a></p>
+<p>遇到的一个小坑就是访问安装页面一直为空白，还好解决啦</p>
+<p>上面的文章已经讲解得很详细了</p>
+<p><img src="/2021/09/17/src/3/image-20210917202058053.png" alt="image-20210917202058053"></p>
+<p>创建成功图如下：</p>
+<p><img src="/2021/09/17/src/3/image-20210917202743734.png" alt="image-20210917202743734"></p>
+<p>跟着大佬文章阅读：</p>
+<p>[<a href="https://www.cnblogs.com/wkzb/p/12732078.html">php代码审计]bluecms v1.6 sp1 - beiwo - 博客园 (cnblogs.com)</a></p>
+]]></content>
+      <tags>
+        <tag>php</tag>
       </tags>
   </entry>
 </search>
