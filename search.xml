@@ -4123,4 +4123,56 @@ public function __toString()&#123;
         <tag>buu</tag>
       </tags>
   </entry>
+  <entry>
+    <title>NSSCTF 2021 writeup</title>
+    <url>/2021/10/04/web/2/</url>
+    <content><![CDATA[<p>参与了一下</p>
+<p>新生赛，发现基础还不够扎实</p>
+<p>顺便记录一下解题</p>
+<h3 id="gift-F12"><a href="#gift-F12" class="headerlink" title="gift_F12"></a>gift_F12</h3><p><img src="/2021/10/04/web/2/image-20211004103854327.png"></p>
+<p>按照题目提示，F12</p>
+<p>最开始无脑往下滑，被嘲讽了一波</p>
+<p><img src="/2021/10/04/web/2/image-20211004104026843.png" alt="image-20211004104026843"></p>
+<p>本来以为还要控制台修改时间获取</p>
+<p>结果再往上找找就行</p>
+<p><img src="/2021/10/04/web/2/image-20211004104228392.png" alt="image-20211004104228392"></p>
+<h3 id="caidao"><a href="#caidao" class="headerlink" title="caidao"></a>caidao</h3><p><img src="/2021/10/04/web/2/image-20211004104329873.png" alt="image-20211004104329873"></p>
+<p>提示足够明显了</p>
+<p>直接连，这时候直接猜想到index.php文件（也可以不嫌麻烦dirsearch扫）</p>
+<p>试着连</p>
+<p><img src="/2021/10/04/web/2/image-20211004104536627.png" alt="image-20211004104536627"></p>
+<p>成功连上</p>
+<p><img src="/2021/10/04/web/2/image-20211004104630630.png" alt="image-20211004104630630"></p>
+<h3 id="jicao"><a href="#jicao" class="headerlink" title="jicao"></a>jicao</h3><p>题如其意，很简单</p>
+<p><img src="/2021/10/04/web/2/image-20211004104742735.png" alt="image-20211004104742735"></p>
+<p><img src="/2021/10/04/web/2/image-20211004105437367.png" alt="image-20211004105437367"></p>
+<p><img src="/2021/10/04/web/2/image-20211004105448146.png" alt="image-20211004105448146"></p>
+<h3 id="Do-you-know-http"><a href="#Do-you-know-http" class="headerlink" title="Do_you_know_http"></a>Do_you_know_http</h3><p>这题很眼熟</p>
+<p>很像之前做过的</p>
+<p><img src="/2021/10/04/web/2/image-20211004110036413.png" alt="image-20211004110036413"></p>
+<p><img src="/2021/10/04/web/2/image-20211004110055171.png" alt="image-20211004110055171"></p>
+<p>这里抓包会被克制</p>
+<p>直接用hackbar</p>
+<p><img src="/2021/10/04/web/2/image-20211004110238860.png" alt="image-20211004110238860"></p>
+<h3 id="easy-md5"><a href="#easy-md5" class="headerlink" title="easy_md5"></a>easy_md5</h3><p><img src="/2021/10/04/web/2/image-20211004110322862.png" alt="image-20211004110322862"></p>
+<p>数组绕过即可</p>
+<p><img src="/2021/10/04/web/2/image-20211004110433124.png" alt="image-20211004110433124"></p>
+<h3 id="easyupload1-0"><a href="#easyupload1-0" class="headerlink" title="easyupload1.0"></a>easyupload1.0</h3><p>改类型上传php，没什么好说的</p>
+<h3 id="easyupload2-0"><a href="#easyupload2-0" class="headerlink" title="easyupload2.0"></a>easyupload2.0</h3><p>上传phtml马文件绕过，蚁剑连上</p>
+<h3 id="easy-sql"><a href="#easy-sql" class="headerlink" title="easy_sql"></a>easy_sql</h3><p>基础题，直接查数据库，查表，最后查字名</p>
+<h3 id="easyrce"><a href="#easyrce" class="headerlink" title="easyrce"></a>easyrce</h3><p>命令执行漏洞</p>
+<p><a href="https://www.cnblogs.com/-qing-/p/10819069.html">https://www.cnblogs.com/-qing-/p/10819069.html</a></p>
+<h3 id="babyrce"><a href="#babyrce" class="headerlink" title="babyrce"></a>babyrce</h3><p><img src="/2021/10/04/web/2/QQ%E5%9B%BE%E7%89%8720211004210427.png"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat$IFS$9&#x2F;flllllaaaaaaggggggg</span><br></pre></td></tr></table></figure>
+
+<h3 id="include"><a href="#include" class="headerlink" title="include"></a>include</h3><p>伪协议读取</p>
+<p>php://filter/read=convert.base64.encode/resource=flag.php</p>
+<p><a href="https://segmentfault.com/a/1190000018991087">PHP伪协议总结 - SegmentFault 思否</a></p>
+<h3 id="ez-unserialize"><a href="#ez-unserialize" class="headerlink" title="ez_unserialize"></a>ez_unserialize</h3><p><img src="/2021/10/04/web/2/image-20211004210242660.png" alt="image-20211004210242660"></p>
+<h3 id="no-wakeup"><a href="#no-wakeup" class="headerlink" title="no_wakeup"></a>no_wakeup</h3><p><a href="https://www.cnblogs.com/Mrsm1th/p/6835592.html">php反序列化漏洞绕过魔术方法 __wakeup - Mrsm1th - 博客园 (cnblogs.com)</a></p>
+]]></content>
+      <tags>
+        <tag>web</tag>
+      </tags>
+  </entry>
 </search>

