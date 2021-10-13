@@ -42,19 +42,17 @@ window.addEventListener('load', () => {
   })
 
   function search (path) {
-    $.ajax({
-      //url: GLOBAL_CONFIG.root + path,修改后
-      url: "https://cdn.jsdelivr.net/gh/daweitech/daweitech.github.io/search.xml",
-      dataType: 'xml',
-      success: function (xmlResponse) {
-        // get the contents from search data
-        var datas = $('entry', xmlResponse).map(function () {
+    fetch(GLOBAL_CONFIG.root + path)
+      .then(response => response.text())
+      .then(str => new window.DOMParser().parseFromString(str, 'text/xml'))
+      .then(data => {
+        const datas = [...data.querySelectorAll('entry')].map(function (item) {
           return {
-            title: $('title', this).text(),
-            content: $('content', this).text(),
-            url: $('url', this).text()
+            title: item.querySelector('title').textContent,
+            content: item.querySelector('content').textContent,
+            url: item.querySelector('url').textContent
           }
-        }).get()
+        })
 
 
         const $input = document.querySelector('#local-search-input input')
