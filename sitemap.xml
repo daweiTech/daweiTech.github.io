@@ -606,13 +606,6 @@
   </url>
   
   <url>
-    <loc>http://daweitech.github.io/tags/web/</loc>
-    <lastmod>2021-10-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://daweitech.github.io/tags/c/</loc>
     <lastmod>2021-10-13</lastmod>
     <changefreq>daily</changefreq>
@@ -620,7 +613,7 @@
   </url>
   
   <url>
-    <loc>http://daweitech.github.io/tags/java/</loc>
+    <loc>http://daweitech.github.io/tags/web/</loc>
     <lastmod>2021-10-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -634,7 +627,14 @@
   </url>
   
   <url>
-    <loc>http://daweitech.github.io/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-misc/</loc>
+    <loc>http://daweitech.github.io/tags/dvwa/</loc>
+    <lastmod>2021-10-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://daweitech.github.io/tags/java/</loc>
     <lastmod>2021-10-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -648,21 +648,7 @@
   </url>
   
   <url>
-    <loc>http://daweitech.github.io/tags/dvwa/</loc>
-    <lastmod>2021-10-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://daweitech.github.io/tags/python/</loc>
-    <lastmod>2021-10-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://daweitech.github.io/tags/nss/</loc>
+    <loc>http://daweitech.github.io/tags/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-misc/</loc>
     <lastmod>2021-10-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -676,7 +662,21 @@
   </url>
   
   <url>
-    <loc>http://daweitech.github.io/tags/upload-labs/</loc>
+    <loc>http://daweitech.github.io/tags/python/</loc>
+    <lastmod>2021-10-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://daweitech.github.io/tags/sql/</loc>
+    <lastmod>2021-10-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://daweitech.github.io/tags/nss/</loc>
     <lastmod>2021-10-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -690,7 +690,7 @@
   </url>
   
   <url>
-    <loc>http://daweitech.github.io/tags/sql/</loc>
+    <loc>http://daweitech.github.io/tags/upload-labs/</loc>
     <lastmod>2021-10-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
