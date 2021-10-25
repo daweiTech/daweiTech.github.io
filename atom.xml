@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2021-10-19T11:05:20.234Z</updated>
+  <updated>2021-10-25T14:59:53.708Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Dasctf x Jlenu</title>
+    <link href="http://daweitech.github.io/2021/10/25/ctf/Jlenu/"/>
+    <id>http://daweitech.github.io/2021/10/25/ctf/Jlenu/</id>
+    <published>2021-10-25T14:45:12.000Z</published>
+    <updated>2021-10-25T14:59:53.708Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt; 这次坐大牢，web做不出来==&lt;/p&gt;
+&lt;p&gt; 在一个大佬点拨下，懂得misc的签到用ssti注入做（虽然迟了点交flag)&lt;/p&gt;
+&lt;p&gt; 直接网上查到payload：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="ctf" scheme="http://daweitech.github.io/tags/ctf/"/>
+    
+  </entry>
   
   <entry>
     <title>陇剑杯复现</title>
@@ -144,7 +169,7 @@
     <link href="http://daweitech.github.io/2021/10/04/nss/2/"/>
     <id>http://daweitech.github.io/2021/10/04/nss/2/</id>
     <published>2021-10-04T02:36:35.000Z</published>
-    <updated>2021-10-19T12:54:08.535Z</updated>
+    <updated>2021-10-22T14:25:36.816Z</updated>
     
     
       
@@ -451,7 +476,7 @@
     <link href="http://daweitech.github.io/2021/09/03/buu/19/"/>
     <id>http://daweitech.github.io/2021/09/03/buu/19/</id>
     <published>2021-09-03T07:48:25.000Z</published>
-    <updated>2021-09-07T12:35:08.633Z</updated>
+    <updated>2021-10-22T08:40:34.135Z</updated>
     
     
       
@@ -467,29 +492,6 @@
     
     
     <category term="buu" scheme="http://daweitech.github.io/tags/buu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP and MySQL Web Development(一)</title>
-    <link href="http://daweitech.github.io/2021/09/03/php/1/"/>
-    <id>http://daweitech.github.io/2021/09/03/php/1/</id>
-    <published>2021-09-03T02:51:22.000Z</published>
-    <updated>2021-09-21T12:44:48.663Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="php" scheme="http://daweitech.github.io/tags/php/"/>
     
   </entry>
   
