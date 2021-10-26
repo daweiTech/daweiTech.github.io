@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2021-10-25T14:59:53.708Z</updated>
+  <updated>2021-10-26T03:22:46.577Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Dasctf x Jlenu</title>
-    <link href="http://daweitech.github.io/2021/10/25/ctf/Jlenu/"/>
-    <id>http://daweitech.github.io/2021/10/25/ctf/Jlenu/</id>
+    <link href="http://daweitech.github.io/2021/10/25/ctf/Dasctf%20x%20Jlenu/"/>
+    <id>http://daweitech.github.io/2021/10/25/ctf/Dasctf%20x%20Jlenu/</id>
     <published>2021-10-25T14:45:12.000Z</published>
-    <updated>2021-10-25T14:59:53.708Z</updated>
+    <updated>2021-10-26T03:22:46.577Z</updated>
     
     
       
@@ -30,7 +30,7 @@
         
     <summary type="html">&lt;p&gt; 这次坐大牢，web做不出来==&lt;/p&gt;
 &lt;p&gt; 在一个大佬点拨下，懂得misc的签到用ssti注入做（虽然迟了点交flag)&lt;/p&gt;
-&lt;p&gt; 直接网上查到payload：&lt;a</summary>
+&lt;h2 id=&quot;WELCOME-DASCTFxJlenu&quot;&gt;&lt;a href=&quot;#WELCOME-DASCTFxJlenu&quot;</summary>
         
       
     

