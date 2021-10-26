@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2021-10-26T03:22:46.577Z</updated>
+  <updated>2021-10-26T12:25:06.185Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>天翼杯 2021 esay_eval</title>
+    <link href="http://daweitech.github.io/2021/10/26/nss/1/"/>
+    <id>http://daweitech.github.io/2021/10/26/nss/1/</id>
+    <published>2021-10-26T11:41:39.000Z</published>
+    <updated>2021-10-26T12:25:06.185Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt; 题目标签：&lt;strong&gt;反序列化、主从复制、RCE、redis&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;开启靶机是代码展现&lt;/p&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    
+    <category term="nss" scheme="http://daweitech.github.io/tags/nss/"/>
+    
+  </entry>
   
   <entry>
     <title>Dasctf x Jlenu</title>
@@ -460,30 +485,6 @@
         
         
     <summary type="html">&lt;h4 id=&quot;Novel&quot;&gt;&lt;a href=&quot;#Novel&quot; class=&quot;headerlink&quot; title=&quot;Novel:&quot;&gt;&lt;/a&gt;Novel:&lt;/h4&gt;&lt;p&gt;参考博客：&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="buu" scheme="http://daweitech.github.io/tags/buu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MRCTF2020 Ezpop</title>
-    <link href="http://daweitech.github.io/2021/09/03/buu/19/"/>
-    <id>http://daweitech.github.io/2021/09/03/buu/19/</id>
-    <published>2021-09-03T07:48:25.000Z</published>
-    <updated>2021-10-22T08:40:34.135Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h4 id=&quot;0x00解题&quot;&gt;&lt;a href=&quot;#0x00解题&quot; class=&quot;headerlink&quot; title=&quot;0x00解题&quot;&gt;&lt;/a&gt;0x00解题&lt;/h4&gt;&lt;p&gt;借鉴博客&lt;/p&gt;
 &lt;p&gt;&lt;a</summary>
         
       
