@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2021-10-26T12:25:06.185Z</updated>
+  <updated>2021-10-28T12:48:24.808Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>字符串逃逸</title>
+    <link href="http://daweitech.github.io/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/"/>
+    <id>http://daweitech.github.io/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/</id>
+    <published>2021-10-28T12:14:29.000Z</published>
+    <updated>2021-10-28T12:48:24.808Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt; 今天也是写了好多到web题，感觉bugku上的两题ssti有点坑，一直说我的pin是错的&lt;/p&gt;
+&lt;p&gt;咳咳，回到正题，写一下newphp题目，这题有关字符串反序列化逃逸&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="web" scheme="http://daweitech.github.io/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
     <title>天翼杯 2021 esay_eval</title>
     <link href="http://daweitech.github.io/2021/10/26/nss/1/"/>
     <id>http://daweitech.github.io/2021/10/26/nss/1/</id>
     <published>2021-10-26T11:41:39.000Z</published>
-    <updated>2021-10-26T12:25:06.185Z</updated>
+    <updated>2021-10-26T12:26:52.407Z</updated>
     
     
       
@@ -29,8 +54,7 @@
         
         
     <summary type="html">&lt;p&gt; 题目标签：&lt;strong&gt;反序列化、主从复制、RCE、redis&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;开启靶机是代码展现&lt;/p&gt;
-&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
+&lt;p&gt;文章学习：&lt;a</summary>
         
       
     
@@ -469,30 +493,6 @@
     
     
     <category term="php" scheme="http://daweitech.github.io/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>网鼎杯 2020 总决赛 Novel&amp;GameExp</title>
-    <link href="http://daweitech.github.io/2021/09/04/buu/20/"/>
-    <id>http://daweitech.github.io/2021/09/04/buu/20/</id>
-    <published>2021-09-04T07:24:15.000Z</published>
-    <updated>2021-09-07T12:35:03.912Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h4 id=&quot;Novel&quot;&gt;&lt;a href=&quot;#Novel&quot; class=&quot;headerlink&quot; title=&quot;Novel:&quot;&gt;&lt;/a&gt;Novel:&lt;/h4&gt;&lt;p&gt;参考博客：&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="buu" scheme="http://daweitech.github.io/tags/buu/"/>
     
   </entry>
   

