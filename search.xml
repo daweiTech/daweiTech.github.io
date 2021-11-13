@@ -1101,13 +1101,9 @@ $.ajax(&#123;
       </tags>
   </entry>
   <entry>
-    <title>CISCN2019 华北赛区 Day1 Web2 ikun &amp; CISCN 2019华北Day2 Web1</title>
+    <title>CISCN2019 华北赛区 Day1 Web2 ikun &amp; CISCN 2019华北Day2 Web1&amp;CISCN2019 华北赛区 Day1 Web5 CyberPunk</title>
     <url>/2021/09/21/buu/22/</url>
-    <content><![CDATA[<h3 id="ikun"><a href="#ikun" class="headerlink" title="ikun"></a>ikun</h3><p>经历了一个上午AWD的被锤后</p>
-<p>有点心灰意冷</p>
-<p>做了好多题目都是跟着wp做的，没有什么收获</p>
-<p>本来找了ly0n大佬取经了一下，结果发现自己还是基础没打好</p>
-<p>这道题还是跟着wp做了一遍</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="pickle、jwt"><a href="#pickle、jwt" class="headerlink" title="pickle、jwt"></a>pickle、jwt</h3><p>这道题还是跟着wp做了一遍</p>
 <p>先记录一下思路</p>
 <p>进去之后是个购物页面，很多* li *li标志小电视的商品</p>
 <p>按照提示，我们需要买lv6的才行</p>
@@ -1122,7 +1118,7 @@ $.ajax(&#123;
 <p>进入jwt官方页面修改之后成功购买</p>
 <p>查看源码</p>
 <p>提示我们下载文件</p>
-<p>下载之后就是难点python的pickle漏洞</p>
+<p>下载之后就是难的python的pickle漏洞</p>
 <p><strong>漏洞产生的原因在于其可以将自定义的类进行序列化和反序列化。反序列化后产生的对象会在结束时触发<strong>reduce</strong>()函数从而触发恶意代码。</strong></p>
 <p>做题：</p>
 <p><img src="/2021/09/21/buu/22/image-20210924202100689.png" alt="image-20210924202100689"></p>
@@ -1169,7 +1165,7 @@ $.ajax(&#123;
 <p>按照题目提示是盲注</p>
 <p>但是明显手工注入很慢 ==</p>
 <p>看了wp是用抓包分析</p>
-]]></content>
+<h3 id="伪协议文件读取和报错注入"><a href="#伪协议文件读取和报错注入" class="headerlink" title="伪协议文件读取和报错注入"></a>伪协议文件读取和报错注入</h3>]]></content>
       <tags>
         <tag>buu</tag>
       </tags>
@@ -4839,26 +4835,50 @@ public function __toString()&#123;
   <entry>
     <title>字符串逃逸</title>
     <url>/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/</url>
-    <content><![CDATA[<p> 今天也是写了好多到web题，感觉bugku上的两题ssti有点坑，一直说我的pin是错的</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p> 今天也是写了好多道web题，感觉bugku上的两题ssti有点坑，一直说我的pin是错的</p>
 <p>咳咳，回到正题，写一下newphp题目，这题有关字符串反序列化逃逸</p>
 <p><a href="https://www.cnblogs.com/c0d1/p/14900076.html">bugku-newphp - c0d1 - 博客园 (cnblogs.com)</a></p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// php版本:5.4.44</span></span><br><span class="line">header(<span class="string">&quot;Content-type: text/html; charset=utf-8&quot;</span>);</span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">evil</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $hint;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$hint</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;hint = $hint;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">$this</span>-&gt;hint===<span class="string">&quot;hint.php&quot;</span>)</span><br><span class="line">            @<span class="keyword">$this</span>-&gt;hint = base64_encode(file_get_contents(<span class="keyword">$this</span>-&gt;hint)); </span><br><span class="line">        var_dump(<span class="keyword">$this</span>-&gt;hint);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;hint != <span class="string">&quot;╭(●｀∀´●)╯&quot;</span>) &#123; </span><br><span class="line">            <span class="comment">//There&#x27;s a hint in ./hint.php</span></span><br><span class="line">            <span class="keyword">$this</span>-&gt;hint = <span class="string">&quot;╰(●’◡’●)╮&quot;</span>; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $username;</span><br><span class="line">    <span class="keyword">public</span> $password;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$username, $password</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;username = $username;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;password = $password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">write</span>(<span class="params">$data</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">global</span> $tmp;</span><br><span class="line">    $data = str_replace(chr(<span class="number">0</span>).<span class="string">&#x27;*&#x27;</span>.chr(<span class="number">0</span>), <span class="string">&#x27;\0\0\0&#x27;</span>, $data);</span><br><span class="line">    $tmp = $data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">read</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">global</span> $tmp;</span><br><span class="line">    $data = $tmp;</span><br><span class="line">    $r = str_replace(<span class="string">&#x27;\0\0\0&#x27;</span>, chr(<span class="number">0</span>).<span class="string">&#x27;*&#x27;</span>.chr(<span class="number">0</span>), $data);</span><br><span class="line">    <span class="keyword">return</span> $r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$tmp = <span class="string">&quot;test&quot;</span>;</span><br><span class="line">$username = $_POST[<span class="string">&#x27;username&#x27;</span>];</span><br><span class="line">$password = $_POST[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line"></span><br><span class="line">$a = serialize(<span class="keyword">new</span> User($username, $password));</span><br><span class="line"><span class="keyword">if</span>(preg_match(<span class="string">&#x27;/flag/is&#x27;</span>,$a))</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">&quot;NoNoNo!&quot;</span>);</span><br><span class="line"></span><br><span class="line">unserialize(read(write($a)));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>很容易通过代码审计知道，我们要通过evil类来达到访问hint.php的目的</p>
+<p>很容易通过代码审计知道，我们要通过触发evil类来达到访问hint.php的目的</p>
 <p>但是evil类是没有传参数据的，所以需要触发User类来传递数据</p>
 <p>绕开wakeup函数</p>
 <p><img src="/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/image-20211028202324364.png" alt="image-20211028202324364"></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">O:4:&quot;evil&quot;:1:&#123;s:4:&quot;hint&quot;;s:8:&quot;hint.php&quot;;&#125;</span><br></pre></td></tr></table></figure>
 
+<p>上面这段就是我们要注入的payload</p>
+<p>用User类触发就是</p>
+<p><img src="/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/image-20211029182637091.png" alt="image-20211029182637091"></p>
+<p>得到</p>
+<p><img src="/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/image-20211029182704445.png" alt="image-20211029182704445"></p>
+<p>现在的问题就是，反序列化时字符长度固定的情况下，我们要怎么注入想要的属性</p>
+<p>这时候我们要替换的就是”;s:8:”password”;s:41:”，总共23位</p>
+<p>之前的read和write的方法会对字符串进行替换，而chr(0)*chr(0)s是三个字符，\0\0\0\是六个字符，</p>
+<p>每增加一组的\0\0\0就会吞掉三个字符，即多出三个位置给后面。</p>
+<p>我们可以在password的值上再加一个任意字符，即可凑齐24个，那么\0\0\0就是八组</p>
+<p>那这样我们就可以尝试注入了</p>
 <p><img src="/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/image-20211028203903753.png" alt="image-20211028203903753"></p>
 <p><img src="/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/image-20211028203932607.png" alt="image-20211028203932607"></p>
 <p>访问index.cgi</p>
 <p>存在ssrf</p>
 <p><img src="/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/image-20211028204012795.png" alt="image-20211028204012795"></p>
 <p><img src="/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/image-20211028204157176.png" alt="image-20211028204157176"></p>
+<h3 id="漏洞产生原因"><a href="#漏洞产生原因" class="headerlink" title="漏洞产生原因"></a>漏洞产生原因</h3><p>序列化的字符串在经过过滤函数不正确的处理而导致对象注入，目前看到都是因为过滤函数放在了serialize函数之后，要是放在序列化之前应该就不会产生这个问题</p>
+<p><a href="https://blog.csdn.net/dengyu810/article/details/103213750">https://blog.csdn.net/dengyu810/article/details/103213750</a></p>
+<p>再来刚才那题，我为了验证下正确性，将username里的字符变成2倍，然后通过前面要替换为23位</p>
+<p>就用24x2得到的48位减去23位得到25位，为了避免覆盖payload我们就增添25位</p>
+<p>记住，这里是6-&gt;3，\0的2位替换成1位的*，所以计算的时候要注意，都是以被替换成后来计算的</p>
+<p><img src="/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/image-20211029185728645.png" alt="image-20211029185728645"></p>
+<p>照样打得通</p>
 ]]></content>
       <tags>
         <tag>web</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>26</title>
+    <url>/2021/11/01/buu/26/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>[<a href="https://www.shawroot.cc/1159.html">NPUCTF2020]ezinclude（PHP临时文件包含） – 「配枪朱丽叶。」 (shawroot.cc)</a></p>
+]]></content>
   </entry>
 </search>
