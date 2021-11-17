@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2021-11-14T13:22:46.798Z</updated>
+  <updated>2021-11-17T11:34:16.406Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -17,18 +17,45 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>26</title>
+    <title>湖湘杯</title>
+    <link href="http://daweitech.github.io/2021/11/17/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/"/>
+    <id>http://daweitech.github.io/2021/11/17/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/</id>
+    <published>2021-11-17T11:15:31.000Z</published>
+    <updated>2021-11-17T11:34:16.406Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;没想到直接出了一题找框架漏洞的。。&lt;/p&gt;
+&lt;p&gt;赛后根据wp复现下，靶机环境为buu&lt;/p&gt;
+&lt;p&gt;参考文章：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="ctf" scheme="http://daweitech.github.io/tags/ctf/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>bluecms</title>
     <link href="http://daweitech.github.io/2021/11/01/buu/26/"/>
     <id>http://daweitech.github.io/2021/11/01/buu/26/</id>
     <published>2021-11-01T12:55:54.000Z</published>
-    <updated>2021-11-14T13:22:46.798Z</updated>
+    <updated>2021-11-14T13:41:02.854Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;[&lt;a href=&quot;https://www.shawroot.cc/1159.html&quot;&gt;NPUCTF2020]ezinclude（PHP临时文件包含） – 「配枪朱丽叶。」</summary>
+    <summary type="html">&lt;p&gt;[&lt;a href=&quot;https://www.shawroot.cc/1159.html&quot;&gt;NPUCTF2020]ezinclude（PHP临时文件包含） – 「配枪朱丽叶。」 (shawroot.cc)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;bluecms：&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
         
       
     
@@ -463,30 +490,6 @@
     
     
     <category term="web" scheme="http://daweitech.github.io/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2021祥云杯 secrets_of_admin&amp;crwaler_z</title>
-    <link href="http://daweitech.github.io/2021/09/07/buu/21/"/>
-    <id>http://daweitech.github.io/2021/09/07/buu/21/</id>
-    <published>2021-09-07T02:52:39.000Z</published>
-    <updated>2021-09-14T11:39:07.493Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/rfrder/article/details/119914746&quot;&gt;祥云杯2021 Web复现_feng的博客-CSDN博客&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;[祥云杯2021 web wp | Z3ratu1’s</summary>
-        
-      
-    
-    
-    
-    
-    <category term="buu" scheme="http://daweitech.github.io/tags/buu/"/>
     
   </entry>
   
