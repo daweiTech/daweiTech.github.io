@@ -1,5 +1,5 @@
 module.exports = {
-  title: "vuepress-theme-reco",
+  title: "4v1d",
   description: 'A simple and beautiful vuepress blog theme .',
   dest: 'public',
   head: [
