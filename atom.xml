@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2021-11-17T11:34:16.406Z</updated>
+  <updated>2022-01-20T12:41:00.051Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -17,9 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>notes</title>
+    <link href="http://daweitech.github.io/2022/01/20/2022/1/notes/"/>
+    <id>http://daweitech.github.io/2022/01/20/2022/1/notes/</id>
+    <published>2022-01-20T12:37:47.000Z</published>
+    <updated>2022-01-20T12:41:00.051Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="web" scheme="http://daweitech.github.io/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
     <title>湖湘杯</title>
-    <link href="http://daweitech.github.io/2021/11/17/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/"/>
-    <id>http://daweitech.github.io/2021/11/17/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/</id>
+    <link href="http://daweitech.github.io/2021/11/17/2021/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/"/>
+    <id>http://daweitech.github.io/2021/11/17/2021/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/</id>
     <published>2021-11-17T11:15:31.000Z</published>
     <updated>2021-11-17T11:34:16.406Z</updated>
     
@@ -43,8 +66,8 @@
   
   <entry>
     <title>bluecms</title>
-    <link href="http://daweitech.github.io/2021/11/01/buu/26/"/>
-    <id>http://daweitech.github.io/2021/11/01/buu/26/</id>
+    <link href="http://daweitech.github.io/2021/11/01/2021/buu/26/"/>
+    <id>http://daweitech.github.io/2021/11/01/2021/buu/26/</id>
     <published>2021-11-01T12:55:54.000Z</published>
     <updated>2021-11-14T13:41:02.854Z</updated>
     
@@ -66,8 +89,8 @@
   
   <entry>
     <title>字符串逃逸</title>
-    <link href="http://daweitech.github.io/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/"/>
-    <id>http://daweitech.github.io/2021/10/28/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/</id>
+    <link href="http://daweitech.github.io/2021/10/28/2021/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/"/>
+    <id>http://daweitech.github.io/2021/10/28/2021/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/</id>
     <published>2021-10-28T12:14:29.000Z</published>
     <updated>2021-10-29T11:01:22.369Z</updated>
     
@@ -91,8 +114,8 @@
   
   <entry>
     <title>天翼杯 2021 esay_eval</title>
-    <link href="http://daweitech.github.io/2021/10/26/nss/1/"/>
-    <id>http://daweitech.github.io/2021/10/26/nss/1/</id>
+    <link href="http://daweitech.github.io/2021/10/26/2021/nss/1/"/>
+    <id>http://daweitech.github.io/2021/10/26/2021/nss/1/</id>
     <published>2021-10-26T11:41:39.000Z</published>
     <updated>2021-10-26T12:26:52.407Z</updated>
     
@@ -115,8 +138,8 @@
   
   <entry>
     <title>Dasctf x Jlenu</title>
-    <link href="http://daweitech.github.io/2021/10/25/ctf/Dasctf%20x%20Jlenu/"/>
-    <id>http://daweitech.github.io/2021/10/25/ctf/Dasctf%20x%20Jlenu/</id>
+    <link href="http://daweitech.github.io/2021/10/25/2021/ctf/Dasctf%20x%20Jlenu/"/>
+    <id>http://daweitech.github.io/2021/10/25/2021/ctf/Dasctf%20x%20Jlenu/</id>
     <published>2021-10-25T14:45:12.000Z</published>
     <updated>2021-10-26T03:22:46.577Z</updated>
     
@@ -140,8 +163,8 @@
   
   <entry>
     <title>陇剑杯复现</title>
-    <link href="http://daweitech.github.io/2021/10/19/ctf/%E9%99%87%E5%89%91%E6%9D%AF/"/>
-    <id>http://daweitech.github.io/2021/10/19/ctf/%E9%99%87%E5%89%91%E6%9D%AF/</id>
+    <link href="http://daweitech.github.io/2021/10/19/2021/ctf/%E9%99%87%E5%89%91%E6%9D%AF/"/>
+    <id>http://daweitech.github.io/2021/10/19/2021/ctf/%E9%99%87%E5%89%91%E6%9D%AF/</id>
     <published>2021-10-19T10:22:35.000Z</published>
     <updated>2021-10-19T11:05:20.234Z</updated>
     
@@ -165,8 +188,8 @@
   
   <entry>
     <title>鲲鹏杯小结</title>
-    <link href="http://daweitech.github.io/2021/10/17/ctf/%E9%B2%B2%E9%B9%8F%E6%9D%AF/"/>
-    <id>http://daweitech.github.io/2021/10/17/ctf/%E9%B2%B2%E9%B9%8F%E6%9D%AF/</id>
+    <link href="http://daweitech.github.io/2021/10/17/2021/ctf/%E9%B2%B2%E9%B9%8F%E6%9D%AF/"/>
+    <id>http://daweitech.github.io/2021/10/17/2021/ctf/%E9%B2%B2%E9%B9%8F%E6%9D%AF/</id>
     <published>2021-10-17T09:48:44.000Z</published>
     <updated>2021-10-21T04:25:02.486Z</updated>
     
@@ -190,8 +213,8 @@
   
   <entry>
     <title>0</title>
-    <link href="http://daweitech.github.io/2021/10/14/misc/0/"/>
-    <id>http://daweitech.github.io/2021/10/14/misc/0/</id>
+    <link href="http://daweitech.github.io/2021/10/14/2021/misc/0/"/>
+    <id>http://daweitech.github.io/2021/10/14/2021/misc/0/</id>
     <published>2021-10-14T02:18:33.000Z</published>
     <updated>2021-10-14T03:09:48.939Z</updated>
     
@@ -214,8 +237,8 @@
   
   <entry>
     <title>suctf 2019 EasySQL</title>
-    <link href="http://daweitech.github.io/2021/10/10/nss/0/"/>
-    <id>http://daweitech.github.io/2021/10/10/nss/0/</id>
+    <link href="http://daweitech.github.io/2021/10/10/2021/nss/0/"/>
+    <id>http://daweitech.github.io/2021/10/10/2021/nss/0/</id>
     <published>2021-10-10T11:36:24.000Z</published>
     <updated>2021-10-10T11:54:21.481Z</updated>
     
@@ -238,8 +261,8 @@
   
   <entry>
     <title>2021鹤城杯</title>
-    <link href="http://daweitech.github.io/2021/10/10/ctf/%E9%B9%A4%E5%9F%8E%E6%9D%AF/"/>
-    <id>http://daweitech.github.io/2021/10/10/ctf/%E9%B9%A4%E5%9F%8E%E6%9D%AF/</id>
+    <link href="http://daweitech.github.io/2021/10/10/2021/ctf/%E9%B9%A4%E5%9F%8E%E6%9D%AF/"/>
+    <id>http://daweitech.github.io/2021/10/10/2021/ctf/%E9%B9%A4%E5%9F%8E%E6%9D%AF/</id>
     <published>2021-10-10T01:16:07.000Z</published>
     <updated>2021-10-12T11:57:57.567Z</updated>
     
@@ -263,8 +286,8 @@
   
   <entry>
     <title>NSSCTF 2021 writeup</title>
-    <link href="http://daweitech.github.io/2021/10/04/nss/2/"/>
-    <id>http://daweitech.github.io/2021/10/04/nss/2/</id>
+    <link href="http://daweitech.github.io/2021/10/04/2021/nss/2/"/>
+    <id>http://daweitech.github.io/2021/10/04/2021/nss/2/</id>
     <published>2021-10-04T02:36:35.000Z</published>
     <updated>2021-10-22T14:25:36.816Z</updated>
     
@@ -289,8 +312,8 @@
   
   <entry>
     <title>极客大挑战 2019 RCE ME</title>
-    <link href="http://daweitech.github.io/2021/09/29/buu/25/"/>
-    <id>http://daweitech.github.io/2021/09/29/buu/25/</id>
+    <link href="http://daweitech.github.io/2021/09/29/2021/buu/25/"/>
+    <id>http://daweitech.github.io/2021/09/29/2021/buu/25/</id>
     <published>2021-09-29T13:28:21.000Z</published>
     <updated>2021-09-29T13:54:19.423Z</updated>
     
@@ -299,7 +322,7 @@
       
         
         
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2021/09/29/buu/25/image-20210929213110592.png&quot;</summary>
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2021/09/29/2021/buu/25/image-20210929213110592.png&quot;</summary>
         
       
     
@@ -312,8 +335,8 @@
   
   <entry>
     <title>MRCTF2020 wirteup</title>
-    <link href="http://daweitech.github.io/2021/09/28/buu/24/"/>
-    <id>http://daweitech.github.io/2021/09/28/buu/24/</id>
+    <link href="http://daweitech.github.io/2021/09/28/2021/buu/24/"/>
+    <id>http://daweitech.github.io/2021/09/28/2021/buu/24/</id>
     <published>2021-09-28T11:31:00.000Z</published>
     <updated>2021-09-29T08:44:19.842Z</updated>
     
@@ -335,8 +358,8 @@
   
   <entry>
     <title>DASCTF hellounser</title>
-    <link href="http://daweitech.github.io/2021/09/25/buu/23/"/>
-    <id>http://daweitech.github.io/2021/09/25/buu/23/</id>
+    <link href="http://daweitech.github.io/2021/09/25/2021/buu/23/"/>
+    <id>http://daweitech.github.io/2021/09/25/2021/buu/23/</id>
     <published>2021-09-25T12:02:32.000Z</published>
     <updated>2021-09-26T13:16:27.945Z</updated>
     
@@ -359,8 +382,8 @@
   
   <entry>
     <title>ics-05&amp;&amp;mfw</title>
-    <link href="http://daweitech.github.io/2021/09/23/web/1/"/>
-    <id>http://daweitech.github.io/2021/09/23/web/1/</id>
+    <link href="http://daweitech.github.io/2021/09/23/2021/web/1/"/>
+    <id>http://daweitech.github.io/2021/09/23/2021/web/1/</id>
     <published>2021-09-23T12:46:18.000Z</published>
     <updated>2021-09-24T12:17:41.921Z</updated>
     
@@ -383,8 +406,8 @@
   
   <entry>
     <title>CISCN2019 华北赛区 Day1 Web2 ikun &amp; CISCN 2019华北Day2 Web1&amp;CISCN2019 华北赛区 Day1 Web5 CyberPunk</title>
-    <link href="http://daweitech.github.io/2021/09/21/buu/22/"/>
-    <id>http://daweitech.github.io/2021/09/21/buu/22/</id>
+    <link href="http://daweitech.github.io/2021/09/21/2021/buu/22/"/>
+    <id>http://daweitech.github.io/2021/09/21/2021/buu/22/</id>
     <published>2021-09-21T12:26:05.000Z</published>
     <updated>2021-10-31T02:45:48.967Z</updated>
     
@@ -406,8 +429,8 @@
   
   <entry>
     <title>php代码审计(三)</title>
-    <link href="http://daweitech.github.io/2021/09/17/src/3/"/>
-    <id>http://daweitech.github.io/2021/09/17/src/3/</id>
+    <link href="http://daweitech.github.io/2021/09/17/2021/src/3/"/>
+    <id>http://daweitech.github.io/2021/09/17/2021/src/3/</id>
     <published>2021-09-17T12:20:23.000Z</published>
     <updated>2021-09-17T12:37:47.373Z</updated>
     
@@ -431,8 +454,8 @@
   
   <entry>
     <title>漏洞挖掘演练(一)</title>
-    <link href="http://daweitech.github.io/2021/09/17/src/2/"/>
-    <id>http://daweitech.github.io/2021/09/17/src/2/</id>
+    <link href="http://daweitech.github.io/2021/09/17/2021/src/2/"/>
+    <id>http://daweitech.github.io/2021/09/17/2021/src/2/</id>
     <published>2021-09-17T07:14:27.000Z</published>
     <updated>2021-09-17T12:38:27.457Z</updated>
     
@@ -443,7 +466,7 @@
         
     <summary type="html">&lt;p&gt;以下内容全部来自于：安恒信息&lt;/p&gt;
 &lt;p&gt;关于cms的源码&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2021/09/17/src/2/image-20210917152538626.png&quot;</summary>
+&lt;p&gt;&lt;img src=&quot;/2021/09/17/2021/src/2/image-20210917152538626.png&quot;</summary>
         
       
     
@@ -456,8 +479,8 @@
   
   <entry>
     <title>PHP and MySQL Web Development(二)</title>
-    <link href="http://daweitech.github.io/2021/09/15/php/3/"/>
-    <id>http://daweitech.github.io/2021/09/15/php/3/</id>
+    <link href="http://daweitech.github.io/2021/09/15/2021/php/3/"/>
+    <id>http://daweitech.github.io/2021/09/15/2021/php/3/</id>
     <published>2021-09-15T13:19:28.000Z</published>
     <updated>2021-09-15T13:20:40.278Z</updated>
     
@@ -466,32 +489,6 @@
     
     
     <category term="php" scheme="http://daweitech.github.io/tags/php/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>runoob.com-html(1)</title>
-    <link href="http://daweitech.github.io/2021/09/13/web/0/"/>
-    <id>http://daweitech.github.io/2021/09/13/web/0/</id>
-    <published>2021-09-13T14:01:57.000Z</published>
-    <updated>2021-09-14T08:38:25.388Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;1.HTML文档的后缀名&lt;/p&gt;
-&lt;p&gt;.html                .htm&lt;/p&gt;
-&lt;p&gt;2.实例解析&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    
-    <category term="web" scheme="http://daweitech.github.io/tags/web/"/>
     
   </entry>
   

