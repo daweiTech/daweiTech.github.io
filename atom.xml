@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2022-01-20T12:41:00.051Z</updated>
+  <updated>2022-02-05T14:25:20.235Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>rois-冬令营</title>
+    <link href="http://daweitech.github.io/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/"/>
+    <id>http://daweitech.github.io/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/</id>
+    <published>2022-02-05T13:41:57.000Z</published>
+    <updated>2022-02-05T14:25:20.235Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt; 偶然得知了rois举办了这个冬令营&lt;/p&gt;
+&lt;p&gt;web题目大部分自己做，有几道是在别人帮助下的&lt;/p&gt;
+&lt;p&gt;很高兴这次密码学做出了两道简单题&lt;/p&gt;
+&lt;p&gt;今天写下writeup总结一下&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+    <category term="ctf" scheme="http://daweitech.github.io/tags/ctf/"/>
+    
+  </entry>
+  
+  <entry>
     <title>notes</title>
     <link href="http://daweitech.github.io/2022/01/20/2022/1/notes/"/>
     <id>http://daweitech.github.io/2022/01/20/2022/1/notes/</id>
     <published>2022-01-20T12:37:47.000Z</published>
-    <updated>2022-01-20T12:41:00.051Z</updated>
+    <updated>2022-02-05T13:36:37.972Z</updated>
     
     
       
@@ -474,21 +501,6 @@
     
     
     <category term="src" scheme="http://daweitech.github.io/tags/src/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP and MySQL Web Development(二)</title>
-    <link href="http://daweitech.github.io/2021/09/15/2021/php/3/"/>
-    <id>http://daweitech.github.io/2021/09/15/2021/php/3/</id>
-    <published>2021-09-15T13:19:28.000Z</published>
-    <updated>2021-09-15T13:20:40.278Z</updated>
-    
-    
-    
-    
-    
-    <category term="php" scheme="http://daweitech.github.io/tags/php/"/>
     
   </entry>
   

