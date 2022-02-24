@@ -1,259 +1,167 @@
-var btf = {
-  debounce: function (func, wait, immediate) {
-    let timeout
-    return function () {
-      const context = this
-      const args = arguments
-      const later = function () {
-        timeout = null
-        if (!immediate) func.apply(context, args)
-      }
-      const callNow = immediate && !timeout
-      clearTimeout(timeout)
-      timeout = setTimeout(later, wait)
-      if (callNow) func.apply(context, args)
-    }
-  },
+(function ($) {
+  "use strict";
 
-  throttle: function (func, wait, options) {
-    let timeout, context, args
-    let previous = 0
-    if (!options) options = {}
-
-    const later = function () {
-      previous = options.leading === false ? 0 : new Date().getTime()
-      timeout = null
-      func.apply(context, args)
-      if (!timeout) context = args = null
-    }
-
-    const throttled = function () {
-      const now = new Date().getTime()
-      if (!previous && options.leading === false) previous = now
-      const remaining = wait - (now - previous)
-      context = this
-      args = arguments
-      if (remaining <= 0 || remaining > wait) {
-        if (timeout) {
-          clearTimeout(timeout)
-          timeout = null
-        }
-        previous = now
-        func.apply(context, args)
-        if (!timeout) context = args = null
-      } else if (!timeout && options.trailing !== false) {
-        timeout = setTimeout(later, remaining)
-      }
-    }
-
-    return throttled
-  },
-
-  sidebarPaddingR: () => {
-    const innerWidth = window.innerWidth
-    const clientWidth = document.body.clientWidth
-    const paddingRight = innerWidth - clientWidth
-    if (innerWidth !== clientWidth) {
-      document.body.style.paddingRight = paddingRight + 'px'
-    }
-  },
-
-  snackbarShow: (text, showAction, duration) => {
-    const sa = (typeof showAction !== 'undefined') ? showAction : false
-    const dur = (typeof duration !== 'undefined') ? duration : 2000
-    const position = GLOBAL_CONFIG.Snackbar.position
-    const bg = document.documentElement.getAttribute('data-theme') === 'light' ? GLOBAL_CONFIG.Snackbar.bgLight : GLOBAL_CONFIG.Snackbar.bgDark
-    Snackbar.show({
-      text: text,
-      backgroundColor: bg,
-      showAction: sa,
-      duration: dur,
-      pos: position
-    })
-  },
-
-  initJustifiedGallery: function (selector) {
-    if (!(selector instanceof jQuery)) {
-      selector = $(selector)
-    }
-    selector.each(function (i, o) {
-      if ($(this).is(':visible')) {
-        $(this).justifiedGallery({
-          rowHeight: 220,
-          margins: 4
-        })
-      }
-    })
-  },
-
-  diffDate: (d, more = false) => {
-    const dateNow = new Date()
-    const datePost = new Date(d)
-    const dateDiff = dateNow.getTime() - datePost.getTime()
-    const minute = 1000 * 60
-    const hour = minute * 60
-    const day = hour * 24
-    const month = day * 30
-
-    let result
-    if (more) {
-      const monthCount = dateDiff / month
-      const dayCount = dateDiff / day
-      const hourCount = dateDiff / hour
-      const minuteCount = dateDiff / minute
-
-      if (monthCount > 12) {
-        result = datePost.toLocaleDateString().replace(/\//g, '-')
-      } else if (monthCount >= 1) {
-        result = parseInt(monthCount) + ' ' + GLOBAL_CONFIG.date_suffix.month
-      } else if (dayCount >= 1) {
-        result = parseInt(dayCount) + ' ' + GLOBAL_CONFIG.date_suffix.day
-      } else if (hourCount >= 1) {
-        result = parseInt(hourCount) + ' ' + GLOBAL_CONFIG.date_suffix.hour
-      } else if (minuteCount >= 1) {
-        result = parseInt(minuteCount) + ' ' + GLOBAL_CONFIG.date_suffix.min
-      } else {
-        result = GLOBAL_CONFIG.date_suffix.just
-      }
-    } else {
-      result = parseInt(dateDiff / day)
-    }
-    return result
-  },
-
-  loadComment: (dom, callback) => {
-    if ('IntersectionObserver' in window) {
-      const observerItem = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          callback()
-          observerItem.disconnect()
-        }
-      }, { threshold: [0] })
-      observerItem.observe(dom)
-    } else {
-      callback()
-    }
-  },
-
-  scrollToDest: (pos, time) => {
-    if (pos < 0 || time < 0) {
-      return
-    }
-
-    var currentPos = window.scrollY || window.screenTop
-    if (currentPos > pos) pos = pos - 70
-
-    if ('CSS' in window && CSS.supports('scroll-behavior', 'smooth')) {
-      window.scrollTo({
-        top: pos,
-        behavior: 'smooth'
-      })
-      return
-    }
-
-    var start = null
-    time = time || 500
-    window.requestAnimationFrame(function step (currentTime) {
-      start = !start ? currentTime : start
-      if (currentPos < pos) {
-        const progress = currentTime - start
-        window.scrollTo(0, ((pos - currentPos) * progress / time) + currentPos)
-        if (progress < time) {
-          window.requestAnimationFrame(step)
+  ZHAOO.utils = {
+    debounce: function (func, wait, immediate) {
+      var timeout;
+      return function () {
+        var context = this;
+        var args = arguments;
+        timeout && clearTimeout(timeout);
+        if (immediate) {
+          var callNow = !timeout;
+          timeout = setTimeout(function () {
+            timeout = null;
+          }, wait);
+          if (callNow) func.apply(context, args);
         } else {
-          window.scrollTo(0, pos)
-        }
-      } else {
-        const progress = currentTime - start
-        window.scrollTo(0, currentPos - ((currentPos - pos) * progress / time))
-        if (progress < time) {
-          window.requestAnimationFrame(step)
-        } else {
-          window.scrollTo(0, pos)
+          timeout = setTimeout(function () {
+            func.apply(context, args);
+          }, wait);
         }
       }
-    })
-  },
-
-  fadeIn: (ele, time) => {
-    ele.style.cssText = `display:block;animation: to_show ${time}s`
-  },
-
-  fadeOut: (ele, time) => {
-    ele.addEventListener('animationend', function f () {
-      ele.style.cssText = "display: none; animation: '' "
-      ele.removeEventListener('animationend', f)
-    })
-    ele.style.animation = `to_hide ${time}s`
-  },
-
-  getParents: (elem, selector) => {
-    // polyfill
-    if (!Element.prototype.matches) {
-      Element.prototype.matches =
-          Element.prototype.matchesSelector ||
-          Element.prototype.mozMatchesSelector ||
-          Element.prototype.msMatchesSelector ||
-          Element.prototype.oMatchesSelector ||
-          Element.prototype.webkitMatchesSelector ||
-          function (s) {
-            const matches = (this.document || this.ownerDocument).querySelectorAll(s)
-            let i = matches.length
-            while (--i >= 0 && matches.item(i) !== this) {}
-            return i > -1
+    },
+    throttle: function (func, wait, options) {
+      var timeout, context, args;
+      var previous = 0;
+      if (!options) options = {};
+      var later = function () {
+        previous = options.leading === false ? 0 : new Date().getTime();
+        timeout = null;
+        func.apply(context, args);
+        if (!timeout) context = args = null;
+      }
+      var throttled = function () {
+        var now = new Date().getTime();
+        if (!previous && options.leading === false) previous = now;
+        var remaining = wait - (now - previous);
+        context = this;
+        args = arguments;
+        if (remaining <= 0 || remaining > wait) {
+          if (timeout) {
+            clearTimeout(timeout);
+            timeout = null;
           }
-    }
-
-    for (; elem && elem !== document; elem = elem.parentNode) {
-      if (elem.matches(selector)) return elem
-    }
-    return null
-  },
-
-  /**
-   *
-   * @param {*} ele
-   * @param {*} selector class name
-   */
-  siblings: (ele, selector) => {
-    return [...ele.parentNode.children].filter((child) => {
-      if (selector) {
-        return child !== ele && child.classList.contains(selector)
+          previous = now;
+          func.apply(context, args);
+          if (!timeout) context = args = null;
+        } else if (!timeout && options.trailing !== false) {
+          timeout = setTimeout(later, remaining);
+        }
       }
-    })
-  },
-
-  /**
-   *
-   * @param {*} selector
-   * @param {*} eleType the type of create element
-   * @param {*} id id
-   * @param {*} cn class name
-   */
-  wrap: function (selector, eleType, id = null, cn = null) {
-    const creatEle = document.createElement(eleType)
-    if (id) creatEle.id = id
-    if (cn) creatEle.className = cn
-    selector.parentNode.insertBefore(creatEle, selector)
-    creatEle.appendChild(selector)
-  },
-
-  unwrap: function (el) {
-    const elParentNode = el.parentNode
-    if (elParentNode !== document.body) {
-      elParentNode.parentNode.insertBefore(el, elParentNode)
-      elParentNode.parentNode.removeChild(elParentNode)
+      return throttled;
+    },
+    hasMobileUA: function () {
+      var nav = window.navigator;
+      var ua = nav.userAgent;
+      var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+      return pa.test(ua);
+    },
+    isTablet: function () {
+      return (
+        window.screen.width > 767 &&
+        window.screen.width < 992 &&
+        this.hasMobileUA()
+      );
+    },
+    isMobile: function () {
+      return window.screen.width < 767 && this.hasMobileUA();
+    },
+    isDesktop: function () {
+      return !this.isTablet() && !this.isMobile();
+    },
+    isDuringDate: function (beginDateStr, endDateStr) {
+      var curDate = new Date(),
+        beginDate = new Date(beginDateStr),
+        endDate = new Date(endDateStr);
+      if (curDate >= beginDate && curDate <= endDate) {
+        return true;
+      }
+      return false;
+    },
+    bindKeyup: function (code, fn) {
+      $(document).keyup(function (e) {
+        var key = e.which || e.keyCode;;
+        if (key == code) {
+          fn();
+        }
+      });
     }
-  },
+  }
 
-  isJqueryLoad: (fn) => {
-    if (typeof jQuery === 'undefined') {
-      getScript(GLOBAL_CONFIG.source.jQuery).then(fn)
-    } else {
-      fn()
+  ZHAOO.zui = {
+    message: function ({ text, type, delay }) {
+      var message = '<div class="zui-message ' + (type || "info") + '"><p>' + text + '</p></div>';
+      $("body").append(message);
+      var e = $(".zui-message");
+      e.ready(function () {
+        e.addClass("in");
+        setTimeout(function () {
+          e.removeClass("in");
+          e.on("transitionend webkitTransitionEnd", function () {
+            $(this).remove();
+          });
+        }, delay || 3000);
+      });
+    },
+    notification: function ({ title, content, type, delay }) {
+      var storage = JSON.parse(localStorage.getItem("notification-closed"));
+      if (storage && storage.indexOf(title) >= 0) return;
+      var notification = '<div class="zui-notification ' + (type || "info") + '"><span>' + title + '</span><p>' + content + '</p><i class="j-notification-close iconfont iconbaseline-close-px"></i></div>';
+      $("body").append(notification);
+      var e = $(".zui-notification");
+      var close = $(".j-notification-close");
+      e.ready(function () {
+        e.addClass("in");
+        setTimeout(function () {
+          e.removeClass("in");
+          e.on("transitionend webkitTransitionEnd", function () {
+            $(this).remove();
+          });
+        }, delay || 3000);
+        close.on("click", function () {
+          e.removeClass("in");
+          if (storage) {
+            (storage.indexOf(title) < 0) && localStorage.setItem("notification-closed", JSON.stringify(storage.concat(title)));
+          } else {
+            localStorage.setItem("notification-closed", JSON.stringify([title]));
+          }
+        });
+      });
     }
-  },
+  }
 
-  isHidden: (ele) => ele.offsetHeight === 0 && ele.offsetWidth === 0
+})(jQuery);
 
+class AsyncLimit {
+  constructor(limit) {
+    this.limit = Number(limit) || 2;
+    this.pool = [];
+    this.current = 0;
+  }
+
+  async run(fn) {
+    if (!fn || typeof fn !== 'function') {
+      throw new Error('Function error.');
+    }
+    if (this.current >= this.limit) {
+      await new Promise(resolve => this.pool.push(resolve));
+    }
+    return this._handleRun(fn);
+  }
+
+  async _handleRun(fn) {
+    this.current++;
+    try {
+      return await fn();
+    } catch (err) {
+      return Promise.reject(err);
+    } finally {
+      this.current--;
+      if (this.pool.length) {
+        this.pool[0]();
+        this.pool.shift();
+      }
+    }
+  }
 }
