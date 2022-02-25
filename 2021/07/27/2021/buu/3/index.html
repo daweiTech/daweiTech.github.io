@@ -6,14 +6,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>MRCTF2020 Ez_bypass&amp;GYCTF2020 Blacklist - Αιώνιος</title>
+  <title>GYCTF2020 Blacklist - Αιώνιος</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   
-  <meta name="description" content="[MRCTF2020]Ez_bypass打开靶机：
-
-...">
+  <meta name="description" content="[GYCTF2020]Blacklist打开靶机后，明...">
   <meta name="author" content="4v1d">
   <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -155,7 +153,7 @@
       
       
     </div>
-    <div class="center">MRCTF2020 Ez_bypass&amp;GYCTF2020 Blacklist</div>
+    <div class="center">GYCTF2020 Blacklist</div>
     <div class="right">
       <i class="iconfont iconmenu j-navbar-menu"></i>
     </div>
@@ -199,44 +197,18 @@
     <section class="head">
   <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">MRCTF2020 Ez_bypass&GYCTF2020 Blacklist</h1>
+    <h1 class="head-title">GYCTF2020 Blacklist</h1>
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>July 27, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>976</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>564</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
         
-        <h2 id="MRCTF2020-Ez-bypass"><a href="#MRCTF2020-Ez-bypass" class="headerlink" title="[MRCTF2020]Ez_bypass"></a>[MRCTF2020]Ez_bypass</h2><p>打开靶机：</p>
-<p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727172208110.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210727172208110"></p>
-<p>按照提示</p>
-<p>进入f12中</p>
-<p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727172249158.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210727172249158"></p>
-<p>代码审计一下：</p>
-<p>里面包含了名为flag.php的文件，flag的格式也进行了说明</p>
-<p>接下来要处理两个变量，gg和id</p>
-<p>第一个if判断的是两个变量md5值相同但是其本身却不能相等</p>
-<p>我查找到了有关资料</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">MD5不能处理数组，处理任意数组返回值都相同<br></code></pre></td></tr></table></figure>
-
-<p>所以我们直接这样赋值</p>
-<p>?id[]=1&amp;gg[]=2</p>
-<p>成功达成第一个条件：</p>
-<p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727172710626.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210727172710626"></p>
-<p>接着看看第二个if需要完成什么</p>
-<p>提示我们POST传参passwd变量</p>
-<p>其值不能为数字型</p>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs haml">=<span class="ruby">==是恒等计算符  同时检查表达式的值与类型</span><br><br><span class="ruby">==是比较运算符号  不会检查条件式的表达式的类型</span><br></code></pre></td></tr></table></figure>
-
-<p>之后的比较同样满足条件。思路有了，</p>
-<p>不过我做法错了，跟以前弱口令什么的混起来了，疯狂尝试了‘123456a’无果</p>
-<p>看了wp后才知道，其实不用加分号，直接passwd=1234567a，这里已经是字符型了。</p>
-<p>一剑封喉：</p>
-<p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727173223649.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210727173223649"></p>
-<h2 id="GYCTF2020-Blacklist"><a href="#GYCTF2020-Blacklist" class="headerlink" title="[GYCTF2020]Blacklist"></a>[GYCTF2020]Blacklist</h2><p>打开靶机后，明显注入题。</p>
+        <h2 id="GYCTF2020-Blacklist"><a href="#GYCTF2020-Blacklist" class="headerlink" title="[GYCTF2020]Blacklist"></a>[GYCTF2020]Blacklist</h2><p>打开靶机后，明显注入题。</p>
 <p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727204621570.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210727204621570"></p>
 <p>wp来源：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/20175211lyz/p/12356678.html">https://www.cnblogs.com/20175211lyz/p/12356678.html</a></p>
 <h4 id="姿势-堆叠注入"><a href="#姿势-堆叠注入" class="headerlink" title="姿势-堆叠注入"></a>姿势-堆叠注入</h4><p>获取库名、表名、列名</p>
@@ -295,11 +267,6 @@
       <div class="col-xl-3">
         
           
-  <aside class="toc-wrap">
-    <h3 class="toc-title">文章目录：</h3>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MRCTF2020-Ez-bypass"><span class="toc-text">[MRCTF2020]Ez_bypass</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GYCTF2020-Blacklist"><span class="toc-text">[GYCTF2020]Blacklist</span></a></li></ol>
-  </aside>
-
         
       </div>
     </div>
