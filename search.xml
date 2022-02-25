@@ -2787,36 +2787,6 @@ public function __toString()&#123;
       </tags>
   </entry>
   <entry>
-    <title>java学习记录</title>
-    <url>/2021/07/09/2021/java/java1/</url>
-    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p> 尝试了好几种编程软件，发生了不同程度报错</p>
-<p>pycharm：连接debugger失败</p>
-<p>sublintext：扩展较mafan</p>
-<p>eclipse：届时应该会用</p>
-<p>最终敲定在假期使用vscode来编程java</p>
-<h4 id="7-9"><a href="#7-9" class="headerlink" title="7.9"></a>7.9</h4><p>经过昨天的多次失败，今天成功运行了Java，打印出了helloworld</p>
-<p>总结一下：<strong>文件名需与类名一致</strong></p>
-<p>使用了两个命令 <strong>javac</strong> 和 <strong>java</strong>。</p>
-<p>执行前先用Javac编译，注意要带上后缀。</p>
-<p><img src="/2021/07/09/2021/java/java1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(269).png" alt="屏幕截图(269)"></p>
-<p><img src="/2021/07/09/2021/java/java1/662E827A-FA32-4464-B0BD-40087F429E98.jpg" alt="img"></p>
-<h5 id="菜鸟教程上的基本语法："><a href="#菜鸟教程上的基本语法：" class="headerlink" title="菜鸟教程上的基本语法："></a>菜鸟教程上的基本语法：</h5><ul>
-<li><strong>大小写敏感</strong>：Java 是大小写敏感的，这就意味着标识符 Hello 与 hello 是不同的。</li>
-<li><strong>类名</strong>：对于所有的类来说，类名的首字母应该大写。如果类名由若干单词组成，那么每个单词的首字母应该大写，例如 <strong>MyFirstJavaClass</strong> 。</li>
-<li><strong>方法名</strong>：所有的方法名都应该以小写字母开头。如果方法名含有若干单词，则后面的每个单词首字母大写。</li>
-<li><strong>源文件名</strong>：源文件名必须和类名相同。当保存文件的时候，你应该使用类名作为文件名保存（切记 Java 是大小写敏感的），文件名的后缀为 <strong>.java</strong>。（如果文件名和类名不相同则会导致编译错误）。</li>
-<li><strong>主方法入口</strong>：所有的 Java 程序由 <strong>public static void main(String[] args)</strong> 方法开始执行。</li>
-</ul>
-<p>突然发现之前无意中看到的vsdebugger有bug是真的，啊这</p>
-<p>调试半天都不行，还是直接cmd命令行更快。乌鱼子。。</p>
-<h4 id="7-10"><a href="#7-10" class="headerlink" title="7.10"></a>7.10</h4><p>清晨起来试了一下，很快嗷（doge）</p>
-<p>切换vscode里的断点，误打误撞成功了，直接可以编译运行Java文件，好耶</p>
-<p><img src="/2021/07/09/2021/java/java1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(271).png"></p>
-<p><img src="/2021/07/09/2021/java/java1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(273).png" alt="屏幕截图(273)"></p>
-<p><img src="/2021/07/09/2021/java/java1/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(272).png"></p>
-]]></content>
-  </entry>
-  <entry>
     <title>0</title>
     <url>/2021/10/14/2021/misc/0/</url>
     <content><![CDATA[<h3 id="大白"><a href="#大白" class="headerlink" title="大白"></a>大白</h3><p>下载附件用010editor打开图片</p>
