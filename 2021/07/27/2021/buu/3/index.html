@@ -12,7 +12,8 @@
   <meta name="google" content="notranslate" />
   
   <meta name="description" content="[MRCTF2020]Ez_bypass打开靶机：
-i...">
+
+...">
   <meta name="author" content="4v1d">
   <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -202,7 +203,7 @@ i...">
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>July 27, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1169</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>976</span>
     </div>
   </div>
 </section>
@@ -210,44 +211,44 @@ i...">
       <section class="content">
         
         <h2 id="MRCTF2020-Ez-bypass"><a href="#MRCTF2020-Ez-bypass" class="headerlink" title="[MRCTF2020]Ez_bypass"></a>[MRCTF2020]Ez_bypass</h2><p>打开靶机：</p>
-<p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727172208110.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210727172208110</span></p>
+<p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727172208110.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210727172208110"></p>
 <p>按照提示</p>
 <p>进入f12中</p>
-<p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727172249158.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210727172249158</span></p>
+<p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727172249158.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210727172249158"></p>
 <p>代码审计一下：</p>
 <p>里面包含了名为flag.php的文件，flag的格式也进行了说明</p>
 <p>接下来要处理两个变量，gg和id</p>
 <p>第一个if判断的是两个变量md5值相同但是其本身却不能相等</p>
 <p>我查找到了有关资料</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MD5不能处理数组，处理任意数组返回值都相同</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">MD5不能处理数组，处理任意数组返回值都相同<br></code></pre></td></tr></table></figure>
 
 <p>所以我们直接这样赋值</p>
 <p>?id[]=1&amp;gg[]=2</p>
 <p>成功达成第一个条件：</p>
-<p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727172710626.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210727172710626</span></p>
+<p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727172710626.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210727172710626"></p>
 <p>接着看看第二个if需要完成什么</p>
 <p>提示我们POST传参passwd变量</p>
 <p>其值不能为数字型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x3D;&#x3D;&#x3D;是恒等计算符  同时检查表达式的值与类型</span><br><span class="line"></span><br><span class="line">&#x3D;&#x3D;是比较运算符号  不会检查条件式的表达式的类型</span><br></pre></td></tr></table></figure>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs haml">=<span class="ruby">==是恒等计算符  同时检查表达式的值与类型</span><br><br><span class="ruby">==是比较运算符号  不会检查条件式的表达式的类型</span><br></code></pre></td></tr></table></figure>
 
 <p>之后的比较同样满足条件。思路有了，</p>
 <p>不过我做法错了，跟以前弱口令什么的混起来了，疯狂尝试了‘123456a’无果</p>
 <p>看了wp后才知道，其实不用加分号，直接passwd=1234567a，这里已经是字符型了。</p>
 <p>一剑封喉：</p>
-<p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727173223649.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210727173223649</span></p>
+<p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727173223649.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210727173223649"></p>
 <h2 id="GYCTF2020-Blacklist"><a href="#GYCTF2020-Blacklist" class="headerlink" title="[GYCTF2020]Blacklist"></a>[GYCTF2020]Blacklist</h2><p>打开靶机后，明显注入题。</p>
-<p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727204621570.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210727204621570</span></p>
+<p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727204621570.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210727204621570"></p>
 <p>wp来源：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/20175211lyz/p/12356678.html">https://www.cnblogs.com/20175211lyz/p/12356678.html</a></p>
 <h4 id="姿势-堆叠注入"><a href="#姿势-堆叠注入" class="headerlink" title="姿势-堆叠注入"></a>姿势-堆叠注入</h4><p>获取库名、表名、列名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">show databases;</span><br><span class="line">show tables;</span><br><span class="line">show columns from &#96;table_name&#96;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">show</span> <span class="hljs-keyword">databases</span>;<br><span class="hljs-keyword">show</span> <span class="hljs-keyword">tables</span>;<br><span class="hljs-keyword">show</span> <span class="hljs-keyword">columns</span> <span class="hljs-keyword">from</span> <span class="hljs-string">`table_name`</span>;<br></code></pre></td></tr></table></figure>
 
 <p>试着查询了一下数据库名、表名和段名（<strong>这里没有用之前传统的联合查询，因为自己尝试查询之后发现后面会被正则表达式过滤</strong>）：</p>
 <p>ps：不过我不太清楚为什么这里查询要 ‘ 加上 ；</p>
-<p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727204959368.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210727204959368</span></p>
-<p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727205248791.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210727205248791</span></p>
+<p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727204959368.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210727204959368"></p>
+<p><img   class="lazyload" data-original="/2021/07/27/2021/buu/3/image-20210727205248791.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210727205248791"></p>
 <p>出现了flag字样，然后用大佬的方法，</p>
 <p>payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&#39;;handler FlagHere open;handler FlagHere read first;handler FlagHere close;#</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">1&#x27;;<span class="hljs-keyword">handler</span> FlagHere <span class="hljs-keyword">open</span>;<span class="hljs-keyword">handler</span> FlagHere <span class="hljs-keyword">read</span> <span class="hljs-keyword">first</span>;<span class="hljs-keyword">handler</span> FlagHere <span class="hljs-keyword">close</span>;<span class="hljs-comment">#</span><br></code></pre></td></tr></table></figure>
 
 <p>官方解释是：</p>
 <p>HANDLER … OPEN语句打开一个表，使其可以使用后续HANDLER … READ语句访问，</p>

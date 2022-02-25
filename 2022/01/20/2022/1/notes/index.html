@@ -202,7 +202,7 @@ CTF - 随笔分类 - iloveacm...">
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>January 20, 2022</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4182</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3447</span>
     </div>
   </div>
 </section>
@@ -212,27 +212,27 @@ CTF - 随笔分类 - iloveacm...">
         <p>参考文章：</p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/iloveacm/category/1791836.html">CTF - 随笔分类 - iloveacm - 博客园 (cnblogs.com)</a></p>
 <h1 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h1><h2 id="php伪协议"><a href="#php伪协议" class="headerlink" title="php伪协议"></a>php伪协议</h2><p>直接上题目理解</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208200041496.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220208200041496</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208200041496.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220208200041496"></p>
 <p>三个参数，两处if语句判断</p>
 <p>很明显第一个if必须达成</p>
 <p>看到了file_get_contents自然想到伪协议的利用</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208200239756.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220208200239756</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208200239756.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220208200239756"></p>
 <p>考虑用data协议，将base编码后的数据流传入并且会等于  要求语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text&#x3D;data:&#x2F;&#x2F;text&#x2F;plain;base64,d2VsY29tZSB0byB0aGUgempjdGY&#x3D;</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">text</span>=data://text/plain;base<span class="hljs-number">64</span>,d<span class="hljs-number">2</span>VsY<span class="hljs-number">29</span>tZSB<span class="hljs-number">0</span>byB<span class="hljs-number">0</span>aGUgempjdGY=<br></code></pre></td></tr></table></figure>
 
 <p>到了下一个if，是检查变量是否传入flag了</p>
 <p>先看到下面有include文件包含，而且提示useless.php，那我们可以伪协议读取一下</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208201116686.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220208201116686</span></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file&#x3D;php:&#x2F;&#x2F;filter&#x2F;conver.base64-encode&#x2F;resource&#x3D;useless.php</span><br></pre></td></tr></table></figure>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208201116686.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220208201116686"></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">file=php:<span class="hljs-regexp">//</span>filter<span class="hljs-regexp">/conver.base64-encode/</span>resource=useless.php<br></code></pre></td></tr></table></figure>
 
 <p>读取源码</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208201257828.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220208201257828</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208201257828.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220208201257828"></p>
 <p>再参考之前的一段代码</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208201333072.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220208201333072</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208201333072.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220208201333072"></p>
 <p>那就是让我们传入序列化数据来读取flag</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208201436581.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220208201436581</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208201436581.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220208201436581"></p>
 <p>生成后注意</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">第三层的payuload中，不用伪协议读取uselless.php了，问了大佬才知道，file&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;useless.php只能读取文件内容不能执行，也就事说，在这题里面，如果最终payload需要能够执行Flag类中的东西，就必须要被“包含”而不是“被读取”，所以要用file&#x3D;useless.php实现flag类中的file-content执行读取flag</span><br></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">第三层的payuload中，不用伪协议读取uselless.php了，问了大佬才知道，<span class="hljs-built_in">file</span>=php://<span class="hljs-built_in">filter</span>/<span class="hljs-built_in">read</span>=<span class="hljs-built_in">convert</span>.base64-encode/resource=useless.php只能读取文件内容不能执行，也就事说，在这题里面，如果最终payload需要能够执行Flag类中的东西，就必须要被“包含”而不是“被读取”，所以要用<span class="hljs-built_in">file</span>=useless.php实现flag类中的<span class="hljs-built_in">file</span>-content执行读取flag<br></code></pre></td></tr></table></figure>
 
 <p>最后payload</p>
 <p>text=data://text/plain;base64,d2VsY29tZSB0byB0aGUgempjdGY=&amp;file=useless.php&amp;password=O:4:%22Flag%22:1:{s:4:%22file%22;s:8:%22flag.php%22;}</p>
@@ -240,27 +240,27 @@ CTF - 随笔分类 - iloveacm...">
 <p>思路：既然参数会被反序列化，那在这之前我们肯定得序列化数据</p>
 <p>注意到能不能命令执行前，有一个check会检测是否有类里的变量名</p>
 <p>绕过check再考虑能不能触发tostring里的eval函数完成命令执行</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208112853921.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220208112853921</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208112853921.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220208112853921"></p>
 <p>这是Kitten类，看到有一个函数meow()触发后可以echo输出，这很可能就可以达到触发tostring的目的</p>
 <p>接着下面的findFriend就是题目会进行的反序列化，我们序列化即可</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208113126070.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220208113126070</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208113126070.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220208113126070"></p>
 <p>这个类的结构较为简单，思考如何触发里面的函数是关键</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208113242856.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220208113242856</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208113242856.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220208113242856"></p>
 <p>check函数会对传进来的参数进行检查，我们就得绕过</p>
 <p>先考虑绕过</p>
 <p>采用16进制绕过的方法，将其中的字母i替换为16进制69，然后添加\ \确保转义成功吧（我是这么理解的）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$a &#x3D; &#39;\\69ncantat\\69on&#39;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-symbol">$a</span> = <span class="hljs-string">&#x27;\\69ncantat\\69on&#x27;</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208114457841.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220208114457841</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208114457841.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220208114457841"></p>
 <p>之后的这种大小写替换我不太明白</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208115403846.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220208115403846</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208115403846.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220208115403846"></p>
 <p>paylaod</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">class Witch</span><br><span class="line">&#123;</span><br><span class="line">    private $incantation &#x3D; &quot;phpinfo();&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Kitten</span><br><span class="line">&#123;</span><br><span class="line">    private $name;</span><br><span class="line">    public $friend;</span><br><span class="line">    function __construct()</span><br><span class="line">    &#123;</span><br><span class="line">        $this-&gt;$name &#x3D; new Witch();</span><br><span class="line">        $this-&gt;friend &#x3D; &quot;1&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$b &#x3D; serialize(new Kitten());</span><br><span class="line">$b &#x3D; str_replace(&quot;s:18&quot;, &quot;S:18&quot;, $b);</span><br><span class="line">$b &#x3D; str_replace(&quot;incantation&quot;, &quot;\\69ncantat\\69on&quot;, $b);</span><br><span class="line">echo base64_encode($b);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs php+HTML">&lt;?php<br><br>class Witch<br>&#123;<br>    private $incantation &#x3D; &quot;phpinfo();&quot;;<br>&#125;<br><br>class Kitten<br>&#123;<br>    private $name;<br>    public $friend;<br>    function __construct()<br>    &#123;<br>        $this-&gt;$name &#x3D; new Witch();<br>        $this-&gt;friend &#x3D; &quot;1&quot;;<br>    &#125;<br>&#125;<br><br>$b &#x3D; serialize(new Kitten());<br>$b &#x3D; str_replace(&quot;s:18&quot;, &quot;S:18&quot;, $b);<br>$b &#x3D; str_replace(&quot;incantation&quot;, &quot;\\69ncantat\\69on&quot;, $b);<br>echo base64_encode($b);<br></code></pre></td></tr></table></figure>
 
 
 
 <h2 id="php命令执行"><a href="#php命令执行" class="headerlink" title="php命令执行"></a>php命令执行</h2><h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><p>现已有文件夹收录</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208112302049.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220208112302049</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208112302049.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220208112302049"></p>
 <p>认为，sql和反序列化较难，注入有多种形式，而反序列化有unserialize()和phar</p>
 <h2 id="phptrick"><a href="#phptrick" class="headerlink" title="phptrick"></a>phptrick</h2><p>1.extract()、parse_str() 等变量覆盖</p>
 <p>2.弱类型比较</p>
@@ -270,26 +270,26 @@ CTF - 随笔分类 - iloveacm...">
 <li>松散（弱）比较时，非数字的字符串序列和数字比较会自动转换</li>
 <li>strcmp/ereg 等函数在传入参数类型为数组时会有非预期行为</li>
 </ul>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220123200022722.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220123200022722</span></p>
-<h5 id="md5比较"><a href="#md5比较" class="headerlink" title="md5比较"></a>md5比较</h5><p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220207203810625.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220207203810625</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220123200022722.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220123200022722"></p>
+<h5 id="md5比较"><a href="#md5比较" class="headerlink" title="md5比较"></a>md5比较</h5><p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220207203810625.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220207203810625"></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wangyuxiang946/article/details/119845182">MD5加密漏洞(MD5绕过方式-0e绕过/数组绕过/MD5碰撞/MD5SQL注入)_wangyuxiang946的博客-CSDN博客_md5数组绕过</a></p>
 <p>0e绕过记录其中一种</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">md5(&#39;QNKCDZO&#39;) &#x3D;&#x3D; md5(240610708)</span><br></pre></td></tr></table></figure>
+<figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs isbl"><span class="hljs-function"><span class="hljs-title">md5</span>(<span class="hljs-string">&#x27;QNKCDZO&#x27;</span>) == <span class="hljs-title">md5</span>(<span class="hljs-number">240610708</span>)</span><br></code></pre></td></tr></table></figure>
 
 <p>做[BJDCTF 2020]easy_md5 这题偶然发现新的一种绕过方式</p>
 <p>首先题目是一个输入框，排除sql注入后</p>
 <p>抓包看见</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220207204008096.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220207204008096</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220207204008096.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220207204008096"></p>
 <p>然后我之前想的太简单了，以为可以直接条件为真，其实还是要构造的</p>
 <p>md5函数</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220207204311973.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220207204311973</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220207204311973.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220207204311973"></p>
 <p>要达成md5后的值与前面语句拼接可以如下图</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220207204231387.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220207204231387</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220207204231387.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220207204231387"></p>
 <p>然后是大佬的推理思路：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">那我们从正向推算一下，要怎么得到我们要的答案。首先我们要找到一个字符串，这个字符串经过md5得到的16位原始二进制的字符串能帮我们实现sql注入。首先or这个字符串是必要的，同时为了配对原先sql语句里面有的单引号</span><br><span class="line"></span><br><span class="line"> 在or的两边要有单引号，使它变成  password&#x3D;‘xxx’or‘xxx’  的形式，所以我们需要的字符串的原始二进制格式的字符串里要包含    ‘or’    ，如果根据原始二进制来找到我们要的字符串可能会比较麻烦，那么可以根据32位16进制的字符串来查找，根据上面介绍的，  ‘or’   对应的16进制是   276f7227    ，所以我们的目标就是要找一个字符串取32位16进制的md5值里带有276f7227这个字段的，接着就是要看关键的数字部分了，在276f7227这个字段后面紧跟一个数字，除了0，1-9，对应的asc码值是49-57，转化为16进制就是31-39，也就是我们需要有276f7227+（31-39）这个字段，就可以满足要求。比如xxxxxxxxxxxxxxxx276f7227（31-39）xxxxxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">那我们从正向推算一下，要怎么得到我们要的答案。首先我们要找到一个字符串，这个字符串经过md5得到的<span class="hljs-number">16</span>位原始二进制的字符串能帮我们实现sql注入。首先<span class="hljs-keyword">or</span>这个字符串是必要的，同时为了配对原先sql语句里面有的单引号<br><br> 在<span class="hljs-keyword">or</span>的两边要有单引号，使它变成  password=‘xxx’<span class="hljs-keyword">or</span>‘xxx’  的形式，所以我们需要的字符串的原始二进制格式的字符串里要包含    ‘<span class="hljs-keyword">or</span>’    ，如果根据原始二进制来找到我们要的字符串可能会比较麻烦，那么可以根据<span class="hljs-number">32</span>位<span class="hljs-number">16</span>进制的字符串来查找，根据上面介绍的，  ‘<span class="hljs-keyword">or</span>’   对应的<span class="hljs-number">16</span>进制是   <span class="hljs-number">276f</span>7227    ，所以我们的目标就是要找一个字符串取<span class="hljs-number">32</span>位<span class="hljs-number">16</span>进制的md5值里带有<span class="hljs-number">276f</span>7227这个字段的，接着就是要看关键的数字部分了，在<span class="hljs-number">276f</span>7227这个字段后面紧跟一个数字，除了<span class="hljs-number">0</span>，<span class="hljs-number">1</span><span class="hljs-number">-9</span>，对应的asc码值是<span class="hljs-number">49</span><span class="hljs-number">-57</span>，转化为<span class="hljs-number">16</span>进制就是<span class="hljs-number">31</span><span class="hljs-number">-39</span>，也就是我们需要有<span class="hljs-number">276f</span>7227+（<span class="hljs-number">31</span><span class="hljs-number">-39</span>）这个字段，就可以满足要求。比如xxxxxxxxxxxxxxxx276f7227（<span class="hljs-number">31</span><span class="hljs-number">-39</span>）xxxxxx<br></code></pre></td></tr></table></figure>
 
 <p>直观来看</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">content: 129581926211651571912466741651878684928</span><br><span class="line">hex: 06da5430449f8f6f23dfc1276f722738</span><br><span class="line">raw: \x06\xdaT0D\x9f\x8fo#\xdf\xc1&#39;or&#39;8</span><br><span class="line">string: T0Do#&#39;or&#39;8</span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「March97」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https:&#x2F;&#x2F;blog.csdn.net&#x2F;March97&#x2F;article&#x2F;details&#x2F;81222922</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs awk">content: <span class="hljs-number">129581926211651571912466741651878684928</span><br>hex: <span class="hljs-number">06</span>da5430449f8f6f23dfc1276f722738<br>raw: \x06\xdaT0D\x9f\x8fo<span class="hljs-comment">#\xdf\xc1&#x27;or&#x27;8</span><br>string: T0Do<span class="hljs-comment">#&#x27;or&#x27;8</span><br>————————————————<br>版权声明：本文为CSDN博主「March97」的原创文章，遵循CC <span class="hljs-number">4.0</span> BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：https:<span class="hljs-regexp">//</span>blog.csdn.net<span class="hljs-regexp">/March97/</span>article<span class="hljs-regexp">/details/</span><span class="hljs-number">81222922</span><br></code></pre></td></tr></table></figure>
 
 <h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><h2 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h2><p>首先基本指令过一过</p>
 <p>show databases;</p>
@@ -298,27 +298,27 @@ CTF - 随笔分类 - iloveacm...">
 <p>增</p>
 <p>insert into 表名 values(value1,value2,value3….);</p>
 <p>insert into 表名(列名1，列名2，列名3……) values(value1,value2,value3….);</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208111931314.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220208111931314</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208111931314.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220208111931314"></p>
 <p>删</p>
 <p>delete  from 表名 where 某一列名 = value;</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208112056657.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220208112056657</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208112056657.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220208112056657"></p>
 <p>改</p>
 <p>update &lt;表名&gt; set &lt;列名=更新值&gt; [where &lt;更新条件&gt;]</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208111956741.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220208111956741</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208111956741.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220208111956741"></p>
 <p>查</p>
 <p>多种方式，缓慢更新。</p>
 <h2 id="sql盲注"><a href="#sql盲注" class="headerlink" title="sql盲注"></a>sql盲注</h2><p><a target="_blank" rel="noopener" href="https://www.gem-love.com/2022/01/26/%E4%B8%80%E6%96%87%E6%90%9E%E5%AE%9AMySQL%E7%9B%B2%E6%B3%A8/">一文搞定MySQL盲注 - 颖奇L’Amore (gem-love.com)</a></p>
 <p>substr函数，会返回字符串的一部分</p>
 <p>可以有三个参数，substr（string，start，length）</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220206162008817.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220206162008817</span></p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220206162040957.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220206162040957</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220206162008817.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220206162008817"></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220206162040957.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220206162040957"></p>
 <p>substr被禁时可以考虑mid</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220206162137283.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220206162137283</span></p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220206162312685.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220206162312685</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220206162137283.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220206162137283"></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220206162312685.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220206162312685"></p>
 <h5 id="绕过空格检测"><a href="#绕过空格检测" class="headerlink" title="绕过空格检测"></a>绕过空格检测</h5><p>1.注释符绕过/**/</p>
 <p>2.括号绕过空格()</p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220209121548440.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220209121548440</span></p>
-<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220209122044457.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20220209122044457</span></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220209121548440.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220209121548440"></p>
+<p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220209122044457.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220209122044457"></p>
 
       </section>
       <section class="extra">

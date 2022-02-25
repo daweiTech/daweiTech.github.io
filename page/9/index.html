@@ -242,9 +242,10 @@
         <div class="post-excerpt">
           <p class="substr-3"> 知识点：命令执行绕过
 靶机启动：
-image-20210801193338875
+
 查看了源码无果，又试了一下index.php、robots协议之类的也不行，御剑没有扫描出来
-查看了wp才知道...</p>
+查看了wp才知道这是git泄露。
+知识补充：简述.git文件导...</p>
         </div>
       </div>
       <div class="post-info">
@@ -269,9 +270,9 @@ image-20210801193338875
         <h3 class="post-title"><a href="/2021/07/30/2021/buu/4/" title="CISCN 2019 初赛	Love Math" >CISCN 2019 初赛	Love Math</a></h3>
         <div class="post-excerpt">
           <p class="substr-3">​    这是一道非常好的绕过题目。
-image-20210730151757624
+
 附上源码：
-12345678910111213141516171819202122232425262728&...</p>
+12345678910111213141516171819202122232425262728&lt;?phperror_reporting(...</p>
         </div>
       </div>
       <div class="post-info">
@@ -296,12 +297,13 @@ image-20210730151757624
         <h3 class="post-title"><a href="/2021/07/27/2021/buu/3/" title="MRCTF2020 Ez_bypass&GYCTF2020 Blacklist" >MRCTF2020 Ez_bypass&GYCTF2020 Blacklist</a></h3>
         <div class="post-excerpt">
           <p class="substr-3">[MRCTF2020]Ez_bypass打开靶机：
-image-20210727172208110
+
 按照提示
 进入f12中
-image-20210727172249158
+
 代码审计一下：
-里面包...</p>
+里面包含了名为flag.php的文件，flag的格式也进行了说明
+接下来要处理两个变量，gg和id...</p>
         </div>
       </div>
       <div class="post-info">
@@ -326,11 +328,14 @@ image-20210727172249158
         <h3 class="post-title"><a href="/2021/07/26/2021/buu/2/" title="网鼎杯 2020 青龙组AreUSerialz" >网鼎杯 2020 青龙组AreUSerialz</a></h3>
         <div class="post-excerpt">
           <p class="substr-3">​    打开后，出现代码页面
-image-20210726194801767
+
 ​    处理到vs上
-image-20210726194850909
+
 接着我们逐段分析：
-1include(&q...</p>
+1include(&quot;flag.php&quot;);
+
+​    包含了名为flag.php的文件。
+1...</p>
         </div>
       </div>
       <div class="post-info">
@@ -382,9 +387,10 @@ Part2变量，eg：message  =  ‘’Hello World”
         <div class="post-excerpt">
           <p class="substr-3">​    使用Plotly可视化仓库
 ​    创建了可视化python图表，以html形式呈现
-image-20210719204819823
+
 上图为Github上python库受欢迎程度
-代...</p>
+代码如下：
+123456789101112131...</p>
         </div>
       </div>
       <div class="post-info">

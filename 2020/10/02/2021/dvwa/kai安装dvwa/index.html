@@ -201,7 +201,7 @@
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 02, 2020</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2725</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2675</span>
     </div>
   </div>
 </section>
@@ -212,7 +212,7 @@
 <p>(好吧，主要还是懒)，打开了kail来安装dvwa靶场，貌似在虚拟机上操作比较安全。</p>
 <p> 步骤:</p>
 <p> \1. 首先去github上下载DVWA的安装包，网址为：<a target="_blank" rel="noopener" href="https://github.com/ethicalhack3r/DVWA">https://github.com/ethicalhack3r/DVWA</a><br> \2. 将下载好的压缩包解压并改名为dvwa，然后将其复制到 /var/www/html  文件夹中<br> \3. 打开终端，执行以下命令:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">将apache2停止：service apache2 stop</span><br><span class="line">给dvwa文件夹相应的权限：chmod -R 755 &#x2F;var&#x2F;www&#x2F;html&#x2F;dvwa</span><br><span class="line">启动mysql服务： service mysql start</span><br><span class="line">打开mysql： mysql -u root -p</span><br><span class="line">创建数据库：create database dvwa;</span><br><span class="line">退出mysql：exit</span><br><span class="line">启动apache2服务：service apache2 start</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs awk">将apache2停止：service apache2 stop<br>给dvwa文件夹相应的权限：chmod -R <span class="hljs-number">755</span> <span class="hljs-regexp">/var/</span>www<span class="hljs-regexp">/html/</span>dvwa<br>启动mysql服务： service mysql start<br>打开mysql： mysql -u root -p<br>创建数据库：create database dvwa;<br>退出mysql：<span class="hljs-keyword">exit</span><br>启动apache2服务：service apache2 start<br></code></pre></td></tr></table></figure>
 
 <p>打开浏览器，在地址栏中输入 127.0.0.1/dvwa  (或者 localhost/dvwa) ,</p>
 <p>浏览器会自动跳转到127.0.0.1/dvwa/setup.php 页面，点击页面下方Create/Reset Database按钮，</p>
@@ -223,16 +223,16 @@
 <p>david 不在 sudoers 文件中。此事将被报告 //呃，有点儿尴尬</p>
 <p>查阅下才知道原来得在root下添加username：david</p>
 <p>修改 /etc/sudoers 文件，找到下面一行，在root下面添加一行，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## Allow root to run any commands anywhere</span><br><span class="line"></span><br><span class="line">root  ALL&#x3D;(ALL)   ALL</span><br><span class="line"></span><br><span class="line">david  ALL&#x3D;(ALL)   ALL  这边root名字下一行改成自己新增用户名字即可；</span><br></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">## Allow root <span class="hljs-keyword">to</span> run <span class="hljs-keyword">any</span> commands anywhere<br><br>root  <span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>)   <span class="hljs-keyword">ALL</span><br><br>david  <span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>)   <span class="hljs-keyword">ALL</span>  这边root名字下一行改成自己新增用户名字即可；<br></code></pre></td></tr></table></figure>
 
 <p>​    \4. 终端执行 mysql -u root -p  ,回车，然后输入自己设置的MariDB用户的密码（如果没设置过的话就为空）</p>
 <p> 执行以下SQL语句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create user &#39;dvwauser&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;&#39;;</span><br><span class="line"></span><br><span class="line">GRANT ALL PRIVILEGES ON *.* to &#39;dvwauser&#39;@&#39;localhost&#39;;</span><br><span class="line"></span><br><span class="line">flush privileges;</span><br><span class="line"></span><br><span class="line">quit</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">user</span> <span class="hljs-string">&#x27;dvwauser&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> <span class="hljs-keyword">IDENTIFIED</span> <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;&#x27;</span>;<br><br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">ALL</span> <span class="hljs-keyword">PRIVILEGES</span> <span class="hljs-keyword">ON</span> *.* <span class="hljs-keyword">to</span> <span class="hljs-string">&#x27;dvwauser&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span>;<br><br><span class="hljs-keyword">flush</span> <span class="hljs-keyword">privileges</span>;<br><br>quit<br></code></pre></td></tr></table></figure>
 
 
 
 <p>​    \5. 修改dvwa的配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;var&#x2F;www&#x2F;html&#x2F;dvwa&#x2F;config&#x2F;</span><br><span class="line"></span><br><span class="line">ls  </span><br><span class="line"></span><br><span class="line">cp config.inc.php.dist config.inc.php#这是复制命令操作</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">cd <span class="hljs-regexp">/var/</span>www<span class="hljs-regexp">/html/</span>dvwa<span class="hljs-regexp">/config/</span><br><br>ls  <br><br>cp config.inc.php.dist config.inc.php<span class="hljs-comment">#这是复制命令操作</span><br></code></pre></td></tr></table></figure>
 
 
 
@@ -241,7 +241,7 @@
 <p>​        $_DVWA[ ‘db_password’ ] = ‘p@ssword’;  修改为：      $_DVWA[ ‘db_password’ ] = ‘’;   </p>
 <p>这边我不太懂作者为什么一定要这样修改，因为其他很多文章改法不一，但是这样改不会报错就无妨。  </p>
 <p>根据实际情况重启下apache2：  有点像PHP study那样启动相应程序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service apache2 restart</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">service</span> apache<span class="hljs-number">2</span> restart<br></code></pre></td></tr></table></figure>
 
 
 

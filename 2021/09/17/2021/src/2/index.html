@@ -13,7 +13,8 @@
   
   <meta name="description" content="以下内容全部来自于：安恒信息
 关于cms的源码
-ima...">
+
+gi...">
   <meta name="author" content="4v1d">
   <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
@@ -203,7 +204,7 @@ ima...">
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>September 17, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>876</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>731</span>
     </div>
   </div>
 </section>
@@ -212,15 +213,15 @@ ima...">
         
         <p>以下内容全部来自于：安恒信息</p>
 <p>关于cms的源码</p>
-<p><img   class="lazyload" data-original="/2021/09/17/2021/src/2/image-20210917152538626.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210917152538626</span></p>
+<p><img   class="lazyload" data-original="/2021/09/17/2021/src/2/image-20210917152538626.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210917152538626"></p>
 <p>gitee.com上可以找到很多资源</p>
 <p>同样github也是。</p>
 <p>例子一：</p>
-<p><img   class="lazyload" data-original="/2021/09/17/2021/src/2/image-20210917153534213.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210917153534213</span></p>
+<p><img   class="lazyload" data-original="/2021/09/17/2021/src/2/image-20210917153534213.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210917153534213"></p>
 <p>观察以上代码，发现该php文件明显是该CMS的模板渲染核心代码</p>
 <p>其中，对外调用paser_string函数，核心函数运行——parse,对各种标签进行解析。</p>
 <p>所以联想到模板渲染常存在的SSTI漏洞</p>
-<p><img   class="lazyload" data-original="/2021/09/17/2021/src/2/image-20210917153916987.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210917153916987</span></p>
+<p><img   class="lazyload" data-original="/2021/09/17/2021/src/2/image-20210917153916987.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210917153916987"></p>
 <p>看到在处理标签时运用诸多eval()函数</p>
 <p>所以接下来思路为：</p>
 <p>根据eval()函数，追踪溯源，看是否存在可控变量。</p>
@@ -229,22 +230,22 @@ ima...">
 <p>假设传递{if:123}456{endif}</p>
 <p>根据逻辑推敲，最后代码回进入到该分支中</p>
 <p>并且$strlf的值是123</p>
-<p><img   class="lazyload" data-original="/2021/09/17/2021/src/2/image-20210917154659350.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210917154659350</span></p>
+<p><img   class="lazyload" data-original="/2021/09/17/2021/src/2/image-20210917154659350.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210917154659350"></p>
 <p>所以最后能够构成</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(123)&#123;isFlag&#x3D;true;&#125;else&#123;isFalse&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">if</span>(123)&#123;<span class="hljs-attribute">isFlag</span>=<span class="hljs-literal">true</span>;&#125;<span class="hljs-keyword">else</span>&#123;isFalse&#125;;<br></code></pre></td></tr></table></figure>
 
 <p>接着，就是注入代码来getshell了</p>
 <p>payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;if:1&#125;assert($_POST[x];&#x2F;&#x2F;)123&#123;endif&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">&#123;<span class="hljs-keyword">if</span>:<span class="hljs-number">1</span>&#125;assert(<span class="hljs-variable">$_POST</span>[x];<span class="hljs-regexp">//</span>)<span class="hljs-number">123</span>&#123;endif&#125;<br></code></pre></td></tr></table></figure>
 
 <p>拼接后：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;if:1&#125;assert($_POST[x];&#x2F;&#x2F;)&#123;isFlag&#x3D;true;&#125;else&#123;isFalse&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">&#123;<span class="hljs-keyword">if</span>:<span class="hljs-number">1</span>&#125;assert(<span class="hljs-variable">$_POST</span>[x];<span class="hljs-regexp">//</span>)&#123;isFlag=true;&#125;<span class="hljs-keyword">else</span>&#123;isFalse&#125;;<br></code></pre></td></tr></table></figure>
 
 <p>分析：1为永真条件，//将后面的注释了</p>
 <p>最后就执行了assert($_POST[x]);</p>
 <p>我们继续找传递参数的地方</p>
 <p>反向追踪，调用labelif()函数的是_parse(),而 _parse只被parse_string调用</p>
-<p><img   class="lazyload" data-original="/2021/09/17/2021/src/2/image-20210917155446820.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210917155446820</span></p>
+<p><img   class="lazyload" data-original="/2021/09/17/2021/src/2/image-20210917155446820.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210917155446820"></p>
 
       </section>
       <section class="extra">

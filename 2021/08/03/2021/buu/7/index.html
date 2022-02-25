@@ -201,7 +201,7 @@
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 03, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1452</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1162</span>
     </div>
   </div>
 </section>
@@ -209,16 +209,16 @@
       <section class="content">
         
         <h2 id="GWCTF-2019-我有一个数据库"><a href="#GWCTF-2019-我有一个数据库" class="headerlink" title="[GWCTF 2019]我有一个数据库"></a>[GWCTF 2019]我有一个数据库</h2><p>打开页面，奇怪的乱码：</p>
-<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210803200638733.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210803200638733</span></p>
+<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210803200638733.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210803200638733"></p>
 <p>找了一个乱码恢复页面：<a target="_blank" rel="noopener" href="http://www.mytju.com/classcode/tools/messycoderecover.asp">乱码恢复 (mytju.com)</a></p>
-<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210803200740870.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210803200740870</span></p>
+<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210803200740870.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210803200740870"></p>
 <p>在utf8格式下，只得到了无用信息：空的数据?我有一个数据库，但里面什么也没有~不信你找</p>
 <p>在f12也不行后，我果断地拿起来神器——dirsearch！</p>
 <p>一通扫描后果然有了眉目：</p>
 <p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(356).png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ></p>
 <p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(357).png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ></p>
 <p>进入到<a target="_blank" rel="noopener" href="http://e8451be4-2c39-421e-888a-2f04ad6a6de6.node4.buuoj.cn/phpmyadmin/index.php">e8451be4-2c39-421e-888a-2f04ad6a6de6.node4.buuoj.cn / mysql | phpMyAdmin 4.8.1</a></p>
-<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210803201030523.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210803201030523</span></p>
+<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210803201030523.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210803201030523"></p>
 <p>熟悉的phpmyadmin数据库页面</p>
 <p>但是到了这里我就懵了，因为没有足够权限好像查不到flag在哪</p>
 <p>查看了wp</p>
@@ -226,37 +226,37 @@
 <h5 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h5><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzIzMTc1MjExOQ==&mid=2247485036&idx=1&sn=8e9647906c5d94f72564dec5bc51a2ab&chksm=e89e2eb4dfe9a7a28bff2efebb5b2723782dab660acff074c3f18c9e7dca924abdf3da618fb4&mpshare=1&scene=1&srcid=0621gAv1FMtrgoahD01psMZr&pass_ticket=LqhRfckPxAVG2dF/jxV/9/cEb5pShRgewJe/ttJn2gIlIyGF/bsgGmzcbsV+LmMK#rd">【首发】phpmyadmin4.8.1后台getshell (qq.com)</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/fb9c2ae16d09">cve-2018-12613-PhpMyadmin后台文件包含 - 简书 (jianshu.com)</a></p>
 <p>​    index.php中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $_REQUEST[&#39;target&#39;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-keyword">include</span> <span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;target&#x27;</span>];<br></code></pre></td></tr></table></figure>
 
 <p>利用参数target</p>
 <p>相关poc从参考文章中可知</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">target&#x3D;db_datadict.php%253f&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">target=db_datadict.php%<span class="hljs-number">253</span>f<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/../</span>../<br></code></pre></td></tr></table></figure>
 
 <p>经过尝试发现，读取时可以尽量多下几级（多../../）无影响，反之若少了则会报错</p>
 <p>如下图</p>
-<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210803202146319.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210803202146319</span></p>
-<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210803202211040.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210803202211040</span></p>
+<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210803202146319.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210803202146319"></p>
+<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210803202211040.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210803202211040"></p>
 <h5 id="Tips："><a href="#Tips：" class="headerlink" title="Tips："></a>Tips：</h5><p>另外还有一种解法，来自于上面的 ’首发‘ 链接</p>
 <p>将一句话木马写入数据库，然后在文件包含漏洞使之成功访问，蚁剑连接。</p>
 <p>参考博客：</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/SopRomeo/article/details/105536972">GWCTF 2019]我有一个数据库_SopRomeo的博客-CSDN博客</a></p>
-<h2 id="BJDCTF2020-The-mystery-of-ip"><a href="#BJDCTF2020-The-mystery-of-ip" class="headerlink" title="[BJDCTF2020]The mystery of ip"></a>[BJDCTF2020]The mystery of ip</h2><p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210804210338451.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210804210338451</span></p>
+<h2 id="BJDCTF2020-The-mystery-of-ip"><a href="#BJDCTF2020-The-mystery-of-ip" class="headerlink" title="[BJDCTF2020]The mystery of ip"></a>[BJDCTF2020]The mystery of ip</h2><p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210804210338451.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210804210338451"></p>
 <p>分别查看Flag、Hint</p>
-<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210804211511008.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210804211511008</span></p>
-<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210804210443630.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210804210443630</span></p>
+<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210804211511008.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210804211511008"></p>
+<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210804210443630.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210804210443630"></p>
 <p>看了源码，没有什么可以利用信息</p>
 <p>查看wp，知道了标题的ip有所指</p>
 <p>我们的ip能够被获取，怀疑是与XFF有关</p>
 <p>接着我们进入火狐验证想法</p>
 <p>添加X-Forwarded-For:127.0.0.1</p>
-<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(366).png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">屏幕截图(366)</span></p>
+<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE(366).png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="屏幕截图(366)"></p>
 <p>看到回显显示：Your IP is : 127.0.0.1</p>
 <p>说明了想法正确</p>
 <p>利用模板注入</p>
-<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210804211235273.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210804211235273</span></p>
-<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210804211318879.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210804211318879</span></p>
+<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210804211235273.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210804211235273"></p>
+<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/image-20210804211318879.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210804211318879"></p>
 <h5 id="知识点：SSTI模板注入"><a href="#知识点：SSTI模板注入" class="headerlink" title="知识点：SSTI模板注入"></a>知识点：SSTI模板注入</h5><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/bmjoker/p/13508538.html">1. SSTI（模板注入）漏洞（入门篇） - bmjoker - 博客园 (cnblogs.com)</a></p>
-<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/1625650-20200216204049347-1844990197.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">img</span></p>
+<p><img   class="lazyload" data-original="/2021/08/03/2021/buu/7/1625650-20200216204049347-1844990197.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="img"></p>
 <p>模板注入涉及的是服务端Web应用使用模板引擎渲染用户请求的过程<br>服务端把用户输入的内容渲染成模板就可能造成SSTI(Server-Side Template Injection)</p>
 <h3 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h3><h5 id="参考博客："><a href="#参考博客：" class="headerlink" title="参考博客："></a>参考博客：</h5><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fightte/article/details/117003439">BJDCTF2020]The mystery of ip_fightte的博客-CSDN博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangtanzhi/p/12318630.html">BJDCTF2020]The mystery of ip - 王叹之 - 博客园 (cnblogs.com)</a></p>

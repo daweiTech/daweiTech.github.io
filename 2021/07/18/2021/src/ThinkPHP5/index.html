@@ -201,7 +201,7 @@
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>July 18, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1238</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1146</span>
     </div>
   </div>
 </section>
@@ -223,11 +223,11 @@
 <p>然后我们按照提示去写入一个文件，phpinfo的功能</p>
 <p>利用到了file_put_contents函数（POC分析）</p>
 <p><code>?s=index/think\app/invokefunction&amp;function=call_user_func_array&amp;vars[0]=file_put_contents&amp;vars[1][]=./test.php&amp;vars[1][]=&lt;?php%20phpinfo();?&gt;</code></p>
-<p><img   class="lazyload" data-original="/2021/07/18/2021/src/ThinkPHP5/image-20210718191745523.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210718191745523</span></p>
+<p><img   class="lazyload" data-original="/2021/07/18/2021/src/ThinkPHP5/image-20210718191745523.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210718191745523"></p>
 <p>回显出了数字18，表示我们写入文件成功</p>
 <p>接着进行访问</p>
 <p>test.php</p>
-<p><img   class="lazyload" data-original="/2021/07/18/2021/src/ThinkPHP5/image-20210718191940910.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210718191940910</span></p>
+<p><img   class="lazyload" data-original="/2021/07/18/2021/src/ThinkPHP5/image-20210718191940910.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210718191940910"></p>
 <p>出现如上页面，成功利用漏洞。</p>
 <p>接着我还尝试了一句话木马的写入，答案显然，也是可以写入并利用的。</p>
 <p>最后蚁剑连接即可。</p>
@@ -241,10 +241,10 @@
 <p><code>if (!preg_match(&#39;/^[A-Za-z](\w)*$/&#39;, $controller)) &#123;</code></p>
 <p><code>            throw new HttpException(404, &#39;controller not exists:&#39; . $controller);</code></p>
 <p><code>        &#125;</code></p>
-<p><img   class="lazyload" data-original="/2021/07/18/2021/src/ThinkPHP5/image-20210718193014082.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210718193014082</span></p>
+<p><img   class="lazyload" data-original="/2021/07/18/2021/src/ThinkPHP5/image-20210718193014082.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210718193014082"></p>
 <p>修改之后，使用原来的poc发现失效了</p>
 <p>漏洞修复成功。</p>
-<p><img   class="lazyload" data-original="/2021/07/18/2021/src/ThinkPHP5/image-20210718193101116.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210718193101116</span></p>
+<p><img   class="lazyload" data-original="/2021/07/18/2021/src/ThinkPHP5/image-20210718193101116.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210718193101116"></p>
 <h4 id="附录："><a href="#附录：" class="headerlink" title="附录："></a>附录：</h4><p>最近了解到有msf，kali已经安装了，win10下也装好了，</p>
 <p>就差成功攻击一下windowsever2018 r2</p>
 <p>再尝试尝试</p>

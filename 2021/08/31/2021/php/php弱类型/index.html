@@ -202,7 +202,7 @@
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 31, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2135</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1901</span>
     </div>
   </div>
 </section>
@@ -213,9 +213,9 @@
 <h3 id="通用代码审计思路："><a href="#通用代码审计思路：" class="headerlink" title="通用代码审计思路："></a>通用代码审计思路：</h3><h4 id="1-根据敏感关键字回溯参数传递过程-逆向追踪"><a href="#1-根据敏感关键字回溯参数传递过程-逆向追踪" class="headerlink" title="1.根据敏感关键字回溯参数传递过程(逆向追踪)"></a>1.根据敏感关键字回溯参数传递过程(逆向追踪)</h4><p>​            检查敏感函数的参数，进行回溯变量，判断变量是否可控并且没有经过严格的过滤，这是一个逆向追踪的过程。</p>
 <h4 id="2-寻找可控参数，正向追踪变量传递过程-正向追踪"><a href="#2-寻找可控参数，正向追踪变量传递过程-正向追踪" class="headerlink" title="2.寻找可控参数，正向追踪变量传递过程(正向追踪)"></a>2.寻找可控参数，正向追踪变量传递过程(正向追踪)</h4><p>​            跟踪传递的参数，判断是否存入到敏感函数内或者传递的过程中具有代码逻辑漏洞。</p>
 <h4 id="3-寻找敏感功能点，通读功能点代码-直接挖掘功能点漏洞"><a href="#3-寻找敏感功能点，通读功能点代码-直接挖掘功能点漏洞" class="headerlink" title="3.寻找敏感功能点，通读功能点代码(直接挖掘功能点漏洞)"></a>3.寻找敏感功能点，通读功能点代码(直接挖掘功能点漏洞)</h4><p>​            根据自身经验判断在该应用中的哪些功能可能出现漏洞。</p>
-<h4 id="4-直接通读全文代码"><a href="#4-直接通读全文代码" class="headerlink" title="4.直接通读全文代码"></a>4.直接通读全文代码</h4><h3 id="敏感函数回溯审计："><a href="#敏感函数回溯审计：" class="headerlink" title="敏感函数回溯审计："></a>敏感函数回溯审计：</h3><p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/image-20210901103125151.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210901103125151</span></p>
-<h4 id="通读全文代码"><a href="#通读全文代码" class="headerlink" title="通读全文代码"></a>通读全文代码</h4><p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/image-20210901103255032.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210901103255032</span></p>
-<p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/image-20210901103436076.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210901103436076</span></p>
+<h4 id="4-直接通读全文代码"><a href="#4-直接通读全文代码" class="headerlink" title="4.直接通读全文代码"></a>4.直接通读全文代码</h4><h3 id="敏感函数回溯审计："><a href="#敏感函数回溯审计：" class="headerlink" title="敏感函数回溯审计："></a>敏感函数回溯审计：</h3><p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/image-20210901103125151.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210901103125151"></p>
+<h4 id="通读全文代码"><a href="#通读全文代码" class="headerlink" title="通读全文代码"></a>通读全文代码</h4><p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/image-20210901103255032.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210901103255032"></p>
+<p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/image-20210901103436076.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210901103436076"></p>
 <h3 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h3><p>php弱类型</p>
 <h4 id="1-比较符号"><a href="#1-比较符号" class="headerlink" title="1.比较符号"></a>1.比较符号</h4><p>==            先进行类型转化，再进行比较（弱比较）</p>
 <p>===          先比较类型，若类型不同直接返回不等（强比较）</p>
@@ -235,20 +235,20 @@
 <p>s1885207154a</p>
 <p>s1836677006a</p>
 <p>s1184209335a</p>
-<p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/image-20210901104340610.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210901104340610</span></p>
+<p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/image-20210901104340610.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210901104340610"></p>
 <h4 id="3-md5-sha1函数缺陷"><a href="#3-md5-sha1函数缺陷" class="headerlink" title="3.md5 sha1函数缺陷"></a>3.md5 sha1函数缺陷</h4><p>当md5()函数与sha1()函数对参数进行加密处理时，</p>
 <p>如果碰到一个数组，md5()函数会返回null</p>
 <p>sha1()函数也是一样。</p>
 <p>利用这个特性构造两个数组即可。</p>
 <p>a[]=1即表示传入了一个数组</p>
-<p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/image-20210901104608235.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210901104608235</span></p>
+<p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/image-20210901104608235.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210901104608235"></p>
 <p>变量覆盖</p>
 <h4 id="1-parse-str导致的变量覆盖"><a href="#1-parse-str导致的变量覆盖" class="headerlink" title="1.parse_str导致的变量覆盖"></a>1.parse_str导致的变量覆盖</h4><p>parse_str( string $encoded_string[.array &amp;$result] )</p>
 <p>parse_str() 函数用于把查询字符串解析到变量中，</p>
 <p>如果没有result参数，则由该函数设置的变量将覆盖已存在的同名变量，</p>
 <p>如果设置了第二个变量result</p>
 <p>变量将会以数组元素的形式存入到这个数组，作为替代。</p>
-<p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/image-20210901145407518.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210901145407518</span></p>
+<p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/image-20210901145407518.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210901145407518"></p>
 <h4 id="2-X-Forwarded-For绕过指定地址"><a href="#2-X-Forwarded-For绕过指定地址" class="headerlink" title="2.X-Forwarded-For绕过指定地址"></a>2.X-Forwarded-For绕过指定地址</h4><p>HTTP头添加X-Forwarded-For：</p>
 <h4 id="3-strops数组绕过NULL与ereg正则-00截断"><a href="#3-strops数组绕过NULL与ereg正则-00截断" class="headerlink" title="3.strops数组绕过NULL与ereg正则%00截断"></a>3.strops数组绕过NULL与ereg正则%00截断</h4><p>知识点补充：</p>
 <p>PHP strops()函数</p>
@@ -256,7 +256,7 @@
 <p>strops()函数查找字符串在另一字符串第一次出现的位置</p>
 <p>注释：strops()函数对大小写敏感</p>
 <p>​            该函数是二进制安全的</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strpos(<span class="keyword">string</span>,find,start)</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">strpos(<span class="hljs-keyword">string</span>,find,start)<br></code></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -292,11 +292,11 @@
 </tbody></table>
 <p>ereg正则函数</p>
 <p>字符串比对解析</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ereg(<span class="keyword">string</span> pattern, <span class="keyword">string</span> <span class="keyword">string</span>, <span class="keyword">array</span> [regs]);</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">int</span> ereg(<span class="hljs-keyword">string</span> pattern, <span class="hljs-keyword">string</span> <span class="hljs-keyword">string</span>, <span class="hljs-keyword">array</span> [regs]);<br></code></pre></td></tr></table></figure>
 
 <p>本函数以 pattern 的规则来解析比对字符串 string。</p>
 <p>比对结果返回的值放在数组参数 regs 之中，regs[0] 内容就是原字符串 string、regs[1] 为第一个合乎规则的字符串、regs[2] 就是第二个合乎规则的字符串，余类推。若省略参数 regs，则只是单纯地比对，找到则返回值为 true。</p>
-<p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/image-20210901150729125.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210901150729125</span></p>
+<p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/image-20210901150729125.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210901150729125"></p>
 <p>方法一：</p>
 <p>既要是纯数字</p>
 <p>又要有’ #biubiubiu’</p>
@@ -312,12 +312,12 @@
 <p>字符串截断</p>
 <p>利用ereg()的NULL截断漏洞，绕过正则过滤</p>
 <p>?nctf=1%00%23biubiubiu </p>
-<h3 id="模拟演练："><a href="#模拟演练：" class="headerlink" title="模拟演练："></a>模拟演练：</h3><h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/capture_20210831213941122.bmp" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">capture_20210831213941122</span></p>
+<h3 id="模拟演练："><a href="#模拟演练：" class="headerlink" title="模拟演练："></a>模拟演练：</h3><h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/capture_20210831213941122.bmp" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="capture_20210831213941122"></p>
 <p>?password=1337a</p>
-<h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/capture_20210831214131149.bmp" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">capture_20210831214131149</span></p>
+<h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/capture_20210831214131149.bmp" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="capture_20210831214131149"></p>
 <p>?name[]=1&amp;passsword[]=2</p>
 <p>解析：sha1()函数默认的传入参数类型是字符串，当传入数组时均会返回false，通过判断。</p>
-<h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4><p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/image-20210901105909901.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20210901105909901</span></p>
+<h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4><p><img   class="lazyload" data-original="/2021/08/31/2021/php/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/image-20210901105909901.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210901105909901"></p>
 <p>?a=240610708或?a=s878926199a</p>
 
       </section>
