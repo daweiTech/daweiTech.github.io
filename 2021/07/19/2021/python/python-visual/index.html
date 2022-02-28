@@ -19,7 +19,7 @@
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
   <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
   
-    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileImage" content="/images/icons/logo.png">
     <meta rel="msapplication-TileColor" content="#000000">
   
 
@@ -60,7 +60,7 @@
     CONFIG = {
       isHome: false,
       fancybox: true,
-      pjax: false,
+      pjax: true,
       loading: {
         gif: '/images/theme/loading.gif',
         lottie: ''
@@ -99,8 +99,8 @@
         motto: {
           default: '我在开了灯的床头下，想问问自己的心啊。',
           typing: true,
-          api: 'https://v2.jinrishici.com/one.json',
-          data_contents: '["data","content"]'
+          api: 'https://v1.hitokoto.cn/?encode=text&c=d',
+          data_contents: ''
         },
       },
       qrcode: {
@@ -174,7 +174,7 @@
     <ul class="menu-content"><li class="menu-item">
         <a href="/ " class="underline "> 首页</a>
       </li><li class="menu-item">
-        <a href="/galleries/ " class="underline "> 摄影</a>
+        <a href="/galleries/ " class="underline "> 相册</a>
       </li><li class="menu-item">
         <a href="/archives/ " class="underline "> 归档</a>
       </li><li class="menu-item">
@@ -364,6 +364,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 
 
+
+
+  
+<script src="https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
 
 
 
