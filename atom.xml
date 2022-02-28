@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2022-02-25T02:10:04.084Z</updated>
+  <updated>2022-02-28T07:29:56.323Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Redis的一些记录</title>
+    <title>Redis的一些笔记</title>
     <link href="http://daweitech.github.io/2022/02/14/2022/2/Redis%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95/"/>
     <id>http://daweitech.github.io/2022/02/14/2022/2/Redis%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95/</id>
     <published>2022-02-14T12:42:56.000Z</published>
-    <updated>2022-02-25T02:10:04.084Z</updated>
+    <updated>2022-02-28T07:29:56.323Z</updated>
     
     
       
@@ -35,30 +35,7 @@
       
     
     
-    
-    
-    <category term="web" scheme="http://daweitech.github.io/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>网鼎杯2020玄武组-SSRFMe</title>
-    <link href="http://daweitech.github.io/2022/02/10/2022/2/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E7%8E%84%E6%AD%A6%E7%BB%84-SSRFMe/"/>
-    <id>http://daweitech.github.io/2022/02/10/2022/2/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E7%8E%84%E6%AD%A6%E7%BB%84-SSRFMe/</id>
-    <published>2022-02-10T12:35:03.000Z</published>
-    <updated>2022-02-10T14:04:42.224Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;题记&quot;&gt;&lt;a href=&quot;#题记&quot; class=&quot;headerlink&quot; title=&quot;题记&quot;&gt;&lt;/a&gt;题记&lt;/h3&gt;&lt;p&gt; 记录一下这题&lt;/p&gt;
-&lt;p&gt; 知识点挺多的，题目的操作步骤感觉不难，vps的事情我也解决了，但最后是用学长的&lt;/p&gt;
-&lt;p&gt;</summary>
-        
-      
-    
+    <content src="http://daweitech.github.io/images/cover/categories.jpg" type="image"/>
     
     
     
@@ -67,25 +44,24 @@
   </entry>
   
   <entry>
-    <title>rois-冬令营</title>
+    <title>Rois-冬令营</title>
     <link href="http://daweitech.github.io/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/"/>
     <id>http://daweitech.github.io/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/</id>
     <published>2022-02-05T13:41:57.000Z</published>
-    <updated>2022-02-25T03:17:52.773Z</updated>
+    <updated>2022-02-28T07:38:46.085Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt; 偶然得知了rois举办了这个冬令营&lt;/p&gt;
-&lt;p&gt;web题目大部分自己做，有几道是在别人帮助下的&lt;/p&gt;
-&lt;p&gt;很高兴这次密码学做出了两道简单题&lt;/p&gt;
-&lt;p&gt;今天写下writeup总结一下&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
+    <summary type="html">&lt;p&gt;今天写下writeup总结一下&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205214412266.png&quot;</summary>
         
       
     
+    
+    <content src="http://daweitech.github.io/imgr/2.jpg" type="image"/>
     
     
     <category term="CTF" scheme="http://daweitech.github.io/categories/CTF/"/>
@@ -100,7 +76,7 @@
     <link href="http://daweitech.github.io/2022/01/20/2022/1/notes/"/>
     <id>http://daweitech.github.io/2022/01/20/2022/1/notes/</id>
     <published>2022-01-20T12:37:47.000Z</published>
-    <updated>2022-02-13T03:46:26.939Z</updated>
+    <updated>2022-02-28T07:39:18.496Z</updated>
     
     
       
@@ -113,6 +89,8 @@
         
       
     
+    
+    <content src="http://daweitech.github.io/imgr/3.jpg" type="image"/>
     
     
     
@@ -293,30 +271,6 @@
   </entry>
   
   <entry>
-    <title>0</title>
-    <link href="http://daweitech.github.io/2021/10/14/2021/misc/0/"/>
-    <id>http://daweitech.github.io/2021/10/14/2021/misc/0/</id>
-    <published>2021-10-14T02:18:33.000Z</published>
-    <updated>2021-10-14T03:09:48.939Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;大白&quot;&gt;&lt;a href=&quot;#大白&quot; class=&quot;headerlink&quot; title=&quot;大白&quot;&gt;&lt;/a&gt;大白&lt;/h3&gt;&lt;p&gt;下载附件用010editor打开图片&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    
-    <category term="misc" scheme="http://daweitech.github.io/tags/misc/"/>
-    
-  </entry>
-  
-  <entry>
     <title>suctf 2019 EasySQL</title>
     <link href="http://daweitech.github.io/2021/10/10/2021/nss/0/"/>
     <id>http://daweitech.github.io/2021/10/10/2021/nss/0/</id>
@@ -462,29 +416,6 @@
   </entry>
   
   <entry>
-    <title>CISCN2019 华北赛区 Day1 Web2 ikun &amp; CISCN 2019华北Day2 Web1&amp;CISCN2019 华北赛区 Day1 Web5 CyberPunk</title>
-    <link href="http://daweitech.github.io/2021/09/21/2021/buu/22/"/>
-    <id>http://daweitech.github.io/2021/09/21/2021/buu/22/</id>
-    <published>2021-09-21T12:26:05.000Z</published>
-    <updated>2022-02-12T05:35:09.348Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;pickle、jwt&quot;&gt;&lt;a href=&quot;#pickle、jwt&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="buu" scheme="http://daweitech.github.io/tags/buu/"/>
-    
-  </entry>
-  
-  <entry>
     <title>php代码审计(三)</title>
     <link href="http://daweitech.github.io/2021/09/17/2021/src/3/"/>
     <id>http://daweitech.github.io/2021/09/17/2021/src/3/</id>
@@ -506,6 +437,79 @@
     
     
     <category term="php" scheme="http://daweitech.github.io/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>漏洞挖掘演练(一)</title>
+    <link href="http://daweitech.github.io/2021/09/17/2021/src/2/"/>
+    <id>http://daweitech.github.io/2021/09/17/2021/src/2/</id>
+    <published>2021-09-17T07:14:27.000Z</published>
+    <updated>2021-09-17T12:38:27.457Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;以下内容全部来自于：安恒信息&lt;/p&gt;
+&lt;p&gt;关于cms的源码&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2021/09/17/2021/src/2/image-20210917152538626.png&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="src" scheme="http://daweitech.github.io/tags/src/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2021祥云杯 secrets_of_admin&amp;crwaler_z</title>
+    <link href="http://daweitech.github.io/2021/09/07/2021/buu/21/"/>
+    <id>http://daweitech.github.io/2021/09/07/2021/buu/21/</id>
+    <published>2021-09-07T02:52:39.000Z</published>
+    <updated>2021-09-14T11:39:07.493Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/rfrder/article/details/119914746&quot;&gt;祥云杯2021 Web复现_feng的博客-CSDN博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[祥云杯2021 web wp | Z3ratu1’s</summary>
+        
+      
+    
+    
+    
+    
+    <category term="buu" scheme="http://daweitech.github.io/tags/buu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网鼎杯 2020 总决赛 Novel&amp;GameExp</title>
+    <link href="http://daweitech.github.io/2021/09/04/2021/buu/20/"/>
+    <id>http://daweitech.github.io/2021/09/04/2021/buu/20/</id>
+    <published>2021-09-04T07:24:15.000Z</published>
+    <updated>2021-09-07T12:35:03.912Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;Novel&quot;&gt;&lt;a href=&quot;#Novel&quot; class=&quot;headerlink&quot; title=&quot;Novel:&quot;&gt;&lt;/a&gt;Novel:&lt;/h4&gt;&lt;p&gt;参考博客：&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="buu" scheme="http://daweitech.github.io/tags/buu/"/>
     
   </entry>
   
