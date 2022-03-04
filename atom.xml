@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2022-02-28T07:29:56.323Z</updated>
+  <updated>2022-03-04T14:21:08.368Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SQL-参考文章</title>
+    <link href="http://daweitech.github.io/2022/03/04/2021/sql/index/"/>
+    <id>http://daweitech.github.io/2022/03/04/2021/sql/index/</id>
+    <published>2022-03-04T14:08:47.000Z</published>
+    <updated>2022-03-04T14:21:08.368Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;做题参考：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://xz.aliyun.com/t/385/#toc-22&quot;&gt;【独家连载】mysql注入天书（一）Basic Challenges - 先知社区 (aliyun.com)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    <content src="http://daweitech.github.io/images/draw/meditation.jpg" type="image"/>
+    
+    
+    <category term="SQL-lab" scheme="http://daweitech.github.io/categories/SQL-lab/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Redis的一些笔记</title>
@@ -479,30 +506,6 @@
         
     <summary type="html">&lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/rfrder/article/details/119914746&quot;&gt;祥云杯2021 Web复现_feng的博客-CSDN博客&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;[祥云杯2021 web wp | Z3ratu1’s</summary>
-        
-      
-    
-    
-    
-    
-    <category term="buu" scheme="http://daweitech.github.io/tags/buu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>网鼎杯 2020 总决赛 Novel&amp;GameExp</title>
-    <link href="http://daweitech.github.io/2021/09/04/2021/buu/20/"/>
-    <id>http://daweitech.github.io/2021/09/04/2021/buu/20/</id>
-    <published>2021-09-04T07:24:15.000Z</published>
-    <updated>2021-09-07T12:35:03.912Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h4 id=&quot;Novel&quot;&gt;&lt;a href=&quot;#Novel&quot; class=&quot;headerlink&quot; title=&quot;Novel:&quot;&gt;&lt;/a&gt;Novel:&lt;/h4&gt;&lt;p&gt;参考博客：&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
         
       
     
