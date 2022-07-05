@@ -544,4 +544,11 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/</loc>
+    <lastmod>2022-07-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 </urlset>
