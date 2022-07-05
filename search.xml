@@ -3411,4 +3411,44 @@ public function __toString()&#123;
         <category>CTF·sql盲注</category>
       </categories>
   </entry>
+  <entry>
+    <title>day1</title>
+    <url>/2022/07/05/2022/7/day1/</url>
+    <content><![CDATA[<p> 概念、组成、功能和分类</p>
+<p>1.怎么学习计算机网络</p>
+<img src="/2022/07/05/2022/7/day1/Users/David/AppData/Roaming/Typora/typora-user-images/image-20220705191804871.png" alt="image-20220705191804871" style="zoom:50%;">
+
+<p>2.概念</p>
+<p><img src="/2022/07/05/2022/7/day1/image-20220705191905918.png" alt="image-20220705191905918"></p>
+<p><img src="/2022/07/05/2022/7/day1/image-20220705191954921.png" alt="image-20220705191954921"></p>
+<p>通信设备：比如路由器、路由器                                                               线路：将系统和通信设备两者联系的介质之类的</p>
+<p>计算机网络是互连的、自治的的计算机集合（互连：互联互通 通信链路，自治：无主从关系）</p>
+<p>3.功能</p>
+<img src="/2022/07/05/2022/7/day1/Users/David/AppData/Roaming/Typora/typora-user-images/image-20220705192609511.png" alt="image-20220705192609511" style="zoom:50%;">
+
+<p>4.组成</p>
+<img src="/2022/07/05/2022/7/day1/Users/David/AppData/Roaming/Typora/typora-user-images/image-20220705192701300.png" alt="image-20220705192701300" style="zoom:50%;">
+
+<p>5.工作方式</p>
+<p>边缘、核心</p>
+<img src="/2022/07/05/2022/7/day1/Users/David/AppData/Roaming/Typora/typora-user-images/image-20220705192851544.png" alt="image-20220705192851544" style="zoom: 50%;">
+
+
+
+<p>6.功能组成</p>
+<img src="/2022/07/05/2022/7/day1/Users/David/AppData/Roaming/Typora/typora-user-images/image-20220705193009747.png" alt="image-20220705193009747" style="zoom:50%;">
+
+<p>一个是处理、一个是传输</p>
+<p>7.分类</p>
+<img src="/2022/07/05/2022/7/day1/Users/David/AppData/Roaming/Typora/typora-user-images/image-20220705193510843.png" alt="image-20220705193510843" style="zoom:50%;">
+
+
+
+<p>脑图时刻</p>
+<p><img src="/2022/07/05/2022/7/day1/image-20220705193557143.png" alt="image-20220705193557143"></p>
+]]></content>
+      <tags>
+        <tag>计算机考研</tag>
+      </tags>
+  </entry>
 </search>
