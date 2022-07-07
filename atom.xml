@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2022-07-05T11:52:11.183Z</updated>
+  <updated>2022-07-07T08:44:03.795Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -17,20 +17,73 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>day3</title>
+    <link href="http://daweitech.github.io/2022/07/07/2022/7/day3/"/>
+    <id>http://daweitech.github.io/2022/07/07/2022/7/day3/</id>
+    <published>2022-07-07T07:52:55.000Z</published>
+    <updated>2022-07-07T08:44:03.795Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;计算机网络分层结构&quot;&gt;&lt;a href=&quot;#计算机网络分层结构&quot; class=&quot;headerlink&quot; title=&quot;计算机网络分层结构&quot;&gt;&lt;/a&gt;计算机网络分层结构&lt;/h2&gt;&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    <content src="http://daweitech.github.io/imgr/0.jpg" type="image"/>
+    
+    
+    <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    
+    
+    <category term="计算机考研" scheme="http://daweitech.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day2</title>
+    <link href="http://daweitech.github.io/2022/07/06/2022/7/day2/"/>
+    <id>http://daweitech.github.io/2022/07/06/2022/7/day2/</id>
+    <published>2022-07-06T07:58:33.000Z</published>
+    <updated>2022-07-06T08:52:08.568Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;时延&quot;&gt;&lt;a href=&quot;#时延&quot; class=&quot;headerlink&quot; title=&quot;时延&quot;&gt;&lt;/a&gt;时延&lt;/h2&gt;&lt;p&gt;常考传输、传播时延&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    <content src="http://daweitech.github.io/imgr/0.jpg" type="image"/>
+    
+    
+    <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    
+    
+    <category term="计算机考研" scheme="http://daweitech.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    
+  </entry>
+  
+  <entry>
     <title>day1</title>
     <link href="http://daweitech.github.io/2022/07/05/2022/7/day1/"/>
     <id>http://daweitech.github.io/2022/07/05/2022/7/day1/</id>
     <published>2022-07-05T11:15:40.000Z</published>
-    <updated>2022-07-05T11:52:11.183Z</updated>
+    <updated>2022-07-06T08:54:50.037Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt; 概念、组成、功能和分类&lt;/p&gt;
-&lt;p&gt;1.怎么学习计算机网络&lt;/p&gt;
-&lt;img src=&quot;/2022/07/05/2022/7/day1/image-20220705191804871.png&quot;</summary>
+    <summary type="html">&lt;h2 id=&quot;概念、组成、功能和分类&quot;&gt;&lt;a href=&quot;#概念、组成、功能和分类&quot; class=&quot;headerlink&quot; title=&quot;概念、组成、功能和分类&quot;&gt;&lt;/a&gt;概念、组成、功能和分类&lt;/h2&gt;&lt;h3 id=&quot;1-怎么学习计算机网络&quot;&gt;&lt;a</summary>
         
       
     
@@ -471,55 +524,6 @@
     
     
     <category term="buu" scheme="http://daweitech.github.io/tags/buu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DASCTF hellounser</title>
-    <link href="http://daweitech.github.io/2021/09/25/2021/buu/23/"/>
-    <id>http://daweitech.github.io/2021/09/25/2021/buu/23/</id>
-    <published>2021-09-25T12:02:32.000Z</published>
-    <updated>2021-09-26T13:16:27.945Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt; 源码&lt;/p&gt;
-&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    
-    <category term="buu" scheme="http://daweitech.github.io/tags/buu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php代码审计(三)</title>
-    <link href="http://daweitech.github.io/2021/09/17/2021/src/3/"/>
-    <id>http://daweitech.github.io/2021/09/17/2021/src/3/</id>
-    <published>2021-09-17T12:20:23.000Z</published>
-    <updated>2021-09-17T12:37:47.373Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt; 这次试着尝试审计bluecms漏洞&lt;/p&gt;
-&lt;p&gt;安装bluecms的教程文章：&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="php" scheme="http://daweitech.github.io/tags/php/"/>
     
   </entry>
   
