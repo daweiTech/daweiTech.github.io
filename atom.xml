@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2022-07-07T08:44:03.795Z</updated>
+  <updated>2022-07-08T01:39:00.848Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>day4</title>
+    <link href="http://daweitech.github.io/2022/07/08/2022/7/day4/"/>
+    <id>http://daweitech.github.io/2022/07/08/2022/7/day4/</id>
+    <published>2022-07-08T01:13:11.000Z</published>
+    <updated>2022-07-08T01:39:00.848Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;预告&quot;&gt;&lt;a href=&quot;#预告&quot; class=&quot;headerlink&quot; title=&quot;预告&quot;&gt;&lt;/a&gt;预告&lt;/h3&gt;&lt;img src=&quot;/2022/07/08/2022/7/day4/image-20220708091510682.png&quot;</summary>
+        
+      
+    
+    
+    <content src="http://daweitech.github.io/imgr/0.jpg" type="image"/>
+    
+    
+    <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    
+    
+    <category term="计算机考研" scheme="http://daweitech.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    
+  </entry>
+  
+  <entry>
     <title>day3</title>
     <link href="http://daweitech.github.io/2022/07/07/2022/7/day3/"/>
     <id>http://daweitech.github.io/2022/07/07/2022/7/day3/</id>
     <published>2022-07-07T07:52:55.000Z</published>
-    <updated>2022-07-07T08:44:03.795Z</updated>
+    <updated>2022-07-08T01:12:42.585Z</updated>
     
     
       
@@ -157,7 +184,7 @@
     <link href="http://daweitech.github.io/2022/02/14/2022/2/Redis%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95/"/>
     <id>http://daweitech.github.io/2022/02/14/2022/2/Redis%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95/</id>
     <published>2022-02-14T12:42:56.000Z</published>
-    <updated>2022-02-28T07:29:56.323Z</updated>
+    <updated>2022-07-09T11:44:43.401Z</updated>
     
     
       
@@ -171,7 +198,7 @@
       
     
     
-    <content src="http://daweitech.github.io/images/cover/categories.jpg" type="image"/>
+    <content src="http://daweitech.github.io/images/cover/color.jpg" type="image"/>
     
     
     
@@ -494,29 +521,6 @@
         
         
     <summary type="html">&lt;p&gt;&lt;img src=&quot;/2021/09/29/2021/buu/25/image-20210929213110592.png&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="buu" scheme="http://daweitech.github.io/tags/buu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MRCTF2020 wirteup</title>
-    <link href="http://daweitech.github.io/2021/09/28/2021/buu/24/"/>
-    <id>http://daweitech.github.io/2021/09/28/2021/buu/24/</id>
-    <published>2021-09-28T11:31:00.000Z</published>
-    <updated>2021-09-29T08:44:19.842Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;​    参考了Y1ng大佬的博客：&lt;a</summary>
         
       
     
