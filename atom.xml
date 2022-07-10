@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2022-07-09T13:14:53.778Z</updated>
+  <updated>2022-07-10T07:37:18.988Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>day5</title>
+    <link href="http://daweitech.github.io/2022/07/10/2022/7/day5/"/>
+    <id>http://daweitech.github.io/2022/07/10/2022/7/day5/</id>
+    <published>2022-07-10T01:56:34.000Z</published>
+    <updated>2022-07-10T07:37:18.988Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;奈氏准则-香农定理&quot;&gt;&lt;a href=&quot;#奈氏准则-香农定理&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    <content src="http://daweitech.github.io/images/draw/sunsky.jpg" type="image"/>
+    
+    
+    <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    
+    
+    <category term="计算机考研" scheme="http://daweitech.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    
+  </entry>
+  
+  <entry>
     <title>day4</title>
     <link href="http://daweitech.github.io/2022/07/08/2022/7/day4/"/>
     <id>http://daweitech.github.io/2022/07/08/2022/7/day4/</id>
     <published>2022-07-08T01:13:11.000Z</published>
-    <updated>2022-07-09T13:14:53.778Z</updated>
+    <updated>2022-07-10T07:37:10.557Z</updated>
     
     
       
@@ -33,7 +60,7 @@
       
     
     
-    <content src="http://daweitech.github.io/images/life/starry.jpg" type="image"/>
+    <content src="http://daweitech.github.io/images/draw/sunsky.jpg" type="image"/>
     
     
     <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
@@ -211,7 +238,7 @@
     <link href="http://daweitech.github.io/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/"/>
     <id>http://daweitech.github.io/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/</id>
     <published>2022-02-05T13:41:57.000Z</published>
-    <updated>2022-02-28T07:38:46.085Z</updated>
+    <updated>2022-07-09T15:47:28.215Z</updated>
     
     
       
@@ -223,8 +250,6 @@
         
       
     
-    
-    <content src="http://daweitech.github.io/imgr/2.jpg" type="image"/>
     
     
     <category term="CTF" scheme="http://daweitech.github.io/categories/CTF/"/>
@@ -239,7 +264,7 @@
     <link href="http://daweitech.github.io/2022/01/20/2022/1/notes/"/>
     <id>http://daweitech.github.io/2022/01/20/2022/1/notes/</id>
     <published>2022-01-20T12:37:47.000Z</published>
-    <updated>2022-02-28T07:39:18.496Z</updated>
+    <updated>2022-07-09T15:47:35.437Z</updated>
     
     
       
@@ -252,8 +277,6 @@
         
       
     
-    
-    <content src="http://daweitech.github.io/imgr/3.jpg" type="image"/>
     
     
     
@@ -505,29 +528,6 @@
     
     
     <category term="nss" scheme="http://daweitech.github.io/tags/nss/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>极客大挑战 2019 RCE ME</title>
-    <link href="http://daweitech.github.io/2021/09/29/2021/buu/25/"/>
-    <id>http://daweitech.github.io/2021/09/29/2021/buu/25/</id>
-    <published>2021-09-29T13:28:21.000Z</published>
-    <updated>2021-09-29T13:54:19.423Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2021/09/29/2021/buu/25/image-20210929213110592.png&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="buu" scheme="http://daweitech.github.io/tags/buu/"/>
     
   </entry>
   
