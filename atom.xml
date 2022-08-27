@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2022-07-10T07:37:18.988Z</updated>
+  <updated>2022-08-27T01:45:00.697Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -17,18 +17,101 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>webpack案例</title>
+    <link href="http://daweitech.github.io/2022/08/27/2022/8/webpack%E6%A1%88%E4%BE%8B/"/>
+    <id>http://daweitech.github.io/2022/08/27/2022/8/webpack%E6%A1%88%E4%BE%8B/</id>
+    <published>2022-08-27T01:02:42.000Z</published>
+    <updated>2022-08-27T01:45:00.697Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2022/08/27/2022/8/webpack%E6%A1%88%E4%BE%8B/image-20220827091228104.png&quot; alt=&quot;image-20220827091228104&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    <content src="http://daweitech.github.io/images/life/dark.jpg" type="image"/>
+    
+    
+    <category term="js" scheme="http://daweitech.github.io/categories/js/"/>
+    
+    
+    <category term="js逆向" scheme="http://daweitech.github.io/tags/js%E9%80%86%E5%90%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day7</title>
+    <link href="http://daweitech.github.io/2022/07/14/2022/7/day7/"/>
+    <id>http://daweitech.github.io/2022/07/14/2022/7/day7/</id>
+    <published>2022-07-14T10:48:23.000Z</published>
+    <updated>2022-07-18T09:19:13.452Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;物理层传输介质&quot;&gt;&lt;a href=&quot;#物理层传输介质&quot; class=&quot;headerlink&quot; title=&quot;物理层传输介质&quot;&gt;&lt;/a&gt;物理层传输介质&lt;/h2&gt;&lt;p&gt;概念&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    <content src="http://daweitech.github.io/images/draw/sunsky.jpg" type="image"/>
+    
+    
+    <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    
+    
+    <category term="计算机考研" scheme="http://daweitech.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>day6</title>
+    <link href="http://daweitech.github.io/2022/07/12/2022/7/day6/"/>
+    <id>http://daweitech.github.io/2022/07/12/2022/7/day6/</id>
+    <published>2022-07-12T07:02:19.000Z</published>
+    <updated>2022-07-12T08:34:15.729Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;编码与调制（一）&quot;&gt;&lt;a href=&quot;#编码与调制（一）&quot; class=&quot;headerlink&quot; title=&quot;编码与调制（一）&quot;&gt;&lt;/a&gt;编码与调制（一）&lt;/h2&gt;&lt;h3 id=&quot;预备知识&quot;&gt;&lt;a href=&quot;#预备知识&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    <content src="http://daweitech.github.io/images/draw/sunsky.jpg" type="image"/>
+    
+    
+    <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    
+    
+    <category term="计算机考研" scheme="http://daweitech.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    
+  </entry>
+  
+  <entry>
     <title>day5</title>
     <link href="http://daweitech.github.io/2022/07/10/2022/7/day5/"/>
     <id>http://daweitech.github.io/2022/07/10/2022/7/day5/</id>
     <published>2022-07-10T01:56:34.000Z</published>
-    <updated>2022-07-10T07:37:18.988Z</updated>
+    <updated>2022-07-10T09:17:29.713Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h3 id=&quot;奈氏准则-香农定理&quot;&gt;&lt;a href=&quot;#奈氏准则-香农定理&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h3 id=&quot;奈氏准则-香农定理&quot;&gt;&lt;a href=&quot;#奈氏准则-香农定理&quot; class=&quot;headerlink&quot; title=&quot;奈氏准则|香农定理&quot;&gt;&lt;/a&gt;奈氏准则|香农定理&lt;/h3&gt;&lt;h3 id=&quot;预备知识：&quot;&gt;&lt;a href=&quot;#预备知识：&quot;</summary>
         
       
     
@@ -453,81 +536,6 @@
     
     
     <category term="ctf" scheme="http://daweitech.github.io/tags/ctf/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>suctf 2019 EasySQL</title>
-    <link href="http://daweitech.github.io/2021/10/10/2021/nss/0/"/>
-    <id>http://daweitech.github.io/2021/10/10/2021/nss/0/</id>
-    <published>2021-10-10T11:36:24.000Z</published>
-    <updated>2021-10-10T11:54:21.481Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt; 参考链接：&lt;/p&gt;
-&lt;p&gt;[&lt;a href=&quot;https://www.cnblogs.com/peri0d/p/11598597.html&quot;&gt;SUCTF 2019]EasySQL - peri0d - 博客园</summary>
-        
-      
-    
-    
-    
-    
-    <category term="nss" scheme="http://daweitech.github.io/tags/nss/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2021鹤城杯</title>
-    <link href="http://daweitech.github.io/2021/10/10/2021/ctf/%E9%B9%A4%E5%9F%8E%E6%9D%AF/"/>
-    <id>http://daweitech.github.io/2021/10/10/2021/ctf/%E9%B9%A4%E5%9F%8E%E6%9D%AF/</id>
-    <published>2021-10-10T01:16:07.000Z</published>
-    <updated>2021-10-12T11:57:57.567Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;pre&gt;&lt;code&gt; 这次的比赛虽然听说都是原题，但是基本没遇到过，这次看着writeup总结一下&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt; 复现一下某些题目&lt;/p&gt;
-&lt;h3 id=&quot;Middle-magic&quot;&gt;&lt;a href=&quot;#Middle-magic&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="ctf" scheme="http://daweitech.github.io/tags/ctf/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SWPU新生赛2021Web部分Writeup</title>
-    <link href="http://daweitech.github.io/2021/10/04/2021/nss/2/"/>
-    <id>http://daweitech.github.io/2021/10/04/2021/nss/2/</id>
-    <published>2021-10-04T02:36:35.587Z</published>
-    <updated>2022-02-24T14:10:14.532Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;参与了一下&lt;/p&gt;
-&lt;p&gt;新生赛，发现基础还不够扎实&lt;/p&gt;
-&lt;p&gt;顺便记录一下解题&lt;/p&gt;
-&lt;h3 id=&quot;gift-F12&quot;&gt;&lt;a href=&quot;#gift-F12&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="nss" scheme="http://daweitech.github.io/tags/nss/"/>
     
   </entry>
   
