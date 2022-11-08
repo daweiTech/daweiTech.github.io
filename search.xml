@@ -3623,4 +3623,23 @@ public function __toString()&#123;
         <tag>计算机考研</tag>
       </tags>
   </entry>
+  <entry>
+    <title>11.8</title>
+    <url>/2022/11/08/2022/11/11.8/</url>
+    <content><![CDATA[<p> 暂定课题为：基于大数据的高校舆情分析系统</p>
+<p> 想法嘛，选择微博平台，然后几个切入点</p>
+<p>1.关键词</p>
+<p>2.单博文评论</p>
+<p>3.用户</p>
+<p>找到一张好的思路图</p>
+<p>参考文章：</p>
+<p>1.<a href="https://zhuanlan.zhihu.com/p/367880841">https://zhuanlan.zhihu.com/p/367880841</a></p>
+<p><img src="/2022/11/08/2022/11/11.8/v2-bb3b51a9ff3f14ccf379ab5f2be7b34e_r.jpg" alt="img"></p>
+<p>2.<a href="https://blog.csdn.net/caxiou/article/details/127726697">https://blog.csdn.net/caxiou/article/details/127726697</a></p>
+<p>预期学习目标：学习一下django</p>
+]]></content>
+      <categories>
+        <category>Graduation project</category>
+      </categories>
+  </entry>
 </search>
