@@ -3626,8 +3626,12 @@ public function __toString()&#123;
   <entry>
     <title>11.8</title>
     <url>/2022/11/08/2022/11/11.8/</url>
-    <content><![CDATA[<p> 暂定课题为：基于大数据的高校舆情分析系统</p>
-<p> 想法嘛，选择微博平台，然后几个切入点</p>
+    <content><![CDATA[<ol start="11">
+<li><p>8</p>
+<p>暂定课题为：基于大数据的高校舆情分析系统</p>
+<p>想法嘛，选择微博平台，然后几个切入点</p>
+</li>
+</ol>
 <p>1.关键词</p>
 <p>2.单博文评论</p>
 <p>3.用户</p>
@@ -3643,6 +3647,39 @@ public function __toString()&#123;
 <p>linux定时任务</p>
 <p><a href="https://zhuanlan.zhihu.com/p/115082330">https://zhuanlan.zhihu.com/p/115082330</a></p>
 <p><a href="https://www.cnblogs.com/SunArmy/p/13096861.html">https://www.cnblogs.com/SunArmy/p/13096861.html</a></p>
+<p>11.9</p>
+<p>python后台运行</p>
+<p><a href="https://www.cnblogs.com/gaidy/p/10736642.html">https://www.cnblogs.com/gaidy/p/10736642.html</a></p>
+<p>出现的问题：定时任务后，数据表是成功得到删除，但同样的执行爬取数据的指令却没有成功</p>
+<p>暂时将整个文件改成了每次访问路由就重新爬取、生成</p>
+<p>nodejs环境配置</p>
+<p><a href="https://help.aliyun.com/document_detail/50775.html">https://help.aliyun.com/document_detail/50775.html</a></p>
+<p>目前找到问题：定时任务执行后，生成的db文件跑到/root目录下，</p>
+<p>python转换时区</p>
+<p><a href="https://blog.csdn.net/BigBoy_Coder/article/details/102956868">https://blog.csdn.net/BigBoy_Coder/article/details/102956868</a></p>
+<p>11.15</p>
+<p>python读取zipfile</p>
+<p><a href="https://blog.csdn.net/zhuoqingjoking97298/article/details/121974670">https://blog.csdn.net/zhuoqingjoking97298/article/details/121974670</a></p>
+<p>下载微信文章接口</p>
+<p>python处理html文章提取文字</p>
+<p><a href="https://zhuanlan.zhihu.com/p/26192335">https://zhuanlan.zhihu.com/p/26192335</a></p>
+]]></content>
+      <categories>
+        <category>Graduation project</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>11.16</title>
+    <url>/2022/11/16/2022/11/11.16/</url>
+    <content><![CDATA[<h1 id="Python绘制关系网络图笔记"><a href="#Python绘制关系网络图笔记" class="headerlink" title="Python绘制关系网络图笔记"></a>Python绘制关系网络图笔记</h1><p>1.<a href="https://blog.csdn.net/m0_45827246/article/details/121241477">https://blog.csdn.net/m0_45827246/article/details/121241477</a></p>
+<p>2.<a href="https://blog.csdn.net/qq_42374697/article/details/113060314">https://blog.csdn.net/qq_42374697/article/details/113060314</a></p>
+<p>3.<a href="https://blog.csdn.net/qq_42374697/article/details/112849248">https://blog.csdn.net/qq_42374697/article/details/112849248</a></p>
+<p>报错分析</p>
+<p>1.<a href="https://blog.csdn.net/qq_44731019/article/details/126640561">https://blog.csdn.net/qq_44731019/article/details/126640561</a></p>
+<p>方法</p>
+<p>1.<a href="https://www.runoob.com/python/os-chdir.html">https://www.runoob.com/python/os-chdir.html</a></p>
+<p>11.17</p>
+<h1 id="在-Matplotlib-中隐藏坐标轴、边框和空白"><a href="#在-Matplotlib-中隐藏坐标轴、边框和空白" class="headerlink" title="在 Matplotlib 中隐藏坐标轴、边框和空白"></a>在 Matplotlib 中隐藏坐标轴、边框和空白</h1><p><a href="https://www.delftstack.com/zh/howto/matplotlib/hide-axis-borders-and-white-spaces-in-matplotlib/#:~:text=%E4%B8%BA%E4%BA%86%E6%B6%88%E9%99%A4%E8%BE%B9%E6%A1%86%E5%91%A8%E5%9B%B4%E7%9A%84%E7%A9%BA%E7%99%BD%EF%BC%8C%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E5%9C%A8%20savefig%20%28%29%20%E6%96%B9%E6%B3%95%E4%B8%AD%E8%AE%BE%E7%BD%AE%20bbox_inches%3D%27tight%27%20%E3%80%82,%E5%90%8C%E6%A0%B7%E7%9A%84%EF%BC%8C%E4%B8%BA%E4%BA%86%E5%8E%BB%E9%99%A4%E5%9B%BE%E7%89%87%E5%91%A8%E5%9B%B4%E7%9A%84%E7%99%BD%E8%89%B2%E8%BE%B9%E6%A1%86%EF%BC%8C%E6%88%91%E4%BB%AC%E5%9C%A8%20savefig%20%28%29%20%E6%96%B9%E6%B3%95%E4%B8%AD%E8%AE%BE%E7%BD%AE%20pad_inches%3D0%20%E3%80%82">https://www.delftstack.com/zh/howto/matplotlib/hide-axis-borders-and-white-spaces-in-matplotlib/#:~:text=%E4%B8%BA%E4%BA%86%E6%B6%88%E9%99%A4%E8%BE%B9%E6%A1%86%E5%91%A8%E5%9B%B4%E7%9A%84%E7%A9%BA%E7%99%BD%EF%BC%8C%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E5%9C%A8%20savefig%20%28%29%20%E6%96%B9%E6%B3%95%E4%B8%AD%E8%AE%BE%E7%BD%AE%20bbox_inches%3D%27tight%27%20%E3%80%82,%E5%90%8C%E6%A0%B7%E7%9A%84%EF%BC%8C%E4%B8%BA%E4%BA%86%E5%8E%BB%E9%99%A4%E5%9B%BE%E7%89%87%E5%91%A8%E5%9B%B4%E7%9A%84%E7%99%BD%E8%89%B2%E8%BE%B9%E6%A1%86%EF%BC%8C%E6%88%91%E4%BB%AC%E5%9C%A8%20savefig%20%28%29%20%E6%96%B9%E6%B3%95%E4%B8%AD%E8%AE%BE%E7%BD%AE%20pad_inches%3D0%20%E3%80%82</a></p>
 ]]></content>
       <categories>
         <category>Graduation project</category>
