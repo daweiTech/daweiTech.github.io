@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2022-11-17T02:55:42.843Z</updated>
+  <updated>2022-11-28T02:41:51.668Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>11.28</title>
+    <link href="http://daweitech.github.io/2022/11/28/2022/11/11.28/"/>
+    <id>http://daweitech.github.io/2022/11/28/2022/11/11.28/</id>
+    <published>2022-11-28T02:38:35.000Z</published>
+    <updated>2022-11-28T02:41:51.668Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt; 11.28&lt;/p&gt;
+&lt;p&gt;重新看了下gephi共现网络绘图&lt;/p&gt;
+&lt;p&gt;了解了重力绘图的原理来源&lt;/p&gt;
+&lt;p&gt;fruchterman reingold&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>11.16</title>
@@ -507,31 +532,6 @@
     
     
     <category term="nss" scheme="http://daweitech.github.io/tags/nss/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Dasctf x Jlenu</title>
-    <link href="http://daweitech.github.io/2021/10/25/2021/ctf/Dasctf%20x%20Jlenu/"/>
-    <id>http://daweitech.github.io/2021/10/25/2021/ctf/Dasctf%20x%20Jlenu/</id>
-    <published>2021-10-25T14:45:12.000Z</published>
-    <updated>2021-10-26T03:22:46.577Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt; 这次坐大牢，web做不出来==&lt;/p&gt;
-&lt;p&gt; 在一个大佬点拨下，懂得misc的签到用ssti注入做（虽然迟了点交flag)&lt;/p&gt;
-&lt;h2 id=&quot;WELCOME-DASCTFxJlenu&quot;&gt;&lt;a href=&quot;#WELCOME-DASCTFxJlenu&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="ctf" scheme="http://daweitech.github.io/tags/ctf/"/>
     
   </entry>
   
