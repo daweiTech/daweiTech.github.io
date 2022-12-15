@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2022-11-28T02:41:51.668Z</updated>
+  <updated>2022-12-15T14:13:43.443Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>chatGPT初体验</title>
+    <link href="http://daweitech.github.io/2022/12/10/2022/12/chatGPT/"/>
+    <id>http://daweitech.github.io/2022/12/10/2022/12/chatGPT/</id>
+    <published>2022-12-10T12:56:07.000Z</published>
+    <updated>2022-12-15T14:13:43.443Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt; 捣鼓了两天，现在成功部署这个很火的AI到自己的服务器上了！（bushi）&lt;/p&gt;
+&lt;p&gt;主地址：&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>11.28</title>
@@ -508,30 +531,6 @@
     
     
     <category term="web" scheme="http://daweitech.github.io/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>天翼杯 2021 esay_eval</title>
-    <link href="http://daweitech.github.io/2021/10/26/2021/nss/1/"/>
-    <id>http://daweitech.github.io/2021/10/26/2021/nss/1/</id>
-    <published>2021-10-26T11:41:39.000Z</published>
-    <updated>2021-10-26T12:26:52.407Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt; 题目标签：&lt;strong&gt;反序列化、主从复制、RCE、redis&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;文章学习：&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="nss" scheme="http://daweitech.github.io/tags/nss/"/>
     
   </entry>
   
