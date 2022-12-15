@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2022-12-15T14:13:43.443Z</updated>
+  <updated>2022-12-15T14:21:09.005Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>仍是疫情</title>
+    <link href="http://daweitech.github.io/2022/12/15/2022/12/%E4%BB%8D%E6%98%AF%E7%96%AB%E6%83%85/"/>
+    <id>http://daweitech.github.io/2022/12/15/2022/12/%E4%BB%8D%E6%98%AF%E7%96%AB%E6%83%85/</id>
+    <published>2022-12-15T14:16:57.000Z</published>
+    <updated>2022-12-15T14:21:09.005Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt; 恍然间，已经回到了家里&lt;/p&gt;
+&lt;p&gt; 回想这几年的魔幻，以及现在的一夜之间，感慨万分&lt;/p&gt;
+&lt;p&gt; 人性，无需多言&lt;/p&gt;
+&lt;p&gt; 只道是天凉好个秋，希望大家都能平平安安度过这段时期&lt;/p&gt;
+&lt;p&gt; &lt;img</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>chatGPT初体验</title>
@@ -506,31 +531,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>字符串逃逸</title>
-    <link href="http://daweitech.github.io/2021/10/28/2021/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/"/>
-    <id>http://daweitech.github.io/2021/10/28/2021/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/</id>
-    <published>2021-10-28T12:14:29.000Z</published>
-    <updated>2021-10-29T11:01:22.369Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt; 今天也是写了好多道web题，感觉bugku上的两题ssti有点坑，一直说我的pin是错的&lt;/p&gt;
-&lt;p&gt;咳咳，回到正题，写一下newphp题目，这题有关字符串反序列化逃逸&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="web" scheme="http://daweitech.github.io/tags/web/"/>
     
   </entry>
   
