@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2022-12-15T14:21:09.005Z</updated>
+  <updated>2022-12-17T12:34:18.863Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>tweet</title>
+    <link href="http://daweitech.github.io/2022/12/17/2022/12/tweet/"/>
+    <id>http://daweitech.github.io/2022/12/17/2022/12/tweet/</id>
+    <published>2022-12-17T12:32:37.000Z</published>
+    <updated>2022-12-17T12:34:18.863Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt; 记录一下有关视频和文章&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=PUMMCLrVn8A&quot;&gt;https://www.youtube.com/watch?v=PUMMCLrVn8A&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;用 5</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>仍是疫情</title>
@@ -508,29 +531,6 @@
     
     
     <category term="ctf" scheme="http://daweitech.github.io/tags/ctf/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>bluecms</title>
-    <link href="http://daweitech.github.io/2021/11/01/2021/buu/26/"/>
-    <id>http://daweitech.github.io/2021/11/01/2021/buu/26/</id>
-    <published>2021-11-01T12:55:54.000Z</published>
-    <updated>2021-11-14T13:41:02.854Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;[&lt;a href=&quot;https://www.shawroot.cc/1159.html&quot;&gt;NPUCTF2020]ezinclude（PHP临时文件包含） – 「配枪朱丽叶。」 (shawroot.cc)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;bluecms：&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
     
   </entry>
   
