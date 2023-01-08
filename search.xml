@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>1</title>
+      <link href="/2023/01/08/2023/1/1.8/"/>
+      <url>/2023/01/08/2023/1/1.8/</url>
+      
+        <content type="html"><![CDATA[<p> 新建git仓库：commi</p><p> 提交方式：</p><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">git <span class="hljs-keyword">add</span> ./<br>git commit -m <span class="hljs-string">&quot;msg&quot;</span><br>git <span class="hljs-keyword">push</span><br></code></pre></td></tr></table></figure><p>现已经提交的代码为：舆情系统，包含简单的百度贴吧爬取和一个Django的游戏推荐系统</p><p>提交时目前比较麻烦，需要输入用户名和token</p><p><a href="https://blog.51cto.com/u_15926676/5981136">https://blog.51cto.com/u_15926676/5981136</a></p><p>昨晚尝试跑通系统，各种博客后系统可以运行，里面牵涉到Django的migrate移植问题</p><p>不过数据库的插入出现了一些问题，最后没有全部功能实现</p><p>掌握一个新方法，命令行使用pycharm建立的虚拟环境（疑惑？）</p><p>建立不用多说，主要是启用环境的部分</p><p>到指定目录下，执行如下指令就可以了</p><p><img src="/2023/01/08/2023/1/1.8/image-20230108112938517.png" alt="image-20230108112938517"></p><p>然后就是解决配置Django项目的问题使用到的博客</p><img src="/2023/01/08/2023/1/1.8/Users/David/AppData/Roaming/Typora/typora-user-images/image-20230108113142932.png" alt="image-20230108113142932" style="zoom:50%;"><p>emm，主要之前是一点都不了解，以至于碰到一个报错就贴上去百度</p><p>现在了解了一些后，遇到的问题就比较清晰了，就是migrate后已经创建了相应的表，就剩下数据插入部分亟待解决</p><p>萌生的想法就是，数据爬取还是python为主，系统框架用java会不会好很多呢</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>tweet</title>
       <link href="/2022/12/17/2022/12/tweet/"/>
       <url>/2022/12/17/2022/12/tweet/</url>
