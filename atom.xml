@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2023-01-08T03:35:44.834Z</updated>
+  <updated>2023-01-08T03:40:07.460Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>1</title>
+    <title>1.8</title>
     <link href="http://daweitech.github.io/2023/01/08/2023/1/1.8/"/>
     <id>http://daweitech.github.io/2023/01/08/2023/1/1.8/</id>
     <published>2023-01-08T03:18:10.000Z</published>
-    <updated>2023-01-08T03:35:44.834Z</updated>
+    <updated>2023-01-08T03:40:07.460Z</updated>
     
     
       
@@ -34,6 +34,8 @@
         
       
     
+    
+    <content src="http://daweitech.github.io/images/life/starry.jpg" type="image"/>
     
     
     
