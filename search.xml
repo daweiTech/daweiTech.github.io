@@ -3769,9 +3769,69 @@ public function __toString()&#123;
 <p><img src="/2023/01/08/2023/1/1.8/image-20230109170438292.png" alt="image-20230109170438292"></p>
 <p>软件、脚本安装教程：<a href="https://www.cnblogs.com/softxmm/p/13972678.html#idm">https://www.cnblogs.com/softxmm/p/13972678.html#idm</a></p>
 <p>下载链接：<a href="https://wwx.lanzoux.com/iTfYl045962h">https://wwx.lanzoux.com/iTfYl045962h</a></p>
+<p>1.10：推荐的新脚本地址：百度网盘简易下载助手（直链下载复活版）<a href="https://greasyfork.org/zh-CN/scripts/418182">https://greasyfork.org/zh-CN/scripts/418182</a></p>
+<p>关于下载存放位置的问题：idm未下载完成的文件是存放在什么地方的？<a href="https://zhidao.baidu.com/question/85177435.html">https://zhidao.baidu.com/question/85177435.html</a></p>
+<blockquote>
+<p>​    打开IDM主页面，上面有一排大大的按钮，找到“选项”按钮，点击之…<br>或者“菜单栏”===&gt;“下载”===&gt;“选项”也是一样的，把它点开<br>​    再点到“保存位置”，下面有个“[XX]类别的默认下载目录”…<br>看它的默认存放地一般是你的系统盘:\Documents and Settings[你的用户名]下面<br>（记得好像是这里，具体的记得不是很清楚了）<br>它是存放在一个它自己指定的一个目录“DwnlData”下面…</p>
+</blockquote>
 ]]></content>
       <tags>
         <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>week1</title>
+    <url>/2023/01/14/2023/1/week1/</url>
+    <content><![CDATA[<h4 id="1480-一维数组的动态和"><a href="#1480-一维数组的动态和" class="headerlink" title="1480. 一维数组的动态和"></a><a href="https://leetcode.cn/problems/running-sum-of-1d-array/">1480. 一维数组的动态和</a></h4><p>给你一个数组 <code>nums</code> 。数组「动态和」的计算公式为：<code>runningSum[i] = sum(nums[0]…nums[i])</code> </p>
+<p>请返回 <code>nums</code> 的动态和。</p>
+<p><img src="/2023/01/14/2023/1/week1/image-20230114194224435.png" alt="image-20230114194224435"></p>
+<p>我的题解</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">class</span> <span class="hljs-string">Solution(object):</span><br>    <span class="hljs-attr">def</span> <span class="hljs-string">runningSum(self, nums):</span><br>        <span class="hljs-attr">new_nums</span> = <span class="hljs-string">[]</span><br><br>        <span class="hljs-attr">for</span> <span class="hljs-string">i in range(len(nums)):</span><br>            <span class="hljs-attr">sum</span> = <span class="hljs-string">0</span><br>            <span class="hljs-attr">for</span> <span class="hljs-string">j in range(i+1):</span><br>                <span class="hljs-attr">sum</span> <span class="hljs-string">+= nums[j]</span><br>            <span class="hljs-meta">new_nums.append(sum)</span> <span class="hljs-string"></span><br><br>        <span class="hljs-attr">return</span> <span class="hljs-string">new_nums    </span><br></code></pre></td></tr></table></figure>
+
+<p>其他题解</p>
+<p>1.动态规划</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim">class Solution:<br>    def runningSum(self, num<span class="hljs-variable">s:</span> List[<span class="hljs-keyword">int</span>]) -&gt; List[<span class="hljs-keyword">int</span>]:<br>        <span class="hljs-keyword">dp</span>= [<span class="hljs-number">0</span>] * (n:=<span class="hljs-built_in">len</span>(nums))<br>        <span class="hljs-keyword">dp</span>[<span class="hljs-number">0</span>] = nums[<span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">for</span> i in <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n):<br>            <span class="hljs-keyword">dp</span>[i] = <span class="hljs-keyword">dp</span>[i-<span class="hljs-number">1</span>] + nums[i]<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">dp</span><br></code></pre></td></tr></table></figure>
+
+<p>2.最优</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>(<span class="hljs-title">object</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">runningSum</span><span class="hljs-params">(<span class="hljs-keyword">self</span>, nums)</span></span><span class="hljs-symbol">:</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,len(nums))<span class="hljs-symbol">:</span><br>            nums[i] += nums[i-<span class="hljs-number">1</span>]<br>        <span class="hljs-keyword">return</span> nums<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1481-不同整数的最少数目"><a href="#1481-不同整数的最少数目" class="headerlink" title="1481. 不同整数的最少数目"></a><a href="https://leetcode.cn/problems/least-number-of-unique-integers-after-k-removals/">1481. 不同整数的最少数目</a></h4><p>给你一个整数数组 <code>arr</code> 和一个整数 <code>k</code> 。现需要从数组中恰好移除 <code>k</code> 个元素，请找出移除后数组中不同整数的最少数目。</p>
+<p><img src="/2023/01/14/2023/1/week1/image-20230114194342281.png" alt="image-20230114194342281"></p>
+<p>我的题解</p>
+<p>error</p>
+<p>其他题解</p>
+<p>1.官方</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">class</span> Solution:<br>    def find<span class="hljs-constructor">LeastNumOfUniqueInts(<span class="hljs-params">self</span>, <span class="hljs-params">arr</span>: List[<span class="hljs-params">int</span>], <span class="hljs-params">k</span>: <span class="hljs-params">int</span>)</span> -&gt; <span class="hljs-built_in">int</span>:<br>        group = collections.<span class="hljs-constructor">Counter(<span class="hljs-params">arr</span>)</span><br>        freq = group.most<span class="hljs-constructor">_common()</span><span class="hljs-literal">[::-<span class="hljs-number">1</span>]</span><br>        ans = len(freq)<br>        <span class="hljs-keyword">for</span> _, occ <span class="hljs-keyword">in</span> freq:<br>            <span class="hljs-keyword">if</span> k &gt;= occ:<br>                ans -= <span class="hljs-number">1</span><br>                k -= occ<br>            <span class="hljs-keyword">else</span>:<br>                break<br>        return ans<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1807-替换字符串中的括号内容"><a href="#1807-替换字符串中的括号内容" class="headerlink" title="1807. 替换字符串中的括号内容"></a><a href="https://leetcode.cn/problems/evaluate-the-bracket-pairs-of-a-string/">1807. 替换字符串中的括号内容</a></h4><p>给你一个字符串 <code>s</code> ，它包含一些括号对，每个括号中包含一个 <strong>非空</strong> 的键。</p>
+<ul>
+<li>比方说，字符串 <code>&quot;(name)is(age)yearsold&quot;</code> 中，有 <strong>两个</strong> 括号对，分别包含键 <code>&quot;name&quot;</code> 和 <code>&quot;age&quot;</code> 。</li>
+</ul>
+<p>你知道许多键对应的值，这些关系由二维字符串数组 <code>knowledge</code> 表示，其中 <code>knowledge[i] = [keyi, valuei]</code> ，表示键 <code>keyi</code> 对应的值为 <code>valuei</code> 。</p>
+<p>你需要替换 <strong>所有</strong> 的括号对。当你替换一个括号对，且它包含的键为 <code>keyi</code> 时，你需要：</p>
+<ul>
+<li>将 <code>keyi</code> 和括号用对应的值 <code>valuei</code> 替换。</li>
+<li>如果从 <code>knowledge</code> 中无法得知某个键对应的值，你需要将 <code>keyi</code> 和括号用问号 <code>&quot;?&quot;</code> 替换（不需要引号）。</li>
+</ul>
+<p><code>knowledge</code> 中每个键最多只会出现一次。<code>s</code> 中不会有嵌套的括号。</p>
+<p>请你返回替换 <strong>所有</strong> 括号对后的结果字符串。</p>
+<p><img src="/2023/01/14/2023/1/week1/image-20230114194745315.png" alt="image-20230114194745315"></p>
+<p>我的题解：</p>
+<p>error</p>
+<p>其他题解：</p>
+<p>1.简洁有效，respect</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">evaluate</span>(<span class="hljs-params">self, s: str, knowledge: List[List[str]]</span>) -&gt; str:</span><br>        d = dict(knowledge)<br>        <span class="hljs-keyword">return</span> re.sub(<span class="hljs-string">r&quot;\((\w+)\)&quot;</span>, <span class="hljs-keyword">lambda</span> matched: d.get(matched.groups(<span class="hljs-number">0</span>)[<span class="hljs-number">0</span>], <span class="hljs-string">&quot;?&quot;</span>), s)<br><br></code></pre></td></tr></table></figure>
+
+<p>2.官方</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">evaluate</span>(<span class="hljs-params">self, s: str, knowledge: List[List[str]]</span>) -&gt; str:</span><br>            d = dict(knowledge)<br>            ans, start = [], <span class="hljs-number">-1</span><br>            <span class="hljs-keyword">for</span> i, c <span class="hljs-keyword">in</span> enumerate(s):<br>                <span class="hljs-keyword">if</span> c == <span class="hljs-string">&#x27;(&#x27;</span>:<br>                    start = i<br>                <span class="hljs-keyword">elif</span> c == <span class="hljs-string">&#x27;)&#x27;</span>:<br>                    ans.append(d.get(s[start + <span class="hljs-number">1</span>: i], <span class="hljs-string">&#x27;?&#x27;</span>))<br>                    start = <span class="hljs-number">-1</span><br>                <span class="hljs-keyword">elif</span> start &lt; <span class="hljs-number">0</span>:<br>                    ans.append(c)<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>.join(ans)<br><br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>leetcode</tag>
       </tags>
   </entry>
 </search>

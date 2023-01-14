@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2023-01-09T09:12:48.364Z</updated>
+  <updated>2023-01-14T11:49:06.802Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>week1</title>
+    <link href="http://daweitech.github.io/2023/01/14/2023/1/week1/"/>
+    <id>http://daweitech.github.io/2023/01/14/2023/1/week1/</id>
+    <published>2023-01-14T11:34:43.000Z</published>
+    <updated>2023-01-14T11:49:06.802Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;1480-一维数组的动态和&quot;&gt;&lt;a href=&quot;#1480-一维数组的动态和&quot; class=&quot;headerlink&quot; title=&quot;1480. 一维数组的动态和&quot;&gt;&lt;/a&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="leetcode" scheme="http://daweitech.github.io/tags/leetcode/"/>
+    
+  </entry>
+  
+  <entry>
     <title>1.8</title>
     <link href="http://daweitech.github.io/2023/01/08/2023/1/1.8/"/>
     <id>http://daweitech.github.io/2023/01/08/2023/1/1.8/</id>
     <published>2023-01-08T03:18:10.000Z</published>
-    <updated>2023-01-09T09:12:48.364Z</updated>
+    <updated>2023-01-10T01:34:13.200Z</updated>
     
     
       
@@ -510,31 +533,6 @@
     
     
     <category term="ctf" scheme="http://daweitech.github.io/tags/ctf/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Notes</title>
-    <link href="http://daweitech.github.io/2022/01/20/2022/1/notes/"/>
-    <id>http://daweitech.github.io/2022/01/20/2022/1/notes/</id>
-    <published>2022-01-20T12:37:47.000Z</published>
-    <updated>2022-07-09T15:47:35.437Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;参考文章：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/iloveacm/category/1791836.html&quot;&gt;CTF - 随笔分类 - iloveacm - 博客园 (cnblogs.com)&lt;/a&gt;&lt;/p&gt;
-&lt;h1</summary>
-        
-      
-    
-    
-    
-    
-    <category term="web" scheme="http://daweitech.github.io/tags/web/"/>
     
   </entry>
   
