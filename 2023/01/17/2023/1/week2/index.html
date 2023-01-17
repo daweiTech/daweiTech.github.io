@@ -6,12 +6,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>bluecms - Αιώνιος</title>
+  <title>1 - Αιώνιος</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   
-  <meta name="description" content="[NPUCTF2020]ezinclude（PHP临时...">
+  <meta name="description" content="1814. 统计一个数组中好对子的数目给你一个数组 n...">
   <meta name="author" content="4v1d">
   <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="32x32">
@@ -153,7 +153,7 @@
       
       
     </div>
-    <div class="center">bluecms</div>
+    <div class="center">1</div>
     <div class="right">
       <i class="iconfont iconmenu j-navbar-menu"></i>
     </div>
@@ -195,22 +195,54 @@
       <div class="col-xl-6"><article class="article">
   <div class="wrap">
     <section class="head">
-  <img   class="lazyload" data-original="/images/cover/eight.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <img   class="lazyload" data-original="/images/cover/seven.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">bluecms</h1>
+    <h1 class="head-title">1</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>November 01, 2021</span>
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>January 17, 2023</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>121</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1265</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
         
-        <p>[<a target="_blank" rel="noopener" href="https://www.shawroot.cc/1159.html">NPUCTF2020]ezinclude（PHP临时文件包含） – 「配枪朱丽叶。」 (shawroot.cc)</a></p>
-<p>bluecms：</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/BOHB-yunying/p/12643510.html">bluecms v1.6 sp1 代码审计学习 - yunying - 博客园 (cnblogs.com)</a></p>
+        <h4 id="1814-统计一个数组中好对子的数目"><a href="#1814-统计一个数组中好对子的数目" class="headerlink" title="1814. 统计一个数组中好对子的数目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-nice-pairs-in-an-array/">1814. 统计一个数组中好对子的数目</a></h4><p>给你一个数组 <code>nums</code> ，数组中只包含非负整数。定义 <code>rev(x)</code> 的值为将整数 <code>x</code> 各个数字位反转得到的结果。比方说 <code>rev(123) = 321</code> ， <code>rev(120) = 21</code> 。我们称满足下面条件的下标对 <code>(i, j)</code> 是 <strong>好的</strong> ：</p>
+<ul>
+<li><code>0 &lt;= i &lt; j &lt; nums.length</code></li>
+<li><code>nums[i] + rev(nums[j]) == nums[j] + rev(nums[i])</code></li>
+</ul>
+<p>请你返回好下标对的数目。由于结果可能会很大，请将结果对 <code>109 + 7</code> <strong>取余</strong> 后返回。</p>
+<p><img   class="lazyload" data-original="/2023/01/17/2023/1/week2/image-20230117110340137.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230117110340137"></p>
+<p>这题我的思路挺明确的，取出数组中两两配对</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lsl"># aa = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br># bb = <span class="hljs-type">list</span>(itertools.permutations(aa, <span class="hljs-number">2</span>))<br></code></pre></td></tr></table></figure>
+
+<p>可以得到</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json">[(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>), (<span class="hljs-number">1</span>, <span class="hljs-number">3</span>), (<span class="hljs-number">2</span>, <span class="hljs-number">1</span>), (<span class="hljs-number">2</span>, <span class="hljs-number">3</span>), (<span class="hljs-number">3</span>, <span class="hljs-number">1</span>), (<span class="hljs-number">3</span>, <span class="hljs-number">2</span>)]<br></code></pre></td></tr></table></figure>
+
+<p>定义一个内部函数</p>
+<figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs gml">def rev(<span class="hljs-symbol">x</span>):<br>    b=<span class="hljs-number">0</span><br>    <span class="hljs-keyword">while</span> <span class="hljs-symbol">x</span>&gt;<span class="hljs-number">0</span>:<br>        b=b*<span class="hljs-number">10</span>+<span class="hljs-symbol">x</span>%<span class="hljs-number">10</span><br>        <span class="hljs-symbol">x</span>=<span class="hljs-symbol">x</span><span class="hljs-comment">//10</span><br>    <span class="hljs-keyword">return</span> b<br></code></pre></td></tr></table></figure>
+
+<p>之后for循环进行值比较，相等则加1，不等就跳过</p>
+<p>最后返回数值时/2并对<code>10 9 + 7</code> <strong>取余</strong></p>
+<p>结果测试到用例64的时候报错了，超时。。。。</p>
+<p>学习一下官方解法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> List<br><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> Counter<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">countNicePairs</span>(<span class="hljs-params">self, nums: List[int]</span>) -&gt; int:</span><br>        res = <span class="hljs-number">0</span><br>        cnt = Counter()<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> nums:<br>            j = int(str(i)[::<span class="hljs-number">-1</span>])<br>            res += cnt[i - j]<br>            cnt[i - j] += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> res % (<span class="hljs-number">10</span> ** <span class="hljs-number">9</span> + <span class="hljs-number">7</span>)<br><br></code></pre></td></tr></table></figure>
+
+<p>Counter，字面意思，计数</p>
+<p>[^Counter（）是collections里面的一个类，作用是计算出字符串或者列表等中不同元素出现的个数，返回值可以理解为一个字典，所以对传回来的统计结果的操作都可以当作对字典的操作]: </p>
+<p>Note: 字符串还有一个内置的count(),只能统计字符串中某个元素出现的个数。</p>
+<p>如下</p>
+<p><img   class="lazyload" data-original="/2023/01/17/2023/1/week2/image-20230117111233826.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230117111233826"></p>
+<p>这样的话</p>
+<pre><code>        j = int(str(i)[::-1])
+        res += cnt[i - j]
+        cnt[i - j] += 1</code></pre>
+<p>这边代码的操作就是转换成字符串后逆序进行计数</p>
+<p>i-j看成一个整体，作为一个键，后续若遇到相同的键则加1</p>
+<p>通过观察，达成好对子的两个数，它们的差值是相同的包括正负</p>
+<p>后续就是res加上计数值，最后按照题目要求取余就行</p>
 
       </section>
       <section class="extra">
@@ -218,17 +250,19 @@
           <ul class="copyright">
   
     <li><strong>本文作者：</strong>4v1d</li>
-    <li><strong>本文链接：</strong><a href="http://daweitech.github.io/2021/11/01/2021/buu/26/index.html" title="http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;11&#x2F;01&#x2F;2021&#x2F;buu&#x2F;26&#x2F;index.html">http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;11&#x2F;01&#x2F;2021&#x2F;buu&#x2F;26&#x2F;index.html</a></li>
+    <li><strong>本文链接：</strong><a href="http://daweitech.github.io/2023/01/17/2023/1/week2/index.html" title="http:&#x2F;&#x2F;daweitech.github.io&#x2F;2023&#x2F;01&#x2F;17&#x2F;2023&#x2F;1&#x2F;week2&#x2F;index.html">http:&#x2F;&#x2F;daweitech.github.io&#x2F;2023&#x2F;01&#x2F;17&#x2F;2023&#x2F;1&#x2F;week2&#x2F;index.html</a></li>
     <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
   
 </ul>
         
         
         
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul> 
+
         
   <nav class="nav">
-    <a href="/2021/11/17/2021/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/"><i class="iconfont iconleft"></i>湖湘杯</a>
-    <a href="/2021/10/28/2021/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/">字符串逃逸<i class="iconfont iconright"></i></a>
+    <a></a>
+    <a href="/2023/01/14/2023/1/week1/">week1<i class="iconfont iconright"></i></a>
   </nav>
 
       </section>
@@ -241,7 +275,7 @@
           
   <aside class="toc-wrap">
     <h3 class="toc-title">文章目录：</h3>
-    
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1814-%E7%BB%9F%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E4%B8%AD%E5%A5%BD%E5%AF%B9%E5%AD%90%E7%9A%84%E6%95%B0%E7%9B%AE"><span class="toc-text">1814. 统计一个数组中好对子的数目</span></a></li></ol>
   </aside>
 
         
