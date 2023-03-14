@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2023-01-17T03:38:13.719Z</updated>
+  <updated>2023-03-14T09:16:21.134Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>3.14</title>
+    <link href="http://daweitech.github.io/2023/03/14/2023/3/3.14/"/>
+    <id>http://daweitech.github.io/2023/03/14/2023/3/3.14/</id>
+    <published>2023-03-14T09:14:07.000Z</published>
+    <updated>2023-03-14T09:16:21.134Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Google Hacking语法总结&lt;/p&gt;
+&lt;p&gt;攻击语法库：&lt;a href=&quot;https://www.exploit-db.com/&quot;&gt;https://www.exploit-db.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;edu src挖掘思路&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>week2</title>
@@ -503,33 +527,6 @@
     
     <category term="SQL-lab" scheme="http://daweitech.github.io/categories/SQL-lab/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Redis的一些笔记</title>
-    <link href="http://daweitech.github.io/2022/02/14/2022/2/Redis%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95/"/>
-    <id>http://daweitech.github.io/2022/02/14/2022/2/Redis%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95/</id>
-    <published>2022-02-14T12:42:56.000Z</published>
-    <updated>2022-07-09T11:44:43.401Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;题记&quot;&gt;&lt;a href=&quot;#题记&quot; class=&quot;headerlink&quot; title=&quot;题记&quot;&gt;&lt;/a&gt;题记&lt;/h1&gt;&lt;p&gt; 最近在学习一些关于Redis漏洞的利用&lt;/p&gt;
-&lt;p&gt; 用一点时间记录一下&lt;/p&gt;
-&lt;h1 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot;</summary>
-        
-      
-    
-    
-    <content src="http://daweitech.github.io/images/cover/color.jpg" type="image"/>
-    
-    
-    
-    <category term="web" scheme="http://daweitech.github.io/tags/web/"/>
     
   </entry>
   

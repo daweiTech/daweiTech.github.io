@@ -3877,4 +3877,15 @@ public function __toString()&#123;
         <tag>leetcode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>3.14</title>
+    <url>/2023/03/14/2023/3/3.14/</url>
+    <content><![CDATA[<p>Google Hacking语法总结</p>
+<p>攻击语法库：<a href="https://www.exploit-db.com/">https://www.exploit-db.com/</a></p>
+<p>edu src挖掘思路</p>
+<p><a href="https://cloud.tencent.com/developer/article/1614126">https://cloud.tencent.com/developer/article/1614126</a></p>
+<p><a href="http://cn-sec.com/archives/280340.html">http://cn-sec.com/archives/280340.html</a></p>
+<p>某后台管理系统：<a href="http://rsc.njucm.edu.cn/manage/login.aspx">http://rsc.njucm.edu.cn/manage/login.aspx</a></p>
+]]></content>
+  </entry>
 </search>
