@@ -1,0 +1,416 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>2021祥云杯 secrets_of_admin&amp;crwaler_z - Αιώνιος</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="祥云杯2021 Web复现_feng的博客-CSDN博...">
+  <meta name="author" content="4v1d">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/cute.jpg" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/cute.jpg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/cute.jpg">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v1.hitokoto.cn/?encode=text&c=d',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Αιώνιος" type="application/atom+xml">
+</head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">2021祥云杯 secrets_of_admin&amp;crwaler_z</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/life/revolve.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">2021祥云杯 secrets_of_admin&crwaler_z</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>September 07, 2021</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2098</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/rfrder/article/details/119914746">祥云杯2021 Web复现_feng的博客-CSDN博客</a></p>
+<p>[祥云杯2021 web wp | Z3ratu1’s blog](<a target="_blank" rel="noopener" href="https://blog.z3ratu1.cn/%E7%A5%A5%E4%BA%91%E6%9D%AF2021">https://blog.z3ratu1.cn/祥云杯2021</a> wp.html#more)</p>
+<p><a target="_blank" rel="noopener" href="https://cbatl.gitee.io/">ly0n - A hard-working boy (gitee.io)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/system/178150.html">Linux下几种反弹Shell方法的总结与理解 - FreeBuf网络安全行业门户</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.wlhhlc.top/posts/20107/#cralwer-z">2021祥云杯WEB-WP | dota_st (wlhhlc.top)</a></p>
+<h4 id="secrets-of-admin"><a href="#secrets-of-admin" class="headerlink" title="secrets_of_admin"></a>secrets_of_admin</h4><p>打开后页面如下：</p>
+<p><img   class="lazyload" data-original="/2021/09/07/2021/ctf/21/image-20210908114725080.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210908114725080"></p>
+<p>database.js里直接给出用户名和密码：</p>
+<p>Username：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">admin</span><br></code></pre></td></tr></table></figure>
+
+<p>Password：</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">e<span class="hljs-number">365655e013</span>ce<span class="hljs-number">7</span>fdbdbf<span class="hljs-number">8</span>f<span class="hljs-number">27</span>b<span class="hljs-number">418</span><span class="hljs-keyword">c</span><span class="hljs-number">8</span>fe<span class="hljs-number">6</span>dc<span class="hljs-number">9354</span>dc<span class="hljs-number">4</span><span class="hljs-keyword">c</span><span class="hljs-number">0328</span>fa<span class="hljs-number">02</span>b<span class="hljs-number">0</span>ea<span class="hljs-number">547659645</span><br></code></pre></td></tr></table></figure>
+
+<p>登录后就有了上传界面</p>
+<p><img   class="lazyload" data-original="/2021/09/07/2021/ctf/21/image-20210908114945704.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210908114945704"></p>
+<p>提示我们上传pdf类型的文件，又只能post传参</p>
+<p>以下直<code>files</code>表可以知道，flag在<code>superuser</code>那里，但是<code>superuser</code>不能用。通过下面三行代码也可以知道，需要把<code>flag</code>给<code>admin</code>用户接摘抄wp（因为我没源码）</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">let</span> filename = await <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">DB</span>.</span></span>get<span class="hljs-constructor">File(<span class="hljs-params">token</span>.<span class="hljs-params">username</span>, <span class="hljs-params">req</span>.<span class="hljs-params">params</span>.<span class="hljs-params">id</span>)</span><br>         <span class="hljs-keyword">if</span> (fs.exists<span class="hljs-constructor">Sync(<span class="hljs-params">path</span>.<span class="hljs-params">join</span>(<span class="hljs-params">__dirname</span> , <span class="hljs-string">&quot;../files/&quot;</span>, <span class="hljs-params">filename</span>)</span>))&#123;<br>             return res.send(await read<span class="hljs-constructor">File(<span class="hljs-params">path</span>.<span class="hljs-params">join</span>(<span class="hljs-params">__dirname</span> , <span class="hljs-string">&quot;../files/&quot;</span>, <span class="hljs-params">filename</span>)</span>));<br><br></code></pre></td></tr></table></figure>
+
+<p>但是/api/files/功能那里需要SSRF。</p>
+<p>通过查找html-pdf库发现它存在一个任意文件读取：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">html-pdf <span class="hljs-keyword">before</span> <span class="hljs-built_in">version</span> <span class="hljs-number">3.0</span><span class="hljs-number">.1</span> is vulnerable <span class="hljs-built_in">to</span> Arbitrary File Read. The package fails <span class="hljs-built_in">to</span> sanitize <span class="hljs-keyword">the</span> HTML input, allowing attackers <span class="hljs-built_in">to</span> exfiltrate server <span class="hljs-built_in">files</span> <span class="hljs-keyword">by</span> supplying malicious HTML code. XHR requests <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> HTML code are executed <span class="hljs-keyword">by</span> <span class="hljs-keyword">the</span> server. Input <span class="hljs-keyword">with</span> <span class="hljs-keyword">an</span> XHR request such <span class="hljs-keyword">as</span> request.<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;GET&quot;</span>,<span class="hljs-string">&quot;file:///etc/passwd&quot;</span>) will <span class="hljs-built_in">result</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">a</span> PDF document <span class="hljs-keyword">with</span> <span class="hljs-keyword">the</span> contents <span class="hljs-keyword">of</span> /etc/passwd.<br></code></pre></td></tr></table></figure>
+
+<p>因此可以利用制造pdf的功能来实现ssrf，把flag给admin用户。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php">&lt;script&gt;<br><span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();xhr.open(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;http://127.0.0.1:8888/api/files?username=admin&amp;filename=./flag&amp;checksum=1&quot;</span>, <span class="hljs-literal">true</span>);xhr.send();<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<p>而且filename字段是UNIQUE，需要不能直接flag，用./flag。</p>
+<p>但是有个问题就是这个过滤：</p>
+<pre><code>if ( content == &#39;&#39; || content.includes(&#39;&lt;&#39;) || content.includes(&#39;&gt;&#39;) || content.includes(&#39;/&#39;) || content.includes(&#39;script&#39;) || content.includes(&#39;on&#39;))&#123;
+    // even admin can&#39;t be trusted right ? :)  
+    return res.render(&#39;admin&#39;, &#123; error: &#39;Forbidden word 🤬&#39;&#125;);
+&#125; else &#123;</code></pre>
+<p>当时自己就卡在了这里，不知道怎么绕过。关键就在于node.js的弱类型和php的弱类型有所不同。js中数组和字符串拼接的话，比如[“hello”]+”world”，得到的是helloworld，而php里确实Arrayworld。也是因为深受php的影响，所以没想到这里可以用数组来绕过，记得URL编码</p>
+<p>然后我是丢进bp里，只需要content改成content[],传数组</p>
+<p><img   class="lazyload" data-original="/2021/09/07/2021/ctf/21/image-20210908115802410.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210908115802410"></p>
+<p><img   class="lazyload" data-original="/2021/09/07/2021/ctf/21/image-20210908120122404.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210908120122404"></p>
+<p>出现这个页面就是成功</p>
+<p><img   class="lazyload" data-original="/2021/09/07/2021/ctf/21/image-20210908120634020.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210908120634020"></p>
+<p>打开后就有flag</p>
+<p><img   class="lazyload" data-original="/2021/09/07/2021/ctf/21/image-20210908120715884.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210908120715884"></p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>4v1d</li>
+    <li><strong>本文链接：</strong><a href="http://daweitech.github.io/2021/09/07/2021/ctf/21/index.html" title="http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;09&#x2F;07&#x2F;2021&#x2F;ctf&#x2F;21&#x2F;index.html">http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;09&#x2F;07&#x2F;2021&#x2F;ctf&#x2F;21&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/buu/" rel="tag">buu</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2021/09/25/2021/ctf/23/"><i class="iconfont iconleft"></i>DASCTF hellounser</a>
+    <a href="/2021/09/03/2021/ctf/19/">MRCTF2020 Ezpop<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#secrets-of-admin"><span class="toc-text">secrets_of_admin</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=905095727 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/zhaoo "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

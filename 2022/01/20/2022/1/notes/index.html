@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Notes - Αιώνιος</title>
+  <title>CTF-trick - Αιώνιος</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
@@ -154,7 +154,7 @@ CTF - 随笔分类 - iloveacm...">
       
       
     </div>
-    <div class="center">Notes</div>
+    <div class="center">CTF-trick</div>
     <div class="right">
       <i class="iconfont iconmenu j-navbar-menu"></i>
     </div>
@@ -196,13 +196,13 @@ CTF - 随笔分类 - iloveacm...">
       <div class="col-xl-6"><article class="article">
   <div class="wrap">
     <section class="head">
-  <img   class="lazyload" data-original="/images/life/%E6%B0%94%E8%B1%A1%E4%BB%AA.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <img   class="lazyload" data-original="/images/cover/nine.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">Notes</h1>
+    <h1 class="head-title">CTF-trick</h1>
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>January 20, 2022</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3447</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3441</span>
     </div>
   </div>
 </section>
@@ -211,7 +211,7 @@ CTF - 随笔分类 - iloveacm...">
         
         <p>参考文章：</p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/iloveacm/category/1791836.html">CTF - 随笔分类 - iloveacm - 博客园 (cnblogs.com)</a></p>
-<h1 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h1><h2 id="php伪协议"><a href="#php伪协议" class="headerlink" title="php伪协议"></a>php伪协议</h2><p>直接上题目理解</p>
+<h2 id="php伪协议"><a href="#php伪协议" class="headerlink" title="php伪协议"></a>php伪协议</h2><p>直接上题目理解</p>
 <p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220208200041496.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220208200041496"></p>
 <p>三个参数，两处if语句判断</p>
 <p>很明显第一个if必须达成</p>
@@ -271,7 +271,7 @@ CTF - 随笔分类 - iloveacm...">
 <li>strcmp/ereg 等函数在传入参数类型为数组时会有非预期行为</li>
 </ul>
 <p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220123200022722.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220123200022722"></p>
-<h5 id="md5比较"><a href="#md5比较" class="headerlink" title="md5比较"></a>md5比较</h5><p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220207203810625.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220207203810625"></p>
+<h2 id="md5比较"><a href="#md5比较" class="headerlink" title="md5比较"></a>md5比较</h2><p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220207203810625.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220207203810625"></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wangyuxiang946/article/details/119845182">MD5加密漏洞(MD5绕过方式-0e绕过/数组绕过/MD5碰撞/MD5SQL注入)_wangyuxiang946的博客-CSDN博客_md5数组绕过</a></p>
 <p>0e绕过记录其中一种</p>
 <figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs isbl"><span class="hljs-function"><span class="hljs-title">md5</span>(<span class="hljs-string">&#x27;QNKCDZO&#x27;</span>) == <span class="hljs-title">md5</span>(<span class="hljs-number">240610708</span>)</span><br></code></pre></td></tr></table></figure>
@@ -291,7 +291,7 @@ CTF - 随笔分类 - iloveacm...">
 <p>直观来看</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs awk">content: <span class="hljs-number">129581926211651571912466741651878684928</span><br>hex: <span class="hljs-number">06</span>da5430449f8f6f23dfc1276f722738<br>raw: \x06\xdaT0D\x9f\x8fo<span class="hljs-comment">#\xdf\xc1&#x27;or&#x27;8</span><br>string: T0Do<span class="hljs-comment">#&#x27;or&#x27;8</span><br>————————————————<br>版权声明：本文为CSDN博主「March97」的原创文章，遵循CC <span class="hljs-number">4.0</span> BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：https:<span class="hljs-regexp">//</span>blog.csdn.net<span class="hljs-regexp">/March97/</span>article<span class="hljs-regexp">/details/</span><span class="hljs-number">81222922</span><br></code></pre></td></tr></table></figure>
 
-<h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><h2 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h2><p>首先基本指令过一过</p>
+<h2 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h2><p>首先基本指令过一过</p>
 <p>show databases;</p>
 <p>show tables;</p>
 <p>增删查改</p>
@@ -315,7 +315,7 @@ CTF - 随笔分类 - iloveacm...">
 <p>substr被禁时可以考虑mid</p>
 <p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220206162137283.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220206162137283"></p>
 <p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220206162312685.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220206162312685"></p>
-<h5 id="绕过空格检测"><a href="#绕过空格检测" class="headerlink" title="绕过空格检测"></a>绕过空格检测</h5><p>1.注释符绕过/**/</p>
+<h2 id="绕过空格检测"><a href="#绕过空格检测" class="headerlink" title="绕过空格检测"></a>绕过空格检测</h2><p>1.注释符绕过/**/</p>
 <p>2.括号绕过空格()</p>
 <p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220209121548440.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220209121548440"></p>
 <p><img   class="lazyload" data-original="/2022/01/20/2022/1/notes/image-20220209122044457.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20220209122044457"></p>
@@ -351,7 +351,7 @@ CTF - 随笔分类 - iloveacm...">
           
   <aside class="toc-wrap">
     <h3 class="toc-title">文章目录：</h3>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">php伪协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">php反序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">php命令执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-text">文件上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phptrick"><span class="toc-text">phptrick</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#md5%E6%AF%94%E8%BE%83"><span class="toc-text">md5比较</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="toc-text">sql注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sql%E7%9B%B2%E6%B3%A8"><span class="toc-text">sql盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E7%A9%BA%E6%A0%BC%E6%A3%80%E6%B5%8B"><span class="toc-text">绕过空格检测</span></a></li></ol></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">php伪协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">php反序列化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">php命令执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-text">文件上传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phptrick"><span class="toc-text">phptrick</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#md5%E6%AF%94%E8%BE%83"><span class="toc-text">md5比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="toc-text">sql注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sql%E7%9B%B2%E6%B3%A8"><span class="toc-text">sql盲注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E7%A9%BA%E6%A0%BC%E6%A3%80%E6%B5%8B"><span class="toc-text">绕过空格检测</span></a></li></ol>
   </aside>
 
         

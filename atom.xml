@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2023-03-14T09:16:21.134Z</updated>
+  <updated>2023-05-25T12:47:37.069Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -17,122 +17,25 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>3.14</title>
-    <link href="http://daweitech.github.io/2023/03/14/2023/3/3.14/"/>
-    <id>http://daweitech.github.io/2023/03/14/2023/3/3.14/</id>
-    <published>2023-03-14T09:14:07.000Z</published>
-    <updated>2023-03-14T09:16:21.134Z</updated>
+    <title>框架及其漏洞</title>
+    <link href="http://daweitech.github.io/2023/05/25/2023/5/25/"/>
+    <id>http://daweitech.github.io/2023/05/25/2023/5/25/</id>
+    <published>2023-05-25T11:18:58.000Z</published>
+    <updated>2023-05-25T12:47:37.069Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;Google Hacking语法总结&lt;/p&gt;
-&lt;p&gt;攻击语法库：&lt;a href=&quot;https://www.exploit-db.com/&quot;&gt;https://www.exploit-db.com/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;edu src挖掘思路&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
+    <summary type="html">&lt;h2 id=&quot;1-Apache-Shiro&quot;&gt;&lt;a href=&quot;#1-Apache-Shiro&quot; class=&quot;headerlink&quot; title=&quot;1.Apache Shiro&quot;&gt;&lt;/a&gt;1.Apache Shiro&lt;/h2&gt;&lt;h3 id=&quot;介绍&quot;&gt;&lt;a</summary>
         
       
     
     
     
     
-  </entry>
-  
-  <entry>
-    <title>week2</title>
-    <link href="http://daweitech.github.io/2023/01/17/2023/1/week2/"/>
-    <id>http://daweitech.github.io/2023/01/17/2023/1/week2/</id>
-    <published>2023-01-17T03:02:09.000Z</published>
-    <updated>2023-01-17T03:38:13.719Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h4 id=&quot;1814-统计一个数组中好对子的数目&quot;&gt;&lt;a href=&quot;#1814-统计一个数组中好对子的数目&quot; class=&quot;headerlink&quot; title=&quot;1814. 统计一个数组中好对子的数目&quot;&gt;&lt;/a&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="leetcode" scheme="http://daweitech.github.io/tags/leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>week1</title>
-    <link href="http://daweitech.github.io/2023/01/14/2023/1/week1/"/>
-    <id>http://daweitech.github.io/2023/01/14/2023/1/week1/</id>
-    <published>2023-01-14T11:34:43.000Z</published>
-    <updated>2023-01-14T11:49:06.802Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h4 id=&quot;1480-一维数组的动态和&quot;&gt;&lt;a href=&quot;#1480-一维数组的动态和&quot; class=&quot;headerlink&quot; title=&quot;1480. 一维数组的动态和&quot;&gt;&lt;/a&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="leetcode" scheme="http://daweitech.github.io/tags/leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>1.8</title>
-    <link href="http://daweitech.github.io/2023/01/08/2023/1/1.8/"/>
-    <id>http://daweitech.github.io/2023/01/08/2023/1/1.8/</id>
-    <published>2023-01-08T03:18:10.000Z</published>
-    <updated>2023-01-28T03:09:00.642Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt; 新建git仓库：commi&lt;/p&gt;
-&lt;p&gt; 提交方式：&lt;/p&gt;
-&lt;figure class=&quot;highlight avrasm&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
-        
-      
-    
-    
-    <content src="http://daweitech.github.io/images/life/starry.jpg" type="image"/>
-    
-    
-    
-    <category term="git" scheme="http://daweitech.github.io/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>tweet</title>
-    <link href="http://daweitech.github.io/2022/12/17/2022/12/tweet/"/>
-    <id>http://daweitech.github.io/2022/12/17/2022/12/tweet/</id>
-    <published>2022-12-17T12:32:37.000Z</published>
-    <updated>2022-12-17T12:34:18.863Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt; 记录一下有关视频和文章&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=PUMMCLrVn8A&quot;&gt;https://www.youtube.com/watch?v=PUMMCLrVn8A&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;用 5</summary>
-        
-      
-    
-    
-    
+    <category term="src" scheme="http://daweitech.github.io/tags/src/"/>
     
   </entry>
   
@@ -166,7 +69,7 @@
     <link href="http://daweitech.github.io/2022/12/10/2022/12/chatGPT/"/>
     <id>http://daweitech.github.io/2022/12/10/2022/12/chatGPT/</id>
     <published>2022-12-10T12:56:07.000Z</published>
-    <updated>2022-12-15T14:13:43.443Z</updated>
+    <updated>2023-05-25T12:32:24.037Z</updated>
     
     
       
@@ -174,54 +77,31 @@
         
         
     <summary type="html">&lt;p&gt; 捣鼓了两天，现在成功部署这个很火的AI到自己的服务器上了！（bushi）&lt;/p&gt;
-&lt;p&gt;主地址：&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
+&lt;h2 id=&quot;官方地址&quot;&gt;&lt;a href=&quot;#官方地址&quot; class=&quot;headerlink&quot; title=&quot;官方地址&quot;&gt;&lt;/a&gt;官方地址&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
         
       
     
     
     
     
+    <category term="博客" scheme="http://daweitech.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
   </entry>
   
   <entry>
-    <title>11.28</title>
+    <title>西藏生态-共现网络图</title>
     <link href="http://daweitech.github.io/2022/11/28/2022/11/11.28/"/>
     <id>http://daweitech.github.io/2022/11/28/2022/11/11.28/</id>
     <published>2022-11-28T02:38:35.000Z</published>
-    <updated>2022-11-28T02:41:51.668Z</updated>
+    <updated>2023-05-25T12:22:20.188Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt; 11.28&lt;/p&gt;
-&lt;p&gt;重新看了下gephi共现网络绘图&lt;/p&gt;
-&lt;p&gt;了解了重力绘图的原理来源&lt;/p&gt;
-&lt;p&gt;fruchterman reingold&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>11.16</title>
-    <link href="http://daweitech.github.io/2022/11/16/2022/11/11.16/"/>
-    <id>http://daweitech.github.io/2022/11/16/2022/11/11.16/</id>
-    <published>2022-11-16T06:23:32.000Z</published>
-    <updated>2022-11-17T02:55:42.843Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Python绘制关系网络图笔记&quot;&gt;&lt;a href=&quot;#Python绘制关系网络图笔记&quot; class=&quot;headerlink&quot; title=&quot;Python绘制关系网络图笔记&quot;&gt;&lt;/a&gt;Python绘制关系网络图笔记&lt;/h1&gt;&lt;p&gt;1.&lt;a</summary>
+    <summary type="html">&lt;p&gt;重力绘图的原理来源&lt;/p&gt;
+&lt;h2 id=&quot;fruchterman-reingold&quot;&gt;&lt;a href=&quot;#fruchterman-reingold&quot; class=&quot;headerlink&quot; title=&quot;fruchterman</summary>
         
       
     
@@ -230,21 +110,48 @@
     <category term="Graduation project" scheme="http://daweitech.github.io/categories/Graduation-project/"/>
     
     
+    <category term="Python" scheme="http://daweitech.github.io/tags/Python/"/>
+    
   </entry>
   
   <entry>
-    <title>11.8</title>
+    <title>Python绘制关系网络图</title>
+    <link href="http://daweitech.github.io/2022/11/16/2022/11/11.16/"/>
+    <id>http://daweitech.github.io/2022/11/16/2022/11/11.16/</id>
+    <published>2022-11-16T06:23:32.000Z</published>
+    <updated>2023-05-25T12:13:04.390Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;博客参考&quot;&gt;&lt;a href=&quot;#博客参考&quot; class=&quot;headerlink&quot; title=&quot;博客参考&quot;&gt;&lt;/a&gt;博客参考&lt;/h2&gt;&lt;p&gt;1.&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Graduation project" scheme="http://daweitech.github.io/categories/Graduation-project/"/>
+    
+    
+    <category term="Python" scheme="http://daweitech.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>课题</title>
     <link href="http://daweitech.github.io/2022/11/08/2022/11/11.8/"/>
     <id>http://daweitech.github.io/2022/11/08/2022/11/11.8/</id>
     <published>2022-11-08T12:03:13.000Z</published>
-    <updated>2023-01-08T03:38:39.764Z</updated>
+    <updated>2023-05-25T12:16:12.672Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;ol</summary>
+    <summary type="html">&lt;h2 id=&quot;课题：基于大数据的高校舆情分析系统&quot;&gt;&lt;a href=&quot;#课题：基于大数据的高校舆情分析系统&quot; class=&quot;headerlink&quot; title=&quot;课题：基于大数据的高校舆情分析系统&quot;&gt;&lt;/a&gt;课题：基于大数据的高校舆情分析系统&lt;/h2&gt;&lt;p&gt;</summary>
         
       
     
@@ -254,6 +161,8 @@
     
     <category term="Graduation project" scheme="http://daweitech.github.io/categories/Graduation-project/"/>
     
+    
+    <category term="Python" scheme="http://daweitech.github.io/tags/Python/"/>
     
   </entry>
   
@@ -286,11 +195,11 @@
   </entry>
   
   <entry>
-    <title>day7</title>
+    <title>物理层传输介质</title>
     <link href="http://daweitech.github.io/2022/07/14/2022/7/day7/"/>
     <id>http://daweitech.github.io/2022/07/14/2022/7/day7/</id>
     <published>2022-07-14T10:48:23.000Z</published>
-    <updated>2022-07-18T09:19:13.452Z</updated>
+    <updated>2023-05-25T11:48:01.314Z</updated>
     
     
       
@@ -309,16 +218,16 @@
     <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
     
     
-    <category term="计算机考研" scheme="http://daweitech.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    <category term="computer network" scheme="http://daweitech.github.io/tags/computer-network/"/>
     
   </entry>
   
   <entry>
-    <title>day6</title>
+    <title>编码与调制</title>
     <link href="http://daweitech.github.io/2022/07/12/2022/7/day6/"/>
     <id>http://daweitech.github.io/2022/07/12/2022/7/day6/</id>
     <published>2022-07-12T07:02:19.000Z</published>
-    <updated>2022-07-12T08:34:15.729Z</updated>
+    <updated>2023-05-25T12:35:36.329Z</updated>
     
     
       
@@ -336,16 +245,16 @@
     <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
     
     
-    <category term="计算机考研" scheme="http://daweitech.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    <category term="computer network" scheme="http://daweitech.github.io/tags/computer-network/"/>
     
   </entry>
   
   <entry>
-    <title>day5</title>
+    <title>奈氏准则|香农定理</title>
     <link href="http://daweitech.github.io/2022/07/10/2022/7/day5/"/>
     <id>http://daweitech.github.io/2022/07/10/2022/7/day5/</id>
     <published>2022-07-10T01:56:34.000Z</published>
-    <updated>2022-07-10T09:17:29.713Z</updated>
+    <updated>2023-05-25T11:47:46.711Z</updated>
     
     
       
@@ -363,16 +272,16 @@
     <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
     
     
-    <category term="计算机考研" scheme="http://daweitech.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    <category term="computer network" scheme="http://daweitech.github.io/tags/computer-network/"/>
     
   </entry>
   
   <entry>
-    <title>day4</title>
+    <title>物理层基本概念</title>
     <link href="http://daweitech.github.io/2022/07/08/2022/7/day4/"/>
     <id>http://daweitech.github.io/2022/07/08/2022/7/day4/</id>
     <published>2022-07-08T01:13:11.000Z</published>
-    <updated>2022-07-10T07:37:10.557Z</updated>
+    <updated>2023-05-25T11:47:38.088Z</updated>
     
     
       
@@ -390,16 +299,16 @@
     <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
     
     
-    <category term="计算机考研" scheme="http://daweitech.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    <category term="computer network" scheme="http://daweitech.github.io/tags/computer-network/"/>
     
   </entry>
   
   <entry>
-    <title>day3</title>
+    <title>计算机网络分层结构</title>
     <link href="http://daweitech.github.io/2022/07/07/2022/7/day3/"/>
     <id>http://daweitech.github.io/2022/07/07/2022/7/day3/</id>
     <published>2022-07-07T07:52:55.000Z</published>
-    <updated>2022-07-09T13:14:49.647Z</updated>
+    <updated>2023-05-25T11:46:58.609Z</updated>
     
     
       
@@ -417,16 +326,16 @@
     <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
     
     
-    <category term="计算机考研" scheme="http://daweitech.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    <category term="computer network" scheme="http://daweitech.github.io/tags/computer-network/"/>
     
   </entry>
   
   <entry>
-    <title>day2</title>
+    <title>时延</title>
     <link href="http://daweitech.github.io/2022/07/06/2022/7/day2/"/>
     <id>http://daweitech.github.io/2022/07/06/2022/7/day2/</id>
     <published>2022-07-06T07:58:33.000Z</published>
-    <updated>2022-07-09T13:14:43.407Z</updated>
+    <updated>2023-05-25T11:46:16.973Z</updated>
     
     
       
@@ -445,16 +354,16 @@
     <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
     
     
-    <category term="计算机考研" scheme="http://daweitech.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    <category term="computer network" scheme="http://daweitech.github.io/tags/computer-network/"/>
     
   </entry>
   
   <entry>
-    <title>day1</title>
+    <title>概念、组成、功能和分类</title>
     <link href="http://daweitech.github.io/2022/07/05/2022/7/day1/"/>
     <id>http://daweitech.github.io/2022/07/05/2022/7/day1/</id>
     <published>2022-07-05T11:15:40.000Z</published>
-    <updated>2022-07-09T13:14:22.406Z</updated>
+    <updated>2023-05-25T11:45:40.780Z</updated>
     
     
       
@@ -472,7 +381,7 @@
     <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
     
     
-    <category term="计算机考研" scheme="http://daweitech.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
+    <category term="computer network" scheme="http://daweitech.github.io/tags/computer-network/"/>
     
   </entry>
   
@@ -481,7 +390,7 @@
     <link href="http://daweitech.github.io/2022/03/05/2022/3/NSSCTF-prize4/"/>
     <id>http://daweitech.github.io/2022/03/05/2022/3/NSSCTF-prize4/</id>
     <published>2022-03-05T10:51:25.000Z</published>
-    <updated>2022-03-05T13:22:10.683Z</updated>
+    <updated>2023-05-25T12:23:43.560Z</updated>
     
     
       
@@ -498,35 +407,133 @@
     <content src="http://daweitech.github.io/images/draw/sunsky.jpg" type="image"/>
     
     
-    <category term="CTF·sql盲注" scheme="http://daweitech.github.io/categories/CTF%C2%B7sql%E7%9B%B2%E6%B3%A8/"/>
+    <category term="CTF·sql" scheme="http://daweitech.github.io/categories/CTF%C2%B7sql/"/>
     
     
   </entry>
   
   <entry>
-    <title>SQL-参考文章</title>
-    <link href="http://daweitech.github.io/2022/03/04/2021/sql/index/"/>
-    <id>http://daweitech.github.io/2022/03/04/2021/sql/index/</id>
-    <published>2022-03-04T14:08:47.000Z</published>
-    <updated>2022-03-04T14:21:08.368Z</updated>
+    <title>Rois-冬令营</title>
+    <link href="http://daweitech.github.io/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/"/>
+    <id>http://daweitech.github.io/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/</id>
+    <published>2022-02-05T13:41:57.000Z</published>
+    <updated>2022-07-09T15:47:28.215Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;做题参考：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://xz.aliyun.com/t/385/#toc-22&quot;&gt;【独家连载】mysql注入天书（一）Basic Challenges - 先知社区 (aliyun.com)&lt;/a&gt;&lt;/p&gt;
+    <summary type="html">&lt;p&gt;今天写下writeup总结一下&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205214412266.png&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="CTF" scheme="http://daweitech.github.io/categories/CTF/"/>
+    
+    
+    <category term="ctf" scheme="http://daweitech.github.io/tags/ctf/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CTF-trick</title>
+    <link href="http://daweitech.github.io/2022/01/20/2022/1/notes/"/>
+    <id>http://daweitech.github.io/2022/01/20/2022/1/notes/</id>
+    <published>2022-01-20T12:37:47.000Z</published>
+    <updated>2023-05-25T12:02:42.812Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;参考文章：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/iloveacm/category/1791836.html&quot;&gt;CTF - 随笔分类 - iloveacm - 博客园 (cnblogs.com)&lt;/a&gt;&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    
+    <category term="web" scheme="http://daweitech.github.io/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>湖湘杯</title>
+    <link href="http://daweitech.github.io/2021/11/17/2021/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/"/>
+    <id>http://daweitech.github.io/2021/11/17/2021/ctf/%E6%B9%96%E6%B9%98%E6%9D%AF/</id>
+    <published>2021-11-17T11:15:31.000Z</published>
+    <updated>2021-11-17T11:34:16.406Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;没想到直接出了一题找框架漏洞的。。&lt;/p&gt;
+&lt;p&gt;赛后根据wp复现下，靶机环境为buu&lt;/p&gt;
+&lt;p&gt;参考文章：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="ctf" scheme="http://daweitech.github.io/tags/ctf/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php字符串逃逸</title>
+    <link href="http://daweitech.github.io/2021/10/28/2021/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/"/>
+    <id>http://daweitech.github.io/2021/10/28/2021/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/</id>
+    <published>2021-10-28T12:14:29.000Z</published>
+    <updated>2023-05-25T11:57:39.604Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt; 今天也是写了好多道web题，感觉bugku上的两题ssti有点坑，一直说我的pin是错的&lt;/p&gt;
+&lt;p&gt;咳咳，回到正题，写一下newphp题目，这题有关字符串反序列化逃逸&lt;/p&gt;
 &lt;p&gt;&lt;a</summary>
         
       
     
     
-    <content src="http://daweitech.github.io/images/draw/meditation.jpg" type="image"/>
     
     
-    <category term="SQL-lab" scheme="http://daweitech.github.io/categories/SQL-lab/"/>
+    <category term="web" scheme="http://daweitech.github.io/tags/web/"/>
     
+  </entry>
+  
+  <entry>
+    <title>天翼杯 2021 esay_eval</title>
+    <link href="http://daweitech.github.io/2021/10/26/2021/ctf/1/"/>
+    <id>http://daweitech.github.io/2021/10/26/2021/ctf/1/</id>
+    <published>2021-10-26T11:41:39.000Z</published>
+    <updated>2023-05-25T12:26:35.392Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt; 题目标签：&lt;strong&gt;反序列化、主从复制、RCE、redis&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;文章学习：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="ctf" scheme="http://daweitech.github.io/tags/ctf/"/>
     
   </entry>
   

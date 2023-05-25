@@ -1,0 +1,508 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HCTF 2018 WarmUp - Αιώνιος</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content=" 重新回顾了下这题
+
+F12查看到源码
+1234567...">
+  <meta name="author" content="4v1d">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/cute.jpg" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/cute.jpg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/cute.jpg">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v1.hitokoto.cn/?encode=text&c=d',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Αιώνιος" type="application/atom+xml">
+</head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">HCTF 2018 WarmUp</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/cover/three.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">HCTF 2018 WarmUp</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 29, 2021</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4781</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <p> 重新回顾了下这题</p>
+<p><img   class="lazyload" data-original="/2021/08/29/2021/ctf/15/image-20210829094805908.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210829094805908"></p>
+<p>F12查看到源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>    highlight_file(<span class="hljs-keyword">__FILE__</span>);<br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">emmm</span></span><br><span class="hljs-class">    </span>&#123;<br>        <span class="hljs-keyword">public</span> <span class="hljs-built_in">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkFile</span>(<span class="hljs-params">&amp;$page</span>)</span><br><span class="hljs-function">        </span>&#123;<br>            $whitelist = [<span class="hljs-string">&quot;source&quot;</span>=&gt;<span class="hljs-string">&quot;source.php&quot;</span>,<span class="hljs-string">&quot;hint&quot;</span>=&gt;<span class="hljs-string">&quot;hint.php&quot;</span>];<br>            <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">isset</span>($page) || !is_string($page)) &#123;<br>                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;you can&#x27;t see it&quot;</span>;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br><br>            <span class="hljs-keyword">if</span> (in_array($page, $whitelist)) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br><br>            $_page = mb_substr(<br>                $page,<br>                <span class="hljs-number">0</span>,<br>                mb_strpos($page . <span class="hljs-string">&#x27;?&#x27;</span>, <span class="hljs-string">&#x27;?&#x27;</span>)<br>            );<br>            <span class="hljs-keyword">if</span> (in_array($_page, $whitelist)) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br><br>            $_page = urldecode($page);<br>            $_page = mb_substr(<br>                $_page,<br>                <span class="hljs-number">0</span>,<br>                mb_strpos($_page . <span class="hljs-string">&#x27;?&#x27;</span>, <span class="hljs-string">&#x27;?&#x27;</span>)<br>            );<br>            <span class="hljs-keyword">if</span> (in_array($_page, $whitelist)) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;you can&#x27;t see it&quot;</span>;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">empty</span>($_REQUEST[<span class="hljs-string">&#x27;file&#x27;</span>])<br>        &amp;&amp; is_string($_REQUEST[<span class="hljs-string">&#x27;file&#x27;</span>])<br>        &amp;&amp; emmm::checkFile($_REQUEST[<span class="hljs-string">&#x27;file&#x27;</span>])<br>    ) &#123;<br>        <span class="hljs-keyword">include</span> $_REQUEST[<span class="hljs-string">&#x27;file&#x27;</span>];<br>        <span class="hljs-keyword">exit</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;</span>;<br>    &#125;  <br><span class="hljs-meta">?&gt;</span> <br></code></pre></td></tr></table></figure>
+
+<p>代码分析：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">highlight_file(<span class="hljs-keyword">__FILE__</span>);<br></code></pre></td></tr></table></figure>
+
+<p> 高亮显示文件函数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">public</span> <span class="hljs-built_in">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkFile</span>(<span class="hljs-params">&amp;$page</span>)</span><br><span class="hljs-function">        </span>&#123;<br>            $whitelist = [<span class="hljs-string">&quot;source&quot;</span>=&gt;<span class="hljs-string">&quot;source.php&quot;</span>,<span class="hljs-string">&quot;hint&quot;</span>=&gt;<span class="hljs-string">&quot;hint.php&quot;</span>];<br>            <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">isset</span>($page) || !is_string($page)) &#123;<br>                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;you can&#x27;t see it&quot;</span>;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br></code></pre></td></tr></table></figure>
+
+<p>checkfile函数里（），提示我们source.php和hint.php</p>
+<p>访问hint.php得到语句：</p>
+<p><strong>flag not here, and flag in ffffllllaaaagggg</strong></p>
+<p>将传递的参数赋值给page，然后判断若page变量不存在或非字符串</p>
+<p>则echo  “you can’t see it”</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">if</span> (in_array($page, $whitelist)) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;$_page = mb_substr(<br>    $page,<br>    <span class="hljs-number">0</span>,<br>    mb_strpos($page . <span class="hljs-string">&#x27;?&#x27;</span>, <span class="hljs-string">&#x27;?&#x27;</span>)<br>);<br><span class="hljs-keyword">if</span> (in_array($_page, $whitelist)) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>若变量page存在于whitelist数组中</p>
+<p>则返回true</p>
+<p>以下看几个php函数：</p>
+<p>php in_array函数</p>
+<p>定义和用法：</p>
+<p>in_array()函数搜索数组中是否存在指定的值</p>
+<p><strong>注释：</strong>如果search参数是字符串并且设置为true，则搜索区分大小写</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-keyword">in</span><span class="hljs-constructor">_array(<span class="hljs-params">search</span>,<span class="hljs-params">array</span>,<span class="hljs-params">type</span>)</span><br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><em>search</em></td>
+<td align="left">必需。规定要在数组搜索的值。</td>
+</tr>
+<tr>
+<td align="left"><em>array</em></td>
+<td align="left">必需。规定要搜索的数组。</td>
+</tr>
+<tr>
+<td align="left"><em>type</em></td>
+<td align="left">可选。如果设置该参数为 true，则检查搜索的数据与数组的值的类型是否相同。</td>
+</tr>
+</tbody></table>
+<p>php mb_substr()函数</p>
+<p>mb_substr() 函数返回字符串的一部分，之前我们学过 substr() 函数，它只针对英文字符，如果要分割的中文文字则需要使用 mb_substr()。</p>
+<p><strong>注释：</strong>如果 start 参数是负数且 length 小于或等于 start，则 length 为 0。</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs autoit">mb_substr ( <span class="hljs-built_in">string</span> $str , <span class="hljs-built_in">int</span> $start [, <span class="hljs-built_in">int</span> $length = <span class="hljs-literal">NULL</span> [, <span class="hljs-built_in">string</span> $encoding = mb_internal_encoding() ]] ) : <span class="hljs-built_in">string</span><br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><em>str</em></td>
+<td align="left">必需。从该 string 中提取子字符串。</td>
+</tr>
+<tr>
+<td align="left"><em>start</em></td>
+<td align="left">必需。规定在字符串的何处开始。正数 - 在字符串的指定位置开始负数 - 在从字符串结尾的指定位置开始0 - 在字符串中的第一个字符处开始</td>
+</tr>
+<tr>
+<td align="left"><em>length</em></td>
+<td align="left">可选。规定要返回的字符串长度。默认是直到字符串的结尾。正数 - 从 start 参数所在的位置返回负数 - 从字符串末端返回</td>
+</tr>
+<tr>
+<td align="left">encoding</td>
+<td align="left">可选。字符编码。如果省略，则使用内部字符编码。</td>
+</tr>
+</tbody></table>
+<p>php mb_strpos函数</p>
+<p>定义和用法：</p>
+<p>查找字符串在另一个字符串首次出现的位置</p>
+<p>基于字符数执行一个多字节安全的strpos()操作，第一个字符的位置是0，第二个字符的位置是1，依次类推</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs delphi">strpos<span class="hljs-comment">(*string,find,start*)</span><br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><em>string</em></td>
+<td align="left">必需。规定被搜索的字符串。</td>
+</tr>
+<tr>
+<td align="left"><em>find</em></td>
+<td align="left">必需。规定要查找的字符。</td>
+</tr>
+<tr>
+<td align="left"><em>start</em></td>
+<td align="left">可选。规定开始搜索的位置。</td>
+</tr>
+</tbody></table>
+<p>我们大概就可以知道了，这段代码表示截取$page中’?’前部分，若无则截取整个$page</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">$_page = urldecode($page);<br></code></pre></td></tr></table></figure>
+
+<p>这里是对page进行url解码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">if</span> (! <span class="hljs-keyword">empty</span>($_REQUEST[<span class="hljs-string">&#x27;file&#x27;</span>])<br>        &amp;&amp; is_string($_REQUEST[<span class="hljs-string">&#x27;file&#x27;</span>])<br>        &amp;&amp; emmm::checkFile($_REQUEST[<span class="hljs-string">&#x27;file&#x27;</span>])<br>    ) &#123;<br>        <span class="hljs-keyword">include</span> $_REQUEST[<span class="hljs-string">&#x27;file&#x27;</span>];<br>        <span class="hljs-keyword">exit</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>这里首先判断$_REQUEST[‘file’]值非空</p>
+<p>第二判断是否为字符串</p>
+<p>再就是能否通过checkfile（）函数校验</p>
+<p>后面是包含$_REQUEST[‘file’]文件</p>
+<p>如果条件不满足就打印滑稽表情</p>
+<p>结论：</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-number">1.</span>第一个<span class="hljs-string">``</span><span class="hljs-keyword">if</span><span class="hljs-string">``</span>语句对变量进行检验，要求<span class="hljs-string">``</span><span class="hljs-symbol">$page</span><span class="hljs-string">``</span>为字符串，否则返回<span class="hljs-literal">false</span><br><span class="hljs-number">2.</span>第二个<span class="hljs-string">``</span><span class="hljs-keyword">if</span><span class="hljs-string">``</span>语句判断<span class="hljs-string">``</span><span class="hljs-symbol">$page</span><span class="hljs-string">``</span>是否存在于<span class="hljs-string">``</span><span class="hljs-symbol">$w</span>hitelist<span class="hljs-string">``</span>数组中，存在则返回<span class="hljs-literal">true</span><br><span class="hljs-number">3.</span>第三个<span class="hljs-string">``</span><span class="hljs-keyword">if</span><span class="hljs-string">``</span>语句判断截取后的<span class="hljs-string">``</span><span class="hljs-symbol">$page</span><span class="hljs-string">``</span>是否存在于<span class="hljs-string">``</span><span class="hljs-symbol">$w</span>hitelist<span class="hljs-string">``</span>数组中，截取<span class="hljs-string">``</span><span class="hljs-symbol">$page</span><span class="hljs-string">``</span>中<span class="hljs-string">``</span><span class="hljs-string">&#x27;?&#x27;</span><span class="hljs-string">``</span>前部分，存在则返回<span class="hljs-literal">true</span><br><span class="hljs-number">4.</span>第四个<span class="hljs-string">``</span><span class="hljs-keyword">if</span><span class="hljs-string">``</span>语句判断url解码并截取后的<span class="hljs-string">``</span><span class="hljs-symbol">$page</span><span class="hljs-string">``</span>是否存在于<span class="hljs-string">``</span><span class="hljs-symbol">$w</span>hitelist<span class="hljs-string">``</span>中，存在则返回<span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs qml">若以上四个<span class="hljs-string">``</span><span class="hljs-keyword">if</span><span class="hljs-string">``</span>语句均未返回值，则返回<span class="hljs-literal">false</span><br>有三个<span class="hljs-string">``</span><span class="hljs-keyword">if</span><span class="hljs-string">``</span>语句可以返回<span class="hljs-literal">true</span>，第二个语句直接判断<span class="hljs-string">``</span>$page<span class="hljs-string">``</span>，不可用<br>第三个语句截取<span class="hljs-string">``</span><span class="hljs-string">&#x27;?&#x27;</span><span class="hljs-string">``</span>前部分，由于?被后部分被解析为get方式提交的参数，也不可利用<br>第四个<span class="hljs-string">``</span><span class="hljs-keyword">if</span><span class="hljs-string">``</span>语句中，先进行<span class="hljs-built_in">url</span>解码再截取，因此我们可以将?经过两次<span class="hljs-built_in">url</span>编码，在服务器端提取参数时解码一次，checkFile函数中解码一次，仍会解码为<span class="hljs-string">``</span><span class="hljs-string">&#x27;?&#x27;</span><span class="hljs-string">``</span>，仍可通过第四个<span class="hljs-string">``</span><span class="hljs-keyword">if</span><span class="hljs-string">``</span>语句校验。（<span class="hljs-string">``</span><span class="hljs-string">&#x27;?&#x27;</span><span class="hljs-string">``</span>两次编码值为<span class="hljs-string">``</span><span class="hljs-string">&#x27;%253f&#x27;</span><span class="hljs-string">``</span>）,构造<span class="hljs-built_in">url</span>：<br></code></pre></td></tr></table></figure>
+
+<p>payload：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">source</span>.php?<span class="hljs-keyword">file</span>=hint.php%<span class="hljs-number">253</span>F..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/../</span>../ffffllllaaaagggg<br></code></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">source</span>.php?<span class="hljs-keyword">file</span>=<span class="hljs-keyword">source</span>.php%<span class="hljs-number">253</span>F..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/../</span>../ffffllllaaaagggg<br></code></pre></td></tr></table></figure>
+
+<p>hint.php和source.php都是白名单里文件</p>
+<p>因为我们不知道ffffllllaaaagggg文件存放的具体位置<br>所以可以依次增加   ../</p>
+<p>最后拿到flag</p>
+<p><img   class="lazyload" data-original="/2021/08/29/2021/ctf/15/image-20210829101454490.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210829101454490"></p>
+<p>借鉴于：</p>
+<p>[<a target="_blank" rel="noopener" href="https://www.cnblogs.com/R-S-PY/p/12095264.html">HCTF 2018]WarmUp - AlexANSO - 博客园 (cnblogs.com)</a></p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>4v1d</li>
+    <li><strong>本文链接：</strong><a href="http://daweitech.github.io/2021/08/29/2021/ctf/15/index.html" title="http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;08&#x2F;29&#x2F;2021&#x2F;ctf&#x2F;15&#x2F;index.html">http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;08&#x2F;29&#x2F;2021&#x2F;ctf&#x2F;15&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/buu/" rel="tag">buu</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2021/08/30/2021/ctf/16/"><i class="iconfont iconleft"></i>极客大挑战 2019 HardSQL</a>
+    <a href="/2021/08/19/2021/ctf/14/">安洵杯 2019 easy_serialize_php<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=905095727 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/zhaoo "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
