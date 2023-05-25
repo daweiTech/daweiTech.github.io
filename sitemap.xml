@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://daweitech.github.io/about/index.html</loc>
+    <loc>http://daweitech.github.io/2023/05/25/2023/5/%E5%A4%A9%E7%9C%BC%E8%AE%BE%E5%A4%87/</loc>
     
     <lastmod>2023-05-25</lastmod>
     
@@ -10,6 +10,20 @@
   
   <url>
     <loc>http://daweitech.github.io/2023/05/25/2023/5/25/</loc>
+    
+    <lastmod>2023-05-25</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daweitech.github.io/galleries/Colorful/index.html</loc>
+    
+    <lastmod>2023-05-25</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://daweitech.github.io/about/index.html</loc>
     
     <lastmod>2023-05-25</lastmod>
     
@@ -187,13 +201,6 @@
     <loc>http://daweitech.github.io/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/</loc>
     
     <lastmod>2022-07-09</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://daweitech.github.io/galleries/colorful/index.html</loc>
-    
-    <lastmod>2022-07-06</lastmod>
     
   </url>
   
@@ -507,6 +514,13 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>http://daweitech.github.io/tags/%E5%A4%A9%E7%9C%BC/</loc>
+    <lastmod>2023-05-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
@@ -560,6 +574,13 @@
   
   <url>
     <loc>http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/</loc>
+    <lastmod>2023-05-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://daweitech.github.io/categories/hvv/</loc>
     <lastmod>2023-05-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

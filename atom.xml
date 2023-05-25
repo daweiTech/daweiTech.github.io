@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2023-05-25T13:16:19.310Z</updated>
+  <updated>2023-05-25T15:48:42.163Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>天眼安全设备的使用</title>
+    <link href="http://daweitech.github.io/2023/05/25/2023/5/%E5%A4%A9%E7%9C%BC%E8%AE%BE%E5%A4%87/"/>
+    <id>http://daweitech.github.io/2023/05/25/2023/5/%E5%A4%A9%E7%9C%BC%E8%AE%BE%E5%A4%87/</id>
+    <published>2023-05-25T15:03:57.000Z</published>
+    <updated>2023-05-25T15:48:42.163Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-天眼三大功能&quot;&gt;&lt;a href=&quot;#1-天眼三大功能&quot; class=&quot;headerlink&quot; title=&quot;1.天眼三大功能&quot;&gt;&lt;/a&gt;1.天眼三大功能&lt;/h2&gt;&lt;p&gt;传感器（对流量解析还原，发现网络攻击和web攻击能力） </summary>
+        
+      
+    
+    
+    
+    <category term="hvv" scheme="http://daweitech.github.io/categories/hvv/"/>
+    
+    
+    <category term="天眼" scheme="http://daweitech.github.io/tags/%E5%A4%A9%E7%9C%BC/"/>
+    
+  </entry>
+  
+  <entry>
     <title>框架及其漏洞</title>
     <link href="http://daweitech.github.io/2023/05/25/2023/5/25/"/>
     <id>http://daweitech.github.io/2023/05/25/2023/5/25/</id>
     <published>2023-05-25T11:18:58.000Z</published>
-    <updated>2023-05-25T13:16:19.310Z</updated>
+    <updated>2023-05-25T15:07:14.836Z</updated>
     
     
       
@@ -33,6 +58,8 @@
       
     
     
+    
+    <category term="hvv" scheme="http://daweitech.github.io/categories/hvv/"/>
     
     
     <category term="src" scheme="http://daweitech.github.io/tags/src/"/>
@@ -510,30 +537,6 @@
     
     
     <category term="web" scheme="http://daweitech.github.io/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>天翼杯 2021 esay_eval</title>
-    <link href="http://daweitech.github.io/2021/10/26/2021/ctf/1/"/>
-    <id>http://daweitech.github.io/2021/10/26/2021/ctf/1/</id>
-    <published>2021-10-26T11:41:39.000Z</published>
-    <updated>2023-05-25T12:26:35.392Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt; 题目标签：&lt;strong&gt;反序列化、主从复制、RCE、redis&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;文章学习：&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="ctf" scheme="http://daweitech.github.io/tags/ctf/"/>
     
   </entry>
   
