@@ -11,8 +11,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   
-  <meta name="description" content="1.菜刀，冰蝎，蚁剑，哥斯拉流量特征
-2.中国菜刀早期...">
+  <meta name="description" content="菜刀，冰蝎，蚁剑，哥斯拉流量特征
+1.中国菜刀早期版本...">
   <meta name="author" content="4v1d">
   <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="32x32">
@@ -196,32 +196,132 @@
       <div class="col-xl-6"><article class="article">
   <div class="wrap">
     <section class="head">
-  <img   class="lazyload" data-original="/images/draw/sunsky.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <img   class="lazyload" data-original="/images/cover/three.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
     <h1 class="head-title">Web工具问题</h1>
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>May 26, 2023</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>601</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4434</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
         
-        <h2 id="1-菜刀，冰蝎，蚁剑，哥斯拉流量特征"><a href="#1-菜刀，冰蝎，蚁剑，哥斯拉流量特征" class="headerlink" title="1.菜刀，冰蝎，蚁剑，哥斯拉流量特征"></a>1.菜刀，冰蝎，蚁剑，哥斯拉流量特征</h2><p><img   class="lazyload" data-original="/2023/05/26/2023/5/Web%E5%B7%A5%E5%85%B7%E9%97%AE%E9%A2%98/image-20230526130757490.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230526130757490"></p>
-<h2 id="2-中国菜刀"><a href="#2-中国菜刀" class="headerlink" title="2.中国菜刀"></a>2.中国菜刀</h2><p>早期版本明文传输，后来为base64加密</p>
+        <h2 id="菜刀，冰蝎，蚁剑，哥斯拉流量特征"><a href="#菜刀，冰蝎，蚁剑，哥斯拉流量特征" class="headerlink" title="菜刀，冰蝎，蚁剑，哥斯拉流量特征"></a>菜刀，冰蝎，蚁剑，哥斯拉流量特征</h2><p><img   class="lazyload" data-original="/2023/05/26/2023/5/Web%E5%B7%A5%E5%85%B7%E9%97%AE%E9%A2%98/image-20230526130757490.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230526130757490"></p>
+<h3 id="1-中国菜刀"><a href="#1-中国菜刀" class="headerlink" title="1.中国菜刀"></a>1.中国菜刀</h3><p>早期版本明文传输，后来为base64加密</p>
 <p>特征主要在 body 中，base64-encode默认参数为 z0，对其进行 base64 解密之后会发现脚本用于传递 payload 的函数，比如 </p>
 <p>php 的 eval 和 assert，asp 中的 execute，后面的版本 body 中部分字符被 unicode 编码替换混淆，常见%u00</p>
-<h2 id="3-蚁剑"><a href="#3-蚁剑" class="headerlink" title="3.蚁剑"></a>3.蚁剑</h2><p>Base64、AES加密</p>
+<h3 id="2-蚁剑"><a href="#2-蚁剑" class="headerlink" title="2.蚁剑"></a>2.蚁剑</h3><p>Base64、AES加密</p>
 <p>php 类常见@ini_set(“display_errors “ , “0”)，asp 类常见 execute，但是会被打断拼接，混淆加密后常见_0x…… =这种形式</p>
-<h2 id="4-冰蝎"><a href="#4-冰蝎" class="headerlink" title="4.冰蝎"></a>4.冰蝎</h2><p>AES加密</p>
+<h3 id="3-冰蝎"><a href="#3-冰蝎" class="headerlink" title="3.冰蝎"></a>3.冰蝎</h3><p>AES加密</p>
 <p>在建立链接之前会有一个 AES 密钥交互过程，body 体中都是 AES 加密后密文</p>
 <p>冰蝎 1：Content-Type：application/octet-stream</p>
 <p>冰蝎 2：Content-Length：16早期版本明文传输，后面是 base64 加密Base64 AES加密</p>
 <p>冰蝎冰蝎 3：Content-Type：application/octet-stream</p>
-<h2 id="5-哥斯拉"><a href="#5-哥斯拉" class="headerlink" title="5.哥斯拉"></a>5.哥斯拉</h2><p>AES加密</p>
+<h3 id="4-哥斯拉"><a href="#4-哥斯拉" class="headerlink" title="4.哥斯拉"></a>4.哥斯拉</h3><p>AES加密</p>
 <p>PHP 连接特征请求都含有” pass**= “第一个包第二个包，jsp连接特征与php请求一样都含有” pass= “而且发起连接时服务器返回的 Content-Length是 0</p>
+<h2 id="wireshark"><a href="#wireshark" class="headerlink" title="wireshark"></a>wireshark</h2><p>是一个网络封包分析软件，用来截取并分析指定网卡上的流量包。</p>
+<p>★Filter编辑框中，过虑规则如果语法无误，框会显绿色，否则是红色</p>
+<h3 id="★-过滤协议"><a href="#★-过滤协议" class="headerlink" title="★ 过滤协议"></a>★ 过滤协议</h3><p>直接输入协议名tcp、udp、arp、icmp、http、ftp、dns等等</p>
+<h3 id="★-过滤IP"><a href="#★-过滤IP" class="headerlink" title="★ 过滤IP"></a>★ 过滤IP</h3><p>ip.src eq 192.168.1.107 显示来源ip</p>
+<p>ip.dst eq 192.168.1.107 显示目标ip</p>
+<p>ip.addr eq 192.168.1.107 显示来源或目标ip</p>
+<h3 id="★过滤端口"><a href="#★过滤端口" class="headerlink" title="★过滤端口"></a>★过滤端口</h3><p>tcp.port == 80 只要端口的80均显示</p>
+<p>tcp.dstport == 80 只显tcp协议的目标端口80</p>
+<p>tcp.srcport == 80 只显tcp协议的来源端口80</p>
+<p>tcp.port &gt;= 1 and tcp.port &lt;= 80 指定范围过滤</p>
+<p>udp.port eq 15000 过滤udp端口</p>
+<h3 id="★过滤MAC地址"><a href="#★过滤MAC地址" class="headerlink" title="★过滤MAC地址"></a>★过滤MAC地址</h3><p>eth.dst == A0:00:00:04:C5:84 过滤目标mac</p>
+<p>eth.src == A0:00:00:04:C5:84 过滤来源mac</p>
+<p>eth.addr == A0:00:00:04:C5:84 显示来源或目标mac</p>
+<h3 id="★过滤http模式"><a href="#★过滤http模式" class="headerlink" title="★过滤http模式"></a>★过滤http模式</h3><p>http.request.method == “GET”</p>
+<p>http.request.uri == “/img/logo-edu.gif”</p>
+<p>http contains “GET”</p>
+<p>http.request.method == “GET” &amp;&amp; http contains “User-Agent: “</p>
+<p>http contains “HTTP/1.1 200 OK” &amp;&amp; http contains”Content-Type:”</p>
+<h3 id="★包长度过滤"><a href="#★包长度过滤" class="headerlink" title="★包长度过滤"></a>★包长度过滤</h3><p>udp.length == 26 除了UDP头固定长度8，加上udp下面那块数据包之和tcp.len &gt;= 7 指的是ip数据包(tcp下面那块数据)，不包括tcp本身</p>
+<p>ip.len == 94 除了以太网头固定长度14，其它都算是ip.len，即从ip本</p>
+<p>身到最后frame.len == 119 整个数据包长度，从eth开始到最后</p>
+<h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2><p>是一个网络扫描软件，用来扫描电脑的网络连接情况、运行的服务等等，也能够推断计算机操作系统或服务的详细信息</p>
+<p>nmap -p 1-65535 192.168.1.1 扫描全端口</p>
+<p>nmap -sT 192.168.1.1 使用TCP Connect扫描，也是默认扫描方式</p>
+<p>nmap -Pn 192.168.1.1 非ping扫描，不执行主机发现，可以跳过防火墙</p>
+<p>nmap -sV 192.168.1.1 返回端口以及所对应的服务和版本号</p>
+<p>nmap -sS 192.168.1.1 半开扫描，返回端口，原理是采用TCP协议中的第一次握手，通过返回服务器第二次握手确定端口</p>
+<p>nmap -sN 192.168.1.1 使用TCP Null扫描，以ARP或ICMP协议发送ping命令，检测存活主机（只进行主机发现，不进行端口扫描）</p>
+<p>nmap -p 1-65535 192.168.1.1 指定扫描所有端口，(默认只扫描1000端口，等价于nmap -p-)</p>
+<p>nmap -A 192.168.1.1 -A表示全面综合扫描(包含了1-10000端口ping扫描、操作系统扫描、脚本扫描、路由跟踪、服务探测)</p>
+<p>nmap -O 192.168.1.1 操作系统检测</p>
+<p>nmap -T4 192.168.1.1 -T[0-6]设置定时模板（越高越快）</p>
+<p>nmap -v 192.168.1.1 -v或-vv表示显示扫描过程</p>
+<p>nmap –script 使用脚本</p>
+<h2 id="Burpsuite"><a href="#Burpsuite" class="headerlink" title="Burpsuite"></a>Burpsuite</h2><p>著名的web攻击应用程序的集成平台，包含了诸多工具，如暴力破解、编码解码、流量拦截等等</p>
+<p>Proxy模块 拦截HTTP/S的代理服务器，作为一个在浏览器和目标应用程序之间的中间人，允许你拦截、查看、修改在两个方向上的原始数据流</p>
+<p>Intruder模块 高度可配置的工具，对web应用程序进行自动化攻击、暴力破解等等</p>
+<p>Repeater模块 靠手动操作来补发单独的HTTP请求，并分析应用程序响应的工具</p>
+<p>Decoder模块 进行手动执行或对应用程序数据者智能解码编码的工具</p>
+<p>Scanner模块 仅限专业版拥有，是一个高级的工具，能自动地发现web应用程序的安全漏洞</p>
+<p>Spider模块 智能感应的网络爬虫，能完整的枚举应用程序的内容和功能</p>
+<h2 id="Sqlmap"><a href="#Sqlmap" class="headerlink" title="Sqlmap"></a>Sqlmap</h2><p>是一个开源渗透测试工具，主要用于检测SQL注入漏洞并接管</p>
+<p>数据库服务器。它具有强大的检测引擎，同时有众多功能：包括数据库指纹识别、从数据库中获取数据、访问底层文件系统以及在操作系统上带内连接执行命令。</p>
+<p>sqlmap -u “<a target="_blank" rel="noopener" href="http://www.xx.com/?id=x">http://www.xx.com?id=x</a> “ 设置目标的url</p>
+<p>sqlmap -r “ mlh.txt” 用于post注入，将burp拦截的数据包右键保存为txt，随后用sqlmap加载</p>
+<p>sqlmap -p “id” 对指定参数进行注入</p>
+<p>sqlmap –dbs 破解所有数据库（爆数据库）</p>
+<p>sqlmap –tables -D mlh 破解mlh库下的所有表（爆表名）</p>
+<p>sqlmap –columns -T mlh 破解mlh表下的所有字段名</p>
+<p>sqlmap –dump -C name,password 获取字段中的内容 （爆字段）</p>
+<p>sqlmap –current-db 当前数据库名 （爆数据库名）</p>
+<p>sqlmap –current-user 当前数据库的用户名</p>
+<p>sqlmap –batch 任何选项都选择默认</p>
+<p>sqlmap –cookie “ cookie值” cookie注入</p>
+<p>sqlmap –level X 设置扫描等级，最高为X=5</p>
+<p>sqlmap –risk X X取值0~3，risk越高就越慢，但是风险降低</p>
+<p>sqlmap –os-shell 文件写入挂马 （挂马）</p>
+<p>sqlmap –os-dbms 爆数据库类型</p>
+<p>sqlmap –tamper <strong><em>.py,</em></strong>.py 使用脚本，后面参数为tamper库中的py文件</p>
+<h2 id="Fofa"><a href="#Fofa" class="headerlink" title="Fofa"></a>Fofa</h2><p>title= “beijing “丨从<title>标签，标题中搜索“北京”</title></p>
+<p>header= “ elastic “丨从http的<head>标签中搜索“elastic”</head></p>
+<p>body= “网络空间测绘”丨从html正文中搜索“网络空间测绘”</p>
+<p>host= “ .gov.cn “丨从url中搜索” .gov.cn” ，搜索要用host作为名称</p>
+<p>port= “6379”丨搜索对应“6379”端口的资产</p>
+<p>ip= “220.181.111.1/24”丨查询IP为“220.181.111.1”的C网段资产</p>
+<p>os= “ centos “丨搜索CentOS资产</p>
+<p>server= “Microsoft-IIS/10”丨搜索IIS 10服务器</p>
+<p>app= “JAWS/1.0”丨搜索JAWS/1.0的设备</p>
+<p>protocol= “ftp “丨查询quic协议资产，搜索指定协议类型(在开启端口扫描的情况下有效)</p>
+<p>status_code= “402”丨查询服务器状态为“402”的资产</p>
+<p>after= “2017” &amp;&amp; before= “2017-10-01”丨时间范围段搜索</p>
+<p>city= “Ürümqi”丨搜索指定城市的资产</p>
+<p>region= “Xinjiang “丨搜索指定行政区的资产</p>
+<p>country= “CN”丨搜索指定国家(编码)的资产</p>
+<h2 id="Shodan"><a href="#Shodan" class="headerlink" title="Shodan"></a>Shodan</h2><p>http.html: “Beijing “丨网页内容</p>
+<p>html.title: “Cisco “丨网页标题</p>
+<p>http.server: “Microsoft-IIS/10”丨http请求返回中server的类型</p>
+<p>http.status: “200”丨http请求返回响应码的状态</p>
+<p>hostname: “ google “丨搜索指定的主机或域名</p>
+<p>port: “21”丨搜索指定的端口或服务</p>
+<p>country: “CN”丨搜索指定的国家</p>
+<p>Shodancity: “Hefei”丨搜索指定的城市</p>
+<p>org: “ google “丨搜索指定的组织或公司</p>
+<p>product: “Apache </p>
+<p>httpd”丨搜索指定的操作系统/软件/平台</p>
+<p>version: “1.6.2”丨搜索指定的软件版本</p>
+<p>before/after: “11-09-19”丨搜索指定收录时间前后的数据，格式为</p>
+<p>dd-mm-yy</p>
+<p>net: “210.45.240.0/24”丨搜索指定的IP地址或子网</p>
+<p>vuln：CVE-2014-0723丨搜索CVE漏洞编号</p>
+<p>Server:SQ-WEBCAM丨查找SQ-WEBCAM摄像头</p>
+<h2 id="Google-hacking"><a href="#Google-hacking" class="headerlink" title="Google hacking"></a>Google hacking</h2><p>intitle:孟令昊–把搜索范围限定在网页标题中</p>
+<p>inurl:jsp?id=–把搜索范围限定在url链接中</p>
+<p>site:mlh.com–把搜索范围限定在特定站点中（可用于搜索子域名）</p>
+<p>filetype:doc–搜索范围限定在指定文档格式中</p>
+<p>intext:孟令昊–搜索范围限定在指定在正文关键字中</p>
+<p>link:mlh.com–返回所有和该网站做了链接的url</p>
+<p>info:–查找指定站点的基本信息</p>
+<p>cache:–查找关于某些内容的缓存</p>
 
       </section>
       <section class="extra">
@@ -254,7 +354,7 @@
           
   <aside class="toc-wrap">
     <h3 class="toc-title">文章目录：</h3>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%8F%9C%E5%88%80%EF%BC%8C%E5%86%B0%E8%9D%8E%EF%BC%8C%E8%9A%81%E5%89%91%EF%BC%8C%E5%93%A5%E6%96%AF%E6%8B%89%E6%B5%81%E9%87%8F%E7%89%B9%E5%BE%81"><span class="toc-text">1.菜刀，冰蝎，蚁剑，哥斯拉流量特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%AD%E5%9B%BD%E8%8F%9C%E5%88%80"><span class="toc-text">2.中国菜刀</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%9A%81%E5%89%91"><span class="toc-text">3.蚁剑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%86%B0%E8%9D%8E"><span class="toc-text">4.冰蝎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%93%A5%E6%96%AF%E6%8B%89"><span class="toc-text">5.哥斯拉</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8F%9C%E5%88%80%EF%BC%8C%E5%86%B0%E8%9D%8E%EF%BC%8C%E8%9A%81%E5%89%91%EF%BC%8C%E5%93%A5%E6%96%AF%E6%8B%89%E6%B5%81%E9%87%8F%E7%89%B9%E5%BE%81"><span class="toc-text">菜刀，冰蝎，蚁剑，哥斯拉流量特征</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%AD%E5%9B%BD%E8%8F%9C%E5%88%80"><span class="toc-text">1.中国菜刀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%9A%81%E5%89%91"><span class="toc-text">2.蚁剑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%86%B0%E8%9D%8E"><span class="toc-text">3.冰蝎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%93%A5%E6%96%AF%E6%8B%89"><span class="toc-text">4.哥斯拉</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wireshark"><span class="toc-text">wireshark</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%85-%E8%BF%87%E6%BB%A4%E5%8D%8F%E8%AE%AE"><span class="toc-text">★ 过滤协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%85-%E8%BF%87%E6%BB%A4IP"><span class="toc-text">★ 过滤IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%85%E8%BF%87%E6%BB%A4%E7%AB%AF%E5%8F%A3"><span class="toc-text">★过滤端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%85%E8%BF%87%E6%BB%A4MAC%E5%9C%B0%E5%9D%80"><span class="toc-text">★过滤MAC地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%85%E8%BF%87%E6%BB%A4http%E6%A8%A1%E5%BC%8F"><span class="toc-text">★过滤http模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%85%E5%8C%85%E9%95%BF%E5%BA%A6%E8%BF%87%E6%BB%A4"><span class="toc-text">★包长度过滤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nmap"><span class="toc-text">Nmap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Burpsuite"><span class="toc-text">Burpsuite</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sqlmap"><span class="toc-text">Sqlmap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fofa"><span class="toc-text">Fofa</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shodan"><span class="toc-text">Shodan</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Google-hacking"><span class="toc-text">Google hacking</span></a></li></ol>
   </aside>
 
         
