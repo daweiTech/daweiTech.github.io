@@ -6,13 +6,13 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>仍是疫情 - Αιώνιος</title>
+  <title>Web工具问题 - Αιώνιος</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   
-  <meta name="description" content=" 恍然间，已经回到了家里
- 回想这几年的魔幻，以及现在...">
+  <meta name="description" content="1.菜刀，冰蝎，蚁剑，哥斯拉流量特征
+2.中国菜刀早期...">
   <meta name="author" content="4v1d">
   <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="32x32">
@@ -154,7 +154,7 @@
       
       
     </div>
-    <div class="center">仍是疫情</div>
+    <div class="center">Web工具问题</div>
     <div class="right">
       <i class="iconfont iconmenu j-navbar-menu"></i>
     </div>
@@ -198,22 +198,30 @@
     <section class="head">
   <img   class="lazyload" data-original="/images/draw/sunsky.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">仍是疫情</h1>
+    <h1 class="head-title">Web工具问题</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>December 15, 2022</span>
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>May 26, 2023</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>76</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>601</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
         
-        <p> 恍然间，已经回到了家里</p>
-<p> 回想这几年的魔幻，以及现在的一夜之间，感慨万分</p>
-<p> 人性，无需多言</p>
-<p> 只道是天凉好个秋，希望大家都能平平安安度过这段时期</p>
-<p> <img   class="lazyload" data-original="/2022/12/15/2022/12/%E4%BB%8D%E6%98%AF%E7%96%AB%E6%83%85/%E7%99%BD%E4%BA%91.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ></p>
+        <h2 id="1-菜刀，冰蝎，蚁剑，哥斯拉流量特征"><a href="#1-菜刀，冰蝎，蚁剑，哥斯拉流量特征" class="headerlink" title="1.菜刀，冰蝎，蚁剑，哥斯拉流量特征"></a>1.菜刀，冰蝎，蚁剑，哥斯拉流量特征</h2><p><img   class="lazyload" data-original="/2023/05/26/2023/5/Web%E5%B7%A5%E5%85%B7%E9%97%AE%E9%A2%98/image-20230526130757490.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230526130757490"></p>
+<h2 id="2-中国菜刀"><a href="#2-中国菜刀" class="headerlink" title="2.中国菜刀"></a>2.中国菜刀</h2><p>早期版本明文传输，后来为base64加密</p>
+<p>特征主要在 body 中，base64-encode默认参数为 z0，对其进行 base64 解密之后会发现脚本用于传递 payload 的函数，比如 </p>
+<p>php 的 eval 和 assert，asp 中的 execute，后面的版本 body 中部分字符被 unicode 编码替换混淆，常见%u00</p>
+<h2 id="3-蚁剑"><a href="#3-蚁剑" class="headerlink" title="3.蚁剑"></a>3.蚁剑</h2><p>Base64、AES加密</p>
+<p>php 类常见@ini_set(“display_errors “ , “0”)，asp 类常见 execute，但是会被打断拼接，混淆加密后常见_0x…… =这种形式</p>
+<h2 id="4-冰蝎"><a href="#4-冰蝎" class="headerlink" title="4.冰蝎"></a>4.冰蝎</h2><p>AES加密</p>
+<p>在建立链接之前会有一个 AES 密钥交互过程，body 体中都是 AES 加密后密文</p>
+<p>冰蝎 1：Content-Type：application/octet-stream</p>
+<p>冰蝎 2：Content-Length：16早期版本明文传输，后面是 base64 加密Base64 AES加密</p>
+<p>冰蝎冰蝎 3：Content-Type：application/octet-stream</p>
+<h2 id="5-哥斯拉"><a href="#5-哥斯拉" class="headerlink" title="5.哥斯拉"></a>5.哥斯拉</h2><p>AES加密</p>
+<p>PHP 连接特征请求都含有” pass**= “第一个包第二个包，jsp连接特征与php请求一样都含有” pass= “而且发起连接时服务器返回的 Content-Length是 0</p>
 
       </section>
       <section class="extra">
@@ -221,17 +229,19 @@
           <ul class="copyright">
   
     <li><strong>本文作者：</strong>4v1d</li>
-    <li><strong>本文链接：</strong><a href="http://daweitech.github.io/2022/12/15/2022/12/%E4%BB%8D%E6%98%AF%E7%96%AB%E6%83%85/index.html" title="http:&#x2F;&#x2F;daweitech.github.io&#x2F;2022&#x2F;12&#x2F;15&#x2F;2022&#x2F;12&#x2F;%E4%BB%8D%E6%98%AF%E7%96%AB%E6%83%85&#x2F;index.html">http:&#x2F;&#x2F;daweitech.github.io&#x2F;2022&#x2F;12&#x2F;15&#x2F;2022&#x2F;12&#x2F;%E4%BB%8D%E6%98%AF%E7%96%AB%E6%83%85&#x2F;index.html</a></li>
+    <li><strong>本文链接：</strong><a href="http://daweitech.github.io/2023/05/26/2023/5/Web%E5%B7%A5%E5%85%B7%E9%97%AE%E9%A2%98/index.html" title="http:&#x2F;&#x2F;daweitech.github.io&#x2F;2023&#x2F;05&#x2F;26&#x2F;2023&#x2F;5&#x2F;Web%E5%B7%A5%E5%85%B7%E9%97%AE%E9%A2%98&#x2F;index.html">http:&#x2F;&#x2F;daweitech.github.io&#x2F;2023&#x2F;05&#x2F;26&#x2F;2023&#x2F;5&#x2F;Web%E5%B7%A5%E5%85%B7%E9%97%AE%E9%A2%98&#x2F;index.html</a></li>
     <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
   
 </ul>
         
         
         
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul> 
+
         
   <nav class="nav">
-    <a href="/2023/05/25/2023/5/25/"><i class="iconfont iconleft"></i>框架及其漏洞</a>
-    <a href="/2022/12/10/2022/12/chatGPT/">chatGPT初体验<i class="iconfont iconright"></i></a>
+    <a></a>
+    <a href="/2023/05/25/2023/5/%E5%A4%A9%E7%9C%BC%E8%AE%BE%E5%A4%87/">天眼安全设备的使用<i class="iconfont iconright"></i></a>
   </nav>
 
       </section>
@@ -244,7 +254,7 @@
           
   <aside class="toc-wrap">
     <h3 class="toc-title">文章目录：</h3>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%8F%9C%E5%88%80%EF%BC%8C%E5%86%B0%E8%9D%8E%EF%BC%8C%E8%9A%81%E5%89%91%EF%BC%8C%E5%93%A5%E6%96%AF%E6%8B%89%E6%B5%81%E9%87%8F%E7%89%B9%E5%BE%81"><span class="toc-text">1.菜刀，冰蝎，蚁剑，哥斯拉流量特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%AD%E5%9B%BD%E8%8F%9C%E5%88%80"><span class="toc-text">2.中国菜刀</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%9A%81%E5%89%91"><span class="toc-text">3.蚁剑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%86%B0%E8%9D%8E"><span class="toc-text">4.冰蝎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%93%A5%E6%96%AF%E6%8B%89"><span class="toc-text">5.哥斯拉</span></a></li></ol>
   </aside>
 
         

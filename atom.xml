@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2023-05-25T15:48:42.163Z</updated>
+  <updated>2023-05-26T05:13:49.696Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Web工具问题</title>
+    <link href="http://daweitech.github.io/2023/05/26/2023/5/Web%E5%B7%A5%E5%85%B7%E9%97%AE%E9%A2%98/"/>
+    <id>http://daweitech.github.io/2023/05/26/2023/5/Web%E5%B7%A5%E5%85%B7%E9%97%AE%E9%A2%98/</id>
+    <published>2023-05-26T05:03:15.000Z</published>
+    <updated>2023-05-26T05:13:49.696Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-菜刀，冰蝎，蚁剑，哥斯拉流量特征&quot;&gt;&lt;a href=&quot;#1-菜刀，冰蝎，蚁剑，哥斯拉流量特征&quot; class=&quot;headerlink&quot; title=&quot;1.菜刀，冰蝎，蚁剑，哥斯拉流量特征&quot;&gt;&lt;/a&gt;1.菜刀，冰蝎，蚁剑，哥斯拉流量特征&lt;/h2&gt;&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="hvv" scheme="http://daweitech.github.io/categories/hvv/"/>
+    
+    
+    <category term="web" scheme="http://daweitech.github.io/tags/web/"/>
+    
+  </entry>
   
   <entry>
     <title>天眼安全设备的使用</title>
@@ -46,7 +71,7 @@
     <link href="http://daweitech.github.io/2023/05/25/2023/5/25/"/>
     <id>http://daweitech.github.io/2023/05/25/2023/5/25/</id>
     <published>2023-05-25T11:18:58.000Z</published>
-    <updated>2023-05-25T15:07:14.836Z</updated>
+    <updated>2023-05-26T05:01:42.277Z</updated>
     
     
       
@@ -512,31 +537,6 @@
     
     
     <category term="ctf" scheme="http://daweitech.github.io/tags/ctf/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php字符串逃逸</title>
-    <link href="http://daweitech.github.io/2021/10/28/2021/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/"/>
-    <id>http://daweitech.github.io/2021/10/28/2021/web/%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%83%E9%80%B8/</id>
-    <published>2021-10-28T12:14:29.000Z</published>
-    <updated>2023-05-25T11:57:39.604Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt; 今天也是写了好多道web题，感觉bugku上的两题ssti有点坑，一直说我的pin是错的&lt;/p&gt;
-&lt;p&gt;咳咳，回到正题，写一下newphp题目，这题有关字符串反序列化逃逸&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="web" scheme="http://daweitech.github.io/tags/web/"/>
     
   </entry>
   
