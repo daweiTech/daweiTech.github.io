@@ -196,13 +196,13 @@
       <div class="col-xl-6"><article class="article">
   <div class="wrap">
     <section class="head">
-  <img   class="lazyload" data-original="/images/cover/three.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <img   class="lazyload" data-original="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL2xldGUxMTQvQ0ROQDMuMC9Cb0JvUGljLzIzLmpwZw?x-oss-process=image/format,png.30" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
     <h1 class="head-title">Web工具问题</h1>
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>May 26, 2023</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4434</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4432</span>
     </div>
   </div>
 </section>
@@ -211,8 +211,7 @@
         
         <h2 id="菜刀，冰蝎，蚁剑，哥斯拉流量特征"><a href="#菜刀，冰蝎，蚁剑，哥斯拉流量特征" class="headerlink" title="菜刀，冰蝎，蚁剑，哥斯拉流量特征"></a>菜刀，冰蝎，蚁剑，哥斯拉流量特征</h2><p><img   class="lazyload" data-original="/2023/05/26/2023/5/Web%E5%B7%A5%E5%85%B7%E9%97%AE%E9%A2%98/image-20230526130757490.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230526130757490"></p>
 <h3 id="1-中国菜刀"><a href="#1-中国菜刀" class="headerlink" title="1.中国菜刀"></a>1.中国菜刀</h3><p>早期版本明文传输，后来为base64加密</p>
-<p>特征主要在 body 中，base64-encode默认参数为 z0，对其进行 base64 解密之后会发现脚本用于传递 payload 的函数，比如 </p>
-<p>php 的 eval 和 assert，asp 中的 execute，后面的版本 body 中部分字符被 unicode 编码替换混淆，常见%u00</p>
+<p>特征主要在 body 中，base64-encode默认参数为 z0，对其进行 base64 解密之后会发现脚本用于传递 payload 的函数，比如 php 的 eval 和 assert，asp 中的 execute，后面的版本 body 中部分字符被 unicode 编码替换混淆，常见%u00</p>
 <h3 id="2-蚁剑"><a href="#2-蚁剑" class="headerlink" title="2.蚁剑"></a>2.蚁剑</h3><p>Base64、AES加密</p>
 <p>php 类常见@ini_set(“display_errors “ , “0”)，asp 类常见 execute，但是会被打断拼接，混淆加密后常见_0x…… =这种形式</p>
 <h3 id="3-冰蝎"><a href="#3-冰蝎" class="headerlink" title="3.冰蝎"></a>3.冰蝎</h3><p>AES加密</p>
@@ -242,8 +241,7 @@
 <p>http.request.method == “GET” &amp;&amp; http contains “User-Agent: “</p>
 <p>http contains “HTTP/1.1 200 OK” &amp;&amp; http contains”Content-Type:”</p>
 <h3 id="★包长度过滤"><a href="#★包长度过滤" class="headerlink" title="★包长度过滤"></a>★包长度过滤</h3><p>udp.length == 26 除了UDP头固定长度8，加上udp下面那块数据包之和tcp.len &gt;= 7 指的是ip数据包(tcp下面那块数据)，不包括tcp本身</p>
-<p>ip.len == 94 除了以太网头固定长度14，其它都算是ip.len，即从ip本</p>
-<p>身到最后frame.len == 119 整个数据包长度，从eth开始到最后</p>
+<p>ip.len == 94 除了以太网头固定长度14，其它都算是ip.len，即从ip本身到最后frame.len == 119 整个数据包长度，从eth开始到最后</p>
 <h2 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h2><p>是一个网络扫描软件，用来扫描电脑的网络连接情况、运行的服务等等，也能够推断计算机操作系统或服务的详细信息</p>
 <p>nmap -p 1-65535 192.168.1.1 扫描全端口</p>
 <p>nmap -sT 192.168.1.1 使用TCP Connect扫描，也是默认扫描方式</p>
@@ -340,7 +338,7 @@
 
         
   <nav class="nav">
-    <a></a>
+    <a href="/2023/05/27/2023/5/Log4j2%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"><i class="iconfont iconleft"></i>Log4j2漏洞复现</a>
     <a href="/2023/05/25/2023/5/%E5%A4%A9%E7%9C%BC%E8%AE%BE%E5%A4%87/">天眼安全设备的使用<i class="iconfont iconright"></i></a>
   </nav>
 
