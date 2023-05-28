@@ -466,6 +466,13 @@
 
   
   <url>
+    <loc>http://daweitech.github.io/tags/ctf/</loc>
+    <lastmod>2023-05-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://daweitech.github.io/tags/buu/</loc>
     <lastmod>2023-05-28</lastmod>
     <changefreq>daily</changefreq>
@@ -480,14 +487,7 @@
   </url>
   
   <url>
-    <loc>http://daweitech.github.io/tags/ctf/</loc>
-    <lastmod>2023-05-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://daweitech.github.io/tags/src/</loc>
+    <loc>http://daweitech.github.io/tags/web/</loc>
     <lastmod>2023-05-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -501,28 +501,7 @@
   </url>
   
   <url>
-    <loc>http://daweitech.github.io/tags/web/</loc>
-    <lastmod>2023-05-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://daweitech.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2023-05-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://daweitech.github.io/tags/js%E9%80%86%E5%90%91/</loc>
-    <lastmod>2023-05-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://daweitech.github.io/tags/computer-network/</loc>
     <lastmod>2023-05-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -536,7 +515,28 @@
   </url>
   
   <url>
+    <loc>http://daweitech.github.io/tags/computer-network/</loc>
+    <lastmod>2023-05-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://daweitech.github.io/tags/src/</loc>
+    <lastmod>2023-05-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://daweitech.github.io/tags/%E5%A4%A9%E7%9C%BC/</loc>
+    <lastmod>2023-05-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://daweitech.github.io/tags/js%E9%80%86%E5%90%91/</loc>
     <lastmod>2023-05-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -573,13 +573,6 @@
   </url>
   
   <url>
-    <loc>http://daweitech.github.io/categories/Graduation-project/</loc>
-    <lastmod>2023-05-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://daweitech.github.io/categories/CTF/</loc>
     <lastmod>2023-05-28</lastmod>
     <changefreq>daily</changefreq>
@@ -587,7 +580,7 @@
   </url>
   
   <url>
-    <loc>http://daweitech.github.io/categories/js/</loc>
+    <loc>http://daweitech.github.io/categories/Graduation-project/</loc>
     <lastmod>2023-05-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -602,6 +595,13 @@
   
   <url>
     <loc>http://daweitech.github.io/categories/hvv/</loc>
+    <lastmod>2023-05-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://daweitech.github.io/categories/js/</loc>
     <lastmod>2023-05-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
