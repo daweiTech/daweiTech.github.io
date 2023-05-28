@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2023-05-27T15:04:38.819Z</updated>
+  <updated>2023-05-28T06:40:52.610Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Fastjson反序列化漏洞复现</title>
+    <link href="http://daweitech.github.io/2023/05/28/2023/5/Fastjson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    <id>http://daweitech.github.io/2023/05/28/2023/5/Fastjson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</id>
+    <published>2023-05-28T04:28:31.000Z</published>
+    <updated>2023-05-28T06:40:52.610Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;靶场环境搭建&quot;&gt;&lt;a href=&quot;#靶场环境搭建&quot; class=&quot;headerlink&quot; title=&quot;靶场环境搭建&quot;&gt;&lt;/a&gt;靶场环境搭建&lt;/h3&gt;&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="hvv" scheme="http://daweitech.github.io/categories/hvv/"/>
+    
+    
+    <category term="src" scheme="http://daweitech.github.io/tags/src/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Log4j2漏洞复现</title>
     <link href="http://daweitech.github.io/2023/05/27/2023/5/Log4j2%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     <id>http://daweitech.github.io/2023/05/27/2023/5/Log4j2%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</id>
     <published>2023-05-27T13:44:48.000Z</published>
-    <updated>2023-05-27T15:04:38.819Z</updated>
+    <updated>2023-05-28T04:33:58.742Z</updated>
     
     
       
@@ -33,6 +58,8 @@
       
     
     
+    
+    <category term="hvv" scheme="http://daweitech.github.io/categories/hvv/"/>
     
     
     <category term="src" scheme="http://daweitech.github.io/tags/src/"/>
@@ -510,31 +537,6 @@
     
     
     <category term="ctf" scheme="http://daweitech.github.io/tags/ctf/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CTF-trick</title>
-    <link href="http://daweitech.github.io/2022/01/20/2022/1/notes/"/>
-    <id>http://daweitech.github.io/2022/01/20/2022/1/notes/</id>
-    <published>2022-01-20T12:37:47.000Z</published>
-    <updated>2023-05-25T12:02:42.812Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;参考文章：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/iloveacm/category/1791836.html&quot;&gt;CTF - 随笔分类 - iloveacm - 博客园 (cnblogs.com)&lt;/a&gt;&lt;/p&gt;
-&lt;h2</summary>
-        
-      
-    
-    
-    
-    
-    <category term="web" scheme="http://daweitech.github.io/tags/web/"/>
     
   </entry>
   
