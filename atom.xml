@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2023-05-28T06:40:52.610Z</updated>
+  <updated>2023-05-31T09:07:06.779Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Weblogic-XMLDecoder-反序列化漏洞</title>
+    <link href="http://daweitech.github.io/2023/05/30/2023/5/Weblogic-XMLDecoder-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/"/>
+    <id>http://daweitech.github.io/2023/05/30/2023/5/Weblogic-XMLDecoder-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/</id>
+    <published>2023-05-30T06:58:25.000Z</published>
+    <updated>2023-05-31T09:07:06.779Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;漏洞复现&quot;&gt;&lt;a href=&quot;#漏洞复现&quot; class=&quot;headerlink&quot; title=&quot;漏洞复现&quot;&gt;&lt;/a&gt;漏洞复现&lt;/h3&gt;&lt;p&gt;开启靶场&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="hvv" scheme="http://daweitech.github.io/categories/hvv/"/>
+    
+    
+    <category term="src" scheme="http://daweitech.github.io/tags/src/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Fastjson反序列化漏洞复现</title>
     <link href="http://daweitech.github.io/2023/05/28/2023/5/Fastjson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
     <id>http://daweitech.github.io/2023/05/28/2023/5/Fastjson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</id>
     <published>2023-05-28T04:28:31.000Z</published>
-    <updated>2023-05-28T06:40:52.610Z</updated>
+    <updated>2023-05-30T07:00:27.081Z</updated>
     
     
       
@@ -511,32 +537,6 @@
     
     <category term="CTF·sql" scheme="http://daweitech.github.io/categories/CTF%C2%B7sql/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Rois-冬令营</title>
-    <link href="http://daweitech.github.io/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/"/>
-    <id>http://daweitech.github.io/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/</id>
-    <published>2022-02-05T13:41:57.000Z</published>
-    <updated>2022-07-09T15:47:28.215Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;今天写下writeup总结一下&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2022/02/05/2022/1/rois-%E5%86%AC%E4%BB%A4%E8%90%A5/image-20220205214412266.png&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="CTF" scheme="http://daweitech.github.io/categories/CTF/"/>
-    
-    
-    <category term="ctf" scheme="http://daweitech.github.io/tags/ctf/"/>
     
   </entry>
   

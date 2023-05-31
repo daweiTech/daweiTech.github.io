@@ -201,13 +201,13 @@
       <div class="col-xl-6"><article class="article">
   <div class="wrap">
     <section class="head">
-  <img   class="lazyload" data-original="/images/cover/five.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <img   class="lazyload" data-original="/images/cover/seven.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
     <h1 class="head-title">Fastjson反序列化漏洞复现</h1>
     <div class="head-info">
       <span class="post-info-item"><i class="iconfont iconcalendar"></i>May 28, 2023</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1042</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>1173</span>
     </div>
   </div>
 </section>
@@ -242,6 +242,13 @@
 <p>marshalsec为<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96&spm=1001.2101.3001.7020">java反序列化</a>利用工具，其中需要kali安装mvn服务进行编译：</p>
 <p>[]: <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42250835/article/details/120349852">https://blog.csdn.net/weixin_42250835/article/details/120349852</a>    “踩坑 - Kali下安装配置maven，完美解决！”</p>
 <p><img   class="lazyload" data-original="/2023/05/28/2023/5/Fastjson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/blog\source_posts\2023\5\Fastjson反序列化漏洞复现\image-20230528143919178.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230528143919178"></p>
+<p>接着参考文章使用bp发包改，但我一直报错400</p>
+<p><img   class="lazyload" data-original="/2023/05/28/2023/5/Fastjson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20230529221942483.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230529221942483"></p>
+<p>改用hackbar插件直接POST发包,页面是到500</p>
+<p><img   class="lazyload" data-original="/2023/05/28/2023/5/Fastjson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20230529222317429.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230529222317429"></p>
+<p>但RMI监听效果仍不尽人意</p>
+<p><img   class="lazyload" data-original="/2023/05/28/2023/5/Fastjson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/image-20230529222457298.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230529222457298"></p>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Bossfrank/article/details/130100893">https://blog.csdn.net/Bossfrank/article/details/130100893</a></p>
 
       </section>
       <section class="extra">
@@ -260,7 +267,7 @@
 
         
   <nav class="nav">
-    <a></a>
+    <a href="/2023/05/30/2023/5/Weblogic-XMLDecoder-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/"><i class="iconfont iconleft"></i>Weblogic-XMLDecoder-反序列化漏洞</a>
     <a href="/2023/05/27/2023/5/Log4j2%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">Log4j2漏洞复现<i class="iconfont iconright"></i></a>
   </nav>
 
@@ -274,7 +281,7 @@
           
   <aside class="toc-wrap">
     <h3 class="toc-title">文章目录：</h3>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%B6%E5%9C%BA%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">靶场环境搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0"><span class="toc-text">漏洞复现</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%B6%E5%9C%BA%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">靶场环境搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0"><span class="toc-text">漏洞复现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-text">参考文章</span></a></li></ol>
   </aside>
 
         
