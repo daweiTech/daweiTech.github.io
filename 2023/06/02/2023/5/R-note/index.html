@@ -1,0 +1,408 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>R-note - Αιώνιος</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="前言最近因为需要，配置了R语言的环境
+也接触到了一些科...">
+  <meta name="author" content="4v1d">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/cute.jpg" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/cute.jpg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/cute.jpg">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: false,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v1.hitokoto.cn/?encode=text&c=d',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Αιώνιος" type="application/atom+xml">
+</head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">R-note</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 相册</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/draw/sunsky.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">R-note</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>June 02, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2703</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近因为需要，配置了R语言的环境</p>
+<p>也接触到了一些科研人所需的图，这篇文章记录一下这几天的收获</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>开始的时候按照一般配置：R+Rstudio</p>
+<p>结果使用起来不太顺心）</p>
+<p>于是乎，我就寻求vscode的R环境</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/369698816">https://zhuanlan.zhihu.com/p/369698816</a></p>
+<p>上述文章成功配置</p>
+<p>效果还不错嘛</p>
+<p><img   class="lazyload" data-original="/2023/06/02/2023/5/R-note/image-20230602193851473.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230602193851473"></p>
+<h3 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h3><h4 id="1-矩阵整理"><a href="#1-矩阵整理" class="headerlink" title="1.矩阵整理"></a>1.矩阵整理</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sayhello1025/article/details/124122474">https://blog.csdn.net/sayhello1025/article/details/124122474</a></p>
+<h4 id="2-工具使用"><a href="#2-工具使用" class="headerlink" title="2.工具使用"></a>2.工具使用</h4><p>GDCRNATools（二）——TCGA数据挖掘实战：差异分析、富集分析、生存分析</p>
+<h4 id="3-TGCA数据下载"><a href="#3-TGCA数据下载" class="headerlink" title="3.TGCA数据下载"></a>3.TGCA数据下载</h4><p>1.视频讲解：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12e411N7JV/?spm_id_from=333.337.search-card.all.click&amp;vd_source=e0e88420543b388369a3a7a169264e1a">https://www.bilibili.com/video/BV12e411N7JV/?spm_id_from=333.337.search-card.all.click&amp;vd_source=e0e88420543b388369a3a7a169264e1a</a></p>
+<p>2.下载讲解（参数）：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_58549466/article/details/122468597">https://blog.csdn.net/m0_58549466/article/details/122468597</a></p>
+<p>3.代码：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/534634189">https://zhuanlan.zhihu.com/p/534634189</a></p>
+<p>我自己整理使用的代码</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs R">projectPath &lt;- <span class="hljs-string">&quot;D://科研//TCGA//TCGA&quot;</span>  <span class="hljs-comment"># 替换为您的实际工作目录</span><br>dataPath &lt;- file.path(projectPath, <span class="hljs-string">&quot;Data&quot;</span>)<br><span class="hljs-keyword">if</span> (!dir.exists(dataPath)) dir.create(dataPath)<br>setwd(dataPath)<br><span class="hljs-keyword">if</span> (!requireNamespace(<span class="hljs-string">&quot;BiocManager&quot;</span>, quietly=<span class="hljs-literal">TRUE</span>))<br>    install.packages(<span class="hljs-string">&quot;BiocManager&quot;</span>)<span class="hljs-comment"># BiocManager::install(&quot;TCGAbiolinks&quot;, force = TRUE) # 若未安装最新的版本，请选中运行上行代码</span><br><span class="hljs-keyword">library</span>(TCGAbiolinks)<br><br><span class="hljs-keyword">library</span>(pacman)<br><br>p_load(TCGAbiolinks, tidyverse, magrittr, data.table, biomaRt)<br><span class="hljs-comment"># query &lt;- GDCquery(project = &quot;TCGA-ACC&quot;,</span><br><span class="hljs-comment">#                   data.category = &quot;Transcriptome Profiling&quot;,</span><br><span class="hljs-comment">#                   data.type = &quot;Gene Expression Quantification&quot;,</span><br><span class="hljs-comment">#                   workflow.type = &quot;STAR - Counts&quot;)</span><br><br><br><span class="hljs-comment"># GDCdownload(query, files.per.chunk = 100)</span><br>max_attempts &lt;- <span class="hljs-number">5</span>  <span class="hljs-comment"># 最大尝试次数</span><br>delay_seconds &lt;- <span class="hljs-number">3</span>  <span class="hljs-comment"># 延迟时间间隔（秒）</span><br><br><span class="hljs-keyword">for</span> (data_type <span class="hljs-keyword">in</span> c(<span class="hljs-string">&quot;HTSeq - Counts&quot;</span>, <span class="hljs-string">&quot;HTSeq - FPKM-UQ&quot;</span>)) &#123;<br>  attempt &lt;- <span class="hljs-number">1</span>  <span class="hljs-comment"># 当前尝试次数</span><br>  <br>  <span class="hljs-keyword">while</span> (attempt &lt;= max_attempts) &#123;<br>    query &lt;- <span class="hljs-keyword">try</span>(GDCquery(<br>        project = <span class="hljs-string">&quot;TCGA-LIHC&quot;</span>, <br>        legacy = <span class="hljs-literal">FALSE</span>, <br>        experimental.strategy = <span class="hljs-string">&quot;RNA-Seq&quot;</span>, <br>        data.category = <span class="hljs-string">&quot;Transcriptome Profiling&quot;</span>, <br>        data.type = <span class="hljs-string">&quot;Gene Expression Quantification&quot;</span>, <br>        workflow.type = <span class="hljs-string">&quot;STAR - Counts&quot;</span>), silent = <span class="hljs-literal">TRUE</span>)<br>    <br>    <span class="hljs-keyword">if</span> (!inherits(query, <span class="hljs-string">&quot;try-error&quot;</span>)) &#123;<br>      <span class="hljs-keyword">break</span>  <span class="hljs-comment"># 查询成功，跳出循环</span><br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      print(<span class="hljs-string">&quot;尝试连接至GDC...&quot;</span>)<br>      Sys.sleep(delay_seconds)  <span class="hljs-comment"># 延迟一段时间后进行下一次尝试</span><br>      attempt &lt;- attempt + <span class="hljs-number">1</span><br>    &#125;<br>  &#125;<br>  <br>  <span class="hljs-keyword">if</span> (attempt &gt; max_attempts) &#123;<br>    print(<span class="hljs-string">&quot;无法连接至GDC，请检查网络连接或稍后再试。&quot;</span>)<br>    <span class="hljs-keyword">break</span>  <span class="hljs-comment"># 超过最大尝试次数，退出循环</span><br>  &#125;<br>  <br>  GDCdownload(query, files.per.chunk = <span class="hljs-number">100</span>)  <span class="hljs-comment"># 分批下载</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h3><h4 id="1-安装包"><a href="#1-安装包" class="headerlink" title="1.安装包"></a>1.安装包</h4><p><a target="_blank" rel="noopener" href="https://biowolf.cn/Question/R_install.html">https://biowolf.cn/Question/R_install.html</a></p>
+<h4 id="2-安装低版本的R语言、和自行下载安装各个版本的R语言包、以及多环境运行R"><a href="#2-安装低版本的R语言、和自行下载安装各个版本的R语言包、以及多环境运行R" class="headerlink" title="2.安装低版本的R语言、和自行下载安装各个版本的R语言包、以及多环境运行R"></a>2.安装低版本的R语言、和自行下载安装各个版本的R语言包、以及多环境运行R</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ChenQihome9/article/details/81949965">https://blog.csdn.net/ChenQihome9/article/details/81949965</a></p>
+<h3 id="在线图表"><a href="#在线图表" class="headerlink" title="在线图表"></a>在线图表</h3><p>来源：<a target="_blank" rel="noopener" href="https://posts.careerengine.us/p/61da7b58e37a311568703e95">https://posts.careerengine.us/p/61da7b58e37a311568703e95</a></p>
+<p>仙桃血书：<a target="_blank" rel="noopener" href="https://www.xiantaozi.com/">https://www.xiantaozi.com/</a></p>
+<p>这个网站我觉得蛮好用的，进来就送了我基础版的使用权</p>
+<p><img   class="lazyload" data-original="/2023/06/02/2023/5/R-note/image-20230602194214466.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230602194214466"></p>
+<p>绘图效果蛮不错的</p>
+<p><img   class="lazyload" data-original="/2023/06/02/2023/5/R-note/blog\source_posts\2023\5\R-note\image-20230602194344204.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230602194344204"></p>
+<p><img   class="lazyload" data-original="/2023/06/02/2023/5/R-note/image-20230602194414294.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230602194414294"></p>
+<p>值得一提的就是这个生存曲线图，很折磨人</p>
+<p><img   class="lazyload" data-original="/2023/06/02/2023/5/R-note/image-20230602194653069.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20230602194653069"></p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>4v1d</li>
+    <li><strong>本文链接：</strong><a href="http://daweitech.github.io/2023/06/02/2023/5/R-note/index.html" title="http:&#x2F;&#x2F;daweitech.github.io&#x2F;2023&#x2F;06&#x2F;02&#x2F;2023&#x2F;5&#x2F;R-note&#x2F;index.html">http:&#x2F;&#x2F;daweitech.github.io&#x2F;2023&#x2F;06&#x2F;02&#x2F;2023&#x2F;5&#x2F;R-note&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/R/" rel="tag">R</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a></a>
+    <a href="/2023/06/02/2023/5/Struts2%E6%BC%8F%E6%B4%9E/">Struts2漏洞<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-text">数据处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%9F%A9%E9%98%B5%E6%95%B4%E7%90%86"><span class="toc-text">1.矩阵整理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8"><span class="toc-text">2.工具使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-TGCA%E6%95%B0%E6%8D%AE%E4%B8%8B%E8%BD%BD"><span class="toc-text">3.TGCA数据下载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98"><span class="toc-text">其他问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-text">1.安装包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85%E4%BD%8E%E7%89%88%E6%9C%AC%E7%9A%84R%E8%AF%AD%E8%A8%80%E3%80%81%E5%92%8C%E8%87%AA%E8%A1%8C%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E5%90%84%E4%B8%AA%E7%89%88%E6%9C%AC%E7%9A%84R%E8%AF%AD%E8%A8%80%E5%8C%85%E3%80%81%E4%BB%A5%E5%8F%8A%E5%A4%9A%E7%8E%AF%E5%A2%83%E8%BF%90%E8%A1%8CR"><span class="toc-text">2.安装低版本的R语言、和自行下载安装各个版本的R语言包、以及多环境运行R</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF%E5%9B%BE%E8%A1%A8"><span class="toc-text">在线图表</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=905095727 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/zhaoo "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

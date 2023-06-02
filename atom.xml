@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2023-06-01T03:51:29.359Z</updated>
+  <updated>2023-06-02T11:55:44.526Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>R-note</title>
+    <link href="http://daweitech.github.io/2023/06/02/2023/5/R-note/"/>
+    <id>http://daweitech.github.io/2023/06/02/2023/5/R-note/</id>
+    <published>2023-06-02T11:33:48.000Z</published>
+    <updated>2023-06-02T11:55:44.526Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;最近因为需要，配置了R语言的环境&lt;/p&gt;
+&lt;p&gt;也接触到了一些科研人所需的图，这篇文章记录一下这几天的收获&lt;/p&gt;
+&lt;h3</summary>
+        
+      
+    
+    
+    
+    
+    <category term="R" scheme="http://daweitech.github.io/tags/R/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Struts2漏洞</title>
+    <link href="http://daweitech.github.io/2023/06/02/2023/5/Struts2%E6%BC%8F%E6%B4%9E/"/>
+    <id>http://daweitech.github.io/2023/06/02/2023/5/Struts2%E6%BC%8F%E6%B4%9E/</id>
+    <published>2023-06-02T09:46:47.000Z</published>
+    <updated>2023-06-02T12:19:56.820Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;漏洞环境搭建&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2023/06/02/2023/5/Struts2%E6%BC%8F%E6%B4%9E/image-20230602200318796.png&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="hvv" scheme="http://daweitech.github.io/categories/hvv/"/>
+    
+    
+    <category term="src" scheme="http://daweitech.github.io/tags/src/"/>
+    
+  </entry>
   
   <entry>
     <title>Weblogic-XMLDecoder-反序列化漏洞</title>
@@ -483,60 +534,6 @@
     
     
     <category term="computer network" scheme="http://daweitech.github.io/tags/computer-network/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>概念、组成、功能和分类</title>
-    <link href="http://daweitech.github.io/2022/07/05/2022/7/day1/"/>
-    <id>http://daweitech.github.io/2022/07/05/2022/7/day1/</id>
-    <published>2022-07-05T11:15:40.000Z</published>
-    <updated>2023-05-25T11:45:40.780Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;概念、组成、功能和分类&quot;&gt;&lt;a href=&quot;#概念、组成、功能和分类&quot; class=&quot;headerlink&quot; title=&quot;概念、组成、功能和分类&quot;&gt;&lt;/a&gt;概念、组成、功能和分类&lt;/h2&gt;&lt;h3 id=&quot;1-怎么学习计算机网络&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    <content src="http://daweitech.github.io/images/life/starry.jpg" type="image"/>
-    
-    
-    <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
-    
-    
-    <category term="computer network" scheme="http://daweitech.github.io/tags/computer-network/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NSSCTF-prize4</title>
-    <link href="http://daweitech.github.io/2022/03/05/2022/3/NSSCTF-prize4/"/>
-    <id>http://daweitech.github.io/2022/03/05/2022/3/NSSCTF-prize4/</id>
-    <published>2022-03-05T10:51:25.000Z</published>
-    <updated>2023-05-25T12:23:43.560Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;​    尝试做NSS平台上的一道prize题&lt;/p&gt;
-&lt;p&gt;​    恰好标签为sql盲注，就通过这道题对盲注加深理解&lt;/p&gt;
-&lt;h2</summary>
-        
-      
-    
-    
-    <content src="http://daweitech.github.io/images/draw/sunsky.jpg" type="image"/>
-    
-    
-    <category term="CTF·sql" scheme="http://daweitech.github.io/categories/CTF%C2%B7sql/"/>
-    
     
   </entry>
   
