@@ -3745,4 +3745,28 @@ public function __toString()&#123;
         <tag>R</tag>
       </tags>
   </entry>
+  <entry>
+    <title>vue-1</title>
+    <url>/2023/06/06/2023/6/vue-1/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近想储备一点前端知识，就学点vue</p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p>1.最完整的Vue教程-从零开始编写可视化大屏</p>
+<p><a href="https://zhuanlan.zhihu.com/p/450133800">https://zhuanlan.zhihu.com/p/450133800</a></p>
+<p>这个讲配置还不错，但后面的图表使用的node-sass我没有实现成功，不清楚是不是版本问题</p>
+<p>2.Vue前端框架学习总结</p>
+<p><a href="https://blog.csdn.net/xxxjkk/category_10834569.html">https://blog.csdn.net/xxxjkk/category_10834569.html</a></p>
+<p>这个教程三篇文章，作为初入门还是十分友好</p>
+<p><img src="/2023/06/06/2023/6/vue-1/image-20230606134523409.png" alt="image-20230606134523409"></p>
+<p>3.Vue使用echarts制作好看的图表（一）</p>
+<p><a href="https://blog.csdn.net/sunddy_x/article/details/114196113">https://blog.csdn.net/sunddy_x/article/details/114196113</a></p>
+<p>通过这篇文章成功弄了几个图表显示页面上，效果不错</p>
+<p><img src="/2023/06/06/2023/6/vue-1/image-20230606134720228.png" alt="image-20230606134720228"></p>
+<p>4.axios的初步尝试</p>
+<p><a href="https://blog.csdn.net/qq_38432089/article/details/123603709">https://blog.csdn.net/qq_38432089/article/details/123603709</a></p>
+<p>接收数据，使用数据，后续我应该挺迫切需要的</p>
+<p><img src="/2023/06/06/2023/6/vue-1/image-20230606135822043.png" alt="image-20230606135822043"></p>
+]]></content>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
 </search>

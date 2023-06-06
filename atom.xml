@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2023-06-02T11:55:44.526Z</updated>
+  <updated>2023-06-06T05:58:40.844Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue-1</title>
+    <link href="http://daweitech.github.io/2023/06/06/2023/6/vue-1/"/>
+    <id>http://daweitech.github.io/2023/06/06/2023/6/vue-1/</id>
+    <published>2023-06-06T05:34:22.000Z</published>
+    <updated>2023-06-06T05:58:40.844Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;最近想储备一点前端知识，就学点vue&lt;/p&gt;
+&lt;h3 id=&quot;参考链接&quot;&gt;&lt;a href=&quot;#参考链接&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="vue" scheme="http://daweitech.github.io/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>R-note</title>
@@ -495,34 +519,6 @@
         
         
     <summary type="html">&lt;h2 id=&quot;计算机网络分层结构&quot;&gt;&lt;a href=&quot;#计算机网络分层结构&quot; class=&quot;headerlink&quot; title=&quot;计算机网络分层结构&quot;&gt;&lt;/a&gt;计算机网络分层结构&lt;/h2&gt;&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    <content src="http://daweitech.github.io/images/life/starry.jpg" type="image"/>
-    
-    
-    <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
-    
-    
-    <category term="computer network" scheme="http://daweitech.github.io/tags/computer-network/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>时延</title>
-    <link href="http://daweitech.github.io/2022/07/06/2022/7/day2/"/>
-    <id>http://daweitech.github.io/2022/07/06/2022/7/day2/</id>
-    <published>2022-07-06T07:58:33.000Z</published>
-    <updated>2023-05-25T11:46:16.973Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;时延&quot;&gt;&lt;a href=&quot;#时延&quot; class=&quot;headerlink&quot; title=&quot;时延&quot;&gt;&lt;/a&gt;时延&lt;/h2&gt;&lt;p&gt;常考传输、传播时延&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
         
       
     
