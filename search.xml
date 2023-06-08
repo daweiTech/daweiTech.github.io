@@ -3769,4 +3769,32 @@ public function __toString()&#123;
         <tag>vue</tag>
       </tags>
   </entry>
+  <entry>
+    <title>vue-2</title>
+    <url>/2023/06/08/2023/6/vue-2/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>视频观看到17-vue通用后台管理（vuex实现左侧折叠）</p>
+<h3 id="已学习内容"><a href="#已学习内容" class="headerlink" title="已学习内容"></a>已学习内容</h3><p>1.element-ui的全局引入</p>
+<p>2.一二级菜单的实现、导航栏</p>
+<p><img src="/2023/06/08/2023/6/vue-2/image-20230608235035851.png" alt="image-20230608235035851"></p>
+<p>3.图标icon、布局、按钮的实现</p>
+<p><img src="/2023/06/08/2023/6/vue-2/image-20230608235144361.png" alt="image-20230608235144361"></p>
+<p>4.vue中面包屑的实现方法</p>
+<p><a href="https://blog.csdn.net/weixin_45457352/article/details/119359839">https://blog.csdn.net/weixin_45457352/article/details/119359839</a></p>
+<p>5.配置vue项目实现localhost本地访问和ip访问且设置启动后终端显示localhost和network访问地址</p>
+<p><a href="https://blog.csdn.net/qq_41497443/article/details/108577543">https://blog.csdn.net/qq_41497443/article/details/108577543</a></p>
+<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><p>1.vue路由跳转报错Avoided redundant navigation to current location: “/xxxxxx“</p>
+<p><a href="https://blog.csdn.net/weixin_43242112/article/details/107595460">https://blog.csdn.net/weixin_43242112/article/details/107595460</a></p>
+<p>诸如</p>
+<p><img src="/2023/06/08/2023/6/vue-2/image-20230608235324298.png" alt="image-20230608235324298"></p>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p>1.Vuex</p>
+<p><a href="https://v3.vuex.vuejs.org/zh/">https://v3.vuex.vuejs.org/zh/</a></p>
+<p>2.vue-router</p>
+<p><a href="https://v3.router.vuejs.org/guide/#html">https://v3.router.vuejs.org/guide/#html</a></p>
+<p>3.Element</p>
+<p><a href="https://element.eleme.cn/#/zh-CN/component/changelog">https://element.eleme.cn/#/zh-CN/component/changelog</a></p>
+]]></content>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
 </search>
