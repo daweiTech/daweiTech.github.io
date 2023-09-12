@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2023-06-08T15:58:31.619Z</updated>
+  <updated>2023-09-12T06:13:42.649Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2023-hvv记录</title>
+    <link href="http://daweitech.github.io/2023/09/04/2023/9/2023-hvv%E8%AE%B0%E5%BD%95/"/>
+    <id>http://daweitech.github.io/2023/09/04/2023/9/2023-hvv%E8%AE%B0%E5%BD%95/</id>
+    <published>2023-09-04T00:36:42.000Z</published>
+    <updated>2023-09-12T06:13:42.649Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;收获吧，认识了网安圈子真实的一群人，熟悉了告警设备天眼的使用。&lt;/p&gt;
+&lt;p&gt;（当时真的写了好久的规则匹配进行过滤，不然真的好多误报，深信服的设备相对来说误报比较少，青藤云也不错）&lt;/p&gt;
+&lt;p&gt;略思一会儿，觉得稍微写一点心得就好了，其他的略过~&lt;/p&gt;
+&lt;p&gt;深圳这座城市</summary>
+        
+      
+    
+    
+    
+    
+    <category term="hvv" scheme="http://daweitech.github.io/tags/hvv/"/>
+    
+  </entry>
   
   <entry>
     <title>vue-2</title>
@@ -489,33 +515,6 @@
         
         
     <summary type="html">&lt;h3 id=&quot;奈氏准则-香农定理&quot;&gt;&lt;a href=&quot;#奈氏准则-香农定理&quot; class=&quot;headerlink&quot; title=&quot;奈氏准则|香农定理&quot;&gt;&lt;/a&gt;奈氏准则|香农定理&lt;/h3&gt;&lt;h3 id=&quot;预备知识：&quot;&gt;&lt;a href=&quot;#预备知识：&quot;</summary>
-        
-      
-    
-    
-    <content src="http://daweitech.github.io/images/draw/sunsky.jpg" type="image"/>
-    
-    
-    <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
-    
-    
-    <category term="computer network" scheme="http://daweitech.github.io/tags/computer-network/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>物理层基本概念</title>
-    <link href="http://daweitech.github.io/2022/07/08/2022/7/day4/"/>
-    <id>http://daweitech.github.io/2022/07/08/2022/7/day4/</id>
-    <published>2022-07-08T01:13:11.000Z</published>
-    <updated>2023-05-25T11:47:38.088Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;预告&quot;&gt;&lt;a href=&quot;#预告&quot; class=&quot;headerlink&quot; title=&quot;预告&quot;&gt;&lt;/a&gt;预告&lt;/h3&gt;&lt;img src=&quot;/2022/07/08/2022/7/day4/image-20220708091510682.png&quot;</summary>
         
       
     

