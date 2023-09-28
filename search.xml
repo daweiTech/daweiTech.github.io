@@ -3440,29 +3440,82 @@ public function __toString()&#123;
   <entry>
     <title>天眼安全设备的使用</title>
     <url>/2023/05/25/2023/5/%E5%A4%A9%E7%9C%BC%E8%AE%BE%E5%A4%87/</url>
-    <content><![CDATA[<h2 id="1-天眼三大功能"><a href="#1-天眼三大功能" class="headerlink" title="1.天眼三大功能"></a>1.天眼三大功能</h2><p>传感器（对流量解析还原，发现网络攻击和web攻击能力）  </p>
-<p>沙箱（发现恶意样本投递能力）    </p>
-<p>分析平台（存储历史流量，分析威胁和溯源能力）</p>
+    <content><![CDATA[<h2 id="1-天眼产品架构"><a href="#1-天眼产品架构" class="headerlink" title="1.天眼产品架构"></a>1.天眼产品架构</h2><h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><p>天眼=IDS+WAF+数据库审计系统+上网行为审计+内部合规审计</p>
+<h3 id="三个重要组件（流量传感器、文件威胁鉴定器、分析平台）"><a href="#三个重要组件（流量传感器、文件威胁鉴定器、分析平台）" class="headerlink" title="-三个重要组件（流量传感器、文件威胁鉴定器、分析平台）"></a>-三个重要组件（流量传感器、文件威胁鉴定器、分析平台）</h3><p><strong><em>\</em>流量传感器**</strong>：采集与还原流量信息，还原应用协议信息，记录文件传输行为、邮件行为与数据库行为，检测入侵行为与web攻击行为。（旁路模式）旁路阻断的三种方式：①URL重定向：http_redirect、②IP阻断：tcp_reset、③DNS重定向：dns_redirect</p>
+<p><strong><em>\</em>文件威胁鉴定器**</strong>：文件静态检测、动态检测，分析文件行为。</p>
+<p><strong><em>\</em>分析平台**</strong>：威胁感知系统：基于云端情报的木马发现机制、展示本地已经遭受入侵的IP；回溯搜索：对历史被攻击情况的回溯，能够对本地镜像流量进行大数据存储和检索。</p>
+<h3 id="检测机制与日志留存机制"><a href="#检测机制与日志留存机制" class="headerlink" title="检测机制与日志留存机制"></a>检测机制与日志留存机制</h3><p>a. 同时检测攻击请求报文和攻击响应报文，能够给出攻击结果的精准判断：企图、成功、失陷、失败。</p>
+<p>b. 结合本地流量及云端大数据威胁情报进行检测。</p>
+<p>c. 对网络中传输的文件进行还原，基于沙箱的静态及动态检测，可以检测通过网络传播的恶意文件。</p>
+<p>d. 同时记录攻击告警日志及网络会话日志，可以准确还原告警发生时的上下文网络会话。</p>
+<p>e. 能对历史网络流量进行回滚分析和检测，从而发现早期已经潜伏在网络中的攻击。</p>
+<h3 id="天眼平台的典型部署"><a href="#天眼平台的典型部署" class="headerlink" title="天眼平台的典型部署"></a>天眼平台的典型部署</h3><p><img src="/2023/05/25/2023/5/%E5%A4%A9%E7%9C%BC%E8%AE%BE%E5%A4%87/image-20230928161010998.png" alt="image-20230928161010998"></p>
+<p>流量传感器-沙箱：6666  流量传感器-分析平台：7755  沙箱-分析平台：9955</p>
 <h2 id="2-天眼告警类型"><a href="#2-天眼告警类型" class="headerlink" title="2.天眼告警类型"></a>2.天眼告警类型</h2><p>警告类型：企图、成功、失陷、失败</p>
-<h2 id="3-天眼搜索"><a href="#3-天眼搜索" class="headerlink" title="3.天眼搜索"></a>3.天眼搜索</h2><p>源IP sip   目的IP dip  </p>
-<p>地理信息：境内还是境外    </p>
-<p>搜索示例：（sip:”192.168.1.1”）OR（dip:”192.168.1.1”）  </p>
-<h2 id="4-天眼类别"><a href="#4-天眼类别" class="headerlink" title="4.天眼类别"></a>4.天眼类别</h2><p>威胁感知<br>调查分析<br>场景化分析<br>日志检索  例子：search sip:”10.1.1.1/8” |tcp 100 dip<br>资产<br>报表<br>安全服务<br>系统管理</p>
-<h2 id="5-天眼语法"><a href="#5-天眼语法" class="headerlink" title="5.天眼语法"></a>5.天眼语法</h2><p>检索常用语法</p>
-<p>dip  被攻击的 ip </p>
-<p>dport 被攻击的端口</p>
-<p>sip   源ip </p>
-<p>sport：源端口</p>
-<p>uri   请求的 url 地址</p>
-<p>data  请求包的正文内容 </p>
-<p>status 响应包的状态码</p>
-<p>host   域名 </p>
-<p>client_os 系统 运算符 AND（AND 或&amp;&amp;或+） OR（OR 或||） </p>
-<p>NOT(NOT 或！或-)</p>
+<h2 id="3-天眼菜单类别"><a href="#3-天眼菜单类别" class="headerlink" title="3.天眼菜单类别"></a>3.天眼菜单类别</h2><p>威胁感知 调查分析 场景化分析 日志检索  资产 报表 安全服务  系统管理</p>
+<h2 id="4-天眼语法"><a href="#4-天眼语法" class="headerlink" title="4.天眼语法"></a>4.天眼语法</h2><p>检索常见字段</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dip</td>
+<td>被攻击的 ip</td>
+</tr>
+<tr>
+<td>dport</td>
+<td>被攻击的端口</td>
+</tr>
+<tr>
+<td>sip</td>
+<td>源ip</td>
+</tr>
+<tr>
+<td>sport</td>
+<td>源端口</td>
+</tr>
+<tr>
+<td>uri</td>
+<td>请求的 url 地址</td>
+</tr>
+<tr>
+<td>data</td>
+<td>请求包的正文内容</td>
+</tr>
+<tr>
+<td>status</td>
+<td>响应包的状态码</td>
+</tr>
+<tr>
+<td>host</td>
+<td>域名</td>
+</tr>
+</tbody></table>
+<p>图片示例</p>
 <p><img src="/2023/05/25/2023/5/%E5%A4%A9%E7%9C%BC%E8%AE%BE%E5%A4%87/image-20230525232122251.png" alt="image-20230525232122251"></p>
-<h2 id="6-天眼安全事件处理"><a href="#6-天眼安全事件处理" class="headerlink" title="6.天眼安全事件处理"></a>6.天眼安全事件处理</h2><h3 id="判断告警还是误报"><a href="#判断告警还是误报" class="headerlink" title="判断告警还是误报"></a>判断告警还是误报</h3><p><img src="/2023/05/25/2023/5/%E5%A4%A9%E7%9C%BC%E8%AE%BE%E5%A4%87/image-20230525232652931.png" alt="image-20230525232652931"></p>
+<h3 id="1）基本搜索语法"><a href="#1）基本搜索语法" class="headerlink" title="1）基本搜索语法"></a>1）基本搜索语法</h3><h4 id="字段"><a href="#字段" class="headerlink" title="字段:"></a>字段:</h4><p>项 运算符 字段:项</p>
+<h4 id="运算符："><a href="#运算符：" class="headerlink" title="运算符："></a>运算符：</h4><p>AND 运算符（AND、&amp;&amp; 或 +）、OR 运算符（OR 或 ||）、NOT 运算符（NOT、! 或 -）。（注意：运算符一定要大写！！）</p>
+<p>项：项（单词），短语（””）,分组（优先运算符-将字符串括在括号 ( ) 中）</p>
+<p>字段：</p>
+<p>通用字段：sip,dip,dport,sport，serial_num</p>
+<p>协议字段： sql_info，up_payload，proto，dns_type，addr，uri，status, method，agent，data，server_name,attach_md5,db_type,normal_ret, ret_code,host</p>
+<h3 id="2）高级检索"><a href="#2）高级检索" class="headerlink" title="2）高级检索"></a>2）高级检索</h3><p>通配符：? 匹配单个字符，* 匹配0到多个字符。（注意：通配符不能用作数字检索，使用时不能加双引号！）</p>
+<p>范围搜索：[ TO ] 表示端点数值包含在范围内，{ TO } 表示端点数值不包含在范围内，可以混合使用。也可写作：&gt;、&lt;、&lt;=、&gt;=。</p>
+<p>模糊搜索：（~），项的末尾使用波浪符号，即可执行模糊搜索。即使搜索项拼错或仅指定部分单词也找出匹配项的搜索（使用时不能加双引号！）</p>
+<p>近似搜索：短语后面加上（~），可以搜到被隔开或顺序不同的单词</p>
+<p>正则搜索（性能较差）、转义搜索（转义特殊字符）、二级检索（在原有搜索语句进行二次搜索）</p>
+<h3 id="3）注意事项"><a href="#3）注意事项" class="headerlink" title="3）注意事项"></a>3）注意事项</h3><p>a.范围要精确</p>
+<p>b.尽量使用字段搜索（模糊搜索会在全日志里面匹配，速度和精确度大大下降）</p>
+<p>c.通配符不要用于数字的检索，使用通配符时不能加双引号</p>
+<p>d.使用模糊搜索时不能加双引号</p>
+<p>e.范围可用于搜索数值 / 时间 / IP 类型的字段</p>
+<p>f.关键字尽量不要包含特殊符号</p>
+<h2 id="5-天眼安全事件处理"><a href="#5-天眼安全事件处理" class="headerlink" title="5.天眼安全事件处理"></a>5.天眼安全事件处理</h2><h3 id="判断告警还是误报"><a href="#判断告警还是误报" class="headerlink" title="判断告警还是误报"></a>判断告警还是误报</h3><p><img src="/2023/05/25/2023/5/%E5%A4%A9%E7%9C%BC%E8%AE%BE%E5%A4%87/image-20230525232652931.png" alt="image-20230525232652931"></p>
 <h3 id="内网挖矿告警处理"><a href="#内网挖矿告警处理" class="headerlink" title="内网挖矿告警处理"></a>内网挖矿告警处理</h3><h4 id="如何确认被挖矿"><a href="#如何确认被挖矿" class="headerlink" title="如何确认被挖矿"></a>如何确认被挖矿</h4><p><img src="/2023/05/25/2023/5/%E5%A4%A9%E7%9C%BC%E8%AE%BE%E5%A4%87/image-20230525233051268.png" alt="image-20230525233051268"></p>
-<h4 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h4><p><img src="/2023/05/25/2023/5/%E5%A4%A9%E7%9C%BC%E8%AE%BE%E5%A4%87/image-20230525232806919.png" alt="image-20230525232806919"></p>
+<h4 id="如何进行处理"><a href="#如何进行处理" class="headerlink" title="如何进行处理"></a>如何进行处理</h4><p><img src="/2023/05/25/2023/5/%E5%A4%A9%E7%9C%BC%E8%AE%BE%E5%A4%87/image-20230525232806919.png" alt="image-20230525232806919"></p>
 <h3 id="sql注入告警"><a href="#sql注入告警" class="headerlink" title="sql注入告警"></a>sql注入告警</h3><p><img src="/2023/05/25/2023/5/%E5%A4%A9%E7%9C%BC%E8%AE%BE%E5%A4%87/image-20230525232912535.png" alt="image-20230525232912535"></p>
 <h3 id="webshell告警"><a href="#webshell告警" class="headerlink" title="webshell告警"></a>webshell告警</h3><p><img src="/2023/05/25/2023/5/%E5%A4%A9%E7%9C%BC%E8%AE%BE%E5%A4%87/image-20230525233212647.png" alt="image-20230525233212647"></p>
 <h3 id="文件上传告警"><a href="#文件上传告警" class="headerlink" title="文件上传告警"></a>文件上传告警</h3><p><img src="/2023/05/25/2023/5/%E5%A4%A9%E7%9C%BC%E8%AE%BE%E5%A4%87/image-20230525233318335.png" alt="image-20230525233318335"></p>
@@ -3806,7 +3859,6 @@ public function __toString()&#123;
 <p>深圳这座城市节奏还是挺快的，物价也好贵啊~</p>
 <p>不过获得了微步社区的可乐还是挺惊喜的，嘿嘿，中奖了，难道真有诗人的天赋（哈哈还是算了</p>
 <p>说说自己的想法，hvv整个流程挺清晰的，对于行业的发展一定是积极向上的</p>
-<p>切莫让一些人不理智的行为使得网安行业令人误解</p>
 <p>暑假期间也是收获了两张证书，还是挺令人满意的，上交和上商的漏洞报送证书，很谢谢江夏师傅的栽培！算是实现了自己的一个小愿望。</p>
 <p><img src="/2023/09/04/2023/9/2023-hvv%E8%AE%B0%E5%BD%95/image-20230912141823511.png"></p>
 ]]></content>
