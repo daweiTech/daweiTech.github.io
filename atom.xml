@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2023-09-28T08:30:36.847Z</updated>
+  <updated>2023-10-05T04:29:32.540Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git上传</title>
+    <link href="http://daweitech.github.io/2023/10/05/2023/10/Git%E4%B8%8A%E4%BC%A0/"/>
+    <id>http://daweitech.github.io/2023/10/05/2023/10/Git%E4%B8%8A%E4%BC%A0/</id>
+    <published>2023-10-05T04:22:22.000Z</published>
+    <updated>2023-10-05T04:29:32.540Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;记录上传本地文件夹到远程仓库所使用的文章&lt;/p&gt;
+&lt;h2 id=&quot;github问题：master和main分支合并&quot;&gt;&lt;a href=&quot;#github问题：master和main分支合并&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="git" scheme="http://daweitech.github.io/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>2023-hvv记录</title>
@@ -490,33 +514,6 @@
         
         
     <summary type="html">&lt;h2 id=&quot;编码与调制（一）&quot;&gt;&lt;a href=&quot;#编码与调制（一）&quot; class=&quot;headerlink&quot; title=&quot;编码与调制（一）&quot;&gt;&lt;/a&gt;编码与调制（一）&lt;/h2&gt;&lt;h3 id=&quot;预备知识&quot;&gt;&lt;a href=&quot;#预备知识&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    <content src="http://daweitech.github.io/images/draw/sunsky.jpg" type="image"/>
-    
-    
-    <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
-    
-    
-    <category term="computer network" scheme="http://daweitech.github.io/tags/computer-network/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>奈氏准则|香农定理</title>
-    <link href="http://daweitech.github.io/2022/07/10/2022/7/day5/"/>
-    <id>http://daweitech.github.io/2022/07/10/2022/7/day5/</id>
-    <published>2022-07-10T01:56:34.000Z</published>
-    <updated>2023-05-25T11:47:46.711Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;奈氏准则-香农定理&quot;&gt;&lt;a href=&quot;#奈氏准则-香农定理&quot; class=&quot;headerlink&quot; title=&quot;奈氏准则|香农定理&quot;&gt;&lt;/a&gt;奈氏准则|香农定理&lt;/h3&gt;&lt;h3 id=&quot;预备知识：&quot;&gt;&lt;a href=&quot;#预备知识：&quot;</summary>
         
       
     
