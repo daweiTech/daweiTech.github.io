@@ -6,7 +6,7 @@
   <link href="http://daweitech.github.io/atom.xml" rel="self"/>
   
   <link href="http://daweitech.github.io/"/>
-  <updated>2023-10-05T04:29:32.540Z</updated>
+  <updated>2023-10-10T02:55:34.224Z</updated>
   <id>http://daweitech.github.io/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>s3对象存储</title>
+    <link href="http://daweitech.github.io/2023/10/10/2023/10/s3%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/"/>
+    <id>http://daweitech.github.io/2023/10/10/2023/10/s3%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/</id>
+    <published>2023-10-10T02:53:42.000Z</published>
+    <updated>2023-10-10T02:55:34.224Z</updated>
+    
+    
+    
+    
+    
+    <category term="云安全" scheme="http://daweitech.github.io/tags/%E4%BA%91%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>云服务</title>
+    <link href="http://daweitech.github.io/2023/10/09/2023/10/%E4%BA%91%E6%9C%8D%E5%8A%A1/"/>
+    <id>http://daweitech.github.io/2023/10/09/2023/10/%E4%BA%91%E6%9C%8D%E5%8A%A1/</id>
+    <published>2023-10-09T04:51:54.000Z</published>
+    <updated>2023-10-10T02:52:38.896Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;云服务&quot;&gt;&lt;a href=&quot;#云服务&quot; class=&quot;headerlink&quot; title=&quot;云服务&quot;&gt;&lt;/a&gt;云服务&lt;/h1&gt;&lt;h2 id=&quot;1-概念&quot;&gt;&lt;a href=&quot;#1-概念&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="云安全" scheme="http://daweitech.github.io/tags/%E4%BA%91%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>Git上传</title>
@@ -470,61 +508,6 @@
     
     
     <category term="js逆向" scheme="http://daweitech.github.io/tags/js%E9%80%86%E5%90%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>物理层传输介质</title>
-    <link href="http://daweitech.github.io/2022/07/14/2022/7/day7/"/>
-    <id>http://daweitech.github.io/2022/07/14/2022/7/day7/</id>
-    <published>2022-07-14T10:48:23.000Z</published>
-    <updated>2023-05-25T11:48:01.314Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;物理层传输介质&quot;&gt;&lt;a href=&quot;#物理层传输介质&quot; class=&quot;headerlink&quot; title=&quot;物理层传输介质&quot;&gt;&lt;/a&gt;物理层传输介质&lt;/h2&gt;&lt;p&gt;概念&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    <content src="http://daweitech.github.io/images/draw/sunsky.jpg" type="image"/>
-    
-    
-    <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
-    
-    
-    <category term="computer network" scheme="http://daweitech.github.io/tags/computer-network/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>编码与调制</title>
-    <link href="http://daweitech.github.io/2022/07/12/2022/7/day6/"/>
-    <id>http://daweitech.github.io/2022/07/12/2022/7/day6/</id>
-    <published>2022-07-12T07:02:19.000Z</published>
-    <updated>2023-05-25T12:35:36.329Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;编码与调制（一）&quot;&gt;&lt;a href=&quot;#编码与调制（一）&quot; class=&quot;headerlink&quot; title=&quot;编码与调制（一）&quot;&gt;&lt;/a&gt;编码与调制（一）&lt;/h2&gt;&lt;h3 id=&quot;预备知识&quot;&gt;&lt;a href=&quot;#预备知识&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    <content src="http://daweitech.github.io/images/draw/sunsky.jpg" type="image"/>
-    
-    
-    <category term="计算机考研" scheme="http://daweitech.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%80%83%E7%A0%94/"/>
-    
-    
-    <category term="computer network" scheme="http://daweitech.github.io/tags/computer-network/"/>
     
   </entry>
   
