@@ -3936,7 +3936,21 @@ public function __toString()&#123;
   <entry>
     <title>s3对象存储</title>
     <url>/2023/10/10/2023/10/s3%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="s3介绍"><a href="#s3介绍" class="headerlink" title="s3介绍"></a>s3介绍</h1><p>对象存储（Object-Based Storage），也可以叫做面向对象的存储，现在也有不少厂商直接把它叫做云存储。</p>
+<p>说到对象存储就不得不提 Amazon，Amazon S3 (Simple Storage Service) 简单存储服务，是 Amazon 的公开云存储服务，与之对应的协议被称为 S3 协议，目前 S3 协议已经被视为公认的行业标准协议，因此目前国内主流的对象存储厂商基本上都会支持 S3 协议。</p>
+<p>在 Amazon S3 标准下中，对象存储中可以有多个桶（Bucket），然后把对象（Object）放在桶里，对象又包含了三个部分：<code>Key</code>、<code>Data</code> 和<code>Metadata</code></p>
+<p><img src="/2023/10/10/2023/10/s3%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/image-20231011225258490.png" alt="image-20231011225258490"></p>
+<p>概念</p>
+<p><img src="/2023/10/10/2023/10/s3%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/image-20231011225209122.png" alt="image-20231011225209122"></p>
+<h1 id="Bucket爆破"><a href="#Bucket爆破" class="headerlink" title="Bucket爆破"></a>Bucket爆破</h1><p>当不知道 Bucket 名称的时候，可以通过爆破获得 Bucket 名称，这有些类似于目录爆破，只不过目录爆破一般通过状态码判断，而这个通过页面的内容判断。</p>
+<p>当 Bucket 不存在时有两种返回情况，分别是 InvalidBucketName 和 NoSuchBucket</p>
+<p><img src="/2023/10/10/2023/10/s3%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/image-20231011225833267.png" alt="image-20231011225833267"></p>
+<p><img src="/2023/10/10/2023/10/s3%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/image-20231011231026599.png" alt="image-20231011231026599"></p>
+<p>当 Bucket 存在时也会有两种情况，一种是列出 Object（目前似乎访问不到文章图片地址，就直接引用一下了）</p>
+<p><img src="/2023/10/10/2023/10/s3%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/image-20231011231402670.png" alt="image-20231011231402670"></p>
+<p><img src="/2023/10/10/2023/10/s3%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/image-20231011231428202.png" alt="image-20231011231428202"></p>
+<p>这样通过返回内容的不同，就可以进行 Bucket 名称爆破了，知道 Bucket 名称后，Key 的爆破也就很容易了。</p>
+]]></content>
       <tags>
         <tag>云安全</tag>
       </tags>
